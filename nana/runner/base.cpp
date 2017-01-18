@@ -18,3 +18,7 @@ std::string nana::runner::to_string(const wstring& _wstr)
     return nana::to_utf8(_wstr);
 }
 
+std::wstring nana::runner::to_wstring(const string& _utf8str)
+{
+    return nana::to_wstring(_utf8str);
+}

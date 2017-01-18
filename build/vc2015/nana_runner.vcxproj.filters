@@ -41,6 +41,9 @@
     <ClCompile Include="..\..\nana\runner\log.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\nana\runner\parser.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="nana_runner.h">
@@ -65,6 +68,18 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\view_cfg.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nana\runner\parser.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nana\runner\node.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nana\runner\list_map.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nana\runner\list_multimap.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

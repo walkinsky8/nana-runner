@@ -3,23 +3,25 @@
 
 #include <nana/runner/base.h>
 
-#include <nana/runner/dumper.h>
+#include <nana/runner/istr.h>
 #include <nana/runner/id.h>
+#include <nana/runner/dumper.h>
 
 namespace nana::runner {
 
     class view_cfg
     {
-        id id_{ "root" };
-        std::string caption_{ "hello" };
+        id id_;
+        string caption_;
 
         std::vector<view_cfg> children_;
 
         view_cfg* parent_{ nullptr };
 
     public:
-        view_cfg() = default;
-        view_cfg(id _id) :id_{ _id } {}
+        view_cfg(string _id = {}, string _caption = {})
+            : id_{ _id }, caption_{ _caption }
+        {}
 
         template<class _Stream>
         void traverse(_Stream& _s)
@@ -62,4 +64,9 @@ namespace nana::runner {
     {
         return _os << dump(_v);
     }
+    template<> struct dumpable<view_cfg>
+    {
+        static constexpr bool value = true;
+    };
+
 }

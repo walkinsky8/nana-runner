@@ -2,11 +2,14 @@
 #pragma once
 
 #include <nana/runner/base.h>
+#include <nana/runner/istr.h>
 
 namespace nana::runner {
 
     class id
     {
+        static constexpr char separator = '_';
+
         std::string path_;
 
     public:
@@ -14,6 +17,7 @@ namespace nana::runner {
         id(const std::string& _path)
             : path_{ _path }
         {
+            format();
         }
 
         std::string const& str() const
@@ -29,8 +33,35 @@ namespace nana::runner {
         id& operator/(const id& _child)
         {
             if (!path_.empty())
-                path_ << "_";
+                path_ << separator;
             path_ << _child;
+            return *this;
+        }
+
+        id& format()
+        {
+            if (istr{ path_ }.read_the(is_identifier_body).size() == path_.size())
+                return *this;
+            for (auto i = path_.begin(); i != path_.end(); ++i)
+            {
+                if (!is_identifier_body(*i))
+                    *i = separator;
+            }
+            int seps = 0;
+            for (size_t i = 0; i < path_.size(); ++i)
+            {
+                if (path_[i] == separator)
+                    ++seps;
+                else
+                {
+                    if (seps > 1)
+                    {
+                        path_.erase(i - seps, seps - 1);
+                        i -= seps - 1;
+                    }
+                    seps = 0;
+                }
+            }
             return *this;
         }
 

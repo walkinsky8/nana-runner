@@ -10,6 +10,7 @@
 
 #include <nana/gui.hpp>
 #include <nana/gui/widgets/label.hpp>
+#include <nana/gui/widgets/textbox.hpp>
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     _In_opt_ HINSTANCE hPrevInstance,
@@ -28,27 +29,36 @@ int nana::runner::app::go()
 {
     using namespace nana;
     using namespace nana::runner;
-    form f;
 
-    string s{ "Hello, world!" };
-    f.caption(s);
+    form f;
+    f.caption("Log Viewer");
+    f.div("a");
+    nana::textbox l(f);
+    f["a"] << l;
+    f.collocate();
+
+    set_log_handler([&l](const string& s) {
+        write_console(s);
+        l.append(s, false);
+    });
+
+    log() << "beginning...";
+
+    log() << id{ "a.b[1].c" };
 
     dumper d;
-    d << s;
+    d << f.caption();
     log() << d;
 
-    view_cfg cfg;
-    cfg.add(id{"child1"});
-    cfg.add(id{"child2"});
+    view_cfg cfg{ "root", "hello" };
+    cfg.add({"child1", "world1"});
+    cfg.add({"child2", "world2"});
     log() << cfg;
+    log() << dump(cfg, true);
     for (auto i : cfg.children())
         log() << "child id = " << i.id_name();
 
-    nana::label l(f);
-    l.caption(dump(cfg));
-    f.div("a");
-    f["a"] << l;
-    f.collocate();
+    log() << "end.";
 
     f.show();
     exec();

@@ -5,6 +5,12 @@
 
 namespace nana::runner {
 
+    using log_handler = std::function<void(const string&)>;
+    log_handler get_log_handler();
+    log_handler set_log_handler(log_handler);
+
+    void write_console(const string& _msg);
+
     struct out
     {
         std::ostringstream oss_;

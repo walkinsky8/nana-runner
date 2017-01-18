@@ -3,9 +3,27 @@
 
 #include <nana/runner/log.h>
 
+nana::runner::log_handler __log_handler = nana::runner::write_console;
+
+nana::runner::log_handler nana::runner::get_log_handler()
+{
+    return __log_handler;
+}
+nana::runner::log_handler nana::runner::set_log_handler(log_handler lh)
+{
+    log_handler old = get_log_handler();
+    __log_handler = lh;
+    return old;
+}
+
+void nana::runner::write_console(const string& _msg)
+{
+    OutputDebugStringW(nana::to_wstring(_msg).c_str());
+}
+
 nana::runner::out::~out()
 {
-    OutputDebugStringW(nana::to_wstring(oss_.str()).c_str());
+    __log_handler(oss_.str());
 }
 
 nana::runner::log::log()

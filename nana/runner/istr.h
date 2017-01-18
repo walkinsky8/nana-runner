@@ -28,9 +28,9 @@ namespace nana::runner {
             : begin_{ _b.begin() }, end_{ _e.begin() }
         {}
 
-        operator string() const
+        void operator >> (string& s) const
         {
-            return string{ begin_, end_ };
+            s.assign(data(), size());
         }
 
         operator bool() const
@@ -181,6 +181,24 @@ namespace nana::runner {
             istr s = leftstr(_n);
             me() += (int)_n;
             return s;
+        }
+
+        istr read_the(std::function<bool(char)> _fn)
+        {
+            istr p = me();
+            istr beg = p;
+            while (p && _fn(*p))
+                ++p;
+            return istr{ beg, p };
+        }
+
+        istr read_not(std::function<bool(char)> _fn)
+        {
+            istr& _p = me();
+            istr beg = _p;
+            while (_p && !_fn(*_p))
+                ++_p;
+            return istr{ beg, _p };
         }
 
     };

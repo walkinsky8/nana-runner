@@ -74,7 +74,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>../../;../../../nana/include;../../../nana/extrlib/vc2015;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+    <IncludePath>./;../../;../../../nana/include;../../../nana/extrlib/vc2015;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
     <LibraryPath>../../../nana/build/bin;../../../nana/extrlib/vc2015;$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);$(NETFXKitsDir)Lib\um\x64</LibraryPath>
     <SourcePath>$(VC_SourcePath);</SourcePath>
   </PropertyGroup>
@@ -158,6 +158,7 @@
     <ClCompile Include="..\..\nana\runner\base.cpp" />
     <ClCompile Include="..\..\nana\runner\dumper.cpp" />
     <ClCompile Include="..\..\nana\runner\log.cpp" />
+    <ClCompile Include="..\..\nana\runner\parser.cpp" />
     <ClCompile Include="nana_runner.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -168,7 +169,11 @@
     <ClInclude Include="..\..\nana\runner\dumper.h" />
     <ClInclude Include="..\..\nana\runner\id.h" />
     <ClInclude Include="..\..\nana\runner\istr.h" />
+    <ClInclude Include="..\..\nana\runner\list_map.h" />
+    <ClInclude Include="..\..\nana\runner\list_multimap.h" />
     <ClInclude Include="..\..\nana\runner\log.h" />
+    <ClInclude Include="..\..\nana\runner\node.h" />
+    <ClInclude Include="..\..\nana\runner\parser.h" />
     <ClInclude Include="..\..\nana\runner\view_cfg.h" />
     <ClInclude Include="nana_runner.h" />
     <ClInclude Include="stdafx.h" />
