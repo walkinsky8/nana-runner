@@ -4,6 +4,7 @@
 #include <nana/runner/base.h>
 
 #include <nana/runner/istr.h>
+#include <nana/runner/optional.h>
 #include <nana/runner/id.h>
 #include <nana/runner/dumper.h>
 
@@ -13,6 +14,8 @@ namespace nana::runner {
     {
         id id_;
         string caption_;
+        string string_;
+        optional<bool> bool_;
 
         std::vector<view_cfg> children_;
 
@@ -28,6 +31,8 @@ namespace nana::runner {
         {
             _s("id", id_);
             _s("caption", caption_);
+            _s("string", string_);
+            _s("bool", bool_);
             _s("children", children_);
         }
 

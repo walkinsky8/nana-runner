@@ -82,5 +82,8 @@
     <ClInclude Include="..\..\nana\runner\list_multimap.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\nana\runner\optional.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

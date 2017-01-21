@@ -183,7 +183,7 @@ namespace nana::runner {
             return s;
         }
 
-        istr read_the(std::function<bool(char)> _fn)
+        istr read(std::function<bool(char)> _fn)
         {
             istr p = me();
             istr beg = p;
@@ -192,7 +192,7 @@ namespace nana::runner {
             return istr{ beg, p };
         }
 
-        istr read_not(std::function<bool(char)> _fn)
+        istr read_until(std::function<bool(char)> _fn)
         {
             istr& _p = me();
             istr beg = _p;

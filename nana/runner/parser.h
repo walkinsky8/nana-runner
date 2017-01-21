@@ -2,11 +2,18 @@
 #pragma once
 
 #include <nana/runner/base.h>
+#include <nana/runner/istr.h>
+#include <nana/runner/node.h>
 
 namespace nana::runner
 {
     class parser
     {
+        node node_;
+
+    public:
+        void do_parse(string _s);
+
     };
 
 }

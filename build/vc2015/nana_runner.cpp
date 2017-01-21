@@ -37,6 +37,10 @@ int nana::runner::app::go()
     f["a"] << l;
     f.collocate();
 
+    l.line_wrapped(true);
+    l.bgcolor(colors::black);
+    l.fgcolor(color{ "rgb(0,255,0)" });
+
     set_log_handler([&l](const string& s) {
         write_console(s);
         l.append(s, false);

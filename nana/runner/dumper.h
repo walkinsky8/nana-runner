@@ -114,11 +114,11 @@ namespace nana::runner
         dumper& writeName(string _name)
         {
             write(_name);
-            if (!compact_)
-                write(tag::space);
+            //if (!compact_)
+            //    write(tag::space);
             write(tag::assign);
-            if (!compact_)
-                write(tag::space);
+            //if (!compact_)
+            //    write(tag::space);
             return *this;
         }
 

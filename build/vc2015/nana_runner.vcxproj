@@ -173,6 +173,7 @@
     <ClInclude Include="..\..\nana\runner\list_multimap.h" />
     <ClInclude Include="..\..\nana\runner\log.h" />
     <ClInclude Include="..\..\nana\runner\node.h" />
+    <ClInclude Include="..\..\nana\runner\optional.h" />
     <ClInclude Include="..\..\nana\runner\parser.h" />
     <ClInclude Include="..\..\nana\runner\view_cfg.h" />
     <ClInclude Include="nana_runner.h" />

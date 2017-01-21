@@ -40,7 +40,7 @@ namespace nana::runner {
 
         id& format()
         {
-            if (istr{ path_ }.read_the(is_identifier_body).size() == path_.size())
+            if (istr{ path_ }.read(is_identifier_body).size() == path_.size())
                 return *this;
             for (auto i = path_.begin(); i != path_.end(); ++i)
             {

@@ -72,6 +72,8 @@ namespace nana::runner {
 
     inline bool is_base64_char(const char c) { return is_letter(c) || is_digit(c) || c=='+' || c=='/' || c=='='; }
 
+    inline bool is_quote_char(const char c) { return c == '\'' || c == '"'; }
+
     template<class _Stream, class T>
     inline _Stream& codec(_Stream& _s, T& _v)
     {
