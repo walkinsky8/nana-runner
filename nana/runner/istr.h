@@ -171,6 +171,12 @@ namespace nana::runner {
             return *this;
         }
 
+        istr& clear()
+        {
+            begin_ = end_;
+            return *this;
+        }
+
         char read()
         {
             return *me()++;

@@ -10,36 +10,67 @@ namespace nana::runner
 {
     class node
     {
+        string name_;
         string type_;
-
-        list_map<string, string> attrs_;
-
-        list_multimap<string, node> children_;
-
         string value_;
+        list_map<string, node> children_;
 
     public:
-        node& type(string _type)
+        node(string _name = {}, string _type = {}, string _value = {})
+            : name_{ _name }, type_{ _type }, value_{ _value }
         {
-            type_ = _type;
+        }
+
+        node& clear()
+        {
+            name_.clear();
+            type_.clear();
+            value_.clear();
+            children_.clear();
+        }
+
+        node& name(istr _name)
+        {
+            _name >> name_;
             return *this;
         }
 
-        node& add_attr(string n, string v)
+        string const& name() const
         {
-            attrs_.add(n, v);
+            return name_;
+        }
+
+        node& type(istr _type)
+        {
+            _type >> type_;
             return *this;
         }
 
-        node& add_child(string n, node v)
+        string const& type() const
         {
-            children_.add(n, v);
+            return type_;
+        }
+
+        node& value(istr _value)
+        {
+            _value >> value_;
             return *this;
         }
 
-        node& value(string _value)
+        string const& value() const
         {
-            value_ = _value;
+            return value_;
+        }
+
+        node& add_attr(string _name, string _value)
+        {
+            children_.add(_name, { _name, {}, _value });
+            return *this;
+        }
+
+        node& add_child(string _name, node _child)
+        {
+            children_.add(_name, _child);
             return *this;
         }
 

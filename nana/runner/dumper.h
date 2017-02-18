@@ -10,6 +10,7 @@ namespace nana::runner
     {
         const char type = '@';
         const char string = '\'';
+        const char string2 = '"';
         const char begin = '{';
         const char end = '}';
         const char assign = '=';

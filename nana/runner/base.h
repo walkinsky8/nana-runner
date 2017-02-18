@@ -12,6 +12,8 @@
 
 #include <functional>
 
+#include <cassert>
+
 namespace std {
 
     template<class T>

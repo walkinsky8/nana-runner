@@ -12,12 +12,6 @@ namespace nana::runner
         std::map<K, V> map_;
 
     public:
-        void add(K k, V v)
-        {
-            list_.push_back(k);
-            map_[k] = std::move(v);
-        }
-
         const std::vector<K>& list() const
         {
             return list_;
@@ -26,6 +20,18 @@ namespace nana::runner
         const std::map<K, V>& map() const
         {
             return map_;
+        }
+
+        void clear()
+        {
+            list_.clear();
+            map_.clear();
+        }
+
+        void add(K k, V v)
+        {
+            list_.push_back(k);
+            map_[k] = std::move(v);
         }
 
         bool get(K k, V& v) const
