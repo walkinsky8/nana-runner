@@ -16,6 +16,8 @@ namespace nana::runner {
         string caption_;
         string string_;
         optional<bool> bool_;
+        optional<int> int_;
+        optional<float> float_;
 
         std::vector<view_cfg> children_;
 
@@ -23,7 +25,7 @@ namespace nana::runner {
 
     public:
         view_cfg(string _id = {}, string _caption = {})
-            : id_{ _id }, caption_{ _caption }
+            : id_{ _id }, caption_{ _caption }, bool_{ false }, int_{ 10 }, float_{ 123.456 }
         {}
 
         template<class _Stream>
@@ -33,6 +35,8 @@ namespace nana::runner {
             _s("caption", caption_);
             _s("string", string_);
             _s("bool", bool_);
+            _s("int", int_);
+            _s("float", float_);
             _s("children", children_);
         }
 

@@ -43,7 +43,7 @@ namespace nana::runner::detail {
         return c == tag::string || c == tag::string2;
     }
 
-    bool is_name_or_value_end(const char c)
+    bool is_name_or_value_end0(const char c)
     {
         return c == tag::assign || c == tag::end || is_string_tag(c) || is_blank(c);
     }
@@ -63,12 +63,13 @@ namespace nana::runner::detail {
             : content_{ _content }, p_{ content_ }
         {
         }
-         
+
         bool read(node& _node)
         {
             p_.read(is_blank);
             if (!p_)
                 return false;
+            //p_非空
 
             if (*p_ == tag::end)
             {
@@ -76,92 +77,61 @@ namespace nana::runner::detail {
                 return false;
             }
 
-            istr word = p_.read_until(is_word_end); //c == tag::type || c == tag::begin || c == tag::assign || c == tag::end || is_string_tag(c) || is_blank(c)
+            //c == tag::type || c == tag::begin || c == tag::assign || c == tag::end || is_string_tag(c) || is_blank(c)
+            istr word = p_.read_until(is_word_end);
 
-            if (word && *p_ == tag::assign)
+            if (*p_ == tag::assign)
             {
+                //=前面的name为空没有意义
+                if (!word)
+                    throw_error("empty name");
                 _node.name(word);
                 ++p_;
+                //name已经读取，后面就是value
                 word = p_.read_until(is_word_end);
+                // empty value
                 if (!word && is_blank(*p_))
                     return true;
             }
 
             if (*p_ == tag::type)
             {
-                if (word)
-                    throw_error("extra word " + word);
+                if (word) 
+                    throw_error("extra word before @: " + word);
                 ++p_;
                 word = p_.read_until(is_type_end); //c == tag::begin || is_blank(c)
                 _node.type(word);
                 word.clear();
                 p_.read(is_blank);
                 if (*p_ != tag::begin)
-                    throw_error("no {");
+                    throw_error("no { after type");
             }
 
             if (*p_ != tag::begin)
             {
-                if (word)
+                if (is_string_tag(*p_))
                 {
-                    _node.value(word);
+                    if (word)
+                        throw_error("extra word before quote: " + word);
+                    _node.value(read_string(p_));
                     return true;
                 }
+
+                // normal simple value
+                _node.value(word);
+                return true;
             }
 
-            ++p_;
+            ++p_; // ignore tag::begin
             while (p_)
             {
                 node child;
                 if (!read(child))
                     break;
-                p_.read(is_blank);
-                if (!p_)
-                    throw_error("no }");
-
-                if (*p_ == tag::assign)
-                {
-                    child.name(word);
-                    ++p_;
-                    if (is_blank(*p_))
-                    {
-                        // null value
-                        _node.add_child(child.name(), child);
-                        continue;
-                    }
-                }
-                if (is_string_tag(*p_))
-                {
-                    child .value(read_string(p_));
-                }
-                else if (*p_ == tag::type || *p_ == tag::begin)
-                {
-                    read(child);
-                }
-
                 _node.add_child(child.name(), child);
             }
 
-            if (is_quote_char(*p_))
-            {
-                _node.value(read_string(p_));
-                return false;
-            }
-
-
-            if (is_identifier_start(*word))
-            {
-                if (istr{ word }.read(is_identifier_body).size() == word.size())
-                {
-                    if (*p_ == tag::assign)
-                        ++p_;
-                    word >> value_;
-                    return token::name;
-                }
-            }
-
-            word >> value_;
-            return token::value;
+            return true;
         }
 
         void throw_error(string msg)
@@ -185,51 +155,10 @@ namespace nana::runner::detail {
 
     };
 
-    void parse_node(node& _node, tokenizer& _p)
-    {
-        token t = _p.read();
-        if (t == token::type)
-        {
-            _node.type(std::move(_p.str()));
-            t = _p.read();
-        }
-        if (t != token::begin)
-            _p.throw_error("no {");
-        t = _p.read();
-        while (t != token::eof && t != token::end)
-        {
-            if (t == token::name)
-            {
-                string name = std::move(_p.str());
-                t = _p.read(false);
-                if (t != token::assign)
-                    _p.throw_error("no =");
-                t = _p.read(false);
-                if (t == token::value)
-                {
-                    string value = std::move(_p.str());
-                    _node.add_attr(name, value);
-                }
-                else
-                {
-                    node child;
-                    parse_node(child, _p);
-                    _node.add_child(name, child);
-                }
-            }
-            else
-            {
-                _p.throw_error("no name");
-            }
-            t = _p.read();
-        }
-
-    }
-
     void parse(node& _node, string _s)
     {
         tokenizer p{ _s };
-        parse_node(_node, p);
+        p.read(_node);
     }
 
 }
