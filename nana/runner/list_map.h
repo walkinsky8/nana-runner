@@ -8,11 +8,16 @@ namespace nana::runner
     template<class K, class V>
     class list_map
     {
-        std::vector<K> list_;
+        std::vector<V> list_;
         std::map<K, V> map_;
 
     public:
-        const std::vector<K>& list() const
+        bool empty() const
+        {
+            return list_.empty();
+        }
+
+        const std::vector<V>& list() const
         {
             return list_;
         }
@@ -28,13 +33,13 @@ namespace nana::runner
             map_.clear();
         }
 
-        void add(K k, V v)
+        void add(const K& k, const V& v)
         {
-            list_.push_back(k);
-            map_[k] = std::move(v);
+            list_.push_back(v);
+            map_[k] = v;
         }
 
-        bool get(K k, V& v) const
+        bool get(const K& k, V& v) const
         {
             auto i = map_.find(k);
             if (i == map_.end())

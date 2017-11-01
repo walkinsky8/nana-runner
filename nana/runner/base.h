@@ -14,6 +14,15 @@
 
 #include <cassert>
 
+#define VIO_FIELD(t, x) \
+        public: \
+            t const & x##_() const { return m_##x; } \
+            void x##_(t const & _v) { m_##x = _v; } \
+        private: \
+            t m_##x
+
+#define VIO_CODEC(s, x) s(#x, m_##x)
+
 namespace std {
 
     template<class T>
@@ -41,6 +50,21 @@ namespace std {
 }
 
 namespace nana::runner {
+
+    namespace tag
+    {
+        const char type = '@';
+        const char string = '\'';
+        const char string2 = '"';
+        const char begin = '{';
+        const char end = '}';
+        const char assign = '=';
+        const char space = ' ';
+        const char escape = '\\';
+
+        const std::string newline{ "\n" };
+        const std::string indent{ "    " };
+    }
 
     using string = std::string;
     using wstring = std::wstring;

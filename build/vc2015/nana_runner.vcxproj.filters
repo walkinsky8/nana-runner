@@ -44,6 +44,9 @@
     <ClCompile Include="..\..\nana\runner\parser.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\nana\runner\node.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="nana_runner.h">

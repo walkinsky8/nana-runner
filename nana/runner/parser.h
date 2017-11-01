@@ -14,6 +14,12 @@ namespace nana::runner
     public:
         void do_parse(string _s);
 
+        std::ostream& dump(std::ostream& _os) const;
+
     };
+    inline std::ostream& operator<<(std::ostream& _os, const parser& _v)
+    {
+        return _v.dump(_os);
+    }
 
 }

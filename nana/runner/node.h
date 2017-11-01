@@ -2,7 +2,8 @@
 #pragma once
 
 #include <nana/runner/base.h>
-
+#include <nana/runner/istr.h>
+#include <nana/runner/dumper.h>
 #include <nana/runner/list_map.h>
 #include <nana/runner/list_multimap.h>
 
@@ -62,6 +63,16 @@ namespace nana::runner
             return value_;
         }
 
+        const list_map<string, node>& children() const
+        {
+            return children_;
+        }
+
+        bool simple() const
+        {
+            return children_.empty();
+        }
+
         node& add_attr(string _name, string _value)
         {
             children_.add(_name, { _name, {}, _value });
@@ -74,6 +85,17 @@ namespace nana::runner
             return *this;
         }
 
+        string const& type_name() const
+        {
+            return type_;
+        }
+
+        void traverse(dumper& _s);
+
     };
+    inline dumper& operator<<(dumper& _d, const node& _v)
+    {
+        return codec(_d, const_cast<node&>(_v));
+    }
 
 }

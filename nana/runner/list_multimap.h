@@ -8,13 +8,13 @@ namespace nana::runner
     template<class K, class V>
     class list_multimap
     {
-        std::vector<K> list_;
+        std::vector<V> list_;
         std::multimap<K, V> map_;
 
     public:
-        void add(K k, V v)
+        void add(const K& k, const V& v)
         {
-            list_.push_back(k);
+            list_.push_back(v);
             map_.insert({ k, v });
         }
 

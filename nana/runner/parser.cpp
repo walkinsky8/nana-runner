@@ -56,11 +56,12 @@ namespace nana::runner::detail {
     class tokenizer
     {
         string content_;
+        pcstr begin_;
         istr p_;
 
     public:
         tokenizer(string _content)
-            : content_{ _content }, p_{ content_ }
+            : content_{ _content }, begin_{ content_.data() }, p_ { content_ }
         {
         }
 
@@ -168,3 +169,9 @@ void nana::runner::parser::do_parse(string _s)
     detail::parse(node_, _s);
 }
 
+std::ostream& nana::runner::parser::dump(std::ostream& _os) const
+{
+    dumper d;
+    d << node_;
+    return _os << d;
+}

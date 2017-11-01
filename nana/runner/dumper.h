@@ -6,19 +6,6 @@
 
 namespace nana::runner
 {
-    namespace tag
-    {
-        const char type = '@';
-        const char string = '\'';
-        const char string2 = '"';
-        const char begin = '{';
-        const char end = '}';
-        const char assign = '=';
-        const char space = ' ';
-        const std::string newline{ "\n" };
-        const std::string indent{ "    " };
-    }
-
     template <class _Dumper, class _Type, bool _Dumpable = false>
     struct dump_out
     {

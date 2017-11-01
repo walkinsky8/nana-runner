@@ -165,6 +165,7 @@
     <ClCompile Include="..\..\nana\runner\base.cpp" />
     <ClCompile Include="..\..\nana\runner\dumper.cpp" />
     <ClCompile Include="..\..\nana\runner\log.cpp" />
+    <ClCompile Include="..\..\nana\runner\node.cpp" />
     <ClCompile Include="..\..\nana\runner\parser.cpp" />
     <ClCompile Include="nana_runner.cpp" />
     <ClCompile Include="stdafx.cpp">

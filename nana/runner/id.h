@@ -14,9 +14,9 @@ namespace nana::runner {
 
     public:
         id() = default;
-        id(const std::string& _path)
-            : path_{ _path }
+        id(istr _path)
         {
+            _path >> path_;
             format();
         }
 
@@ -76,7 +76,7 @@ namespace nana::runner {
     }
     inline void operator>>(const std::string& _is, id& _v)
     {
-        _v = _is;
+        _v = istr{ _is };
     }
 
 }

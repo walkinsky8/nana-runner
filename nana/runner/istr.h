@@ -7,25 +7,25 @@ namespace nana::runner {
 
     class istr
     {
-        pcstr begin_{};
-        pcstr end_{};
+        size_t size_{};
+        pcstr data_{};
 
     public:
         istr() = default;
         istr(const string& _s)
-            : begin_{ _s.data() }, end_{ _s.data() + _s.size() }
+            : size_{ _s.size() }, data_ {_s.data()}
         {}
         istr(pcstr _s)
-            : begin_{ _s }, end_{ _s + (!_s ? 0 : std::char_traits<char>::length(_s)) }
+            : size_{ (!_s ? 0 : std::char_traits<char>::length(_s)) }, data_{ _s }
         {}
         istr(pcstr _s, size_t _n)
-            : begin_{ _s }, end_{ _s + _n }
+            : size_(_n), data_{ _s }
         {}
         istr(pcstr _b, pcstr _e)
-            : begin_{_b}, end_{_e}
+            : size_(_e - _b), data_{_b}
         {}
         istr(istr _b, istr _e)
-            : begin_{ _b.begin() }, end_{ _e.begin() }
+            : size_{static_cast<size_t>(_e.begin() - _b.begin())}, data_{ _b.begin() }
         {}
 
         void operator >> (string& s) const
@@ -33,9 +33,23 @@ namespace nana::runner {
             s.assign(data(), size());
         }
 
-        operator bool() const
+        operator string() const
         {
-            return !empty();
+            string s;
+            *this >> s;
+            return s;
+        }
+
+        string operator+(istr _other) const
+        {
+            string s;
+            *this >> s;
+            return s.append(_other.data(), _other.size());
+        }
+
+        operator void*() const
+        {
+            return (void*)!empty();
         }
 
         bool operator!() const
@@ -45,27 +59,27 @@ namespace nana::runner {
 
         bool empty() const
         {
-            return begin_ >= end_;
+            return !data_ || !size_;
         }
 
         pcstr data() const
         {
-            return begin_;
+            return data_;
         }
 
         size_t size() const
         {
-            return end_ - begin_;
+            return size_;
         }
 
         pcstr begin() const
         {
-            return begin_;
+            return data_;
         }
 
         pcstr end() const
         {
-            return end_;
+            return begin() + size();
         }
 
         char operator*() const
@@ -114,9 +128,10 @@ namespace nana::runner {
 
         istr& advance(int _offset = 1)
         {
-            begin_ += _offset;
-            if (begin_ > end_)
-                begin_ = end_;
+            if (_offset > (int)size_)
+                _offset = (int)size_;
+            data_ += _offset;
+            size_ -= _offset;
             return *this;
         }
 
@@ -136,17 +151,16 @@ namespace nana::runner {
 
         int operator-(istr _other) const
         {
-            return int(begin_ - _other.begin_);
+            return int(data_ - _other.data_);
         }
 
         istr substr(size_t _start, size_t _len) const
         {
-            pcstr b = begin_ + _start;
-            if (b > end_)
-                b = end_;
-            if (_len + b > end_)
-                _len = end_ - b;
-            return istr{ b, _len };
+            if (_start > size_)
+                _start = size_;
+            if (_len > size_ - _start)
+                _len = size_ - _start;
+            return istr{ data_ + _start, _len };
         }
 
         istr leftstr(size_t _len) const
@@ -173,7 +187,8 @@ namespace nana::runner {
 
         istr& clear()
         {
-            begin_ = end_;
+            data_ = nullptr;
+            size_ = 0;
             return *this;
         }
 
@@ -191,7 +206,7 @@ namespace nana::runner {
 
         istr read(std::function<bool(char)> _fn)
         {
-            istr p = me();
+            istr& p = me();
             istr beg = p;
             while (p && _fn(*p))
                 ++p;
@@ -217,6 +232,19 @@ namespace nana::runner {
     inline std::string& operator<<(std::string& _os, const istr& _v)
     {
         return _os.append(_v.data(), _v.size());
+    }
+    inline string operator+(istr _v1, pcstr _v2)
+    {
+        string s;
+        _v1 >> s;
+        s += _v2;
+        return s;
+    }
+    inline string operator+(pcstr _v1, istr _v2)
+    {
+        string s(_v1);
+        s.append(_v2.data(), _v2.size());
+        return s;
     }
 
 }

@@ -4,8 +4,10 @@
 #include "stdafx.h"
 #include "nana_runner.h"
 
-#include <nana/runner/dumper.h>
 #include <nana/runner/log.h>
+#include <nana/runner/dumper.h>
+#include <nana/runner/parser.h>
+
 #include <nana/runner/view_cfg.h>
 
 #include <nana/gui.hpp>
@@ -61,6 +63,15 @@ int nana::runner::app::go()
     log() << dump(cfg, true);
     for (auto i : cfg.children())
         log() << "child id = " << i.id_name();
+
+    string s;
+    s << cfg;
+    log() << "s = " << s;
+
+    view_cfg cfg2;
+    parser psr;
+    psr.do_parse(s);
+    log() << "parsed node = " << psr;
 
     log() << "end.";
 

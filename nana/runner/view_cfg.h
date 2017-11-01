@@ -12,32 +12,35 @@ namespace nana::runner {
 
     class view_cfg
     {
-        id id_;
-        string caption_;
-        string string_;
-        optional<bool> bool_;
-        optional<int> int_;
-        optional<float> float_;
+        VIO_FIELD(id, id);
+        VIO_FIELD(string, caption);
+        VIO_FIELD(string, string);
+        VIO_FIELD(optional<bool>, bool);
+        VIO_FIELD(optional<int>, int);
+        VIO_FIELD(optional<float>, float);
 
-        std::vector<view_cfg> children_;
+        std::vector<view_cfg> m_children;
 
-        view_cfg* parent_{ nullptr };
+        view_cfg* m_parent{ nullptr };
 
     public:
-        view_cfg(string _id = {}, string _caption = {})
-            : id_{ _id }, caption_{ _caption }, bool_{ false }, int_{ 10 }, float_{ 123.456 }
+        view_cfg()
+        {}
+
+        view_cfg(istr _id, istr _cap)
+            : m_id{_id}, m_caption{_cap}
         {}
 
         template<class _Stream>
         void traverse(_Stream& _s)
         {
-            _s("id", id_);
-            _s("caption", caption_);
-            _s("string", string_);
-            _s("bool", bool_);
-            _s("int", int_);
-            _s("float", float_);
-            _s("children", children_);
+            VIO_CODEC(_s, id);
+            VIO_CODEC(_s, caption);
+            VIO_CODEC(_s, string);
+            VIO_CODEC(_s, bool);
+            VIO_CODEC(_s, int);
+            VIO_CODEC(_s, float);
+            VIO_CODEC(_s, children);
         }
 
         string type_name() const
@@ -47,25 +50,25 @@ namespace nana::runner {
 
         id id_name() const
         {
-            if (!parent_)
-                return id_;
-            return parent_->id_name() / id_;
+            if (!m_parent)
+                return id_();
+            return m_parent->id_name() / id_();
         }
 
         const std::vector<view_cfg>& children() const
         {
-            return children_;
+            return m_children;
         }
 
         void add(view_cfg _child)
         {
-            children_.push_back(std::move(_child));
-            children_.back().set_parent(this);
+            m_children.push_back(std::move(_child));
+            m_children.back().set_parent(this);
         }
 
         void set_parent(view_cfg* _parent)
         {
-            parent_ = _parent;
+            m_parent = _parent;
         }
 
     };
