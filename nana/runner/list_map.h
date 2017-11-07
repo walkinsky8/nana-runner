@@ -48,6 +48,14 @@ namespace nana::runner
             return true;
         }
 
+        const V* find(const K& k) const
+        {
+            auto i = map_.find(k);
+            if (i == map_.end())
+                return nullptr;
+            return &i->second;
+        }
+
     };
 
 }

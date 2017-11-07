@@ -3,6 +3,10 @@
 
 #include <nana/runner/base.h>
 
+#define VIO_LOG(x) log() << x
+#define VIO_LOG_NV(n, v) VIO_LOG(n << " = " << v)
+#define VIO_LOG_VAR(x) VIO_LOG_NV(#x, x)
+
 namespace nana::runner {
 
     using log_handler = std::function<void(const string&)>;

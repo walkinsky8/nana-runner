@@ -13,6 +13,11 @@ std::string& std::operator<<(std::string& _s, const wchar_t* _v)
     return _s << std::wstring(_v);
 }
 
+void std::operator >> (const std::string& _s, std::wstring& _v)
+{
+    _v = nana::to_wstring(_s);
+}
+
 std::string nana::runner::to_string(const wstring& _wstr)
 {
     return nana::to_utf8(_wstr);
@@ -21,4 +26,22 @@ std::string nana::runner::to_string(const wstring& _wstr)
 std::wstring nana::runner::to_wstring(const string& _utf8str)
 {
     return nana::to_wstring(_utf8str);
+}
+
+bool nana::runner::read_file(const wstring& _filename, string& _content)
+{
+    std::ifstream ifs{ _filename };
+    if (!ifs)
+    {
+        return false;
+    }
+
+    string line;
+    while (ifs)
+    {
+        std::getline(ifs, line);
+        _content += line;
+        _content += "\n";
+    }
+    return true;
 }

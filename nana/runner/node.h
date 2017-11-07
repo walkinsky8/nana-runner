@@ -68,6 +68,11 @@ namespace nana::runner
             return children_;
         }
 
+        const node* child(const string& _name) const
+        {
+            return children_.find(_name);
+        }
+
         bool simple() const
         {
             return children_.empty();

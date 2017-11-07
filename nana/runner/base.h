@@ -17,6 +17,7 @@
 #define VIO_FIELD(t, x) \
         public: \
             t const & x##_() const { return m_##x; } \
+            t & x##_() { return m_##x; } \
             void x##_(t const & _v) { m_##x = _v; } \
         private: \
             t m_##x
@@ -47,6 +48,18 @@ namespace std {
     std::string& operator<<(std::string& _s, const std::wstring& _v);
     std::string& operator<<(std::string& _s, const wchar_t* _v);
 
+    template<class T>
+    inline void operator>>(const std::string& _s, T& _v)
+    {
+        std::istringstream iss{ _s };
+        iss >> _v;
+    }
+    inline void operator>>(const std::string& _s, std::string& _v)
+    {
+        _v = _s;
+    }
+    void operator>>(const std::string& _s, std::wstring& _v);
+
 }
 
 namespace nana::runner {
@@ -65,6 +78,11 @@ namespace nana::runner {
         const std::string newline{ "\n" };
         const std::string indent{ "    " };
     }
+
+    using int8 = char;
+    using int16 = short;
+    using int32 = int;
+    using int64 = __int64;
 
     using string = std::string;
     using wstring = std::wstring;
@@ -111,6 +129,8 @@ namespace nana::runner {
 
     string to_string(const wstring& _wstr);
     wstring to_wstring(const string& _utf8str);
+
+    bool read_file(const wstring& _filename, string& _content);
 
 }
 

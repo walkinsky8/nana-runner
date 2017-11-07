@@ -1,0 +1,13 @@
+@form{
+    id=hello
+    caption="Hello"
+    children={
+        @textbox{
+            id=world
+            caption="World!"
+            line_wrapped=true
+            bgcolor=black
+            fgcolor="rgb(0,255,0)"
+        }
+    }
+}

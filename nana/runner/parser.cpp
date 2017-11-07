@@ -156,7 +156,7 @@ namespace nana::runner::detail {
 
     };
 
-    void parse(node& _node, string _s)
+    void parse(node& _node, istr _s)
     {
         tokenizer p{ _s };
         p.read(_node);
@@ -164,14 +164,24 @@ namespace nana::runner::detail {
 
 }
 
-void nana::runner::parser::do_parse(string _s)
+nana::runner::parser::parser(istr _s)
 {
-    detail::parse(node_, _s);
+    detail::parse(inner_, _s);
+}
+
+nana::runner::parser::parser(const node* _outer)
+    : outer_{_outer}
+{
+}
+
+const nana::runner::node& nana::runner::parser::unit() const
+{
+    return outer_ ? *outer_ : inner_;
 }
 
 std::ostream& nana::runner::parser::dump(std::ostream& _os) const
 {
     dumper d;
-    d << node_;
+    d << unit();
     return _os << d;
 }

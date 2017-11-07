@@ -14,6 +14,9 @@
 #include <nana/gui/widgets/label.hpp>
 #include <nana/gui/widgets/textbox.hpp>
 
+using namespace nana;
+using namespace nana::runner;
+
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     _In_opt_ HINSTANCE hPrevInstance,
     _In_ LPWSTR    lpCmdLine,
@@ -24,14 +27,12 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 }
 
 nana::runner::app::app(const wchar_t* _cmdline)
+    : cmdline_{_cmdline}
 {
 }
 
-int nana::runner::app::go()
+void nana::runner::app::show()
 {
-    using namespace nana;
-    using namespace nana::runner;
-
     form f;
     f.caption("Log Viewer");
     f.div("a");
@@ -69,14 +70,31 @@ int nana::runner::app::go()
     log() << "s = " << s;
 
     view_cfg cfg2;
-    parser psr;
-    psr.do_parse(s);
+    parser psr(s);
     log() << "parsed node = " << psr;
 
     log() << "end.";
 
     f.show();
     exec();
+}
+
+int nana::runner::app::go()
+{
+    string cfg;
+    if (!read_file(cmdline_, cfg))
+    {
+        log() << "no cfg file";
+        return 1;
+    }
+    VIO_LOG_VAR(cfg);
+
+    parser parsed(cfg);
+    VIO_LOG_VAR(parsed);
+
+    view_cfg viewcfg;
+    parsed >> viewcfg;
+    VIO_LOG_VAR(viewcfg);
     return 0;
 }
 

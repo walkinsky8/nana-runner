@@ -12,6 +12,8 @@ namespace nana::runner {
 
     class view_cfg
     {
+        VIO_FIELD(string, __type);
+
         VIO_FIELD(id, id);
         VIO_FIELD(string, caption);
         VIO_FIELD(string, string);
@@ -45,7 +47,12 @@ namespace nana::runner {
 
         string type_name() const
         {
-            return "view_cfg";
+            return __type_();
+        }
+
+        string& type_name()
+        {
+            return __type_();
         }
 
         id id_name() const
