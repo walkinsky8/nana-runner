@@ -81,7 +81,7 @@ namespace nana::runner {
     };
     std::ostream& operator<<(std::ostream& _os, const view_cfg& _v)
     {
-        return _os << dump(_v);
+        return _os << dump(_v, false, 0, true);
     }
     template<> struct dumpable<view_cfg>
     {

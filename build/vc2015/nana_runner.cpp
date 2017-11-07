@@ -2,7 +2,10 @@
 //
 
 #include "stdafx.h"
+
 #include "nana_runner.h"
+
+#include <nana/runner/base_types.h>
 
 #include <nana/runner/log.h>
 #include <nana/runner/dumper.h>
@@ -29,6 +32,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 nana::runner::app::app(const wchar_t* _cmdline)
     : cmdline_{_cmdline}
 {
+    initialize();
 }
 
 void nana::runner::app::show()
@@ -61,7 +65,7 @@ void nana::runner::app::show()
     cfg.add({"child1", "world1"});
     cfg.add({"child2", "world2"});
     log() << cfg;
-    log() << dump(cfg, true);
+    log() << dump(cfg, true, 0, true);
     for (auto i : cfg.children())
         log() << "child id = " << i.id_name();
 
@@ -93,8 +97,15 @@ int nana::runner::app::go()
     VIO_LOG_VAR(parsed);
 
     view_cfg viewcfg;
+    VIO_LOG_VAR(viewcfg);
+
     parsed >> viewcfg;
     VIO_LOG_VAR(viewcfg);
+
+    typedef enum_<nana::colors, nana::colors::black> color_t;
+    VIO_LOG_VAR(color_t());
+    VIO_LOG_VAR(color_t().str());
+    VIO_LOG_VAR(color_t(nana::colors::red).str());
     return 0;
 }
 

@@ -30,6 +30,11 @@ namespace nana::runner {
             return str();
         }
 
+        bool empty() const
+        {
+            return path_.empty();
+        }
+
         id& operator/(const id& _child)
         {
             if (!path_.empty())
@@ -78,5 +83,7 @@ namespace nana::runner {
     {
         _v = istr{ _is };
     }
+
+    inline bool is_empty(const id& _v) { return _v.empty(); }
 
 }

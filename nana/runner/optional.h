@@ -64,4 +64,7 @@ namespace nana::runner {
         return _os;
     }
 
+    template<class T>
+    inline bool is_empty(const optional<T>& _v) { return _v.empty(); }
+
 }

@@ -27,12 +27,13 @@ namespace nana::runner
     class dumper
     {
         string oss_;
-        bool compact_{ false };
-        int level_{ 0 };
+        bool compact_;
+        int level_;
+        bool hideEmpty_;
 
     public:
-        dumper(bool _compact = false, int _level = 0)
-            : compact_{ _compact }, level_{ _level }
+        dumper(bool _compact = false, int _level = 0, bool _hideEmpty = false)
+            : compact_{ _compact }, level_{ _level }, hideEmpty_{ _hideEmpty }
         {}
 
         string const& str() const
@@ -128,7 +129,9 @@ namespace nana::runner
         template<class T>
         dumper& operator()(string _name, const T& _v)
         {
-            return indent().writeName(_name) << _v;
+            if (!hideEmpty_ || !is_empty(_v))
+                return indent().writeName(_name) << _v;
+            return *this;
         }
 
     };
@@ -138,9 +141,9 @@ namespace nana::runner
     }
 
     template<class T>
-    string dump(const T& _v, bool _compact=false, int _level=0)
+    string dump(const T& _v, bool _compact=false, int _level=0, bool _hideEmpty=false)
     {
-        dumper d{ _compact, _level };
+        dumper d{ _compact, _level, _hideEmpty };
         return codec(d, const_cast<T&>(_v)).str();
     }
 

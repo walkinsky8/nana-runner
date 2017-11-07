@@ -3,6 +3,8 @@
 
 #include <nana/runner/base.h>
 
+#include <nana/runner/base_types.h>
+
 std::string& std::operator<<(std::string& _s, const std::wstring& _v)
 {
     return _s << nana::to_utf8(_v);
@@ -44,4 +46,13 @@ bool nana::runner::read_file(const wstring& _filename, string& _content)
         _content += "\n";
     }
     return true;
+}
+
+void nana::runner::initialize()
+{
+    enum_<nana::colors, nana::colors::black>::add(nana::colors::black, "black");
+    enum_<nana::colors, nana::colors::black>::add(nana::colors::white, "white");
+    enum_<nana::colors, nana::colors::black>::add(nana::colors::red, "red");
+    enum_<nana::colors, nana::colors::black>::add(nana::colors::green, "green");
+    enum_<nana::colors, nana::colors::black>::add(nana::colors::blue, "blue");
 }

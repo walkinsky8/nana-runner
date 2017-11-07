@@ -118,6 +118,20 @@ namespace nana::runner {
 
     inline bool is_quote_char(const char c) { return c == '\'' || c == '"'; }
 
+    template<class T>
+    inline bool is_empty(const T& _v) { return false; }
+    inline bool is_empty(const string& _v) { return _v.empty(); }
+    inline bool is_empty(const wstring& _v) { return _v.empty(); }
+    template<class T>
+    inline bool is_empty(const std::vector<T>& _v) { return _v.empty(); }
+
+    string to_string(const wstring& _wstr);
+    wstring to_wstring(const string& _utf8str);
+
+    bool read_file(const wstring& _filename, string& _content);
+
+    void initialize();
+
     template<class _Stream, class T>
     inline _Stream& codec(_Stream& _s, T& _v)
     {
@@ -126,11 +140,6 @@ namespace nana::runner {
         _s.leave();
         return _s;
     }
-
-    string to_string(const wstring& _wstr);
-    wstring to_wstring(const string& _utf8str);
-
-    bool read_file(const wstring& _filename, string& _content);
 
 }
 

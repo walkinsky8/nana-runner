@@ -89,5 +89,14 @@
     <ClInclude Include="..\..\nana\runner\optional.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\nana\runner\enum.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nana\runner\bytes.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nana\runner\base_types.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
