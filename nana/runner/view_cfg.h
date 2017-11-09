@@ -3,9 +3,8 @@
 
 #include <nana/runner/base.h>
 
-#include <nana/runner/istr.h>
-#include <nana/runner/optional.h>
-#include <nana/runner/id.h>
+#include <nana/runner/base_types.h>
+
 #include <nana/runner/dumper.h>
 
 namespace nana::runner {
@@ -16,32 +15,35 @@ namespace nana::runner {
 
         VIO_FIELD(id, id);
         VIO_FIELD(string, caption);
-        VIO_FIELD(string, string);
-        VIO_FIELD(optional<bool>, bool);
-        VIO_FIELD(optional<int>, int);
-        VIO_FIELD(optional<float>, float);
+        VIO_FIELD(string, div);
+        VIO_FIELD(optional<bool>, line_wrapped);
+        VIO_FIELD(string, bgcolor);
+        VIO_FIELD(string, fgcolor);
 
-        std::vector<view_cfg> m_children;
+        VIO_FIELD(std::vector<view_cfg>, children);
 
         view_cfg* m_parent{ nullptr };
+
+        typedef std::map<id, widget*> _Widgets;
+        VIO_FIELD(_Widgets, widgets);
 
     public:
         view_cfg()
         {}
-
         view_cfg(istr _id, istr _cap)
             : m_id{_id}, m_caption{_cap}
         {}
+        ~view_cfg();
 
         template<class _Stream>
         void traverse(_Stream& _s)
         {
             VIO_CODEC(_s, id);
             VIO_CODEC(_s, caption);
-            VIO_CODEC(_s, string);
-            VIO_CODEC(_s, bool);
-            VIO_CODEC(_s, int);
-            VIO_CODEC(_s, float);
+            VIO_CODEC(_s, div);
+            VIO_CODEC(_s, line_wrapped);
+            VIO_CODEC(_s, bgcolor);
+            VIO_CODEC(_s, fgcolor);
             VIO_CODEC(_s, children);
         }
 
@@ -57,20 +59,9 @@ namespace nana::runner {
 
         id id_name() const
         {
-            if (!m_parent)
+            if (!m_parent || id_().empty())
                 return id_();
             return m_parent->id_name() / id_();
-        }
-
-        const std::vector<view_cfg>& children() const
-        {
-            return m_children;
-        }
-
-        void add(view_cfg _child)
-        {
-            m_children.push_back(std::move(_child));
-            m_children.back().set_parent(this);
         }
 
         void set_parent(view_cfg* _parent)
@@ -78,8 +69,34 @@ namespace nana::runner {
             m_parent = _parent;
         }
 
+        widget* create_widget(nana::window _parent_wnd, bool _visible=true) const;
+
+        widget* get_widget_(id _id) const;
+
+        template<class T>
+        T& wnd(id _id) const
+        {
+            widget* w = get_widget_(_id);
+            if (!w)
+                throw std::invalid_argument("no widget for " + _id.str());
+            return dynamic_cast<T&>(*w);
+        }
+
+        void make_widgets(nana::window _parent_wnd);
+        void make_widgets(view_cfg& _root, view_cfg* _parent_cfg, nana::window _parent_wnd);
+
+        string make_div() const
+        {
+            string s;
+            make_div(s);
+            return s;
+        }
+        void make_div(string& _div) const;
+
+        string get_caption() const;
+
     };
-    std::ostream& operator<<(std::ostream& _os, const view_cfg& _v)
+    inline std::ostream& operator<<(std::ostream& _os, const view_cfg& _v)
     {
         return _os << dump(_v, false, 0, true);
     }
@@ -87,5 +104,8 @@ namespace nana::runner {
     {
         static constexpr bool value = true;
     };
+
+    void make_widget(widget& _w, view_cfg& _cfg);
+    void make_form(form& _f, view_cfg& _cfg);
 
 }

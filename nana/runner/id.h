@@ -14,7 +14,20 @@ namespace nana::runner {
 
     public:
         id() = default;
+        id(pcstr _path)
+        {
+            from(_path);
+        }
+        id(const string& _path)
+        {
+            from(_path);
+        }
         id(istr _path)
+        {
+            from(_path);
+        }
+
+        void from(istr _path)
         {
             _path >> path_;
             format();
@@ -68,6 +81,31 @@ namespace nana::runner {
                 }
             }
             return *this;
+        }
+
+        bool operator==(const id& _other) const
+        {
+            return path_ == _other.path_;
+        }
+        bool operator!=(const id& _other) const
+        {
+            return path_ != _other.path_;
+        }
+        bool operator<(const id& _other) const
+        {
+            return path_ < _other.path_;
+        }
+        bool operator>(const id& _other) const
+        {
+            return path_ > _other.path_;
+        }
+        bool operator<=(const id& _other) const
+        {
+            return path_ <= _other.path_;
+        }
+        bool operator>=(const id& _other) const
+        {
+            return path_ >= _other.path_;
         }
 
     };

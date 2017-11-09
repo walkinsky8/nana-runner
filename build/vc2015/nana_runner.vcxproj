@@ -156,7 +156,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <Text Include="hello.nana" />
-    <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="nana_runner.ico" />
@@ -168,6 +167,7 @@
     <ClCompile Include="..\..\nana\runner\log.cpp" />
     <ClCompile Include="..\..\nana\runner\node.cpp" />
     <ClCompile Include="..\..\nana\runner\parser.cpp" />
+    <ClCompile Include="..\..\nana\runner\view_cfg.cpp" />
     <ClCompile Include="nana_runner.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

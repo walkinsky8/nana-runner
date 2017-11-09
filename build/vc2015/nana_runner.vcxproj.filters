@@ -1,22 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="源文件">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="头文件">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
-    </Filter>
     <Filter Include="资源文件">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="ReadMe.txt" />
-    <Text Include="hello.nana" />
+    <Filter Include="base">
+      <UniqueIdentifier>{196a582a-631c-4670-b4be-63b036ef0479}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="app">
+      <UniqueIdentifier>{0fd6d47e-0080-4c3c-878a-fc055fec415d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="etc">
+      <UniqueIdentifier>{49a81e9f-699d-4fb3-b096-b8a64d4b6523}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cfg">
+      <UniqueIdentifier>{f680be36-3493-4468-ade3-80acd369bd5f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Image Include="small.ico">
@@ -27,76 +27,84 @@
     </Image>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="nana_runner.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="stdafx.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\nana\runner\base.cpp">
-      <Filter>源文件</Filter>
+      <Filter>base</Filter>
     </ClCompile>
     <ClCompile Include="..\..\nana\runner\dumper.cpp">
-      <Filter>源文件</Filter>
+      <Filter>base</Filter>
     </ClCompile>
     <ClCompile Include="..\..\nana\runner\log.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\nana\runner\parser.cpp">
-      <Filter>源文件</Filter>
+      <Filter>base</Filter>
     </ClCompile>
     <ClCompile Include="..\..\nana\runner\node.cpp">
-      <Filter>源文件</Filter>
+      <Filter>base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nana\runner\parser.cpp">
+      <Filter>base</Filter>
+    </ClCompile>
+    <ClCompile Include="nana_runner.cpp">
+      <Filter>app</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>etc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nana\runner\view_cfg.cpp">
+      <Filter>base</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="nana_runner.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="stdafx.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\nana\runner\base.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\nana\runner\dumper.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\nana\runner\id.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\nana\runner\istr.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\nana\runner\log.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\nana\runner\view_cfg.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\nana\runner\parser.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\nana\runner\node.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\nana\runner\list_map.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\nana\runner\list_multimap.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\nana\runner\optional.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\nana\runner\enum.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\nana\runner\bytes.h">
-      <Filter>头文件</Filter>
+      <Filter>base</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\base_types.h">
-      <Filter>头文件</Filter>
+      <Filter>base</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\nana\runner\bytes.h">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nana\runner\enum.h">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nana\runner\id.h">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nana\runner\istr.h">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nana\runner\list_map.h">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nana\runner\list_multimap.h">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nana\runner\node.h">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nana\runner\optional.h">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nana\runner\parser.h">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nana\runner\dumper.h">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nana\runner\log.h">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="nana_runner.h">
+      <Filter>app</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>etc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nana\runner\view_cfg.h">
+      <Filter>base</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="hello.nana">
+      <Filter>cfg</Filter>
+    </Text>
   </ItemGroup>
 </Project>

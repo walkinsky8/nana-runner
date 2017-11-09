@@ -16,10 +16,38 @@
 #include <nana/gui.hpp>
 #include <nana/gui/widgets/label.hpp>
 #include <nana/gui/widgets/textbox.hpp>
+#include <nana/gui/widgets/button.hpp>
 
 using namespace nana;
 using namespace nana::runner;
 
+namespace view {
+
+    class Hello
+    {
+        view_cfg& cfg_;
+        form& form_;
+
+        label& label_;
+        textbox& world_;
+        button& quit_;
+
+    public:
+        Hello(view_cfg& _cfg, form& _form)
+            : cfg_{ _cfg }, form_{_form}
+            , label_{ _cfg.wnd<label>("hello.label") }
+            , world_{ _cfg.wnd<textbox>("hello.world") }
+            , quit_{ _cfg.wnd<button>("hello.quit") }
+        {}
+
+        void show()
+        {
+            make_form(form_, cfg_);
+            form_.show();
+        }
+    };
+
+}
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     _In_opt_ HINSTANCE hPrevInstance,
     _In_ LPWSTR    lpCmdLine,
@@ -35,54 +63,6 @@ nana::runner::app::app(const wchar_t* _cmdline)
     initialize();
 }
 
-void nana::runner::app::show()
-{
-    form f;
-    f.caption("Log Viewer");
-    f.div("a");
-    nana::textbox l(f);
-    f["a"] << l;
-    f.collocate();
-
-    l.line_wrapped(true);
-    l.bgcolor(colors::black);
-    l.fgcolor(color{ "rgb(0,255,0)" });
-
-    set_log_handler([&l](const string& s) {
-        write_console(s);
-        l.append(s, false);
-    });
-
-    log() << "beginning...";
-
-    log() << id{ "a.b[1].c" };
-
-    dumper d;
-    d << f.caption();
-    log() << d;
-
-    view_cfg cfg{ "root", "hello" };
-    cfg.add({"child1", "world1"});
-    cfg.add({"child2", "world2"});
-    log() << cfg;
-    log() << dump(cfg, true, 0, true);
-    for (auto i : cfg.children())
-        log() << "child id = " << i.id_name();
-
-    string s;
-    s << cfg;
-    log() << "s = " << s;
-
-    view_cfg cfg2;
-    parser psr(s);
-    log() << "parsed node = " << psr;
-
-    log() << "end.";
-
-    f.show();
-    exec();
-}
-
 int nana::runner::app::go()
 {
     string cfg;
@@ -91,21 +71,29 @@ int nana::runner::app::go()
         log() << "no cfg file";
         return 1;
     }
-    VIO_LOG_VAR(cfg);
+    //VIO_LOG_VAR(cfg);
 
     parser parsed(cfg);
-    VIO_LOG_VAR(parsed);
+    //VIO_LOG_VAR(parsed);
 
     view_cfg viewcfg;
-    VIO_LOG_VAR(viewcfg);
+    //VIO_LOG_VAR(viewcfg);
 
     parsed >> viewcfg;
-    VIO_LOG_VAR(viewcfg);
+    //VIO_LOG_VAR(viewcfg);
 
-    typedef enum_<nana::colors, nana::colors::black> color_t;
-    VIO_LOG_VAR(color_t());
-    VIO_LOG_VAR(color_t().str());
-    VIO_LOG_VAR(color_t(nana::colors::red).str());
+    form f;
+    viewcfg.make_widgets(f);
+
+    view::Hello hello(viewcfg, f);
+    hello.show();
+    
+    //set_log_handler([&l](const string& s) {
+    //    write_console(s);
+    //    l.append(s, false);
+    //});
+
+    exec();
     return 0;
 }
 

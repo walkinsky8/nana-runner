@@ -1,13 +1,22 @@
 @form{
     id=hello
-    caption="Hello"
+    div="vert"
     children={
+        @label{
+            id=label
+            div=""
+        }
         @textbox{
             id=world
             caption="World!"
-            line_wrapped=true
+            div=""
+            line_wrapped=1
             bgcolor=black
             fgcolor="rgb(0,255,0)"
+        }
+        @button{
+            id=quit
+            div=""
         }
     }
 }

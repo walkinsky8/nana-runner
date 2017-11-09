@@ -118,6 +118,9 @@ namespace nana::runner {
 
     inline bool is_quote_char(const char c) { return c == '\'' || c == '"'; }
 
+    inline char to_upper(const char c) { return is_lower(c) ? (c - 'a' + 'A') : c; }
+    inline char to_lower(const char c) { return is_upper(c) ? (c - 'A' + 'a') : c; }
+
     template<class T>
     inline bool is_empty(const T& _v) { return false; }
     inline bool is_empty(const string& _v) { return _v.empty(); }

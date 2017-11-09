@@ -3,6 +3,8 @@
 
 #include <nana/runner/base.h>
 
+#include <nana/runner/view_cfg.h>
+
 namespace nana::runner
 {
     class app
@@ -15,7 +17,6 @@ namespace nana::runner
         int go();
 
     private:
-        void show();
 
     };
 
