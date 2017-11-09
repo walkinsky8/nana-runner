@@ -7,16 +7,31 @@
 
 namespace nana::runner
 {
+    template<class _View>
     class app
     {
         wstring cmdline_;
+        view_cfg viewcfg_;
+        form form_;
 
     public:
-        app(const wchar_t* _cmdline);
+        app(const wchar_t* _cmdline)
+            : cmdline_{ _cmdline }
+        {
+            initialize();
 
-        int go();
-
-    private:
+            viewcfg_.from_file(cmdline_);
+            
+            viewcfg_.make_widgets(form_);
+            
+            _View view(viewcfg_, form_);
+            
+            make_form(form_, viewcfg_);
+            
+            form_.show();
+            
+            exec();
+        }
 
     };
 

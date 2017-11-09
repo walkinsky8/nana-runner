@@ -14,7 +14,7 @@
     <Filter Include="etc">
       <UniqueIdentifier>{49a81e9f-699d-4fb3-b096-b8a64d4b6523}</UniqueIdentifier>
     </Filter>
-    <Filter Include="cfg">
+    <Filter Include="sample">
       <UniqueIdentifier>{f680be36-3493-4468-ade3-80acd369bd5f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -104,7 +104,7 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="hello.nana">
-      <Filter>cfg</Filter>
+      <Filter>sample</Filter>
     </Text>
   </ItemGroup>
 </Project>

@@ -3,20 +3,25 @@
     div="vert"
     children={
         @label{
-            id=label
-            div=""
+            id=world
+            caption="Hello, world!"
+            div="weight=20"
+            bgcolor=green
+            fgcolor=yellow
         }
         @textbox{
-            id=world
-            caption="World!"
+            id=log
+            caption=null
             div=""
             line_wrapped=1
-            bgcolor=black
+            bgcolor="#000000"
             fgcolor="rgb(0,255,0)"
         }
         @button{
             id=quit
-            div=""
+            div="weight=30"
+            bgcolor=blue
+            fgcolor=white
         }
     }
 }

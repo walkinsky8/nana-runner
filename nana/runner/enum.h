@@ -3,6 +3,8 @@
 
 #include <nana/runner/base.h>
 
+#define VIO_ENUM_ADD(e, d, i) nana::runner::enum_<e, e##::##d>::add(e##::##i, #i)
+
 namespace nana::runner {
 
     template<typename E, E _Default>
@@ -17,7 +19,7 @@ namespace nana::runner {
         enum_(E _value)
             : value_{ _value }
         {}
-        enum_(string _s)
+        enum_(string const& _s)
             : value_{ str2value(_s) }
         {}
 
@@ -36,13 +38,21 @@ namespace nana::runner {
             return value2str(value_);
         }
 
-        static void add(E v, string s)
+        static void add(E v, string const& s)
         {
             v2s()[v] = s;
             s2v()[s] = v;
         }
 
-        static E str2value(string s)
+        static E* find_value(const string& s)
+        {
+            const auto i = s2v().find(s);
+            if (i == s2v().end())
+                return nullptr;
+            return &(*i).second;
+        }
+
+        static E str2value(string const& s)
         {
             const auto i = s2v().find(s);
             if (i == s2v().end())

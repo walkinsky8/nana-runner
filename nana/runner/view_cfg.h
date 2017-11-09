@@ -4,10 +4,25 @@
 #include <nana/runner/base.h>
 
 #include <nana/runner/base_types.h>
-
+#include <nana/runner/log.h>
 #include <nana/runner/dumper.h>
+#include <nana/runner/parser.h>
+
+#include <nana/gui.hpp>
+#include <nana/gui/widgets/label.hpp>
+#include <nana/gui/widgets/textbox.hpp>
+#include <nana/gui/widgets/button.hpp>
 
 namespace nana::runner {
+
+    class view_cfg;
+
+    color get_color(const string& _s);
+
+    widget* create_widget(const string& _type, nana::window _parent_wnd, bool _visible);
+
+    void make_widget(widget& _w, view_cfg& _cfg);
+    void make_form(form& _f, view_cfg& _cfg);
 
     class view_cfg
     {
@@ -28,11 +43,8 @@ namespace nana::runner {
         VIO_FIELD(_Widgets, widgets);
 
     public:
-        view_cfg()
-        {}
-        view_cfg(istr _id, istr _cap)
-            : m_id{_id}, m_caption{_cap}
-        {}
+        view_cfg() { }
+        view_cfg(istr _id, istr _cap) : m_id{_id}, m_caption{_cap} { }
         ~view_cfg();
 
         template<class _Stream>
@@ -69,7 +81,12 @@ namespace nana::runner {
             m_parent = _parent;
         }
 
-        widget* create_widget(nana::window _parent_wnd, bool _visible=true) const;
+        void from_file(wstring const& _filename);
+
+        widget* create_wnd(nana::window _parent_wnd, bool _visible = true) const
+        {
+            return create_widget(__type_(), _parent_wnd, _visible);
+        }
 
         widget* get_widget_(id _id) const;
 
@@ -100,12 +117,6 @@ namespace nana::runner {
     {
         return _os << dump(_v, false, 0, true);
     }
-    template<> struct dumpable<view_cfg>
-    {
-        static constexpr bool value = true;
-    };
-
-    void make_widget(widget& _w, view_cfg& _cfg);
-    void make_form(form& _f, view_cfg& _cfg);
+    template<> struct dumpable<view_cfg> { static constexpr bool value = true; };
 
 }
