@@ -2,6 +2,7 @@
 #pragma once
 
 #include <nana/runner/base.h>
+
 #include <nana/runner/istr.h>
 
 namespace nana::runner {
@@ -13,6 +14,12 @@ namespace nana::runner {
         store_type buf_;
 
     public:
+        bytes() {}
+        bytes(istr _buf)
+        {
+            buf_.assign(_buf.data(), _buf.size());
+        }
+
         bool empty() const
         {
             return buf_.empty();
@@ -31,6 +38,14 @@ namespace nana::runner {
         void from_base64(istr _s);
 
         string to_base64() const;
+
+        static byte from_base64_char(char _c);
+        
+        static char to_base64_char(byte _b);
+
+        static bool is_base64_char(char _c);
+
+        static char peek_base64_char(istr& _s);
 
     };
     inline std::ostream& operator<<(std::ostream& _os, const bytes& _v)

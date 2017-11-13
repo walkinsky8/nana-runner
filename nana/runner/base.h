@@ -84,6 +84,8 @@ namespace nana::runner {
     using int32 = int;
     using int64 = __int64;
 
+    using byte = unsigned char;
+
     using string = std::string;
     using wstring = std::wstring;
 

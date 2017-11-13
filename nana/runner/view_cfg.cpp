@@ -126,4 +126,3 @@ void nana::runner::view_cfg::from_file(wstring const& _filename)
 
     parsed >> *this;
 }
-
