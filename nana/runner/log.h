@@ -3,9 +3,9 @@
 
 #include <nana/runner/base.h>
 
-#define VIO_LOG(x) log() << x
-#define VIO_LOG_NV(n, v) VIO_LOG(n << " = " << v)
-#define VIO_LOG_VAR(x) VIO_LOG_NV(#x, x)
+#define NAR_LOG(x) log() << x
+#define NAR_LOG_NV(n, v) NAR_LOG(n << " = " << v)
+#define NAR_LOG_VAR(x) NAR_LOG_NV(#x, x)
 
 namespace nana::runner {
 

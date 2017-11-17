@@ -66,6 +66,18 @@
     <ClCompile Include="..\..\nana\runner\bytes.cpp">
       <Filter>base\types</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\nana\runner\id.cpp">
+      <Filter>base\types</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nana\runner\istr.cpp">
+      <Filter>base\types</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nana\runner\view_base.cpp">
+      <Filter>widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nana\runner\widget_factory.cpp">
+      <Filter>widgets</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\nana\runner\base.h">
@@ -119,9 +131,15 @@
     <ClInclude Include="..\..\nana\runner\log.h">
       <Filter>base\log</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\nana\runner\view_base.h">
+      <Filter>widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nana\runner\widget_factory.h">
+      <Filter>widgets</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="hello.nana">
+    <Text Include="hello.nar">
       <Filter>sample</Filter>
     </Text>
   </ItemGroup>

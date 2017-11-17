@@ -23,13 +23,7 @@ namespace nana::runner
         {
         }
 
-        node& clear()
-        {
-            name_.clear();
-            type_.clear();
-            value_.clear();
-            children_.clear();
-        }
+        void clear();
 
         node& name(istr _name)
         {

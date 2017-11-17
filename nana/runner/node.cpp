@@ -5,6 +5,14 @@
 
 #include <nana/runner/dumper.h>
 
+void nana::runner::node::clear()
+{
+    name_.clear();
+    type_.clear();
+    value_.clear();
+    children_.clear();
+}
+
 void nana::runner::node::traverse(dumper& _d)
 {
     for (auto& i : children_.list())

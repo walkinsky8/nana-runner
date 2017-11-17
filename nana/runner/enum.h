@@ -3,7 +3,7 @@
 
 #include <nana/runner/base.h>
 
-#define VIO_ENUM_ADD(e, d, i) nana::runner::enum_<e, e##::##d>::add(e##::##i, #i)
+#define NAR_ENUM_ADD(e, d, i) nana::runner::enum_<e, e##::##d>::add(e##::##i, #i)
 
 namespace nana::runner {
 

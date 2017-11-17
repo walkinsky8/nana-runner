@@ -90,42 +90,13 @@ namespace nana::runner
             return *this;
         }
 
-        dumper& indent()
-        {
-            if (compact_)
-                return write(tag::space);
+        dumper& indent();
 
-            write(tag::newline);
-            for (int i = 0; i < level_; ++i)
-                write(tag::indent);
-            return *this;
-        }
+        dumper& writeName(string _name);
 
-        dumper& writeName(string _name)
-        {
-            write(_name);
-            //if (!compact_)
-            //    write(tag::space);
-            write(tag::assign);
-            //if (!compact_)
-            //    write(tag::space);
-            return *this;
-        }
+        dumper& enter(string _type);
 
-        dumper& enter(string _type)
-        {
-            if (!_type.empty())
-                write(tag::type).write(_type);
-            write(tag::begin);
-            ++level_;
-            return *this;
-        }
-
-        dumper& leave()
-        {
-            --level_;
-            return indent().write(tag::end);
-        }
+        dumper& leave();
 
         template<class T>
         dumper& operator()(string _name, const T& _v)

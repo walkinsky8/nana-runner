@@ -20,6 +20,11 @@ namespace nana::runner {
             buf_.assign(_buf.data(), _buf.size());
         }
 
+        operator istr() const
+        {
+            return istr{ buf_ };
+        }
+
         bool empty() const
         {
             return buf_.empty();

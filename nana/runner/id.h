@@ -49,40 +49,9 @@ namespace nana::runner {
             return path_.empty();
         }
 
-        id& operator/(const id& _child)
-        {
-            if (!path_.empty())
-                path_ << separator;
-            path_ << _child;
-            return *this;
-        }
+        id& format();
 
-        id& format()
-        {
-            if (istr{ path_ }.read(is_identifier_body).size() == path_.size())
-                return *this;
-            for (auto i = path_.begin(); i != path_.end(); ++i)
-            {
-                if (!is_identifier_body(*i))
-                    *i = separator;
-            }
-            int seps = 0;
-            for (size_t i = 0; i < path_.size(); ++i)
-            {
-                if (path_[i] == separator)
-                    ++seps;
-                else
-                {
-                    if (seps > 1)
-                    {
-                        path_.erase(i - seps, seps - 1);
-                        i -= seps - 1;
-                    }
-                    seps = 0;
-                }
-            }
-            return *this;
-        }
+        id& operator/(const id& _child);
 
         bool operator==(const id& _other) const
         {

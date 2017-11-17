@@ -155,7 +155,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <Text Include="hello.nana" />
+    <Text Include="hello.nar" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="nana_runner.ico" />
@@ -165,10 +165,14 @@
     <ClCompile Include="..\..\nana\runner\base.cpp" />
     <ClCompile Include="..\..\nana\runner\bytes.cpp" />
     <ClCompile Include="..\..\nana\runner\dumper.cpp" />
+    <ClCompile Include="..\..\nana\runner\id.cpp" />
+    <ClCompile Include="..\..\nana\runner\istr.cpp" />
     <ClCompile Include="..\..\nana\runner\log.cpp" />
     <ClCompile Include="..\..\nana\runner\node.cpp" />
     <ClCompile Include="..\..\nana\runner\parser.cpp" />
+    <ClCompile Include="..\..\nana\runner\view_base.cpp" />
     <ClCompile Include="..\..\nana\runner\view_cfg.cpp" />
+    <ClCompile Include="..\..\nana\runner\widget_factory.cpp" />
     <ClCompile Include="nana_runner.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -192,7 +196,9 @@
     <ClInclude Include="..\..\nana\runner\node.h" />
     <ClInclude Include="..\..\nana\runner\optional.h" />
     <ClInclude Include="..\..\nana\runner\parser.h" />
+    <ClInclude Include="..\..\nana\runner\view_base.h" />
     <ClInclude Include="..\..\nana\runner\view_cfg.h" />
+    <ClInclude Include="..\..\nana\runner\widget_factory.h" />
     <ClInclude Include="nana_runner.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>

@@ -126,14 +126,7 @@ namespace nana::runner {
             return advance(-_offset);
         }
 
-        istr& advance(int _offset = 1)
-        {
-            if (_offset > (int)size_)
-                _offset = (int)size_;
-            data_ += _offset;
-            size_ -= _offset;
-            return *this;
-        }
+        istr& advance(int _offset = 1);
 
         istr operator+(int _offset) const
         {

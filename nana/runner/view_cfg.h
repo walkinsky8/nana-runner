@@ -3,60 +3,46 @@
 
 #include <nana/runner/base.h>
 
-#include <nana/runner/base_types.h>
-#include <nana/runner/log.h>
-#include <nana/runner/dumper.h>
-#include <nana/runner/parser.h>
-
-#include <nana/gui.hpp>
-#include <nana/gui/widgets/label.hpp>
-#include <nana/gui/widgets/textbox.hpp>
-#include <nana/gui/widgets/button.hpp>
+#include <nana/runner/view_base.h>
 
 namespace nana::runner {
 
-    class view_cfg;
-
-    color get_color(const string& _s);
-
-    widget* create_widget(const string& _type, nana::window _parent_wnd, bool _visible);
-
-    void make_widget(widget& _w, view_cfg& _cfg);
-    void make_form(form& _f, view_cfg& _cfg);
+    class widget_cfg;
+    class root_cfg;
 
     class view_cfg
     {
-        VIO_FIELD(string, __type);
+        NAR_FIELD(string, __type);
 
-        VIO_FIELD(id, id);
-        VIO_FIELD(string, caption);
-        VIO_FIELD(string, div);
-        VIO_FIELD(optional<bool>, line_wrapped);
-        VIO_FIELD(string, bgcolor);
-        VIO_FIELD(string, fgcolor);
+        NAR_FIELD(id, id);
+        NAR_FIELD(string, caption);
+        NAR_FIELD(string, div);
+        NAR_FIELD(optional<bool>, line_wrapped);
+        NAR_FIELD(string, bgcolor);
+        NAR_FIELD(string, fgcolor);
 
-        VIO_FIELD(std::vector<view_cfg>, children);
+        NAR_FIELD(std::vector<view_cfg>, children);
 
         view_cfg* m_parent{ nullptr };
 
         typedef std::map<id, widget*> _Widgets;
-        VIO_FIELD(_Widgets, widgets);
+        NAR_FIELD(_Widgets, widgets);
 
     public:
         view_cfg() { }
         view_cfg(istr _id, istr _cap) : m_id{_id}, m_caption{_cap} { }
-        ~view_cfg();
+        virtual ~view_cfg();
 
         template<class _Stream>
         void traverse(_Stream& _s)
         {
-            VIO_CODEC(_s, id);
-            VIO_CODEC(_s, caption);
-            VIO_CODEC(_s, div);
-            VIO_CODEC(_s, line_wrapped);
-            VIO_CODEC(_s, bgcolor);
-            VIO_CODEC(_s, fgcolor);
-            VIO_CODEC(_s, children);
+            NAR_CODEC(_s, id);
+            NAR_CODEC(_s, caption);
+            NAR_CODEC(_s, div);
+            NAR_CODEC(_s, line_wrapped);
+            NAR_CODEC(_s, bgcolor);
+            NAR_CODEC(_s, fgcolor);
+            NAR_CODEC(_s, children);
         }
 
         string type_name() const
@@ -83,10 +69,7 @@ namespace nana::runner {
 
         void from_file(wstring const& _filename);
 
-        widget* create_wnd(nana::window _parent_wnd, bool _visible = true) const
-        {
-            return create_widget(__type_(), _parent_wnd, _visible);
-        }
+        widget* create_wnd(nana::window _parent_wnd, bool _visible = true) const;
 
         widget* get_widget_(id _id) const;
 
@@ -118,5 +101,8 @@ namespace nana::runner {
         return _os << dump(_v, false, 0, true);
     }
     template<> struct dumpable<view_cfg> { static constexpr bool value = true; };
+
+    void make_widget(widget& _w, view_cfg& _cfg);
+    void make_form(form& _f, view_cfg& _cfg);
 
 }

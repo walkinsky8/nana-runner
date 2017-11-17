@@ -14,7 +14,7 @@
 
 #include <cassert>
 
-#define VIO_FIELD(t, x) \
+#define NAR_FIELD(t, x) \
         public: \
             t const & x##_() const { return m_##x; } \
             t & x##_() { return m_##x; } \
@@ -22,7 +22,7 @@
         private: \
             t m_##x
 
-#define VIO_CODEC(s, x) s(#x, m_##x)
+#define NAR_CODEC(s, x) s(#x, m_##x)
 
 namespace std {
 

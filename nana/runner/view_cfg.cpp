@@ -2,55 +2,7 @@
 #include "stdafx.h"
 
 #include <nana/runner/view_cfg.h>
-
-nana::color nana::runner::get_color(const string& _s)
-{
-    nana::colors* clr = enum_<nana::colors, nana::colors::black>::find_value(_s);
-    if (clr)
-        return color{ *clr };
-    return color{ _s };
-}
-
-nana::widget* nana::runner::create_widget(const string& _type, nana::window _parent_wnd, bool _visible)
-{
-    if (_type == "form")
-        return new form(_parent_wnd);
-    if (_type == "label")
-        return new label(_parent_wnd, _visible);
-    if (_type == "textbox")
-        return new textbox(_parent_wnd, _visible);
-    if (_type == "button")
-        return new button(_parent_wnd, _visible);
-    return nullptr;
-}
-
-void nana::runner::make_widget(widget& _w, view_cfg& _cfg)
-{
-    _w.caption(_cfg.get_caption());
-
-    if (!_cfg.bgcolor_().empty())
-        _w.bgcolor(get_color(_cfg.bgcolor_()));
-
-    if (!_cfg.fgcolor_().empty())
-        _w.fgcolor(get_color(_cfg.fgcolor_()));
-}
-
-void nana::runner::make_form(form& _f, view_cfg& _cfg)
-{
-    make_widget(_f, _cfg);
-
-    string div = _cfg.make_div();
-    VIO_LOG_VAR(div);
-
-    _f.div(div.data());
-
-    for (auto& i : _cfg.widgets_())
-    {
-        _f[i.first.str().data()] << *_cfg.get_widget_(i.first);
-    }
-
-    _f.collocate();
-}
+#include <nana/runner/widget_factory.h>
 
 nana::runner::view_cfg::~view_cfg()
 {
@@ -126,3 +78,37 @@ void nana::runner::view_cfg::from_file(wstring const& _filename)
 
     parsed >> *this;
 }
+
+nana::widget * nana::runner::view_cfg::create_wnd(nana::window _parent_wnd, bool _visible) const
+{
+    return create_widget(__type_(), _parent_wnd, _visible);
+}
+
+void nana::runner::make_widget(widget& _w, view_cfg& _cfg)
+{
+    _w.caption(_cfg.get_caption());
+
+    if (!_cfg.bgcolor_().empty())
+        _w.bgcolor(get_color(_cfg.bgcolor_()));
+
+    if (!_cfg.fgcolor_().empty())
+        _w.fgcolor(get_color(_cfg.fgcolor_()));
+}
+
+void nana::runner::make_form(form& _f, view_cfg& _cfg)
+{
+    make_widget(_f, _cfg);
+
+    string div = _cfg.make_div();
+    NAR_LOG_VAR(div);
+
+    _f.div(div.data());
+
+    for (auto& i : _cfg.widgets_())
+    {
+        _f[i.first.str().data()] << *_cfg.get_widget_(i.first);
+    }
+
+    _f.collocate();
+}
+
