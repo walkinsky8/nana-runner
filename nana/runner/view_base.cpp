@@ -3,8 +3,6 @@
 
 #include <nana/runner/view_base.h>
 
-#include <nana/runner/view_cfg.h>
-
 nana::color nana::runner::get_color(const string& _s)
 {
     nana::colors* clr = enum_<nana::colors, nana::colors::black>::find_value(_s);

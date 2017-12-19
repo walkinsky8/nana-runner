@@ -48,9 +48,6 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>etc</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\nana\runner\view_cfg.cpp">
-      <Filter>widgets</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\nana\runner\dumper.cpp">
       <Filter>base\codec</Filter>
     </ClCompile>
@@ -78,6 +75,15 @@
     <ClCompile Include="..\..\nana\runner\widget_factory.cpp">
       <Filter>widgets</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\nana\runner\button_cfg.cpp">
+      <Filter>widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nana\runner\widget_cfg.cpp">
+      <Filter>widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nana\runner\form_cfg.cpp">
+      <Filter>widgets</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\nana\runner\base.h">
@@ -88,9 +94,6 @@
     </ClInclude>
     <ClInclude Include="stdafx.h">
       <Filter>etc</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\nana\runner\view_cfg.h">
-      <Filter>widgets</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\dumper.h">
       <Filter>base\codec</Filter>
@@ -137,6 +140,22 @@
     <ClInclude Include="..\..\nana\runner\widget_factory.h">
       <Filter>widgets</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\nana\runner\button_cfg.h">
+      <Filter>widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nana\runner\form_cfg.h">
+      <Filter>widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nana\runner\label_cfg.h">
+      <Filter>widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nana\runner\textbox_cfg.h">
+      <Filter>widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nana\runner\widget_cfg.h">
+      <Filter>widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nana\runner\object_factory.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="hello.nar">

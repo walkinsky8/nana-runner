@@ -14,15 +14,18 @@
 
 #include <cassert>
 
+#define NAR_V(x) m_##x
+#define NAR_F(x) x##_
+
 #define NAR_FIELD(t, x) \
         public: \
-            t const & x##_() const { return m_##x; } \
-            t & x##_() { return m_##x; } \
-            void x##_(t const & _v) { m_##x = _v; } \
+            t const & NAR_F(x)() const { return NAR_V(x); } \
+            t & NAR_F(x)() { return NAR_V(x); } \
+            void NAR_F(x)(t const & _v) { NAR_V(x) = _v; } \
         private: \
-            t m_##x
+            t NAR_V(x)
 
-#define NAR_CODEC(s, x) s(#x, m_##x)
+#define NAR_CODEC(s, x) s(#x, NAR_V(x))
 
 namespace std {
 

@@ -3,7 +3,7 @@
 
 #include <nana/runner/base.h>
 
-#include <nana/runner/view_cfg.h>
+#include <nana/runner/widget_cfg.h>
 
 namespace nana::runner
 {
@@ -11,7 +11,7 @@ namespace nana::runner
     class app
     {
         wstring cmdline_;
-        view_cfg viewcfg_;
+        widget_cfg viewcfg_;
         form form_;
 
     public:

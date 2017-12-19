@@ -3,7 +3,7 @@
 
 #include <nana/runner/base.h>
 
-#include <nana/runner/view_cfg.h>
+#include <nana/runner/widget_cfg.h>
 
 namespace nana::runner {
 
@@ -11,7 +11,7 @@ namespace nana::runner {
 
         class Hello
         {
-            view_cfg& cfg_;
+            widget_cfg& cfg_;
             form& form_;
 
             label& world_;
@@ -19,7 +19,7 @@ namespace nana::runner {
             button& quit_;
 
         public:
-            Hello(view_cfg& _cfg, form& _form)
+            Hello(widget_cfg& _cfg, form& _form)
                 : cfg_{ _cfg }, form_{ _form }
                 , world_{ _cfg.wnd<label>("hello.world") }
                 , log_{ _cfg.wnd<textbox>("hello.log") }

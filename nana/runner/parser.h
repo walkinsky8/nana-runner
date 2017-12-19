@@ -93,6 +93,16 @@ namespace nana::runner
             }
         }
         template<class T>
+        void operator >> (std::shared_ptr<T>& _v) const
+        {
+            if (!valueIsEmpty())
+            {
+                T* value = obj_creator<T>();
+                *this >> *value;
+                _v.reset(value);
+            }
+        }
+        template<class T>
         void operator>>(std::vector<T>& _v) const
         {
             for (auto& n : unit().children().list())

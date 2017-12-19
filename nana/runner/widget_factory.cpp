@@ -3,26 +3,31 @@
 
 #include <nana/runner/widget_factory.h>
 
-nana::widget* nana::runner::create_widget(const string& _type, nana::window _parent_wnd, bool _visible)
-{
-    auto f = widget_factory::instance().get(_type);
-    if (f)
-        return f(_parent_wnd, _visible);
-    return nullptr;
-}
+#include <nana/runner/form_cfg.h>
+#include <nana/runner/label_cfg.h>
+#include <nana/runner/textbox_cfg.h>
+#include <nana/runner/button_cfg.h>
 
 nana::runner::widget_factory::widget_factory()
 {
-    add("form",    [](nana::window _parent_wnd, bool _visible) { return new form(_parent_wnd); });
-    add("label",   [](nana::window _parent_wnd, bool _visible) { return new label(_parent_wnd, _visible); });
-    add("textbox", [](nana::window _parent_wnd, bool _visible) { return new textbox(_parent_wnd, _visible); });
-    add("button",  [](nana::window _parent_wnd, bool _visible) { return new button(_parent_wnd, _visible); });
+    add("form",    new_<form_cfg>()());
+    add("label",   new_<label_cfg>()());
+    add("textbox", new_<textbox_cfg>()());
+    add("button",  new_<button_cfg>()());
 }
 
 nana::runner::widget_factory & nana::runner::widget_factory::instance()
 {
     static widget_factory __;
     return __;
+}
+
+nana::runner::widget_cfg* nana::runner::widget_factory::create(const string& _type)
+{
+    auto f = instance().get(_type);
+    if (f)
+        return f();
+    return nullptr;
 }
 
 void nana::runner::widget_factory::add(const string & _type, create_func _func)

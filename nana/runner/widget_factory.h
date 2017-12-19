@@ -3,13 +3,11 @@
 
 #include <nana/runner/base.h>
 
-#include <nana/runner/view_base.h>
+#include <nana/runner/widget_cfg.h>
 
 namespace nana::runner {
 
-    nana::widget* create_widget(const string& _type, nana::window _parent_wnd, bool _visible);
-
-    using create_func = std::function<nana::widget* (nana::window _parent_wnd, bool _visible)>;
+    using create_func = std::function<widget_cfg* ()>;
     class widget_factory
     {
         std::map<string, create_func> widgets_;
@@ -23,9 +21,25 @@ namespace nana::runner {
     public:
         static widget_factory& instance();
 
+        widget_cfg* create(const string& _type);
+
         void add(const string& _type, create_func _func);
         
         create_func get(const string& _type) const;
+
+    };
+
+    template<>
+    struct new_<widget_cfg>
+    {
+        using new_func = std::function<widget_cfg* (string)>;
+
+        new_func operator()() const
+        {
+            return [](string const& _type) {
+                return widget_factory::instance().create(_type);
+            };
+        }
 
     };
 

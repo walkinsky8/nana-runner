@@ -163,15 +163,17 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\nana\runner\base.cpp" />
+    <ClCompile Include="..\..\nana\runner\button_cfg.cpp" />
     <ClCompile Include="..\..\nana\runner\bytes.cpp" />
     <ClCompile Include="..\..\nana\runner\dumper.cpp" />
+    <ClCompile Include="..\..\nana\runner\form_cfg.cpp" />
     <ClCompile Include="..\..\nana\runner\id.cpp" />
     <ClCompile Include="..\..\nana\runner\istr.cpp" />
     <ClCompile Include="..\..\nana\runner\log.cpp" />
     <ClCompile Include="..\..\nana\runner\node.cpp" />
     <ClCompile Include="..\..\nana\runner\parser.cpp" />
     <ClCompile Include="..\..\nana\runner\view_base.cpp" />
-    <ClCompile Include="..\..\nana\runner\view_cfg.cpp" />
+    <ClCompile Include="..\..\nana\runner\widget_cfg.cpp" />
     <ClCompile Include="..\..\nana\runner\widget_factory.cpp" />
     <ClCompile Include="nana_runner.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -184,20 +186,25 @@
   <ItemGroup>
     <ClInclude Include="..\..\nana\runner\base.h" />
     <ClInclude Include="..\..\nana\runner\base_types.h" />
+    <ClInclude Include="..\..\nana\runner\button_cfg.h" />
     <ClInclude Include="..\..\nana\runner\bytes.h" />
     <ClInclude Include="..\..\nana\runner\dumper.h" />
     <ClInclude Include="..\..\nana\runner\enum.h" />
+    <ClInclude Include="..\..\nana\runner\form_cfg.h" />
     <ClInclude Include="..\..\nana\runner\hello_view.h" />
     <ClInclude Include="..\..\nana\runner\id.h" />
     <ClInclude Include="..\..\nana\runner\istr.h" />
+    <ClInclude Include="..\..\nana\runner\label_cfg.h" />
     <ClInclude Include="..\..\nana\runner\list_map.h" />
     <ClInclude Include="..\..\nana\runner\list_multimap.h" />
     <ClInclude Include="..\..\nana\runner\log.h" />
     <ClInclude Include="..\..\nana\runner\node.h" />
+    <ClInclude Include="..\..\nana\runner\object_factory.h" />
     <ClInclude Include="..\..\nana\runner\optional.h" />
     <ClInclude Include="..\..\nana\runner\parser.h" />
+    <ClInclude Include="..\..\nana\runner\textbox_cfg.h" />
     <ClInclude Include="..\..\nana\runner\view_base.h" />
-    <ClInclude Include="..\..\nana\runner\view_cfg.h" />
+    <ClInclude Include="..\..\nana\runner\widget_cfg.h" />
     <ClInclude Include="..\..\nana\runner\widget_factory.h" />
     <ClInclude Include="nana_runner.h" />
     <ClInclude Include="stdafx.h" />

@@ -17,4 +17,18 @@ namespace nana::runner {
 
     color get_color(const string& _s);
 
+    template<class T>
+    struct new_
+    {
+        using new_func = std::function<T* (string const&)>;
+
+        new_func operator()() const
+        {
+            return [](string const&) {
+                return new T();
+            };
+        }
+
+    };
+
 }
