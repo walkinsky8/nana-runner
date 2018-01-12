@@ -44,7 +44,9 @@ namespace nana::runner {
 
         virtual string type_name() const = 0;
 
-        virtual widget* create_widget(window p, bool v) const = 0;
+        virtual view_ptr new_obj() const = 0;
+
+        virtual wnd_ptr create_widget(window _parent, bool _visible) const = 0;
 
         virtual void init_widget(widget& _w) const;
 
@@ -72,16 +74,14 @@ namespace nana::runner {
             m_parent = _parent;
         }
 
-        void from_file(wstring const& _filename);
+        static view_ptr from_file(wstring const& _filename);
 
-        widget* create_wnd(nana::window _parent_wnd, bool _visible = true) const;
-
-        widget* get_widget_(id _id) const;
+        wnd_ptr get_widget_(id _id) const;
 
         template<class T>
         T& wnd(id _id) const
         {
-            widget* w = get_widget_(_id);
+            wnd_ptr w = get_widget_(_id);
             if (!w)
                 throw std::invalid_argument("no widget for " + _id.str());
             return dynamic_cast<T&>(*w);
@@ -105,6 +105,11 @@ namespace nana::runner {
     {
         return _os << dump(_v, false, 0, true);
     }
-    template<> struct dumpable<widget_cfg> { static constexpr bool value = true; };
+    template<>
+    struct dumpable<widget_cfg>
+    {
+        static constexpr bool value = true;
+    };
+    void operator >> (const parser& _is, std::shared_ptr<widget_cfg>& _v);
 
 }

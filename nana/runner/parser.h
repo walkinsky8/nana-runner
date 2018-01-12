@@ -22,6 +22,11 @@ namespace nana::runner
 
         const node& unit() const;
 
+        const string& type() const
+        {
+            return unit().type();
+        }
+
         const string& value() const
         {
             return unit().value();
@@ -97,9 +102,8 @@ namespace nana::runner
         {
             if (!valueIsEmpty())
             {
-                T* value = obj_creator<T>();
+                _v = std::make_shared<T>();
                 *this >> *value;
-                _v.reset(value);
             }
         }
         template<class T>

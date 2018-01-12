@@ -5,23 +5,23 @@
 
 #include <nana/runner/widget_factory.h>
 
-nana::widget* nana::runner::widget_cfg::get_widget_(id _id) const
+nana::runner::wnd_ptr nana::runner::widget_cfg::get_widget_(id _id) const
 {
     auto i = m_widgets.find(_id);
     if (i == m_widgets.end())
         return nullptr;
-    return (*i).second.get();
+    return (*i).second;
 }
 
 void nana::runner::widget_cfg::make_widgets(widget_cfg& _root_cfg, widget_cfg* _parent_cfg, nana::window _parent_wnd)
 {
     set_parent(_parent_cfg);
 
-    widget* w = create_wnd(_parent_wnd);
+    wnd_ptr w = create_widget(_parent_wnd, true);
     if (w)
     {
         init_widget(*w);
-        _root_cfg.m_widgets[id_name()].reset(w);
+        _root_cfg.m_widgets[id_name()] = w;
     }
 
     for (auto& i : m_children)
@@ -61,7 +61,7 @@ std::string nana::runner::widget_cfg::get_caption() const
     return to_upper(id_().str()[0]) + id_().str().substr(1);
 }
 
-void nana::runner::widget_cfg::from_file(wstring const& _filename)
+nana::runner::view_ptr nana::runner::widget_cfg::from_file(wstring const& _filename)
 {
     string cfg;
     if (!read_file(_filename, cfg))
@@ -69,12 +69,15 @@ void nana::runner::widget_cfg::from_file(wstring const& _filename)
 
     parser parsed(cfg);
 
-    parsed >> *this;
+    view_ptr v;
+    parsed >> v;
+    return v;
 }
 
-nana::widget * nana::runner::widget_cfg::create_wnd(nana::window _parent_wnd, bool _visible) const
+void nana::runner::operator >> (const parser& _is, std::shared_ptr<widget_cfg>& _v)
 {
-    return widget_factory::create_widget(type_name(), _parent_wnd, _visible);
+    _v = widget_factory::instance().create(_is.type());
+    _is >> *_v;
 }
 
 void nana::runner::widget_cfg::init_widget(widget& _w) const

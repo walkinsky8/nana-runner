@@ -10,10 +10,10 @@
 
 nana::runner::widget_factory::widget_factory()
 {
-    add("form",    new_<form_cfg>()());
-    add("label",   new_<label_cfg>()());
-    add("textbox", new_<textbox_cfg>()());
-    add("button",  new_<button_cfg>()());
+    add("form",    form_cfg::new_);
+    add("label",   label_cfg::new_);
+    add("textbox", textbox_cfg::new_);
+    add("button",  button_cfg::new_);
 }
 
 nana::runner::widget_factory & nana::runner::widget_factory::instance()
@@ -22,11 +22,13 @@ nana::runner::widget_factory & nana::runner::widget_factory::instance()
     return __;
 }
 
-nana::runner::widget_cfg* nana::runner::widget_factory::create(const string& _type)
+nana::runner::view_ptr nana::runner::widget_factory::create(const string& _type)
 {
     auto f = instance().get(_type);
     if (f)
+    {
         return f();
+    }
     return nullptr;
 }
 

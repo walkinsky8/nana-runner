@@ -11,7 +11,7 @@ namespace nana::runner
     class app
     {
         wstring cmdline_;
-        widget_cfg viewcfg_;
+        view_ptr view_;
         form form_;
 
     public:
@@ -20,13 +20,11 @@ namespace nana::runner
         {
             initialize();
 
-            viewcfg_.from_file(cmdline_);
+            view_ = widget_cfg::from_file(cmdline_);
             
-            viewcfg_.make_widgets(form_);
+            view_->make_widgets(form_);
             
-            _View view(viewcfg_, form_);
-            
-            make_form(form_, viewcfg_);
+            _View view(*view_, form_);
             
             form_.show();
             

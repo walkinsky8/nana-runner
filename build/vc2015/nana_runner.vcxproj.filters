@@ -84,6 +84,12 @@
     <ClCompile Include="..\..\nana\runner\form_cfg.cpp">
       <Filter>widgets</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\nana\runner\label_cfg.cpp">
+      <Filter>widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nana\runner\textbox_cfg.cpp">
+      <Filter>widgets</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\nana\runner\base.h">
@@ -155,7 +161,6 @@
     <ClInclude Include="..\..\nana\runner\widget_cfg.h">
       <Filter>widgets</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\nana\runner\object_factory.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="hello.nar">
