@@ -86,15 +86,24 @@ void nana::runner::widget_cfg::init_widget(widget& _w) const
 {
     _w.caption(get_caption());
 
-    if (!pos_().empty())
-        _w.move(pos_().value());
-
-    if (!size_().empty())
-        _w.size(size_().value());
+    if (!tooltip_().empty())
+        _w.tooltip(tooltip_());
 
     if (!bgcolor_().empty())
         _w.bgcolor(get_color(bgcolor_()));
 
     if (!fgcolor_().empty())
         _w.fgcolor(get_color(fgcolor_()));
+
+    if (!pos_().empty())
+        _w.move(pos_().value());
+
+    if (!size_().empty())
+        _w.size(size_().value());
+
+    if (!enabled_().empty())
+        _w.enabled(enabled_().value());
+
+    if (!visible_().empty())
+        visible_().value() ? _w.show() : _w.hide();
 }

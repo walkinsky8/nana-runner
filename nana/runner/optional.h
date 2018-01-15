@@ -8,7 +8,7 @@ namespace nana::runner {
     template<class T>
     class optional
     {
-        T value_;
+        T value_{};
         bool empty_{ true };
 
     public:

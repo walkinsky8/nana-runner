@@ -15,11 +15,14 @@ namespace nana::runner {
     {
         NAR_FIELD(id, id);
         NAR_FIELD(string, caption);
+        NAR_FIELD(string, tooltip);
         NAR_FIELD(string, div);
-        NAR_FIELD(optional<nana::point>, pos);
-        NAR_FIELD(optional<nana::size>, size);
         NAR_FIELD(string, bgcolor);
         NAR_FIELD(string, fgcolor);
+        NAR_FIELD(optional<nana::point>, pos);
+        NAR_FIELD(optional<nana::size>, size);
+        NAR_FIELD(optional<bool>, enabled);
+        NAR_FIELD(optional<bool>, visible);
         NAR_FIELD(std::vector<view_ptr>, children);
 
     public:
@@ -28,11 +31,14 @@ namespace nana::runner {
         {
             NAR_CODEC(_s, id);
             NAR_CODEC(_s, caption);
+            NAR_CODEC(_s, tooltip);
             NAR_CODEC(_s, div);
-            NAR_CODEC(_s, pos);
-            NAR_CODEC(_s, size);
             NAR_CODEC(_s, bgcolor);
             NAR_CODEC(_s, fgcolor);
+            NAR_CODEC(_s, pos);
+            NAR_CODEC(_s, size);
+            NAR_CODEC(_s, enabled);
+            NAR_CODEC(_s, visible);
             NAR_CODEC(_s, children);
         }
 
