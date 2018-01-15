@@ -10,13 +10,13 @@ void nana::runner::form_cfg::init_widget(widget & _w) const
     string div = make_div();
     NAR_LOG_VAR(div);
 
-    form& f = dynamic_cast<form&>(_w);
-    f.div(div.data());
+    auto& w = dynamic_cast<form&>(_w);
+    w.div(div.data());
 
     for (auto& i : widgets_())
     {
-        f[i.first.str().data()] << *get_widget_(i.first);
+        w[i.first.str().data()] << *get_widget_(i.first);
     }
 
-    f.collocate();
+    w.collocate();
 }

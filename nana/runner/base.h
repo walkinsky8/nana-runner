@@ -77,6 +77,7 @@ namespace nana::runner {
         const char assign = '=';
         const char space = ' ';
         const char escape = '\\';
+        const char comment = '*';
 
         const std::string newline{ "\n" };
         const std::string indent{ "    " };

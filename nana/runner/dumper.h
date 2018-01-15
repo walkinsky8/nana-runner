@@ -79,6 +79,15 @@ namespace nana::runner
         }
 
         template<class T>
+        dumper& operator<<(const std::shared_ptr<T>& _v)
+        {
+            if (!_v)
+                return write("null");
+            else
+                return (*this) << *_v;
+        }
+
+        template<class T>
         dumper& operator<<(const std::vector<T>& _v)
         {
             enter({});
@@ -116,7 +125,8 @@ namespace nana::runner
     string dump(const T& _v, bool _compact=false, int _level=0, bool _hideEmpty=false)
     {
         dumper d{ _compact, _level, _hideEmpty };
-        return codec(d, const_cast<T&>(_v)).str();
+        d << _v;
+        return d.str();
     }
 
 }

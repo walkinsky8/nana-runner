@@ -13,8 +13,23 @@ namespace nana::runner {
         using super = widget_cfg;
         using self = label_cfg;
         using ui_type = nana::label;
-
         static pcstr type_name_() { return "label"; }
+
+    private:
+        NAR_FIELD(optional<bool>, transparent);
+
+    public:
+        template<class _Stream>
+        void traverse(_Stream& _s)
+        {
+            super::traverse(_s);
+            NAR_CODEC(_s, transparent);
+        }
+
+        dumper& dump(dumper& _d) const override { return codec(_d, const_cast<self&>(*this)); }
+
+        void parse(const parser& _p) override { codec(const_cast<parser&>(_p), *this); }
+
         string type_name() const override { return type_name_(); }
 
         static view_ptr new_() { return std::make_shared<self>(); }

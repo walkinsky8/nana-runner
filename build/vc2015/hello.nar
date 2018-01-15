@@ -7,21 +7,30 @@
             caption="Hello, world!"
             div="weight=20"
             bgcolor=green
-            fgcolor=yellow
+            fgcolor=red
+            transparent=1
         }
         @textbox{
             id=log
             caption=null
             div=""
-            line_wrapped=1
             bgcolor="#000000"
             fgcolor="rgb(0,255,0)"
+            line_wrapped=0
+            multi_lines=1
+            editable=0
         }
         @button{
             id=quit
             div="weight=30"
             bgcolor=blue
             fgcolor=white
+            enable_pushed=0
+            pushed=1
+            omitted=
+            enable_focus_color=0
+            transparent=0
+            edge_effects=1
         }
     }
 }

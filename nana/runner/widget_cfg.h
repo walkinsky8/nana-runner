@@ -16,16 +16,9 @@ namespace nana::runner {
         NAR_FIELD(id, id);
         NAR_FIELD(string, caption);
         NAR_FIELD(string, div);
-        NAR_FIELD(optional<bool>, line_wrapped);
         NAR_FIELD(string, bgcolor);
         NAR_FIELD(string, fgcolor);
         NAR_FIELD(std::vector<view_ptr>, children);
-
-        widget_cfg* m_parent{ nullptr };
-
-        // only for root(form)
-        using _Widgets = std::map<id, wnd_ptr>;
-        NAR_FIELD(_Widgets, widgets);
 
     public:
         template<class _Stream>
@@ -34,13 +27,24 @@ namespace nana::runner {
             NAR_CODEC(_s, id);
             NAR_CODEC(_s, caption);
             NAR_CODEC(_s, div);
-            NAR_CODEC(_s, line_wrapped);
             NAR_CODEC(_s, bgcolor);
             NAR_CODEC(_s, fgcolor);
             NAR_CODEC(_s, children);
         }
 
+    private:
+        widget_cfg* m_parent{ nullptr };
+
+        // only for root(form)
+        using _Widgets = std::map<id, wnd_ptr>;
+        NAR_FIELD(_Widgets, widgets);
+
+    public:
         virtual ~widget_cfg() = default;
+
+        virtual dumper& dump(dumper& _d) const = 0;
+
+        virtual void parse(const parser& _p) = 0;
 
         virtual string type_name() const = 0;
 
@@ -105,11 +109,21 @@ namespace nana::runner {
     {
         return _os << dump(_v, false, 0, true);
     }
+    inline dumper& operator<<(dumper& _d, const widget_cfg& _v)
+    {
+        return _v.dump(_d);
+    }
+    inline void operator>>(const parser& _p, widget_cfg& _v)
+    {
+        _v.parse(_p);
+    }
+
     template<>
     struct dumpable<widget_cfg>
     {
         static constexpr bool value = true;
     };
+
     void operator >> (const parser& _is, std::shared_ptr<widget_cfg>& _v);
 
 }

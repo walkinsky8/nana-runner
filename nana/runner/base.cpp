@@ -198,4 +198,34 @@ void nana::runner::initialize()
     NAR_ENUM_COLOR_ADD(white_smoke);
     NAR_ENUM_COLOR_ADD(yellow);
     NAR_ENUM_COLOR_ADD(yellow_green);
+
+    NAR_ENUM_ADD(nana::arrange, unknown, unknown);
+    NAR_ENUM_ADD(nana::arrange, unknown, horizontal);
+    NAR_ENUM_ADD(nana::arrange, unknown, vertical);
+    NAR_ENUM_ADD(nana::arrange, unknown, horizontal_vertical);
+
+    NAR_ENUM_ADD(nana::align, left, left);
+    NAR_ENUM_ADD(nana::align, left, center);
+    NAR_ENUM_ADD(nana::align, left, right);
+
+    NAR_ENUM_ADD(nana::align_v, top, top);
+    NAR_ENUM_ADD(nana::align_v, top, center);
+    NAR_ENUM_ADD(nana::align_v, top, bottom);
+
+    NAR_ENUM_ADD(nana::direction, north, north);
+    NAR_ENUM_ADD(nana::direction, north, south);
+    NAR_ENUM_ADD(nana::direction, north, east);
+    NAR_ENUM_ADD(nana::direction, north, west);
+    NAR_ENUM_ADD(nana::direction, north, southeast);
+
+    NAR_ENUM_ADD(nana::cursor, hand, hand);
+    NAR_ENUM_ADD(nana::cursor, hand, arrow);
+    NAR_ENUM_ADD(nana::cursor, hand, wait);
+    NAR_ENUM_ADD(nana::cursor, hand, iterm);
+    NAR_ENUM_ADD(nana::cursor, hand, size_we);
+    NAR_ENUM_ADD(nana::cursor, hand, size_ns);
+    NAR_ENUM_ADD(nana::cursor, hand, size_top_left);
+    NAR_ENUM_ADD(nana::cursor, hand, size_top_right);
+    NAR_ENUM_ADD(nana::cursor, hand, size_bottom_left);
+    NAR_ENUM_ADD(nana::cursor, hand, size_bottom_right);
 }
