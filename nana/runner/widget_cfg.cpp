@@ -86,6 +86,12 @@ void nana::runner::widget_cfg::init_widget(widget& _w) const
 {
     _w.caption(get_caption());
 
+    if (!pos_().empty())
+        _w.move(pos_().value());
+
+    if (!size_().empty())
+        _w.size(size_().value());
+
     if (!bgcolor_().empty())
         _w.bgcolor(get_color(bgcolor_()));
 

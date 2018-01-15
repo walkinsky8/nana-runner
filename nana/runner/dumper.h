@@ -4,6 +4,7 @@
 #include <nana/runner/base.h>
 
 #include <nana/runner/istr.h>
+#include <nana/runner/optional.h>
 
 namespace nana::runner
 {
@@ -42,6 +43,18 @@ namespace nana::runner
             return oss_;
         }
 
+        bool compact() const
+        {
+            return compact_;
+        }
+
+        bool compact(bool _c)
+        {
+            bool old = compact_;
+            compact_ = _c;
+            return old;
+        }
+
         dumper& writeString(const istr& _v)
         {
             oss_ << tag::string << _v << tag::string;
@@ -76,6 +89,14 @@ namespace nana::runner
         dumper& operator<<(const T& _v)
         {
             return dump_out<dumper, T, dumpable<T>::value>()(*this, _v);
+        }
+
+        template<class T>
+        dumper& operator<<(const optional<T>& _v)
+        {
+            if (!_v.empty())
+                *this << _v.value();
+            return *this;
         }
 
         template<class T>
@@ -122,7 +143,29 @@ namespace nana::runner
     }
 
     template<class T>
-    string dump(const T& _v, bool _compact=false, int _level=0, bool _hideEmpty=false)
+    inline dumper& operator<<(dumper& _d, const basic_point<T>& _v)
+    {
+        bool old = _d.compact(true);
+        std::vector<T> pt;
+        pt.push_back(_v.x);
+        pt.push_back(_v.y);
+        _d << pt;
+        _d.compact(old);
+        return _d;
+    }
+
+    inline dumper& operator<<(dumper& _d, const size& _v)
+    {
+        bool old = _d.compact(true);
+        std::vector<unsigned> sz;
+        sz.push_back(_v.width);
+        sz.push_back(_v.height);
+        _d.compact(old);
+        return _d;
+    }
+
+    template<class T>
+    inline string dump(const T& _v, bool _compact=false, int _level=0, bool _hideEmpty=false)
     {
         dumper d{ _compact, _level, _hideEmpty };
         d << _v;

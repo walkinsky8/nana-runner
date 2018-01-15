@@ -73,6 +73,11 @@ namespace nana::runner
             return children_.empty();
         }
 
+        bool valueIsEmpty() const
+        {
+            return value_.empty() && children_.empty();
+        }
+
         node& add_attr(string _name, string _value)
         {
             children_.add(_name, { _name, {}, _value });
