@@ -87,7 +87,7 @@ namespace nana::runner {
             return dynamic_cast<T&>(*w);
         }
 
-        void make_widgets(nana::window _parent_wnd);
+        void make_widgets(nana::widget& _root_wnd);
         void make_widgets(widget_cfg& _root, widget_cfg* _parent_cfg, nana::window _parent_wnd);
 
         string make_div() const

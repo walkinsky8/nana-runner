@@ -30,12 +30,14 @@ void nana::runner::widget_cfg::make_widgets(widget_cfg& _root_cfg, widget_cfg* _
     }
 }
 
-void nana::runner::widget_cfg::make_widgets(nana::window _parent_wnd)
+void nana::runner::widget_cfg::make_widgets(nana::widget& _root_wnd)
 {
     for (auto& i : m_children)
     {
-        i->make_widgets(*this, this, _parent_wnd);
+        i->make_widgets(*this, this, _root_wnd);
     }
+
+    init_widget(_root_wnd);
 }
 
 void nana::runner::widget_cfg::make_div(string& _div) const

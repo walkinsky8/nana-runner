@@ -5,4 +5,6 @@
 
 void nana::runner::button_cfg::init_widget(widget & _w) const
 {
+    super::init_widget(_w);
+
 }
