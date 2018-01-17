@@ -13,6 +13,8 @@ namespace nana::runner {
 
     class widget_cfg
     {
+        using cursor_type = enum_<nana::cursor, nana::cursor::arrow>;
+
         NAR_FIELD(id, id);
         NAR_FIELD(string, caption);
         NAR_FIELD(string, tooltip);
@@ -21,6 +23,8 @@ namespace nana::runner {
         NAR_FIELD(string, fgcolor);
         NAR_FIELD(optional<nana::point>, pos);
         NAR_FIELD(optional<nana::size>, size);
+        NAR_FIELD(optional<cursor_type>, cursor);
+        NAR_FIELD(optional<nana::paint::font>, typeface);
         NAR_FIELD(optional<bool>, enabled);
         NAR_FIELD(optional<bool>, visible);
         NAR_FIELD(std::vector<view_ptr>, children);
@@ -37,6 +41,8 @@ namespace nana::runner {
             NAR_CODEC(_s, fgcolor);
             NAR_CODEC(_s, pos);
             NAR_CODEC(_s, size);
+            NAR_CODEC(_s, cursor);
+            NAR_CODEC(_s, typeface);
             NAR_CODEC(_s, enabled);
             NAR_CODEC(_s, visible);
             NAR_CODEC(_s, children);

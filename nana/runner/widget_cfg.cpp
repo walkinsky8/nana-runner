@@ -101,6 +101,12 @@ void nana::runner::widget_cfg::init_widget(widget& _w) const
     if (!size_().empty())
         _w.size(size_().value());
 
+    if (!cursor_().empty())
+        _w.cursor(cursor_().value().value());
+
+    if (!typeface_().empty())
+        _w.typeface(typeface_().value());
+
     if (!enabled_().empty())
         _w.enabled(enabled_().value());
 

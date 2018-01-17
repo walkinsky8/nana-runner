@@ -3,9 +3,7 @@
 
 #include <nana/runner/base.h>
 
-#include <nana/runner/istr.h>
-#include <nana/runner/optional.h>
-#include <nana/runner/id.h>
+#include <nana/runner/base_types.h>
 
 #include <nana/runner/node.h>
 
@@ -101,6 +99,14 @@ namespace nana::runner
                 _v.set_value(value);
             }
         }
+        template<class T, T _Def>
+        void operator>>(enum_<T, _Def>& _v) const
+        {
+            if (!valueIsEmpty())
+            {
+                _v = enum_<T, _Def>(value());
+            }
+        }
         template<class T>
         void operator >> (std::shared_ptr<T>& _v) const
         {
@@ -175,5 +181,7 @@ namespace nana::runner
         if (values.size() > 1)
             _v.height = values[1];
     }
+
+    void operator >> (const parser& _p, nana::paint::font& _v);
 
 }

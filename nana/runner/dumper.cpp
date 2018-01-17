@@ -40,3 +40,21 @@ nana::runner::dumper& nana::runner::dumper::leave()
     return indent().write(tag::end);
 }
 
+nana::runner::dumper& nana::runner::operator<<(dumper& _d, const nana::paint::font& _v)
+{
+    bool old = _d.compact(true);
+    _d.enter({});
+    _d.indent().write(_v.name());
+    _d.indent().write(_v.size());
+    if (_v.bold())
+        _d.indent().write("bold");
+    if (_v.italic())
+        _d.indent().write("italic");
+    if (_v.strikeout())
+        _d.indent().write("strikeout");
+    if (_v.underline())
+        _d.indent().write("underline");
+    _d.leave();
+    _d.compact(old);
+    return _d;
+}

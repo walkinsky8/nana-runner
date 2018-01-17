@@ -3,8 +3,7 @@
 
 #include <nana/runner/base.h>
 
-#include <nana/runner/istr.h>
-#include <nana/runner/optional.h>
+#include <nana/runner/base_types.h>
 
 namespace nana::runner
 {
@@ -99,6 +98,12 @@ namespace nana::runner
             return *this;
         }
 
+        template<class T, T _Def>
+        dumper& operator<<(const enum_<T, _Def>& _v)
+        {
+            return write(_v.str());
+        }
+
         template<class T>
         dumper& operator<<(const std::shared_ptr<T>& _v)
         {
@@ -164,6 +169,8 @@ namespace nana::runner
         _d.compact(old);
         return _d;
     }
+
+    dumper& operator<<(dumper& _d, const nana::paint::font& _v);
 
     template<class T>
     inline string dump(const T& _v, bool _compact=false, int _level=0, bool _hideEmpty=false)

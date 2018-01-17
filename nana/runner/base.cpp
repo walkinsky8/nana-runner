@@ -218,14 +218,14 @@ void nana::runner::initialize()
     NAR_ENUM_ADD(nana::direction, north, west);
     NAR_ENUM_ADD(nana::direction, north, southeast);
 
-    NAR_ENUM_ADD(nana::cursor, hand, hand);
-    NAR_ENUM_ADD(nana::cursor, hand, arrow);
-    NAR_ENUM_ADD(nana::cursor, hand, wait);
-    NAR_ENUM_ADD(nana::cursor, hand, iterm);
-    NAR_ENUM_ADD(nana::cursor, hand, size_we);
-    NAR_ENUM_ADD(nana::cursor, hand, size_ns);
-    NAR_ENUM_ADD(nana::cursor, hand, size_top_left);
-    NAR_ENUM_ADD(nana::cursor, hand, size_top_right);
-    NAR_ENUM_ADD(nana::cursor, hand, size_bottom_left);
-    NAR_ENUM_ADD(nana::cursor, hand, size_bottom_right);
+    NAR_ENUM_ADD(nana::cursor, arrow, hand);
+    NAR_ENUM_ADD(nana::cursor, arrow, arrow);
+    NAR_ENUM_ADD(nana::cursor, arrow, wait);
+    NAR_ENUM_ADD(nana::cursor, arrow, iterm);
+    NAR_ENUM_ADD(nana::cursor, arrow, size_we);
+    NAR_ENUM_ADD(nana::cursor, arrow, size_ns);
+    NAR_ENUM_ADD(nana::cursor, arrow, size_top_left);
+    NAR_ENUM_ADD(nana::cursor, arrow, size_top_right);
+    NAR_ENUM_ADD(nana::cursor, arrow, size_bottom_left);
+    NAR_ENUM_ADD(nana::cursor, arrow, size_bottom_right);
 }

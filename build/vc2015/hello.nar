@@ -11,6 +11,8 @@
             div="weight=20"
             bgcolor=green
             fgcolor=red
+            cursor=hand
+            typeface={Courier 12 bold}
             visible=0
             transparent=1
         }
@@ -21,6 +23,7 @@
             div=""
             bgcolor="#000000"
             fgcolor="rgb(0,255,0)"
+            typeface={Courier New 10 underline}
             enabled=1
             line_wrapped=0
             multi_lines=1

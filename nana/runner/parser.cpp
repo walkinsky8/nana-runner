@@ -185,3 +185,41 @@ std::ostream& nana::runner::parser::dump(std::ostream& _os) const
     d << unit();
     return _os << d;
 }
+
+void nana::runner::operator >> (const parser& _p, nana::paint::font& _v)
+{
+    if (!_p.valueIsEmpty())
+    {
+        string name;
+        double size = _v.size();
+        bool bold = _v.bold();
+        bool italic = _v.italic();
+        bool strikeout = _v.strikeout();
+        bool underline = _v.underline();
+        for (auto& i : _p.unit().children().list())
+        {
+            const auto& v = i.value();
+            if (v.empty())
+                continue;
+            if (v == "bold")
+                bold = true;
+            else if (v == "italic")
+                italic = true;
+            else if (v == "strikeout")
+                strikeout = true;
+            else if (v == "underline")
+                underline = true;
+            else if (is_digit(v[0]))
+                v >> size;
+            else
+            {
+                if (!name.empty())
+                    name += ' ';
+                name += v;
+            }
+        }
+        if (name.empty())
+            name = _v.name();
+        _v = paint::font{ name, size, paint::font::font_style{bold ? 700u : 400u, italic, underline, strikeout} };
+    }
+}
