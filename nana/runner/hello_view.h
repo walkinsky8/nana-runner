@@ -16,6 +16,9 @@ namespace nana::runner {
 
             label& world_;
             textbox& log_;
+            checkbox& editable_;
+            checkbox& linewrap_;
+            checkbox& multilines_;
             button& quit_;
 
         public:
@@ -23,11 +26,24 @@ namespace nana::runner {
                 : cfg_{ _cfg }, form_{ _form }
                 , world_{ _cfg.wnd<label>("hello.world") }
                 , log_{ _cfg.wnd<textbox>("hello.log") }
+                , editable_{ _cfg.wnd<checkbox>("hello.cmd.editable") }
+                , linewrap_{ _cfg.wnd<checkbox>("hello.cmd.linewrap") }
+                , multilines_{ _cfg.wnd<checkbox>("hello.cmd.multilines") }
                 , quit_{ _cfg.wnd<button>("hello.cmd.quit") }
             {
                 set_log_handler([this](const string& s) {
                     write_console(s);
                     log_.append(s, false);
+                });
+
+                editable_.events().checked([this] {
+                    log_.editable(editable_.checked());
+                });
+                linewrap_.events().checked([this] {
+                    log_.line_wrapped(linewrap_.checked());
+                });
+                multilines_.events().checked([this] {
+                    log_.multi_lines(multilines_.checked());
                 });
 
                 quit_.events().click([this] {

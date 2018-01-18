@@ -24,7 +24,7 @@
             div=""
             bgcolor="#000000"
             fgcolor="rgb(0,255,0)"
-            typeface={Courier New 10 underline}
+            typeface={Courier New 10}
             enabled=1
             line_wrapped=0
             multi_lines=1
@@ -34,8 +34,23 @@
             id=cmd
             div="weight=30"
             children={
-                @button{
-                    id=xyz
+                @checkbox{
+                    id=editable
+                }
+                @checkbox{
+                    id=linewrap
+                    caption="Line Wrap"
+                    bgcolor=white
+                    radio=0
+                    transparent=1
+                }
+                @checkbox{
+                    id=multilines
+                    caption="Multi Lines"
+                    bgcolor=white
+                    radio=1
+                    check=1
+                    transparent=0
                 }
                 @button{
                     id=quit

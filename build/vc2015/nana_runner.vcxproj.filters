@@ -93,6 +93,9 @@
     <ClCompile Include="..\..\nana\runner\panel_cfg.cpp">
       <Filter>widgets</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\nana\runner\checkbox_cfg.cpp">
+      <Filter>widgets</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\nana\runner\base.h">
@@ -165,6 +168,9 @@
       <Filter>widgets</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\panel_cfg.h">
+      <Filter>widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nana\runner\checkbox_cfg.h">
       <Filter>widgets</Filter>
     </ClInclude>
   </ItemGroup>
