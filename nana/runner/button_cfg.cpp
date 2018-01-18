@@ -7,7 +7,7 @@ void nana::runner::button_cfg::init_widget(widget & _w) const
 {
     super::init_widget(_w);
 
-    auto& w = dynamic_cast<button&>(_w);
+    auto& w = dynamic_cast<ui_type&>(_w);
 
     if (!enable_pushed_().empty())
         w.enable_pushed(enable_pushed_().value());

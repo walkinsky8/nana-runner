@@ -1,8 +1,9 @@
 @form{
     id=hello
     div="vert"
-    pos={100 100}
+    pos={300 200}
     size={500 400}
+    typeface={Courier 12 bold}
     children={
         @label{
             id=world
@@ -10,11 +11,11 @@
             tooltip="sample label"
             div="weight=20"
             bgcolor=green
-            fgcolor=red
+            fgcolor=yellow
             cursor=hand
             typeface={Courier 12 bold}
             visible=0
-            transparent=1
+            transparent=0
         }
         @textbox{
             id=log
@@ -29,19 +30,28 @@
             multi_lines=1
             editable=0
         }
-        @button{
-            id=quit
-            tooltip="exit program"
+        @panel{
+            id=cmd
             div="weight=30"
-            bgcolor=blue
-            fgcolor=white
-            enabled=1
-            enable_pushed=0
-            pushed=1
-            omitted=
-            enable_focus_color=0
-            transparent=0
-            edge_effects=1
+            children={
+                @button{
+                    id=xyz
+                }
+                @button{
+                    id=quit
+                    tooltip="exit program"
+                    bgcolor=blue
+                    fgcolor=white
+                    typeface={Lucida Console 12 bold}
+                    enabled=1
+                    enable_pushed=0
+                    pushed=1
+                    omitted=
+                    enable_focus_color=0
+                    transparent=0
+                    edge_effects=1
+                }
+            }
         }
     }
 }

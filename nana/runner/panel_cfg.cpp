@@ -1,9 +1,9 @@
-// Created by walkinsky(lyh6188@hotmail.com), 2018/01/12
+// Created by walkinsky(lyh6188@hotmail.com), 2018/01/18
 #include "stdafx.h"
 
-#include "label_cfg.h"
+#include "panel_cfg.h"
 
-void nana::runner::label_cfg::init_widget(widget & _w) const
+void nana::runner::panel_cfg::init_widget(widget & _w) const
 {
     super::init_widget(_w);
 

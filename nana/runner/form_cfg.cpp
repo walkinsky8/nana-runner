@@ -10,7 +10,7 @@ void nana::runner::form_cfg::init_widget(widget & _w) const
     string div = make_div();
     NAR_LOG_VAR(div);
 
-    auto& w = dynamic_cast<form&>(_w);
+    auto& w = dynamic_cast<ui_type&>(_w);
     w.div(div.data());
 
     for (auto& i : widgets_())

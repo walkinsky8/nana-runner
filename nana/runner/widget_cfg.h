@@ -5,6 +5,21 @@
 
 #include <nana/runner/view_base.h>
 
+#define NAR_DEFINE_WIDGET(_class, _super) \
+        public: \
+            using super = _super; \
+            using self = _class##_cfg; \
+            using ui_type = _class##_ui; \
+            static pcstr type_name_() { return #_class; } \
+        public: \
+            static view_ptr new_() { return std::make_shared<self>(); } \
+            string type_name() const override { return type_name_(); } \
+            view_ptr new_obj() const override { return new_(); } \
+            wnd_ptr create_widget(window p, bool v) const override { return create_widget_(p, v); } \
+            dumper& dump(dumper& _d) const override { return codec(_d, const_cast<self&>(*this)); } \
+            void parse(const parser& _p) override { codec(const_cast<parser&>(_p), *this); } \
+        private:
+
 namespace nana::runner {
 
     class widget_cfg;

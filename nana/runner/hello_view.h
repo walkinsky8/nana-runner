@@ -23,7 +23,7 @@ namespace nana::runner {
                 : cfg_{ _cfg }, form_{ _form }
                 , world_{ _cfg.wnd<label>("hello.world") }
                 , log_{ _cfg.wnd<textbox>("hello.log") }
-                , quit_{ _cfg.wnd<button>("hello.quit") }
+                , quit_{ _cfg.wnd<button>("hello.cmd.quit") }
             {
                 set_log_handler([this](const string& s) {
                     write_console(s);

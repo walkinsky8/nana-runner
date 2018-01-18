@@ -4,16 +4,18 @@
 #include <nana/runner/widget_factory.h>
 
 #include <nana/runner/form_cfg.h>
+#include <nana/runner/panel_cfg.h>
 #include <nana/runner/label_cfg.h>
 #include <nana/runner/textbox_cfg.h>
 #include <nana/runner/button_cfg.h>
 
 nana::runner::widget_factory::widget_factory()
 {
-    add("form",    form_cfg::new_);
-    add("label",   label_cfg::new_);
+    add("form", form_cfg::new_);
+    add("panel", panel_cfg::new_);
+    add("label", label_cfg::new_);
     add("textbox", textbox_cfg::new_);
-    add("button",  button_cfg::new_);
+    add("button", button_cfg::new_);
 }
 
 nana::runner::widget_factory & nana::runner::widget_factory::instance()

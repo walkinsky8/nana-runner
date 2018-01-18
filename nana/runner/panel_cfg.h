@@ -1,4 +1,4 @@
-// Created by walkinsky(lyh6188@hotmail.com), 2017/11/15
+// Created by walkinsky(lyh6188@hotmail.com), 2018/01/18
 #pragma once
 
 #include <nana/runner/base.h>
@@ -7,11 +7,11 @@
 
 namespace nana::runner {
 
-    using label_ui = nana::label;
+    using panel_ui = nana::panel<1>;
 
-    class label_cfg : public widget_cfg
+    class panel_cfg : public widget_cfg
     {
-        NAR_DEFINE_WIDGET(label, widget_cfg);
+        NAR_DEFINE_WIDGET(panel, widget_cfg);
 
         NAR_FIELD(optional<bool>, transparent);
 
