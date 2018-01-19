@@ -15,7 +15,8 @@ namespace nana::runner
         string name_;
         string type_;
         string value_;
-        list_map<string, node> children_;
+        typedef list_multimap<string, node> _Children;
+        _Children children_;
 
     public:
         node(string _name = {}, string _type = {}, string _value = {})
@@ -58,7 +59,7 @@ namespace nana::runner
             return value_;
         }
 
-        const list_map<string, node>& children() const
+        const _Children& children() const
         {
             return children_;
         }
@@ -66,6 +67,11 @@ namespace nana::runner
         const node* child(const string& _name) const
         {
             return children_.find(_name);
+        }
+
+        _Children::_Range child_equal(const string& _name) const
+        {
+            return children_.equal_range(_name);
         }
 
         bool simple() const

@@ -58,7 +58,7 @@ namespace nana::runner {
             NAR_CODEC(_s, typeface);
             NAR_CODEC(_s, enabled);
             NAR_CODEC(_s, visible);
-            NAR_CODEC(_s, children);
+            NAR_CODEC_UNNAMED(_s, children);
         }
 
     private:

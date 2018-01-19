@@ -152,6 +152,18 @@ namespace nana::runner
                 child >> _v;
             }
         }
+        template<class T>
+        void unnamed(std::vector<T>& _v) const
+        {
+            auto range = unit().child_equal({});
+            for (auto i=range.first; i!=range.second; ++i)
+            {
+                parser child(&(*i).second);
+                T value;
+                child >> value;
+                _v.push_back(value);
+            }
+        }
 
         std::ostream& dump(std::ostream& _os) const;
 

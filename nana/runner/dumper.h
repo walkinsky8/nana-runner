@@ -117,10 +117,7 @@ namespace nana::runner
         dumper& operator<<(const std::vector<T>& _v)
         {
             enter({});
-            for (const auto& i : _v)
-            {
-                indent() << i;
-            }
+            unnamed(_v);
             leave();
             return *this;
         }
@@ -138,6 +135,16 @@ namespace nana::runner
         {
             if (!hideEmpty_ || !is_empty(_v))
                 return indent().writeName(_name) << _v;
+            return *this;
+        }
+
+        template<class T>
+        dumper& unnamed(const std::vector<T>& _v)
+        {
+            for (const auto& i : _v)
+            {
+                indent() << i;
+            }
             return *this;
         }
 

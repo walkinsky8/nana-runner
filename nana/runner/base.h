@@ -26,6 +26,7 @@
             t NAR_V(x)
 
 #define NAR_CODEC(s, x) s(#x, NAR_V(x))
+#define NAR_CODEC_UNNAMED(s, x) s.unnamed(NAR_V(x))
 
 namespace std {
 

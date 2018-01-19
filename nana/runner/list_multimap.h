@@ -8,24 +8,54 @@ namespace nana::runner
     template<class K, class V>
     class list_multimap
     {
-        std::vector<V> list_;
-        std::multimap<K, V> map_;
+    public:
+        typedef std::vector<V> _List;
+        typedef std::multimap<K, V> _Map;
+        typedef std::pair<typename _Map::const_iterator, typename _Map::const_iterator> _Range;
+
+    private:
+        _List list_;
+        _Map map_;
 
     public:
+        bool empty() const
+        {
+            return list_.empty();
+        }
+
+        const _List& list() const
+        {
+            return list_;
+        }
+
+        const _Map& map() const
+        {
+            return map_;
+        }
+
+        void clear()
+        {
+            list_.clear();
+            map_.clear();
+        }
+
         void add(const K& k, const V& v)
         {
             list_.push_back(v);
             map_.insert({ k, v });
         }
 
-        const std::vector<K>& list() const
+        const V* find(const K& k) const
         {
-            return list_;
+            auto i = map_.find(k);
+            if (i == map_.end())
+                return nullptr;
+            return &i->second;
         }
 
-        const std::multimap<K, V> map() const
+        _Range equal_range(const K& k) const
         {
-            return map_;
+            return map_.equal_range(k);
         }
 
     };
