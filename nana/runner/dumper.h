@@ -148,31 +148,6 @@ namespace nana::runner
     }
 
     template<class T>
-    inline dumper& operator<<(dumper& _d, const basic_point<T>& _v)
-    {
-        bool old = _d.compact(true);
-        std::vector<T> values;
-        values.push_back(_v.x);
-        values.push_back(_v.y);
-        _d << values;
-        _d.compact(old);
-        return _d;
-    }
-
-    inline dumper& operator<<(dumper& _d, const size& _v)
-    {
-        bool old = _d.compact(true);
-        std::vector<unsigned> values;
-        values.push_back(_v.width);
-        values.push_back(_v.height);
-        _d << values;
-        _d.compact(old);
-        return _d;
-    }
-
-    dumper& operator<<(dumper& _d, const nana::paint::font& _v);
-
-    template<class T>
     inline string dump(const T& _v, bool _compact=false, int _level=0, bool _hideEmpty=false)
     {
         dumper d{ _compact, _level, _hideEmpty };

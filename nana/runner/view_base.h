@@ -15,9 +15,26 @@
 #include <nana/gui/widgets/textbox.hpp>
 #include <nana/gui/widgets/button.hpp>
 #include <nana/gui/widgets/checkbox.hpp>
+#include <nana/gui/widgets/categorize.hpp>
 
 namespace nana::runner {
 
+    using point = nana::point;
+    using size = nana::size;
+    using font = nana::paint::font;
+    using cursor = enum_<nana::cursor, nana::cursor::arrow>;
+
     color get_color(const string& _s);
+
+    font make_font(const string& _name, double _size, bool _bold, bool _italic, bool _strikeout, bool _underline);
+
+    dumper& operator<<(dumper& _d, const point& _v);
+    void operator >> (const parser& _p, point& _v);
+
+    dumper& operator<<(dumper& _d, const size& _v);
+    void operator >> (const parser& _p, size& _v);
+
+    dumper& operator<<(dumper& _d, const font& _v);
+    void operator >> (const parser& _p, font& _v);
 
 }

@@ -161,27 +161,4 @@ namespace nana::runner
         return _v.dump(_os);
     }
 
-    template<class T>
-    inline void operator >> (const parser& _p, basic_point<T>& _v)
-    {
-        std::vector<T> values;
-        _p >> values;
-        if (values.size() > 0)
-            _v.x = values[0];
-        if (values.size() > 1)
-            _v.y = values[1];
-    }
-
-    inline void operator >> (const parser& _p, size& _v)
-    {
-        std::vector<size::value_type> values;
-        _p >> values;
-        if (values.size() > 0)
-            _v.width = values[0];
-        if (values.size() > 1)
-            _v.height = values[1];
-    }
-
-    void operator >> (const parser& _p, nana::paint::font& _v);
-
 }

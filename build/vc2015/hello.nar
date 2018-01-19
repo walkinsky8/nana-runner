@@ -1,10 +1,15 @@
 @form{
     id=hello
     div="vert"
-    pos={300 200}
-    size={500 400}
+    pos={400 300}
+    size={400 300}
     typeface={Courier 12 bold}
     children={
+        @categorize{
+            id=categ
+            caption="a\b\c"
+            div="weight=20"
+        }
         @label{
             id=world
             caption="Hello, world!"
@@ -13,9 +18,27 @@
             bgcolor=green
             fgcolor=yellow
             cursor=hand
-            typeface={Courier 12 bold}
+            typeface={Courier 12}
             visible=0
             transparent=0
+        }
+        @panel{
+            id=font
+            div="weight=20"
+            children={
+                @checkbox{
+                    id=bold
+                }
+                @checkbox{
+                    id=italic
+                }
+                @checkbox{
+                    id=strikeout
+                }
+                @checkbox{
+                    id=underline
+                }
+            }
         }
         @textbox{
             id=log
@@ -32,7 +55,7 @@
         }
         @panel{
             id=cmd
-            div="weight=30"
+            div="weight=40"
             children={
                 @checkbox{
                     id=editable

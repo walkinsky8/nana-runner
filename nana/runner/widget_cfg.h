@@ -28,18 +28,16 @@ namespace nana::runner {
 
     class widget_cfg
     {
-        using cursor_type = enum_<nana::cursor, nana::cursor::arrow>;
-
         NAR_FIELD(id, id);
         NAR_FIELD(string, caption);
         NAR_FIELD(string, tooltip);
         NAR_FIELD(string, div);
         NAR_FIELD(string, bgcolor);
         NAR_FIELD(string, fgcolor);
-        NAR_FIELD(optional<nana::point>, pos);
-        NAR_FIELD(optional<nana::size>, size);
-        NAR_FIELD(optional<cursor_type>, cursor);
-        NAR_FIELD(optional<nana::paint::font>, typeface);
+        NAR_FIELD(optional<point>, pos);
+        NAR_FIELD(optional<size>, size);
+        NAR_FIELD(optional<cursor>, cursor);
+        NAR_FIELD(optional<font>, typeface);
         NAR_FIELD(optional<bool>, enabled);
         NAR_FIELD(optional<bool>, visible);
         NAR_FIELD(std::vector<view_ptr>, children);

@@ -9,6 +9,7 @@
 #include <nana/runner/textbox_cfg.h>
 #include <nana/runner/button_cfg.h>
 #include <nana/runner/checkbox_cfg.h>
+#include <nana/runner/categorize_cfg.h>
 
 nana::runner::widget_factory::widget_factory()
 {
@@ -18,6 +19,7 @@ nana::runner::widget_factory::widget_factory()
     add("textbox", textbox_cfg::new_);
     add("button", button_cfg::new_);
     add("checkbox", checkbox_cfg::new_);
+    add("categorize", categorize_cfg::new_);
 }
 
 nana::runner::widget_factory & nana::runner::widget_factory::instance()
