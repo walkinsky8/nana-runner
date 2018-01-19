@@ -14,6 +14,8 @@ namespace nana::runner {
         NAR_DEFINE_WIDGET(label, widget_cfg);
 
         NAR_FIELD(optional<bool>, transparent);
+        NAR_FIELD(optional<align>, align);
+        NAR_FIELD(optional<align_v>, align_v);
 
     public:
         template<class _Stream>
@@ -21,6 +23,8 @@ namespace nana::runner {
         {
             super::traverse(_s);
             NAR_CODEC(_s, transparent);
+            NAR_CODEC(_s, align);
+            NAR_CODEC(_s, align_v);
         }
 
         static wnd_ptr create_widget_(window p, bool v) { return std::make_shared<ui_type>(p, v); }

@@ -15,6 +15,10 @@ namespace nana::runner {
             form& form_;
 
             label& world_;
+            textbox& bg_;
+            textbox& fg_;
+            textbox& name_;
+            textbox& size_;
             checkbox& bold_;
             checkbox& italic_;
             checkbox& strikeout_;
@@ -31,6 +35,10 @@ namespace nana::runner {
             Hello(widget_cfg& _cfg, form& _form)
                 : cfg_{ _cfg }, form_{ _form }
                 , world_{ _cfg.wnd<label>("hello.world") }
+                , bg_{ _cfg.wnd<textbox>("hello.color.bg.value") }
+                , fg_{ _cfg.wnd<textbox>("hello.color.fg.value") }
+                , name_{ _cfg.wnd<textbox>("hello.f.name.value") }
+                , size_{ _cfg.wnd<textbox>("hello.f.size.value") }
                 , bold_{ _cfg.wnd<checkbox>("hello.font.bold") }
                 , italic_{ _cfg.wnd<checkbox>("hello.font.italic") }
                 , strikeout_{ _cfg.wnd<checkbox>("hello.font.strikeout") }
@@ -46,6 +54,23 @@ namespace nana::runner {
                     log_.append(s, false);
                 });
 
+                bg_.events().focus([this] {
+                    world_.bgcolor(get_color(bg_.caption()));
+                });
+                fg_.events().focus([this] {
+                    world_.fgcolor(get_color(fg_.caption()));
+                });
+
+                name_.events().text_changed([this] {
+                    font f = world_.typeface();
+                    world_.typeface(make_font(name_.caption(), f.size(), f.bold(), f.italic(), f.strikeout(), f.underline()));
+                });
+                size_.events().text_changed([this] {
+                    font f = world_.typeface();
+                    double sz = 0;
+                    size_.caption() >> sz;
+                    world_.typeface(make_font(f.name(), sz, f.bold(), f.italic(), f.strikeout(), f.underline()));
+                });
                 bold_.events().checked([this] {
                     font f = world_.typeface();
                     world_.typeface(make_font(f.name(), f.size(), bold_.checked(), f.italic(), f.strikeout(), f.underline()));

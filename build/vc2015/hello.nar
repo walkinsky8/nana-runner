@@ -14,13 +14,91 @@
             id=world
             caption="Hello, world!"
             tooltip="sample label"
-            div="weight=20"
+            div="weight=30"
             bgcolor=green
             fgcolor=yellow
             cursor=hand
             typeface={Courier 12}
             visible=0
             transparent=0
+        }
+        @panel{
+            id=color
+            div="weight=20"
+            children={
+                @panel{
+                    id=bg
+                    div="weight=50%"
+                    children={
+                        @label{
+                            id=l
+                            caption=bg
+                            div="weight=30%"
+                            align=right
+                        }
+                        @textbox{
+                            id=value
+                            caption=black
+                            multi_lines=0
+                        }
+                    }
+                }
+                @panel{
+                    id=fg
+                    children={
+                        @label{
+                            id=l
+                            caption=fg
+                            div="weight=30%"
+                            align=right
+                        }
+                        @textbox{
+                            id=value
+                            caption=white
+                            multi_lines=0
+                        }
+                    }
+                }
+            }
+        }
+        @panel{
+            id=f
+            div="weight=20"
+            children={
+                @panel{
+                    id=name
+                    div="weight=50%"
+                    children={
+                        @label{
+                            id=l
+                            caption=name
+                            div="weight=30%"
+                            align=right
+                        }
+                        @textbox{
+                            id=value
+                            caption=null
+                            multi_lines=0
+                        }
+                    }
+                }
+                @panel{
+                    id=size
+                    children={
+                        @label{
+                            id=l
+                            caption=size
+                            div="weight=30%"
+                            align=right
+                        }
+                        @textbox{
+                            id=value
+                            caption=10
+                            multi_lines=0
+                        }
+                    }
+                }
+            }
         }
         @panel{
             id=font

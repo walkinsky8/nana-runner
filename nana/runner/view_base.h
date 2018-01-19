@@ -23,6 +23,8 @@ namespace nana::runner {
     using size = nana::size;
     using font = nana::paint::font;
     using cursor = enum_<nana::cursor, nana::cursor::arrow>;
+    using align = enum_<nana::align, nana::align::left>;
+    using align_v = enum_<nana::align_v, nana::align_v::top>;
 
     color get_color(const string& _s);
 
