@@ -12,6 +12,8 @@ namespace nana::runner::view {
         widget_cfg& cfg_;
         form& form_;
 
+        categorize& categorize_;
+
         label& world_;
         textbox& bg_;
         textbox& fg_;
@@ -33,6 +35,7 @@ namespace nana::runner::view {
         Hello(widget_cfg& _cfg, form& _form)
             : cfg_{ _cfg }
             , form_{ _form }
+            , categorize_{ _cfg.wnd<categorize>("hello.categorize") }
             , world_{ _cfg.wnd<label>("hello.world") }
             , bg_{ _cfg.wnd<textbox>("hello.color.bg.value") }
             , fg_{ _cfg.wnd<textbox>("hello.color.fg.value") }
@@ -52,6 +55,9 @@ namespace nana::runner::view {
                 write_console(s);
                 log_.append(s, false);
             });
+
+            //categorize_.caption(fs_ext::path_user());
+            categorize_.caption(fs::current_path());
 
             bg_ << world_.bgcolor();
             fg_ << world_.fgcolor();

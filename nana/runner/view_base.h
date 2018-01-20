@@ -17,7 +17,13 @@
 #include <nana/gui/widgets/checkbox.hpp>
 #include <nana/gui/widgets/categorize.hpp>
 
+#include <nana/filesystem/filesystem.hpp>
+#include <nana/filesystem/filesystem_ext.hpp>
+
 namespace nana::runner {
+
+    namespace fs = std::experimental::filesystem;
+    namespace fs_ext = nana::filesystem_ext;
 
     using point = nana::point;
     using size = nana::size;
@@ -27,6 +33,7 @@ namespace nana::runner {
     using align_v = enum_<nana::align_v, nana::align_v::top>;
 
     using nana::textbox;
+    using categorize = nana::categorize<std::string>;
 
     color get_color(const string& _s);
 

@@ -5,7 +5,7 @@
     size={400 300}
     typeface={Courier 12 bold}
     @categorize{
-        id=categ
+        id=categorize
         caption="a\b\c"
         div="weight=20"
     }
