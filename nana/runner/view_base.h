@@ -26,6 +26,8 @@ namespace nana::runner {
     using align = enum_<nana::align, nana::align::left>;
     using align_v = enum_<nana::align_v, nana::align_v::top>;
 
+    using nana::textbox;
+
     color get_color(const string& _s);
 
     font make_font(const string& _name, double _size, bool _bold, bool _italic, bool _strikeout, bool _underline);
@@ -38,5 +40,24 @@ namespace nana::runner {
 
     dumper& operator<<(dumper& _d, const font& _v);
     void operator >> (const parser& _p, font& _v);
+
+    template<class T>
+    textbox& operator<<(textbox& _w, const T& _v)
+    {
+        string s = _w.caption();
+        s << _v;
+        _w.caption(s);
+        return _w;
+    }
+
+    template<class T>
+    void operator>>(const textbox& _w, T& _v)
+    {
+        string s = _w.caption();
+        s >> _v;
+    }
+
+    string& operator << (string& _w, const color& _v);
+    void operator >> (const string& _w, color& _v);
 
 }

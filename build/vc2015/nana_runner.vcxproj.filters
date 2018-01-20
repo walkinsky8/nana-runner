@@ -26,7 +26,7 @@
     <Filter Include="base\codec">
       <UniqueIdentifier>{beda8a37-a588-4c03-b569-c131188a185e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="main">
+    <Filter Include="app">
       <UniqueIdentifier>{0fd6d47e-0080-4c3c-878a-fc055fec415d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -41,9 +41,6 @@
   <ItemGroup>
     <ClCompile Include="..\..\nana\runner\base.cpp">
       <Filter>base</Filter>
-    </ClCompile>
-    <ClCompile Include="nana_runner.cpp">
-      <Filter>main</Filter>
     </ClCompile>
     <ClCompile Include="stdafx.cpp">
       <Filter>etc</Filter>
@@ -99,13 +96,16 @@
     <ClCompile Include="..\..\nana\runner\categorize_cfg.cpp">
       <Filter>widgets</Filter>
     </ClCompile>
+    <ClCompile Include="nana_runner.cpp">
+      <Filter>sample</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\nana\runner\base.h">
       <Filter>base</Filter>
     </ClInclude>
     <ClInclude Include="nana_runner.h">
-      <Filter>main</Filter>
+      <Filter>app</Filter>
     </ClInclude>
     <ClInclude Include="stdafx.h">
       <Filter>etc</Filter>

@@ -23,7 +23,7 @@ namespace nana::runner
 
             NAR_LOG("read cfg file...");
             view_ = widget_cfg::from_file(cmdline_);
-            NAR_LOG_NV("view_", dump(view_));
+            NAR_LOG_NV("view_", dump(view_, false, 0, true));
             
             NAR_LOG("make widgets...");
             view_->make_widgets(form_);

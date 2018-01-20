@@ -5,10 +5,18 @@
 
 nana::color nana::runner::get_color(const string& _s)
 {
-    nana::colors* clr = enum_<nana::colors, nana::colors::black>::find_value(_s);
-    if (clr)
-        return color{ *clr };
-    return color{ _s };
+    try {
+        nana::colors* clr = enum_<nana::colors, nana::colors::black>::find_value(_s);
+        if (clr)
+            return color{ *clr };
+        return color{ _s };
+    }
+    catch (std::exception& e) {
+        nana::msgbox mb("Exception");
+        mb << e.what();
+        mb.show();
+    }
+    return nana::colors::black;
 }
 
 nana::runner::font nana::runner::make_font(const string& _name, double _size, bool _bold, bool _italic, bool _strikeout, bool _underline)
@@ -113,5 +121,20 @@ void nana::runner::operator >> (const parser& _p, font& _v)
             name = _v.name();
         _v = make_font(name, size, bold, italic, underline, strikeout);
     }
+}
+
+nana::runner::string& nana::runner::operator << (string& _w, const color& _v)
+{
+    _w << "rgb(";
+    _w << _v.r();
+    _w << "," << _v.g();
+    _w << "," << _v.b();
+    _w << ")";
+    return _w;
+}
+
+void nana::runner::operator >> (const string& _s, color& _v)
+{
+    _v = get_color(_s);
 }
 

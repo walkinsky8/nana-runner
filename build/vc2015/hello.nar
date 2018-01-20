@@ -21,87 +21,34 @@
         visible=0
         transparent=0
     }
-    @panel{
-        id=color
-        div="weight=20"
-        @panel{
-            id=bg
-            div="weight=50%"
-            @label{
-                id=l
-                caption=bg
-                div="weight=30%"
-                align=right
-            }
-            @textbox{
-                id=value
-                caption=black
-                multi_lines=0
-            }
+    @panel{ id=color div="weight=20"
+        @label{ id=sep caption="Color:" div="weight=10%" }
+        @panel{ id=bg div="weight=45%"
+            @label{ id=l caption=Bg div="weight=30%" align=right }
+            @textbox{ id=value caption=null multi_lines=0 }
         }
-        @panel{
-            id=fg
-            @label{
-                id=l
-                caption=fg
-                div="weight=30%"
-                align=right
-            }
-            @textbox{
-                id=value
-                caption=white
-                multi_lines=0
-            }
+        @panel{ id=fg 
+            @label{ id=l caption=Fg div="weight=30%" align=right }
+            @textbox{ id=value caption=null multi_lines=0 }
         }
     }
-    @panel{
-        id=f
-        div="weight=20"
-        @panel{
-            id=name
-            div="weight=50%"
-            @label{
-                id=l
-                caption=name
-                div="weight=30%"
-                align=right
-            }
-            @textbox{
-                id=value
-                caption=null
-                multi_lines=0
-            }
+    @panel{ id=f div="weight=20"
+        @label{ id=sep caption="Font:" div="weight=10%" }
+        @panel{ id=name div="weight=45%"
+            @label{ id=l caption="Name" div="weight=30%" align=right }
+            @textbox{ id=value caption=null multi_lines=0 }
         }
-        @panel{
-            id=size
-            @label{
-                id=l
-                caption=size
-                div="weight=30%"
-                align=right
-            }
-            @textbox{
-                id=value
-                caption=10
-                multi_lines=0
-            }
+        @panel{ id=size
+            @label{ id=l caption="Size" div="weight=30%" align=right }
+            @textbox{ id=value caption=null multi_lines=0 }
         }
     }
-    @panel{
-        id=font
-        div="weight=20"
-        @checkbox{
-            id=bold
-        }
-        @checkbox{
-            id=italic
-        }
-        @checkbox{
-            id=strikeout
-        }
-        @checkbox{
-            id=underline
-        }
+    @panel{ id=font div="weight=20"
+        @panel{ id=sep div="weight=10%" bgcolor=#aaaaaa }
+        @checkbox{ id=bold }
+        @checkbox{ id=italic }
+        @checkbox{ id=strikeout }
+        @checkbox{ id=underline }
     }
     @textbox{
         id=log
@@ -140,8 +87,8 @@
         @button{
             id=quit
             tooltip="exit program"
-            bgcolor=blue
-            fgcolor=white
+            bgcolor=#ffff00
+            fgcolor=black
             typeface={Lucida Console 12 bold}
             enabled=1
             enable_pushed=0
