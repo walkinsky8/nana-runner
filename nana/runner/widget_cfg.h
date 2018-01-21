@@ -5,16 +5,18 @@
 
 #include <nana/runner/view_base.h>
 
+#include <nana/runner/model_base.h>
+
 #define NAR_DEFINE_WIDGET(_class, _super) \
         public: \
             using super = _super; \
             using self = _class##_cfg; \
-            using ui_type = _class##_ui; \
+            using ui_type = nana::runner::_class; \
             static pcstr type_name_() { return #_class; } \
+            static cfg_ptr new_() { return std::make_shared<self>(); } \
         public: \
-            static view_ptr new_() { return std::make_shared<self>(); } \
             string type_name() const override { return type_name_(); } \
-            view_ptr new_obj() const override { return new_(); } \
+            cfg_ptr new_obj() const override { return new_(); } \
             wnd_ptr create_widget(window p, bool v) const override { return create_widget_(p, v); } \
             dumper& dump(dumper& _d) const override { return codec(_d, const_cast<self&>(*this)); } \
             void parse(const parser& _p) override { codec(const_cast<parser&>(_p), *this); } \
@@ -23,7 +25,7 @@
 namespace nana::runner {
 
     class widget_cfg;
-    using view_ptr = std::shared_ptr<widget_cfg>;
+    using cfg_ptr = std::shared_ptr<widget_cfg>;
     using wnd_ptr = std::shared_ptr<widget>;
 
     class widget_cfg
@@ -40,7 +42,7 @@ namespace nana::runner {
         NAR_FIELD(optional<font>, typeface);
         NAR_FIELD(optional<bool>, enabled);
         NAR_FIELD(optional<bool>, visible);
-        NAR_FIELD(std::vector<view_ptr>, children);
+        NAR_FIELD(std::vector<cfg_ptr>, children);
 
     public:
         template<class _Stream>
@@ -71,13 +73,13 @@ namespace nana::runner {
     public:
         virtual ~widget_cfg() = default;
 
+        virtual string type_name() const = 0;
+
+        virtual cfg_ptr new_obj() const = 0;
+
         virtual dumper& dump(dumper& _d) const = 0;
 
         virtual void parse(const parser& _p) = 0;
-
-        virtual string type_name() const = 0;
-
-        virtual view_ptr new_obj() const = 0;
 
         virtual wnd_ptr create_widget(window _parent, bool _visible) const = 0;
 
@@ -95,11 +97,11 @@ namespace nana::runner {
             return dynamic_cast<const T&>(*this);
         }
 
-        id id_name() const
+        id id_path() const
         {
             if (!m_parent || id_().empty())
                 return id_();
-            return m_parent->id_name() / id_();
+            return m_parent->id_path() / id_();
         }
 
         void set_parent(widget_cfg* _parent)
@@ -107,20 +109,20 @@ namespace nana::runner {
             m_parent = _parent;
         }
 
-        static view_ptr from_file(wstring const& _filename);
+        static cfg_ptr from_file(wstring const& _filename);
 
-        wnd_ptr get_widget_(id _id) const;
+        wnd_ptr get_widget(id _id) const;
 
         template<class T>
         T& wnd(id _id) const
         {
-            wnd_ptr w = get_widget_(_id);
+            wnd_ptr w = get_widget(_id);
             if (!w)
                 throw std::invalid_argument("no widget for " + _id.str());
             return dynamic_cast<T&>(*w);
         }
 
-        void make_widgets(nana::widget& _root_wnd);
+        void make_widgets();
         void make_widgets(widget_cfg& _root, widget_cfg* _parent_cfg, nana::window _parent_wnd);
 
         string make_div() const

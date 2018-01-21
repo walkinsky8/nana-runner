@@ -5,9 +5,11 @@
 
 #include <nana/runner/widget_cfg.h>
 
+#include <nana/gui/widgets/label.hpp>
+
 namespace nana::runner {
 
-    using label_ui = nana::label;
+    using label = nana::label;
 
     class label_cfg : public widget_cfg
     {

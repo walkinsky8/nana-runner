@@ -15,7 +15,7 @@ void nana::runner::form_cfg::init_widget(widget & _w) const
 
     for (auto& i : widgets_())
     {
-        w[i.first.str().data()] << *get_widget_(i.first);
+        w[i.first.str().data()] << *get_widget(i.first);
     }
 
     w.collocate();

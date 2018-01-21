@@ -5,9 +5,11 @@
 
 #include <nana/runner/widget_cfg.h>
 
+#include <nana/gui/widgets/button.hpp>
+
 namespace nana::runner {
 
-    using button_ui = nana::button;
+    using button = nana::button;
 
     class button_cfg : public widget_cfg
     {

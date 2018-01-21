@@ -5,9 +5,11 @@
 
 #include <nana/runner/widget_cfg.h>
 
+#include <nana/gui/widgets/checkbox.hpp>
+
 namespace nana::runner {
 
-    using checkbox_ui = nana::checkbox;
+    using checkbox = nana::checkbox;
 
     class checkbox_cfg : public widget_cfg
     {

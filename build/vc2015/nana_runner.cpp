@@ -5,7 +5,10 @@
 
 #include "nana_runner.h"
 
+#include <nana/runner/view_factory.h>
+
 #include <nana/runner/hello_view.h>
+#include <nana/runner/demo_view.h>
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     _In_opt_ HINSTANCE hPrevInstance,
@@ -13,5 +16,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     _In_ int       nCmdShow)
 {
     using namespace nana::runner;
-    app<view::Hello> app(lpCmdLine);
+    add_view<view::Hello>();
+    add_view<view::Demo>();
+    app a(lpCmdLine);
 }

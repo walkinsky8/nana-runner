@@ -5,9 +5,11 @@
 
 #include <nana/runner/widget_cfg.h>
 
+#include <nana/gui/widgets/form.hpp>
+
 namespace nana::runner {
 
-    using form_ui = nana::form;
+    using form = nana::form;
 
     class form_cfg : public widget_cfg
     {

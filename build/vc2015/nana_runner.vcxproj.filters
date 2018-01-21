@@ -99,6 +99,12 @@
     <ClCompile Include="nana_runner.cpp">
       <Filter>sample</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\nana\runner\model_base.cpp">
+      <Filter>widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nana\runner\view_factory.cpp">
+      <Filter>widgets</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\nana\runner\base.h">
@@ -179,10 +185,24 @@
     <ClInclude Include="..\..\nana\runner\categorize_cfg.h">
       <Filter>widgets</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\nana\runner\demo_view.h">
+      <Filter>sample</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nana\runner\model_base.h">
+      <Filter>widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nana\runner\view_factory.h">
+      <Filter>widgets</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="hello.nar">
       <Filter>sample</Filter>
     </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="demo.nar">
+      <Filter>sample</Filter>
+    </None>
   </ItemGroup>
 </Project>

@@ -5,9 +5,11 @@
 
 #include <nana/runner/widget_cfg.h>
 
+#include <nana/gui/widgets/textbox.hpp>
+
 namespace nana::runner {
 
-    using textbox_ui = nana::textbox;
+    using textbox = nana::textbox;
 
     class textbox_cfg : public widget_cfg
     {
@@ -32,5 +34,21 @@ namespace nana::runner {
         void init_widget(widget& _w) const override;
 
     };
+
+    template<class T>
+    textbox& operator<<(textbox& _w, const T& _v)
+    {
+        string s = _w.caption();
+        s << _v;
+        _w.caption(s);
+        return _w;
+    }
+
+    template<class T>
+    void operator >> (const textbox& _w, T& _v)
+    {
+        string s = _w.caption();
+        s >> _v;
+    }
 
 }

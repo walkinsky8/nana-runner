@@ -5,9 +5,11 @@
 
 #include <nana/runner/widget_cfg.h>
 
+#include <nana/gui/widgets/panel.hpp>
+
 namespace nana::runner {
 
-    using panel_ui = nana::panel<1>;
+    using panel = nana::panel<1>;
 
     class panel_cfg : public widget_cfg
     {

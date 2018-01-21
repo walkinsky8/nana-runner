@@ -7,12 +7,15 @@
 
 namespace nana::runner {
 
-    using create_func = std::function<view_ptr ()>;
-
     class widget_factory
     {
+    public:
+        using create_func = std::function<cfg_ptr ()>;
+
+    private:
         std::map<string, create_func> widgets_;
 
+    private:
         widget_factory();
         widget_factory(const widget_factory&) = delete;
         widget_factory(widget_factory&&) = delete;
@@ -22,12 +25,20 @@ namespace nana::runner {
     public:
         static widget_factory& instance();
 
-        view_ptr create(const string& _type);
+        cfg_ptr create(const string& _type);
 
         void add(const string& _type, create_func _func);
         
         create_func get(const string& _type) const;
 
     };
+
+    template<class T>
+    inline void add_widget()
+    {
+        widget_factory::instance().add(T::type_name_(), T::new_);
+    }
+
+    void init_widgets();
 
 }

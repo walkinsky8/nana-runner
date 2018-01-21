@@ -5,7 +5,7 @@
 
 #include <nana/runner/widget_factory.h>
 
-nana::runner::wnd_ptr nana::runner::widget_cfg::get_widget_(id _id) const
+nana::runner::wnd_ptr nana::runner::widget_cfg::get_widget(id _id) const
 {
     auto i = m_widgets.find(_id);
     if (i == m_widgets.end())
@@ -18,31 +18,37 @@ void nana::runner::widget_cfg::make_widgets(widget_cfg& _root_cfg, widget_cfg* _
     set_parent(_parent_cfg);
 
     wnd_ptr w = create_widget(_parent_wnd, true);
-    if (w)
-    {
-        init_widget(*w);
-        _root_cfg.m_widgets[id_name()] = w;
-    }
 
     for (auto& i : m_children)
     {
         i->make_widgets(_root_cfg, this, _parent_wnd);
     }
+
+    if (w)
+    {
+        init_widget(*w);
+        _root_cfg.m_widgets[id_path()] = w;
+    }
 }
 
-void nana::runner::widget_cfg::make_widgets(nana::widget& _root_wnd)
+void nana::runner::widget_cfg::make_widgets()
 {
+    wnd_ptr root_wnd = create_widget(nullptr, true);
+    if (!root_wnd)
+        throw std::invalid_argument(string("invalid root widget ") + id_path().str());
+
     for (auto& i : m_children)
     {
-        i->make_widgets(*this, this, _root_wnd);
+        i->make_widgets(*this, this, *root_wnd);
     }
 
-    init_widget(_root_wnd);
+    init_widget(*root_wnd);
+    this->m_widgets[id_path()] = root_wnd;
 }
 
 void nana::runner::widget_cfg::make_div(string& _div) const
 {
-    _div << "<" << id_name() << " " << div_();
+    _div << "<" << id_path() << " " << div_();
     for (auto& i : m_children)
     {
         i->make_div(_div);
@@ -63,7 +69,7 @@ std::string nana::runner::widget_cfg::get_caption() const
     return to_upper(id_().str()[0]) + id_().str().substr(1);
 }
 
-nana::runner::view_ptr nana::runner::widget_cfg::from_file(wstring const& _filename)
+nana::runner::cfg_ptr nana::runner::widget_cfg::from_file(wstring const& _filename)
 {
     string cfg;
     if (!read_file(_filename, cfg))
@@ -71,8 +77,10 @@ nana::runner::view_ptr nana::runner::widget_cfg::from_file(wstring const& _filen
 
     parser parsed(cfg);
 
-    view_ptr v;
+    cfg_ptr v;
     parsed >> v;
+
+    v->make_widgets();
     return v;
 }
 

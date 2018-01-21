@@ -5,9 +5,11 @@
 
 #include <nana/runner/widget_cfg.h>
 
+#include <nana/gui/widgets/categorize.hpp>
+
 namespace nana::runner {
 
-    using categorize_ui = nana::categorize<string>;
+    using categorize = nana::categorize<string>;
 
     class categorize_cfg : public widget_cfg
     {
