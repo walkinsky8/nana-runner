@@ -140,7 +140,7 @@ namespace nana::runner {
 
     bool read_file(const wstring& _filename, string& _content);
 
-    void initialize();
+    void init_enums();
 
     template<class _Stream, class T>
     inline _Stream& codec(_Stream& _s, T& _v)

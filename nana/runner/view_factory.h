@@ -41,4 +41,9 @@ namespace nana::runner {
         view_factory::instance().add(T::type_name_(), T::new_);
     }
 
+    inline view_ptr create_view(widget_cfg& _cfg)
+    {
+        return view_factory::instance().create(_cfg.id_path(), _cfg);
+    }
+
 }

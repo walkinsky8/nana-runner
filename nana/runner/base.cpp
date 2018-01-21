@@ -48,7 +48,7 @@ bool nana::runner::read_file(const wstring& _filename, string& _content)
     return true;
 }
 
-void nana::runner::initialize()
+void nana::runner::init_enums()
 {
 #define NAR_ENUM_COLOR_ADD(c) NAR_ENUM_ADD(nana::colors, black, c)
     NAR_ENUM_COLOR_ADD(alice_blue);

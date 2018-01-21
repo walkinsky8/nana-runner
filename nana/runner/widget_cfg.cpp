@@ -43,7 +43,10 @@ void nana::runner::widget_cfg::make_widgets()
     }
 
     init_widget(*root_wnd);
-    this->m_widgets[id_path()] = root_wnd;
+
+    m_widgets[id_path()] = root_wnd;
+
+    root_wnd->show();
 }
 
 void nana::runner::widget_cfg::make_div(string& _div) const
@@ -79,8 +82,10 @@ nana::runner::cfg_ptr nana::runner::widget_cfg::from_file(wstring const& _filena
 
     cfg_ptr v;
     parsed >> v;
-
-    v->make_widgets();
+    if (v)
+    {
+        v->make_widgets();
+    }
     return v;
 }
 

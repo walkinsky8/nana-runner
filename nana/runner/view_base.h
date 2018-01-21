@@ -33,8 +33,6 @@ namespace nana::runner {
     public:
         virtual ~view_obj() = default;
 
-        virtual void show() = 0;
-
     };
 
 }

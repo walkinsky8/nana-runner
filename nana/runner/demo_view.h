@@ -127,8 +127,6 @@ namespace nana::runner::view {
             });
         }
 
-        void show() override { form_.show(); }
-
     };
 
 }
