@@ -42,6 +42,11 @@ bool nana::runner::read_file(const wstring& _filename, string& _content)
     while (ifs)
     {
         std::getline(ifs, line);
+        if (line.size() > 2)
+        {
+            if (line[0] == '\xef' && line[1] == '\xbb' && line[2] == '\xbf')
+                line.erase(0, 3);
+        }
         _content += line;
         _content += "\n";
     }

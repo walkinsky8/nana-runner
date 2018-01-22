@@ -194,6 +194,9 @@
     <ClInclude Include="..\..\nana\runner\view_factory.h">
       <Filter>widgets</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\nana\runner\font_view.h">
+      <Filter>sample</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="hello.nar">
@@ -202,6 +205,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="demo.nar">
+      <Filter>sample</Filter>
+    </None>
+    <None Include="font.nar">
       <Filter>sample</Filter>
     </None>
   </ItemGroup>

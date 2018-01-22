@@ -1,9 +1,9 @@
-@form{
+﻿@form{
     id=demo
     div="vert"
     pos={400 300}
     size={400 300}
-    typeface={Courier 12 bold}
+    typeface={10}
     @categorize{
         id=categorize
         caption="a\b\c"

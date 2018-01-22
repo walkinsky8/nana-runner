@@ -1,9 +1,9 @@
-@form{
+﻿@form{
     id=hello
     div="vert"
     pos={200 100}
     size={300 200}
-    typeface={Courier 12 bold}
+    typeface={Courier 10 bold italic}
     @label{
         id=world
         caption="Hello, world!"
@@ -12,7 +12,6 @@
         bgcolor=green
         fgcolor=yellow
         cursor=hand
-        typeface={Courier 12}
         visible=0
         transparent=0
     }

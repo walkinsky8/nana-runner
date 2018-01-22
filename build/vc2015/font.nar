@@ -1,0 +1,44 @@
+﻿@form{
+    id=font
+    div="vert"
+    pos={700 200}
+    size={400 300}
+    bgcolor=black
+    fgcolor=white
+    cursor=hand
+    typeface={Consolas 10}
+    @panel{ id=name div="weight=20"
+        @label{ id=l caption="Name:" div="weight=20%" align=right }
+        @textbox{ id=value caption=null multi_lines=0 }
+    }
+    @panel{ id=size div="weight=20"
+        @label{ id=l caption="Size:" div="weight=20%" align=right }
+        @textbox{ id=value caption=null multi_lines=0 }
+    }
+    @panel{ id=bold div="weight=20"
+        @panel{ id=d div="weight=20%" }
+        @checkbox{ id=value caption="Bold" }
+    }
+    @panel{ id=italic div="weight=20"
+        @panel{ id=d div="weight=20%" }
+        @checkbox{ id=value caption="Italic" }
+    }
+    @panel{ id=strikeout div="weight=20"
+        @panel{ id=d div="weight=20%" }
+        @checkbox{ id=value caption="Strike out" }
+    }
+    @panel{ id=underline div="weight=20"
+        @panel{ id=d div="weight=20%" }
+        @checkbox{ id=value caption="Underline" }
+    }
+    @label{ id=sample caption="Hello, world! 世界你好！" bgcolor=green}
+    @button{
+        id=quit
+        div="weight=30"
+        tooltip="exit program"
+        bgcolor=#ffff00
+        fgcolor=black
+        cursor=arrow
+        typeface={Lucida Console 12 bold}
+    }
+}

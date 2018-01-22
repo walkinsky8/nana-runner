@@ -141,6 +141,11 @@ namespace nana::runner {
 
         string get_caption() const;
 
+        const string& get_bgcolor() const;
+        const string& get_fgcolor() const;
+        const optional<cursor>& get_cursor() const;
+        const optional<font>& get_typeface() const;
+
     };
     inline std::ostream& operator<<(std::ostream& _os, const widget_cfg& _v)
     {

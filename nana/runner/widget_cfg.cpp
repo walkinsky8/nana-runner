@@ -75,6 +75,42 @@ std::string nana::runner::widget_cfg::get_caption() const
     return to_upper(id_().str()[0]) + id_().str().substr(1);
 }
 
+const nana::runner::string& nana::runner::widget_cfg::get_fgcolor() const
+{
+    if (!fgcolor_().empty())
+        return fgcolor_();
+    if (m_parent)
+        return m_parent->get_fgcolor();
+    return fgcolor_();
+}
+
+const nana::runner::string& nana::runner::widget_cfg::get_bgcolor() const
+{
+    if (!bgcolor_().empty())
+        return bgcolor_();
+    if (m_parent)
+        return m_parent->get_bgcolor();
+    return bgcolor_();
+}
+
+const nana::runner::optional<nana::runner::cursor>& nana::runner::widget_cfg::get_cursor() const
+{
+    if (!cursor_().empty())
+        return cursor_();
+    if (m_parent)
+        return m_parent->get_cursor();
+    return cursor_();
+}
+
+const nana::runner::optional<nana::runner::font>& nana::runner::widget_cfg::get_typeface() const
+{
+    if (!typeface_().empty())
+        return typeface_();
+    if (m_parent)
+        return m_parent->get_typeface();
+    return typeface_();
+}
+
 nana::runner::cfg_ptr nana::runner::widget_cfg::from_file(wstring const& _filename)
 {
     string cfg;
@@ -105,11 +141,13 @@ void nana::runner::widget_cfg::init_widget(widget& _w) const
     if (!tooltip_().empty())
         _w.tooltip(tooltip_());
 
-    if (!bgcolor_().empty())
-        _w.bgcolor(get_color(bgcolor_()));
+    auto& bg = get_bgcolor();
+    if (!bg.empty())
+        _w.bgcolor(get_color(bg));
 
-    if (!fgcolor_().empty())
-        _w.fgcolor(get_color(fgcolor_()));
+    auto& fg = get_fgcolor();
+    if (!fg.empty())
+        _w.fgcolor(get_color(fg));
 
     if (!pos_().empty())
         _w.move(pos_().value());
@@ -117,11 +155,13 @@ void nana::runner::widget_cfg::init_widget(widget& _w) const
     if (!size_().empty())
         _w.size(size_().value());
 
-    if (!cursor_().empty())
-        _w.cursor(cursor_().value().value());
+    auto& c = get_cursor();
+    if (!c.empty())
+        _w.cursor(c.value().value());
 
-    if (!typeface_().empty())
-        _w.typeface(typeface_().value());
+    auto& f = get_typeface();
+    if (!f.empty())
+        _w.typeface(f.value());
 
     if (!enabled_().empty())
         _w.enabled(enabled_().value());
