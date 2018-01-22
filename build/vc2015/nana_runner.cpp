@@ -17,7 +17,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 {
     using namespace nana::runner;
 
-    //add_view<view::Hello>();
+    add_view<view::Hello>();
     add_view<view::Demo>();
 
     app a(lpCmdLine);

@@ -12,8 +12,8 @@ namespace nana::runner
     class app
     {
         wstring cmdline_;
-        cfg_ptr cfg_;
-        view_ptr view_;
+        std::vector<wstring> args_;
+        std::vector<cfg_ptr> cfgs_;
 
     public:
         app(const wchar_t* _cmdline)
@@ -23,12 +23,17 @@ namespace nana::runner
             init_enums();
             init_widgets();
 
-            NAR_LOG("read cfg...");
-            cfg_ = widget_cfg::from_file(cmdline_);
-            NAR_LOG_NV("cfg_", dump(cfg_, false, 0, true));
-            
-            NAR_LOG("create view...");
-            view_ = create_view(*cfg_);
+            string u8s;
+            u8s << cmdline_;
+            parser ps{ u8s, true };
+            ps >> args_;
+
+            for (auto& filename : args_)
+            {
+                cfg_ptr p = widget_cfg::from_file(filename);
+                NAR_LOG_NV("cfg", dump(p, false, 0, true));
+                cfgs_.push_back(p);
+            }
             
             NAR_LOG("enter loop...");
             exec();

@@ -25,9 +25,6 @@ namespace nana::runner {
     namespace fs = std::experimental::filesystem;
     namespace fs_ext = nana::filesystem_ext;
 
-    class view_obj;
-    using view_ptr = std::shared_ptr<view_obj>;
-
     class view_obj
     {
     public:

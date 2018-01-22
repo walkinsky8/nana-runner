@@ -135,6 +135,17 @@ namespace nana::runner::detail {
             return true;
         }
 
+        void read_list(node& _node)
+        {
+            while (p_)
+            {
+                node child;
+                if (!read(child))
+                    break;
+                _node.add_child(child.name(), child);
+            }
+        }
+
         void throw_error(string msg)
         {
             throw std::invalid_argument(msg.c_str());
@@ -156,17 +167,20 @@ namespace nana::runner::detail {
 
     };
 
-    void parse(node& _node, istr _s)
+    void parse(node& _node, istr _s, bool _is_list)
     {
         tokenizer p{ _s };
-        p.read(_node);
+        if (_is_list)
+            p.read_list(_node);
+        else
+            p.read(_node);
     }
 
 }
 
-nana::runner::parser::parser(istr _s)
+nana::runner::parser::parser(istr _s, bool _is_list)
 {
-    detail::parse(inner_, _s);
+    detail::parse(inner_, _s, _is_list);
 }
 
 nana::runner::parser::parser(const node* _outer)

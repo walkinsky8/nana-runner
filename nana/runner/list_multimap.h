@@ -23,6 +23,11 @@ namespace nana::runner
             return list_.empty();
         }
 
+        size_t size() const
+        {
+            return list_.size();
+        }
+
         const _List& list() const
         {
             return list_;

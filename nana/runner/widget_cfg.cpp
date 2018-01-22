@@ -4,6 +4,7 @@
 #include <nana/runner/widget_cfg.h>
 
 #include <nana/runner/widget_factory.h>
+#include <nana/runner/view_factory.h>
 
 nana::runner::wnd_ptr nana::runner::widget_cfg::get_widget(id _id) const
 {
@@ -45,6 +46,8 @@ void nana::runner::widget_cfg::make_widgets()
     init_widget(*root_wnd);
 
     m_widgets[id_path()] = root_wnd;
+
+    m_view = create_view(*this);
 
     root_wnd->show();
 }

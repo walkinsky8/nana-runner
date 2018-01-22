@@ -24,9 +24,13 @@
 
 namespace nana::runner {
 
+    using wnd_ptr = std::shared_ptr<widget>;
+
     class widget_cfg;
     using cfg_ptr = std::shared_ptr<widget_cfg>;
-    using wnd_ptr = std::shared_ptr<widget>;
+
+    class view_obj;
+    using view_ptr = std::shared_ptr<view_obj>;
 
     class widget_cfg
     {
@@ -69,6 +73,8 @@ namespace nana::runner {
         // only for root(form)
         using _Widgets = std::map<id, wnd_ptr>;
         NAR_FIELD(_Widgets, widgets);
+
+        NAR_FIELD(view_ptr, view);
 
     public:
         virtual ~widget_cfg() = default;

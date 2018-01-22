@@ -15,7 +15,7 @@ namespace nana::runner
         const node* outer_{};
 
     public:
-        parser(istr _s);
+        parser(istr _s, bool _is_list=false);
         parser(const node* _outer);
 
         const node& unit() const;
@@ -119,6 +119,13 @@ namespace nana::runner
         template<class T>
         void operator>>(std::vector<T>& _v) const
         {
+            if (unit().simple())
+            {
+                T value;
+                *this >> value;
+                _v.push_back(value);
+            }
+            else
             for (auto& n : unit().children().list())
             {
                 parser child(&n);

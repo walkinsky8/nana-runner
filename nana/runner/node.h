@@ -79,6 +79,11 @@ namespace nana::runner
             return children_.empty();
         }
 
+        size_t num_of_children() const
+        {
+            return children_.size();
+        }
+
         bool valueIsEmpty() const
         {
             return value_.empty() && children_.empty();
