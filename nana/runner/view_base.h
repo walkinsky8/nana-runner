@@ -18,6 +18,8 @@ namespace nana::runner {
     using point = nana::point;
     using size = nana::size;
     using font = nana::paint::font;
+    using color = nana::color;
+    using colors = enum_<nana::colors, nana::colors::black>;
     using cursor = enum_<nana::cursor, nana::cursor::arrow>;
     using align = enum_<nana::align, nana::align::left>;
     using align_v = enum_<nana::align_v, nana::align_v::top>;

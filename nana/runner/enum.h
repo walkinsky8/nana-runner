@@ -44,6 +44,14 @@ namespace nana::runner {
             s2v()[s] = v;
         }
 
+        static string* find_name(unsigned _value)
+        {
+            const auto i = v2s().find((E)(int)_value);
+            if (i != v2s().end())
+                return &(*i).second;
+            return nullptr;
+        }
+
         static E* find_value(const string& s)
         {
             const auto i = s2v().find(s);

@@ -6,10 +6,10 @@
 nana::color nana::runner::get_color(const string& _s)
 {
     try {
-        nana::colors* clr = enum_<nana::colors, nana::colors::black>::find_value(_s);
+        nana::colors* clr = colors::find_value(_s);
         if (clr)
-            return color{ *clr };
-        return color{ _s };
+            return nana::color{ *clr };
+        return nana::color{ _s };
     }
     catch (std::exception& e) {
         nana::msgbox mb("Exception");
@@ -125,11 +125,23 @@ void nana::runner::operator >> (const parser& _p, font& _v)
 
 nana::runner::string& nana::runner::operator << (string& _w, const color& _v)
 {
-    _w << "rgb(";
-    _w << _v.r();
-    _w << "," << _v.g();
-    _w << "," << _v.b();
-    _w << ")";
+    unsigned c = 0;
+    c = (unsigned)_v.r();
+    c <<= 8;
+    c |= (unsigned)_v.g();
+    c <<= 8;
+    c |= (unsigned)_v.b();
+    string* s = colors::find_name(c);
+    if (s)
+        _w << *s;
+    else
+    {
+        _w << "rgb(";
+        _w << _v.r();
+        _w << "," << _v.g();
+        _w << "," << _v.b();
+        _w << ")";
+    }
     return _w;
 }
 
