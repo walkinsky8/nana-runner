@@ -48,22 +48,22 @@ namespace nana::runner::view {
     public:
         Demo(widget_cfg& _cfg)
             : cfg_{ _cfg }
-            , form_{ _cfg.wnd<form>("demo") }
-            , categorize_{ _cfg.wnd<categorize>("demo.categorize") }
-            , world_{ _cfg.wnd<label>("demo.world") }
-            , bg_{ _cfg.wnd<textbox>("demo.color.bg.value") }
-            , fg_{ _cfg.wnd<textbox>("demo.color.fg.value") }
-            , name_{ _cfg.wnd<textbox>("demo.f.name.value") }
-            , size_{ _cfg.wnd<textbox>("demo.f.size.value") }
-            , bold_{ _cfg.wnd<checkbox>("demo.font.bold") }
-            , italic_{ _cfg.wnd<checkbox>("demo.font.italic") }
-            , strikeout_{ _cfg.wnd<checkbox>("demo.font.strikeout") }
-            , underline_{ _cfg.wnd<checkbox>("demo.font.underline") }
-            , log_{ _cfg.wnd<textbox>("demo.log") }
-            , editable_{ _cfg.wnd<checkbox>("demo.cmd.editable") }
-            , linewrap_{ _cfg.wnd<checkbox>("demo.cmd.linewrap") }
-            , multilines_{ _cfg.wnd<checkbox>("demo.cmd.multilines") }
-            , quit_{ _cfg.wnd<button>("demo.cmd.quit") }
+            , form_{ _cfg.wnd<form>() }
+            , categorize_{ _cfg.wnd<categorize>("categorize") }
+            , world_{ _cfg.wnd<label>("world") }
+            , bg_{ _cfg.wnd<textbox>("color.bg.value") }
+            , fg_{ _cfg.wnd<textbox>("color.fg.value") }
+            , name_{ _cfg.wnd<textbox>("f.name.value") }
+            , size_{ _cfg.wnd<textbox>("f.size.value") }
+            , bold_{ _cfg.wnd<checkbox>("font.bold") }
+            , italic_{ _cfg.wnd<checkbox>("font.italic") }
+            , strikeout_{ _cfg.wnd<checkbox>("font.strikeout") }
+            , underline_{ _cfg.wnd<checkbox>("font.underline") }
+            , log_{ _cfg.wnd<textbox>("log") }
+            , editable_{ _cfg.wnd<checkbox>("cmd.editable") }
+            , linewrap_{ _cfg.wnd<checkbox>("cmd.linewrap") }
+            , multilines_{ _cfg.wnd<checkbox>("cmd.multilines") }
+            , quit_{ _cfg.wnd<button>("cmd.quit") }
         {
             set_log_handler([this](const string& s) {
                 write_console(s);

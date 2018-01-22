@@ -1,0 +1,29 @@
+﻿@form{
+    id=color
+    caption="Color Sample"
+    div="vert"
+    pos={900 300}
+    size={450 300}
+    typeface={ 10 }
+    @panel{ id=bg div="weight=20"
+        @label{ id=n caption="Bgcolor:" div="weight=20%" align=right }
+        @textbox{ id=value caption=null multi_lines=0 }
+    }
+    @panel{ id=fg div="weight=20"
+        @label{ id=n caption="Fgcolor:" div="weight=20%" align=right }
+        @textbox{ id=value caption=null multi_lines=0 }
+    }
+    @panel{ id=sample
+        @label{ id=n caption="Sample:" div="weight=20%" align=right }
+        @textbox{ id=value caption="Hello, world! 世界你好！" typeface={15} line_wrapped=1 }
+    }
+    @button{
+        id=quit
+        div="weight=30"
+        tooltip="exit program"
+        bgcolor=#ffff00
+        fgcolor=black
+        cursor=arrow
+        typeface={Lucida Console 12 bold}
+    }
+}

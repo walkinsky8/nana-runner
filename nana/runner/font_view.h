@@ -39,16 +39,16 @@ namespace nana::runner::view {
     public:
         Font(widget_cfg& _cfg)
             : cfg_{ _cfg }
-            , form_{ _cfg.wnd<form>("font") }
-            , name_{ _cfg.wnd<textbox>("font.name.value") }
-            , size_{ _cfg.wnd<textbox>("font.size.value") }
-            , slider_{ _cfg.wnd<slider>("font.size.slider") }
-            , bold_{ _cfg.wnd<checkbox>("font.bold.value") }
-            , italic_{ _cfg.wnd<checkbox>("font.italic.value") }
-            , strikeout_{ _cfg.wnd<checkbox>("font.strikeout.value") }
-            , underline_{ _cfg.wnd<checkbox>("font.underline.value") }
-            , sample_{ _cfg.wnd<textbox>("font.sample.value") }
-            , quit_{ _cfg.wnd<button>("font.quit") }
+            , form_{ _cfg.wnd<form>() }
+            , name_{ _cfg.wnd<textbox>("name.value") }
+            , size_{ _cfg.wnd<textbox>("size.value") }
+            , slider_{ _cfg.wnd<slider>("size.slider") }
+            , bold_{ _cfg.wnd<checkbox>("bold.value") }
+            , italic_{ _cfg.wnd<checkbox>("italic.value") }
+            , strikeout_{ _cfg.wnd<checkbox>("strikeout.value") }
+            , underline_{ _cfg.wnd<checkbox>("underline.value") }
+            , sample_{ _cfg.wnd<textbox>("sample.value") }
+            , quit_{ _cfg.wnd<button>("quit") }
         {
             name_ << sample_.typeface().name();
             size_ << sample_.typeface().size();

@@ -31,10 +31,10 @@ namespace nana::runner::view {
     public:
         Hello(widget_cfg& _cfg)
             : cfg_{ _cfg }
-            , form_{ _cfg.wnd<form>("hello") }
-            , world_{ _cfg.wnd<label>("hello.world") }
-            , log_{ _cfg.wnd<textbox>("hello.log") }
-            , quit_{ _cfg.wnd<button>("hello.quit") }
+            , form_{ _cfg.wnd<form>() }
+            , world_{ _cfg.wnd<label>("world") }
+            , log_{ _cfg.wnd<textbox>("log") }
+            , quit_{ _cfg.wnd<button>("quit") }
         {
             set_log_handler([this](const string& s) {
                 write_console(s);

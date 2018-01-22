@@ -120,8 +120,12 @@ namespace nana::runner {
         wnd_ptr get_widget(id _id) const;
 
         template<class T>
-        T& wnd(id _id) const
+        T& wnd(id _id = {}) const
         {
+            if (_id.empty())
+                _id = id_path();
+            else
+                _id = id_path() / _id;
             wnd_ptr w = get_widget(_id);
             if (!w)
                 throw std::invalid_argument("no widget for " + _id.str());

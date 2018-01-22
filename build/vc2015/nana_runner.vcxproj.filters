@@ -105,7 +105,9 @@
     <ClCompile Include="..\..\nana\runner\view_factory.cpp">
       <Filter>widgets</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\nana\runner\slider_cfg.cpp" />
+    <ClCompile Include="..\..\nana\runner\slider_cfg.cpp">
+      <Filter>widgets</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\nana\runner\base.h">
@@ -198,7 +200,12 @@
     <ClInclude Include="..\..\nana\runner\font_view.h">
       <Filter>sample</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\nana\runner\slider_cfg.h" />
+    <ClInclude Include="..\..\nana\runner\slider_cfg.h">
+      <Filter>widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nana\runner\color_view.h">
+      <Filter>sample</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="hello.nar">
@@ -210,6 +217,9 @@
       <Filter>sample</Filter>
     </None>
     <None Include="font.nar">
+      <Filter>sample</Filter>
+    </None>
+    <None Include="color.nar">
       <Filter>sample</Filter>
     </None>
   </ItemGroup>
