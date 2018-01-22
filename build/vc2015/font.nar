@@ -2,8 +2,8 @@
     id=font
     caption="Font Sample"
     div="vert"
-    pos={700 200}
-    size={450 300}
+    pos={600 300}
+    size={400 300}
     bgcolor=black
     fgcolor=white
     cursor=hand

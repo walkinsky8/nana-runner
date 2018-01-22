@@ -12,9 +12,7 @@ nana::color nana::runner::get_color(const string& _s)
         return nana::color{ _s };
     }
     catch (std::exception& e) {
-        nana::msgbox mb("Exception");
-        mb << e.what();
-        mb.show();
+        NAR_LOG("exception: " << e.what() << ": " << _s);
     }
     return nana::colors::black;
 }
