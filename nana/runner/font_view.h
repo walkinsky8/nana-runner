@@ -6,9 +6,10 @@
 #include <nana/runner/widget_cfg.h>
 
 #include <nana/runner/form_cfg.h>
-#include <nana/runner/label_cfg.h>
 #include <nana/runner/textbox_cfg.h>
+#include <nana/runner/slider_cfg.h>
 #include <nana/runner/checkbox_cfg.h>
+#include <nana/runner/label_cfg.h>
 #include <nana/runner/button_cfg.h>
 
 namespace nana::runner::view {
@@ -19,14 +20,15 @@ namespace nana::runner::view {
 
         form& form_;
 
-        label& sample_;
-        //font
         textbox& name_;
         textbox& size_;
+        slider& slider_;
         checkbox& bold_;
         checkbox& italic_;
         checkbox& strikeout_;
         checkbox& underline_;
+
+        textbox& sample_;
 
         button& quit_;
 
@@ -40,11 +42,12 @@ namespace nana::runner::view {
             , form_{ _cfg.wnd<form>("font") }
             , name_{ _cfg.wnd<textbox>("font.name.value") }
             , size_{ _cfg.wnd<textbox>("font.size.value") }
+            , slider_{ _cfg.wnd<slider>("font.size.slider") }
             , bold_{ _cfg.wnd<checkbox>("font.bold.value") }
             , italic_{ _cfg.wnd<checkbox>("font.italic.value") }
             , strikeout_{ _cfg.wnd<checkbox>("font.strikeout.value") }
             , underline_{ _cfg.wnd<checkbox>("font.underline.value") }
-            , sample_{ _cfg.wnd<label>("font.sample") }
+            , sample_{ _cfg.wnd<textbox>("font.sample.value") }
             , quit_{ _cfg.wnd<button>("font.quit") }
         {
             name_ << sample_.typeface().name();
@@ -59,6 +62,9 @@ namespace nana::runner::view {
                 double sz = 0;
                 size_ >> sz;
                 sample_.typeface(make_font(f.name(), sz, f.bold(), f.italic(), f.strikeout(), f.underline()));
+            });
+            slider_.events().value_changed([this] {
+                size_ << slider_.value();
             });
             bold_.events().checked([this] {
                 font f = sample_.typeface();

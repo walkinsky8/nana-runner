@@ -105,6 +105,7 @@
     <ClCompile Include="..\..\nana\runner\view_factory.cpp">
       <Filter>widgets</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\nana\runner\slider_cfg.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\nana\runner\base.h">
@@ -197,6 +198,7 @@
     <ClInclude Include="..\..\nana\runner\font_view.h">
       <Filter>sample</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\nana\runner\slider_cfg.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="hello.nar">

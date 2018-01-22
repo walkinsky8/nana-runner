@@ -38,7 +38,7 @@ namespace nana::runner {
     template<class T>
     textbox& operator<<(textbox& _w, const T& _v)
     {
-        string s = _w.caption();
+        string s;
         s << _v;
         _w.caption(s);
         return _w;

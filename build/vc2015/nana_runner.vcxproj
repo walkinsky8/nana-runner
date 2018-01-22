@@ -178,6 +178,7 @@
     <ClCompile Include="..\..\nana\runner\node.cpp" />
     <ClCompile Include="..\..\nana\runner\panel_cfg.cpp" />
     <ClCompile Include="..\..\nana\runner\parser.cpp" />
+    <ClCompile Include="..\..\nana\runner\slider_cfg.cpp" />
     <ClCompile Include="..\..\nana\runner\textbox_cfg.cpp" />
     <ClCompile Include="..\..\nana\runner\view_base.cpp" />
     <ClCompile Include="..\..\nana\runner\view_factory.cpp" />
@@ -215,6 +216,7 @@
     <ClInclude Include="..\..\nana\runner\optional.h" />
     <ClInclude Include="..\..\nana\runner\panel_cfg.h" />
     <ClInclude Include="..\..\nana\runner\parser.h" />
+    <ClInclude Include="..\..\nana\runner\slider_cfg.h" />
     <ClInclude Include="..\..\nana\runner\textbox_cfg.h" />
     <ClInclude Include="..\..\nana\runner\view_base.h" />
     <ClInclude Include="..\..\nana\runner\view_factory.h" />
