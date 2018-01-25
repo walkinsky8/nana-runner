@@ -1,8 +1,8 @@
 ﻿@form{
     id=demo
     div="vert"
-    pos={400 450}
-    size={400 300}
+    pos={400 500}
+    size={400 305}
     typeface={10}
     @categorize{
         id=categorize

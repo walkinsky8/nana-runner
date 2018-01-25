@@ -1,8 +1,9 @@
 ﻿@form{
     id=log_viewer
+    caption="Log Viewer"
     div="vert"
     pos={1200 150}
-    size={600 800}
+    size={500 655}
     @textbox{
         id=content
         caption=null
@@ -13,7 +14,7 @@
         multi_lines=1
         editable=0
     }
-    @panel{ id=cmd div="weight=30" typeface={bold}
+    @panel{ id=cmd div="weight=30" typeface={ bold }
         @button{
             id=close
             div="weight=50%"

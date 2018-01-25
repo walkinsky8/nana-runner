@@ -1,8 +1,8 @@
 ﻿@form{
     id=hello
     div="vert"
-    pos={200 150}
-    size={400 300}
+    pos={400 150}
+    size={400 320}
     typeface={Courier 10 bold}
     @label{
         id=world
