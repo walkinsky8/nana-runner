@@ -61,7 +61,7 @@
         enabled=1
         line_wrapped=0
         multi_lines=1
-        editable=0
+        editable=1
     }
     @panel{
         id=cmd

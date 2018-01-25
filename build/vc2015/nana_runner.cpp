@@ -7,6 +7,7 @@
 
 #include <nana/runner/view_factory.h>
 
+#include <nana/runner/log_viewer_view.h>
 #include <nana/runner/hello_view.h>
 #include <nana/runner/demo_view.h>
 #include <nana/runner/font_view.h>
@@ -19,6 +20,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 {
     using namespace nana::runner;
 
+    add_view<view::LogViewer>();
     add_view<view::Hello>();
     add_view<view::Demo>();
     add_view<view::Font>();

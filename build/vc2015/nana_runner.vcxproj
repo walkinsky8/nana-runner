@@ -212,6 +212,7 @@
     <ClInclude Include="..\..\nana\runner\list_map.h" />
     <ClInclude Include="..\..\nana\runner\list_multimap.h" />
     <ClInclude Include="..\..\nana\runner\log.h" />
+    <ClInclude Include="..\..\nana\runner\log_viewer_view.h" />
     <ClInclude Include="..\..\nana\runner\model_base.h" />
     <ClInclude Include="..\..\nana\runner\node.h" />
     <ClInclude Include="..\..\nana\runner\optional.h" />
@@ -230,6 +231,7 @@
     <None Include="color.nar" />
     <None Include="demo.nar" />
     <None Include="font.nar" />
+    <None Include="log_viewer.nar" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

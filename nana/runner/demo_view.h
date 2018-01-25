@@ -65,10 +65,10 @@ namespace nana::runner::view {
             , multilines_{ _cfg.wnd<checkbox>("cmd.multilines") }
             , quit_{ _cfg.wnd<button>("cmd.close") }
         {
-            set_log_handler([this](const string& s) {
-                write_console(s);
-                log_.append(s, false);
-            });
+            //set_log_handler([this](const string& s) {
+            //    write_console(s);
+            //    log_.append(s, false);
+            //});
 
             //categorize_.caption(fs_ext::path_user());
             categorize_.caption(fs::current_path());

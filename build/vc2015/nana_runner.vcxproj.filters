@@ -206,6 +206,9 @@
     <ClInclude Include="..\..\nana\runner\color_view.h">
       <Filter>sample</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\nana\runner\log_viewer_view.h">
+      <Filter>sample</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="hello.nar">
@@ -220,6 +223,9 @@
       <Filter>sample</Filter>
     </None>
     <None Include="color.nar">
+      <Filter>sample</Filter>
+    </None>
+    <None Include="log_viewer.nar">
       <Filter>sample</Filter>
     </None>
   </ItemGroup>

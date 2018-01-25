@@ -5,7 +5,6 @@
 
 #include <nana/runner/widget_cfg.h>
 
-#include <nana/runner/form_cfg.h>
 #include <nana/runner/label_cfg.h>
 #include <nana/runner/textbox_cfg.h>
 #include <nana/runner/button_cfg.h>
@@ -16,14 +15,11 @@ namespace nana::runner::view {
     {
         widget_cfg& cfg_;
 
-        form& form_;
-
         label& world_;
 
-        textbox& log_;
+        textbox& text_;
 
         button& close_;
-        button& exit_;
 
     public:
         static string type_name_() { return "hello"; }
@@ -32,25 +28,11 @@ namespace nana::runner::view {
     public:
         Hello(widget_cfg& _cfg)
             : cfg_{ _cfg }
-            , form_{ _cfg.wnd<form>() }
             , world_{ _cfg.wnd<label>("world") }
-            , log_{ _cfg.wnd<textbox>("log") }
-            , close_{ _cfg.wnd<button>("cmd.close") }
-            , exit_{ _cfg.wnd<button>("cmd.exit") }
+            , text_{ _cfg.wnd<textbox>("text") }
+            , close_{ _cfg.wnd<button>("close") }
         {
-            set_log_handler([this](const string& s) {
-                write_console(s);
-                log_.append(s, false);
-            });
-
-            close_.events().click([this] {
-                cfg_.close();
-            });
-            exit_.events().click([this] {
-                auto f = cfg_.close_all_();
-                if (f)
-                    f();
-            });
+            close_.events().click([this] { cfg_.close(); });
         }
 
     };

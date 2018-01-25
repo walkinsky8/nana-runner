@@ -1,0 +1,29 @@
+﻿@form{
+    id=log_viewer
+    div="vert"
+    pos={1200 150}
+    size={600 800}
+    @textbox{
+        id=content
+        caption=null
+        bgcolor="#000000"
+        fgcolor="rgb(0,255,0)"
+        typeface={Courier New 10}
+        line_wrapped=0
+        multi_lines=1
+        editable=0
+    }
+    @panel{ id=cmd div="weight=30" typeface={bold}
+        @button{
+            id=close
+            div="weight=50%"
+            tooltip="close window"
+            bgcolor=yellow
+        }
+        @button{
+            id=exit
+            tooltip="exit program"
+            bgcolor=red
+        }
+    }
+}

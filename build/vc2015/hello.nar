@@ -16,38 +16,29 @@
         transparent=0
     }
     @textbox{
-        id=log
-        caption=null
-        tooltip="log window"
-        div=""
+        id=text
+        caption="Hello, world!"
         bgcolor="#000000"
         fgcolor="rgb(0,255,0)"
         typeface={Courier New 10}
         enabled=1
         line_wrapped=0
         multi_lines=1
-        editable=0
+        editable=1
     }
-    @panel{ id=cmd div="weight=30"
-        @button{
-            id=exit
-            div="weight=50%"
-            tooltip="exit program"
-            bgcolor=yellow
-        }
-        @button{
-            id=close
-            tooltip="close window"
-            bgcolor=#c00000
-            fgcolor=black
-            typeface={Lucida Console 12 bold}
-            enabled=1
-            enable_pushed=0
-            pushed=1
-            omitted=
-            enable_focus_color=0
-            transparent=0
-            edge_effects=1
-        }
+    @button{
+        id=close
+        div="weight=30"
+        tooltip="close window"
+        bgcolor=yellow
+        fgcolor=black
+        typeface={Lucida Console 12 bold}
+        enabled=1
+        enable_pushed=0
+        pushed=1
+        omitted=
+        enable_focus_color=0
+        transparent=0
+        edge_effects=1
     }
 }
