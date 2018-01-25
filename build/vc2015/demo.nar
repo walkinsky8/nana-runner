@@ -85,7 +85,7 @@
             transparent=0
         }
         @button{
-            id=quit
+            id=close
             tooltip="exit program"
             bgcolor=#ffff00
             fgcolor=black

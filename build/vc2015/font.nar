@@ -38,7 +38,7 @@
         @textbox{ id=value caption="Hello, world! 世界你好！" bgcolor=green line_wrapped=1 }
     }
     @button{
-        id=quit
+        id=close
         div="weight=30"
         tooltip="exit program"
         bgcolor=#ffff00

@@ -63,7 +63,7 @@ namespace nana::runner::view {
             , editable_{ _cfg.wnd<checkbox>("cmd.editable") }
             , linewrap_{ _cfg.wnd<checkbox>("cmd.linewrap") }
             , multilines_{ _cfg.wnd<checkbox>("cmd.multilines") }
-            , quit_{ _cfg.wnd<button>("cmd.quit") }
+            , quit_{ _cfg.wnd<button>("cmd.close") }
         {
             set_log_handler([this](const string& s) {
                 write_console(s);

@@ -123,21 +123,19 @@ void nana::runner::operator >> (const parser& _p, font& _v)
 
 nana::runner::string& nana::runner::operator << (string& _w, const color& _v)
 {
-    unsigned c = 0;
-    c = (unsigned)_v.r();
-    c <<= 8;
-    c |= (unsigned)_v.g();
-    c <<= 8;
-    c |= (unsigned)_v.b();
+    unsigned r = (unsigned)(_v.r() + 0.5);
+    unsigned g = (unsigned)(_v.g() + 0.5);
+    unsigned b = (unsigned)(_v.b() + 0.5);
+    unsigned c = (r << 16) + (g << 8) + b;
     string* s = colors::find_name(c);
     if (s)
         _w << *s;
     else
     {
         _w << "rgb(";
-        _w << _v.r();
-        _w << "," << _v.g();
-        _w << "," << _v.b();
+        _w << r;
+        _w << "," << g;
+        _w << "," << b;
         _w << ")";
     }
     return _w;

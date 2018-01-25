@@ -32,6 +32,8 @@ namespace nana::runner {
     class view_obj;
     using view_ptr = std::shared_ptr<view_obj>;
 
+    using close_all_func = std::function<void()>;
+
     class widget_cfg
     {
         NAR_FIELD(id, id);
@@ -74,7 +76,11 @@ namespace nana::runner {
         using _Widgets = std::map<id, wnd_ptr>;
         NAR_FIELD(_Widgets, widgets);
 
+        NAR_FIELD(wnd_ptr, root_wnd);
+
         NAR_FIELD(view_ptr, view);
+
+        NAR_FIELD(close_all_func, close_all);
 
     public:
         virtual ~widget_cfg() = default;
@@ -90,6 +96,9 @@ namespace nana::runner {
         virtual wnd_ptr create_widget(window _parent, bool _visible) const = 0;
 
         virtual void init_widget(widget& _w) const;
+
+        void show() const;
+        void close() const;
 
         template<class T>
         T& cast()

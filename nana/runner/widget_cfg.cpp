@@ -34,22 +34,34 @@ void nana::runner::widget_cfg::make_widgets(widget_cfg& _root_cfg, widget_cfg* _
 
 void nana::runner::widget_cfg::make_widgets()
 {
-    wnd_ptr root_wnd = create_widget(nullptr, true);
-    if (!root_wnd)
+    m_root_wnd = create_widget(nullptr, true);
+    if (!m_root_wnd)
         throw std::invalid_argument(string("invalid root widget ") + id_path().str());
 
     for (auto& i : m_children)
     {
-        i->make_widgets(*this, this, *root_wnd);
+        i->make_widgets(*this, this, *m_root_wnd);
     }
 
-    init_widget(*root_wnd);
+    init_widget(*m_root_wnd);
 
-    m_widgets[id_path()] = root_wnd;
+    m_widgets[id_path()] = m_root_wnd;
 
     m_view = create_view(*this);
 
-    root_wnd->show();
+    show();
+}
+
+void nana::runner::widget_cfg::show() const
+{
+    if (m_root_wnd)
+        m_root_wnd->show();
+}
+
+void nana::runner::widget_cfg::close() const
+{
+    if (m_root_wnd)
+        m_root_wnd->close();
 }
 
 void nana::runner::widget_cfg::make_div(string& _div) const

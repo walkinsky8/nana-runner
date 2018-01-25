@@ -28,10 +28,13 @@ namespace nana::runner
             parser ps{ u8s, true };
             ps >> args_;
 
+            auto close_all_func = [this] { close_all(); };
+
             for (auto& filename : args_)
             {
                 cfg_ptr p = widget_cfg::from_file(filename);
                 NAR_LOG_NV("cfg", dump(p, false, 0, true));
+                p->close_all_(close_all_func);
                 cfgs_.push_back(p);
             }
             
@@ -39,6 +42,12 @@ namespace nana::runner
             exec();
 
             NAR_LOG("leave.");
+        }
+
+        void close_all()
+        {
+            for (auto i : cfgs_)
+                i->close();
         }
 
     };

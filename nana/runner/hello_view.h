@@ -22,7 +22,8 @@ namespace nana::runner::view {
 
         textbox& log_;
 
-        button& quit_;
+        button& close_;
+        button& exit_;
 
     public:
         static string type_name_() { return "hello"; }
@@ -34,15 +35,21 @@ namespace nana::runner::view {
             , form_{ _cfg.wnd<form>() }
             , world_{ _cfg.wnd<label>("world") }
             , log_{ _cfg.wnd<textbox>("log") }
-            , quit_{ _cfg.wnd<button>("quit") }
+            , close_{ _cfg.wnd<button>("cmd.close") }
+            , exit_{ _cfg.wnd<button>("cmd.exit") }
         {
             set_log_handler([this](const string& s) {
                 write_console(s);
                 log_.append(s, false);
             });
 
-            quit_.events().click([this] {
-                form_.close();
+            close_.events().click([this] {
+                cfg_.close();
+            });
+            exit_.events().click([this] {
+                auto f = cfg_.close_all_();
+                if (f)
+                    f();
             });
         }
 

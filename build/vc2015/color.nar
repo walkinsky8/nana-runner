@@ -4,7 +4,7 @@
     div="vert"
     pos={800 600}
     size={400 300}
-    typeface={ 12 }
+    typeface={ 10 }
     @panel{ id=bg div="weight=25"
         @label{ id=n caption="Bgcolor:" div="weight=20%" align=right }
         @textbox{ id=value caption=null multi_lines=0 }
@@ -13,41 +13,50 @@
         @label{ id=n caption="Fgcolor:" div="weight=20%" align=right }
         @textbox{ id=value caption=null multi_lines=0 }
     }
-    @panel{ id=sample div="weight=25"
+    @panel{ id=sample div="weight=60"
         @label{ id=n caption="Sample:" div="weight=20%" align=right }
-        @textbox{ id=value caption="Hello, world!" bgcolor=black fgcolor=white line_wrapped=1 }
-    }
-    @panel{ id=revert div="weight=25"
-        @label{ id=n caption="Revert:" div="weight=20%" align=right }
-        @textbox{ id=value caption="世界你好！" bgcolor=white fgcolor=black line_wrapped=1 }
+        @textbox{ id=normal caption="Hello, world!" typeface={ 15 } bgcolor=black fgcolor=grey multi_lines=1 line_wrapped=1 div="weight=40%" }
+        @textbox{ id=revert caption="大家還好嗎？"   typeface={ 15 } bgcolor=grey fgcolor=black multi_lines=1 line_wrapped=1 }
     }
     @panel{ id=r div="weight=25"
         @label{ id=n caption="R:" div="weight=20%" align=right }
+        @textbox{ id=v caption=0 div="weight=36" multi_lines=0 }
+        @label{ id=max caption="/255" div="weight=36" }
         @slider{ id=value vertical=0 maximum=255 }
     }
     @panel{ id=g div="weight=25"
         @label{ id=n caption="G:" div="weight=20%" align=right }
+        @textbox{ id=v caption=0 div="weight=36" multi_lines=0 }
+        @label{ id=max caption="/255" div="weight=36" }
         @slider{ id=value vertical=0 maximum=255 }
     }
     @panel{ id=b div="weight=25"
         @label{ id=n caption="B:" div="weight=20%" align=right }
+        @textbox{ id=v caption=0 div="weight=36" multi_lines=0 }
+        @label{ id=max caption="/255" div="weight=36" }
         @slider{ id=value vertical=0 maximum=255 }
     }
     @panel{ id=h div="weight=25"
         @label{ id=n caption="H:" div="weight=20%" align=right }
-        @slider{ id=value vertical=0 maximum=360 value=180}
+        @textbox{ id=v caption=180 div="weight=36" multi_lines=0 }
+        @label{ id=max caption="/360" div="weight=36" }
+        @slider{ id=value vertical=0 maximum=360 value=180 }
     }
     @panel{ id=s div="weight=25"
         @label{ id=n caption="S:" div="weight=20%" align=right }
-        @slider{ id=value vertical=0 maximum=1000 value=100}
+        @textbox{ id=v caption=0 div="weight=36" multi_lines=0 }
+        @label{ id=max caption="/256" div="weight=36" }
+        @slider{ id=value vertical=0 maximum=256 value=0 }
     }
     @panel{ id=l div="weight=25"
         @label{ id=n caption="L:" div="weight=20%" align=right }
-        @slider{ id=value vertical=0 maximum=1000 value=1000 }
+        @textbox{ id=v caption=128 div="weight=36" multi_lines=0 }
+        @label{ id=max caption="/256" div="weight=36" }
+        @slider{ id=value vertical=0 maximum=256 value=128 }
     }
     @panel{ id=sep }
     @button{
-        id=quit
+        id=close
         div="weight=30"
         tooltip="exit program"
         bgcolor=#ffff00

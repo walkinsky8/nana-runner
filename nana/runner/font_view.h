@@ -48,7 +48,7 @@ namespace nana::runner::view {
             , strikeout_{ _cfg.wnd<checkbox>("strikeout.value") }
             , underline_{ _cfg.wnd<checkbox>("underline.value") }
             , sample_{ _cfg.wnd<textbox>("sample.value") }
-            , quit_{ _cfg.wnd<button>("quit") }
+            , quit_{ _cfg.wnd<button>("close") }
         {
             name_ << sample_.typeface().name();
             size_ << sample_.typeface().size();
@@ -84,7 +84,7 @@ namespace nana::runner::view {
             });
 
             quit_.events().click([this] {
-                form_.close();
+                cfg_.close();
             });
         }
 

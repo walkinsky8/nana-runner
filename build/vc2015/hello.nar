@@ -3,7 +3,7 @@
     div="vert"
     pos={200 150}
     size={400 300}
-    typeface={Courier 10 bold italic}
+    typeface={Courier 10 bold}
     @label{
         id=world
         caption="Hello, world!"
@@ -28,19 +28,26 @@
         multi_lines=1
         editable=0
     }
-    @button{
-        id=quit
-        tooltip="exit program"
-        div="weight=30"
-        bgcolor=#c00000
-        fgcolor=black
-        typeface={Lucida Console 12 bold}
-        enabled=1
-        enable_pushed=0
-        pushed=1
-        omitted=
-        enable_focus_color=0
-        transparent=0
-        edge_effects=1
+    @panel{ id=cmd div="weight=30"
+        @button{
+            id=exit
+            div="weight=50%"
+            tooltip="exit program"
+            bgcolor=yellow
+        }
+        @button{
+            id=close
+            tooltip="close window"
+            bgcolor=#c00000
+            fgcolor=black
+            typeface={Lucida Console 12 bold}
+            enabled=1
+            enable_pushed=0
+            pushed=1
+            omitted=
+            enable_focus_color=0
+            transparent=0
+            edge_effects=1
+        }
     }
 }
