@@ -15,16 +15,23 @@ namespace nana::runner {
     {
         NAR_DEFINE_WIDGET(form, widget_cfg);
 
+        NAR_FIELD(optional<align>, align);
+        NAR_FIELD(optional<align_v>, align_v);
+
     public:
         template<class _Stream>
         void traverse(_Stream& _s)
         {
             super::traverse(_s);
+            NAR_CODEC(_s, align);
+            NAR_CODEC(_s, align_v);
         }
 
         static wnd_ptr create_widget_(window p, bool v) { return std::make_shared<ui_type>(p); }
 
         void init_widget(widget& _w) const override;
+
+        point get_pos() const override;
 
     };
 

@@ -1,7 +1,9 @@
 ﻿@form{
     id=login
     div="vert"
-    pos={ 150 100 }
+    align=center
+    align_v=center
+    pos={ -150 -100 }
     size={ 300 200 }
     typeface={ 10 bold }
     @panel { id=username div="weight=25"
@@ -10,7 +12,7 @@
     }
     @panel { id=password div="weight=25"
         @label{ id=l caption="密碼:" align="right" }
-        @textbox{ id=value caption=null }
+        @textbox{ id=value caption=null mask='*' }
     }
     @panel{ id=sep }
     @panel{ id=cmd div="weight=25" typeface={ bold }

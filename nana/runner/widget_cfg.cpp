@@ -74,6 +74,11 @@ void nana::runner::widget_cfg::make_div(string& _div) const
     _div << ">";
 }
 
+nana::runner::point nana::runner::widget_cfg::get_pos() const
+{
+    return pos_().value();
+}
+
 std::string nana::runner::widget_cfg::get_caption() const
 {
     if (!caption_().empty())
@@ -162,7 +167,7 @@ void nana::runner::widget_cfg::init_widget(widget& _w) const
         _w.fgcolor(get_color(fg));
 
     if (!pos_().empty())
-        _w.move(pos_().value());
+        _w.move(get_pos());
 
     if (!size_().empty())
         _w.size(size_().value());

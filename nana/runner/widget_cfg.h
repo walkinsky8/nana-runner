@@ -97,6 +97,8 @@ namespace nana::runner {
 
         virtual void init_widget(widget& _w) const;
 
+        virtual point get_pos() const;
+
         void show() const;
         void close() const;
 

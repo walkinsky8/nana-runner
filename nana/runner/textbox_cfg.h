@@ -18,6 +18,7 @@ namespace nana::runner {
         NAR_FIELD(optional<bool>, line_wrapped);
         NAR_FIELD(optional<bool>, multi_lines);
         NAR_FIELD(optional<bool>, editable);
+        NAR_FIELD(optional<char>, mask);
 
     public:
         template<class _Stream>
@@ -27,6 +28,7 @@ namespace nana::runner {
             NAR_CODEC(_s, line_wrapped);
             NAR_CODEC(_s, multi_lines);
             NAR_CODEC(_s, editable);
+            NAR_CODEC(_s, mask);
         }
 
         static wnd_ptr create_widget_(window p, bool v) { return std::make_shared<ui_type>(p, v); }

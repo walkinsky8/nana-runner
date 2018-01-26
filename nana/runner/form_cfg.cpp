@@ -3,6 +3,8 @@
 
 #include "form_cfg.h"
 
+#include <nana/gui/screen.hpp>
+
 void nana::runner::form_cfg::init_widget(widget & _w) const
 {
     super::init_widget(_w);
@@ -19,4 +21,35 @@ void nana::runner::form_cfg::init_widget(widget & _w) const
     }
 
     w.collocate();
+}
+
+nana::runner::point nana::runner::form_cfg::get_pos() const
+{
+    auto screen = nana::screen::primary_monitor_size();
+    point pt = pos_().value();
+    if (!align_().empty())
+    {
+        switch (align_().value().value())
+        {
+            case nana::align::center:
+                pt.x += screen.width / 2;
+                break;
+            case nana::align::right:
+                pt.x += screen.width;
+                break;
+        }
+    }
+    if (!align_v_().empty())
+    {
+        switch (align_v_().value().value())
+        {
+        case nana::align_v::center:
+            pt.y += screen.height / 2;
+            break;
+        case nana::align_v::bottom:
+            pt.y += screen.height;
+            break;
+        }
+    }
+    return pt;
 }

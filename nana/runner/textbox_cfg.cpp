@@ -17,4 +17,7 @@ void nana::runner::textbox_cfg::init_widget(widget & _w) const
 
     if (!editable_().empty())
         w.editable(editable_().value());
+
+    if (!mask_().empty())
+        w.mask(mask_().value());
 }

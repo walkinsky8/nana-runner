@@ -24,10 +24,12 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
     add_view<view::LogViewer>();
     add_view<view::Login>();
+
     add_view<view::Hello>();
     add_view<view::Demo>();
     add_view<view::Font>();
     add_view<view::Color>();
 
     app a(lpCmdLine);
+    a.run();
 }

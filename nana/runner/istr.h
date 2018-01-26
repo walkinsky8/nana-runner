@@ -215,6 +215,33 @@ namespace nana::runner {
             return istr{ beg, _p };
         }
 
+        int compare(istr _v) const;
+
+        bool operator==(istr _v) const
+        {
+            return me().compare(_v) == 0;
+        }
+        bool operator!=(istr _v) const
+        {
+            return me().compare(_v) != 0;
+        }
+        bool operator<(istr _v) const
+        {
+            return me().compare(_v) < 0;
+        }
+        bool operator<=(istr _v) const
+        {
+            return me().compare(_v) <= 0;
+        }
+        bool operator>(istr _v) const
+        {
+            return me().compare(_v) > 0;
+        }
+        bool operator>=(istr _v) const
+        {
+            return me().compare(_v) >= 0;
+        }
+
     };
     inline std::ostream& operator<<(std::ostream& _os, const istr& _v)
     {

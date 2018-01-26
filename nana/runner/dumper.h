@@ -56,7 +56,12 @@ namespace nana::runner
 
         dumper& writeString(const istr& _v)
         {
-            oss_ << tag::string << _v << tag::string;
+            bool isNull = _v == istr("null");
+            if (!isNull)
+                oss_ << tag::string;
+            oss_ << _v;
+            if (!isNull)
+                oss_ << tag::string;
             return *this;
         }
 

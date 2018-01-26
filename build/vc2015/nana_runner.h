@@ -37,17 +37,19 @@ namespace nana::runner
                 p->close_all_(close_all_func);
                 cfgs_.push_back(p);
             }
-            
-            NAR_LOG("enter loop...");
-            exec();
-
-            NAR_LOG("leave.");
         }
 
         void close_all()
         {
             for (auto i : cfgs_)
                 i->close();
+        }
+
+        void run()
+        {
+            NAR_LOG("enter loop...");
+            exec();
+            NAR_LOG("leave.");
         }
 
     };
