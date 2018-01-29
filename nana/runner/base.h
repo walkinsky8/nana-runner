@@ -140,6 +140,9 @@ namespace nana::runner {
 
     bool read_file(const wstring& _filename, string& _content);
 
+    void string_split(const string& _s, std::vector<string>& _ss);
+    void string_split(const wstring& _s, std::vector<wstring>& _ss);
+
     void init_enums();
 
     template<class _Stream, class T>

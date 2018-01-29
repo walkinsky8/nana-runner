@@ -12,6 +12,7 @@ namespace nana::runner
         typedef std::vector<V> _List;
         typedef std::multimap<K, V> _Map;
         typedef std::pair<typename _Map::const_iterator, typename _Map::const_iterator> _Range;
+        typedef typename _List::const_iterator const_iterator;
 
     private:
         _List list_;
@@ -61,6 +62,16 @@ namespace nana::runner
         _Range equal_range(const K& k) const
         {
             return map_.equal_range(k);
+        }
+
+        const_iterator begin() const
+        {
+            return list_.begin();
+        }
+
+        const_iterator end() const
+        {
+            return list_.end();
         }
 
     };

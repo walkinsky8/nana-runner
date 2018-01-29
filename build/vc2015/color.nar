@@ -2,8 +2,10 @@
     id=color
     caption="Color Sample"
     div="vert"
-    pos={800 500}
-    size={400 305}
+    pos={0 0}
+    size={400 300}
+    align=center
+    align_v=center
     typeface={ 10 }
     @panel{ id=bg div="weight=25"
         @label{ id=n caption="Bgcolor:" div="weight=20%" align=right }

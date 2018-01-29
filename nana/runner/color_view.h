@@ -13,8 +13,6 @@ namespace nana::runner::view {
 
     class Color : public view_obj
     {
-        widget_cfg& cfg_;
-
         form& form_;
 
         textbox& bg_;
@@ -44,7 +42,7 @@ namespace nana::runner::view {
 
     public:
         Color(widget_cfg& _cfg)
-            : cfg_{ _cfg }
+            : view_obj{ _cfg }
             , form_{ _cfg.wnd<form>() }
             , bg_{ _cfg.wnd<textbox>("bg.value") }
             , fg_{ _cfg.wnd<textbox>("fg.value") }
@@ -141,7 +139,7 @@ namespace nana::runner::view {
             });
 
             quit_.events().click([this] {
-                cfg_.close();
+                cfg().close();
             });
         }
 

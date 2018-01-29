@@ -1,8 +1,10 @@
 ﻿@form{
     id=hello
     div="vert"
-    pos={400 150}
-    size={400 320}
+    pos={-400 -300}
+    size={400 300}
+    align=center
+    align_v=center
     typeface={Courier 10 bold}
     @label{
         id=world

@@ -225,7 +225,7 @@
     <ClInclude Include="..\..\nana\runner\view_factory.h" />
     <ClInclude Include="..\..\nana\runner\widget_cfg.h" />
     <ClInclude Include="..\..\nana\runner\widget_factory.h" />
-    <ClInclude Include="nana_runner.h" />
+    <ClInclude Include="app_base.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>

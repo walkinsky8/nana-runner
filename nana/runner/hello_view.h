@@ -13,8 +13,6 @@ namespace nana::runner::view {
 
     class Hello : public view_obj
     {
-        widget_cfg& cfg_;
-
         label& world_;
 
         textbox& text_;
@@ -27,12 +25,12 @@ namespace nana::runner::view {
 
     public:
         Hello(widget_cfg& _cfg)
-            : cfg_{ _cfg }
+            : view_obj{ _cfg }
             , world_{ _cfg.wnd<label>("world") }
             , text_{ _cfg.wnd<textbox>("text") }
             , close_{ _cfg.wnd<button>("close") }
         {
-            close_.events().click([this] { cfg_.close(); });
+            close_.events().click([this] { close(); });
         }
 
     };

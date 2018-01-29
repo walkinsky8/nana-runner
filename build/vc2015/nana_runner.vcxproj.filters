@@ -113,9 +113,6 @@
     <ClInclude Include="..\..\nana\runner\base.h">
       <Filter>base</Filter>
     </ClInclude>
-    <ClInclude Include="nana_runner.h">
-      <Filter>app</Filter>
-    </ClInclude>
     <ClInclude Include="stdafx.h">
       <Filter>etc</Filter>
     </ClInclude>
@@ -211,6 +208,9 @@
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\login_view.h">
       <Filter>sample</Filter>
+    </ClInclude>
+    <ClInclude Include="app_base.h">
+      <Filter>app</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

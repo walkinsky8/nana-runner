@@ -99,7 +99,8 @@ namespace nana::runner {
 
         virtual point get_pos() const;
 
-        void show() const;
+        void show(bool _visible=true) const;
+
         void close() const;
 
         template<class T>

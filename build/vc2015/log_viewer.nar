@@ -4,8 +4,8 @@
     div="vert"
     align=right
     align_v=top
-    pos={-620 30}
-    size={600 800}
+    pos={-520 30}
+    size={500 800}
     @textbox{
         id=content
         caption=null

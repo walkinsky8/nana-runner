@@ -5,6 +5,8 @@
 
 #include <nana/runner/base_types.h>
 
+#include <nana/runner/parser.h>
+
 std::string& std::operator<<(std::string& _s, const std::wstring& _v)
 {
     return _s << nana::to_utf8(_v);
@@ -28,6 +30,20 @@ std::string nana::runner::to_string(const wstring& _wstr)
 std::wstring nana::runner::to_wstring(const string& _utf8str)
 {
     return nana::to_wstring(_utf8str);
+}
+
+void nana::runner::string_split(const string& _s, std::vector<string>& _ss)
+{
+    parser ps{ _s, true };
+    ps >> _ss;
+}
+
+void nana::runner::string_split(const wstring& _s, std::vector<wstring>& _ss)
+{
+    string u8s;
+    u8s << _s;
+    parser ps{ u8s, true };
+    ps >> _ss;
 }
 
 bool nana::runner::read_file(const wstring& _filename, string& _content)
@@ -234,3 +250,4 @@ void nana::runner::init_enums()
     NAR_ENUM_ADD(nana::cursor, arrow, size_bottom_left);
     NAR_ENUM_ADD(nana::cursor, arrow, size_bottom_right);
 }
+

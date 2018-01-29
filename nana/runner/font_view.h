@@ -16,8 +16,6 @@ namespace nana::runner::view {
 
     class Font : public view_obj
     {
-        widget_cfg& cfg_;
-
         form& form_;
 
         textbox& name_;
@@ -38,7 +36,7 @@ namespace nana::runner::view {
 
     public:
         Font(widget_cfg& _cfg)
-            : cfg_{ _cfg }
+            : view_obj{ _cfg }
             , form_{ _cfg.wnd<form>() }
             , name_{ _cfg.wnd<textbox>("name.value") }
             , size_{ _cfg.wnd<textbox>("size.value") }
@@ -84,7 +82,7 @@ namespace nana::runner::view {
             });
 
             quit_.events().click([this] {
-                cfg_.close();
+                cfg().close();
             });
         }
 

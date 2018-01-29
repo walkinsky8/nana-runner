@@ -12,8 +12,6 @@ namespace nana::runner::view {
 
     class Login : public view_obj
     {
-        widget_cfg& cfg_;
-
         textbox& username_;
         textbox& password_;
         
@@ -26,7 +24,7 @@ namespace nana::runner::view {
 
     public:
         Login(widget_cfg& _cfg)
-            : cfg_{ _cfg }
+            : view_obj{ _cfg }
             , username_{ _cfg.wnd<textbox>("username.value") }
             , password_{ _cfg.wnd<textbox>("password.value") }
             , login_{ _cfg.wnd<button>("cmd.login") }
@@ -34,6 +32,11 @@ namespace nana::runner::view {
         {
             login_.events().click([this] { on_login(); });
             close_.events().click([this] { on_close(); });
+        }
+
+        void on_login(std::function<void()> _f)
+        {
+            login_.events().click([this, _f] { on_close(); _f(); });
         }
 
         void on_login()
@@ -44,7 +47,7 @@ namespace nana::runner::view {
         void on_close()
         {
             NAR_LOG("close login window");
-            cfg_.close();
+            close();
         }
 
     };

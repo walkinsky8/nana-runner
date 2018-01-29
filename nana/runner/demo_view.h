@@ -16,8 +16,6 @@ namespace nana::runner::view {
 
     class Demo : public view_obj
     {
-        widget_cfg& cfg_;
-
         form& form_;
 
         categorize& categorize_;
@@ -47,7 +45,7 @@ namespace nana::runner::view {
 
     public:
         Demo(widget_cfg& _cfg)
-            : cfg_{ _cfg }
+            : view_obj{ _cfg }
             , form_{ _cfg.wnd<form>() }
             , categorize_{ _cfg.wnd<categorize>("categorize") }
             , world_{ _cfg.wnd<label>("world") }

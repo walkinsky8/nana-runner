@@ -25,9 +25,10 @@ void nana::runner::widget_cfg::make_widgets(widget_cfg& _root_cfg, widget_cfg* _
         i->make_widgets(_root_cfg, this, _parent_wnd);
     }
 
-    if (w)
+    if (w && !id_().empty())
     {
         init_widget(*w);
+
         _root_cfg.m_widgets[id_path()] = w;
     }
 }
@@ -49,13 +50,18 @@ void nana::runner::widget_cfg::make_widgets()
 
     m_view = create_view(*this);
 
-    show();
+    //show();
 }
 
-void nana::runner::widget_cfg::show() const
+void nana::runner::widget_cfg::show(bool _visible) const
 {
     if (m_root_wnd)
-        m_root_wnd->show();
+    {
+        if (_visible)
+            m_root_wnd->show();
+        else
+            m_root_wnd->hide();
+    }
 }
 
 void nana::runner::widget_cfg::close() const

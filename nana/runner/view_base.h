@@ -27,10 +27,24 @@ namespace nana::runner {
     namespace fs = std::experimental::filesystem;
     namespace fs_ext = nana::filesystem_ext;
 
+    class widget_cfg;
+
     class view_obj
     {
+        widget_cfg& cfg_;
+
     public:
         virtual ~view_obj() = default;
+        view_obj(widget_cfg& _cfg);
+
+        widget_cfg& cfg()
+        {
+            return cfg_;
+        }
+
+        void show(bool _visible = true);
+
+        void close();
 
     };
 
