@@ -3,7 +3,7 @@
 
 #include "stdafx.h"
 
-#include "app_base.h"
+#include <nana/runner/app_base.h>
 
 #include <nana/runner/view_factory.h>
 

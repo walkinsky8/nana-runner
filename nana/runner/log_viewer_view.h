@@ -12,6 +12,8 @@ namespace nana::runner::view {
 
     class LogViewer : public view_obj
     {
+        form& form_;
+
         textbox& content_;
 
         button& close_;
@@ -24,6 +26,7 @@ namespace nana::runner::view {
     public:
         LogViewer(widget_cfg& _cfg)
             : view_obj{ _cfg }
+            , form_{ _cfg.wnd<form>() }
             , content_{ _cfg.wnd<textbox>("content") }
             , close_{ _cfg.wnd<button>("cmd.close") }
             , exit_{ _cfg.wnd<button>("cmd.exit") }
@@ -33,14 +36,9 @@ namespace nana::runner::view {
                 content_.append(s, false);
             });
 
-            close_.events().click([this] {
-                cfg().close();
-            });
-            exit_.events().click([this] {
-                auto f = cfg().close_all_();
-                if (f)
-                    f();
-            });
+            close_.events().click([this] { close(); });
+            exit_.events().click([this] { close_all(); });
+            form_.events().destroy([this] { close_all(); });
         }
 
     };

@@ -46,6 +46,8 @@ namespace nana::runner {
 
         void close();
 
+        void close_all();
+
     };
 
 }

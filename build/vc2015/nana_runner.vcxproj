@@ -163,6 +163,7 @@
     <Image Include="small.ico" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\nana\runner\app_base.cpp" />
     <ClCompile Include="..\..\nana\runner\base.cpp" />
     <ClCompile Include="..\..\nana\runner\button_cfg.cpp" />
     <ClCompile Include="..\..\nana\runner\bytes.cpp" />
@@ -193,6 +194,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\nana\runner\app_base.h" />
     <ClInclude Include="..\..\nana\runner\base.h" />
     <ClInclude Include="..\..\nana\runner\base_types.h" />
     <ClInclude Include="..\..\nana\runner\button_cfg.h" />
@@ -225,7 +227,6 @@
     <ClInclude Include="..\..\nana\runner\view_factory.h" />
     <ClInclude Include="..\..\nana\runner\widget_cfg.h" />
     <ClInclude Include="..\..\nana\runner\widget_factory.h" />
-    <ClInclude Include="app_base.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>

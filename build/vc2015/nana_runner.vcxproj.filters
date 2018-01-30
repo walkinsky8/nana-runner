@@ -11,9 +11,6 @@
     <Filter Include="etc">
       <UniqueIdentifier>{49a81e9f-699d-4fb3-b096-b8a64d4b6523}</UniqueIdentifier>
     </Filter>
-    <Filter Include="sample">
-      <UniqueIdentifier>{f680be36-3493-4468-ade3-80acd369bd5f}</UniqueIdentifier>
-    </Filter>
     <Filter Include="widgets">
       <UniqueIdentifier>{72334a40-d194-4794-bfaf-ae2f5ec74c29}</UniqueIdentifier>
     </Filter>
@@ -28,6 +25,15 @@
     </Filter>
     <Filter Include="app">
       <UniqueIdentifier>{0fd6d47e-0080-4c3c-878a-fc055fec415d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="sample">
+      <UniqueIdentifier>{b4f4bcd2-dab7-4367-9c44-eb857a511226}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="sample\main">
+      <UniqueIdentifier>{2fa39bf0-0bab-461e-a812-e6adbe83ece4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="sample\views">
+      <UniqueIdentifier>{f680be36-3493-4468-ade3-80acd369bd5f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -66,9 +72,6 @@
     <ClCompile Include="..\..\nana\runner\istr.cpp">
       <Filter>base\types</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\nana\runner\view_base.cpp">
-      <Filter>widgets</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\nana\runner\widget_factory.cpp">
       <Filter>widgets</Filter>
     </ClCompile>
@@ -96,17 +99,23 @@
     <ClCompile Include="..\..\nana\runner\categorize_cfg.cpp">
       <Filter>widgets</Filter>
     </ClCompile>
-    <ClCompile Include="nana_runner.cpp">
-      <Filter>sample</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\nana\runner\model_base.cpp">
-      <Filter>widgets</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\nana\runner\view_factory.cpp">
-      <Filter>widgets</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\nana\runner\slider_cfg.cpp">
       <Filter>widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="nana_runner.cpp">
+      <Filter>sample\main</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nana\runner\model_base.cpp">
+      <Filter>app</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nana\runner\view_base.cpp">
+      <Filter>app</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nana\runner\view_factory.cpp">
+      <Filter>app</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nana\runner\app_base.cpp">
+      <Filter>app</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -126,7 +135,7 @@
       <Filter>base\codec</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\hello_view.h">
-      <Filter>sample</Filter>
+      <Filter>sample\views</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\base_types.h">
       <Filter>base\types</Filter>
@@ -154,9 +163,6 @@
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\log.h">
       <Filter>base\log</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\nana\runner\view_base.h">
-      <Filter>widgets</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\widget_factory.h">
       <Filter>widgets</Filter>
@@ -186,53 +192,56 @@
       <Filter>widgets</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\demo_view.h">
-      <Filter>sample</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\nana\runner\model_base.h">
-      <Filter>widgets</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\nana\runner\view_factory.h">
-      <Filter>widgets</Filter>
+      <Filter>sample\views</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\font_view.h">
-      <Filter>sample</Filter>
+      <Filter>sample\views</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\slider_cfg.h">
       <Filter>widgets</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\color_view.h">
-      <Filter>sample</Filter>
+      <Filter>sample\views</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\log_viewer_view.h">
-      <Filter>sample</Filter>
+      <Filter>sample\views</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\login_view.h">
-      <Filter>sample</Filter>
+      <Filter>sample\views</Filter>
     </ClInclude>
-    <ClInclude Include="app_base.h">
+    <ClInclude Include="..\..\nana\runner\model_base.h">
+      <Filter>app</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nana\runner\view_base.h">
+      <Filter>app</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nana\runner\view_factory.h">
+      <Filter>app</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nana\runner\app_base.h">
       <Filter>app</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="hello.nar">
-      <Filter>sample</Filter>
+      <Filter>sample\views</Filter>
     </Text>
   </ItemGroup>
   <ItemGroup>
     <None Include="demo.nar">
-      <Filter>sample</Filter>
+      <Filter>sample\views</Filter>
     </None>
     <None Include="font.nar">
-      <Filter>sample</Filter>
+      <Filter>sample\views</Filter>
     </None>
     <None Include="color.nar">
-      <Filter>sample</Filter>
+      <Filter>sample\views</Filter>
     </None>
     <None Include="log_viewer.nar">
-      <Filter>sample</Filter>
+      <Filter>sample\views</Filter>
     </None>
     <None Include="login.nar">
-      <Filter>sample</Filter>
+      <Filter>sample\views</Filter>
     </None>
   </ItemGroup>
 </Project>

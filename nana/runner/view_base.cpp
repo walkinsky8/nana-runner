@@ -19,3 +19,11 @@ void nana::runner::view_obj::close()
 {
     cfg_.close();
 }
+
+void nana::runner::view_obj::close_all()
+{
+    auto f = cfg().close_all_();
+    if (f)
+        f();
+}
+
