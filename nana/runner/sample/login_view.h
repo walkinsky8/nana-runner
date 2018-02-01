@@ -8,7 +8,7 @@
 #include <nana/runner/textbox_cfg.h>
 #include <nana/runner/button_cfg.h>
 
-namespace nana::runner::view {
+namespace nana::runner::sample::view {
 
     class Login : public view_obj
     {

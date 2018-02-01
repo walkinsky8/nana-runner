@@ -12,7 +12,7 @@ nana::runner::app_base::app_base()
 
 void nana::runner::app_base::load_cfgs(const wchar_t* _cmdline)
 {
-    string_split(_cmdline, args_);
+    args_.init(_cmdline);
 
     auto close_all_func = [this] {
         for (auto i : cfgs_)
@@ -21,12 +21,21 @@ void nana::runner::app_base::load_cfgs(const wchar_t* _cmdline)
         }
     };
 
-    for (auto& filename : args_)
+    auto paths = args_.options(L"path");
+    for (auto& filename : args_.arguments())
     {
-        cfg_ptr p = widget_cfg::from_file(filename);
-        NAR_LOG_NV("cfg", dump(p, false, 0, true));
-        p->close_all_(close_all_func);
-        cfgs_.add(p->id_(), p);
+        for (auto p = paths.first; p != paths.second; ++p)
+        {
+            fs::path fullpath{ (*p).second };
+            fullpath /= filename;
+            if (fs::exists(fullpath))
+            {
+                cfg_ptr cfg = widget_cfg::from_file(fullpath);
+                NAR_LOG_NV("cfg", dump(cfg, false, 0, true));
+                cfg->close_all_(close_all_func);
+                cfgs_.add(cfg->id_(), cfg);
+            }
+        }
     }
 }
 

@@ -12,7 +12,7 @@
 #include <nana/runner/label_cfg.h>
 #include <nana/runner/button_cfg.h>
 
-namespace nana::runner::view {
+namespace nana::runner::sample::view {
 
     class Font : public view_obj
     {

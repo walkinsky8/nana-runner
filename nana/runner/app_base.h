@@ -2,6 +2,7 @@
 #pragma once
 
 #include <nana/runner/base.h>
+#include <nana/runner/base_types.h>
 
 #include <nana/runner/widget_cfg.h>
 #include <nana/runner/widget_factory.h>
@@ -11,12 +12,12 @@ namespace nana::runner
 {
     class app_base
     {
-        std::vector<wstring> args_;
+        cmdargs args_;
+
         list_multimap<string, cfg_ptr> cfgs_;
 
     public:
         virtual ~app_base() = default;
-
         app_base();
 
         template<class T>
@@ -28,13 +29,15 @@ namespace nana::runner
             return dynamic_cast<T*>((*p)->view_().get());
         }
 
-        void load_cfgs(const wchar_t* _cmdline);
-
         void run(const wchar_t* _cmdline);
 
+    protected:
         virtual void init_views() { }
 
         virtual void init_logic() { }
+
+    private:
+        void load_cfgs(const wchar_t* _cmdline);
 
     };
 
