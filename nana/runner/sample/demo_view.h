@@ -85,29 +85,29 @@ namespace nana::runner::sample::view {
 
             name_.events().text_changed([this] {
                 font f = world_.typeface();
-                world_.typeface(make_font(name_.caption(), f.size(), f.bold(), f.italic(), f.strikeout(), f.underline()));
+                world_.typeface(make_font(name_.caption(), f.size(), f.bold(), f.italic(), f.underline(), f.strikeout()));
             });
             size_.events().text_changed([this] {
                 font f = world_.typeface();
                 double sz = 0;
                 size_ >> sz;
-                world_.typeface(make_font(f.name(), sz, f.bold(), f.italic(), f.strikeout(), f.underline()));
+                world_.typeface(make_font(f.name(), sz, f.bold(), f.italic(), f.underline(), f.strikeout()));
             });
             bold_.events().checked([this] {
                 font f = world_.typeface();
-                world_.typeface(make_font(f.name(), f.size(), bold_.checked(), f.italic(), f.strikeout(), f.underline()));
+                world_.typeface(make_font(f.name(), f.size(), bold_.checked(), f.italic(), f.underline(), f.strikeout()));
             });
             italic_.events().checked([this] {
                 font f = world_.typeface();
-                world_.typeface(make_font(f.name(), f.size(), f.bold(), italic_.checked(), f.strikeout(), f.underline()));
+                world_.typeface(make_font(f.name(), f.size(), f.bold(), italic_.checked(), f.underline(), f.strikeout()));
             });
             strikeout_.events().checked([this] {
                 font f = world_.typeface();
-                world_.typeface(make_font(f.name(), f.size(), f.bold(), f.italic(), strikeout_.checked(), f.underline()));
+                world_.typeface(make_font(f.name(), f.size(), f.bold(), f.italic(), f.underline(), strikeout_.checked()));
             });
             underline_.events().checked([this] {
                 font f = world_.typeface();
-                world_.typeface(make_font(f.name(), f.size(), f.bold(), f.italic(), f.strikeout(), underline_.checked()));
+                world_.typeface(make_font(f.name(), f.size(), f.bold(), f.italic(), underline_.checked(), f.strikeout()));
             });
 
             editable_.events().checked([this] {

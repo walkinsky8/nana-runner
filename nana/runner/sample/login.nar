@@ -1,4 +1,4 @@
-﻿@form{ id=login caption="登錄" div="vert" pos={ -150 -100 } size={ 300 200 } align=center align_v=center typeface={ 10 bold }
+﻿@form{ id=login caption="登錄" div="vert" pos={ -150 -100 } size={ 300 200 } align=center align_v=center typeface={ 12 bold strikeout }
     @panel { div="weight=5" }
     @panel { id=username div="weight=25"
         @label{ id=l caption="用戶名:" div="weight=60" align="right" }
@@ -11,8 +11,8 @@
         @panel { div="weight=5" }
         @textbox{ id=value caption=null mask='*' }
     }
-    @panel{ }
-    @panel{ id=cmd div="weight=25" typeface={ bold }
+    @panel{ id=0 bgcolor=#555555 transparent=0 }
+    @panel{ id=cmd div="weight=25" typeface={ bold strikeout }
         @button{ id=login div="weight=50%" bgcolor=green fgcolor=yellow }
         @button{ id=close bgcolor=yellow }
     }

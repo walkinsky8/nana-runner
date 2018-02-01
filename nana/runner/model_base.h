@@ -9,7 +9,7 @@ namespace nana::runner {
 
     color get_color(const string& _s);
 
-    font make_font(const string& _name, double _size, bool _bold, bool _italic, bool _strikeout, bool _underline);
+    font make_font(const string& _name, double _size, bool _bold, bool _italic, bool _underline, bool _strikeout);
 
     dumper& operator<<(dumper& _d, const point& _v);
     void operator >> (const parser& _p, point& _v);

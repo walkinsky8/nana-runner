@@ -53,32 +53,32 @@ namespace nana::runner::sample::view {
 
             name_.events().text_changed([this] {
                 font f = sample_.typeface();
-                sample_.typeface(make_font(name_.caption(), f.size(), f.bold(), f.italic(), f.strikeout(), f.underline()));
+                sample_.typeface(make_font(name_.caption(), f.size(), f.bold(), f.italic(), f.underline(), f.strikeout()));
             });
             size_.events().text_changed([this] {
                 font f = sample_.typeface();
                 double sz = 0;
                 size_ >> sz;
-                sample_.typeface(make_font(f.name(), sz, f.bold(), f.italic(), f.strikeout(), f.underline()));
+                sample_.typeface(make_font(f.name(), sz, f.bold(), f.italic(), f.underline(), f.strikeout()));
             });
             slider_.events().value_changed([this] {
                 size_ << slider_.value();
             });
             bold_.events().checked([this] {
                 font f = sample_.typeface();
-                sample_.typeface(make_font(f.name(), f.size(), bold_.checked(), f.italic(), f.strikeout(), f.underline()));
+                sample_.typeface(make_font(f.name(), f.size(), bold_.checked(), f.italic(), f.underline(), f.strikeout()));
             });
             italic_.events().checked([this] {
                 font f = sample_.typeface();
-                sample_.typeface(make_font(f.name(), f.size(), f.bold(), italic_.checked(), f.strikeout(), f.underline()));
+                sample_.typeface(make_font(f.name(), f.size(), f.bold(), italic_.checked(), f.underline(), f.strikeout()));
             });
             strikeout_.events().checked([this] {
                 font f = sample_.typeface();
-                sample_.typeface(make_font(f.name(), f.size(), f.bold(), f.italic(), strikeout_.checked(), f.underline()));
+                sample_.typeface(make_font(f.name(), f.size(), f.bold(), f.italic(), f.underline(), strikeout_.checked()));
             });
             underline_.events().checked([this] {
                 font f = sample_.typeface();
-                sample_.typeface(make_font(f.name(), f.size(), f.bold(), f.italic(), f.strikeout(), underline_.checked()));
+                sample_.typeface(make_font(f.name(), f.size(), f.bold(), f.italic(), underline_.checked(), f.strikeout()));
             });
 
             quit_.events().click([this] {

@@ -17,7 +17,7 @@ nana::color nana::runner::get_color(const string& _s)
     return nana::colors::black;
 }
 
-nana::runner::font nana::runner::make_font(const string& _name, double _size, bool _bold, bool _italic, bool _strikeout, bool _underline)
+nana::runner::font nana::runner::make_font(const string& _name, double _size, bool _bold, bool _italic, bool _underline, bool _strikeout)
 {
     return font{ _name, _size, font::font_style{ _bold ? 700u : 400u, _italic, _underline, _strikeout } };
 }
