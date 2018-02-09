@@ -1,0 +1,49 @@
+﻿@form{
+    id=editor
+    div="vert"
+    pos={ -400 -300 }
+    size={ 800 600 }
+    align=center
+    align_v=center
+    bgcolor=black
+    fgcolor=#00ff00
+    typeface={ 10 }
+    @textbox{
+        id=filename
+        caption=null
+        tooltip="file name"
+        div="weight=25"
+        multi_lines=0
+    }
+    @textbox{
+        id=filebuf
+        caption=null
+        tooltip="file content"
+        div=""
+        typeface={ Courier New 10 }
+        line_wrapped=0
+        multi_lines=1
+    }
+    @panel{
+        id=cmd
+        div="weight=25"
+        @checkbox{
+            id=linewrap
+            caption="Line Wrap"
+        }
+        @button{
+            id=load
+        }
+        @button{
+            id=save
+        }
+        @button{
+            id=test
+        }
+        @button{
+            id=close
+            tooltip="close window"
+            typeface={ Lucida Console 12 bold }
+        }
+    }
+}

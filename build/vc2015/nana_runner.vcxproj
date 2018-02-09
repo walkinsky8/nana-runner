@@ -216,6 +216,7 @@
     <ClInclude Include="..\..\nana\runner\parser.h" />
     <ClInclude Include="..\..\nana\runner\sample\color_view.h" />
     <ClInclude Include="..\..\nana\runner\sample\demo_view.h" />
+    <ClInclude Include="..\..\nana\runner\sample\editor_view.h" />
     <ClInclude Include="..\..\nana\runner\sample\font_view.h" />
     <ClInclude Include="..\..\nana\runner\sample\hello_view.h" />
     <ClInclude Include="..\..\nana\runner\sample\login_view.h" />
@@ -231,6 +232,7 @@
   <ItemGroup>
     <None Include="..\..\nana\runner\sample\color.nar" />
     <None Include="..\..\nana\runner\sample\demo.nar" />
+    <None Include="..\..\nana\runner\sample\editor.nar" />
     <None Include="..\..\nana\runner\sample\font.nar" />
     <None Include="..\..\nana\runner\sample\hello.nar" />
     <None Include="..\..\nana\runner\sample\login.nar" />

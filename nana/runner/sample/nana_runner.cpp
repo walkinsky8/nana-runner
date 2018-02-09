@@ -9,6 +9,8 @@
 
 #include <nana/runner/sample/log_viewer_view.h>
 #include <nana/runner/sample/login_view.h>
+#include <nana/runner/sample/editor_view.h>
+
 #include <nana/runner/sample/hello_view.h>
 #include <nana/runner/sample/demo_view.h>
 #include <nana/runner/sample/font_view.h>
@@ -22,13 +24,14 @@ namespace nana::runner::sample {
     {
         LogViewer* log_{};
         Login* login_{};
-        Demo* demo_{};
+        Editor* editor_{};
 
     public:
         void init_views() override
         {
             add_view<LogViewer>();
             add_view<Login>();
+            add_view<Editor>();
             add_view<Hello>();
             add_view<Demo>();
             add_view<Font>();
@@ -39,12 +42,12 @@ namespace nana::runner::sample {
         {
             log_ = get_view<LogViewer>();
             login_ = get_view<Login>();
-            demo_ = get_view<Demo>();
+            editor_ = get_view<Editor>();
 
             log_->show();
             login_->show();
             login_->on_login([this] {
-                demo_->show();
+                editor_->show();
             });
         }
 

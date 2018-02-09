@@ -20,6 +20,8 @@ namespace nana::runner
         virtual ~app_base() = default;
         app_base();
 
+        void run(const wchar_t* _cmdline);
+
         template<class T>
         T* get_view() const
         {
@@ -28,8 +30,6 @@ namespace nana::runner
                 throw std::invalid_argument(string{ "invalid view " } +T::type_name_());
             return dynamic_cast<T*>((*p)->view_().get());
         }
-
-        void run(const wchar_t* _cmdline);
 
     protected:
         virtual void init_views() { }

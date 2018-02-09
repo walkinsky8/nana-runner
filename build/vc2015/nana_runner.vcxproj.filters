@@ -227,6 +227,9 @@
     <ClInclude Include="..\..\nana\runner\cmdargs.h">
       <Filter>base\types</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\nana\runner\sample\editor_view.h">
+      <Filter>sample\views</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\nana\runner\sample\color.nar">
@@ -245,6 +248,9 @@
       <Filter>sample\views</Filter>
     </None>
     <None Include="..\..\nana\runner\sample\login.nar">
+      <Filter>sample\views</Filter>
+    </None>
+    <None Include="..\..\nana\runner\sample\editor.nar">
       <Filter>sample\views</Filter>
     </None>
   </ItemGroup>
