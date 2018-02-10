@@ -3,13 +3,13 @@
     @panel { id=username div="weight=25"
         @label{ id=l caption="用戶名:" div="weight=60" align="right" }
         @panel { div="weight=5" }
-        @textbox{ id=value caption=null }
+        @textbox{ id=value caption="guest" }
     }
     @panel { div="weight=5" }
     @panel { id=password div="weight=25"
         @label{ id=l caption="密碼:" div="weight=60" align="right" }
         @panel { div="weight=5" }
-        @textbox{ id=value caption=null mask='*' }
+        @textbox{ id=value caption="123456" mask='*' }
     }
     @panel{ id=0 bgcolor=#555555 transparent=0 }
     @panel{ id=cmd div="weight=25" typeface={ }

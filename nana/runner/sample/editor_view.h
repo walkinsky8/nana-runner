@@ -59,6 +59,8 @@ namespace nana::runner::sample::view {
             save_.events().click([this] { save(); });
             run_.events().click([this] { run(); });
             quit_.events().click([this] { close(); });
+
+            form_.events().destroy([this] { close_current(); });
         }
 
         void load()
@@ -96,20 +98,21 @@ namespace nana::runner::sample::view {
             write_file(fname, fbuf);
             NAR_LOG("run nar cfg = " << fbuf);
             NAR_LOG("run nar file = " << fname);
+            close_current();
             current_ = widget_cfg::from_file(fname);
-            current_->show();
+            if (current_)
+                current_->show();
         }
 
-
-        void close()
+        void close_current()
         {
             if (current_)
             {
-                //current_->close();
-                //current_ = nullptr;
+                current_->close();
+                current_ = nullptr;
             }
-            form_.close();
         }
+
     };
 
 }
