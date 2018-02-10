@@ -81,6 +81,7 @@ namespace nana::runner {
         NAR_FIELD(view_ptr, view);
 
         NAR_FIELD(close_all_func, close_all);
+        NAR_FIELD(wstring, fullpath);
 
     public:
         virtual ~widget_cfg() = default;
@@ -128,6 +129,8 @@ namespace nana::runner {
         }
 
         static cfg_ptr from_file(wstring const& _filename);
+
+        static cfg_ptr from(string const& _cfg);
 
         wnd_ptr get_widget(id _id) const;
 

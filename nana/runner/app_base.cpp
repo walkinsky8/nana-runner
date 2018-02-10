@@ -10,6 +10,22 @@ nana::runner::app_base::app_base()
     init_widgets();
 }
 
+bool nana::runner::app_base::find_file(const wstring& _file, wstring& _fullpath)
+{
+    auto paths = args_.options(L"path");
+    for (auto p = paths.first; p != paths.second; ++p)
+    {
+        fs::path fullpath{ (*p).second };
+        fullpath /= _file;
+        if (fs::exists(fullpath))
+        {
+            _fullpath = fullpath;
+            return true;
+        }
+    }
+    return false;
+}
+
 void nana::runner::app_base::load_cfgs(const wchar_t* _cmdline)
 {
     args_.init(_cmdline);
@@ -21,20 +37,15 @@ void nana::runner::app_base::load_cfgs(const wchar_t* _cmdline)
         }
     };
 
-    auto paths = args_.options(L"path");
     for (auto& filename : args_.arguments())
     {
-        for (auto p = paths.first; p != paths.second; ++p)
+        wstring fullpath;
+        if (find_file(filename, fullpath))
         {
-            fs::path fullpath{ (*p).second };
-            fullpath /= filename;
-            if (fs::exists(fullpath))
-            {
-                cfg_ptr cfg = widget_cfg::from_file(fullpath);
-                NAR_LOG_NV("cfg", dump(cfg, false, 0, true));
-                cfg->close_all_(close_all_func);
-                cfgs_.add(cfg->id_(), cfg);
-            }
+            cfg_ptr cfg = widget_cfg::from_file(fullpath);
+            NAR_LOG_NV("cfg", dump(cfg, false, 0, true));
+            cfg->close_all_(close_all_func);
+            cfgs_.add(cfg->id_(), cfg);
         }
     }
 }

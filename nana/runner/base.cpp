@@ -7,6 +7,12 @@
 
 #include <nana/runner/parser.h>
 
+std::ostream& std::operator<<(ostream& _os, const wstring& _v)
+{
+    _os << nana::runner::to_string(_v);
+    return _os;
+}
+
 std::string& std::operator<<(std::string& _s, const std::wstring& _v)
 {
     return _s << nana::to_utf8(_v);
@@ -63,8 +69,37 @@ bool nana::runner::read_file(const wstring& _filename, string& _content)
             if (line[0] == '\xef' && line[1] == '\xbb' && line[2] == '\xbf')
                 line.erase(0, 3);
         }
-        _content += line;
-        _content += "\n";
+        if (line.size() > 0)
+            if (line[0] == '\r')
+                line.erase(0, 1);
+        if (line.size() > 0)
+            if (line[line.size() - 1] == '\r')
+                line.erase(line.size() - 1, 1);
+        if (!line.empty())
+        {
+            _content += line;
+            _content += "\n";
+        }
+    }
+    return true;
+}
+
+bool nana::runner::write_file(const wstring& _filename, const string& _content)
+{
+    std::ofstream ofs{ _filename };
+    if (!ofs)
+    {
+        return false;
+    }
+
+    ofs.write("\xef\xbb\xbf", 3);
+    istr p{ _content };
+    while (p)
+    {
+        istr line = p.read_until(is_newline);
+        p.read(is_newline);
+        ofs.write(line.data(), line.size());
+        ofs << "\n";
     }
     return true;
 }

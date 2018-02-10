@@ -64,6 +64,7 @@ namespace std {
     }
     void operator>>(const std::string& _s, std::wstring& _v);
 
+    ostream& operator<<(ostream& _os, const wstring& _v);
 }
 
 namespace nana::runner {
@@ -139,6 +140,7 @@ namespace nana::runner {
     wstring to_wstring(const string& _utf8str);
 
     bool read_file(const wstring& _filename, string& _content);
+    bool write_file(const wstring& _filename, const string& _content);
 
     void string_split(const string& _s, std::vector<string>& _ss);
     void string_split(const wstring& _s, std::vector<wstring>& _ss);

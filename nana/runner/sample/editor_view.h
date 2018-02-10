@@ -30,8 +30,11 @@ namespace nana::runner::sample::view {
         checkbox& linewrap_;
         button& load_;
         button& save_;
-        button& test_;
+        button& run_;
         button& quit_;
+
+    private:
+        cfg_ptr current_;
 
     public:
         Editor(widget_cfg& _cfg)
@@ -42,14 +45,19 @@ namespace nana::runner::sample::view {
             , linewrap_{ _cfg.wnd<checkbox>("cmd.linewrap") }
             , load_{ _cfg.wnd<button>("cmd.load") }
             , save_{ _cfg.wnd<button>("cmd.save") }
-            , test_{ _cfg.wnd<button>("cmd.test") }
+            , run_{ _cfg.wnd<button>("cmd.run") }
             , quit_{ _cfg.wnd<button>("cmd.close") }
         {
+            filename_ << cfg().fullpath_();
+            load();
+
             linewrap_.events().checked([this] {
                 filebuf_.line_wrapped(linewrap_.checked());
             });
 
             load_.events().click([this] { load(); });
+            save_.events().click([this] { save(); });
+            run_.events().click([this] { run(); });
             quit_.events().click([this] { close(); });
         }
 
@@ -62,9 +70,46 @@ namespace nana::runner::sample::view {
                 string fbuf;
                 read_file(fname, fbuf);
                 filebuf_ << fbuf;
+                NAR_LOG("loaded = " << fbuf);
             }
         }
 
+        void save()
+        {
+            wstring fname;
+            filename_ >> fname;
+            string fbuf;
+            filebuf_ >> fbuf;
+            if (!fname.empty() && !fbuf.empty())
+            {
+                write_file(fname, fbuf);
+                NAR_LOG("saved = " << fbuf);
+            }
+        }
+
+        void run()
+        {
+            wstring fname;
+            filename_ >> fname;
+            string fbuf;
+            filebuf_ >> fbuf;
+            write_file(fname, fbuf);
+            NAR_LOG("run nar cfg = " << fbuf);
+            NAR_LOG("run nar file = " << fname);
+            current_ = widget_cfg::from_file(fname);
+            current_->show();
+        }
+
+
+        void close()
+        {
+            if (current_)
+            {
+                //current_->close();
+                //current_ = nullptr;
+            }
+            form_.close();
+        }
     };
 
 }

@@ -27,9 +27,13 @@
     @panel{
         id=cmd
         div="weight=25"
+        bgcolor=green
+        fgcolor=black
+        typeface={ 11 bold }
         @checkbox{
             id=linewrap
             caption="Line Wrap"
+            bgcolor=grey
         }
         @button{
             id=load
@@ -38,12 +42,12 @@
             id=save
         }
         @button{
-            id=test
+            id=run
         }
         @button{
             id=close
             tooltip="close window"
-            typeface={ Lucida Console 12 bold }
+            bgcolor=yellow
         }
     }
 }
