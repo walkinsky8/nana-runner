@@ -29,12 +29,11 @@ namespace nana::runner {
 
     class widget_cfg;
 
-    class view_obj
+    class view_obj : public object
     {
         widget_cfg& cfg_;
 
     public:
-        virtual ~view_obj() = default;
         view_obj(widget_cfg& _cfg);
 
         widget_cfg& cfg()

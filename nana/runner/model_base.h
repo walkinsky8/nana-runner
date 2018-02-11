@@ -23,4 +23,9 @@ namespace nana::runner {
     string& operator << (string& _w, const color& _v);
     void operator >> (const string& _w, color& _v);
 
+    class model_object : public object
+    {
+
+    };
+
 }

@@ -14,46 +14,42 @@
 
 namespace nana::runner::sample::view {
 
-    class Editor : public view_obj
+    class editor : public view_obj
     {
     public:
         static pcstr type_name_() { return "editor"; }
-        static view_ptr new_(widget_cfg& _cfg) { return std::make_shared<Editor>(_cfg); }
+        static view_ptr new_(widget_cfg& _cfg) { return std::make_shared<editor>(_cfg); }
 
-    //private:
+    private:
         form& form_;
 
         textbox& filename_;
 
         textbox& filebuf_;
 
-        checkbox& linewrap_;
         button& load_;
         button& save_;
         button& run_;
+        button& setup_;
         button& quit_;
 
     private:
         cfg_ptr current_;
 
     public:
-        Editor(widget_cfg& _cfg)
+        editor(widget_cfg& _cfg)
             : view_obj{ _cfg }
             , form_{ _cfg.wnd<form>() }
             , filename_{ _cfg.wnd<textbox>("filename") }
             , filebuf_{ _cfg.wnd<textbox>("filebuf") }
-            , linewrap_{ _cfg.wnd<checkbox>("cmd.linewrap") }
             , load_{ _cfg.wnd<button>("cmd.load") }
             , save_{ _cfg.wnd<button>("cmd.save") }
             , run_{ _cfg.wnd<button>("cmd.run") }
+            , setup_{ _cfg.wnd<button>("cmd.setup") }
             , quit_{ _cfg.wnd<button>("cmd.close") }
         {
             filename_ << cfg().fullpath_();
             load();
-
-            linewrap_.events().checked([this] {
-                filebuf_.line_wrapped(linewrap_.checked());
-            });
 
             load_.events().click([this] { load(); });
             save_.events().click([this] { save(); });
@@ -63,6 +59,12 @@ namespace nana::runner::sample::view {
             form_.events().destroy([this] { close_current(); });
         }
 
+        void on_setup(std::function<void()> _f)
+        {
+            setup_.events().click([this, _f] { _f(); });
+        }
+
+    private:
         void load()
         {
             wstring fname;

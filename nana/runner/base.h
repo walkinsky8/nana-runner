@@ -65,6 +65,7 @@ namespace std {
     void operator>>(const std::string& _s, std::wstring& _v);
 
     ostream& operator<<(ostream& _os, const wstring& _v);
+
 }
 
 namespace nana::runner {
@@ -155,6 +156,13 @@ namespace nana::runner {
         _s.leave();
         return _s;
     }
+
+    class object
+    {
+    public:
+        virtual ~object() = default;
+
+    };
 
 }
 

@@ -23,9 +23,6 @@
     <Filter Include="base\codec">
       <UniqueIdentifier>{beda8a37-a588-4c03-b569-c131188a185e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="app">
-      <UniqueIdentifier>{0fd6d47e-0080-4c3c-878a-fc055fec415d}</UniqueIdentifier>
-    </Filter>
     <Filter Include="sample">
       <UniqueIdentifier>{b4f4bcd2-dab7-4367-9c44-eb857a511226}</UniqueIdentifier>
     </Filter>
@@ -34,6 +31,9 @@
     </Filter>
     <Filter Include="sample\views">
       <UniqueIdentifier>{f680be36-3493-4468-ade3-80acd369bd5f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="framework">
+      <UniqueIdentifier>{0fd6d47e-0080-4c3c-878a-fc055fec415d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -103,22 +103,22 @@
       <Filter>widgets</Filter>
     </ClCompile>
     <ClCompile Include="..\..\nana\runner\model_base.cpp">
-      <Filter>app</Filter>
+      <Filter>framework</Filter>
     </ClCompile>
     <ClCompile Include="..\..\nana\runner\view_base.cpp">
-      <Filter>app</Filter>
+      <Filter>framework</Filter>
     </ClCompile>
     <ClCompile Include="..\..\nana\runner\view_factory.cpp">
-      <Filter>app</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\nana\runner\app_base.cpp">
-      <Filter>app</Filter>
+      <Filter>framework</Filter>
     </ClCompile>
     <ClCompile Include="..\..\nana\runner\sample\nana_runner.cpp">
       <Filter>sample\main</Filter>
     </ClCompile>
     <ClCompile Include="..\..\nana\runner\cmdargs.cpp">
       <Filter>base\types</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nana\runner\controller_base.cpp">
+      <Filter>framework</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -195,16 +195,13 @@
       <Filter>widgets</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\model_base.h">
-      <Filter>app</Filter>
+      <Filter>framework</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\view_base.h">
-      <Filter>app</Filter>
+      <Filter>framework</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\view_factory.h">
-      <Filter>app</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\nana\runner\app_base.h">
-      <Filter>app</Filter>
+      <Filter>framework</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\sample\color_view.h">
       <Filter>sample\views</Filter>
@@ -230,6 +227,12 @@
     <ClInclude Include="..\..\nana\runner\sample\editor_view.h">
       <Filter>sample\views</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\nana\runner\sample\editor_setup_view.h">
+      <Filter>sample\views</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nana\runner\controller_base.h">
+      <Filter>framework</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\nana\runner\sample\color.nar">
@@ -251,6 +254,9 @@
       <Filter>sample\views</Filter>
     </None>
     <None Include="..\..\nana\runner\sample\editor.nar">
+      <Filter>sample\views</Filter>
+    </None>
+    <None Include="..\..\nana\runner\sample\editor_setup.nar">
       <Filter>sample\views</Filter>
     </None>
   </ItemGroup>

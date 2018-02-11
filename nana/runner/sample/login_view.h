@@ -10,7 +10,7 @@
 
 namespace nana::runner::sample::view {
 
-    class Login : public view_obj
+    class login : public view_obj
     {
         textbox& username_;
         textbox& password_;
@@ -20,10 +20,10 @@ namespace nana::runner::sample::view {
 
     public:
         static string type_name_() { return "login"; }
-        static view_ptr new_(widget_cfg& _cfg) { return std::make_shared<Login>(_cfg); }
+        static view_ptr new_(widget_cfg& _cfg) { return std::make_shared<login>(_cfg); }
 
     public:
-        Login(widget_cfg& _cfg)
+        login(widget_cfg& _cfg)
             : view_obj{ _cfg }
             , username_{ _cfg.wnd<textbox>("username.value") }
             , password_{ _cfg.wnd<textbox>("password.value") }

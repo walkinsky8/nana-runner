@@ -10,15 +10,14 @@
 
 namespace nana::runner
 {
-    class app_base
+    class controller_object : public object
     {
         cmdargs args_;
 
         list_multimap<string, cfg_ptr> cfgs_;
 
     public:
-        virtual ~app_base() = default;
-        app_base();
+        controller_object();
 
         void run(const wchar_t* _cmdline);
 

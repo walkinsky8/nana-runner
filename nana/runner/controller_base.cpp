@@ -1,16 +1,16 @@
 // Created by walkinsky(lyh6188@hotmail.com), 2018/01/30
 #include "stdafx.h"
 
-#include <nana/runner/app_base.h>
+#include <nana/runner/controller_base.h>
 
-nana::runner::app_base::app_base()
+nana::runner::controller_object::controller_object()
 {
     NAR_LOG("initializing...");
     init_enums();
     init_widgets();
 }
 
-bool nana::runner::app_base::find_file(const wstring& _file, wstring& _fullpath)
+bool nana::runner::controller_object::find_file(const wstring& _file, wstring& _fullpath)
 {
     auto paths = args_.options(L"path");
     for (auto p = paths.first; p != paths.second; ++p)
@@ -26,7 +26,7 @@ bool nana::runner::app_base::find_file(const wstring& _file, wstring& _fullpath)
     return false;
 }
 
-void nana::runner::app_base::load_cfgs(const wchar_t* _cmdline)
+void nana::runner::controller_object::load_cfgs(const wchar_t* _cmdline)
 {
     args_.init(_cmdline);
 
@@ -50,7 +50,7 @@ void nana::runner::app_base::load_cfgs(const wchar_t* _cmdline)
     }
 }
 
-void nana::runner::app_base::run(const wchar_t* _cmdline)
+void nana::runner::controller_object::run(const wchar_t* _cmdline)
 {
     init_views();
 

@@ -34,7 +34,7 @@ namespace nana::runner {
 
     using close_all_func = std::function<void()>;
 
-    class widget_cfg
+    class widget_cfg : public object
     {
         NAR_FIELD(id, id);
         NAR_FIELD(string, caption);
@@ -84,8 +84,6 @@ namespace nana::runner {
         NAR_FIELD(wstring, fullpath);
 
     public:
-        virtual ~widget_cfg() = default;
-
         virtual string type_name() const = 0;
 
         virtual cfg_ptr new_obj() const = 0;

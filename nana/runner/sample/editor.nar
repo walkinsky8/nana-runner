@@ -30,11 +30,6 @@
         bgcolor=green
         fgcolor=black
         typeface={ 11 bold }
-        @checkbox{
-            id=linewrap
-            caption="Line Wrap"
-            bgcolor=grey
-        }
         @button{
             id=load
         }
@@ -43,6 +38,9 @@
         }
         @button{
             id=run
+        }
+        @button{
+            id=setup
         }
         @button{
             id=close
