@@ -39,13 +39,18 @@
         @label{ id=n caption="Sample:" div="weight=20%" typeface="10" align=right }
         @textbox{ id=value caption="Hello, world! 世界你好！" bgcolor=green line_wrapped=1 }
     }
-    @button{
-        id=close
-        div="weight=30"
-        tooltip="exit program"
-        bgcolor=#ffff00
-        fgcolor=black
-        cursor=arrow
-        typeface={Lucida Console 12 bold}
+    @panel { id=cmd div="weight=30"
+        @button{
+            id=apply
+        }
+        @button{
+            id=ok
+        }
+        @button{
+            id=cancel
+            tooltip="exit program"
+            bgcolor=#ffff00
+            fgcolor=black
+        }
     }
 }

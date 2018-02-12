@@ -28,7 +28,9 @@ namespace nana::runner::sample::view {
 
         textbox& sample_;
 
-        button& quit_;
+        button& apply_;
+        button& ok_;
+        button& cancel_;
 
     public:
         static pcstr type_name_() { return "editor_setup"; }
@@ -46,7 +48,9 @@ namespace nana::runner::sample::view {
             , strikeout_{ _cfg.wnd<checkbox>("strikeout.value") }
             , underline_{ _cfg.wnd<checkbox>("underline.value") }
             , sample_{ _cfg.wnd<textbox>("sample.value") }
-            , quit_{ _cfg.wnd<button>("close") }
+            , apply_{ _cfg.wnd<button>("cmd.apply") }
+            , ok_{ _cfg.wnd<button>("cmd.ok") }
+            , cancel_{ _cfg.wnd<button>("cmd.cancel") }
         {
             name_ << sample_.typeface().name();
             size_ << sample_.typeface().size();
@@ -81,8 +85,8 @@ namespace nana::runner::sample::view {
                 sample_.typeface(make_font(f.name(), f.size(), f.bold(), f.italic(), underline_.checked(), f.strikeout()));
             });
 
-            quit_.events().click([this] {
-                cfg().close();
+            cancel_.events().click([this] {
+                close();
             });
         }
 

@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "nana_runner", "nana_runner.vcxproj", "{2BA903C7-E818-4A89-9F36-4FE9B634C1E9}"
+	ProjectSection(ProjectDependencies) = postProject
+		{25B21068-491B-4A9F-B99F-6C27BF31BAAD} = {25B21068-491B-4A9F-B99F-6C27BF31BAAD}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "nana", "..\..\..\nana\build\vc2015\nana.vcxproj", "{25B21068-491B-4A9F-B99F-6C27BF31BAAD}"
 EndProject
