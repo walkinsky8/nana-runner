@@ -12,15 +12,16 @@ namespace nana::runner::sample::view {
 
     class login : public view_obj
     {
+    public:
+        static string type_name_() { return "login"; }
+        static view_ptr new_(widget_cfg& _cfg) { return std::make_shared<login>(_cfg); }
+
+    public:
         textbox& username_;
         textbox& password_;
         
         button& login_;
         button& close_;
-
-    public:
-        static string type_name_() { return "login"; }
-        static view_ptr new_(widget_cfg& _cfg) { return std::make_shared<login>(_cfg); }
 
     public:
         login(widget_cfg& _cfg)

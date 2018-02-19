@@ -21,6 +21,8 @@ namespace nana::runner
 
         void run(const wchar_t* _cmdline);
 
+        void close_all();
+
         bool find_file(const wstring& _file, wstring& _fullpath);
 
         template<class T>

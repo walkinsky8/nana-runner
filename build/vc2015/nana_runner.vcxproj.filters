@@ -236,6 +236,9 @@
     <ClInclude Include="..\..\nana\runner\sample\login_view.h">
       <Filter>sample\editor</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\nana\runner\sample\editor_ctr.h">
+      <Filter>sample\editor</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\nana\runner\sample\color.nar">

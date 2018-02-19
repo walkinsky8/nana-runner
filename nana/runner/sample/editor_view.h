@@ -20,7 +20,7 @@ namespace nana::runner::sample::view {
         static pcstr type_name_() { return "editor"; }
         static view_ptr new_(widget_cfg& _cfg) { return std::make_shared<editor>(_cfg); }
 
-    private:
+    public:
         form& form_;
 
         textbox& filename_;

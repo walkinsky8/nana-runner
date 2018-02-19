@@ -216,6 +216,7 @@
     <ClInclude Include="..\..\nana\runner\parser.h" />
     <ClInclude Include="..\..\nana\runner\sample\color_view.h" />
     <ClInclude Include="..\..\nana\runner\sample\demo_view.h" />
+    <ClInclude Include="..\..\nana\runner\sample\editor_ctr.h" />
     <ClInclude Include="..\..\nana\runner\sample\editor_setup_view.h" />
     <ClInclude Include="..\..\nana\runner\sample\editor_view.h" />
     <ClInclude Include="..\..\nana\runner\sample\font_view.h" />

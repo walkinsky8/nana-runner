@@ -26,16 +26,19 @@ bool nana::runner::controller_object::find_file(const wstring& _file, wstring& _
     return false;
 }
 
+void nana::runner::controller_object::close_all()
+{
+    for (auto i : cfgs_)
+    {
+        i->close();
+    }
+}
+
 void nana::runner::controller_object::load_cfgs(const wchar_t* _cmdline)
 {
     args_.init(_cmdline);
 
-    auto close_all_func = [this] {
-        for (auto i : cfgs_)
-        {
-            i->close();
-        }
-    };
+    auto close_all_func = [this] { close_all(); };
 
     for (auto& filename : args_.arguments())
     {
