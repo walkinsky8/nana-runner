@@ -134,21 +134,6 @@ const nana::runner::optional<nana::runner::font>& nana::runner::widget_cfg::get_
     return typeface_();
 }
 
-nana::runner::cfg_ptr nana::runner::widget_cfg::from_file(wstring const& _filename)
-{
-    string cfg;
-    if (!read_file(_filename, cfg))
-        throw std::invalid_argument("read cfg error: " + to_utf8(_filename));
-
-    cfg_ptr p = from(cfg);
-    if (p)
-    {
-        p->fullpath_(_filename);
-        p->make_widgets();
-    }
-    return p;
-}
-
 nana::runner::cfg_ptr nana::runner::widget_cfg::from(string const& _cfg)
 {
     parser parsed(_cfg);

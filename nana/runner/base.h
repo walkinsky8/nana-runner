@@ -157,6 +157,9 @@ namespace nana::runner {
         return _s;
     }
 
+    class object;
+    using obj_ptr = std::shared_ptr<object>;
+
     class object
     {
     public:

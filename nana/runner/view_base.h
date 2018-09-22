@@ -33,19 +33,29 @@ namespace nana::runner {
     {
         widget_cfg& cfg_;
 
+        // only for root(form)
+        using _Widgets = std::map<id, wnd_ptr>;
+        NAR_FIELD(_Widgets, widgets);
+
+        NAR_FIELD(wnd_ptr, root_wnd);
+
     public:
         view_obj(widget_cfg& _cfg);
 
-        widget_cfg& cfg()
-        {
-            return cfg_;
-        }
+        widget_cfg& cfg() { return cfg_; }
+        const widget_cfg& cfg() const { return cfg_; }
 
         void show(bool _visible = true);
 
         void close();
 
         void close_all();
+
+        template<class T>
+        T& wnd(id _id = {}) const
+        {
+            return cfg().wnd<T>(_id);
+        }
 
     };
 

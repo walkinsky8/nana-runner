@@ -10,14 +10,17 @@
 
 namespace nana::runner
 {
-    class controller_object : public object
+    class controller_obj;
+    using ctr_ptr = std::shared_ptr<controller_obj>;
+
+    class controller_obj : public object
     {
         cmdargs args_;
 
-        list_multimap<string, cfg_ptr> cfgs_;
+        list_multimap<string, cfg_ptr> cfgs_; 
 
     public:
-        controller_object();
+        controller_obj();
 
         void run(const wchar_t* _cmdline);
 

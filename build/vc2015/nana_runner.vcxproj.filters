@@ -29,14 +29,14 @@
     <Filter Include="sample\main">
       <UniqueIdentifier>{2fa39bf0-0bab-461e-a812-e6adbe83ece4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="framework">
-      <UniqueIdentifier>{0fd6d47e-0080-4c3c-878a-fc055fec415d}</UniqueIdentifier>
-    </Filter>
     <Filter Include="sample\editor">
       <UniqueIdentifier>{60b40ae4-251b-4113-a825-fbc9518a9938}</UniqueIdentifier>
     </Filter>
     <Filter Include="sample\demo">
       <UniqueIdentifier>{c05ac02c-8a16-4aaf-af1f-4d27e6a2131b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="foundation">
+      <UniqueIdentifier>{0fd6d47e-0080-4c3c-878a-fc055fec415d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -75,13 +75,7 @@
     <ClCompile Include="..\..\nana\runner\istr.cpp">
       <Filter>base\types</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\nana\runner\widget_factory.cpp">
-      <Filter>widgets</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\nana\runner\button_cfg.cpp">
-      <Filter>widgets</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\nana\runner\widget_cfg.cpp">
       <Filter>widgets</Filter>
     </ClCompile>
     <ClCompile Include="..\..\nana\runner\form_cfg.cpp">
@@ -106,22 +100,31 @@
       <Filter>widgets</Filter>
     </ClCompile>
     <ClCompile Include="..\..\nana\runner\model_base.cpp">
-      <Filter>framework</Filter>
+      <Filter>foundation</Filter>
     </ClCompile>
     <ClCompile Include="..\..\nana\runner\view_base.cpp">
-      <Filter>framework</Filter>
+      <Filter>foundation</Filter>
     </ClCompile>
     <ClCompile Include="..\..\nana\runner\view_factory.cpp">
-      <Filter>framework</Filter>
+      <Filter>foundation</Filter>
     </ClCompile>
     <ClCompile Include="..\..\nana\runner\sample\nana_runner.cpp">
       <Filter>sample\main</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\nana\runner\controller_base.cpp">
+      <Filter>foundation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nana\runner\app_base.cpp">
+      <Filter>foundation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nana\runner\widget_cfg.cpp">
+      <Filter>foundation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nana\runner\widget_factory.cpp">
+      <Filter>widgets</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\nana\runner\cmdargs.cpp">
       <Filter>base\types</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\nana\runner\controller_base.cpp">
-      <Filter>framework</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -167,9 +170,6 @@
     <ClInclude Include="..\..\nana\runner\log.h">
       <Filter>base\log</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\nana\runner\widget_factory.h">
-      <Filter>widgets</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\nana\runner\button_cfg.h">
       <Filter>widgets</Filter>
     </ClInclude>
@@ -180,9 +180,6 @@
       <Filter>widgets</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\textbox_cfg.h">
-      <Filter>widgets</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\nana\runner\widget_cfg.h">
       <Filter>widgets</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\panel_cfg.h">
@@ -198,19 +195,16 @@
       <Filter>widgets</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\model_base.h">
-      <Filter>framework</Filter>
+      <Filter>foundation</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\view_base.h">
-      <Filter>framework</Filter>
+      <Filter>foundation</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\view_factory.h">
-      <Filter>framework</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\nana\runner\cmdargs.h">
-      <Filter>base\types</Filter>
+      <Filter>foundation</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\controller_base.h">
-      <Filter>framework</Filter>
+      <Filter>foundation</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\sample\color_view.h">
       <Filter>sample\demo</Filter>
@@ -230,14 +224,35 @@
     <ClInclude Include="..\..\nana\runner\sample\editor_view.h">
       <Filter>sample\editor</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\nana\runner\sample\log_viewer_view.h">
-      <Filter>sample\editor</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\nana\runner\sample\login_view.h">
       <Filter>sample\editor</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\sample\editor_ctr.h">
       <Filter>sample\editor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nana\runner\sample\login_model.h">
+      <Filter>sample\editor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nana\runner\sample\login_ctr.h">
+      <Filter>sample\editor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nana\runner\sample\logger_view.h">
+      <Filter>sample\editor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nana\runner\app_base.h">
+      <Filter>foundation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nana\runner\widget_cfg.h">
+      <Filter>foundation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nana\runner\widget_factory.h">
+      <Filter>widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nana\runner\sample\editor_app.h">
+      <Filter>sample\editor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nana\runner\cmdargs.h">
+      <Filter>base\types</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -259,10 +274,10 @@
     <None Include="..\..\nana\runner\sample\editor_setup.nar">
       <Filter>sample\editor</Filter>
     </None>
-    <None Include="..\..\nana\runner\sample\log_viewer.nar">
+    <None Include="..\..\nana\runner\sample\login.nar">
       <Filter>sample\editor</Filter>
     </None>
-    <None Include="..\..\nana\runner\sample\login.nar">
+    <None Include="..\..\nana\runner\sample\logger.nar">
       <Filter>sample\editor</Filter>
     </None>
   </ItemGroup>

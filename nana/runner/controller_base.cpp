@@ -3,14 +3,14 @@
 
 #include <nana/runner/controller_base.h>
 
-nana::runner::controller_object::controller_object()
+nana::runner::controller_obj::controller_obj()
 {
     NAR_LOG("initializing...");
     init_enums();
     init_widgets();
 }
 
-bool nana::runner::controller_object::find_file(const wstring& _file, wstring& _fullpath)
+bool nana::runner::controller_obj::find_file(const wstring& _file, wstring& _fullpath)
 {
     auto paths = args_.options(L"path");
     for (auto p = paths.first; p != paths.second; ++p)
@@ -26,7 +26,7 @@ bool nana::runner::controller_object::find_file(const wstring& _file, wstring& _
     return false;
 }
 
-void nana::runner::controller_object::close_all()
+void nana::runner::controller_obj::close_all()
 {
     for (auto i : cfgs_)
     {
@@ -34,7 +34,7 @@ void nana::runner::controller_object::close_all()
     }
 }
 
-void nana::runner::controller_object::load_cfgs(const wchar_t* _cmdline)
+void nana::runner::controller_obj::load_cfgs(const wchar_t* _cmdline)
 {
     args_.init(_cmdline);
 
@@ -53,7 +53,7 @@ void nana::runner::controller_object::load_cfgs(const wchar_t* _cmdline)
     }
 }
 
-void nana::runner::controller_object::run(const wchar_t* _cmdline)
+void nana::runner::controller_obj::run(const wchar_t* _cmdline)
 {
     init_views();
 

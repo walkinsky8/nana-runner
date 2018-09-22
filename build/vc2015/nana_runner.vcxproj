@@ -41,7 +41,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
@@ -160,6 +160,7 @@
     <Image Include="small.ico" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\nana\runner\app_base.cpp" />
     <ClCompile Include="..\..\nana\runner\controller_base.cpp" />
     <ClCompile Include="..\..\nana\runner\base.cpp" />
     <ClCompile Include="..\..\nana\runner\button_cfg.cpp" />
@@ -192,6 +193,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\nana\runner\app_base.h" />
     <ClInclude Include="..\..\nana\runner\controller_base.h" />
     <ClInclude Include="..\..\nana\runner\base.h" />
     <ClInclude Include="..\..\nana\runner\base_types.h" />
@@ -216,13 +218,16 @@
     <ClInclude Include="..\..\nana\runner\parser.h" />
     <ClInclude Include="..\..\nana\runner\sample\color_view.h" />
     <ClInclude Include="..\..\nana\runner\sample\demo_view.h" />
+    <ClInclude Include="..\..\nana\runner\sample\editor_app.h" />
     <ClInclude Include="..\..\nana\runner\sample\editor_ctr.h" />
     <ClInclude Include="..\..\nana\runner\sample\editor_setup_view.h" />
     <ClInclude Include="..\..\nana\runner\sample\editor_view.h" />
     <ClInclude Include="..\..\nana\runner\sample\font_view.h" />
     <ClInclude Include="..\..\nana\runner\sample\hello_view.h" />
+    <ClInclude Include="..\..\nana\runner\sample\login_ctr.h" />
+    <ClInclude Include="..\..\nana\runner\sample\login_model.h" />
     <ClInclude Include="..\..\nana\runner\sample\login_view.h" />
-    <ClInclude Include="..\..\nana\runner\sample\log_viewer_view.h" />
+    <ClInclude Include="..\..\nana\runner\sample\logger_view.h" />
     <ClInclude Include="..\..\nana\runner\slider_cfg.h" />
     <ClInclude Include="..\..\nana\runner\textbox_cfg.h" />
     <ClInclude Include="..\..\nana\runner\view_base.h" />
@@ -238,7 +243,7 @@
     <None Include="..\..\nana\runner\sample\font.nar" />
     <None Include="..\..\nana\runner\sample\hello.nar" />
     <None Include="..\..\nana\runner\sample\login.nar" />
-    <None Include="..\..\nana\runner\sample\log_viewer.nar" />
+    <None Include="..\..\nana\runner\sample\logger.nar" />
     <None Include="..\..\nana\runner\sample\editor_setup.nar" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

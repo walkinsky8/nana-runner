@@ -8,19 +8,21 @@
 #include <nana/runner/model_base.h>
 
 #define NAR_DEFINE_WIDGET(_class, _super) \
-        public: \
+        private: \
             using super = _super; \
             using self = _class##_cfg; \
-            using ui_type = nana::runner::_class; \
-            static pcstr type_name_() { return #_class; } \
-            static cfg_ptr new_() { return std::make_shared<self>(); } \
         public: \
-            string type_name() const override { return type_name_(); } \
-            cfg_ptr new_obj() const override { return new_(); } \
-            wnd_ptr create_widget(window p, bool v) const override { return create_widget_(p, v); } \
-            dumper& dump(dumper& _d) const override { return codec(_d, const_cast<self&>(*this)); } \
-            void parse(const parser& _p) override { codec(const_cast<parser&>(_p), *this); } \
-        private:
+            using ui_type = nana::runner::_class; \
+            static nana::runner::pcstr type_name_() { return #_class; } \
+            static nana::runner::cfg_ptr new_() { return std::make_shared<self>(); } \
+        public: \
+            nana::runner::string type_name() const override { return type_name_(); } \
+            nana::runner::cfg_ptr new_obj() const override { return new_(); } \
+            nana::runner::wnd_ptr create_widget(nana::window p, bool v) const override { return create_widget_(p, v); } \
+            nana::runner::dumper& dump(nana::runner::dumper& _d) const override { return nana::runner::codec(_d, const_cast<self&>(*this)); } \
+            void parse(const nana::runner::parser& _p) override { nana::runner::codec(const_cast<nana::runner::parser&>(_p), *this); } \
+        private: \
+        /**/
 
 namespace nana::runner {
 
@@ -72,17 +74,6 @@ namespace nana::runner {
     private:
         widget_cfg* m_parent{ nullptr };
 
-        // only for root(form)
-        using _Widgets = std::map<id, wnd_ptr>;
-        NAR_FIELD(_Widgets, widgets);
-
-        NAR_FIELD(wnd_ptr, root_wnd);
-
-        NAR_FIELD(view_ptr, view);
-
-        NAR_FIELD(close_all_func, close_all);
-        NAR_FIELD(wstring, fullpath);
-
     public:
         virtual string type_name() const = 0;
 
@@ -125,8 +116,6 @@ namespace nana::runner {
         {
             m_parent = _parent;
         }
-
-        static cfg_ptr from_file(wstring const& _filename);
 
         static cfg_ptr from(string const& _cfg);
 

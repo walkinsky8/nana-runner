@@ -8,8 +8,14 @@ namespace nana::runner
     template<class K, class V>
     class list_map
     {
-        std::vector<V> list_;
-        std::map<K, V> map_;
+    public:
+        typedef std::vector<V> _List;
+        typedef std::map<K, V> _Map;
+        typedef typename _List::const_iterator const_iterator;
+
+    private:
+        _List list_;
+        _Map map_;
 
     public:
         bool empty() const
@@ -22,12 +28,12 @@ namespace nana::runner
             return list_.size();
         }
 
-        const std::vector<V>& list() const
+        const _List& list() const
         {
             return list_;
         }
 
-        const std::map<K, V>& map() const
+        const _Map& map() const
         {
             return map_;
         }
@@ -59,6 +65,16 @@ namespace nana::runner
             if (i == map_.end())
                 return nullptr;
             return &i->second;
+        }
+
+        const_iterator begin() const
+        {
+            return list_.begin();
+        }
+
+        const_iterator end() const
+        {
+            return list_.end();
         }
 
     };

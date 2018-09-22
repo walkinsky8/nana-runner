@@ -10,11 +10,11 @@
 
 namespace nana::runner::sample::view {
 
-    class log_viewer : public view_obj
+    class logger : public view_obj
     {
     public:
-        static string type_name_() { return "log_viewer"; }
-        static view_ptr new_(widget_cfg& _cfg) { return std::make_shared<log_viewer>(_cfg); }
+        static string type_name_() { return "logger"; }
+        static view_ptr new_(widget_cfg& _cfg) { return std::make_shared<logger>(_cfg); }
 
     public:
         form& form_;
@@ -25,7 +25,7 @@ namespace nana::runner::sample::view {
         button& exit_;
 
     public:
-        log_viewer(widget_cfg& _cfg)
+        logger(widget_cfg& _cfg)
             : view_obj{ _cfg }
             , form_{ _cfg.wnd<form>() }
             , content_{ _cfg.wnd<textbox>("content") }

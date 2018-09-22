@@ -1,5 +1,5 @@
 ﻿@form{
-    id=log_viewer
+    id=logger
     caption="Log Viewer"
     div="vert"
     align=right

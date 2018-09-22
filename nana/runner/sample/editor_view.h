@@ -39,14 +39,14 @@ namespace nana::runner::sample::view {
     public:
         editor(widget_cfg& _cfg)
             : view_obj{ _cfg }
-            , form_{ _cfg.wnd<form>() }
-            , filename_{ _cfg.wnd<textbox>("filename") }
-            , filebuf_{ _cfg.wnd<textbox>("filebuf") }
-            , load_{ _cfg.wnd<button>("cmd.load") }
-            , save_{ _cfg.wnd<button>("cmd.save") }
-            , run_{ _cfg.wnd<button>("cmd.run") }
-            , setup_{ _cfg.wnd<button>("cmd.setup") }
-            , quit_{ _cfg.wnd<button>("cmd.close") }
+            , form_{ wnd<form>() }
+            , filename_{ wnd<textbox>("filename") }
+            , filebuf_{ wnd<textbox>("filebuf") }
+            , load_{ wnd<button>("cmd.load") }
+            , save_{ wnd<button>("cmd.save") }
+            , run_{ wnd<button>("cmd.run") }
+            , setup_{ wnd<button>("cmd.setup") }
+            , quit_{ wnd<button>("cmd.close") }
         {
             filename_ << cfg().fullpath_();
             load();
