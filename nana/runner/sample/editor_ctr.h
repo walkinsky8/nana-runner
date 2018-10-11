@@ -28,7 +28,7 @@ namespace nana::runner::sample {
 			add_view<view::login>();
 			add_view<view::editor>();
 			add_view<view::editor_setup>();
-		}
+        }
 
         void on_init() override
         {

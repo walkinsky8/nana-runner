@@ -79,6 +79,9 @@ void nana::runner::view_obj::init()
 
 nana::runner::view_ptr nana::runner::view_obj::make_view(widget_cfg& _cfg)
 {
-    return create_view(_cfg);
+    view_ptr p = create_view(_cfg);
+    if (p)
+        return p;
+    return std::make_shared<view_obj>(_cfg);
 }
 

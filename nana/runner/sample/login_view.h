@@ -35,7 +35,7 @@ namespace nana::runner::sample::view {
 
         void on_login(std::function<void()> _f)
         {
-            login_.events().click([this, _f] { on_close(); _f(); });
+            login_.events().click([this, _f] { close(); _f(); });
         }
 
         void on_login()
@@ -47,6 +47,8 @@ namespace nana::runner::sample::view {
         {
             NAR_LOG("close login window");
             close();
+            NAR_LOG("login cancelled, so quit program");
+            app::close_all();
         }
 
     };

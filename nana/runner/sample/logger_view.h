@@ -37,9 +37,15 @@ namespace nana::runner::sample::view {
                 content_.append(s, false);
             });
 
-            close_.events().click([this] { close(); });
-            exit_.events().click([] { app::close_all(); });
-            form_.events().destroy([] { app::close_all(); });
+            close_.events().click([this] {
+                close();
+            });
+            exit_.events().click([] {
+                app::close_all();
+            });
+            form_.events().destroy([] {
+                app::close_all();
+            });
         }
 
     };

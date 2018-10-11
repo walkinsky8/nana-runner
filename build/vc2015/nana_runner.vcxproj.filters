@@ -298,5 +298,8 @@
     <None Include="..\..\nana\runner\sample\logger.nar">
       <Filter>sample\editor</Filter>
     </None>
+    <None Include="..\..\nana\runner\sample\dummy.nar">
+      <Filter>sample\demo</Filter>
+    </None>
   </ItemGroup>
 </Project>
