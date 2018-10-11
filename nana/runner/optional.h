@@ -1,7 +1,7 @@
 // Created by walkinsky(lyh6188@hotmail.com), 2017/01/20
 #pragma once
 
-#include <nana/runner/base.h>
+#include <nana/runner/base_config.h>
 
 namespace nana::runner {
 
@@ -47,6 +47,11 @@ namespace nana::runner {
         {
             return empty_;
         }
+
+		bool valid() const
+		{
+			return !empty_;
+		}
 
     };
     template<class T>

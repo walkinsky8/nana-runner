@@ -4,71 +4,6 @@
 #include <nana/runner/widget_cfg.h>
 
 #include <nana/runner/widget_factory.h>
-#include <nana/runner/view_factory.h>
-
-nana::runner::wnd_ptr nana::runner::widget_cfg::get_widget(id _id) const
-{
-    auto i = m_widgets.find(_id);
-    if (i == m_widgets.end())
-        return nullptr;
-    return (*i).second;
-}
-
-void nana::runner::widget_cfg::make_widgets(widget_cfg& _root_cfg, widget_cfg* _parent_cfg, nana::window _parent_wnd)
-{
-    set_parent(_parent_cfg);
-
-    wnd_ptr w = create_widget(_parent_wnd, true);
-
-    for (auto& i : m_children)
-    {
-        i->make_widgets(_root_cfg, this, _parent_wnd);
-    }
-
-    if (w && !id_().empty())
-    {
-        init_widget(*w);
-
-        _root_cfg.m_widgets[id_path()] = w;
-    }
-}
-
-void nana::runner::widget_cfg::make_widgets()
-{
-    m_root_wnd = create_widget(nullptr, true);
-    if (!m_root_wnd)
-        throw std::invalid_argument(string("invalid root widget ") + id_path().str());
-
-    for (auto& i : m_children)
-    {
-        i->make_widgets(*this, this, *m_root_wnd);
-    }
-
-    init_widget(*m_root_wnd);
-
-    m_widgets[id_path()] = m_root_wnd;
-
-    m_view = create_view(*this);
-
-    //show();
-}
-
-void nana::runner::widget_cfg::show(bool _visible) const
-{
-    if (m_root_wnd)
-    {
-        if (_visible)
-            m_root_wnd->show();
-        else
-            m_root_wnd->hide();
-    }
-}
-
-void nana::runner::widget_cfg::close() const
-{
-    if (m_root_wnd)
-        m_root_wnd->close();
-}
 
 void nana::runner::widget_cfg::make_div(string& _div) const
 {
@@ -143,10 +78,11 @@ nana::runner::cfg_ptr nana::runner::widget_cfg::from(string const& _cfg)
     return v;
 }
 
-void nana::runner::operator >> (const parser& _is, std::shared_ptr<widget_cfg>& _v)
+void nana::runner::operator >> (const parser& _is, cfg_ptr& _v)
 {
     _v = widget_factory::instance().create(_is.type());
-    _is >> *_v;
+	if (_v)
+		_is >> *_v;
 }
 
 void nana::runner::widget_cfg::init_widget(widget& _w) const
@@ -184,3 +120,4 @@ void nana::runner::widget_cfg::init_widget(widget& _w) const
     if (!visible_().empty())
         visible_().value() ? _w.show() : _w.hide();
 }
+

@@ -1,9 +1,7 @@
 // Created by walkinsky(lyh6188@hotmail.com), 2017/11/10
 #pragma once
 
-#include <nana/runner/base.h>
-
-#include <nana/runner/widget_cfg.h>
+#include <nana/runner/view_base.h>
 
 #include <nana/runner/label_cfg.h>
 #include <nana/runner/textbox_cfg.h>
@@ -26,9 +24,9 @@ namespace nana::runner::sample::view {
     public:
         Hello(widget_cfg& _cfg)
             : view_obj{ _cfg }
-            , world_{ _cfg.wnd<label>("world") }
-            , text_{ _cfg.wnd<textbox>("text") }
-            , close_{ _cfg.wnd<button>("close") }
+            , world_{ wnd<label>("world") }
+            , text_{ wnd<textbox>("text") }
+            , close_{ wnd<button>("close") }
         {
             close_.events().click([this] { close(); });
         }

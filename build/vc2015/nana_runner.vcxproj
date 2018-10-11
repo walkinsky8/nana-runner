@@ -161,6 +161,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\nana\runner\app_base.cpp" />
+    <ClCompile Include="..\..\nana\runner\base_config.cpp" />
     <ClCompile Include="..\..\nana\runner\controller_base.cpp" />
     <ClCompile Include="..\..\nana\runner\base.cpp" />
     <ClCompile Include="..\..\nana\runner\button_cfg.cpp" />
@@ -183,6 +184,8 @@
     <ClCompile Include="..\..\nana\runner\textbox_cfg.cpp" />
     <ClCompile Include="..\..\nana\runner\view_base.cpp" />
     <ClCompile Include="..\..\nana\runner\view_factory.cpp" />
+    <ClCompile Include="..\..\nana\runner\widget_all.cpp" />
+    <ClCompile Include="..\..\nana\runner\widget_base.cpp" />
     <ClCompile Include="..\..\nana\runner\widget_cfg.cpp" />
     <ClCompile Include="..\..\nana\runner\widget_factory.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -194,6 +197,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\nana\runner\app_base.h" />
+    <ClInclude Include="..\..\nana\runner\base_config.h" />
     <ClInclude Include="..\..\nana\runner\controller_base.h" />
     <ClInclude Include="..\..\nana\runner\base.h" />
     <ClInclude Include="..\..\nana\runner\base_types.h" />
@@ -232,6 +236,8 @@
     <ClInclude Include="..\..\nana\runner\textbox_cfg.h" />
     <ClInclude Include="..\..\nana\runner\view_base.h" />
     <ClInclude Include="..\..\nana\runner\view_factory.h" />
+    <ClInclude Include="..\..\nana\runner\widget_all.h" />
+    <ClInclude Include="..\..\nana\runner\widget_base.h" />
     <ClInclude Include="..\..\nana\runner\widget_cfg.h" />
     <ClInclude Include="..\..\nana\runner\widget_factory.h" />
     <ClInclude Include="stdafx.h" />

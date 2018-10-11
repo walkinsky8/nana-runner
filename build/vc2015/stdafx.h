@@ -19,4 +19,5 @@
 
 
 // TODO:  在此处引用程序需要的其他头文件
-#include <nana/gui.hpp>
+//#include <nana/gui.hpp>
+#include <nana/runner/base_config.h>

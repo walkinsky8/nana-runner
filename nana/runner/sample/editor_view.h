@@ -1,9 +1,7 @@
 // Created by walkinsky(lyh6188@hotmail.com), 2018/02/09
 #pragma once
 
-#include <nana/runner/base.h>
-
-#include <nana/runner/widget_cfg.h>
+#include <nana/runner/view_base.h>
 
 #include <nana/runner/form_cfg.h>
 #include <nana/runner/categorize_cfg.h>
@@ -34,7 +32,8 @@ namespace nana::runner::sample::view {
         button& quit_;
 
     private:
-        cfg_ptr current_;
+        view_ptr current_;
+		cfg_ptr curr_cfg_;
 
     public:
         editor(widget_cfg& _cfg)
@@ -101,7 +100,8 @@ namespace nana::runner::sample::view {
             NAR_LOG("run nar cfg = " << fbuf);
             NAR_LOG("run nar file = " << fname);
             close_current();
-            current_ = widget_cfg::from_file(fname);
+            curr_cfg_ = widget_cfg::from(fbuf);
+			current_ = view_obj::make_view(*curr_cfg_);
             if (current_)
                 current_->show();
         }
@@ -112,6 +112,7 @@ namespace nana::runner::sample::view {
             {
                 current_->close();
                 current_ = nullptr;
+				curr_cfg_ = nullptr;
             }
         }
 

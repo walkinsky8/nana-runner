@@ -1,12 +1,11 @@
 // Created by walkinsky(lyh6188@hotmail.com), 2017/01/16
 #pragma once
 
-#include <nana/runner/base.h>
+#include <nana/runner/base_config.h>
 
-#include <nana/runner/istr.h>
+#include <nana/runner/base_types.h>
+
 #include <nana/runner/dumper.h>
-#include <nana/runner/list_map.h>
-#include <nana/runner/list_multimap.h>
 
 namespace nana::runner
 {

@@ -1,7 +1,7 @@
 // Created by walkinsky(lyh6188@hotmail.com), 2017/11/15
 #include "stdafx.h"
 
-#include <nana/runner/id.h>
+#include <nana/runner/istr.h>
 
 nana::runner::istr& nana::runner::istr::advance(int _offset)
 {

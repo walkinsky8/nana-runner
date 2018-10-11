@@ -1,12 +1,11 @@
 // Created by walkinsky(lyh6188@hotmail.com), 2018/01/22
 #pragma once
 
-#include <nana/runner/base.h>
-
-#include <nana/runner/widget_cfg.h>
+#include <nana/runner/view_base.h>
 
 #include <nana/runner/form_cfg.h>
 #include <nana/runner/textbox_cfg.h>
+#include <nana/runner/slider_cfg.h>
 #include <nana/runner/button_cfg.h>
 
 namespace nana::runner::sample::view {
@@ -43,24 +42,24 @@ namespace nana::runner::sample::view {
     public:
         Color(widget_cfg& _cfg)
             : view_obj{ _cfg }
-            , form_{ _cfg.wnd<form>() }
-            , bg_{ _cfg.wnd<textbox>("bg.value") }
-            , fg_{ _cfg.wnd<textbox>("fg.value") }
-            , sample_{ _cfg.wnd<textbox>("sample.normal") }
-            , revert_{ _cfg.wnd<textbox>("sample.revert") }
-            , r_{ _cfg.wnd<slider>("r.value") }
-            , g_{ _cfg.wnd<slider>("g.value") }
-            , b_{ _cfg.wnd<slider>("b.value") }
-            , h_{ _cfg.wnd<slider>("h.value") }
-            , s_{ _cfg.wnd<slider>("s.value") }
-            , l_{ _cfg.wnd<slider>("l.value") }
-            , r_v_{ _cfg.wnd<textbox>("r.v") }
-            , g_v_{ _cfg.wnd<textbox>("g.v") }
-            , b_v_{ _cfg.wnd<textbox>("b.v") }
-            , h_v_{ _cfg.wnd<textbox>("h.v") }
-            , s_v_{ _cfg.wnd<textbox>("s.v") }
-            , l_v_{ _cfg.wnd<textbox>("l.v") }
-            , quit_{ _cfg.wnd<button>("close") }
+            , form_{ wnd<form>() }
+            , bg_{ wnd<textbox>("bg.value") }
+            , fg_{ wnd<textbox>("fg.value") }
+            , sample_{ wnd<textbox>("sample.normal") }
+            , revert_{ wnd<textbox>("sample.revert") }
+            , r_{ wnd<slider>("r.value") }
+            , g_{ wnd<slider>("g.value") }
+            , b_{ wnd<slider>("b.value") }
+            , h_{ wnd<slider>("h.value") }
+            , s_{ wnd<slider>("s.value") }
+            , l_{ wnd<slider>("l.value") }
+            , r_v_{ wnd<textbox>("r.v") }
+            , g_v_{ wnd<textbox>("g.v") }
+            , b_v_{ wnd<textbox>("b.v") }
+            , h_v_{ wnd<textbox>("h.v") }
+            , s_v_{ wnd<textbox>("s.v") }
+            , l_v_{ wnd<textbox>("l.v") }
+            , quit_{ wnd<button>("close") }
         {
             bg_ << sample_.bgcolor();
             fg_ << sample_.fgcolor();
@@ -139,7 +138,7 @@ namespace nana::runner::sample::view {
             });
 
             quit_.events().click([this] {
-                cfg().close();
+                close();
             });
         }
 

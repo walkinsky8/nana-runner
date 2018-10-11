@@ -1,32 +1,32 @@
 // Created by walkinsky(lyh6188@hotmail.com), 2018/02/21
 #pragma once
 
-#include <nana/runner/base.h>
-
 #include <nana/runner/controller_base.h>
-#include <nana/runner/view_factory.h>
 
 #include <nana/runner/sample/login_view.h>
+
 #include <nana/runner/sample/login_model.h>
+
+#include <nana/runner/app_base.h>
 
 namespace nana::runner::sample {
 
     class login_ctr : public controller_obj
     {
-        view::login* view_{};
+        view_ptr view_;
 
         model::login data_;
 
     public:
-        void init_views() override
+        static void init_views()
         {
             add_view<view::login>();
         }
 
-        void init_logic() override
+        void init_logic()
         {
-            view_ = get_view<view::login>();
-            view_->show();
+            view_ = app::instance().load_view(L"login.nar");
+			view_->show();
         }
 
     };

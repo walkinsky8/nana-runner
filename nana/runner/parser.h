@@ -1,7 +1,7 @@
 // Created by walkinsky(lyh6188@hotmail.com), 2017/01/16
 #pragma once
 
-#include <nana/runner/base.h>
+#include <nana/runner/base_config.h>
 
 #include <nana/runner/base_types.h>
 
@@ -108,7 +108,7 @@ namespace nana::runner
             }
         }
         template<class T>
-        void operator >> (std::shared_ptr<T>& _v) const
+        void operator >> (ptr<T>& _v) const
         {
             if (!valueIsEmpty())
             {

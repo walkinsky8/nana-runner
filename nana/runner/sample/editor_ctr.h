@@ -1,11 +1,7 @@
 // Created by walkinsky(lyh6188@hotmail.com), 2018/02/12
 #pragma once
 
-#include <nana/runner/base.h>
-
 #include <nana/runner/controller_base.h>
-
-#include <nana/runner/view_factory.h>
 
 #include <nana/runner/sample/logger_view.h>
 #include <nana/runner/sample/login_view.h>
@@ -14,35 +10,45 @@
 
 #include <nana/runner/sample/login_model.h>
 
+#include <nana/runner/app_base.h>
+
 namespace nana::runner::sample {
 
     class editor_ctr : public controller_obj
     {
-        view::logger* log_{};
-        view::login* login_{};
-        view::editor* editor_{};
-        view::editor_setup* editor_setup_{};
+        view_ptr log_;
+		view_ptr login_;
+		view_ptr editor_;
+		view_ptr editor_setup_;
 
     public:
-        void init_views() override
-        {
-            add_view<view::logger>();
-            add_view<view::login>();
-            add_view<view::editor>();
-            add_view<view::editor_setup>();
-        }
+		static void initialize()
+		{
+			add_view<view::logger>();
+			add_view<view::login>();
+			add_view<view::editor>();
+			add_view<view::editor_setup>();
+		}
 
-        void init_logic() override
+        void on_init()
         {
-            log_ = get_view<view::logger>();
-            login_ = get_view<view::login>();
-            editor_ = get_view<view::editor>();
-            editor_setup_ = get_view<view::editor_setup>();
+			log_ = app::get_view(L"logger.nar");
+			login_ = app::get_view(L"login.nar");
+			editor_ = app::get_view(L"editor.nar");
+			editor_setup_ = app::get_view(L"editor_setup.nar");
 
             log_->show();
             login_->show();
-            login_->on_login([this] { editor_->show(); });
-            editor_->on_setup([this] { editor_setup_->show(); });
+            login_->cast<view::login>().on_login([this] { editor_->show(); });
+            editor_->cast<view::editor>().on_setup([this] { editor_setup_->show(); });
+        }
+
+        void on_fini()
+        {
+            log_->close();
+            login_->close();
+            editor_->close();
+            editor_setup_->close();
         }
 
     };

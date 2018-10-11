@@ -1,8 +1,6 @@
 // Created by walkinsky(lyh6188@hotmail.com), 2017/11/15
 #pragma once
 
-#include <nana/runner/base.h>
-
 #include <nana/runner/widget_cfg.h>
 
 namespace nana::runner {
@@ -38,7 +36,5 @@ namespace nana::runner {
     {
         widget_factory::instance().add(T::type_name_(), T::new_);
     }
-
-    void init_widgets();
 
 }

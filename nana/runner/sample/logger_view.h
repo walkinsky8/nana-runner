@@ -1,12 +1,12 @@
 // Created by walkinsky(lyh6188@hotmail.com), 2018/01/25
 #pragma once
 
-#include <nana/runner/base.h>
-
-#include <nana/runner/widget_cfg.h>
+#include <nana/runner/view_base.h>
 
 #include <nana/runner/textbox_cfg.h>
 #include <nana/runner/button_cfg.h>
+
+#include <nana/runner/app_base.h>
 
 namespace nana::runner::sample::view {
 
@@ -27,10 +27,10 @@ namespace nana::runner::sample::view {
     public:
         logger(widget_cfg& _cfg)
             : view_obj{ _cfg }
-            , form_{ _cfg.wnd<form>() }
-            , content_{ _cfg.wnd<textbox>("content") }
-            , close_{ _cfg.wnd<button>("cmd.close") }
-            , exit_{ _cfg.wnd<button>("cmd.exit") }
+            , form_{ wnd<form>() }
+            , content_{ wnd<textbox>("content") }
+            , close_{ wnd<button>("cmd.close") }
+            , exit_{ wnd<button>("cmd.exit") }
         {
             set_log_handler([this](const string& s) {
                 write_console(s);
@@ -38,8 +38,8 @@ namespace nana::runner::sample::view {
             });
 
             close_.events().click([this] { close(); });
-            exit_.events().click([this] { close_all(); });
-            form_.events().destroy([this] { close_all(); });
+            exit_.events().click([] { app::close_all(); });
+            form_.events().destroy([] { app::close_all(); });
         }
 
     };

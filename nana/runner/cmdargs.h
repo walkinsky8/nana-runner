@@ -1,7 +1,7 @@
 // Created by walkinsky(lyh6188@hotmail.com), 2018/01/31
 #pragma once
 
-#include <nana/runner/base.h>
+#include <nana/runner/base_config.h>
 
 #include <nana/runner/list_multimap.h>
 

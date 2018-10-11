@@ -15,10 +15,10 @@ void nana::runner::form_cfg::init_widget(widget & _w) const
     auto& w = dynamic_cast<ui_type&>(_w);
     w.div(div.data());
 
-    for (auto& i : widgets_())
-    {
-        w[i.first.str().data()] << *get_widget(i.first);
-    }
+    //for (auto& i : widgets_())
+    //{
+    //    w[i.first.str().data()] << *get_widget(i.first);
+    //}
 
     w.collocate();
 }

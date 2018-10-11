@@ -1,7 +1,7 @@
 // Created by walkinsky(lyh6188@hotmail.com), 2017/11/07
 #pragma once
 
-#include <nana/runner/base.h>
+#include <nana/runner/base_config.h>
 
 #include <nana/runner/istr.h>
 

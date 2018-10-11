@@ -1,8 +1,6 @@
 // Created by walkinsky(lyh6188@hotmail.com), 2017/11/15
 #pragma once
 
-#include <nana/runner/base.h>
-
 #include <nana/runner/widget_cfg.h>
 
 #include <nana/gui/widgets/form.hpp>
@@ -27,7 +25,7 @@ namespace nana::runner {
             NAR_CODEC(_s, align_v);
         }
 
-        static wnd_ptr create_widget_(window p, bool v) { return std::make_shared<ui_type>(p); }
+        static wnd_ptr create_wnd_(window p, bool v) { return std::make_shared<ui_type>(p); }
 
         void init_widget(widget& _w) const override;
 

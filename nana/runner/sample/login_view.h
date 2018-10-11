@@ -1,9 +1,7 @@
 // Created by walkinsky(lyh6188@hotmail.com), 2018/01/25
 #pragma once
 
-#include <nana/runner/base.h>
-
-#include <nana/runner/widget_cfg.h>
+#include <nana/runner/view_base.h>
 
 #include <nana/runner/textbox_cfg.h>
 #include <nana/runner/button_cfg.h>
@@ -26,10 +24,10 @@ namespace nana::runner::sample::view {
     public:
         login(widget_cfg& _cfg)
             : view_obj{ _cfg }
-            , username_{ _cfg.wnd<textbox>("username.value") }
-            , password_{ _cfg.wnd<textbox>("password.value") }
-            , login_{ _cfg.wnd<button>("cmd.login") }
-            , close_{ _cfg.wnd<button>("cmd.close") }
+            , username_{ wnd<textbox>("username.value") }
+            , password_{ wnd<textbox>("password.value") }
+            , login_{ wnd<button>("cmd.login") }
+            , close_{ wnd<button>("cmd.close") }
         {
             login_.events().click([this] { on_login(); });
             close_.events().click([this] { on_close(); });

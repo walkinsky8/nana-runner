@@ -3,9 +3,9 @@
 
 #include <nana/runner/base.h>
 
-#include <nana/runner/view_base.h>
-
 #include <nana/runner/widget_cfg.h>
+
+#include <nana/runner/view_base.h>
 
 namespace nana::runner {
 

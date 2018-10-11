@@ -7,6 +7,8 @@ nana::runner::app* nana::runner::app::instance_{ nullptr };
 
 nana::runner::app::app()
 {
+    if (instance_ != nullptr)
+        throw std::invalid_argument("app instance should not be more than one");
     NAR_LOG("initializing...");
     init_enums();
     init_widgets();
@@ -37,13 +39,13 @@ bool nana::runner::app::search_file(const wstring& _file, wstring& _fullpath) co
 
 nana::runner::cfg_ptr nana::runner::app::load_cfg(const wstring& _filename)
 {
-    string cfgdata;
+	wstring fullpath;
+	string cfgdata;
     const string* pdata = files_.find(_filename);
     if (pdata)
         cfgdata = *pdata;
     else
     {
-        wstring fullpath;
         if (!search_file(_filename, fullpath))
             return nullptr;
 
@@ -60,8 +62,11 @@ nana::runner::cfg_ptr nana::runner::app::load_cfg(const wstring& _filename)
     auto found = cfgs_.find(cfg->id_());
     if (found)
         cfg = *found;
-    else
-        cfgs_.add(cfg->id_(), cfg);
+	else
+	{
+		cfg->fullpath_(fullpath);
+		cfgs_.add(cfg->id_(), cfg);
+	}
     return cfg;
 }
 
@@ -71,6 +76,16 @@ nana::runner::cfg_ptr nana::runner::app::get_cfg(const string& _type) const
     if (!p)
         throw std::invalid_argument(string{ "invalid view " } +_type);
     return *p;
+}
+
+nana::runner::view_ptr nana::runner::app::load_view(const wstring& _filename)
+{
+	cfg_ptr cfg = load_cfg(_filename);
+	if (cfg)
+	{
+		return view_obj::make_view(*cfg);
+	}
+	return nullptr;
 }
 
 void nana::runner::app::load_cfgs(const wchar_t* _cmdline)

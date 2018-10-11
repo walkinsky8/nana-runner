@@ -2,11 +2,12 @@
 #pragma once
 
 #include <nana/runner/base.h>
-#include <nana/runner/base_types.h>
 
-#include <nana/runner/widget_cfg.h>
-#include <nana/runner/widget_factory.h>
+#include <nana/runner/widget_all.h>
+
 #include <nana/runner/view_factory.h>
+
+#include <nana/runner/controller_base.h>
 
 namespace nana::runner
 {
@@ -26,16 +27,30 @@ namespace nana::runner
 
         static app& instance() { return *instance_; }
 
+        static view_ptr get_view(const wstring& _filename)
+        {
+            return instance().load_view(_filename);
+        }
+
+        static void close_all()
+        {
+            instance().on_fini();
+        }
+
         void run(const wchar_t* _cmdline);
 
         bool search_file(const wstring& _file, wstring& _fullpath) const;
 
         cfg_ptr load_cfg(const wstring& _filename);
 
-        cfg_ptr get_cfg(const string& _type) const;
+        cfg_ptr get_cfg(const string& _id) const;
 
-    protected:
+		view_ptr load_view(const wstring& _filename);
+
+	protected:
         virtual void on_init() { }
+
+        virtual void on_fini() { }
 
     private:
         void load_cfgs(const wchar_t* _cmdline);

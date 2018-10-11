@@ -1,9 +1,7 @@
 // Created by walkinsky(lyh6188@hotmail.com), 2018/01/22
 #pragma once
 
-#include <nana/runner/base.h>
-
-#include <nana/runner/widget_cfg.h>
+#include <nana/runner/view_base.h>
 
 #include <nana/runner/form_cfg.h>
 #include <nana/runner/textbox_cfg.h>
@@ -37,16 +35,16 @@ namespace nana::runner::sample::view {
     public:
         Font(widget_cfg& _cfg)
             : view_obj{ _cfg }
-            , form_{ _cfg.wnd<form>() }
-            , name_{ _cfg.wnd<textbox>("name.value") }
-            , size_{ _cfg.wnd<textbox>("size.value") }
-            , slider_{ _cfg.wnd<slider>("size.slider") }
-            , bold_{ _cfg.wnd<checkbox>("bold.value") }
-            , italic_{ _cfg.wnd<checkbox>("italic.value") }
-            , strikeout_{ _cfg.wnd<checkbox>("strikeout.value") }
-            , underline_{ _cfg.wnd<checkbox>("underline.value") }
-            , sample_{ _cfg.wnd<textbox>("sample.value") }
-            , quit_{ _cfg.wnd<button>("close") }
+            , form_{ wnd<form>() }
+            , name_{ wnd<textbox>("name.value") }
+            , size_{ wnd<textbox>("size.value") }
+            , slider_{ wnd<slider>("size.slider") }
+            , bold_{ wnd<checkbox>("bold.value") }
+            , italic_{ wnd<checkbox>("italic.value") }
+            , strikeout_{ wnd<checkbox>("strikeout.value") }
+            , underline_{ wnd<checkbox>("underline.value") }
+            , sample_{ wnd<textbox>("sample.value") }
+            , quit_{ wnd<button>("close") }
         {
             name_ << sample_.typeface().name();
             size_ << sample_.typeface().size();
@@ -82,7 +80,7 @@ namespace nana::runner::sample::view {
             });
 
             quit_.events().click([this] {
-                cfg().close();
+                close();
             });
         }
 

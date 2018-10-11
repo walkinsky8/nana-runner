@@ -1,9 +1,7 @@
 // Created by walkinsky(lyh6188@hotmail.com), 2017/11/10
 #pragma once
 
-#include <nana/runner/base.h>
-
-#include <nana/runner/widget_cfg.h>
+#include <nana/runner/view_base.h>
 
 #include <nana/runner/form_cfg.h>
 #include <nana/runner/categorize_cfg.h>
@@ -46,22 +44,22 @@ namespace nana::runner::sample::view {
     public:
         Demo(widget_cfg& _cfg)
             : view_obj{ _cfg }
-            , form_{ _cfg.wnd<form>() }
-            , categorize_{ _cfg.wnd<categorize>("categorize") }
-            , world_{ _cfg.wnd<label>("world") }
-            , bg_{ _cfg.wnd<textbox>("color.bg.value") }
-            , fg_{ _cfg.wnd<textbox>("color.fg.value") }
-            , name_{ _cfg.wnd<textbox>("f.name.value") }
-            , size_{ _cfg.wnd<textbox>("f.size.value") }
-            , bold_{ _cfg.wnd<checkbox>("font.bold") }
-            , italic_{ _cfg.wnd<checkbox>("font.italic") }
-            , strikeout_{ _cfg.wnd<checkbox>("font.strikeout") }
-            , underline_{ _cfg.wnd<checkbox>("font.underline") }
-            , log_{ _cfg.wnd<textbox>("log") }
-            , editable_{ _cfg.wnd<checkbox>("cmd.editable") }
-            , linewrap_{ _cfg.wnd<checkbox>("cmd.linewrap") }
-            , multilines_{ _cfg.wnd<checkbox>("cmd.multilines") }
-            , quit_{ _cfg.wnd<button>("cmd.close") }
+            , form_{ wnd<form>() }
+            , categorize_{ wnd<categorize>("categorize") }
+            , world_{ wnd<label>("world") }
+            , bg_{ wnd<textbox>("color.bg.value") }
+            , fg_{ wnd<textbox>("color.fg.value") }
+            , name_{ wnd<textbox>("f.name.value") }
+            , size_{ wnd<textbox>("f.size.value") }
+            , bold_{ wnd<checkbox>("font.bold") }
+            , italic_{ wnd<checkbox>("font.italic") }
+            , strikeout_{ wnd<checkbox>("font.strikeout") }
+            , underline_{ wnd<checkbox>("font.underline") }
+            , log_{ wnd<textbox>("log") }
+            , editable_{ wnd<checkbox>("cmd.editable") }
+            , linewrap_{ wnd<checkbox>("cmd.linewrap") }
+            , multilines_{ wnd<checkbox>("cmd.multilines") }
+            , quit_{ wnd<button>("cmd.close") }
         {
             //set_log_handler([this](const string& s) {
             //    write_console(s);
