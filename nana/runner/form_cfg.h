@@ -29,6 +29,8 @@ namespace nana::runner {
 
         void init_widget(widget& _w) const override;
 
+        void on_init_view(widget& _w, const std::map<id, wnd_ptr>& _widgets) const override;
+
         point get_pos() const override;
 
     };

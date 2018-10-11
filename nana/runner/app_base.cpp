@@ -104,7 +104,10 @@ void nana::runner::app::run(const wchar_t* _cmdline)
 
     on_init();
                            
-    NAR_LOG("enter loop...");
+    NAR_LOG("enter exec...");
     exec();
-    NAR_LOG("leave.");
+    NAR_LOG("leave exec.");
+
+    // called in close_all()
+    //on_fini();
 }

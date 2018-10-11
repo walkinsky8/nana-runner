@@ -30,7 +30,7 @@ namespace nana::runner::sample {
 			add_view<view::editor_setup>();
 		}
 
-        void on_init()
+        void on_init() override
         {
 			log_ = app::get_view(L"logger.nar");
 			login_ = app::get_view(L"login.nar");
@@ -43,7 +43,7 @@ namespace nana::runner::sample {
             editor_->cast<view::editor>().on_setup([this] { editor_setup_->show(); });
         }
 
-        void on_fini()
+        void on_fini() override
         {
             log_->close();
             login_->close();

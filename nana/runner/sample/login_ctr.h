@@ -18,15 +18,19 @@ namespace nana::runner::sample {
         model::login data_;
 
     public:
-        static void init_views()
+        static void initialize()
         {
             add_view<view::login>();
         }
 
-        void init_logic()
+        void on_init() override
         {
-            view_ = app::instance().load_view(L"login.nar");
+            view_ = app::get_view(L"login.nar");
 			view_->show();
+        }
+
+        void on_fini() override
+        {
         }
 
     };

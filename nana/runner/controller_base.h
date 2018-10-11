@@ -19,6 +19,13 @@ namespace nana::runner
     public:
         controller_obj();
 
+        // child class may implement it
+        // static void initialize()
+
+        virtual void on_init() = 0;
+
+        virtual void on_fini() = 0;
+
     };
 
 }

@@ -79,6 +79,8 @@ namespace nana::runner {
 
         virtual void init_widget(widget& _w) const;
 
+        virtual void on_init_view(widget& _w, const std::map<id, wnd_ptr>& _widgets) const { }
+
         virtual point get_pos() const;
 
 		static cfg_ptr from(string const& _cfg);

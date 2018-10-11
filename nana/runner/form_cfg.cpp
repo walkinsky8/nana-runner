@@ -8,17 +8,20 @@
 void nana::runner::form_cfg::init_widget(widget & _w) const
 {
     super::init_widget(_w);
+}
 
+void nana::runner::form_cfg::on_init_view(widget & _w, const std::map<id, wnd_ptr>& _widgets) const
+{
     string div = make_div();
     NAR_LOG_VAR(div);
 
     auto& w = dynamic_cast<ui_type&>(_w);
     w.div(div.data());
 
-    //for (auto& i : widgets_())
-    //{
-    //    w[i.first.str().data()] << *get_widget(i.first);
-    //}
+    for (auto& i : _widgets)
+    {
+        w[i.first.str().data()] << *i.second;
+    }
 
     w.collocate();
 }

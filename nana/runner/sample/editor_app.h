@@ -14,10 +14,13 @@ namespace nana::runner::sample {
 		editor_ctr editor_;
 
     public:
-		void on_init() override
-		{
-			editor_ctr::initialize();
+        editor_app()
+        {
+            editor_ctr::initialize();
+        }
 
+        void on_init() override
+		{
 			editor_.on_init();
 		}
 
