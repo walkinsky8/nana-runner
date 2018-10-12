@@ -272,6 +272,9 @@
     <ClInclude Include="..\..\nana\runner\widget_factory.h">
       <Filter>foundation</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\nana\runner\generic_view.h">
+      <Filter>foundation</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\nana\runner\sample\color.nar">
@@ -300,6 +303,9 @@
     </None>
     <None Include="..\..\nana\runner\sample\dummy.nar">
       <Filter>sample\demo</Filter>
+    </None>
+    <None Include="..\..\nana\runner\sample\generic.nar">
+      <Filter>sample</Filter>
     </None>
   </ItemGroup>
 </Project>

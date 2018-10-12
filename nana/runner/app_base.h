@@ -9,6 +9,8 @@
 
 #include <nana/runner/controller_base.h>
 
+#include <nana/runner/generic_view.h>
+
 namespace nana::runner
 {
     class app : public object

@@ -1,0 +1,7 @@
+﻿@form{
+    id=generic
+    bgcolor=white
+    fgcolor=black
+    cursor=arrow
+    typeface={ Consolas 9 bold }
+}

@@ -6,10 +6,6 @@
     size={400 300}
     align=center
     align_v=center
-    bgcolor=black
-    fgcolor=white
-    cursor=hand
-    typeface={Consolas 12}
     @panel{ id=name div="weight=20"
         @label{ id=n caption="Name:" div="weight=20%" typeface="10" align=right }
         @textbox{ id=value caption=null multi_lines=0 }

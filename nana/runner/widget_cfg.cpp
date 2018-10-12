@@ -5,6 +5,8 @@
 
 #include <nana/runner/widget_factory.h>
 
+#include <nana/runner/app_base.h>
+
 void nana::runner::widget_cfg::make_div(string& _div) const
 {
     _div << "<" << id_path() << " " << div_();
@@ -33,12 +35,23 @@ std::string nana::runner::widget_cfg::get_caption() const
     return to_upper(id_().str()[0]) + id_().str().substr(1);
 }
 
+nana::runner::widget_cfg* nana::runner::widget_cfg::get_parent_or_global() const
+{
+    if (m_parent)
+        return m_parent;
+    cfg_ptr glob = get_generic();
+    if (glob)
+        return glob.get();
+    return nullptr;
+}
+
 const nana::runner::string& nana::runner::widget_cfg::get_fgcolor() const
 {
     if (!fgcolor_().empty())
         return fgcolor_();
-    if (m_parent)
-        return m_parent->get_fgcolor();
+    auto p = get_parent_or_global();
+    if (p)
+        return p->get_fgcolor();
     return fgcolor_();
 }
 
@@ -46,8 +59,9 @@ const nana::runner::string& nana::runner::widget_cfg::get_bgcolor() const
 {
     if (!bgcolor_().empty())
         return bgcolor_();
-    if (m_parent)
-        return m_parent->get_bgcolor();
+    auto p = get_parent_or_global();
+    if (p)
+        return p->get_bgcolor();
     return bgcolor_();
 }
 
@@ -55,8 +69,9 @@ const nana::runner::optional<nana::runner::cursor>& nana::runner::widget_cfg::ge
 {
     if (!cursor_().empty())
         return cursor_();
-    if (m_parent)
-        return m_parent->get_cursor();
+    auto p = get_parent_or_global();
+    if (p)
+        return p->get_cursor();
     return cursor_();
 }
 
@@ -64,9 +79,15 @@ const nana::runner::optional<nana::runner::font>& nana::runner::widget_cfg::get_
 {
     if (!typeface_().empty())
         return typeface_();
-    if (m_parent)
-        return m_parent->get_typeface();
+    auto p = get_parent_or_global();
+    if (p)
+        return p->get_typeface();
     return typeface_();
+}
+
+nana::runner::cfg_ptr nana::runner::widget_cfg::get_generic()
+{
+    return app::instance().get_cfg("generic");
 }
 
 nana::runner::cfg_ptr nana::runner::widget_cfg::from(string const& _cfg)

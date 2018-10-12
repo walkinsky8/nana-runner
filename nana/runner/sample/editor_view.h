@@ -96,7 +96,7 @@ namespace nana::runner::sample::view {
             filename_ >> fname;
             string fbuf;
             filebuf_ >> fbuf;
-            write_file(fname, fbuf);
+            //write_file(fname, fbuf);
             NAR_LOG("run nar cfg = " << fbuf);
             NAR_LOG("run nar file = " << fname);
             close_current();

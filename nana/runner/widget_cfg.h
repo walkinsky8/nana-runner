@@ -85,6 +85,8 @@ namespace nana::runner {
 
 		static cfg_ptr from(string const& _cfg);
 
+        static cfg_ptr get_generic();
+
 		id id_path() const
         {
             if (!m_parent || id_().empty())
@@ -99,6 +101,8 @@ namespace nana::runner {
         void make_div(string& _div) const;
 
         string get_caption() const;
+
+        widget_cfg* get_parent_or_global() const;
 
         const string& get_bgcolor() const;
         const string& get_fgcolor() const;

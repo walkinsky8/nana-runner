@@ -3,9 +3,9 @@
 
 #include <nana/runner/view_base.h>
 
-#include <nana/runner/widget_cfg.h>
-
 #include <nana/runner/view_factory.h>
+
+#include <nana/runner/generic_view.h>
 
 nana::runner::view_obj::view_obj(widget_cfg& _cfg)
     : cfg_{ _cfg }
@@ -82,6 +82,6 @@ nana::runner::view_ptr nana::runner::view_obj::make_view(widget_cfg& _cfg)
     view_ptr p = create_view(_cfg);
     if (p)
         return p;
-    return std::make_shared<view_obj>(_cfg);
+    return std::make_shared<view::Generic>(_cfg);
 }
 

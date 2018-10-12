@@ -9,6 +9,7 @@ nana::runner::app::app()
 {
     if (instance_ != nullptr)
         throw std::invalid_argument("app instance should not be more than one");
+
     NAR_LOG("initializing...");
     init_enums();
     init_widgets();
@@ -101,6 +102,9 @@ void nana::runner::app::load_cfgs(const wchar_t* _cmdline)
 void nana::runner::app::run(const wchar_t* _cmdline)
 {
     load_cfgs(_cmdline);
+
+    load_cfg(L"generic.nar");
+    add_view<view::Generic>();
 
     on_init();
                            

@@ -209,6 +209,7 @@
     <ClInclude Include="..\..\nana\runner\dumper.h" />
     <ClInclude Include="..\..\nana\runner\enum.h" />
     <ClInclude Include="..\..\nana\runner\form_cfg.h" />
+    <ClInclude Include="..\..\nana\runner\generic_view.h" />
     <ClInclude Include="..\..\nana\runner\id.h" />
     <ClInclude Include="..\..\nana\runner\istr.h" />
     <ClInclude Include="..\..\nana\runner\label_cfg.h" />
@@ -248,6 +249,7 @@
     <None Include="..\..\nana\runner\sample\dummy.nar" />
     <None Include="..\..\nana\runner\sample\editor.nar" />
     <None Include="..\..\nana\runner\sample\font.nar" />
+    <None Include="..\..\nana\runner\sample\generic.nar" />
     <None Include="..\..\nana\runner\sample\hello.nar" />
     <None Include="..\..\nana\runner\sample\login.nar" />
     <None Include="..\..\nana\runner\sample\logger.nar" />

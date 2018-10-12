@@ -5,7 +5,6 @@
     size={400 300}
     align=center
     align_v=center
-    typeface={10}
     @categorize{
         id=categorize
         caption="a\b\c"
