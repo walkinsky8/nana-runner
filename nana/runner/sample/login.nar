@@ -11,9 +11,14 @@
         @panel { div="weight=5" }
         @textbox{ id=value caption="123456" mask='*' }
     }
-    @panel{ id=0 bgcolor=#555555 transparent=0 }
+    @panel { div="weight=5" }
+    @picture { id=pic align=center align_v=center stretchable=1 transparent=0
+        gradual_from=white gradual_to=black gradual_horizontal=0
+        file="luyao_20170917144943_看图王.jpg"
+        }
+    @panel { div="weight=5" }
     @panel{ id=cmd div="weight=25" typeface={ }
         @button{ id=login div="weight=50%" bgcolor=green fgcolor=yellow }
-        @button{ id=close bgcolor=yellow }
+        @button{ id=close caption="Cancel" bgcolor=yellow }
     }
 }

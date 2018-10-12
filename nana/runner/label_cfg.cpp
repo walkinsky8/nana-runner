@@ -13,16 +13,10 @@ void nana::runner::label_cfg::init_widget(widget & _w) const
         w.transparent(transparent_().value());
 
     if (!align_().empty() && !align_v_().empty())
-    {
         w.text_align(align_().value().value(), align_v_().value().value());
-    }
     else if (!align_().empty())
-    {
         w.text_align(align_().value().value());
-    }
     else if (!align_v_().empty())
-    {
         w.text_align(nana::align::left, align_v_().value().value());
-    }
 
 }

@@ -2,6 +2,7 @@
     id=generic
     bgcolor=white
     fgcolor=black
-    cursor=arrow
     typeface={ Consolas 9 bold }
+    cursor=arrow
+    @label { id=sample align=center align_v=center }
 }

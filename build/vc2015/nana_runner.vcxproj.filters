@@ -135,6 +135,9 @@
     <ClCompile Include="..\..\nana\runner\widget_factory.cpp">
       <Filter>foundation</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\nana\runner\picture_cfg.cpp">
+      <Filter>widgets</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\nana\runner\base.h">
@@ -274,6 +277,9 @@
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\generic_view.h">
       <Filter>foundation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nana\runner\picture_cfg.h">
+      <Filter>widgets</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

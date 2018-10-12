@@ -11,6 +11,7 @@
 #include <nana/runner/checkbox_cfg.h>
 #include <nana/runner/categorize_cfg.h>
 #include <nana/runner/slider_cfg.h>
+#include <nana/runner/picture_cfg.h>
 
 void nana::runner::init_widgets()
 {
@@ -22,5 +23,6 @@ void nana::runner::init_widgets()
     add_widget<checkbox_cfg>();
     add_widget<categorize_cfg>();
     add_widget<slider_cfg>();
+    add_widget<picture_cfg>();
 }
 
