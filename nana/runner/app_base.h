@@ -23,21 +23,15 @@ namespace nana::runner
 
         list_map<string, cfg_ptr> cfgs_; // cfg id ==> ptr
 
+        std::vector<view_ptr> initial_views_;
+
     public:
         app();
         ~app();
 
         static app& instance() { return *instance_; }
 
-        static view_ptr get_view(const wstring& _filename)
-        {
-            return instance().load_view(_filename);
-        }
-
-        static void close_all()
-        {
-            instance().on_fini();
-        }
+        static void close_all();
 
         void run(const wchar_t* _cmdline);
 
@@ -49,7 +43,12 @@ namespace nana::runner
 
 		view_ptr load_view(const wstring& _filename);
 
-	protected:
+        static view_ptr get_view(const wstring& _filename)
+        {
+            return instance().load_view(_filename);
+        }
+
+    protected:
         virtual void on_init() { }
 
         virtual void on_fini() { }

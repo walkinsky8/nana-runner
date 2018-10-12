@@ -15,8 +15,8 @@
         caption="Hello, world!"
         tooltip="sample label"
         div="weight=30"
-        bgcolor=green
-        fgcolor=yellow
+        bgcolor=gray
+        fgcolor=black
         cursor=hand
         typeface={Courier 12}
         visible=0
@@ -54,7 +54,7 @@
     @textbox{
         id=log
         caption=null
-        tooltip="log window"
+        tooltip="text"
         div=""
         bgcolor="#000000"
         fgcolor="rgb(0,255,0)"
@@ -64,6 +64,8 @@
         multi_lines=1
         editable=1
     }
+    @slider{ id=slider div="weight=30" }
+    @picture{ id=picture file="image.jpg"  align=center align_v=center stretchable=1 transparent=0 gradual_from=white gradual_to=black gradual_horizontal=0 }
     @panel{
         id=cmd
         div="weight=40"

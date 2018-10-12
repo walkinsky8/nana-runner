@@ -99,6 +99,14 @@ void nana::runner::app::load_cfgs(const wchar_t* _cmdline)
     }
 }
 
+void nana::runner::app::close_all()
+{
+    for (auto& v : instance().initial_views_)
+        v->close();
+
+    instance().on_fini();
+}
+
 void nana::runner::app::run(const wchar_t* _cmdline)
 {
     load_cfgs(_cmdline);
@@ -107,7 +115,14 @@ void nana::runner::app::run(const wchar_t* _cmdline)
     add_view<view::Generic>();
 
     on_init();
-                           
+
+    for (auto& filename : args_.arguments())
+    {
+        auto& v = load_view(filename);
+        initial_views_.push_back(v);
+        v->show();
+    }
+
     NAR_LOG("enter exec...");
     exec();
     NAR_LOG("leave exec.");
