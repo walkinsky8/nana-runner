@@ -70,8 +70,7 @@ namespace nana::runner::sample::view {
             filename_ >> fname;
             if (!fname.empty())
             {
-                string fbuf;
-                read_file(fname, fbuf);
+                string fbuf = app::instance().load_file(fname);
                 filebuf_ << fbuf;
                 NAR_LOG("loaded = " << fbuf);
             }

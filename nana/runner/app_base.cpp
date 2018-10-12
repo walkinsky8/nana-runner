@@ -38,6 +38,17 @@ bool nana::runner::app::search_file(const wstring& _file, wstring& _fullpath) co
     return false;
 }
 
+nana::runner::string nana::runner::app::load_file(const wstring& _filename) const
+{
+    wstring fullpath;
+    if (!search_file(_filename, fullpath))
+        fullpath = _filename;
+
+    string filebuf;
+    read_file(fullpath, filebuf);
+    return filebuf;
+}
+
 nana::runner::cfg_ptr nana::runner::app::load_cfg(const wstring& _filename)
 {
 	wstring fullpath;

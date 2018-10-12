@@ -2,7 +2,7 @@
     id=color
     caption="Color Sample"
     div="vert"
-    pos={0 0}
+    pos={100 100}
     size={400 300}
     align=center
     align_v=center

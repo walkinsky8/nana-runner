@@ -1,7 +1,7 @@
 ﻿@form{
     id=hello
     div="vert"
-    pos={-400 -300}
+    pos={-500 -400}
     size={400 300}
     align=center
     align_v=center
@@ -10,11 +10,6 @@
         caption="Hello, world!"
         tooltip="sample label"
         div="weight=20"
-        bgcolor=green
-        fgcolor=yellow
-        cursor=hand
-        visible=0
-        transparent=0
     }
     @textbox{
         id=text

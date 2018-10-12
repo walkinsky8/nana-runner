@@ -2,7 +2,7 @@
     id=font
     caption="Font Sample"
     div="vert"
-    pos={0 -300}
+    pos={100 -400}
     size={400 300}
     align=center
     align_v=center
@@ -33,7 +33,7 @@
     }
     @panel{ id=sample
         @label{ id=n caption="Sample:" div="weight=20%" typeface="10" align=right }
-        @textbox{ id=value caption="Hello, world! 世界你好！" bgcolor=green line_wrapped=1 }
+        @textbox{ id=value caption="Hello, world! 世界你好！" bgcolor=green fgcolor=white line_wrapped=1 }
     }
     @button{
         id=close

@@ -1,10 +1,9 @@
 ﻿@form{
     id=demo
     div="vert"
-    pos={-400 0}
+    pos={-500 100}
     size={400 300}
-    align=center
-    align_v=center
+    align=center align_v=center
     @categorize{
         id=categorize
         caption="a\b\c"
@@ -15,7 +14,7 @@
         caption="Hello, world!"
         tooltip="sample label"
         div="weight=30"
-        bgcolor=gray
+        bgcolor=#cccccc
         fgcolor=black
         cursor=hand
         typeface={Courier 12}
@@ -45,19 +44,19 @@
         }
     }
     @panel{ id=font div="weight=20"
-        @panel{ id=sep div="weight=10%" bgcolor=#aaaaaa }
-        @checkbox{ id=bold }
-        @checkbox{ id=italic }
-        @checkbox{ id=strikeout }
-        @checkbox{ id=underline }
+        @panel{ id=sep div="weight=0" }
+        @checkbox{ id=bold div="weight=20%" }
+        @checkbox{ id=italic div="weight=20%" }
+        @checkbox{ id=strikeout div="weight=30%" }
+        @checkbox{ id=underline div="weight=30%" }
     }
     @textbox{
         id=log
         caption=null
         tooltip="text"
         div=""
-        bgcolor="#000000"
-        fgcolor="rgb(0,255,0)"
+        bgcolor="#cccccc"
+        fgcolor="rgb(0,0,0)"
         typeface={Courier New 10}
         enabled=1
         line_wrapped=0
@@ -65,7 +64,10 @@
         editable=1
     }
     @slider{ id=slider div="weight=30" }
-    @picture{ id=picture file="image.jpg"  align=center align_v=center stretchable=1 transparent=0 gradual_from=white gradual_to=black gradual_horizontal=0 }
+    @picture{ id=picture file="image.jpg"
+        align=center align_v=center stretchable=1 transparent=0
+        gradual_from=white gradual_to=black gradual_horizontal=0
+        }
     @panel{
         id=cmd
         div="weight=40"
