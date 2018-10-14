@@ -13,6 +13,7 @@
 #include <nana/runner/slider_cfg.h>
 #include <nana/runner/picture_cfg.h>
 #include <nana/runner/group_cfg.h>
+#include <nana/runner/option_cfg.h>
 
 void nana::runner::init_widgets()
 {
@@ -26,5 +27,6 @@ void nana::runner::init_widgets()
     add_widget<slider_cfg>();
     add_widget<picture_cfg>();
     add_widget<group_cfg>();
+    add_widget<option_cfg>();
 }
 

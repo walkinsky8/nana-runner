@@ -5,9 +5,9 @@
     @textbox{ id=world_ABC div="weight=25" multi_lines=0 }
     @panel{ div="weight=25" }
     @group{ id=group1 caption='a <bold>group</>' caption_align=left radio_mode=1 enable_format_caption=1
-        @label { caption='red' }
-        @label { caption='green' }
-        @label { caption='blue' }
+        @option { caption='red' }
+        @option { caption='green' }
+        @option { caption='blue' }
     }
     @panel{ id=cmd div="weight=25"
         @button{ id=OK div='weight=50%' bgcolor=yellow borderless=1 }

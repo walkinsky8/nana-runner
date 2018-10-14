@@ -287,6 +287,7 @@
     <ClInclude Include="..\..\nana\runner\group_cfg.h">
       <Filter>widgets</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\nana\runner\option_cfg.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\nana\runner\sample\color.nar">

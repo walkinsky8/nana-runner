@@ -69,9 +69,9 @@
     @slider{ id=slider div="weight=20" }
     @panel{ id=panel
         @group{ id=group
-            @label { caption=red }
-            @label { caption=green }
-            @label { caption=blue }
+            @option { caption=red }
+            @option { caption=green }
+            @option { caption=blue }
         }
         @picture{ id=picture file="image.jpg"
             align=center align_v=center stretchable=1 transparent=0

@@ -224,6 +224,7 @@
     <ClInclude Include="..\..\nana\runner\model_base.h" />
     <ClInclude Include="..\..\nana\runner\node.h" />
     <ClInclude Include="..\..\nana\runner\optional.h" />
+    <ClInclude Include="..\..\nana\runner\option_cfg.h" />
     <ClInclude Include="..\..\nana\runner\panel_cfg.h" />
     <ClInclude Include="..\..\nana\runner\parser.h" />
     <ClInclude Include="..\..\nana\runner\picture_cfg.h" />
