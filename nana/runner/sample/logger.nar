@@ -12,7 +12,7 @@
         bgcolor="#000000"
         fgcolor="rgb(0,255,0)"
         typeface={Courier New 10}
-        line_wrapped=0
+        line_wrapped=1
         multi_lines=1
         editable=0
     }

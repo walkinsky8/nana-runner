@@ -11,6 +11,9 @@ void nana::runner::picture_cfg::init_widget(widget & _w) const
 
     auto& w = dynamic_cast<ui_type&>(_w);
 
+    if (!borderless_().empty())
+        w.borderless(borderless_().value());
+
     if (!align_().empty() || !align_v_().empty())
     {
         nana::align h = !align_().empty() ? align_().value().value() : nana::align::left;

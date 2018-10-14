@@ -41,6 +41,7 @@ namespace nana::runner {
         NAR_FIELD(optional<font>, typeface);
         NAR_FIELD(optional<bool>, enabled);
         NAR_FIELD(optional<bool>, visible);
+        NAR_FIELD(optional<bool>, borderless);
         NAR_FIELD(std::vector<cfg_ptr>, children);
 
 		widget_cfg* m_parent{ nullptr };
@@ -63,6 +64,7 @@ namespace nana::runner {
             NAR_CODEC(_s, typeface);
             NAR_CODEC(_s, enabled);
             NAR_CODEC(_s, visible);
+            NAR_CODEC(_s, borderless);
             NAR_CODEC_UNNAMED(_s, children);
         }
 

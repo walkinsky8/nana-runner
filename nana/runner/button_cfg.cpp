@@ -9,6 +9,9 @@ void nana::runner::button_cfg::init_widget(widget & _w) const
 
     auto& w = dynamic_cast<ui_type&>(_w);
 
+    if (!borderless_().empty())
+        w.borderless(borderless_().value());
+
     if (!enable_pushed_().empty())
         w.enable_pushed(enable_pushed_().value());
 

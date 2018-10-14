@@ -9,6 +9,9 @@ void nana::runner::label_cfg::init_widget(widget & _w) const
 
     auto& w = dynamic_cast<ui_type&>(_w);
 
+    if (!borderless_().empty())
+        w.borderless(borderless_().value());
+
     if (!transparent_().empty())
         w.transparent(transparent_().value());
 

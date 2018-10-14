@@ -31,10 +31,10 @@
         fgcolor=black
         typeface={ 11 bold }
         @button{
-            id=load
+            id=save
         }
         @button{
-            id=save
+            id=load
         }
         @button{
             id=run

@@ -125,12 +125,15 @@ void nana::runner::app::run(const wchar_t* _cmdline)
     load_cfg(L"generic.nar");
     add_view<view::Generic>();
 
-    on_init();
-
+    if (args_.arguments().empty())
+        on_init();
+    else
     for (auto& filename : args_.arguments())
     {
         auto& v = load_view(filename);
+        
         initial_views_.push_back(v);
+        
         v->show();
     }
 

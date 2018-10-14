@@ -5,10 +5,13 @@
 
 void nana::runner::categorize_cfg::init_widget(widget & _w) const
 {
+    super::init_widget(_w);
+
     auto& w = dynamic_cast<ui_type&>(_w);
+
+    if (!borderless_().empty())
+        w.borderless(borderless_().value());
 
     //if (!splitstr_().empty())
     //    w.splitstr(splitstr_());
-
-    super::init_widget(_w);
 }

@@ -9,6 +9,9 @@ void nana::runner::checkbox_cfg::init_widget(widget & _w) const
 
     auto& w = dynamic_cast<ui_type&>(_w);
 
+    if (!borderless_().empty())
+        w.borderless(borderless_().value());
+
     if (!check_().empty())
         w.check(check_().value());
     if (!radio_().empty())

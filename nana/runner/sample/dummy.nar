@@ -1,5 +1,9 @@
-﻿@form{ id=dummy caption="Dummy Window" div="vert"
+﻿@form{ id=dummy caption="Dummy Window" div="vert" visible=1
     @label{ id=hello div="weight=20" bgcolor=red }
     @textbox{ id=world caption="Hello, world!" }
+    @panel{ id=space bgcolor=green }
+    @panel{ bgcolor=red }
+    @panel{ }
+    @button{ id=ok div="weight=30" bgcolor=red borderless=1 }
     @button{ id=close div="weight=30" bgcolor=yellow }
 }

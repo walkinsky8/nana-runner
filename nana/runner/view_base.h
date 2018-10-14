@@ -47,9 +47,9 @@ namespace nana::runner {
 		static view_ptr make_view(widget_cfg& _cfg);
 
 	private:
-		static void make_child_widgets(widget_cfg& _cfg, view_obj* _root_view, widget_cfg* _parent_cfg, nana::window _parent_wnd);
+		static void make_child_widgets(widget_cfg& _cfg, view_obj* _root_view, widget_cfg* _parent_cfg, nana::window _parent_wnd, bool _visible);
 
-		void init();
+		void init(bool _visible);
 
 	};
 

@@ -8,6 +8,8 @@
 void nana::runner::form_cfg::init_widget(widget & _w) const
 {
     super::init_widget(_w);
+
+    auto& w = dynamic_cast<ui_type&>(_w);
 }
 
 void nana::runner::form_cfg::on_init_view(widget & _w, const std::map<id, wnd_ptr>& _widgets) const
