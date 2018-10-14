@@ -23,7 +23,7 @@ namespace nana::runner {
             NAR_CODEC(_s, splitstr);
         }
 
-        static wnd_ptr create_wnd_(window p, bool v) { return std::make_shared<ui_type>(p, v); }
+        wnd_ptr create_wnd(window p, bool v) const override { return std::make_shared<ui_type>(p, v); }
 
         void init_widget(widget& _w) const override;
 

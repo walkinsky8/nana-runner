@@ -38,4 +38,10 @@ void nana::runner::button_cfg::init_widget(widget & _w) const
 
     if (!edge_effects_().empty())
         w.edge_effects(edge_effects_().value());
+
+    if (!_click_().empty())
+    {
+        if (_click_() == "quit")
+            w.events().click([] { app::instance().close_all(); });
+    }
 }

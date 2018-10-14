@@ -16,7 +16,6 @@
         public: \
             nana::runner::string type_name() const override { return type_name_(); } \
             nana::runner::cfg_ptr new_obj() const override { return new_(); } \
-            nana::runner::wnd_ptr create_wnd(nana::window p, bool v) const override { return create_wnd_/*user_defined*/(p, v); } \
             nana::runner::dumper& dump(nana::runner::dumper& _d) const override { return nana::runner::codec(_d, const_cast<self&>(*this)); } \
             void parse(const nana::runner::parser& _p) override { nana::runner::codec(const_cast<nana::runner::parser&>(_p), *this); } \
         private: \

@@ -5,6 +5,20 @@
 
 #include <nana/gui/screen.hpp>
 
+nana::runner::wnd_ptr nana::runner::form_cfg::create_wnd(window p, bool v) const
+{
+    nana::appearance a;
+    a.taskbar = !taskbar_().empty() ? taskbar_().value() : true;
+    a.floating = !floating_().empty() ? floating_().value() : false;
+    a.no_activate = !no_activate_().empty() ? no_activate_().value() : false;
+    a.minimize = !minimize_().empty() ? minimize_().value() : true;
+    a.maximize = !maximize_().empty() ? maximize_().value() : true;
+    a.sizable = !sizable_().empty() ? sizable_().value() : true;
+    a.decoration = !decoration_().empty() ? decoration_().value() : true;
+
+    return std::make_shared<ui_type>(p, API::make_center(300, 200), a);
+}
+
 void nana::runner::form_cfg::init_widget(widget & _w) const
 {
     super::init_widget(_w);

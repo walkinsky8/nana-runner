@@ -15,6 +15,13 @@ namespace nana::runner {
 
         NAR_FIELD(optional<align>, align);
         NAR_FIELD(optional<align_v>, align_v);
+        NAR_FIELD(optional<bool>, taskbar);
+        NAR_FIELD(optional<bool>, floating);
+        NAR_FIELD(optional<bool>, no_activate);
+        NAR_FIELD(optional<bool>, minimize);
+        NAR_FIELD(optional<bool>, maximize);
+        NAR_FIELD(optional<bool>, sizable);
+        NAR_FIELD(optional<bool>, decoration);
 
     public:
         template<class _Stream>
@@ -23,9 +30,16 @@ namespace nana::runner {
             super::traverse(_s);
             NAR_CODEC(_s, align);
             NAR_CODEC(_s, align_v);
+            NAR_CODEC(_s, taskbar);
+            NAR_CODEC(_s, floating);
+            NAR_CODEC(_s, no_activate);
+            NAR_CODEC(_s, minimize);
+            NAR_CODEC(_s, maximize);
+            NAR_CODEC(_s, sizable);
+            NAR_CODEC(_s, decoration);
         }
 
-        static wnd_ptr create_wnd_(window p, bool v) { return std::make_shared<ui_type>(p); }
+        wnd_ptr create_wnd(window p, bool v) const override;
 
         void init_widget(widget& _w) const override;
 

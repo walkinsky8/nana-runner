@@ -20,6 +20,7 @@ namespace nana::runner {
         NAR_FIELD(optional<bool>, enable_focus_color);
         NAR_FIELD(optional<bool>, transparent);
         NAR_FIELD(optional<bool>, edge_effects);
+        NAR_FIELD(string, _click);
 
     public:
         template<class _Stream>
@@ -33,9 +34,10 @@ namespace nana::runner {
             NAR_CODEC(_s, enable_focus_color);
             NAR_CODEC(_s, transparent);
             NAR_CODEC(_s, edge_effects);
+            NAR_CODEC(_s, _click);
         }
 
-        static wnd_ptr create_wnd_(window p, bool v) { return std::make_shared<ui_type>(p, v); }
+        wnd_ptr create_wnd(window p, bool v) const override { return std::make_shared<ui_type>(p, v); }
 
         void init_widget(widget& _w) const override;
 
