@@ -13,7 +13,7 @@
         id=world
         caption="Hello, world!"
         tooltip="sample label"
-        div="weight=30"
+        div="weight=25"
         bgcolor=#cccccc
         fgcolor=black
         cursor=hand
@@ -54,7 +54,7 @@
         id=log
         caption=null
         tooltip="text"
-        div=""
+        div="weight=50"
         bgcolor="#cccccc"
         fgcolor="rgb(0,0,0)"
         typeface={Courier New 10}
@@ -63,11 +63,16 @@
         multi_lines=1
         editable=1
     }
-    @slider{ id=slider div="weight=30" }
-    @picture{ id=picture file="image.jpg"
-        align=center align_v=center stretchable=1 transparent=0
-        gradual_from=white gradual_to=black gradual_horizontal=0
+    @slider{ id=slider div="weight=20" }
+    @panel{ id=panel
+        @group{ id=group
+            @label { caption=red }
         }
+        @picture{ id=picture file="image.jpg"
+            align=center align_v=center stretchable=1 transparent=0
+            gradual_from=white gradual_to=black gradual_horizontal=0
+        }
+    }
     @panel{
         id=cmd
         div="weight=40"

@@ -50,7 +50,8 @@ void nana::runner::view_obj::make_child_widgets(widget_cfg& _cfg, view_obj* _roo
 
 	for (auto& i : _cfg.children_())
 	{
-		make_child_widgets(*i, _root_view, &_cfg, _parent_wnd, _visible);
+        if (i && !i->id_().empty())
+		    make_child_widgets(*i, _root_view, &_cfg, _parent_wnd, _visible);
 	}
 
 	if (!_cfg.id_().empty())
@@ -72,7 +73,8 @@ void nana::runner::view_obj::init(bool _visible)
 
     for (auto& i : cfg().children_())
     {
-        make_child_widgets(*i, this, &cfg(), *m_self_wnd, _visible/*true*/);
+        if (i && !i->id_().empty())
+            make_child_widgets(*i, this, &cfg(), *m_self_wnd, _visible/*true*/);
     }
 
     cfg().init_widget(*m_self_wnd);

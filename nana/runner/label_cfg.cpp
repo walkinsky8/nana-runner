@@ -15,6 +15,9 @@ void nana::runner::label_cfg::init_widget(widget & _w) const
     if (!transparent_().empty())
         w.transparent(transparent_().value());
 
+    if (!format_().empty())
+        w.format(format_().value());
+
     if (!align_().empty() && !align_v_().empty())
         w.text_align(align_().value().value(), align_v_().value().value());
     else if (!align_().empty())

@@ -22,6 +22,7 @@ namespace nana::runner::sample {
         editor_app()
         {
             editor_ctr::initialize();
+
             add_view<view::Demo>();
             add_view<view::Hello>();
             add_view<view::Color>();

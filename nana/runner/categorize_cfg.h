@@ -13,14 +13,14 @@ namespace nana::runner {
     {
         NAR_DEFINE_WIDGET(categorize, widget_cfg);
 
-        //NAR_FIELD(string, splitstr); // no effect, maybe nana has bug for categorize::tree_wrapper::path(string)
+        NAR_FIELD(string, splitstr); // no effect, maybe nana has bug for categorize::tree_wrapper::path(string)
 
     public:
         template<class _Stream>
         void traverse(_Stream& _s)
         {
             super::traverse(_s);
-            //NAR_CODEC(_s, splitstr);
+            NAR_CODEC(_s, splitstr);
         }
 
         static wnd_ptr create_wnd_(window p, bool v) { return std::make_shared<ui_type>(p, v); }

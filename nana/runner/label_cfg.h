@@ -14,6 +14,7 @@ namespace nana::runner {
         NAR_DEFINE_WIDGET(label, widget_cfg);
 
         NAR_FIELD(optional<bool>, transparent);
+        NAR_FIELD(optional<bool>, format);
         NAR_FIELD(optional<align>, align);
         NAR_FIELD(optional<align_v>, align_v);
 
@@ -23,6 +24,7 @@ namespace nana::runner {
         {
             super::traverse(_s);
             NAR_CODEC(_s, transparent);
+            NAR_CODEC(_s, format);
             NAR_CODEC(_s, align);
             NAR_CODEC(_s, align_v);
         }

@@ -13,6 +13,7 @@ namespace nana::runner {
     {
         NAR_DEFINE_WIDGET(button, widget_cfg);
 
+        NAR_FIELD(string, icon);
         NAR_FIELD(optional<bool>, enable_pushed);
         NAR_FIELD(optional<bool>, pushed);
         NAR_FIELD(optional<bool>, omitted);
@@ -25,6 +26,7 @@ namespace nana::runner {
         void traverse(_Stream& _s)
         {
             super::traverse(_s);
+            NAR_CODEC(_s, icon);
             NAR_CODEC(_s, enable_pushed);
             NAR_CODEC(_s, pushed);
             NAR_CODEC(_s, omitted);

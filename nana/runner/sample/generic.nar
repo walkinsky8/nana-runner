@@ -2,6 +2,6 @@
     bgcolor=#dddddd
     fgcolor=black
     cursor=hand
-    typeface={ Consolas 12 bold }
+    typeface={ Consolas 10 bold }
     @label { id=sample align=center align_v=center }
 }

@@ -3,11 +3,20 @@
 
 #include "button_cfg.h"
 
+#include <nana/runner/app_base.h>
+
 void nana::runner::button_cfg::init_widget(widget & _w) const
 {
     super::init_widget(_w);
 
     auto& w = dynamic_cast<ui_type&>(_w);
+
+    if (!icon_().empty())
+    {
+        wstring fullpath;
+        if (app::instance().search_file(to_wstring(icon_()), fullpath))
+            w.icon(image{ fullpath });
+    }
 
     if (!borderless_().empty())
         w.borderless(borderless_().value());

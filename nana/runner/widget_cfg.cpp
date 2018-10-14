@@ -10,10 +10,12 @@
 void nana::runner::widget_cfg::make_div(string& _div) const
 {
     _div << "<" << id_path() << " " << div_();
-    for (auto& i : m_children)
-    {
-        i->make_div(_div);
-    }
+    if (has_child_div())
+        for (auto& i : m_children)
+        {
+            if (i)
+                i->make_div(_div);
+        }
     _div << ">";
 }
 

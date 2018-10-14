@@ -1,10 +1,13 @@
-﻿@form{ id=dummy caption="Dummy Window" div="vert" visible=1
-    @label{ id=hello_123 }
-    @textbox{ id=world_ABC }
-    @panel{ id=p1 }
-    @textbox{ id=p3 caption=null editable=0 }
-    @panel{ id=p2}
-    @panel{ id=cmd
+﻿@form{ id=dummy caption="Dummy Window" div="vert"
+    @label{ id=hello caption='hello <red>123</>' div="weight=25" format=1 }
+    @textbox{ id=world_ABC div="weight=25" multi_lines=0 }
+    @panel{ div="weight=25" }
+    @group{ id=group1 caption='a <bold>group</>' caption_align=left radio_mode=0 enable_format_caption=1
+        @label { caption='red' }
+        @label { caption='green' }
+        @label { caption='blue' }
+    }
+    @panel{ id=cmd div="weight=25"
         @button{ id=OK div='weight=50%' bgcolor=yellow borderless=1 }
         @button{ id=Cancel bgcolor=red }
     }

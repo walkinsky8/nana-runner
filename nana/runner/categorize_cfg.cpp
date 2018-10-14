@@ -12,6 +12,6 @@ void nana::runner::categorize_cfg::init_widget(widget & _w) const
     if (!borderless_().empty())
         w.borderless(borderless_().value());
 
-    //if (!splitstr_().empty())
-    //    w.splitstr(splitstr_());
+    if (!splitstr_().empty())
+        w.splitstr(splitstr_());
 }

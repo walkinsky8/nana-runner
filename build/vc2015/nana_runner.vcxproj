@@ -173,6 +173,7 @@
     <ClCompile Include="..\..\nana\runner\cmdargs.cpp" />
     <ClCompile Include="..\..\nana\runner\dumper.cpp" />
     <ClCompile Include="..\..\nana\runner\form_cfg.cpp" />
+    <ClCompile Include="..\..\nana\runner\group_cfg.cpp" />
     <ClCompile Include="..\..\nana\runner\id.cpp" />
     <ClCompile Include="..\..\nana\runner\istr.cpp" />
     <ClCompile Include="..\..\nana\runner\label_cfg.cpp" />
@@ -213,6 +214,7 @@
     <ClInclude Include="..\..\nana\runner\enum.h" />
     <ClInclude Include="..\..\nana\runner\form_cfg.h" />
     <ClInclude Include="..\..\nana\runner\generic_view.h" />
+    <ClInclude Include="..\..\nana\runner\group_cfg.h" />
     <ClInclude Include="..\..\nana\runner\id.h" />
     <ClInclude Include="..\..\nana\runner\istr.h" />
     <ClInclude Include="..\..\nana\runner\label_cfg.h" />

@@ -27,6 +27,10 @@ namespace nana::runner {
     class widget_cfg;
     using cfg_ptr = ptr<widget_cfg>;
 
+    using nana::paint::image;
+
+    using nana::widget;
+
     class widget_cfg : public object
     {
         NAR_FIELD(id, id);
@@ -44,14 +48,14 @@ namespace nana::runner {
         NAR_FIELD(optional<bool>, borderless);
         NAR_FIELD(std::vector<cfg_ptr>, children);
 
-		widget_cfg* m_parent{ nullptr };
-		NAR_FIELD(wstring, fullpath);
+        widget_cfg* m_parent{ nullptr };
+        NAR_FIELD(wstring, fullpath);
 
-	public:
+    public:
         template<class _Stream>
         void traverse(_Stream& _s)
         {
-			//super::traverse(_s);
+            //super::traverse(_s);
             NAR_CODEC(_s, id);
             NAR_CODEC(_s, caption);
             NAR_CODEC(_s, tooltip);
@@ -78,6 +82,8 @@ namespace nana::runner {
         virtual void parse(const parser& _p) = 0;
 
         virtual wnd_ptr create_wnd(window _parent, bool _visible) const = 0;
+
+        virtual bool has_child_div() const { return true; }
 
         virtual void init_widget(widget& _w) const;
 

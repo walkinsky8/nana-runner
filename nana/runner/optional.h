@@ -48,11 +48,6 @@ namespace nana::runner {
             return empty_;
         }
 
-		bool valid() const
-		{
-			return !empty_;
-		}
-
     };
     template<class T>
     inline std::ostream& operator<<(std::ostream& _os, const optional<T>& _v)
