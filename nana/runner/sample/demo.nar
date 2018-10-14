@@ -11,9 +11,11 @@
     }
     @label{
         id=world
-        caption="Hello, world!"
+        caption="Hello, <bold red>world!</>"
         tooltip="sample label"
         div="weight=25"
+        format=1
+        align=right
         bgcolor=#cccccc
         fgcolor=black
         cursor=hand
@@ -52,9 +54,10 @@
     }
     @textbox{
         id=log
-        caption=null
+        caption='123\nabc'
         tooltip="text"
         div="weight=50"
+        align=right
         bgcolor="#cccccc"
         fgcolor="rgb(0,0,0)"
         typeface={Courier New 10}
@@ -67,6 +70,8 @@
     @panel{ id=panel
         @group{ id=group
             @label { caption=red }
+            @label { caption=green }
+            @label { caption=blue }
         }
         @picture{ id=picture file="image.jpg"
             align=center align_v=center stretchable=1 transparent=0

@@ -23,4 +23,7 @@ void nana::runner::textbox_cfg::init_widget(widget & _w) const
 
     if (!mask_().empty())
         w.mask(mask_().value());
+
+    if (!align_().empty())
+        w.text_align(align_().value().value());
 }

@@ -17,6 +17,7 @@ namespace nana::runner {
         NAR_FIELD(optional<bool>, multi_lines);
         NAR_FIELD(optional<bool>, editable);
         NAR_FIELD(optional<char>, mask);
+        NAR_FIELD(optional<align>, align);
 
     public:
         template<class _Stream>
@@ -27,6 +28,7 @@ namespace nana::runner {
             NAR_CODEC(_s, multi_lines);
             NAR_CODEC(_s, editable);
             NAR_CODEC(_s, mask);
+            NAR_CODEC(_s, align);
         }
 
         wnd_ptr create_wnd(window p, bool v) const override { return std::make_shared<ui_type>(p, v); }
