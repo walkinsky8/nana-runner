@@ -27,7 +27,7 @@ namespace nana::runner {
             NAR_CODEC(_s, enable_format_caption);
         }
 
-        static wnd_ptr create_wnd_(window p, bool v) { return std::make_shared<ui_type>(p, nana::rectangle{}, v); }
+        wnd_ptr create_wnd(window p, bool v) const override { return std::make_shared<ui_type>(p, nana::rectangle{}, v); }
 
         bool has_child_div() const override { return false; }
 
