@@ -34,6 +34,12 @@ bool nana::runner::app::search_file(const wstring& _file, wstring& _fullpath) co
             _fullpath = fullpath;
             return true;
         }
+        fullpath += ".nar";
+        if (fs::exists(fullpath))
+        {
+            _fullpath = fullpath;
+            return true;
+        }
     }
     return false;
 }
@@ -131,10 +137,11 @@ void nana::runner::app::run(const wchar_t* _cmdline)
     for (auto& filename : args_.arguments())
     {
         auto& v = load_view(filename);
-        
-        initial_views_.push_back(v);
-        
-        v->show();
+        if (v)
+        {
+            initial_views_.push_back(v);
+            v->show();
+        }
     }
 
     NAR_LOG("enter exec...");

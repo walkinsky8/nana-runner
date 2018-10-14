@@ -45,10 +45,14 @@ namespace nana::runner::sample {
 
         void on_fini() override
         {
-            log_->close();
-            login_->close();
-            editor_->close();
-            editor_setup_->close();
+            if (log_)
+                log_->close();
+            if (login_)
+                login_->close();
+            if (editor_)
+                editor_->close();
+            if (editor_setup_)
+                editor_setup_->close();
         }
 
     };

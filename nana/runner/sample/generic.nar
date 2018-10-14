@@ -1,8 +1,7 @@
-﻿@form{
-    id=generic
-    bgcolor=white
+﻿@form{ id=generic
+    bgcolor=#dddddd
     fgcolor=black
-    typeface={ Consolas 9 bold }
-    cursor=arrow
+    cursor=hand
+    typeface={ Consolas 12 bold }
     @label { id=sample align=center align_v=center }
 }
