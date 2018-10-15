@@ -56,11 +56,11 @@ namespace nana::runner {
     {
         size_t selected = _w.option();
         size_t pos = 0;
-        for (auto& i : _v.v2s())
+        for (auto& i : _v.s2v())
         {
             if (selected == pos)
             {
-                _v = i.first;
+                _v = i.second;
             }
             ++pos;
         }

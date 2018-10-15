@@ -1,27 +1,38 @@
 ﻿@form{
     id=demo
     div="vert"
-    pos={-500 100}
+    pos={-200 -150}
     size={400 300}
-    align=center align_v=center
+    align=center
+    align_v=center
     @categorize{
         id=categorize
         caption="a\b\c"
         div="weight=20"
     }
-    @label{
-        id=world
-        caption="Hello, <bold red>world!</>"
-        tooltip="sample label"
-        div="weight=25"
-        format=1
-        align=right
-        bgcolor=#cccccc
-        fgcolor=black
-        cursor=hand
-        typeface={Courier 12}
-        visible=0
-        transparent=0
+    @panel{
+        id=label
+        div='weight=20'
+        bgcolor=green
+        @label{
+            id=value
+            caption="Hello, world!"
+            div='weight=60%'
+            bgcolor=black
+            fgcolor=red
+            cursor=hand
+            typeface={ Courier 12 bold }
+            visible=0
+            transparent=0
+        }
+        @combox{
+            id=align
+            div='weight=20%'
+        }
+        @combox{
+            id=align_v
+            div='weight=20%'
+        }
     }
     @panel{ id=color div="weight=20"
         @label{ id=sep caption="Color:" div="weight=10%" }
@@ -52,12 +63,36 @@
         @checkbox{ id=strikeout div="weight=30%" }
         @checkbox{ id=underline div="weight=30%" }
     }
+    @slider{ id=slider div="weight=20" }
+    @panel{ id=panel
+        @group{ id=group1
+            @option { caption=red }
+            @option { caption=green }
+            @option { caption=blue }
+        }
+        @group{ id=group2 radio_mode=0
+            @option { caption=red }
+            @option { caption=green }
+            @option { caption=blue }
+        }
+        @panel{ id=pic div='vert'
+            @combox{ id=choose div='weight=25' editable=0 selected=0
+                @option { caption='First' file='image.jpg' }
+                @option { caption='Second' file='陆延.jpg' }
+                @option { caption='Third' file='luyao_20170917144943_看图王.jpg' }
+            }
+            @picture{ id=picture file="image.jpg"
+                align=center align_v=center stretchable=1 transparent=0
+                gradual_from=white gradual_to=black gradual_horizontal=0
+            }
+        }
+    }
     @textbox{
-        id=log
+        id=text
         caption='123\nabc'
         tooltip="text"
-        div="weight=50"
-        align=right
+        div="weight=40"
+        align=left
         bgcolor="#cccccc"
         fgcolor="rgb(0,0,0)"
         typeface={Courier New 10}
@@ -65,18 +100,6 @@
         line_wrapped=0
         multi_lines=1
         editable=1
-    }
-    @slider{ id=slider div="weight=20" }
-    @panel{ id=panel
-        @group{ id=group
-            @option { caption=red }
-            @option { caption=green }
-            @option { caption=blue }
-        }
-        @picture{ id=picture file="image.jpg"
-            align=center align_v=center stretchable=1 transparent=0
-            gradual_from=white gradual_to=black gradual_horizontal=0
-        }
     }
     @panel{
         id=cmd
