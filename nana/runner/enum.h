@@ -100,4 +100,18 @@ namespace nana::runner {
         return _os << _v.str();
     }
 
+    template<typename E, E _Default>
+    void operator<<(strings& _names, const enum_<E, _Default>& _v)
+    {
+        for (auto& i : _v.v2s())
+            _names.push_back(i.second);
+    }
+
+    template<typename E, E _Default>
+    void operator<<(std::vector<int>& _values, const enum_<E, _Default>& _v)
+    {
+        for (auto& i : _v.v2s())
+            _values.push_back(i.first);
+    }
+
 }

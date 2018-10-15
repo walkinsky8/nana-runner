@@ -50,6 +50,19 @@ namespace nana::runner
             return instance().load_view(_filename);
         }
 
+        static wstring find_file(const string& _filename)
+        {
+            wstring fullpath;
+            instance().search_file(to_wstring(_filename), fullpath);
+            return fullpath;
+        }
+        static wstring find_file(const wstring& _filename)
+        {
+            wstring fullpath;
+            instance().search_file(_filename, fullpath);
+            return fullpath;
+        }
+
     protected:
         virtual void on_init() { }
 

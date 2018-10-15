@@ -63,65 +63,67 @@
         @checkbox{ id=strikeout div="weight=30%" }
         @checkbox{ id=underline div="weight=30%" }
     }
-    @slider{ id=slider div="weight=20" }
-    @panel{ id=panel
-        @group{ id=group1
-            @option { caption=red }
-            @option { caption=green }
-            @option { caption=blue }
-        }
-        @group{ id=group2 radio_mode=0
-            @option { caption=red }
-            @option { caption=green }
-            @option { caption=blue }
-        }
-        @panel{ id=pic div='vert'
-            @combox{ id=choose div='weight=25' editable=0 selected=0
-                @option { caption='First' file='image.jpg' }
-                @option { caption='Second' file='陆延.jpg' }
-                @option { caption='Third' file='luyao_20170917144943_看图王.jpg' }
-            }
-            @picture{ id=picture file="image.jpg"
-                align=center align_v=center stretchable=1 transparent=0
-                gradual_from=white gradual_to=black gradual_horizontal=0
-            }
-        }
-    }
     @textbox{
         id=text
-        caption='123\nabc'
-        tooltip="text"
-        div="weight=40"
+        caption='Hello, world!'
+        div="weight=50"
         align=left
-        bgcolor="#cccccc"
+        bgcolor="white"
         fgcolor="rgb(0,0,0)"
         typeface={Courier New 10}
-        enabled=1
+        editable=1
         line_wrapped=0
         multi_lines=1
-        editable=1
+        enabled=1
     }
     @panel{
-        id=cmd
-        div="weight=40"
+        id=txtcmd
+        div="weight=20"
         @checkbox{
             id=editable
+            bgcolor=white
+            check=1
+            transparent=1
         }
         @checkbox{
             id=linewrap
             caption="Line Wrap"
             bgcolor=white
-            radio=0
-            transparent=1
+            transparent=0
         }
         @checkbox{
             id=multilines
             caption="Multi Lines"
-            bgcolor=white
-            radio=1
             check=1
-            transparent=0
+            transparent=1
         }
+    }
+    @panel{ id=p1 div="weight=20"
+        @slider{ id=tsize div='weight=50%'
+            maximum=50 value=10
+        }
+        @combox{ id=picsel div='weight=50%' editable=0 selected=0
+            @option { caption='First' file='image.jpg' }
+            @option { caption='Second' file='微信图片_20170927013333.jpg' }
+            @option { caption='Third' file='luyao_20170917144943_看图王.jpg' }
+        }
+    }
+    @panel{ id=p2
+        @group{ id=align div='weight=25%' radio_mode=1
+        }
+        @group{ id=color div='weight=25%' radio_mode=0
+            @option { caption=red }
+            @option { caption=green }
+            @option { caption=blue }
+        }
+        @picture{ id=picture div='weight=50%' file="image.jpg"
+            align=center align_v=center stretchable=1 transparent=0
+            gradual_from=white gradual_to=black gradual_horizontal=0
+        }
+    }
+    @panel{
+        id=cmd
+        div="weight=25"
         @button{
             id=close
             tooltip="exit program"

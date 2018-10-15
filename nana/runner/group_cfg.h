@@ -17,6 +17,8 @@ namespace nana::runner {
         NAR_FIELD(optional<bool>, radio_mode);
         NAR_FIELD(optional<bool>, enable_format_caption);
 
+        mutable std::vector<checkbox*> m_radios;
+
     public:
         template<class _Stream>
         void traverse(_Stream& _s)
@@ -33,6 +35,50 @@ namespace nana::runner {
 
         bool has_child_div() const override { return false; }
 
+        std::vector<checkbox*>& radios() { return m_radios; }
+
     };
+
+    inline void init_group(group& _w, const strings& _names, std::function<void()> _fn)
+    {
+        for (auto& i : _names)
+        {
+            auto& o = _w.add_option(i);
+            if (_fn)
+                o.events().click(_fn);
+        }
+    }
+
+    template<class E, E _V>
+    void init_group(group& _w, const enum_<E, _V>& _v, std::function<void()> _fn)
+    {
+        strings names;
+        names << _v;
+        init_group(_w, names, _fn);
+    }
+
+    template<class E, E _V>
+    group& operator<<(group& _w, const enum_<E, _V>& _v)
+    {
+        strings names;
+        names << _v;
+        init_group(_w, names, nullptr);
+        return _w;
+    }
+
+    template<class E, E _V>
+    void operator >> (const group& _w, enum_<E, _V>& _v)
+    {
+        size_t selected = _w.option();
+        size_t pos = 0;
+        for (auto& i : _v.v2s())
+        {
+            if (selected == pos)
+            {
+                _v = i.first;
+            }
+            ++pos;
+        }
+    }
 
 }

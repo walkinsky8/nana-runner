@@ -3,6 +3,19 @@
 
 #include <nana/runner/widget_factory.h>
 
+#include <nana/runner/form_cfg.h>
+#include <nana/runner/panel_cfg.h>
+#include <nana/runner/label_cfg.h>
+#include <nana/runner/textbox_cfg.h>
+#include <nana/runner/button_cfg.h>
+#include <nana/runner/checkbox_cfg.h>
+#include <nana/runner/categorize_cfg.h>
+#include <nana/runner/slider_cfg.h>
+#include <nana/runner/picture_cfg.h>
+#include <nana/runner/group_cfg.h>
+#include <nana/runner/option_cfg.h>
+#include <nana/runner/combox_cfg.h>
+
 namespace nana::runner {
 
     void init_widgets();

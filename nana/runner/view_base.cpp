@@ -8,7 +8,7 @@
 #include <nana/runner/generic_view.h>
 
 nana::runner::view_obj::view_obj(widget_cfg& _cfg)
-    : cfg_{ _cfg }
+    : m_cfg{ _cfg }
 {
     init(!_cfg.visible_().empty() && _cfg.visible_().value());
 }
@@ -40,6 +40,14 @@ nana::runner::wnd_ptr nana::runner::view_obj::get_widget(id _id) const
 	return (*i).second;
 }
 
+nana::runner::widget_cfg* nana::runner::view_obj::get_cfg(id _id) const
+{
+    auto i = m_cfgs.find(_id);
+    if (i == m_cfgs.end())
+        return nullptr;
+    return (*i).second;
+}
+
 void nana::runner::view_obj::make_child_widgets(widget_cfg& _cfg, view_obj* _root_view, widget_cfg* _parent_cfg, nana::window _parent_wnd, bool _visible)
 {
 	_cfg.set_parent(_parent_cfg);
@@ -59,7 +67,8 @@ void nana::runner::view_obj::make_child_widgets(widget_cfg& _cfg, view_obj* _roo
 		_cfg.init_widget(*w);
 
 		_root_view->m_widgets[_cfg.id_path()] = w;
-	}
+        _root_view->m_cfgs[_cfg.id_path()] = &_cfg;
+    }
 }
 
 void nana::runner::view_obj::init(bool _visible)

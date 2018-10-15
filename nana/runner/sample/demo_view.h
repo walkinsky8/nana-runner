@@ -3,13 +3,9 @@
 
 #include <nana/runner/view_base.h>
 
-#include <nana/runner/form_cfg.h>
-#include <nana/runner/categorize_cfg.h>
-#include <nana/runner/label_cfg.h>
-#include <nana/runner/combox_cfg.h>
-#include <nana/runner/textbox_cfg.h>
-#include <nana/runner/checkbox_cfg.h>
-#include <nana/runner/button_cfg.h>
+#include <nana/runner/widget_all.h>
+
+#include <nana/runner/app_base.h>
 
 namespace nana::runner::sample::view {
 
@@ -22,6 +18,8 @@ namespace nana::runner::sample::view {
         label& label_;
         combox& align_;
         combox& align_v_;
+        align m_label_align{ nana::align::left };
+        align_v m_label_align_v{ nana::align_v::top };
         //color
         textbox& bg_;
         textbox& fg_;
@@ -38,10 +36,17 @@ namespace nana::runner::sample::view {
         checkbox& linewrap_;
         checkbox& multilines_;
 
-        button& quit_;
+        slider& tsize_;
+        group& talign_;
+        align m_text_align{ nana::align::left };
+        group& tcolor_;
+        widget_cfg* tcolor_cfg_{};
 
-        align m_label_align{ nana::align::left };
-        align_v m_label_align_v{ nana::align_v::top };
+        combox& picsel_;
+        widget_cfg* picsel_cfg_{};
+        picture& picture_;
+
+        button& quit_;
 
     public:
         static pcstr type_name_() { return "demo"; }
@@ -64,9 +69,16 @@ namespace nana::runner::sample::view {
             , strikeout_{ wnd<checkbox>("font.strikeout") }
             , underline_{ wnd<checkbox>("font.underline") }
             , text_{ wnd<textbox>("text") }
-            , editable_{ wnd<checkbox>("cmd.editable") }
-            , linewrap_{ wnd<checkbox>("cmd.linewrap") }
-            , multilines_{ wnd<checkbox>("cmd.multilines") }
+            , editable_{ wnd<checkbox>("txtcmd.editable") }
+            , linewrap_{ wnd<checkbox>("txtcmd.linewrap") }
+            , multilines_{ wnd<checkbox>("txtcmd.multilines") }
+            , tsize_{ wnd<slider>("p1.tsize") }
+            , picsel_{ wnd<combox>("p1.picsel") }
+            , picsel_cfg_{ cfg_("p1.picsel") }
+            , talign_{ wnd<group>("p2.align") }
+            , tcolor_{ wnd<group>("p2.color") }
+            , tcolor_cfg_{cfg_("p2.color")}
+            , picture_{wnd<picture>("p2.picture")}
             , quit_{ wnd<button>("cmd.close") }
         {
             //set_log_handler([this](const string& s) {
@@ -140,6 +152,34 @@ namespace nana::runner::sample::view {
             });
             multilines_.events().checked([this] {
                 text_.multi_lines(multilines_.checked());
+            });
+
+            tsize_.value((unsigned)text_.typeface().size());
+            tsize_.events().value_changed([this] {
+                font f = text_.typeface();
+                double sz = tsize_.value();
+                text_.typeface(make_font(f.name(), sz, f.bold(), f.italic(), f.underline(), f.strikeout()));
+            });
+
+            init_group(talign_, m_text_align, [this] {
+                talign_ >> m_text_align;
+                text_.text_align(m_text_align.value());
+            });
+
+            auto fn = [this] {
+                unsigned r = tcolor_.option_checked(0) ? 255 : 0;
+                unsigned g = tcolor_.option_checked(1) ? 255 : 0;
+                unsigned b = tcolor_.option_checked(2) ? 255 : 0;
+                color c{ r,g,b };
+                text_.bgcolor(c);
+            };
+            for (auto& i : tcolor_cfg_->cast<group_cfg>().radios()) {
+                i->events().click(fn);
+            }
+
+            picsel_.events().selected([this] {
+                string fname = picsel_cfg_->children_()[picsel_.option()]->cast<option_cfg>().file_();
+                picture_.load(image{ app::find_file(fname) });
             });
 
             quit_.events().click([this] {

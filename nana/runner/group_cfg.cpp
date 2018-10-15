@@ -20,7 +20,8 @@ void nana::runner::group_cfg::init_widget(widget & _w) const
     {
         if (i)
         {
-            w.add_option(i->caption_());
+            auto& r = w.add_option(i->caption_());
+            m_radios.push_back(&r);
         }
     }
 }
