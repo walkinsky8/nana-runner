@@ -14,6 +14,7 @@
 #include <nana/runner/picture_cfg.h>
 #include <nana/runner/group_cfg.h>
 #include <nana/runner/option_cfg.h>
+#include <nana/runner/combox_cfg.h>
 
 void nana::runner::init_widgets()
 {
@@ -28,5 +29,6 @@ void nana::runner::init_widgets()
     add_widget<picture_cfg>();
     add_widget<group_cfg>();
     add_widget<option_cfg>();
+    add_widget<combox_cfg>();
 }
 

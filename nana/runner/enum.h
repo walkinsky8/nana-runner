@@ -76,12 +76,12 @@ namespace nana::runner {
             return (*i).second;
         }
 
-    private:
         static std::map<E, string>& v2s()
         {
             static std::map<E, string> v2s_;
             return v2s_;
         }
+
         static std::map<string, E>& s2v()
         {
             static std::map<string, E> s2v_;

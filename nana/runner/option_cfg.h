@@ -11,11 +11,14 @@ namespace nana::runner {
     {
         NAR_DEFINE_WIDGET(option, widget_cfg);
 
+        NAR_FIELD(string, file);
+
     public:
         template<class _Stream>
         void traverse(_Stream& _s)
         {
             super::traverse(_s);
+            NAR_CODEC(_s, file);
         }
 
         wnd_ptr create_wnd(window p, bool v) const override { return nullptr; }

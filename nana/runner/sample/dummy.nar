@@ -1,13 +1,24 @@
 ﻿@form{ id=dummy caption="Dummy Window" div="vert"
     pos={-150 -100} size={300 200} align=center align_v=center
-    taskbar=0 floating=0 no_activate=0 minimize=0 maximize=0 sizable=0 decoration=0
+    taskbar=1 floating=0 no_activate=0 minimize=0 maximize=0 sizable=1 decoration=1
     @label{ id=hello caption='hello <red>123</>' div="weight=25" format=1 }
     @textbox{ id=world_ABC div="weight=25" multi_lines=0 }
-    @panel{ div="weight=25" }
-    @group{ id=group1 caption='a <bold>group</>' caption_align=left radio_mode=1 enable_format_caption=1
-        @option { caption='red' }
-        @option { caption='green' }
-        @option { caption='blue' }
+    @combox{ id=combox div='weight=25' editable=1 selected=2
+        @option { caption='First' file='image.jpg' }
+        @option { caption='Second' file='陆延.jpg' }
+        @option { caption='Third' file='luyao_20170917144943_看图王.jpg' }
+    }
+    @panel{ id=groups
+        @group{ id=group1 caption='<bold>group1</>' caption_align=left radio_mode=1 enable_format_caption=0 div='weight=50%'
+            @option { caption='Red' }
+            @option { caption='Green' }
+            @option { caption='Blue' }
+        }
+        @group{ id=group2 caption='<red>group2</>' caption_align=right radio_mode=0 enable_format_caption=1
+            @option { caption='Red' }
+            @option { caption='Green' }
+            @option { caption='Blue' }
+        }
     }
     @panel{ id=cmd div="weight=25"
         @button{ id=OK div='weight=50%' bgcolor=yellow borderless=1 }

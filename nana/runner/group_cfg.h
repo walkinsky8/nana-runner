@@ -29,9 +29,9 @@ namespace nana::runner {
 
         wnd_ptr create_wnd(window p, bool v) const override { return std::make_shared<ui_type>(p, nana::rectangle{}, v); }
 
-        bool has_child_div() const override { return false; }
-
         void init_widget(widget& _w) const override;
+
+        bool has_child_div() const override { return false; }
 
     };
 

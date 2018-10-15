@@ -164,6 +164,7 @@
   <ItemGroup>
     <ClCompile Include="..\..\nana\runner\app_base.cpp" />
     <ClCompile Include="..\..\nana\runner\base_config.cpp" />
+    <ClCompile Include="..\..\nana\runner\combox_cfg.cpp" />
     <ClCompile Include="..\..\nana\runner\controller_base.cpp" />
     <ClCompile Include="..\..\nana\runner\base.cpp" />
     <ClCompile Include="..\..\nana\runner\button_cfg.cpp" />
@@ -202,6 +203,7 @@
   <ItemGroup>
     <ClInclude Include="..\..\nana\runner\app_base.h" />
     <ClInclude Include="..\..\nana\runner\base_config.h" />
+    <ClInclude Include="..\..\nana\runner\combox_cfg.h" />
     <ClInclude Include="..\..\nana\runner\controller_base.h" />
     <ClInclude Include="..\..\nana\runner\base.h" />
     <ClInclude Include="..\..\nana\runner\base_types.h" />
