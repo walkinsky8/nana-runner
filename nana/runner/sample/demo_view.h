@@ -13,6 +13,8 @@ namespace nana::runner::sample::view {
     {
         form& form_;
 
+        menubar& menubar_;
+
         categorize& categorize_;
 
         label& label_;
@@ -60,6 +62,7 @@ namespace nana::runner::sample::view {
         Demo(widget_cfg& _cfg)
             : view_obj{ _cfg }
             , form_{ wnd<form>() }
+            , menubar_{ wnd<menubar>("menubar") }
             , categorize_{ wnd<categorize>("categorize") }
             , label_{ wnd<label>("label.value") }
             , align_{ wnd<combox>("label.align") }
@@ -195,9 +198,7 @@ namespace nana::runner::sample::view {
                 s << d;
                 text_ << s;
             });
-            quit_.events().click([this] {
-                close();
-            });
+            //quit_.events().click([this] { close(); });
         }
 
         void update_text_color()

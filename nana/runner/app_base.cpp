@@ -116,7 +116,7 @@ void nana::runner::app::load_cfgs(const wchar_t* _cmdline)
     }
 }
 
-void nana::runner::app::close_all()
+void nana::runner::app::quit()
 {
     for (auto& v : instance().initial_views_)
         v->close();
@@ -148,6 +148,6 @@ void nana::runner::app::run(const wchar_t* _cmdline)
     exec();
     NAR_LOG("leave exec.");
 
-    // called in close_all()
+    // called in quit()
     //on_fini();
 }

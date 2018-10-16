@@ -15,12 +15,13 @@ void nana::runner::init_widgets()
     add_widget<slider_cfg>();
     add_widget<picture_cfg>();
     add_widget<group_cfg>();
-    add_widget<option_cfg>();
     add_widget<combox_cfg>();
     add_widget<date_chooser_cfg>();
     add_widget<float_listbox_cfg>();
     add_widget<listbox_cfg>();
-    add_widget<unknown_cfg>();
     add_widget<menubar_cfg>();
+    add_widget<menu_cfg>();
+    add_widget<option_cfg>();
+    add_widget<unknown_cfg>();
 }
 

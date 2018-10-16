@@ -1,18 +1,23 @@
 ﻿@form{
     id=demo
     div="vert"
-    pos={-200 -200}
-    size={400 500}
+    pos={-200 -300}
+    size={400 550}
     align=center
     align_v=center
     @menubar{ id=menubar div='weight=24' typeface={bold 10}
-        @option { caption="File"
-            @option { caption='Open' file='278266555.jpeg' }
-            @option { caption='___' }
-            @option { caption='Exit' }
+        @menu { caption="File"
+            @menu { caption='Open' file='image.jpg' }
+            @menu { caption='Recent Files...'
+                @menu { caption='File1' }
+                @menu { caption='File2' }
+                @menu { caption='File3' }
+            }
+            @menu { caption='___' }
+            @menu { caption='Exit' _click=quit }
         }
-        @option { caption='Help'
-            @option { caption='About' }
+        @menu { caption='Help'
+            @menu { caption='About' }
         }
     }
     @categorize{
@@ -110,14 +115,14 @@
     }
     @panel{ id=p1 div="weight=20"
         @slider{ id=tsize div='weight=25%' maximum=36 value=10 }
-        @slider{ id=clevel div='weight=25%' maximum=255 value=128 }
+        @slider{ id=clevel div='weight=25%' maximum=255 value=255 }
         @combox{ id=picsel div='weight=50%' editable=0 selected=0
-            @option { caption='Yan Yan' file='image.jpg' }
-            @option { caption='Paul Walker' file='278266555.jpeg' }
-            @option { caption='Yao Yao' file='luyao_20170917144943_看图王.jpg' }
+            @option { caption='Vinny' file='image.jpg' }
+            @option { caption='Jeff' file='IMG_3865.JPG' }
+            @option { caption='Charlotte' file='luyao_20170917144943_看图王.jpg' }
         }
     }
-    @panel{ id=p2 div='weight=100'
+    @panel{ id=p2 div='weight=120'
         @group{ id=align div='weight=25%' radio_mode=1
         }
         @group{ id=color div='weight=25%' radio_mode=0
@@ -167,6 +172,7 @@
             enable_focus_color=0
             transparent=0
             edge_effects=1
+            _click=quit
         }
     }
 }

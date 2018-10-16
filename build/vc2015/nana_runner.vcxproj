@@ -182,6 +182,7 @@
     <ClCompile Include="..\..\nana\runner\listbox_cfg.cpp" />
     <ClCompile Include="..\..\nana\runner\log.cpp" />
     <ClCompile Include="..\..\nana\runner\menubar_cfg.cpp" />
+    <ClCompile Include="..\..\nana\runner\menu_cfg.cpp" />
     <ClCompile Include="..\..\nana\runner\model_base.cpp" />
     <ClCompile Include="..\..\nana\runner\node.cpp" />
     <ClCompile Include="..\..\nana\runner\panel_cfg.cpp" />
@@ -231,6 +232,7 @@
     <ClInclude Include="..\..\nana\runner\list_multimap.h" />
     <ClInclude Include="..\..\nana\runner\log.h" />
     <ClInclude Include="..\..\nana\runner\menubar_cfg.h" />
+    <ClInclude Include="..\..\nana\runner\menu_cfg.h" />
     <ClInclude Include="..\..\nana\runner\model_base.h" />
     <ClInclude Include="..\..\nana\runner\node.h" />
     <ClInclude Include="..\..\nana\runner\optional.h" />

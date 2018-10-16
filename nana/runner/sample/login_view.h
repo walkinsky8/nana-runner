@@ -48,7 +48,7 @@ namespace nana::runner::sample::view {
             NAR_LOG("close login window");
             close();
             NAR_LOG("login cancelled, so quit program");
-            app::close_all();
+            app::quit();
         }
 
     };

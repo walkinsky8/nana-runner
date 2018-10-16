@@ -31,7 +31,7 @@ namespace nana::runner
 
         static app& instance() { return *instance_; }
 
-        static void close_all();
+        static void quit();
 
         void run(const wchar_t* _cmdline);
 

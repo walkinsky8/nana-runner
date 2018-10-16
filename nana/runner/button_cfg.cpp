@@ -42,6 +42,6 @@ void nana::runner::button_cfg::init_widget(widget & _w) const
     if (!_click_().empty())
     {
         if (_click_() == "quit")
-            w.events().click([] { app::instance().close_all(); });
+            w.events().click(app::quit);
     }
 }

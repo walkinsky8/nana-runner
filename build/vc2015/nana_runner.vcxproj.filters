@@ -150,6 +150,9 @@
     <ClCompile Include="..\..\nana\runner\menubar_cfg.cpp">
       <Filter>widgets</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\nana\runner\menu_cfg.cpp">
+      <Filter>widgets</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\nana\runner\base.h">
@@ -318,6 +321,9 @@
       <Filter>__sample\main</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\menubar_cfg.h">
+      <Filter>widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nana\runner\menu_cfg.h">
       <Filter>widgets</Filter>
     </ClInclude>
   </ItemGroup>
