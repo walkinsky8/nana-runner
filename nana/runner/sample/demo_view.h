@@ -44,6 +44,7 @@ namespace nana::runner::sample::view {
 
         combox& picsel_;
         widget_cfg* picsel_cfg_{};
+        size_t picidx_{ 0 };
         picture& picture_;
 
         date_chooser& date_;
@@ -181,8 +182,15 @@ namespace nana::runner::sample::view {
             }
 
             picsel_.events().selected([this] {
-                string fname = picsel_cfg_->children_()[picsel_.option()]->cast<option_cfg>().file_();
+                picidx_ = picsel_.option();
+                string fname = picsel_cfg_->children_()[picidx_]->cast<option_cfg>().file_();
                 picture_.load(image{ app::find_file(fname) });
+            });
+            picture_.events().click([this] {
+                ++picidx_;
+                if (picidx_ >= picsel_cfg_->children_().size())
+                    picidx_ = 0;
+                picsel_.option(picidx_);
             });
 
             date_.events().date_changed([this]{
