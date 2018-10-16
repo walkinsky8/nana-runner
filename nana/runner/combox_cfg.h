@@ -29,8 +29,6 @@ namespace nana::runner {
 
         void init_widget(widget& _w) const override;
 
-        bool has_child_div() const override { return false; }
-
     };
 
     template<class E, E _V>

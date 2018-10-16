@@ -82,7 +82,7 @@ namespace nana::runner {
 
         virtual wnd_ptr create_wnd(window _parent, bool _visible) const = 0;
 
-        virtual bool has_child_div() const { return true; }
+        virtual bool has_child_div() const { return false; }
 
         virtual void init_widget(widget& _w) const;
 

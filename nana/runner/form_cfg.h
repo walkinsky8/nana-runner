@@ -45,6 +45,8 @@ namespace nana::runner {
 
         void on_init_view(widget& _w, const std::map<id, wnd_ptr>& _widgets) const override;
 
+        bool has_child_div() const override { return true; }
+
         point get_pos() const override;
 
     };

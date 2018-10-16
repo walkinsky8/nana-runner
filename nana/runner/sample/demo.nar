@@ -1,8 +1,8 @@
 ﻿@form{
     id=demo
     div="vert"
-    pos={-200 -150}
-    size={400 300}
+    pos={-200 -200}
+    size={400 450}
     align=center
     align_v=center
     @categorize{
@@ -104,11 +104,11 @@
         }
         @combox{ id=picsel div='weight=50%' editable=0 selected=0
             @option { caption='First' file='image.jpg' }
-            @option { caption='Second' file='微信图片_20170927013333.jpg' }
+            @option { caption='Second' file='278266555.jpeg' }
             @option { caption='Third' file='luyao_20170917144943_看图王.jpg' }
         }
     }
-    @panel{ id=p2
+    @panel{ id=p2 div='weight=100'
         @group{ id=align div='weight=25%' radio_mode=1
         }
         @group{ id=color div='weight=25%' radio_mode=0
@@ -120,6 +120,10 @@
             align=center align_v=center stretchable=1 transparent=0
             gradual_from=white gradual_to=black gradual_horizontal=0
         }
+    }
+    @panel{ id=p3
+        @date_chooser{ id=date div='weight=50%' }
+        @panel{ id=fl }
     }
     @panel{
         id=cmd

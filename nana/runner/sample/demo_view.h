@@ -46,6 +46,8 @@ namespace nana::runner::sample::view {
         widget_cfg* picsel_cfg_{};
         picture& picture_;
 
+        date_chooser& date_;
+
         button& quit_;
 
     public:
@@ -77,8 +79,9 @@ namespace nana::runner::sample::view {
             , picsel_cfg_{ cfg_("p1.picsel") }
             , talign_{ wnd<group>("p2.align") }
             , tcolor_{ wnd<group>("p2.color") }
-            , tcolor_cfg_{cfg_("p2.color")}
-            , picture_{wnd<picture>("p2.picture")}
+            , tcolor_cfg_{ cfg_("p2.color") }
+            , picture_{ wnd<picture>("p2.picture") }
+            , date_{ wnd<date_chooser>("p3.date") }
             , quit_{ wnd<button>("cmd.close") }
         {
             //set_log_handler([this](const string& s) {
@@ -182,6 +185,12 @@ namespace nana::runner::sample::view {
                 picture_.load(image{ app::find_file(fname) });
             });
 
+            date_.events().date_changed([this]{
+                nana::date d = date_.read();
+                string s;
+                s << d;
+                text_ << s;
+            });
             quit_.events().click([this] {
                 close();
             });

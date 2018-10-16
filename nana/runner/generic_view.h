@@ -9,8 +9,6 @@ namespace nana::runner::view {
 
     class Generic : public view_obj
     {
-        form& form_;
-
     public:
         static pcstr type_name_() { return "generic"; }
         static view_ptr new_(widget_cfg& _cfg) { return std::make_shared<Generic>(_cfg); }
@@ -18,7 +16,6 @@ namespace nana::runner::view {
     public:
         Generic(widget_cfg& _cfg)
             : view_obj{ _cfg }
-            , form_{ wnd<form>() }
         {
         }
 

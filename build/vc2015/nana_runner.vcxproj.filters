@@ -144,6 +144,9 @@
     <ClCompile Include="..\..\nana\runner\combox_cfg.cpp">
       <Filter>widgets</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\nana\runner\datetime.cpp">
+      <Filter>base\types</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\nana\runner\base.h">
@@ -294,6 +297,15 @@
       <Filter>widgets</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\combox_cfg.h">
+      <Filter>widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nana\runner\datetime.h">
+      <Filter>base\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nana\runner\date_chooser_cfg.h">
+      <Filter>widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nana\runner\float_listbox_cfg.h">
       <Filter>widgets</Filter>
     </ClInclude>
   </ItemGroup>
