@@ -61,6 +61,10 @@ namespace nana::runner
         {
             readValue(_v);
         }
+        void operator >> (size_t& _v) const
+        {
+            readValue(_v);
+        }
         void operator >> (long& _v) const
         {
             readValue(_v);

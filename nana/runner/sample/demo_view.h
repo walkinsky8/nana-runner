@@ -37,7 +37,6 @@ namespace nana::runner::sample::view {
         checkbox& editable_;
         checkbox& linewrap_;
         checkbox& multilines_;
-
         slider& tsize_;
         slider& clevel_;
         group& talign_;
@@ -51,6 +50,10 @@ namespace nana::runner::sample::view {
         picture& picture_;
 
         date_chooser& date_;
+        hscroll& hscr_;
+        vscroll& vscr_;
+        listbox& listbox_;
+        progress& prog_;
 
         button& quit_;
 
@@ -87,15 +90,18 @@ namespace nana::runner::sample::view {
             , tcolor_{ wnd<group>("p2.color") }
             , tcolor_cfg_{ cfg_("p2.color") }
             , picture_{ wnd<picture>("p2.picture") }
-            , date_{ wnd<date_chooser>("p3.date") }
+            , date_{ wnd<date_chooser>("p3.date.value") }
+            , hscr_{ wnd<hscroll>("p3.date.hscr") }
+            , vscr_{ wnd<vscroll>("p3.vscr.value") }
+            , listbox_{wnd<listbox>("p3.table")}
+            , prog_{ wnd<progress>("cmd.prog") }
             , quit_{ wnd<button>("cmd.close") }
         {
-            //set_log_handler([this](const string& s) {
-            //    write_console(s);
-            //    log_.append(s, false);
-            //});
+            set_log_handler([this](const string& s) {
+                write_console(s);
+                text_.append(s, false);
+            });
 
-            //categorize_.caption(fs_ext::path_user());
             categorize_.caption(fs::current_path());
 
             label_.text_align(m_label_align.value(), m_label_align_v.value());
@@ -184,6 +190,7 @@ namespace nana::runner::sample::view {
                 picidx_ = picsel_.option();
                 string fname = picsel_cfg_->children_()[picidx_]->cast<option_cfg>().file_();
                 picture_.load(image{ app::find_file(fname) });
+                prog_.value((unsigned)(prog_.amount()*(1+picidx_)/picsel_cfg_->children_().size()));
             });
             picture_.events().click([this] {
                 ++picidx_;
@@ -194,10 +201,9 @@ namespace nana::runner::sample::view {
 
             date_.events().date_changed([this]{
                 nana::date d = date_.read();
-                string s;
-                s << d;
-                text_ << s;
+                NAR_LOG("selected date = " << d);
             });
+
             //quit_.events().click([this] { close(); });
         }
 

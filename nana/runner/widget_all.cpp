@@ -12,7 +12,6 @@ void nana::runner::init_widgets()
     add_widget<button_cfg>();
     add_widget<checkbox_cfg>();
     add_widget<categorize_cfg>();
-    add_widget<slider_cfg>();
     add_widget<picture_cfg>();
     add_widget<group_cfg>();
     add_widget<combox_cfg>();
@@ -21,6 +20,11 @@ void nana::runner::init_widgets()
     add_widget<listbox_cfg>();
     add_widget<menubar_cfg>();
     add_widget<menu_cfg>();
+    add_widget<slider_cfg>();
+    add_widget<progress_cfg>();
+    add_widget<hscroll_cfg>();
+    add_widget<vscroll_cfg>();
+
     add_widget<option_cfg>();
     add_widget<unknown_cfg>();
 }

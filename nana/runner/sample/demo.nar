@@ -136,7 +136,14 @@
         }
     }
     @panel{ id=p3
-        @date_chooser{ id=date div='weight=50%' }
+        @panel { id=date div='vert weight=45%'
+            @hscroll{ id=hscr div='weight=20' amount=12 range=3 step=1 value=10 }
+            @date_chooser{ id=value }
+        }
+        @panel { id=vscr div='vert weight=5%'
+            @panel{ id=reset div='weight=20' }
+            @vscroll{ id=value amount=100 range=20 step=1 value=50 }
+        }
         @listbox{ id=table sortable=1 show_header=1
             headers={
                 @option { caption="name" width=60 }
@@ -159,6 +166,13 @@
     @panel{
         id=cmd
         div="weight=25"
+        @progress{
+            id=prog
+            div='weight=50%'
+            amount=100
+            value=50
+            unknown=0
+        }
         @button{
             id=close
             tooltip="exit program"

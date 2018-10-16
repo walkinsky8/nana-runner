@@ -8,18 +8,22 @@
 #include <nana/runner/label_cfg.h>
 #include <nana/runner/textbox_cfg.h>
 #include <nana/runner/button_cfg.h>
-#include <nana/runner/checkbox_cfg.h>
-#include <nana/runner/categorize_cfg.h>
-#include <nana/runner/slider_cfg.h>
 #include <nana/runner/picture_cfg.h>
+#include <nana/runner/categorize_cfg.h>
+#include <nana/runner/checkbox_cfg.h>
 #include <nana/runner/group_cfg.h>
 #include <nana/runner/combox_cfg.h>
-#include <nana/runner/date_chooser_cfg.h>
-#include <nana/runner/float_listbox_cfg.h>
 #include <nana/runner/listbox_cfg.h>
+#include <nana/runner/option_cfg.h>
+
 #include <nana/runner/menubar_cfg.h>
 #include <nana/runner/menu_cfg.h>
-#include <nana/runner/option_cfg.h>
+#include <nana/runner/date_chooser_cfg.h>
+#include <nana/runner/float_listbox_cfg.h>
+#include <nana/runner/slider_cfg.h>
+#include <nana/runner/progress_cfg.h>
+#include <nana/runner/scroll_cfg.h>
+
 #include <nana/runner/unknown_cfg.h>
 
 namespace nana::runner {
