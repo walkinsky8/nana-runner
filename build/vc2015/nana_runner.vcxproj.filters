@@ -147,6 +147,9 @@
     <ClCompile Include="..\..\nana\runner\datetime.cpp">
       <Filter>base\types</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\nana\runner\listbox_cfg.cpp">
+      <Filter>widgets</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\nana\runner\base.h">
@@ -306,6 +309,9 @@
       <Filter>widgets</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\float_listbox_cfg.h">
+      <Filter>widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nana\runner\listbox_cfg.h">
       <Filter>widgets</Filter>
     </ClInclude>
   </ItemGroup>

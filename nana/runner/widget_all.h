@@ -17,6 +17,7 @@
 #include <nana/runner/combox_cfg.h>
 #include <nana/runner/date_chooser_cfg.h>
 #include <nana/runner/float_listbox_cfg.h>
+#include <nana/runner/listbox_cfg.h>
 
 namespace nana::runner {
 

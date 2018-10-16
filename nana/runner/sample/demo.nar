@@ -123,7 +123,24 @@
     }
     @panel{ id=p3
         @date_chooser{ id=date div='weight=50%' }
-        @panel{ id=fl }
+        @listbox{ id=table sortable=1 show_header=1
+            headers={
+                @option { caption="name" width=60 }
+                @option { caption="value1" width=60 }
+                @option { caption="value2" width=60 }
+            }
+            categories={
+                @option { caption="one"
+                    @option { caption="1.1" }
+                    @option { caption="1.2" }
+                }
+                @option { caption="two"
+                    @option { caption="2.1" }
+                    @option { caption="2.2" }
+                    @option { caption="2.3" }
+                }
+            }
+        }
     }
     @panel{
         id=cmd

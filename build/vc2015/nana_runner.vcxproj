@@ -179,6 +179,7 @@
     <ClCompile Include="..\..\nana\runner\id.cpp" />
     <ClCompile Include="..\..\nana\runner\istr.cpp" />
     <ClCompile Include="..\..\nana\runner\label_cfg.cpp" />
+    <ClCompile Include="..\..\nana\runner\listbox_cfg.cpp" />
     <ClCompile Include="..\..\nana\runner\log.cpp" />
     <ClCompile Include="..\..\nana\runner\model_base.cpp" />
     <ClCompile Include="..\..\nana\runner\node.cpp" />
@@ -224,6 +225,7 @@
     <ClInclude Include="..\..\nana\runner\id.h" />
     <ClInclude Include="..\..\nana\runner\istr.h" />
     <ClInclude Include="..\..\nana\runner\label_cfg.h" />
+    <ClInclude Include="..\..\nana\runner\listbox_cfg.h" />
     <ClInclude Include="..\..\nana\runner\list_map.h" />
     <ClInclude Include="..\..\nana\runner\list_multimap.h" />
     <ClInclude Include="..\..\nana\runner\log.h" />
