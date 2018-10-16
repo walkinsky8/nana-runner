@@ -5,6 +5,16 @@
     size={400 500}
     align=center
     align_v=center
+    @menubar{ id=menubar div='weight=24' typeface={bold 10}
+        @option { caption="File"
+            @option { caption='Open' file='278266555.jpeg' }
+            @option { caption='___' }
+            @option { caption='Exit' }
+        }
+        @option { caption='Help'
+            @option { caption='About' }
+        }
+    }
     @categorize{
         id=categorize
         caption="a\b\c"

@@ -21,5 +21,6 @@ void nana::runner::init_widgets()
     add_widget<float_listbox_cfg>();
     add_widget<listbox_cfg>();
     add_widget<unknown_cfg>();
+    add_widget<menubar_cfg>();
 }
 

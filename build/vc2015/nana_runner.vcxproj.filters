@@ -8,9 +8,6 @@
     <Filter Include="base">
       <UniqueIdentifier>{196a582a-631c-4670-b4be-63b036ef0479}</UniqueIdentifier>
     </Filter>
-    <Filter Include="etc">
-      <UniqueIdentifier>{49a81e9f-699d-4fb3-b096-b8a64d4b6523}</UniqueIdentifier>
-    </Filter>
     <Filter Include="widgets">
       <UniqueIdentifier>{72334a40-d194-4794-bfaf-ae2f5ec74c29}</UniqueIdentifier>
     </Filter>
@@ -23,20 +20,20 @@
     <Filter Include="base\codec">
       <UniqueIdentifier>{beda8a37-a588-4c03-b569-c131188a185e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="sample">
-      <UniqueIdentifier>{b4f4bcd2-dab7-4367-9c44-eb857a511226}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="sample\main">
-      <UniqueIdentifier>{2fa39bf0-0bab-461e-a812-e6adbe83ece4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="sample\editor">
-      <UniqueIdentifier>{60b40ae4-251b-4113-a825-fbc9518a9938}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="sample\demo">
-      <UniqueIdentifier>{c05ac02c-8a16-4aaf-af1f-4d27e6a2131b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="foundation">
       <UniqueIdentifier>{0fd6d47e-0080-4c3c-878a-fc055fec415d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="__sample">
+      <UniqueIdentifier>{b4f4bcd2-dab7-4367-9c44-eb857a511226}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="__sample\main">
+      <UniqueIdentifier>{2fa39bf0-0bab-461e-a812-e6adbe83ece4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="__sample\editor">
+      <UniqueIdentifier>{60b40ae4-251b-4113-a825-fbc9518a9938}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="__sample\demo">
+      <UniqueIdentifier>{c05ac02c-8a16-4aaf-af1f-4d27e6a2131b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -50,9 +47,6 @@
   <ItemGroup>
     <ClCompile Include="..\..\nana\runner\base.cpp">
       <Filter>base</Filter>
-    </ClCompile>
-    <ClCompile Include="stdafx.cpp">
-      <Filter>etc</Filter>
     </ClCompile>
     <ClCompile Include="..\..\nana\runner\dumper.cpp">
       <Filter>base\codec</Filter>
@@ -109,7 +103,7 @@
       <Filter>foundation</Filter>
     </ClCompile>
     <ClCompile Include="..\..\nana\runner\sample\nana_runner.cpp">
-      <Filter>sample\main</Filter>
+      <Filter>__sample\main</Filter>
     </ClCompile>
     <ClCompile Include="..\..\nana\runner\controller_base.cpp">
       <Filter>foundation</Filter>
@@ -150,13 +144,16 @@
     <ClCompile Include="..\..\nana\runner\listbox_cfg.cpp">
       <Filter>widgets</Filter>
     </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>__sample\main</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nana\runner\menubar_cfg.cpp">
+      <Filter>widgets</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\nana\runner\base.h">
       <Filter>base</Filter>
-    </ClInclude>
-    <ClInclude Include="stdafx.h">
-      <Filter>etc</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\dumper.h">
       <Filter>base\codec</Filter>
@@ -231,37 +228,37 @@
       <Filter>foundation</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\sample\color_view.h">
-      <Filter>sample\demo</Filter>
+      <Filter>__sample\demo</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\sample\demo_view.h">
-      <Filter>sample\demo</Filter>
+      <Filter>__sample\demo</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\sample\font_view.h">
-      <Filter>sample\demo</Filter>
+      <Filter>__sample\demo</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\sample\hello_view.h">
-      <Filter>sample\demo</Filter>
+      <Filter>__sample\demo</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\sample\editor_setup_view.h">
-      <Filter>sample\editor</Filter>
+      <Filter>__sample\editor</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\sample\editor_view.h">
-      <Filter>sample\editor</Filter>
+      <Filter>__sample\editor</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\sample\login_view.h">
-      <Filter>sample\editor</Filter>
+      <Filter>__sample\editor</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\sample\editor_ctr.h">
-      <Filter>sample\editor</Filter>
+      <Filter>__sample\editor</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\sample\login_model.h">
-      <Filter>sample\editor</Filter>
+      <Filter>__sample\editor</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\sample\login_ctr.h">
-      <Filter>sample\editor</Filter>
+      <Filter>__sample\editor</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\sample\logger_view.h">
-      <Filter>sample\editor</Filter>
+      <Filter>__sample\editor</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\app_base.h">
       <Filter>foundation</Filter>
@@ -270,7 +267,7 @@
       <Filter>foundation</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\sample\editor_app.h">
-      <Filter>sample\editor</Filter>
+      <Filter>__sample\editor</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\cmdargs.h">
       <Filter>base\types</Filter>
@@ -317,37 +314,43 @@
     <ClInclude Include="..\..\nana\runner\unknown_cfg.h">
       <Filter>widgets</Filter>
     </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>__sample\main</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nana\runner\menubar_cfg.h">
+      <Filter>widgets</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\nana\runner\sample\color.nar">
-      <Filter>sample\demo</Filter>
+      <Filter>__sample\demo</Filter>
     </None>
     <None Include="..\..\nana\runner\sample\font.nar">
-      <Filter>sample\demo</Filter>
+      <Filter>__sample\demo</Filter>
     </None>
     <None Include="..\..\nana\runner\sample\hello.nar">
-      <Filter>sample\demo</Filter>
+      <Filter>__sample\demo</Filter>
     </None>
     <None Include="..\..\nana\runner\sample\editor.nar">
-      <Filter>sample\editor</Filter>
+      <Filter>__sample\editor</Filter>
     </None>
     <None Include="..\..\nana\runner\sample\editor_setup.nar">
-      <Filter>sample\editor</Filter>
+      <Filter>__sample\editor</Filter>
     </None>
     <None Include="..\..\nana\runner\sample\login.nar">
-      <Filter>sample\editor</Filter>
+      <Filter>__sample\editor</Filter>
     </None>
     <None Include="..\..\nana\runner\sample\logger.nar">
-      <Filter>sample\editor</Filter>
+      <Filter>__sample\editor</Filter>
     </None>
     <None Include="..\..\nana\runner\sample\demo.nar">
-      <Filter>sample\demo</Filter>
+      <Filter>__sample\demo</Filter>
     </None>
     <None Include="..\..\nana\runner\sample\generic.nar">
       <Filter>foundation</Filter>
     </None>
     <None Include="..\..\nana\runner\sample\dummy.nar">
-      <Filter>sample\demo</Filter>
+      <Filter>__sample\demo</Filter>
     </None>
   </ItemGroup>
 </Project>
