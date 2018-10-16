@@ -250,6 +250,7 @@
     <ClInclude Include="..\..\nana\runner\sample\logger_view.h" />
     <ClInclude Include="..\..\nana\runner\slider_cfg.h" />
     <ClInclude Include="..\..\nana\runner\textbox_cfg.h" />
+    <ClInclude Include="..\..\nana\runner\unknown_cfg.h" />
     <ClInclude Include="..\..\nana\runner\view_base.h" />
     <ClInclude Include="..\..\nana\runner\view_factory.h" />
     <ClInclude Include="..\..\nana\runner\widget_all.h" />

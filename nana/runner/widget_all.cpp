@@ -20,5 +20,6 @@ void nana::runner::init_widgets()
     add_widget<date_chooser_cfg>();
     add_widget<float_listbox_cfg>();
     add_widget<listbox_cfg>();
+    add_widget<unknown_cfg>();
 }
 

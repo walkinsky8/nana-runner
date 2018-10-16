@@ -37,6 +37,7 @@ namespace nana::runner::sample::view {
         checkbox& multilines_;
 
         slider& tsize_;
+        slider& clevel_;
         group& talign_;
         align m_text_align{ nana::align::left };
         group& tcolor_;
@@ -76,6 +77,7 @@ namespace nana::runner::sample::view {
             , linewrap_{ wnd<checkbox>("txtcmd.linewrap") }
             , multilines_{ wnd<checkbox>("txtcmd.multilines") }
             , tsize_{ wnd<slider>("p1.tsize") }
+            , clevel_{ wnd<slider>("p1.clevel") }
             , picsel_{ wnd<combox>("p1.picsel") }
             , picsel_cfg_{ cfg_("p1.picsel") }
             , talign_{ wnd<group>("p2.align") }
@@ -170,15 +172,9 @@ namespace nana::runner::sample::view {
                 text_.text_align(m_text_align.value());
             });
 
-            auto fn = [this] {
-                unsigned r = tcolor_.option_checked(0) ? 255 : 0;
-                unsigned g = tcolor_.option_checked(1) ? 255 : 0;
-                unsigned b = tcolor_.option_checked(2) ? 255 : 0;
-                color c{ r,g,b };
-                text_.bgcolor(c);
-            };
+            clevel_.events().value_changed([this] {update_text_color(); });
             for (auto& i : tcolor_cfg_->cast<group_cfg>().radios()) {
-                i->events().click(fn);
+                i->events().click([this] {update_text_color(); });
             }
 
             picsel_.events().selected([this] {
@@ -202,6 +198,15 @@ namespace nana::runner::sample::view {
             quit_.events().click([this] {
                 close();
             });
+        }
+
+        void update_text_color()
+        {
+            unsigned r = tcolor_.option_checked(0) ? clevel_.value() : 0;
+            unsigned g = tcolor_.option_checked(1) ? clevel_.value() : 0;
+            unsigned b = tcolor_.option_checked(2) ? clevel_.value() : 0;
+            text_.bgcolor({ r, g, b });
+            text_.fgcolor({ ~r, ~g, ~b });
         }
 
     };

@@ -2,7 +2,7 @@
     id=demo
     div="vert"
     pos={-200 -200}
-    size={400 450}
+    size={400 500}
     align=center
     align_v=center
     @categorize{
@@ -99,24 +99,23 @@
         }
     }
     @panel{ id=p1 div="weight=20"
-        @slider{ id=tsize div='weight=50%'
-            maximum=50 value=10
-        }
+        @slider{ id=tsize div='weight=25%' maximum=36 value=10 }
+        @slider{ id=clevel div='weight=25%' maximum=255 value=128 }
         @combox{ id=picsel div='weight=50%' editable=0 selected=0
-            @option { caption='First' file='image.jpg' }
-            @option { caption='Second' file='278266555.jpeg' }
-            @option { caption='Third' file='luyao_20170917144943_看图王.jpg' }
+            @option { caption='Yan Yan' file='image.jpg' }
+            @option { caption='Paul Walker' file='278266555.jpeg' }
+            @option { caption='Yao Yao' file='luyao_20170917144943_看图王.jpg' }
         }
     }
     @panel{ id=p2 div='weight=100'
         @group{ id=align div='weight=25%' radio_mode=1
         }
         @group{ id=color div='weight=25%' radio_mode=0
-            @option { caption=red }
-            @option { caption=green }
-            @option { caption=blue }
+            @option { caption=red check=1 }
+            @option { caption=green check=1 }
+            @option { caption=blue check=1 }
         }
-        @picture{ id=picture div='weight=50%' file="image.jpg"
+        @picture{ id=picture file="image.jpg"
             align=center align_v=center stretchable=1 transparent=0
             gradual_from=white gradual_to=black gradual_horizontal=0
         }

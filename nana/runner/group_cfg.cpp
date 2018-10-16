@@ -3,6 +3,8 @@
 
 #include "group_cfg.h"
 
+#include "option_cfg.h"
+
 void nana::runner::group_cfg::init_widget(widget & _w) const
 {
     super::init_widget(_w);
@@ -20,7 +22,9 @@ void nana::runner::group_cfg::init_widget(widget & _w) const
     {
         if (i)
         {
-            auto& r = w.add_option(i->caption_());
+            auto& cfg = i->cast<option_cfg>();
+            auto& r = w.add_option(cfg.caption_());
+            r.check(cfg.check_());
             m_radios.push_back(&r);
         }
     }

@@ -314,12 +314,12 @@
     <ClInclude Include="..\..\nana\runner\listbox_cfg.h">
       <Filter>widgets</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\nana\runner\unknown_cfg.h">
+      <Filter>widgets</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\nana\runner\sample\color.nar">
-      <Filter>sample\demo</Filter>
-    </None>
-    <None Include="..\..\nana\runner\sample\demo.nar">
       <Filter>sample\demo</Filter>
     </None>
     <None Include="..\..\nana\runner\sample\font.nar">
@@ -340,11 +340,14 @@
     <None Include="..\..\nana\runner\sample\logger.nar">
       <Filter>sample\editor</Filter>
     </None>
+    <None Include="..\..\nana\runner\sample\demo.nar">
+      <Filter>sample\demo</Filter>
+    </None>
     <None Include="..\..\nana\runner\sample\generic.nar">
-      <Filter>sample</Filter>
+      <Filter>foundation</Filter>
     </None>
     <None Include="..\..\nana\runner\sample\dummy.nar">
-      <Filter>sample</Filter>
+      <Filter>sample\demo</Filter>
     </None>
   </ItemGroup>
 </Project>

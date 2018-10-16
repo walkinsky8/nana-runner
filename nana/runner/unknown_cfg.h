@@ -5,24 +5,17 @@
 
 namespace nana::runner {
 
-    struct option {};
+    struct unknown {};
 
-    class option_cfg : public widget_cfg
+    class unknown_cfg : public widget_cfg
     {
-        NAR_DEFINE_WIDGET(option, widget_cfg);
-
-        NAR_FIELD(string, file);
-        NAR_FIELD(unsigned, width);
-        NAR_FIELD(bool, check);
+        NAR_DEFINE_WIDGET(unknown, widget_cfg);
 
     public:
         template<class _Stream>
         void traverse(_Stream& _s)
         {
             super::traverse(_s);
-            NAR_CODEC(_s, file);
-            NAR_CODEC(_s, width);
-            NAR_CODEC(_s, check);
         }
 
         wnd_ptr create_wnd(window p, bool v) const override { return nullptr; }
