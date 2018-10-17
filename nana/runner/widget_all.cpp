@@ -24,6 +24,7 @@ void nana::runner::init_widgets()
     add_widget<progress_cfg>();
     add_widget<hscroll_cfg>();
     add_widget<vscroll_cfg>();
+    add_widget<spinbox_cfg>();
 
     add_widget<option_cfg>();
     add_widget<unknown_cfg>();

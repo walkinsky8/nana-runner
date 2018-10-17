@@ -52,8 +52,9 @@ namespace nana::runner::sample::view {
         date_chooser& date_;
         hscroll& hscr_;
         vscroll& vscr_;
-        listbox& listbox_;
         progress& prog_;
+        spinbox& spin_;
+        listbox& listbox_;
 
         button& quit_;
 
@@ -93,8 +94,9 @@ namespace nana::runner::sample::view {
             , date_{ wnd<date_chooser>("p3.date.value") }
             , hscr_{ wnd<hscroll>("p3.date.hscr") }
             , vscr_{ wnd<vscroll>("p3.vscr.value") }
-            , listbox_{wnd<listbox>("p3.table")}
             , prog_{ wnd<progress>("cmd.prog") }
+            , spin_{ wnd<spinbox>("cmd.spin") }
+            , listbox_{wnd<listbox>("p3.table")}
             , quit_{ wnd<button>("cmd.close") }
         {
             set_log_handler([this](const string& s) {
@@ -202,6 +204,10 @@ namespace nana::runner::sample::view {
             date_.events().date_changed([this]{
                 nana::date d = date_.read();
                 NAR_LOG("selected date = " << d);
+            });
+
+            spin_.events().text_changed([this] {
+                prog_.value((unsigned)spin_.to_int());
             });
 
             //quit_.events().click([this] { close(); });

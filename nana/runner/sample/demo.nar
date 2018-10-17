@@ -168,10 +168,14 @@
         div="weight=25"
         @progress{
             id=prog
-            div='weight=50%'
+            div='weight=40%'
             amount=100
             value=50
             unknown=0
+        }
+        @spinbox{
+            id=spin
+            div='weight=10%'
         }
         @button{
             id=close

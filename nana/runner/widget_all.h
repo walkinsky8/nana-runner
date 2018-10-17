@@ -23,6 +23,7 @@
 #include <nana/runner/slider_cfg.h>
 #include <nana/runner/progress_cfg.h>
 #include <nana/runner/scroll_cfg.h>
+#include <nana/runner/spinbox_cfg.h>
 
 #include <nana/runner/unknown_cfg.h>
 

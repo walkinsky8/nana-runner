@@ -156,7 +156,12 @@
     <ClCompile Include="..\..\nana\runner\progress_cfg.cpp">
       <Filter>widgets</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\nana\runner\scroll_cfg.cpp" />
+    <ClCompile Include="..\..\nana\runner\scroll_cfg.cpp">
+      <Filter>widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nana\runner\spinbox_cfg.cpp">
+      <Filter>widgets</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\nana\runner\base.h">
@@ -333,7 +338,12 @@
     <ClInclude Include="..\..\nana\runner\progress_cfg.h">
       <Filter>widgets</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\nana\runner\scroll_cfg.h" />
+    <ClInclude Include="..\..\nana\runner\scroll_cfg.h">
+      <Filter>widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nana\runner\spinbox_cfg.h">
+      <Filter>widgets</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\nana\runner\sample\color.nar">

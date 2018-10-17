@@ -192,6 +192,7 @@
     <ClCompile Include="..\..\nana\runner\sample\nana_runner.cpp" />
     <ClCompile Include="..\..\nana\runner\scroll_cfg.cpp" />
     <ClCompile Include="..\..\nana\runner\slider_cfg.cpp" />
+    <ClCompile Include="..\..\nana\runner\spinbox_cfg.cpp" />
     <ClCompile Include="..\..\nana\runner\textbox_cfg.cpp" />
     <ClCompile Include="..\..\nana\runner\view_base.cpp" />
     <ClCompile Include="..\..\nana\runner\view_factory.cpp" />
@@ -257,6 +258,7 @@
     <ClInclude Include="..\..\nana\runner\sample\logger_view.h" />
     <ClInclude Include="..\..\nana\runner\scroll_cfg.h" />
     <ClInclude Include="..\..\nana\runner\slider_cfg.h" />
+    <ClInclude Include="..\..\nana\runner\spinbox_cfg.h" />
     <ClInclude Include="..\..\nana\runner\textbox_cfg.h" />
     <ClInclude Include="..\..\nana\runner\unknown_cfg.h" />
     <ClInclude Include="..\..\nana\runner\view_base.h" />
