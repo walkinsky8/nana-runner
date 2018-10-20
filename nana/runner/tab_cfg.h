@@ -28,6 +28,7 @@ namespace nana::runner {
     class tab_cfg : public widget_cfg
     {
         NAR_DEFINE_WIDGET(tab, widget_cfg);
+
         NAR_FIELD(string, tab_bgcolor);
         NAR_FIELD(string, tab_fgcolor);
         NAR_FIELD(string, tab_image);

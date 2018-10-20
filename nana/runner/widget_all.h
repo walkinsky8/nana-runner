@@ -27,6 +27,7 @@
 #include <nana/runner/spinbox_cfg.h>
 #include <nana/runner/tabbar_cfg.h>
 #include <nana/runner/tab_cfg.h>
+#include <nana/runner/toolbar_cfg.h>
 
 #include <nana/runner/unknown_cfg.h>
 

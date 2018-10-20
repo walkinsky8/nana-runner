@@ -7,7 +7,7 @@
     align_v=center
     @menubar{ id=menubar div='weight=24' typeface={bold 10}
         @menu { caption="&File"
-            @menu { caption='&Open' file='image.jpg' }
+            @menu { caption='&Open' image='image.jpg' }
             @menu { caption='&Recent Files...'
                 @menu { caption='File&1' }
                 @menu { caption='File&2' }
@@ -119,9 +119,9 @@
         @slider{ id=tsize div='weight=25%' maximum=36 value=10 }
         @slider{ id=clevel div='weight=25%' maximum=255 value=255 }
         @combox{ id=picsel div='weight=50%' editable=0 selected=0
-            @option { caption='Vinny' file='image.jpg' }
-            @option { caption='Jeff' file='IMG_3865.JPG' }
-            @option { caption='Charlotte' file='luyao_20170917144943_看图王.jpg' }
+            @option { caption='Vinny' image='image.jpg' }
+            @option { caption='Jeff' image='IMG_3865.JPG' }
+            @option { caption='Charlotte' image='luyao_20170917144943_看图王.jpg' }
         }
     }
     @panel{ id=p2 div='weight=120'
@@ -132,7 +132,7 @@
             @option { caption=green check=1 }
             @option { caption=blue check=1 }
         }
-        @picture{ id=picture file="image.jpg"
+        @picture{ id=picture image="image.jpg"
             align=center align_v=center stretchable=1 transparent=0
             gradual_from=white gradual_to=black gradual_horizontal=0
         }

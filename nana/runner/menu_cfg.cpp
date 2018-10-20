@@ -28,9 +28,9 @@ void nana::runner::menu_cfg::init_menu(menu& _m) const
                 });
             }
         }
-        if (!mi.file_().empty())
+        if (!mi.image_().empty())
         {
-            _m.image(idx, image{ app::find_file(mi.file_()) });
+            _m.image(idx, app::create_image(mi.image_()));
         }
         if (!mi.children_().empty())
         {

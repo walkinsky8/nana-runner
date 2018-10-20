@@ -20,11 +20,9 @@ void nana::runner::combox_cfg::init_widget(widget & _w, view_obj* _root_view) co
         {
             w.push_back(i->caption_());
             auto& child = i->cast<option_cfg>();
-            if (!child.file_().empty())
+            if (!child.image_().empty())
             {
-                wstring fullpath;
-                if (app::instance().search_file(to_wstring(child.file_()), fullpath))
-                    w.image(pos, image{fullpath});
+                w.image(pos, app::create_image(child.image_()));
             }
         }
         ++pos;

@@ -15,6 +15,7 @@ namespace nana::runner {
     class tabbar_cfg : public widget_cfg
     {
         NAR_DEFINE_WIDGET(tabbar, widget_cfg);
+
         NAR_FIELD(id, frame_id);
         NAR_FIELD(optional<bool>, close_fly);
         NAR_FIELD(optional<bool>, tb_add);
@@ -46,6 +47,7 @@ namespace nana::runner {
     class tabbar_lite_cfg : public widget_cfg
     {
         NAR_DEFINE_WIDGET(tabbar_lite, widget_cfg);
+
         NAR_FIELD(id, frame_id);
 
         mutable std::vector<view_ptr> m_tab_views;

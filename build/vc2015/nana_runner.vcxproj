@@ -197,6 +197,7 @@
     <ClCompile Include="..\..\nana\runner\tabbar_cfg.cpp" />
     <ClCompile Include="..\..\nana\runner\tab_cfg.cpp" />
     <ClCompile Include="..\..\nana\runner\textbox_cfg.cpp" />
+    <ClCompile Include="..\..\nana\runner\toolbar_cfg.cpp" />
     <ClCompile Include="..\..\nana\runner\view_base.cpp" />
     <ClCompile Include="..\..\nana\runner\view_factory.cpp" />
     <ClCompile Include="..\..\nana\runner\widget_all.cpp" />
@@ -266,6 +267,7 @@
     <ClInclude Include="..\..\nana\runner\tabbar_cfg.h" />
     <ClInclude Include="..\..\nana\runner\tab_cfg.h" />
     <ClInclude Include="..\..\nana\runner\textbox_cfg.h" />
+    <ClInclude Include="..\..\nana\runner\toolbar_cfg.h" />
     <ClInclude Include="..\..\nana\runner\unknown_cfg.h" />
     <ClInclude Include="..\..\nana\runner\view_base.h" />
     <ClInclude Include="..\..\nana\runner\view_factory.h" />

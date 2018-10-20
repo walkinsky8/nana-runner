@@ -1,21 +1,11 @@
 ﻿@form{ id=dummy div='vert'
-    @tabbar { id=tabbar frame_id=tabframe div='weight=20' bgcolor=yellow
-              close_fly=0 tb_add=0 tb_scroll=1 tb_list=1 tb_close=0
-        @tab { div='vert' caption=button bgcolor=red tab_bgcolor=red tab_image='image.jpg'
-            @panel{ div='weight=5' }
-            @textbox { id=t div='weight=1' }
-            @button { id=b_hello}
-        }
-        @tab { div='vert' caption=text bgcolor=green tab_bgcolor=green
-            @panel{ div='weight=5' }
-            @textbox { id=t div='weight=1' }
-            @textbox { id=t_hello}
-        }
-        @tab { div='vert' caption=label bgcolor=grey tab_bgcolor=grey fgcolor=black
-            @panel{ div='weight=5' }
-            @textbox { id=t div='weight=1' }
-            @label { id=l_hello caption='Hello, <red>world</>!' format=1 }
-        }
+    @toolbar { id=tb scale=16 div='vert weight=20'
+        @option { caption=open image='image.jpg' }
+        @option { }
+        @option { caption=close image='yoyo.jpg' _click=close }
+        @option { }
+        @option { caption=quit image='zhuang.jpg' _click=quit }
+        @option { }
     }
-    @panel_lite { id=tabframe }
+    @panel{}
 }

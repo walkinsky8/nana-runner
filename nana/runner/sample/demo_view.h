@@ -200,8 +200,8 @@ namespace nana::runner::sample::view {
 
             picsel_.events().selected([this] {
                 picidx_ = picsel_.option();
-                string fname = picsel_cfg_->children_()[picidx_]->cast<option_cfg>().file_();
-                picture_.load(image{ app::find_file(fname) });
+                string fname = picsel_cfg_->children_()[picidx_]->cast<option_cfg>().image_();
+                picture_.load(app::create_image(fname));
                 spin_.value(std::to_string((unsigned)(prog_.amount()*(1+picidx_)/picsel_cfg_->children_().size())));
             });
             picture_.events().click([this] {

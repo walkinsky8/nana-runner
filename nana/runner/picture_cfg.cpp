@@ -32,12 +32,8 @@ void nana::runner::picture_cfg::init_widget(widget & _w, view_obj* _root_view) c
     if (!transparent_().empty())
         w.transparent(transparent_().value());
 
-    if (!file_().empty())
+    if (!image_().empty())
     {
-        wstring fullpath;
-        if (app::instance().search_file(to_wstring(file_()), fullpath))
-        {
-            w.load(nana::paint::image{ fullpath });
-        }
+        w.load(app::create_image(image_()));
     }
 }

@@ -13,9 +13,7 @@ void nana::runner::button_cfg::init_widget(widget & _w, view_obj* _root_view) co
 
     if (!icon_().empty())
     {
-        wstring fullpath;
-        if (app::instance().search_file(to_wstring(icon_()), fullpath))
-            w.icon(image{ fullpath });
+        w.icon(app::create_image(icon_()));
     }
 
     if (!borderless_().empty())
@@ -45,7 +43,7 @@ void nana::runner::button_cfg::init_widget(widget & _w, view_obj* _root_view) co
             w.events().click(app::quit);
         else if (_click_() == "close")
             w.events().click([_root_view] {_root_view->close(); });
-        else if (!_click_().empty())
+        else
         {
             w.events().click([&] {app::create_view(_click_()); });
         }

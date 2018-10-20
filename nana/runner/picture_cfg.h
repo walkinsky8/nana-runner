@@ -13,7 +13,7 @@ namespace nana::runner {
     {
         NAR_DEFINE_WIDGET(picture, widget_cfg);
 
-        NAR_FIELD(string, file);
+        NAR_FIELD(string, image);
         NAR_FIELD(optional<align>, align);
         NAR_FIELD(optional<align_v>, align_v);
         NAR_FIELD(string, gradual_from);
@@ -27,7 +27,7 @@ namespace nana::runner {
         void traverse(_Stream& _s)
         {
             super::traverse(_s);
-            NAR_CODEC(_s, file);
+            NAR_CODEC(_s, image);
             NAR_CODEC(_s, align);
             NAR_CODEC(_s, align_v);
             NAR_CODEC(_s, gradual_from);
