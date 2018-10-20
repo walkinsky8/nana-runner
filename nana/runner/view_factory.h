@@ -12,7 +12,7 @@ namespace nana::runner {
     class view_factory
     {
     public:
-        using create_func = std::function<view_ptr (widget_cfg&)>;
+        using create_func = std::function<view_ptr (widget_cfg&, window)>;
 
     private:
         std::map<string, create_func> widgets_;
@@ -27,7 +27,7 @@ namespace nana::runner {
     public:
         static view_factory& instance();
 
-        view_ptr create(const string& _type, widget_cfg& _cfg);
+        view_ptr create(const string& _type, widget_cfg& _cfg, window _parent);
 
         void add(const string& _type, create_func _func);
         
@@ -41,9 +41,9 @@ namespace nana::runner {
         view_factory::instance().add(T::type_name_(), T::new_);
     }
 
-    inline view_ptr create_view(widget_cfg& _cfg)
+    inline view_ptr create_view(widget_cfg& _cfg, window _parent)
     {
-        return view_factory::instance().create(_cfg.id_path(), _cfg);
+        return view_factory::instance().create(_cfg.id_path(), _cfg, _parent);
     }
 
 }

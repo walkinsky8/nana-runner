@@ -7,11 +7,13 @@
 
 namespace nana::runner {
 
+    using form_base = nana::drawerbase::form::form_base;
     using form = nana::form;
+    using nested_form = nana::nested_form;
 
-    class form_cfg : public widget_cfg
+    class form_base_cfg : public widget_cfg
     {
-        NAR_DEFINE_WIDGET(form, widget_cfg);
+        using super = widget_cfg;
 
         NAR_FIELD(optional<align>, align);
         NAR_FIELD(optional<align_v>, align_v);
@@ -39,15 +41,31 @@ namespace nana::runner {
             NAR_CODEC(_s, decoration);
         }
 
-        wnd_ptr create_wnd(window p, bool v) const override;
-
-        void init_widget(widget& _w) const override;
-
-        void on_init_view(widget& _w, const std::map<id, wnd_ptr>& _widgets) const override;
+        void init_widget(widget& _w, view_obj* _root_view) const override;
 
         bool has_child_div() const override { return true; }
 
         point get_pos() const override;
+
+        virtual nana::appearance get_appearance() const;
+
+    };
+
+    class form_cfg : public form_base_cfg
+    {
+        NAR_DEFINE_WIDGET(form, form_base_cfg);
+
+    public:
+        wnd_ptr create_wnd(window p, bool v) const override;
+
+    };
+
+    class nested_form_cfg : public form_base_cfg
+    {
+        NAR_DEFINE_WIDGET(nested_form, form_base_cfg);
+
+    public:
+        wnd_ptr create_wnd(window p, bool v) const override;
 
     };
 

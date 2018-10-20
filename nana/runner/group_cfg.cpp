@@ -5,9 +5,9 @@
 
 #include "option_cfg.h"
 
-void nana::runner::group_cfg::init_widget(widget & _w) const
+void nana::runner::group_cfg::init_widget(widget & _w, view_obj* _root_view) const
 {
-    super::init_widget(_w);
+    super::init_widget(_w, _root_view);
 
     auto& w = dynamic_cast<ui_type&>(_w);
 

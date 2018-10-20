@@ -14,7 +14,7 @@ namespace nana::runner::sample::view {
     {
     public:
         static string type_name_() { return "logger"; }
-        static view_ptr new_(widget_cfg& _cfg) { return std::make_shared<logger>(_cfg); }
+        static view_ptr new_(widget_cfg& _cfg, window _parent) { return std::make_shared<logger>(_cfg, _parent); }
 
     public:
         form& form_;
@@ -25,8 +25,8 @@ namespace nana::runner::sample::view {
         button& exit_;
 
     public:
-        logger(widget_cfg& _cfg)
-            : view_obj{ _cfg }
+        logger(widget_cfg& _cfg, window _parent)
+            : view_obj{ _cfg, _parent }
             , form_{ wnd<form>() }
             , content_{ wnd<textbox>("content") }
             , close_{ wnd<button>("cmd.close") }

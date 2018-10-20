@@ -16,7 +16,7 @@ namespace nana::runner::sample::view {
     {
     public:
         static pcstr type_name_() { return "editor"; }
-        static view_ptr new_(widget_cfg& _cfg) { return std::make_shared<editor>(_cfg); }
+        static view_ptr new_(widget_cfg& _cfg, window _parent) { return std::make_shared<editor>(_cfg, _parent); }
 
     public:
         form& form_;
@@ -36,8 +36,8 @@ namespace nana::runner::sample::view {
 		cfg_ptr curr_cfg_;
 
     public:
-        editor(widget_cfg& _cfg)
-            : view_obj{ _cfg }
+        editor(widget_cfg& _cfg, window _parent)
+            : view_obj{ _cfg, _parent }
             , form_{ wnd<form>() }
             , filename_{ wnd<textbox>("filename") }
             , filebuf_{ wnd<textbox>("filebuf") }
@@ -100,7 +100,7 @@ namespace nana::runner::sample::view {
             NAR_LOG("run nar file = " << fname);
             close_current();
             curr_cfg_ = widget_cfg::from(fbuf);
-			current_ = view_obj::make_view(*curr_cfg_);
+			current_ = view_obj::make_view(*curr_cfg_, nullptr);
             if (current_)
                 current_->show();
         }

@@ -27,7 +27,7 @@ namespace nana::runner {
 
         wnd_ptr create_wnd(window p, bool v) const override { return nullptr; }
 
-        void init_widget(widget& _w) const override { }
+        void init_widget(widget& _w, view_obj* _root_view) const override { }
 
         void init_menu(menu& _m) const;
 

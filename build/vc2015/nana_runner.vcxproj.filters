@@ -162,6 +162,9 @@
     <ClCompile Include="..\..\nana\runner\spinbox_cfg.cpp">
       <Filter>widgets</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\nana\runner\tabbar_cfg.cpp" />
+    <ClCompile Include="..\..\nana\runner\tab_cfg.cpp" />
+    <ClCompile Include="..\..\nana\runner\panel_lite_cfg.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\nana\runner\base.h">
@@ -344,6 +347,9 @@
     <ClInclude Include="..\..\nana\runner\spinbox_cfg.h">
       <Filter>widgets</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\nana\runner\tabbar_cfg.h" />
+    <ClInclude Include="..\..\nana\runner\tab_cfg.h" />
+    <ClInclude Include="..\..\nana\runner\panel_lite_cfg.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\nana\runner\sample\color.nar">
@@ -367,14 +373,14 @@
     <None Include="..\..\nana\runner\sample\logger.nar">
       <Filter>__sample\editor</Filter>
     </None>
-    <None Include="..\..\nana\runner\sample\demo.nar">
-      <Filter>__sample\demo</Filter>
-    </None>
     <None Include="..\..\nana\runner\sample\generic.nar">
       <Filter>foundation</Filter>
     </None>
-    <None Include="..\..\nana\runner\sample\dummy.nar">
+    <None Include="..\..\nana\runner\sample\demo.nar">
       <Filter>__sample\demo</Filter>
+    </None>
+    <None Include="..\..\nana\runner\sample\dummy.nar">
+      <Filter>__sample</Filter>
     </None>
   </ItemGroup>
 </Project>

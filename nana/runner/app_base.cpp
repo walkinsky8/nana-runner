@@ -57,8 +57,8 @@ nana::runner::string nana::runner::app::load_file(const wstring& _filename) cons
 
 nana::runner::cfg_ptr nana::runner::app::load_cfg(const wstring& _filename)
 {
-	wstring fullpath;
-	string cfgdata;
+    wstring fullpath;
+    string cfgdata;
     const string* pdata = files_.find(_filename);
     if (pdata)
         cfgdata = *pdata;
@@ -73,6 +73,14 @@ nana::runner::cfg_ptr nana::runner::app::load_cfg(const wstring& _filename)
         files_.add(_filename, cfgdata);
     }
 
+    cfg_ptr cfg = create_cfg(cfgdata);
+    if (cfg)
+        cfg->fullpath_(fullpath);
+    return cfg;
+}
+
+nana::runner::cfg_ptr nana::runner::app::create_cfg(const string& cfgdata)
+{
     cfg_ptr cfg = widget_cfg::from(cfgdata);
     if (!cfg)
         return cfg;
@@ -82,7 +90,6 @@ nana::runner::cfg_ptr nana::runner::app::load_cfg(const wstring& _filename)
         cfg = *found;
 	else
 	{
-		cfg->fullpath_(fullpath);
 		cfgs_.add(cfg->id_(), cfg);
 	}
     return cfg;
@@ -96,12 +103,29 @@ nana::runner::cfg_ptr nana::runner::app::get_cfg(const string& _type) const
     return *p;
 }
 
+nana::runner::view_ptr nana::runner::app::create_view(const string& _cfg)
+{
+    cfg_ptr cfg = instance().create_cfg(_cfg);
+    if (cfg)
+    {
+        view_ptr p = view_obj::make_view(*cfg, nullptr);
+        if (p)
+        {
+            p->show();
+            instance().initial_views_.push_back(p);
+        }
+        return p;
+    }
+    return nullptr;
+
+}
+
 nana::runner::view_ptr nana::runner::app::load_view(const wstring& _filename)
 {
 	cfg_ptr cfg = load_cfg(_filename);
 	if (cfg)
 	{
-		return view_obj::make_view(*cfg);
+		return view_obj::make_view(*cfg, nullptr);
 	}
 	return nullptr;
 }

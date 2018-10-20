@@ -13,12 +13,12 @@ nana::runner::view_factory & nana::runner::view_factory::instance()
     return __;
 }
 
-nana::runner::view_ptr nana::runner::view_factory::create(const string& _type, widget_cfg& _cfg)
+nana::runner::view_ptr nana::runner::view_factory::create(const string& _type, widget_cfg& _cfg, window _parent)
 {
     auto f = instance().get(_type);
     if (f)
     {
-        return f(_cfg);
+        return f(_cfg, _parent);
     }
     return nullptr;
 }

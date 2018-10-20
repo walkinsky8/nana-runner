@@ -16,10 +16,17 @@ void nana::runner::menu_cfg::init_menu(menu& _m) const
         else
         {
             typedef nana::drawerbase::menu::menu_item_type::item_proxy iproxy;
-            if (mi._click_()=="quit")
+            if (mi._click_() == "quit")
                 _m.append(mi.caption_(), [](iproxy&) { app::quit(); });
-            else
+            else if (mi._click_().empty())
                 _m.append(mi.caption_());
+            else
+            {
+                string s = mi._click_();
+                _m.append(mi.caption_(), [s](iproxy&) {
+                    app::create_view(s);
+                });
+            }
         }
         if (!mi.file_().empty())
         {

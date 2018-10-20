@@ -5,9 +5,9 @@
 
 #include <nana/runner/app_base.h>
 
-void nana::runner::listbox_cfg::init_widget(widget & _w) const
+void nana::runner::listbox_cfg::init_widget(widget & _w, view_obj* _root_view) const
 {
-    super::init_widget(_w);
+    super::init_widget(_w, _root_view);
 
     auto& w = dynamic_cast<ui_type&>(_w);
 

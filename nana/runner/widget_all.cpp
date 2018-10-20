@@ -7,6 +7,7 @@ void nana::runner::init_widgets()
 {
     add_widget<form_cfg>();
     add_widget<panel_cfg>();
+    add_widget<panel_lite_cfg>();
     add_widget<label_cfg>();
     add_widget<textbox_cfg>();
     add_widget<button_cfg>();
@@ -25,6 +26,9 @@ void nana::runner::init_widgets()
     add_widget<hscroll_cfg>();
     add_widget<vscroll_cfg>();
     add_widget<spinbox_cfg>();
+    add_widget<tabbar_cfg>();
+    add_widget<tabbar_lite_cfg>();
+    add_widget<tab_cfg>();
 
     add_widget<option_cfg>();
     add_widget<unknown_cfg>();

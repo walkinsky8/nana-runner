@@ -27,8 +27,9 @@ namespace nana::runner {
     using cfg_ptr = ptr<widget_cfg>;
 
     using nana::paint::image;
-
     using nana::widget;
+
+    class view_obj;
 
     class widget_cfg : public object
     {
@@ -45,6 +46,7 @@ namespace nana::runner {
         NAR_FIELD(optional<bool>, enabled);
         NAR_FIELD(optional<bool>, visible);
         NAR_FIELD(optional<bool>, borderless);
+        NAR_FIELD(optional<bool>, uses_child_div);
         NAR_FIELD(std::vector<cfg_ptr>, children);
 
         widget_cfg* m_parent{ nullptr };
@@ -68,6 +70,7 @@ namespace nana::runner {
             NAR_CODEC(_s, enabled);
             NAR_CODEC(_s, visible);
             NAR_CODEC(_s, borderless);
+            NAR_CODEC(_s, uses_child_div);
             NAR_CODEC_UNNAMED(_s, children);
         }
 
@@ -84,9 +87,7 @@ namespace nana::runner {
 
         virtual bool has_child_div() const { return false; }
 
-        virtual void init_widget(widget& _w) const;
-
-        virtual void on_init_view(widget& _w, const std::map<id, wnd_ptr>& _widgets) const { }
+        virtual void init_widget(widget& _w, view_obj* _root_view) const;
 
         virtual point get_pos() const;
 
@@ -106,6 +107,8 @@ namespace nana::runner {
 
         string make_div() const { string s; make_div(s); return s; }
         void make_div(string& _div) const;
+
+        virtual void make_extra_div(string& _div) const { }
 
         string get_caption() const;
 

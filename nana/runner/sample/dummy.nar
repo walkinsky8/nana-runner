@@ -1,3 +1,15 @@
-﻿@float_listbox{
-    id=dummy
+﻿@form{ id=dummy div='vert'
+    @tabbar { id=tabbar frame_id=tabframe div='weight=20' bgcolor=yellow
+              close_fly=0 tb_add=0 tb_scroll=1 tb_list=1 tb_close=0
+        @tab { caption=t11 bgcolor=yellow tab_bgcolor=red tab_image='image.jpg'
+            @button { id=btn1}
+        }
+        @tab { caption=t12 tab_bgcolor=green
+            @textbox { id=txt1 }
+        }
+        @tab { caption=t13 tab_bgcolor=blue
+            @label { id=lbl1 }
+        }
+    }
+    @panel_lite { id=tabframe }
 }

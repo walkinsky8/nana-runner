@@ -31,7 +31,7 @@ namespace nana::runner {
 
         wnd_ptr create_wnd(window p, bool v) const override { return std::make_shared<ui_type>(p, nana::rectangle{}, v); }
 
-        void init_widget(widget& _w) const override;
+        void init_widget(widget& _w, view_obj* _root_view) const override;
 
         std::vector<checkbox*>& radios() { return m_radios; }
 

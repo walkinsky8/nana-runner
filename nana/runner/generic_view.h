@@ -11,11 +11,11 @@ namespace nana::runner::view {
     {
     public:
         static pcstr type_name_() { return "generic"; }
-        static view_ptr new_(widget_cfg& _cfg) { return std::make_shared<Generic>(_cfg); }
+        static view_ptr new_(widget_cfg& _cfg, window _parent) { return std::make_shared<Generic>(_cfg, _parent); }
 
     public:
-        Generic(widget_cfg& _cfg)
-            : view_obj{ _cfg }
+        Generic(widget_cfg& _cfg, window _parent)
+            : view_obj{ _cfg, _parent }
         {
         }
 

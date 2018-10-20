@@ -30,11 +30,11 @@ namespace nana::runner::sample::view {
 
     public:
         static pcstr type_name_() { return "font"; }
-        static view_ptr new_(widget_cfg& _cfg) { return std::make_shared<Font>(_cfg); }
+        static view_ptr new_(widget_cfg& _cfg, window _parent) { return std::make_shared<Font>(_cfg, _parent); }
 
     public:
-        Font(widget_cfg& _cfg)
-            : view_obj{ _cfg }
+        Font(widget_cfg& _cfg, window _parent)
+            : view_obj{ _cfg, _parent }
             , form_{ wnd<form>() }
             , name_{ wnd<textbox>("name.value") }
             , size_{ wnd<textbox>("size.value") }

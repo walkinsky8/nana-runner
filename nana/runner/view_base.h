@@ -21,9 +21,10 @@ namespace nana::runner {
         NAR_FIELD(_Cfgs, cfgs);
 
         NAR_FIELD(wnd_ptr, self_wnd);
+        NAR_FIELD(window, parent_wnd);
 
 	public:
-        view_obj(widget_cfg& _cfg);
+        view_obj(widget_cfg& _cfg, window _parent);
 
         widget_cfg& cfg() { return m_cfg; }
         const widget_cfg& cfg() const { return m_cfg; }
@@ -54,16 +55,16 @@ namespace nana::runner {
             return get_cfg(_id);
         }
         
-        static view_ptr make_view(widget_cfg& _cfg);
+        wnd_ptr get_widget(id _id) const;
+
+        widget_cfg* get_cfg(id _id) const;
+
+        static view_ptr make_view(widget_cfg& _cfg, window _parent);
 
 	private:
 		static void make_child_widgets(widget_cfg& _cfg, view_obj* _root_view, widget_cfg* _parent_cfg, nana::window _parent_wnd, bool _visible);
 
-		void init(bool _visible);
-
-        wnd_ptr get_widget(id _id) const;
-
-        widget_cfg* get_cfg(id _id) const;
+		void init(bool _visible, window _parent);
 
     };
 

@@ -16,7 +16,7 @@ namespace nana::runner::sample::view {
     {
     public:
         static pcstr type_name_() { return "editor_setup"; }
-        static view_ptr new_(widget_cfg& _cfg) { return std::make_shared<editor_setup>(_cfg); }
+        static view_ptr new_(widget_cfg& _cfg, window _parent) { return std::make_shared<editor_setup>(_cfg, _parent); }
 
     public:
         form& form_;
@@ -36,8 +36,8 @@ namespace nana::runner::sample::view {
         button& cancel_;
 
     public:
-        editor_setup(widget_cfg& _cfg)
-            : view_obj{ _cfg }
+        editor_setup(widget_cfg& _cfg, window _parent)
+            : view_obj{ _cfg, _parent }
             , form_{ wnd<form>() }
             , name_{ wnd<textbox>("name.value") }
             , size_{ wnd<textbox>("size.value") }

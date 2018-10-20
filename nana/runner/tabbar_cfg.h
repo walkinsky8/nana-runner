@@ -1,0 +1,67 @@
+// Created by walkinsky(lyh6188@hotmail.com), 2018/10/17
+#pragma once
+
+#include <nana/runner/widget_cfg.h>
+
+#include <nana/gui/widgets/tabbar.hpp>
+
+#include <nana/runner/view_base.h>
+
+namespace nana::runner {
+
+    using tabbar = nana::tabbar<string>;
+    using tabbar_lite = nana::tabbar_lite;
+
+    class tabbar_cfg : public widget_cfg
+    {
+        NAR_DEFINE_WIDGET(tabbar, widget_cfg);
+        NAR_FIELD(id, frame_id);
+        NAR_FIELD(optional<bool>, close_fly);
+        NAR_FIELD(optional<bool>, tb_add);
+        NAR_FIELD(optional<bool>, tb_scroll);
+        NAR_FIELD(optional<bool>, tb_list);
+        NAR_FIELD(optional<bool>, tb_close);
+
+        mutable std::vector<view_ptr> m_tab_views;
+
+    public:
+        template<class _Stream>
+        void traverse(_Stream& _s)
+        {
+            NAR_CODEC_SUPER(_s);
+            NAR_CODEC(_s, frame_id);
+            NAR_CODEC(_s, close_fly);
+            NAR_CODEC(_s, tb_add);
+            NAR_CODEC(_s, tb_scroll);
+            NAR_CODEC(_s, tb_list);
+            NAR_CODEC(_s, tb_close);
+        }
+
+        wnd_ptr create_wnd(window p, bool v) const override { return std::make_shared<ui_type>(p, v); }
+
+        void init_widget(widget& _w, view_obj* _root_view) const override;
+
+    };
+
+    class tabbar_lite_cfg : public widget_cfg
+    {
+        NAR_DEFINE_WIDGET(tabbar_lite, widget_cfg);
+        NAR_FIELD(id, frame_id);
+
+        mutable std::vector<view_ptr> m_tab_views;
+
+    public:
+        template<class _Stream>
+        void traverse(_Stream& _s)
+        {
+            super::traverse(_s);
+            NAR_CODEC(_s, frame_id);
+        }
+
+        wnd_ptr create_wnd(window p, bool v) const override { return std::make_shared<ui_type>(p, v); }
+
+        void init_widget(widget& _w, view_obj* _root_view) const override;
+
+    };
+
+}

@@ -19,11 +19,11 @@ namespace nana::runner::sample::view {
 
     public:
         static string type_name_() { return "hello"; }
-        static view_ptr new_(widget_cfg& _cfg) { return std::make_shared<Hello>(_cfg); }
+        static view_ptr new_(widget_cfg& _cfg, window _parent) { return std::make_shared<Hello>(_cfg, _parent); }
 
     public:
-        Hello(widget_cfg& _cfg)
-            : view_obj{ _cfg }
+        Hello(widget_cfg& _cfg, window _parent)
+            : view_obj{ _cfg, _parent }
             , world_{ wnd<label>("world") }
             , text_{ wnd<textbox>("text") }
             , close_{ wnd<button>("close") }

@@ -7,7 +7,7 @@
 
 namespace nana::runner {
 
-    using panel = nana::panel<1>;
+    using panel = nana::panel<true>;
 
     class panel_cfg : public widget_cfg
     {
@@ -25,7 +25,7 @@ namespace nana::runner {
 
         wnd_ptr create_wnd(window p, bool v) const override { return std::make_shared<ui_type>(p, v); }
 
-        void init_widget(widget& _w) const override;
+        void init_widget(widget& _w, view_obj* _root_view) const override;
 
         bool has_child_div() const override { return true; }
 

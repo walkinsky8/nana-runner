@@ -1,23 +1,25 @@
 ﻿@form{
     id=demo
     div="vert"
-    pos={-200 -300}
-    size={400 550}
+    pos={-250 -350}
+    size={500 700}
     align=center
     align_v=center
     @menubar{ id=menubar div='weight=24' typeface={bold 10}
-        @menu { caption="File"
-            @menu { caption='Open' file='image.jpg' }
-            @menu { caption='Recent Files...'
-                @menu { caption='File1' }
-                @menu { caption='File2' }
-                @menu { caption='File3' }
+        @menu { caption="&File"
+            @menu { caption='&Open' file='image.jpg' }
+            @menu { caption='&Recent Files...'
+                @menu { caption='File&1' }
+                @menu { caption='File&2' }
+                @menu { caption='File&3' }
             }
             @menu { caption='___' }
-            @menu { caption='Exit' _click=quit }
+            @menu { caption='E&xit' _click=quit }
         }
-        @menu { caption='Help'
-            @menu { caption='About' }
+        @menu { caption='&Help'
+            @menu { caption='&About'
+                _click="@form{caption='About' div='vert' @label{id=l caption='This is a <red>demo</> program.' align=center align_v=center format=1} @button{id=close div='weight=24' _click=close}}"
+            }
         }
     }
     @categorize{
@@ -33,8 +35,8 @@
             id=value
             caption="Hello, world!"
             div='weight=60%'
-            bgcolor=white
-            fgcolor=red
+            bgcolor='#c0c0c0'
+            fgcolor=black
             cursor=hand
             typeface={ Courier 12 bold }
             visible=0
@@ -135,7 +137,7 @@
             gradual_from=white gradual_to=black gradual_horizontal=0
         }
     }
-    @panel{ id=p3
+    @panel{ id=p3 div='weight=180'
         @panel { id=date div='vert weight=45%'
             @hscroll{ id=hscr div='weight=20' amount=12 range=3 step=1 value=10 }
             @date_chooser{ id=value }
@@ -161,6 +163,38 @@
                     @option { caption="2.3" }
                 }
             }
+        }
+    }
+    @panel{ id=tabs div=''
+        @panel{ id=1 div='vert weight=50%'
+            @tabbar { id=bar frame_id=frame div='weight=20' bgcolor=white close_fly=0 tb_add=0 tb_scroll=1 tb_list=1 tb_close=0
+                @tab { caption=red div='vert'bgcolor=red tab_bgcolor=red tab_image='image.jpg'
+                    @label { id=label }
+                    @textbox{ id=text }
+                    @button { id=button }
+                }
+                @tab { caption=green bgcolor=green tab_bgcolor=green
+                    @textbox { id=txt1 }
+                }
+                @tab { caption=blue bgcolor=blue tab_bgcolor=blue
+                    @label { id=lbl1 }
+                }
+            }
+            @panel_lite { id=frame }
+        }
+        @panel{ id=2 div='vert'
+            @tabbar_lite { id=bar frame_id=page div='weight=20' bgcolor=grey
+                @tab { caption=red bgcolor=red
+                    @button { id=b2}
+                }
+                @tab { caption=green bgcolor=green
+                    @textbox { id=t2 }
+                }
+                @tab { caption=blue bgcolor=blue
+                    @label { id=l2 }
+                }
+            }
+            @panel_lite { id=page }
         }
     }
     @panel{

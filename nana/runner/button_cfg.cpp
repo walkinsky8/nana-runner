@@ -5,9 +5,9 @@
 
 #include <nana/runner/app_base.h>
 
-void nana::runner::button_cfg::init_widget(widget & _w) const
+void nana::runner::button_cfg::init_widget(widget & _w, view_obj* _root_view) const
 {
-    super::init_widget(_w);
+    super::init_widget(_w, _root_view);
 
     auto& w = dynamic_cast<ui_type&>(_w);
 
@@ -43,5 +43,11 @@ void nana::runner::button_cfg::init_widget(widget & _w) const
     {
         if (_click_() == "quit")
             w.events().click(app::quit);
+        else if (_click_() == "close")
+            w.events().click([_root_view] {_root_view->close(); });
+        else if (!_click_().empty())
+        {
+            w.events().click([&] {app::create_view(_click_()); });
+        }
     }
 }

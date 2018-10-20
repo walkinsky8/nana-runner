@@ -7,10 +7,10 @@
 
 #include <nana/runner/generic_view.h>
 
-nana::runner::view_obj::view_obj(widget_cfg& _cfg)
-    : m_cfg{ _cfg }
+nana::runner::view_obj::view_obj(widget_cfg& _cfg, window _parent)
+    : m_cfg{ _cfg }, m_parent_wnd{ _parent }
 {
-    init(!_cfg.visible_().empty() && _cfg.visible_().value());
+    init(!_cfg.visible_().empty() && _cfg.visible_().value(), _parent);
 }
 
 void nana::runner::view_obj::show(bool _visible) const
@@ -64,16 +64,16 @@ void nana::runner::view_obj::make_child_widgets(widget_cfg& _cfg, view_obj* _roo
 
 	if (!_cfg.id_().empty())
 	{
-		_cfg.init_widget(*w);
+		_cfg.init_widget(*w, _root_view);
 
 		_root_view->m_widgets[_cfg.id_path()] = w;
         _root_view->m_cfgs[_cfg.id_path()] = &_cfg;
     }
 }
 
-void nana::runner::view_obj::init(bool _visible)
+void nana::runner::view_obj::init(bool _visible, window _parent)
 {
-    m_self_wnd = cfg().create_wnd(nullptr, _visible);
+    m_self_wnd = cfg().create_wnd(_parent, _visible);
     if (!m_self_wnd)
         throw std::invalid_argument(string("invalid root widget ") + cfg().id_path().str());
 
@@ -83,19 +83,17 @@ void nana::runner::view_obj::init(bool _visible)
     for (auto& i : cfg().children_())
     {
         if (i && !i->id_().empty())
-            make_child_widgets(*i, this, &cfg(), *m_self_wnd, _visible/*true*/);
+            make_child_widgets(*i, this, &cfg(), *m_self_wnd/*not _parent*/, /*_visible*/true);
     }
 
-    cfg().init_widget(*m_self_wnd);
-
-    cfg().on_init_view(*m_self_wnd, m_widgets);
+    cfg().init_widget(*m_self_wnd, this);
 }
 
-nana::runner::view_ptr nana::runner::view_obj::make_view(widget_cfg& _cfg)
+nana::runner::view_ptr nana::runner::view_obj::make_view(widget_cfg& _cfg, window _parent)
 {
-    view_ptr p = create_view(_cfg);
+    view_ptr p = create_view(_cfg, _parent);
     if (p)
         return p;
-    return std::make_shared<view::Generic>(_cfg);
+    return std::make_shared<view::Generic>(_cfg, _parent);
 }
 

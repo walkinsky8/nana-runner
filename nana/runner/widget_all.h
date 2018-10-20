@@ -5,6 +5,7 @@
 
 #include <nana/runner/form_cfg.h>
 #include <nana/runner/panel_cfg.h>
+#include <nana/runner/panel_lite_cfg.h>
 #include <nana/runner/label_cfg.h>
 #include <nana/runner/textbox_cfg.h>
 #include <nana/runner/button_cfg.h>
@@ -20,10 +21,12 @@
 #include <nana/runner/menu_cfg.h>
 #include <nana/runner/date_chooser_cfg.h>
 #include <nana/runner/float_listbox_cfg.h>
-#include <nana/runner/slider_cfg.h>
 #include <nana/runner/progress_cfg.h>
+#include <nana/runner/slider_cfg.h>
 #include <nana/runner/scroll_cfg.h>
 #include <nana/runner/spinbox_cfg.h>
+#include <nana/runner/tabbar_cfg.h>
+#include <nana/runner/tab_cfg.h>
 
 #include <nana/runner/unknown_cfg.h>
 

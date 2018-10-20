@@ -3,9 +3,11 @@
 
 #include "form_cfg.h"
 
+#include <nana/runner/view_base.h>
+
 #include <nana/gui/screen.hpp>
 
-nana::runner::wnd_ptr nana::runner::form_cfg::create_wnd(window p, bool v) const
+nana::appearance nana::runner::form_base_cfg::get_appearance() const
 {
     nana::appearance a;
     a.taskbar = !taskbar_().empty() ? taskbar_().value() : true;
@@ -15,34 +17,32 @@ nana::runner::wnd_ptr nana::runner::form_cfg::create_wnd(window p, bool v) const
     a.maximize = !maximize_().empty() ? maximize_().value() : true;
     a.sizable = !sizable_().empty() ? sizable_().value() : true;
     a.decoration = !decoration_().empty() ? decoration_().value() : true;
-
-    return std::make_shared<ui_type>(p, API::make_center(300, 200), a);
+    return a;
 }
 
-void nana::runner::form_cfg::init_widget(widget & _w) const
+void nana::runner::form_base_cfg::init_widget(widget& _w, view_obj* _root_view) const
 {
-    super::init_widget(_w);
+    super::init_widget(_w, _root_view);
 
-    auto& w = dynamic_cast<ui_type&>(_w);
-}
-
-void nana::runner::form_cfg::on_init_view(widget & _w, const std::map<id, wnd_ptr>& _widgets) const
-{
     string div = make_div();
     NAR_LOG_VAR(div);
 
-    auto& w = dynamic_cast<ui_type&>(_w);
+    auto& w = dynamic_cast<form_base&>(*_root_view->self_wnd_());
     w.div(div.data());
 
-    for (auto& i : _widgets)
+    for (auto& i : _root_view->widgets_())
     {
-        w[i.first.str().data()] << *i.second;
+        if (i.second)
+        {
+            NAR_LOG_VAR(i.first);
+            w[i.first.str().data()] << *i.second;
+        }
     }
 
     w.collocate();
 }
 
-nana::runner::point nana::runner::form_cfg::get_pos() const
+nana::runner::point nana::runner::form_base_cfg::get_pos() const
 {
     auto screen = nana::screen::primary_monitor_size();
     point pt = pos_().value();
@@ -72,3 +72,14 @@ nana::runner::point nana::runner::form_cfg::get_pos() const
     }
     return pt;
 }
+
+nana::runner::wnd_ptr nana::runner::form_cfg::create_wnd(window p, bool v) const
+{
+    return std::make_shared<ui_type>(p, API::make_center(300, 200), get_appearance());
+}
+
+nana::runner::wnd_ptr nana::runner::nested_form_cfg::create_wnd(window p, bool v) const
+{
+    return std::make_shared<ui_type>(p, API::make_center(300, 200), get_appearance());
+}
+

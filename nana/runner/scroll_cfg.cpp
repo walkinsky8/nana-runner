@@ -3,9 +3,9 @@
 
 #include "scroll_cfg.h"
 
-void nana::runner::hscroll_cfg::init_widget(widget & _w) const
+void nana::runner::hscroll_cfg::init_widget(widget & _w, view_obj* _root_view) const
 {
-    super::init_widget(_w);
+    super::init_widget(_w, _root_view);
 
     auto& w = dynamic_cast<ui_type&>(_w);
     w.amount(amount_());
@@ -14,9 +14,9 @@ void nana::runner::hscroll_cfg::init_widget(widget & _w) const
     w.step(step_());
 }
 
-void nana::runner::vscroll_cfg::init_widget(widget & _w) const
+void nana::runner::vscroll_cfg::init_widget(widget & _w, view_obj* _root_view) const
 {
-    super::init_widget(_w);
+    super::init_widget(_w, _root_view);
 
     auto& w = dynamic_cast<ui_type&>(_w);
     w.amount(amount_());

@@ -37,11 +37,11 @@ namespace nana::runner::sample::view {
 
     public:
         static pcstr type_name_() { return "color"; }
-        static view_ptr new_(widget_cfg& _cfg) { return std::make_shared<Color>(_cfg); }
+        static view_ptr new_(widget_cfg& _cfg, window _parent) { return std::make_shared<Color>(_cfg, _parent); }
 
     public:
-        Color(widget_cfg& _cfg)
-            : view_obj{ _cfg }
+        Color(widget_cfg& _cfg, window _parent)
+            : view_obj{ _cfg, _parent }
             , form_{ wnd<form>() }
             , bg_{ wnd<textbox>("bg.value") }
             , fg_{ wnd<textbox>("fg.value") }

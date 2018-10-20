@@ -10,12 +10,15 @@
 void nana::runner::widget_cfg::make_div(string& _div) const
 {
     _div << "<" << id_path() << " " << div_();
-    if (has_child_div())
+    if (has_child_div() && (uses_child_div_().empty() || uses_child_div_().value()))
+    {
         for (auto& i : m_children)
         {
             if (i)
                 i->make_div(_div);
         }
+    }
+    make_extra_div(_div);
     _div << ">";
 }
 
@@ -108,7 +111,7 @@ void nana::runner::operator >> (const parser& _is, cfg_ptr& _v)
 		_is >> *_v;
 }
 
-void nana::runner::widget_cfg::init_widget(widget& _w) const
+void nana::runner::widget_cfg::init_widget(widget& _w, view_obj* _root_view) const
 {
     _w.caption(get_caption());
 

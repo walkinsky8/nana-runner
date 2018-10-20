@@ -52,19 +52,27 @@ namespace nana::runner::sample::view {
         date_chooser& date_;
         hscroll& hscr_;
         vscroll& vscr_;
+        listbox& listbox_;
+
+        tabbar& tabs_1_bar_;
+        //panel_lite& tb_frame_;
+        tabbar_lite& tabs_2_bar_;
+        //panel_lite& tb_lite_frame_;
+
+        //float_listbox
+
         progress& prog_;
         spinbox& spin_;
-        listbox& listbox_;
 
         button& quit_;
 
     public:
         static pcstr type_name_() { return "demo"; }
-        static view_ptr new_(widget_cfg& _cfg) { return std::make_shared<Demo>(_cfg); }
+        static view_ptr new_(widget_cfg& _cfg, window _parent) { return std::make_shared<Demo>(_cfg, _parent); }
 
     public:
-        Demo(widget_cfg& _cfg)
-            : view_obj{ _cfg }
+        Demo(widget_cfg& _cfg, window _parent)
+            : view_obj{ _cfg, _parent }
             , form_{ wnd<form>() }
             , menubar_{ wnd<menubar>("menubar") }
             , categorize_{ wnd<categorize>("categorize") }
@@ -94,9 +102,11 @@ namespace nana::runner::sample::view {
             , date_{ wnd<date_chooser>("p3.date.value") }
             , hscr_{ wnd<hscroll>("p3.date.hscr") }
             , vscr_{ wnd<vscroll>("p3.vscr.value") }
+            , listbox_{ wnd<listbox>("p3.table") }
+            , tabs_1_bar_{ wnd<tabbar>("tabs.1.bar") }
+            , tabs_2_bar_{ wnd<tabbar_lite>("tabs.2.bar") }
             , prog_{ wnd<progress>("cmd.prog") }
             , spin_{ wnd<spinbox>("cmd.spin") }
-            , listbox_{wnd<listbox>("p3.table")}
             , quit_{ wnd<button>("cmd.close") }
         {
             set_log_handler([this](const string& s) {
@@ -192,7 +202,7 @@ namespace nana::runner::sample::view {
                 picidx_ = picsel_.option();
                 string fname = picsel_cfg_->children_()[picidx_]->cast<option_cfg>().file_();
                 picture_.load(image{ app::find_file(fname) });
-                prog_.value((unsigned)(prog_.amount()*(1+picidx_)/picsel_cfg_->children_().size()));
+                spin_.value(std::to_string((unsigned)(prog_.amount()*(1+picidx_)/picsel_cfg_->children_().size())));
             });
             picture_.events().click([this] {
                 ++picidx_;
@@ -202,8 +212,14 @@ namespace nana::runner::sample::view {
             });
 
             date_.events().date_changed([this]{
-                nana::date d = date_.read();
-                NAR_LOG("selected date = " << d);
+                NAR_LOG("selected date = " << date_.read());
+            });
+
+            hscr_.events().value_changed([this] {
+                NAR_LOG("hscroll value = " << hscr_.value());
+            });
+            vscr_.events().value_changed([this] {
+                NAR_LOG("vscroll value = " << vscr_.value());
             });
 
             spin_.events().text_changed([this] {
@@ -225,3 +241,4 @@ namespace nana::runner::sample::view {
     };
 
 }
+

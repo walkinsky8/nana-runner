@@ -12,6 +12,8 @@ namespace nana::runner {
 
     class scroll_base : public widget_cfg
     {
+        using super = widget_cfg;
+
         NAR_FIELD(size_t, amount);
         NAR_FIELD(size_t, range);
         NAR_FIELD(size_t, value);
@@ -21,7 +23,7 @@ namespace nana::runner {
         template<class _Stream>
         void traverse(_Stream& _s)
         {
-            widget_cfg::traverse(_s);
+            super::traverse(_s);
             NAR_CODEC(_s, amount);
             NAR_CODEC(_s, range);
             NAR_CODEC(_s, value);
@@ -37,7 +39,7 @@ namespace nana::runner {
     public:
         wnd_ptr create_wnd(window p, bool v) const override { return std::make_shared<ui_type>(p, v); }
 
-        void init_widget(widget& _w) const override;
+        void init_widget(widget& _w, view_obj* _root_view) const override;
 
     };
 
@@ -48,7 +50,7 @@ namespace nana::runner {
     public:
         wnd_ptr create_wnd(window p, bool v) const override { return std::make_shared<ui_type>(p, v); }
 
-        void init_widget(widget& _w) const override;
+        void init_widget(widget& _w, view_obj* _root_view) const override;
 
     };
 

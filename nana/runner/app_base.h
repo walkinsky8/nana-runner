@@ -41,26 +41,32 @@ namespace nana::runner
 
         cfg_ptr load_cfg(const wstring& _filename);
 
+        cfg_ptr create_cfg(const string& _cfgdata);
+
         cfg_ptr get_cfg(const string& _id) const;
 
-		view_ptr load_view(const wstring& _filename);
+        static view_ptr create_view(const string& _cfg);
+
+        view_ptr load_view(const wstring& _filename);
 
         static view_ptr get_view(const wstring& _filename)
         {
             return instance().load_view(_filename);
         }
 
-        static wstring find_file(const string& _filename)
-        {
-            wstring fullpath;
-            instance().search_file(to_wstring(_filename), fullpath);
-            return fullpath;
-        }
         static wstring find_file(const wstring& _filename)
         {
             wstring fullpath;
             instance().search_file(_filename, fullpath);
             return fullpath;
+        }
+        static wstring find_file(const string& _filename)
+        {
+            return find_file(to_wstring(_filename));
+        }
+        static nana::paint::image create_image(const string& _filename)
+        {
+            return image{ find_file(_filename) };
         }
 
     protected:
