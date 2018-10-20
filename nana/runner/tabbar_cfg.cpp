@@ -44,7 +44,7 @@ void nana::runner::tabbar_cfg::init_widget(widget & _w, view_obj* _root_view) co
         auto vp = view_obj::make_view(child, *_root_view->self_wnd_());
         m_tab_views.push_back(vp);
         w.attach(i, *vp->self_wnd_());
-        NAR_LOG("fasten " << frame_id << " = " << child.get_caption());
+        //NAR_LOG("fasten " << frame_id << " = " << child.get_caption());
         frame_fld.fasten(*vp->self_wnd_());
     }
 }
@@ -66,7 +66,7 @@ void nana::runner::tabbar_lite_cfg::init_widget(widget & _w, view_obj* _root_vie
         auto vp = view_obj::make_view(child, *_root_view->self_wnd_());
         m_tab_views.push_back(vp);
         w.attach(i, *vp->self_wnd_());
-        NAR_LOG("fasten " << frame_id << " = " << child.get_caption());
+        //NAR_LOG("fasten " << frame_id << " = " << child.get_caption());
         frame_fld.fasten(*vp->self_wnd_());
     }
 }

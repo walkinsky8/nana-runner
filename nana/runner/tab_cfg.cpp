@@ -56,7 +56,7 @@ void nana::runner::tab_cfg::init_widget(widget & _w, view_obj* _root_view) const
     {
         if (i.second)
         {
-            NAR_LOG_VAR(i.first);
+            //NAR_LOG_VAR(i.first);
             w[i.first.str().data()] << *i.second;
         }
     }

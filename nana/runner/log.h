@@ -5,9 +5,9 @@
 
 #include <nana/runner/base_types.h>
 
-#define NAR_LOG(x) nana::runner::log() << x
-#define NAR_LOG_NV(n, v) NAR_LOG(n << " = " << v)
 #define NAR_LOG_VAR(x) NAR_LOG_NV(#x, x)
+#define NAR_LOG_NV(n, v) NAR_LOG(n << " = " << v)
+#define NAR_LOG(x) nana::runner::log() << __FUNCTION__ << "() " << x
 
 namespace nana::runner {
 
