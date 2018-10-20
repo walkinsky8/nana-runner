@@ -16,13 +16,13 @@ void nana::runner::treebox_cfg::init_widget(widget & _w, view_obj* _root_view) c
 
     if (!directory_().empty())
     {
-        auto node = tree.insert("home", directory_());
-        fs::directory_iterator i(to_wstring(directory_())), end;
+        auto node = tree.insert(directory_(), directory_());
+        fs::directory_iterator i(directory_()), end;
         for (; i != end; ++i)
         {
             auto name = to_utf8(i->path().filename().native());
             tree.insert(node, name, name);
-            //break;
+            break;
         }
 
         tree.events().expanded([&tree](const arg_treebox& arg)
@@ -53,7 +53,7 @@ void nana::runner::treebox_cfg::init_widget(widget & _w, view_obj* _root_view) c
                     if (!is_directory(*u)) continue; //If it is not a directory.
                     auto name = to_utf8(u->path().filename().native());
                     tree.insert(child, name, name);
-                    //break;
+                    break;
                 }
             }
             tree.auto_draw(true);

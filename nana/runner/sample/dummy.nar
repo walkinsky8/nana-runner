@@ -7,7 +7,7 @@
         @option { caption=quit image='zhuang.jpg' _click=quit }
         @option { }
     }
-    @treebox{ id=tree checkable=1 directory='c:\users' }
+    @treebox{ id=tree checkable=1 directory='c:\' }
     @treebox{ id=treebox
         @option { id=root caption='/'
             @option { id='a'
