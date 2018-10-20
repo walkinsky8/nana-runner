@@ -9,18 +9,65 @@ void nana::runner::treebox_cfg::init_widget(widget & _w, view_obj* _root_view) c
 {
     super::init_widget(_w, _root_view);
 
-    auto& w = dynamic_cast<ui_type&>(_w);
+    auto& tree = dynamic_cast<ui_type&>(_w);
 
     if (!checkable_().empty())
-        w.checkable(checkable_().value());
+        tree.checkable(checkable_().value());
+
+    if (!directory_().empty())
+    {
+        auto node = tree.insert("home", directory_());
+        fs::directory_iterator i(to_wstring(directory_())), end;
+        for (; i != end; ++i)
+        {
+            auto name = to_utf8(i->path().filename().native());
+            tree.insert(node, name, name);
+            //break;
+        }
+
+        tree.events().expanded([&tree](const arg_treebox& arg)
+        {
+            if (!arg.operated) return; //If this is contracted.
+
+            //Windows supports the path separator '/'
+            auto path = tree.make_key_path(arg.item, "/") + "/";
+
+            //avoids frequent useless refreshing
+            tree.auto_draw(false);
+
+            //Walk in the path directory for sub directories.
+            for (fs::directory_iterator i{ path }, end; i != end; ++i)
+            {
+                if (!is_directory(*i)) continue; //If it is not a directory.
+
+                auto name = to_utf8(i->path().filename().native());
+                auto child = tree.insert(arg.item, name, name);
+                if (child.empty()) continue;
+
+                //Find a directory in child directory, if there is a directory,
+                //insert it into the child, just insert one node to indicate the
+                //node has a child and an arrow symbol will be?displayed in the
+                //front of the node.
+                for (fs::directory_iterator u{ path + name }; u != end; ++u)
+                {
+                    if (!is_directory(*u)) continue; //If it is not a directory.
+                    auto name = to_utf8(u->path().filename().native());
+                    tree.insert(child, name, name);
+                    //break;
+                }
+            }
+            tree.auto_draw(true);
+        });
+        return;
+    }
 
     for (auto& i : children_())
     {
-        auto& c = i->cast<option_cfg>();
-        auto p = w.insert(c.id_path(), c.get_caption());
-        if (!c.children_().empty())
+        auto& cfg = i->cast<option_cfg>();
+        auto node = tree.insert(cfg.id_path(), cfg.get_caption());
+        if (!cfg.children_().empty())
         {
-            init_nodes(w, p, c);
+            init_nodes(tree, node, cfg);
         }
     }
 }

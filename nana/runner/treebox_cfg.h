@@ -17,6 +17,7 @@ namespace nana::runner {
         NAR_DEFINE_WIDGET(treebox, widget_cfg);
 
         NAR_FIELD(optional<bool>, checkable);
+        NAR_FIELD(string, directory);
 
     public:
         template<class _Stream>
@@ -24,6 +25,7 @@ namespace nana::runner {
         {
             super::traverse(_s);
             NAR_CODEC(_s, checkable);
+            NAR_CODEC(_s, directory);
         }
 
         wnd_ptr create_wnd(window p, bool v) const override { return std::make_shared<ui_type>(p, v); }
