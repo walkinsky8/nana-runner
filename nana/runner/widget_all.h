@@ -15,7 +15,6 @@
 #include <nana/runner/group_cfg.h>
 #include <nana/runner/combox_cfg.h>
 #include <nana/runner/listbox_cfg.h>
-#include <nana/runner/option_cfg.h>
 
 #include <nana/runner/menubar_cfg.h>
 #include <nana/runner/menu_cfg.h>
@@ -28,7 +27,9 @@
 #include <nana/runner/tabbar_cfg.h>
 #include <nana/runner/tab_cfg.h>
 #include <nana/runner/toolbar_cfg.h>
+#include <nana/runner/treebox_cfg.h>
 
+#include <nana/runner/option_cfg.h>
 #include <nana/runner/unknown_cfg.h>
 
 namespace nana::runner {

@@ -31,6 +31,8 @@ namespace nana::runner {
 
         void init_widget(widget& _w, view_obj* _root_view) const override { }
 
+        bool has_ui_widget() const override { return false; }
+
         bool empty() const
         {
             return id_().empty() && caption_().empty() && !children_().size();

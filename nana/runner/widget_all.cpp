@@ -30,6 +30,7 @@ void nana::runner::init_widgets()
     add_widget<tabbar_lite_cfg>();
     add_widget<tab_cfg>();
     add_widget<toolbar_cfg>();
+    add_widget<treebox_cfg>();
 
     add_widget<option_cfg>();
     add_widget<unknown_cfg>();

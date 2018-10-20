@@ -85,13 +85,17 @@ namespace nana::runner {
 
         virtual wnd_ptr create_wnd(window _parent, bool _visible) const = 0;
 
+        virtual void init_widget(widget& _w, view_obj* _root_view) const;
+
         virtual bool has_child_div() const { return false; }
 
-        virtual void init_widget(widget& _w, view_obj* _root_view) const;
+        virtual bool has_ui_widget() const { return true; }
+
+        virtual void make_extra_div(string& _div) const { }
 
         virtual point get_pos() const;
 
-		static cfg_ptr from(string const& _cfg);
+        static cfg_ptr from(string const& _cfg);
 
         static cfg_ptr get_generic();
 
@@ -107,8 +111,6 @@ namespace nana::runner {
 
         string make_div() const { string s; make_div(s); return s; }
         void make_div(string& _div) const;
-
-        virtual void make_extra_div(string& _div) const { }
 
         string get_caption() const;
 

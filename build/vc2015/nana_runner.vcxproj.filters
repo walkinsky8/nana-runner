@@ -172,6 +172,7 @@
       <Filter>widgets</Filter>
     </ClCompile>
     <ClCompile Include="..\..\nana\runner\toolbar_cfg.cpp" />
+    <ClCompile Include="..\..\nana\runner\treebox_cfg.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\nana\runner\base.h">
@@ -364,6 +365,7 @@
       <Filter>widgets</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\toolbar_cfg.h" />
+    <ClInclude Include="..\..\nana\runner\treebox_cfg.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\nana\runner\sample\color.nar">

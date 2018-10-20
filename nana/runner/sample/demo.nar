@@ -22,6 +22,14 @@
             }
         }
     }
+    @toolbar { id=tb scale=16 div='vert weight=20'
+        @option { caption=open image='image.jpg' }
+        @option { }
+        @option { caption=close image='yoyo.jpg' _click=close }
+        @option { }
+        @option { caption=quit image='zhuang.jpg' _click=quit }
+        @option { }
+    }
     @categorize{
         id=categorize
         caption="a\b\c"

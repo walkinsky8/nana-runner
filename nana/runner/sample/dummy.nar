@@ -1,5 +1,5 @@
 ﻿@form{ id=dummy div='vert'
-    @toolbar { id=tb scale=16 div='vert weight=20'
+    @toolbar { id=toolbar scale=16 div='vert weight=20'
         @option { caption=open image='image.jpg' }
         @option { }
         @option { caption=close image='yoyo.jpg' _click=close }
@@ -7,5 +7,36 @@
         @option { caption=quit image='zhuang.jpg' _click=quit }
         @option { }
     }
-    @panel{}
+    @treebox{ id=treebox
+        @option { id=root caption='/'
+            @option { id='a'
+                @option { id='1'
+                }
+                @option { id='2'
+                }
+                @option { id='3'
+                }
+            }
+            @option { id='b'
+                @option { id='1'
+                }
+                @option { id='2'
+                }
+                @option { id='3'
+                }
+            }
+            @option { id='c'
+                @option { id='1'
+                }
+                @option { id='2'
+                }
+                @option { id='3'
+                }
+            }
+            @option { id='d' }
+            @option { id='e' }
+        }
+        @option { id=main caption='Local Drive(C:)'
+        }
+    }
 }
