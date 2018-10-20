@@ -11,19 +11,19 @@ void nana::runner::menu_cfg::init_menu(menu& _m) const
     for (auto& item : children_())
     {
         auto& mi = item->cast<menu_cfg>();
-        if (mi.caption_() == "___")
+        if (mi.get_caption() == "___")
             _m.append_splitter();
         else
         {
             typedef nana::drawerbase::menu::menu_item_type::item_proxy iproxy;
             if (mi._click_() == "quit")
-                _m.append(mi.caption_(), [](iproxy&) { app::quit(); });
+                _m.append(mi.get_caption(), [](iproxy&) { app::quit(); });
             else if (mi._click_().empty())
-                _m.append(mi.caption_());
+                _m.append(mi.get_caption());
             else
             {
                 string s = mi._click_();
-                _m.append(mi.caption_(), [s](iproxy&) {
+                _m.append(mi.get_caption(), [s](iproxy&) {
                     app::create_view(s);
                 });
             }

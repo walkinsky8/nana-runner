@@ -23,8 +23,9 @@ void nana::runner::group_cfg::init_widget(widget & _w, view_obj* _root_view) con
         if (i)
         {
             auto& cfg = i->cast<option_cfg>();
-            auto& r = w.add_option(cfg.caption_());
-            r.check(cfg.check_());
+            auto& r = w.add_option(cfg.get_caption());
+            if (!cfg.check_().empty())
+                r.check(cfg.check_().value());
             m_radios.push_back(&r);
         }
     }

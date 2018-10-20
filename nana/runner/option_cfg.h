@@ -12,8 +12,8 @@ namespace nana::runner {
         NAR_DEFINE_WIDGET(option, widget_cfg);
 
         NAR_FIELD(string, image);
-        NAR_FIELD(unsigned, width);
-        NAR_FIELD(bool, check);
+        NAR_FIELD(optional<unsigned>, width);
+        NAR_FIELD(optional<bool>, check);
         NAR_FIELD(string, _click);
 
     public:

@@ -20,16 +20,19 @@ void nana::runner::listbox_cfg::init_widget(widget & _w, view_obj* _root_view) c
     for (auto& i : headers_())
     {
         auto& h = i->cast<option_cfg>();
-        w.append_header(h.caption_(), h.width_());
+        if (h.width_().empty())
+            w.append_header(h.get_caption());
+        else
+            w.append_header(h.get_caption(), h.width_().value());
     }
 
     for (auto& i : categories_())
     {
         auto& cfg = i->cast<option_cfg>();
-        auto& cat = w.append(cfg.caption_());
+        auto& cat = w.append(cfg.get_caption());
         for (auto& item : cfg.children_())
         {
-            cat->append(item->caption_());
+            cat->append(item->get_caption());
         }
     }
 }

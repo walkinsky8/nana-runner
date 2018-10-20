@@ -18,7 +18,7 @@ void nana::runner::combox_cfg::init_widget(widget & _w, view_obj* _root_view) co
     {
         if (i)
         {
-            w.push_back(i->caption_());
+            w.push_back(i->get_caption());
             auto& child = i->cast<option_cfg>();
             if (!child.image_().empty())
             {

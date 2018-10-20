@@ -16,7 +16,7 @@ void nana::runner::menubar_cfg::init_widget(widget & _w, view_obj* _root_view) c
     for (auto& i : children_())
     {
         auto& menucfg = i->cast<menu_cfg>();
-        auto& m = w.push_back(menucfg.caption_());
+        auto& m = w.push_back(menucfg.get_caption());
         menucfg.init_menu(m);
     }
 }
