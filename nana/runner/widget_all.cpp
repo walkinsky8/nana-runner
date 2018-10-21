@@ -28,6 +28,7 @@ void nana::runner::init_widgets()
     add_widget<spinbox_cfg>();
     add_widget<tabbar_cfg>();
     add_widget<tabbar_lite_cfg>();
+    add_widget<tabpage_cfg>();
     add_widget<tab_cfg>();
     add_widget<toolbar_cfg>();
     add_widget<treebox_cfg>();

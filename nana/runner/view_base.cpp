@@ -52,14 +52,17 @@ void nana::runner::view_obj::make_child_widgets(widget_cfg& _cfg, view_obj* _roo
 {
 	_cfg.set_parent(_parent_cfg);
 
+    if (_cfg.id_().empty() || !_cfg.has_ui_widget())
+        return;
+
 	auto& w = _cfg.create_wnd(_parent_wnd, _visible);
 	if (!w)
 		throw std::invalid_argument(string("invalid widget ") + _cfg.id_path().str());
 
 	for (auto& i : _cfg.children_())
 	{
-        if (i && !i->id_().empty() && i->has_ui_widget())
-		    make_child_widgets(*i, _root_view, &_cfg, _parent_wnd, _visible);
+        if (i)
+		    make_child_widgets(*i, _root_view, &_cfg, _parent_wnd, true);
 	}
 
 	if (!_cfg.id_().empty())
@@ -76,14 +79,13 @@ void nana::runner::view_obj::init(bool _visible, window _parent)
     m_self_wnd = cfg().create_wnd(_parent, _visible);
     if (!m_self_wnd)
         throw std::invalid_argument(string("invalid root widget ") + cfg().id_path().str());
-
-    if (_visible)
-        m_self_wnd->show();
+    //if (_visible)
+    //    m_self_wnd->show();
 
     for (auto& i : cfg().children_())
     {
-        if (i && !i->id_().empty() && i->has_ui_widget())
-            make_child_widgets(*i, this, &cfg(), *m_self_wnd/*not _parent*/, /*_visible*/true);
+        if (i)
+            make_child_widgets(*i, this, &cfg(), *m_self_wnd/*not _parent*/, true);
     }
 
     cfg().init_widget(*m_self_wnd, this);

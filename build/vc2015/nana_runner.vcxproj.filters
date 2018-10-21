@@ -374,6 +374,7 @@
     <ClInclude Include="..\..\nana\runner\treebox_cfg.h">
       <Filter>widgets</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\nana\runner\tabpage_cfg.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\nana\runner\sample\color.nar">

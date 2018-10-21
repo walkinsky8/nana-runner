@@ -25,6 +25,7 @@
 #include <nana/runner/scroll_cfg.h>
 #include <nana/runner/spinbox_cfg.h>
 #include <nana/runner/tabbar_cfg.h>
+#include <nana/runner/tabpage_cfg.h>
 #include <nana/runner/tab_cfg.h>
 #include <nana/runner/toolbar_cfg.h>
 #include <nana/runner/treebox_cfg.h>

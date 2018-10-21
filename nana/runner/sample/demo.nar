@@ -178,35 +178,42 @@
             @tabbar { id=bar frame_id=frame div='weight=20' bgcolor=white close_fly=0 tb_add=0 tb_scroll=1 tb_list=1 tb_close=0
                 @tab { caption=red div='vert' bgcolor=red tab_bgcolor=red fgcolor=white tab_image='image.jpg'
                     @label { id=label }
-                    @textbox{ id=text }
-                    @button { id=button icon='image.jpg' }
+                    @textbox{ id=textbox1 }
+                    @button { id=button1 icon='small.png' }
                 }
                 @tab { caption=green div='vert' bgcolor=green tab_bgcolor=green fgcolor=white tab_image='zhuang.jpg'
                     @label { id=label }
-                    @textbox { id=txt1 }
+                    @textbox { id=textbox1 }
+                    @button { id=button1 }
                 }
-                @tab { caption=grey div='vert' bgcolor=grey tab_bgcolor=grey fgcolor=white tab_image='yoyo.jpg'
-                    @label { id=lbl1 }
+                @tab { caption=grey div='' bgcolor=grey tab_bgcolor=grey fgcolor=white tab_image='yoyo.jpg' visible=1
+                    @treebox{ id=folders div='' checkable=0 directory='c:\'
+                    }
                 }
             }
-            @panel_lite { id=frame }
+            @tabpage { id=frame }
         }
         @panel{ id=2 div='vert'
             @tabbar_lite { id=bar frame_id=page div='weight=20' bgcolor=grey
                 @tab { caption=red div='vert'
-                    @label { id=label }
-                    @button { id=b2}
+                    @listbox{ id=files div='' sortable=1 show_header=1
+                        headers={
+                            @option { caption=null width=30 }
+                            @option { caption="name" width=60 }
+                            @option { caption="size" width=60 }
+                        }
+                    }
                 }
                 @tab { caption=green div='vert'
                     @label { id=label }
-                    @textbox { id=t2 }
+                    @textbox { id=textbox2 }
                 }
                 @tab { caption=blue div='vert'
                     @label { id=label }
-                    @label { id=l2 }
+                    @button { id=button2 }
                 }
             }
-            @panel_lite { id=page }
+            @tabpage { id=page }
         }
     }
     @panel{

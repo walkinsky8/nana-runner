@@ -7,37 +7,44 @@
         @option { caption=quit image='zhuang.jpg' _click=quit }
         @option { }
     }
-    @treebox{ id=tree checkable=1 directory='c:\' }
-    @treebox{ id=treebox
-        @option { id=root caption='/'
-            @option { id='a'
-                @option { id='1'
-                }
-                @option { id='2'
-                }
-                @option { id='3'
-                }
-            }
-            @option { id='b'
-                @option { id='1'
-                }
-                @option { id='2'
-                }
-                @option { id='3'
-                }
-            }
-            @option { id='c'
-                @option { id='1'
-                }
-                @option { id='2'
-                }
-                @option { id='3'
-                }
-            }
-            @option { id='d' }
-            @option { id='e' }
+    @tabbar { id=tabbar frame_id=tabpage div='weight=20'
+        @tab { caption=red div='vert' bgcolor=red tab_bgcolor=red fgcolor=white tab_image='image.jpg'
+            @label { id=label }
+            @textbox{ id=textbox1 }
+            @button { id=button1 icon='small.png' }
         }
-        @option { id=main caption='Local Drive(C:)'
+        @tab { caption=green div='vert' bgcolor=green tab_bgcolor=green fgcolor=white tab_image='zhuang.jpg'
+            @label { id=label }
+            @textbox { id=textbox1 }
+            @button { id=button1 }
+        }
+    }
+    @tabpage { id=tabpage }
+    @panel { id=trees
+        @treebox{ id=folders div='weight=30%' checkable=1 directory='c:\'
+        }
+        @listbox{ id=files div='weight=40%'
+        }
+        @treebox{ id=sam div='weight=30%'
+            @option { id=root
+                @option { id='a'
+                    @option { id='1' }
+                    @option { id='2' }
+                    @option { id='3' }
+                }
+                @option { id='b'
+                    @option { id='1' }
+                    @option { id='2' }
+                    @option { id='3' }
+                }
+                @option { id='c'
+                    @option { id='1' }
+                    @option { id='2' }
+                    @option { id='3' }
+                }
+                @option { id='d' }
+                @option { id='e' }
+            }
         }
     }
 }
