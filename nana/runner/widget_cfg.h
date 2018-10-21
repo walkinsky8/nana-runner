@@ -46,7 +46,6 @@ namespace nana::runner {
         NAR_FIELD(optional<bool>, enabled);
         NAR_FIELD(optional<bool>, visible);
         NAR_FIELD(optional<bool>, borderless);
-        NAR_FIELD(optional<bool>, uses_child_div);
         NAR_FIELD(std::vector<cfg_ptr>, children);
 
         widget_cfg* m_parent{ nullptr };
@@ -70,7 +69,6 @@ namespace nana::runner {
             NAR_CODEC(_s, enabled);
             NAR_CODEC(_s, visible);
             NAR_CODEC(_s, borderless);
-            NAR_CODEC(_s, uses_child_div);
             NAR_CODEC_UNNAMED(_s, children);
         }
 
@@ -108,6 +106,8 @@ namespace nana::runner {
 
 		widget_cfg* get_parent() const { return m_parent; }
 		void set_parent(widget_cfg* _parent) { m_parent = _parent; }
+
+        void reset_all_parent(widget_cfg* _parent);
 
         string make_div() const { string s; make_div(s); return s; }
         void make_div(string& _div) const;

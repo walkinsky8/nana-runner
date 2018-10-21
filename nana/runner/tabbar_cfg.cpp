@@ -24,8 +24,8 @@ void nana::runner::tabbar_cfg::init_widget(widget & _w, view_obj* _root_view) co
     if (!tb_close_().empty())
         w.toolbox(tabbar::kits::close, tb_close_().value());
 
-    id frame_id = get_parent()->id_path() / frame_id_();
-    auto& frame_fld = dynamic_cast<form_base&>(*_root_view->self_wnd_())[frame_id.str().data()];
+    id page_id = get_parent()->id_path() / page_id_();
+    auto& page_fld = dynamic_cast<form_base&>(*_root_view->self_wnd_())[page_id.str().data()];
 
     for (size_t i = 0; i < children_().size(); ++i)
     {
@@ -42,10 +42,10 @@ void nana::runner::tabbar_cfg::init_widget(widget & _w, view_obj* _root_view) co
             w.tab_image(i, app::create_image(child.tab_image_()));
 
         auto vp = view_obj::make_view(child, *_root_view->self_wnd_());
-        m_tab_views.push_back(vp);
+        _root_view->add_child_view(child.id_path(), vp);
         w.attach(i, *vp->self_wnd_());
-        //NAR_LOG("fasten " << frame_id << " = " << child.get_caption());
-        frame_fld.fasten(*vp->self_wnd_());
+        //NAR_LOG("fasten " << page_id << " = " << child.get_caption());
+        page_fld.fasten(*vp->self_wnd_());
     }
 }
 
@@ -55,8 +55,8 @@ void nana::runner::tabbar_lite_cfg::init_widget(widget & _w, view_obj* _root_vie
 
     auto& w = dynamic_cast<ui_type&>(_w);
 
-    id frame_id = get_parent()->id_path() / frame_id_();
-    auto& frame_fld = dynamic_cast<form_base&>(*_root_view->self_wnd_())[frame_id.str().data()];
+    id page_id = get_parent()->id_path() / page_id_();
+    auto& page_fld = dynamic_cast<form_base&>(*_root_view->self_wnd_())[page_id.str().data()];
 
     for (size_t i = 0; i < children_().size(); ++i)
     {
@@ -64,10 +64,10 @@ void nana::runner::tabbar_lite_cfg::init_widget(widget & _w, view_obj* _root_vie
         w.push_back(child.get_caption());
 
         auto vp = view_obj::make_view(child, *_root_view->self_wnd_());
-        m_tab_views.push_back(vp);
+        _root_view->add_child_view(child.id_path(), vp);
         w.attach(i, *vp->self_wnd_());
-        //NAR_LOG("fasten " << frame_id << " = " << child.get_caption());
-        frame_fld.fasten(*vp->self_wnd_());
+        //NAR_LOG("fasten " << page_id << " = " << child.get_caption());
+        page_fld.fasten(*vp->self_wnd_());
     }
 }
 

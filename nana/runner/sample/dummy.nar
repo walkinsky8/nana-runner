@@ -1,19 +1,19 @@
 ﻿@form{ id=dummy div='vert'
-    @toolbar { id=toolbar scale=16 div='vert weight=20'
+    @toolbar { id=toolbar scale=32 div='vert weight=40'
         @option { caption=open image='image.jpg' }
         @option { }
-        @option { caption=close image='yoyo.jpg' _click=close }
+        @option { caption=close image='small.png' _click=close }
         @option { }
         @option { caption=quit image='zhuang.jpg' _click=quit }
         @option { }
     }
-    @tabbar { id=tabbar frame_id=tabpage div='weight=20'
-        @tab { caption=red div='vert' bgcolor=red tab_bgcolor=red fgcolor=white tab_image='image.jpg'
+    @tabbar { id=tabbar page_id=tabpage div='weight=20'
+        @tab { id=red div='vert' bgcolor=red tab_bgcolor=red fgcolor=white tab_image='image.jpg'
             @label { id=label }
             @textbox{ id=textbox1 }
             @button { id=button1 icon='small.png' }
         }
-        @tab { caption=green div='vert' bgcolor=green tab_bgcolor=green fgcolor=white tab_image='zhuang.jpg'
+        @tab { id=grey div='vert' bgcolor=grey tab_bgcolor=grey fgcolor=white tab_image='zhuang.jpg'
             @label { id=label }
             @textbox { id=textbox1 }
             @button { id=button1 }

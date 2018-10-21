@@ -84,7 +84,10 @@ nana::runner::cfg_ptr nana::runner::app::create_cfg(const string& cfgdata)
     cfg_ptr cfg = widget_cfg::from(cfgdata);
     if (!cfg)
         return cfg;
-    NAR_LOG_NV("cfg", dump(cfg, false, 0, true));
+
+    //NAR_LOG_NV("cfg", dump(cfg, false, 0, true));
+    NAR_LOG_VAR(cfg->get_caption());
+    
     auto found = cfgs_.find(cfg->id_());
     if (found)
         cfg = *found;

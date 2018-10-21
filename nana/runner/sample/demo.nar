@@ -175,28 +175,26 @@
     }
     @panel{ id=tabs div=''
         @panel{ id=1 div='vert weight=50%'
-            @tabbar { id=bar frame_id=frame div='weight=20' bgcolor=white close_fly=0 tb_add=0 tb_scroll=1 tb_list=1 tb_close=0
-                @tab { caption=red div='vert' bgcolor=red tab_bgcolor=red fgcolor=white tab_image='image.jpg'
+            @tabbar { id=bar page_id=frame div='weight=20' bgcolor=white close_fly=0 tb_add=0 tb_scroll=1 tb_list=1 tb_close=0
+                @tab { id=red div='vert' bgcolor=red tab_bgcolor=red fgcolor=white tab_image='image.jpg'
                     @label { id=label }
-                    @textbox{ id=textbox1 }
-                    @button { id=button1 icon='small.png' }
+                    @button { id=button icon='small.png' }
                 }
-                @tab { caption=green div='vert' bgcolor=green tab_bgcolor=green fgcolor=white tab_image='zhuang.jpg'
+                @tab { id=green div='vert' bgcolor=green tab_bgcolor=green fgcolor=white tab_image='zhuang.jpg'
                     @label { id=label }
-                    @textbox { id=textbox1 }
-                    @button { id=button1 }
+                    @textbox { id=textbox }
                 }
-                @tab { caption=grey div='' bgcolor=grey tab_bgcolor=grey fgcolor=white tab_image='yoyo.jpg' visible=1
-                    @treebox{ id=folders div='' checkable=0 directory='c:\'
+                @tab { id=folder div='' bgcolor=grey tab_bgcolor=grey fgcolor=white tab_image='yoyo.jpg' visible=1
+                    @treebox{ id=tree div='' checkable=0 directory='c:\'
                     }
                 }
             }
             @tabpage { id=frame }
         }
         @panel{ id=2 div='vert'
-            @tabbar_lite { id=bar frame_id=page div='weight=20' bgcolor=grey
-                @tab { caption=red div='vert'
-                    @listbox{ id=files div='' sortable=1 show_header=1
+            @tabbar_lite { id=bar page_id=page div='weight=20' bgcolor=grey
+                @tab { id=files div='vert'
+                    @listbox{ id=list div='' sortable=1 show_header=1
                         headers={
                             @option { caption=null width=30 }
                             @option { caption="name" width=60 }
@@ -204,13 +202,13 @@
                         }
                     }
                 }
-                @tab { caption=green div='vert'
+                @tab { id=green div='vert'
                     @label { id=label }
-                    @textbox { id=textbox2 }
+                    @textbox { id=textbox }
                 }
-                @tab { caption=blue div='vert'
+                @tab { id=blue div='vert'
                     @label { id=label }
-                    @button { id=button2 }
+                    @button { id=button }
                 }
             }
             @tabpage { id=page }

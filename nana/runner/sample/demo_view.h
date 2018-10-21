@@ -55,9 +55,9 @@ namespace nana::runner::sample::view {
         listbox& listbox_;
 
         tabbar& tabs_1_bar_;
-        //panel_lite& tb_frame_;
         tabbar_lite& tabs_2_bar_;
-        //panel_lite& tb_lite_frame_;
+        //treebox& folder_;
+        //listbox& files_;
 
         //float_listbox
 
@@ -105,6 +105,8 @@ namespace nana::runner::sample::view {
             , listbox_{ wnd<listbox>("p3.table") }
             , tabs_1_bar_{ wnd<tabbar>("tabs.1.bar") }
             , tabs_2_bar_{ wnd<tabbar_lite>("tabs.2.bar") }
+            //, folder_{ wnd<treebox>("tabs.1.bar.folder.tree") }
+            //, files_{ wnd<listbox>("tabs.2.bar.files.list") }
             , prog_{ wnd<progress>("cmd.prog") }
             , spin_{ wnd<spinbox>("cmd.spin") }
             , quit_{ wnd<button>("cmd.close") }

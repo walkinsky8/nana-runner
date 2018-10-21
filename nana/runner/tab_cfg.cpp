@@ -45,10 +45,11 @@ void nana::runner::tab_cfg::init_widget(widget & _w, view_obj* _root_view) const
 {
     super::init_widget(_w, _root_view);
 
-    auto& w = dynamic_cast<ui_type&>(_w);
-
     string div = make_div();
     NAR_LOG_VAR(div);
+
+    auto& w = dynamic_cast<ui_type&>(_w);
+    //auto& w = dynamic_cast<tab&>(*_root_view->self_wnd_());
 
     w.div(div.data());
 

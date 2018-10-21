@@ -20,7 +20,11 @@ namespace nana::runner {
         using _Cfgs = std::map<id, widget_cfg*>;
         NAR_FIELD(_Cfgs, cfgs);
 
+        using _Views = std::map<id, view_ptr>;
+        NAR_FIELD(_Views, child_views);
+
         NAR_FIELD(wnd_ptr, self_wnd);
+
         NAR_FIELD(window, parent_wnd);
 
 	public:
@@ -46,18 +50,15 @@ namespace nana::runner {
 			return dynamic_cast<T&>(*w);
 		}
 
-        widget_cfg* cfg_(id _id) const
-        {
-            if (_id.empty())
-                return &m_cfg;
-
-            _id = cfg().id_path() / _id;
-            return get_cfg(_id);
-        }
-        
-        wnd_ptr get_widget(id _id) const;
+        widget_cfg* cfg_(id _id) const;
 
         widget_cfg* get_cfg(id _id) const;
+
+        wnd_ptr get_widget(id _id) const;
+
+        void add_widget(wnd_ptr _w, widget_cfg& _cfg);
+
+        void add_child_view(id _id, view_ptr _vw);
 
         static view_ptr make_view(widget_cfg& _cfg, window _parent);
 

@@ -10,7 +10,7 @@
 void nana::runner::widget_cfg::make_div(string& _div) const
 {
     _div << "<" << id_path() << " " << div_();
-    if (has_child_div() && (uses_child_div_().empty() || uses_child_div_().value()))
+    if (has_child_div())
     {
         for (auto& i : m_children)
         {
@@ -20,6 +20,14 @@ void nana::runner::widget_cfg::make_div(string& _div) const
     }
     make_extra_div(_div);
     _div << ">";
+}
+
+void nana::runner::widget_cfg::reset_all_parent(widget_cfg* _parent)
+{
+    set_parent(_parent);
+
+    for (auto& i : m_children)
+        i->reset_all_parent(this);
 }
 
 nana::runner::point nana::runner::widget_cfg::get_pos() const
@@ -99,16 +107,20 @@ nana::runner::cfg_ptr nana::runner::widget_cfg::from(string const& _cfg)
 {
     parser parsed(_cfg);
 
-    cfg_ptr v;
-    parsed >> v;
-    return v;
+    cfg_ptr p;
+    parsed >> p;
+
+    return p;
 }
 
 void nana::runner::operator >> (const parser& _is, cfg_ptr& _v)
 {
     _v = widget_factory::instance().create(_is.type());
-	if (_v)
-		_is >> *_v;
+    if (_v)
+    {
+        _is >> *_v;
+        _v->reset_all_parent(nullptr);
+    }
 }
 
 void nana::runner::widget_cfg::init_widget(widget& _w, view_obj* _root_view) const

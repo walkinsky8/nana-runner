@@ -14,6 +14,7 @@ namespace nana::runner {
     class form_base_cfg : public widget_cfg
     {
         using super = widget_cfg;
+        using ui_type = form_base;
 
         NAR_FIELD(optional<align>, align);
         NAR_FIELD(optional<align_v>, align_v);

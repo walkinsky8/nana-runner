@@ -27,7 +27,8 @@ void nana::runner::form_base_cfg::init_widget(widget& _w, view_obj* _root_view) 
     string div = make_div();
     NAR_LOG_VAR(div);
 
-    auto& w = dynamic_cast<form_base&>(*_root_view->self_wnd_());
+    //auto& w = dynamic_cast<form_base&>(*_root_view->self_wnd_());
+    auto& w = dynamic_cast<ui_type&>(_w);
     w.div(div.data());
 
     for (auto& i : _root_view->widgets_())

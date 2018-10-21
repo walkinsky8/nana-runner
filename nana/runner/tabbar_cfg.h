@@ -16,21 +16,19 @@ namespace nana::runner {
     {
         NAR_DEFINE_WIDGET(tabbar, widget_cfg);
 
-        NAR_FIELD(id, frame_id);
+        NAR_FIELD(id, page_id);
         NAR_FIELD(optional<bool>, close_fly);
         NAR_FIELD(optional<bool>, tb_add);
         NAR_FIELD(optional<bool>, tb_scroll);
         NAR_FIELD(optional<bool>, tb_list);
         NAR_FIELD(optional<bool>, tb_close);
 
-        mutable std::vector<view_ptr> m_tab_views;
-
     public:
         template<class _Stream>
         void traverse(_Stream& _s)
         {
             NAR_CODEC_SUPER(_s);
-            NAR_CODEC(_s, frame_id);
+            NAR_CODEC(_s, page_id);
             NAR_CODEC(_s, close_fly);
             NAR_CODEC(_s, tb_add);
             NAR_CODEC(_s, tb_scroll);
@@ -48,16 +46,14 @@ namespace nana::runner {
     {
         NAR_DEFINE_WIDGET(tabbar_lite, widget_cfg);
 
-        NAR_FIELD(id, frame_id);
-
-        mutable std::vector<view_ptr> m_tab_views;
+        NAR_FIELD(id, page_id);
 
     public:
         template<class _Stream>
         void traverse(_Stream& _s)
         {
             super::traverse(_s);
-            NAR_CODEC(_s, frame_id);
+            NAR_CODEC(_s, page_id);
         }
 
         wnd_ptr create_wnd(window p, bool v) const override { return std::make_shared<ui_type>(p, v); }
