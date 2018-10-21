@@ -150,7 +150,9 @@ namespace nana::runner {
     template<class T>
     inline bool is_empty(const std::vector<T>& _v) { return _v.empty(); }
 
-	/*
+    using std::to_string;
+
+    /*
 	 * string functions
 	 */
 

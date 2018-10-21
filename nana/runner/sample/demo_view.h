@@ -247,7 +247,7 @@ namespace nana::runner::sample::view {
                     cat.back().text(1, "");
                 else
                 {
-                    cat.back().text(1, std::to_string(fs::file_size(i->path())));
+                    cat.back().text(1, to_string(fs::file_size(i->path())));
                 }
             }
             categorize_.caption(path);
