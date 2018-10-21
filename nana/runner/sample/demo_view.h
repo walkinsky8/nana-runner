@@ -56,10 +56,8 @@ namespace nana::runner::sample::view {
 
         tabbar& tabs_1_bar_;
         tabbar_lite& tabs_2_bar_;
-        //treebox& folder_;
-        //listbox& files_;
-
-        //float_listbox
+        treebox& folder_;
+        listbox& files_;
 
         progress& prog_;
         spinbox& spin_;
@@ -105,8 +103,8 @@ namespace nana::runner::sample::view {
             , listbox_{ wnd<listbox>("p3.table") }
             , tabs_1_bar_{ wnd<tabbar>("tabs.1.bar") }
             , tabs_2_bar_{ wnd<tabbar_lite>("tabs.2.bar") }
-            //, folder_{ wnd<treebox>("tabs.1.bar.folder.tree") }
-            //, files_{ wnd<listbox>("tabs.2.bar.files.list") }
+            , folder_{ child_view("tabs.1.bar.folder")->wnd<treebox>("tree") }
+            , files_{ child_view("tabs.2.bar.files")->wnd<listbox>("list") }
             , prog_{ wnd<progress>("cmd.prog") }
             , spin_{ wnd<spinbox>("cmd.spin") }
             , quit_{ wnd<button>("cmd.close") }
@@ -228,7 +226,31 @@ namespace nana::runner::sample::view {
                 prog_.value((unsigned)spin_.to_int());
             });
 
+            folder_.events().selected([&](const nana::arg_treebox& _a) { on_selected_tree_item(_a); });
+
             //quit_.events().click([this] { close(); });
+        }
+
+        void on_selected_tree_item(const nana::arg_treebox& _a)
+        {
+            if (!_a.operated)
+                return;
+            auto path = folder_.make_key_path(_a.item, "/") + "/";
+            NAR_LOG("selected folder = " << path);
+            files_.clear();
+            auto cat = files_.at(0);
+            for (fs::directory_iterator i{ path }, end; i != end; ++i)
+            {
+                auto name = to_utf8(i->path().filename().native());
+                cat.push_back(name);
+                if (is_directory(*i))
+                    cat.back().text(1, "");
+                else
+                {
+                    cat.back().text(1, std::to_string(fs::file_size(i->path())));
+                }
+            }
+            categorize_.caption(path);
         }
 
         void update_text_color()

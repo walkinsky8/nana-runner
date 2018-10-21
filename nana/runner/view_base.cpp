@@ -71,6 +71,17 @@ nana::runner::widget_cfg* nana::runner::view_obj::cfg_(id _id) const
     return get_cfg(_id);
 }
 
+nana::runner::view_obj const * nana::runner::view_obj::child_view(id _id) const
+{
+    if (_id.empty())
+        return this;
+    _id = cfg().id_path() / _id;
+    auto i = m_child_views.find(_id);
+    if (i == m_child_views.end())
+        return nullptr;
+    return (*i).second.get();
+}
+
 void nana::runner::view_obj::make_child_widgets(widget_cfg& _cfg, view_obj* _root_view, widget_cfg* _parent_cfg, nana::window _parent_wnd, bool _visible)
 {
     if (_cfg.id_().empty() || !_cfg.has_ui_widget())

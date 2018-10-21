@@ -50,6 +50,8 @@ namespace nana::runner {
 			return dynamic_cast<T&>(*w);
 		}
 
+        view_obj const* child_view(id _id) const;
+
         widget_cfg* cfg_(id _id) const;
 
         widget_cfg* get_cfg(id _id) const;

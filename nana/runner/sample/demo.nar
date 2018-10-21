@@ -1,8 +1,8 @@
 ﻿@form{
     id=demo
     div="vert"
-    pos={-250 -350}
-    size={500 700}
+    pos={-300 -400}
+    size={600 800}
     align=center
     align_v=center
     @menubar{ id=menubar div='weight=24' typeface={bold 10}
@@ -91,13 +91,13 @@
     @textbox{
         id=text
         caption='Hello, world!'
-        div="weight=50"
+        div="weight=80"
         align=left
         bgcolor="white"
         fgcolor="rgb(0,0,0)"
         typeface={Courier New 10}
         editable=1
-        line_wrapped=0
+        line_wrapped=1
         multi_lines=1
         enabled=1
     }
@@ -114,6 +114,7 @@
             id=linewrap
             caption="Line Wrap"
             bgcolor=white
+            check=1
             transparent=0
         }
         @checkbox{
@@ -180,11 +181,11 @@
                     @label { id=label }
                     @button { id=button icon='small.png' }
                 }
-                @tab { id=green div='vert' bgcolor=green tab_bgcolor=green fgcolor=white tab_image='zhuang.jpg'
+                @tab { id=orange div='vert' bgcolor=orange tab_bgcolor=orange tab_image='zhuang.jpg'
                     @label { id=label }
                     @textbox { id=textbox }
                 }
-                @tab { id=folder div='' bgcolor=grey tab_bgcolor=grey fgcolor=white tab_image='yoyo.jpg' visible=1
+                @tab { id=folder div='' bgcolor=grey tab_bgcolor=grey tab_image='yoyo.jpg' visible=1
                     @treebox{ id=tree div='' checkable=0 directory='c:\'
                     }
                 }
@@ -196,9 +197,8 @@
                 @tab { id=files div='vert'
                     @listbox{ id=list div='' sortable=1 show_header=1
                         headers={
-                            @option { caption=null width=30 }
-                            @option { caption="name" width=60 }
-                            @option { caption="size" width=60 }
+                            @option { caption="name" width=180 }
+                            @option { caption="size" width=90 }
                         }
                     }
                 }
