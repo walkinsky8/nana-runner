@@ -32,6 +32,13 @@ namespace nana::runner {
         std::string& write(std::string& _os) const;
         void read(const std::string& _is);
 
+        std::string to_string() const
+        {
+            std::string s;
+            write(s);
+            return s;
+        }
+
     };
     inline std::ostream& operator<<(std::ostream& _os, const datetime& _v)
     {

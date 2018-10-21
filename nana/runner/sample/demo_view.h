@@ -243,12 +243,20 @@ namespace nana::runner::sample::view {
             {
                 auto name = to_utf8(i->path().filename().native());
                 cat.push_back(name);
+
                 if (is_directory(*i))
                     cat.back().text(1, "");
                 else
                 {
-                    cat.back().text(1, to_string(fs::file_size(i->path())));
+                    auto sz = fs::file_size(i->path());
+                    cat.back().text(1, to_string(sz));
                 }
+                auto lasttime = fs::last_write_time(i->path());
+                auto secs = std::chrono::system_clock::to_time_t(lasttime);
+                tm t;
+                localtime_s(&t, &secs);
+                datetime dt(t);
+                cat.back().text(2, dt.to_string());
             }
             categorize_.caption(path);
         }

@@ -197,8 +197,9 @@
                 @tab { id=files div='vert'
                     @listbox{ id=list div='' sortable=1 show_header=1
                         headers={
-                            @option { caption="name" width=180 }
+                            @option { caption="name" width=240 }
                             @option { caption="size" width=90 }
+                            @option { caption="time" width=150 }
                         }
                     }
                 }
