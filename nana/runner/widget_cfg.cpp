@@ -100,7 +100,7 @@ const nana::runner::optional<nana::runner::font>& nana::runner::widget_cfg::get_
 
 nana::runner::cfg_ptr nana::runner::widget_cfg::get_generic()
 {
-    return app::instance().get_cfg("generic");
+    return app::instance().find_cfg("generic");
 }
 
 nana::runner::cfg_ptr nana::runner::widget_cfg::from(string const& _cfg)

@@ -1,9 +1,8 @@
-﻿@unknown{ id=generic
-    
-    bgcolor=#dddddd
+﻿@unknown{
+    id=generic
+    bgcolor=#e0e0e0
     fgcolor=black
     typeface={ Consolas 10 bold }
     cursor=hand
-    
-    @label { id=sample align=center align_v=center }
+    label=@label { align=center align_v=center }
 }

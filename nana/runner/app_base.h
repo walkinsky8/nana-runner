@@ -43,7 +43,9 @@ namespace nana::runner
 
         cfg_ptr create_cfg(const string& _cfgdata);
 
-        cfg_ptr get_cfg(const string& _id) const;
+        cfg_ptr get_cfg(const string& _id) const; // throw exception when not found
+
+        cfg_ptr find_cfg(const string& _id) const; // return nullptr when not found
 
         static view_ptr create_view(const string& _cfg);
 

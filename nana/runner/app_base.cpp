@@ -106,6 +106,14 @@ nana::runner::cfg_ptr nana::runner::app::get_cfg(const string& _type) const
     return *p;
 }
 
+nana::runner::cfg_ptr nana::runner::app::find_cfg(const string& _type) const
+{
+    const cfg_ptr* p = cfgs_.find(_type);
+    if (!p)
+        return nullptr;
+    return *p;
+}
+
 nana::runner::view_ptr nana::runner::app::create_view(const string& _cfg)
 {
     cfg_ptr cfg = instance().create_cfg(_cfg);
