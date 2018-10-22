@@ -6,6 +6,9 @@
 #include <sstream>
 #include <fstream>
 #include <string>
+#include <cstdlib>
+#include <cstdio>
+#include <cstdint>
 
 #include <vector>
 #include <map>
@@ -89,12 +92,22 @@ namespace nana::runner {
         const std::string indent{ "    " };
     }
 
-    using int8 = char;
-    using int16 = short;
-    using int32 = int;
-    using int64 = __int64;
+    using int8 = std::int8_t;
+    using int16 = std::int16_t;
+    using int32 = std::int32_t;
+    using int64 = std::int64_t;
+    using uint8 = std::uint8_t;
+    using uint16 = std::uint16_t;
+    using uint32 = std::uint32_t;
+    using uint64 = std::uint64_t;
 
     using byte = unsigned char;
+    using uchar = unsigned char;
+    using ushort = unsigned short;
+    using uint = unsigned int;
+    using ulong = unsigned long;
+    using longlong = long long;
+    using ulonglong = unsigned long long;
 
     using string = std::string;
     using wstring = std::wstring;

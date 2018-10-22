@@ -147,14 +147,7 @@ namespace nana::runner {
             return int(data_ - _other.data_);
         }
 
-        istr substr(size_t _start, size_t _len) const
-        {
-            if (_start > size_)
-                _start = size_;
-            if (_len > size_ - _start)
-                _len = size_ - _start;
-            return istr{ data_ + _start, _len };
-        }
+        istr substr(size_t _start, size_t _len) const;
 
         istr leftstr(size_t _len) const
         {
@@ -197,23 +190,9 @@ namespace nana::runner {
             return s;
         }
 
-        istr read(std::function<bool(char)> _fn)
-        {
-            istr& p = me();
-            istr beg = p;
-            while (p && _fn(*p))
-                ++p;
-            return istr{ beg, p };
-        }
+        istr read(std::function<bool(char)> _fn, size_t _maxLen = npos);
 
-        istr read_until(std::function<bool(char)> _fn)
-        {
-            istr& _p = me();
-            istr beg = _p;
-            while (_p && !_fn(*_p))
-                ++_p;
-            return istr{ beg, _p };
-        }
+        istr read_until(std::function<bool(char)> _fn, size_t _maxLen = npos);
 
         int compare(istr _v) const;
 
@@ -240,6 +219,97 @@ namespace nana::runner {
         bool operator>=(istr _v) const
         {
             return me().compare(_v) >= 0;
+        }
+
+        bool to_bool() const
+        {
+            return !empty() && me() != istr("0") && me() != istr("false");
+        }
+
+        int8 to_int8() const
+        {
+            return static_cast<int8>(to_long());
+        }
+
+        uint8 to_uint8() const
+        {
+            return static_cast<uint8>(to_long());
+        }
+
+        short to_short() const
+        {
+            return static_cast<short>(to_long());
+        }
+
+        ushort to_ushort() const
+        {
+            return static_cast<ushort>(to_ulong());
+        }
+
+        int to_int() const
+        {
+            return static_cast<int>(to_long());
+        }
+
+        uint to_uint() const
+        {
+            return static_cast<uint>(to_ulong());
+        }
+
+        long to_long() const
+        {
+            string s;
+            me() >> s;
+            char* e = 0;
+            return std::strtol(s.data(), &e, 10);
+        }
+
+        ulong to_ulong() const
+        {
+            string s;
+            me() >> s;
+            char* e = 0;
+            return std::strtoul(s.data(), &e, 10);
+        }
+
+        longlong to_longlong() const
+        {
+            string s;
+            me() >> s;
+            char* e = 0;
+            return std::strtoll(s.data(), &e, 10);
+        }
+
+        ulonglong to_ulonglong() const
+        {
+            string s;
+            me() >> s;
+            char* e = 0;
+            return std::strtoull(s.data(), &e, 10);
+        }
+
+        float to_float() const
+        {
+            string s;
+            me() >> s;
+            char* e = 0;
+            return std::strtof(s.data(), &e);
+        }
+
+        double to_double() const
+        {
+            string s;
+            me() >> s;
+            char* e = 0;
+            return std::strtod(s.data(), &e);
+        }
+
+        long double to_longdouble() const
+        {
+            string s;
+            me() >> s;
+            char* e = 0;
+            return std::strtold(s.data(), &e);
         }
 
     };

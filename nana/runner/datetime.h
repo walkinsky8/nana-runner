@@ -29,9 +29,14 @@ namespace nana::runner {
         const time& get_time() const { return time_; }
 
         std::ostream& write(std::ostream& _os) const;
-        std::string& write(std::string& _os) const;
         void read(const std::string& _is);
 
+        std::string& write(std::string& _os) const
+        {
+            std::ostringstream oss;
+            write(oss);
+            return _os << oss.str();
+        }
         std::string to_string() const
         {
             std::string s;
@@ -57,12 +62,22 @@ namespace nana::runner {
 
 namespace nana {
 
-    std::ostream& operator<<(std::ostream& _os, const date& _v);
-    std::string& operator<<(std::string& _os, const date& _v);
     void operator>>(const std::string& _is, date& _v);
+    std::ostream& operator<<(std::ostream& _os, const date& _v);
+    inline std::string& operator<<(std::string& _os, const date& _v)
+    {
+        std::ostringstream oss;
+        oss << _v;
+        return _os << oss.str();
+    }
 
-    std::ostream& operator<<(std::ostream& _os, const time& _v);
-    std::string& operator<<(std::string& _os, const time& _v);
     void operator>>(const std::string& _is, time& _v);
+    std::ostream& operator<<(std::ostream& _os, const time& _v);
+    inline std::string& operator<<(std::string& _os, const time& _v)
+    {
+        std::ostringstream oss;
+        oss << _v;
+        return _os << oss.str();
+    }
 
 }
