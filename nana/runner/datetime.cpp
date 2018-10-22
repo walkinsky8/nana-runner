@@ -29,14 +29,15 @@ void nana::runner::datetime::set(const std::tm& _tm)
 
 std::ostream& nana::runner::datetime::write(std::ostream& _os) const
 {
-    _os << date_ << " " << time_;
+    _os << date_ << "_" << time_;
     return _os;
 }
 
 std::string& nana::runner::datetime::write(std::string& _os) const
 {
-    _os << date_ << " " << time_;
-    return _os;
+    std::ostringstream oss;
+    write(oss);
+    return _os << oss.str();
 }
 
 void nana::runner::datetime::read(const std::string& _is)
@@ -45,7 +46,13 @@ void nana::runner::datetime::read(const std::string& _is)
 
 std::ostream& nana::operator<<(std::ostream& _os, const date& _v)
 {
-    return _os << _v.read().year << "-" << _v.read().month << "-" << _v.read().day;
+    _os << std::setfill('0')
+        << std::setw(4) << _v.read().year << "-"
+        << std::setw(2) << _v.read().month << "-"
+        << std::setw(2) << _v.read().day
+        << std::setfill(' ')
+        ;
+    return _os;
 }
 std::string& nana::operator<<(std::string& _os, const date& _v)
 {
@@ -57,7 +64,13 @@ void nana::operator>>(const std::string& _is, date& _v);
 
 std::ostream& nana::operator<<(std::ostream& _os, const time& _v)
 {
-    return _os << _v.read().hour << ":" << _v.read().minute << ":" << _v.read().second;
+    _os << std::setfill('0')
+        << std::setw(2) << _v.read().hour << ":"
+        << std::setw(2) << _v.read().minute << ":"
+        << std::setw(2) << _v.read().second
+        << std::setfill(' ')
+        ;
+    return _os;
 }
 std::string& nana::operator<<(std::string& _os, const time& _v)
 {
