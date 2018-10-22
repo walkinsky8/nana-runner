@@ -221,6 +221,16 @@ namespace nana::runner {
             return me().compare(_v) >= 0;
         }
 
+        bool startsWith(istr _s) const
+        {
+            return leftstr(_s.size()) == _s;
+        }
+
+        bool endsWith(istr _s) const
+        {
+            return rightstr(_s.size()) == _s;
+        }
+
         bool to_bool() const
         {
             return !empty() && me() != istr("0") && me() != istr("false");

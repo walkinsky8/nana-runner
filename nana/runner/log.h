@@ -5,9 +5,17 @@
 
 #include <nana/runner/base_types.h>
 
-#define NAR_LOG_VAR(x) NAR_LOG_NV(#x, x)
-#define NAR_LOG_NV(n, v) NAR_LOG(n << " = " << v)
-#define NAR_LOG(x) nana::runner::log() << __FUNCTION__ << "() " << x
+#define NAR_LOG_VAR(x)     NAR_LOG_NV(#x, x)
+#define NAR_LOG_NV(n, v)   NAR_LOG_DEBUG(n << " = " << v)
+#define NAR_LOG(x)         NAR_LOG_INFO(x)
+
+#define NAR_LOG_ERROR(x)   NAR_LOG_(nana::runner::LL_ERROR, x)
+#define NAR_LOG_WARN(x)    NAR_LOG_(nana::runner::LL_WARN, x)
+#define NAR_LOG_INFO(x)    NAR_LOG_(nana::runner::LL_INFO, x)
+#define NAR_LOG_DEBUG(x)   NAR_LOG_(nana::runner::LL_DEBUG, x)
+#define NAR_LOG_VERBOSE(x) NAR_LOG_(nana::runner::LL_VERBOSE, x)
+
+#define NAR_LOG_(ll, x)    nana::runner::log(ll, __FILE__, __LINE__, __FUNCTION__) << x
 
 namespace nana::runner {
 
@@ -43,11 +51,22 @@ namespace nana::runner {
 
     };
 
+    enum log_level
+    {
+        LL_ERROR,
+        LL_WARN,
+        LL_INFO,
+        LL_DEBUG,
+        LL_VERBOSE,
+        LL_UNKNOWN = -1
+    };
+    using enum_log_level = enum_<log_level, LL_UNKNOWN>;
+
     struct log
     {
         out oss_;
         
-        log();
+        log(log_level _ll, pcstr _file, int _line, pcstr _func);
         ~log();
 
         std::string str() const

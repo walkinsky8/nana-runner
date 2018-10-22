@@ -3,7 +3,8 @@
 
 #include <nana/runner/base_config.h>
 
-#define NAR_ENUM_ADD(e, d, i) nana::runner::enum_<e, e##::##d>::add(e##::##i, #i)
+#define NAR_ENUM_ADD(e, d, i)     nana::runner::enum_<e, e::d>::add(e::i, #i)
+#define NAR_ENUM_ADD_(e, p, d, i) nana::runner::enum_<e, e::p##d>::add(e::p##i, #i)
 
 namespace nana::runner {
 

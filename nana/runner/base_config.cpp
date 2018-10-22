@@ -50,6 +50,54 @@ void nana::runner::string_split(const wstring& _s, std::vector<wstring>& _ss)
     ps >> _ss;
 }
 
+nana::runner::strings nana::runner::strings_from(const string& _s, const string& _sep)
+{
+    strings ss;
+    istr sep(_sep);
+    istr p{ _s };
+    istr beg = p;
+    while (p)
+    {
+        if (!p.startsWith(sep))
+        {
+            ++p;
+            continue;
+        }
+        ss.push_back(istr{ beg, p });
+        p += (int)sep.size();
+        beg = p;
+    }
+    if (p - beg > 0)
+        ss.push_back(istr{ beg, p });
+    return ss;
+}
+
+nana::runner::strings nana::runner::strings_sub(const strings& _ss, int _start, size_t _len)
+{
+    strings result;
+    if (_start < 0)
+        _start += (int)_ss.size();
+    if (_start >= _ss.size())
+        _start = (int)_ss.size();
+    if (_len > _ss.size() - _start)
+        _len = _ss.size() - _start;
+    for (; _len; ++_start, --_len)
+        result.push_back(_ss[_start]);
+    return result;
+}
+
+nana::runner::string nana::runner::strings_merge(const strings& _ss, const string& _sep)
+{
+    string s;
+    for (size_t i = 0; i < _ss.size(); ++i)
+    {
+        if (i)
+            s += _sep;
+        s += _ss[i];
+    }
+    return s;
+}
+
 bool nana::runner::read_file(const wstring& _filename, string& _content)
 {
     std::ifstream ifs{ _filename };

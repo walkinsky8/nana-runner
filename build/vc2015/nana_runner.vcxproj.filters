@@ -35,6 +35,9 @@
     <Filter Include="__sample\demo">
       <UniqueIdentifier>{c05ac02c-8a16-4aaf-af1f-4d27e6a2131b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="base\util">
+      <UniqueIdentifier>{d55f3023-d39a-4382-9b87-d082f4256b8c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Image Include="small.ico">

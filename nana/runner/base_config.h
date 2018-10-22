@@ -18,6 +18,8 @@
 #include <cassert>
 
 #include <nana/gui.hpp>
+#include <nana/filesystem/filesystem.hpp>
+#include <nana/filesystem/filesystem_ext.hpp>
 
 #define NAR_V(x) m_##x
 #define NAR_F(x) x##_
@@ -75,6 +77,9 @@ namespace std {
 }
 
 namespace nana::runner {
+
+    namespace fs = std::experimental::filesystem;
+    namespace fs_ext = nana::filesystem_ext;
 
     namespace tag
     {
@@ -174,6 +179,10 @@ namespace nana::runner {
 
     void string_split(const string& _s, std::vector<string>& _ss);
     void string_split(const wstring& _s, std::vector<wstring>& _ss);
+
+    strings strings_from(const string& _s, const string& _sep);
+    strings strings_sub(const strings& _ss, int _start, size_t _len = npos);
+    string strings_merge(const strings& _ss, const string& _sep);
 
 	/*
 	 * file functions
