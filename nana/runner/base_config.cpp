@@ -58,7 +58,7 @@ nana::runner::strings nana::runner::strings_from(const string& _s, const string&
     istr beg = p;
     while (p)
     {
-        if (!p.startsWith(sep))
+        if (!p.starts_with(sep))
         {
             ++p;
             continue;

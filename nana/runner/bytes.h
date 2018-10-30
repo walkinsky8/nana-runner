@@ -61,5 +61,9 @@ namespace nana::runner {
     {
         return _os << _v.to_base64();
     }
+    inline void operator>>(const std::string& _is, bytes& _v)
+    {
+        _v.from_base64(_is);
+    }
 
 }

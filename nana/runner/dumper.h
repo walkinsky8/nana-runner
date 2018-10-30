@@ -54,23 +54,14 @@ namespace nana::runner
             return old;
         }
 
-        dumper& writeString(const istr& _v)
-        {
-            bool isNull = _v == istr("null");
-            if (!isNull)
-                oss_ << tag::string;
-            oss_ << _v;
-            if (!isNull)
-                oss_ << tag::string;
-            return *this;
-        }
-
         template<class T>
         dumper& write(const T& _v)
         {
             oss_ << _v;
             return *this;
         }
+
+        dumper& writeString(const istr& _v);
 
         dumper& operator<<(const string& _v)
         {

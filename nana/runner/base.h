@@ -10,6 +10,8 @@
 #include <nana/runner/node.h>
 #include <nana/runner/parser.h>
 
+#include <nana/runner/cmdargs.h>
+
 namespace nana::runner {
 
 	void init_enums();

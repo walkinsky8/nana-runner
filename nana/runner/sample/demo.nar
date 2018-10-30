@@ -90,7 +90,7 @@
     }
     @textbox{
         id=text
-        caption='Hello, world!'
+        caption='Hello, world!^n'"'abc'"'"123"^n'"^t^^ ^"^'^r^n"
         div="weight=80"
         align=left
         bgcolor="white"
@@ -151,7 +151,7 @@
             @hscroll{ id=hscr div='weight=20' amount=12 range=3 step=1 value=10 }
             @date_chooser{ id=value }
         }
-        @panel { id=vscr div='vert weight=5%'
+        @panel { id=vscr div='vert weight=20'
             @panel{ id=reset div='weight=20' }
             @vscroll{ id=value amount=100 range=20 step=1 value=50 }
         }
@@ -176,16 +176,16 @@
     }
     @panel{ id=tabs div=''
         @panel{ id=1 div='vert weight=50%'
-            @tabbar { id=bar page_id=frame div='weight=20' bgcolor=white close_fly=0 tb_add=0 tb_scroll=1 tb_list=1 tb_close=0
-                @tab { id=red div='vert' bgcolor=red tab_bgcolor=red fgcolor=white tab_image='image.jpg'
+            @tabbar { id=bar page_id=frame div='weight=20' close_fly=0 tb_add=0 tb_scroll=1 tb_list=1 tb_close=0
+                @tab { id=green div='vert' tab_bgcolor=green tab_image='image.jpg'
                     @label { id=label }
                     @button { id=button icon='small.png' }
                 }
-                @tab { id=orange div='vert' bgcolor=orange tab_bgcolor=orange tab_image='zhuang.jpg'
+                @tab { id=red div='vert' tab_bgcolor=red tab_image='zhuang.jpg'
                     @label { id=label }
                     @textbox { id=textbox }
                 }
-                @tab { id=folder div='' bgcolor=grey tab_bgcolor=grey tab_image='yoyo.jpg' visible=1
+                @tab { id=folder div='' tab_bgcolor=orange tab_image='yoyo.jpg'
                     @treebox{ id=tree div='' checkable=0 directory='c:\'
                     }
                 }
@@ -193,7 +193,7 @@
             @tabpage { id=frame }
         }
         @panel{ id=2 div='vert'
-            @tabbar_lite { id=bar page_id=page div='weight=20' bgcolor=grey
+            @tabbar_lite { id=bar page_id=page div='weight=20'
                 @tab { id=files div='vert'
                     @listbox{ id=list div='' sortable=1 show_header=1
                         headers={

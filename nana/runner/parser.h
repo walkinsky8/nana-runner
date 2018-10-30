@@ -49,7 +49,15 @@ namespace nana::runner
         {
             readValue(_v);
         }
+        void operator >> (uchar& _v) const
+        {
+            readValue(_v);
+        }
         void operator >> (short& _v) const
+        {
+            readValue(_v);
+        }
+        void operator >> (ushort& _v) const
         {
             readValue(_v);
         }
@@ -57,11 +65,7 @@ namespace nana::runner
         {
             readValue(_v);
         }
-        void operator >> (unsigned& _v) const
-        {
-            readValue(_v);
-        }
-        void operator >> (size_t& _v) const
+        void operator >> (uint& _v) const
         {
             readValue(_v);
         }
@@ -69,10 +73,22 @@ namespace nana::runner
         {
             readValue(_v);
         }
+        void operator >> (ulong& _v) const
+        {
+            readValue(_v);
+        }
         void operator >> (int64& _v) const
         {
             readValue(_v);
         }
+        void operator >> (uint64& _v) const
+        {
+            readValue(_v);
+        }
+        //void operator >> (size_t& _v) const
+        //{
+        //    readValue(_v);
+        //}
         void operator >> (float& _v) const
         {
             readValue(_v);
@@ -81,11 +97,23 @@ namespace nana::runner
         {
             readValue(_v);
         }
+        void operator >> (long double& _v) const
+        {
+            readValue(_v);
+        }
         void operator>>(string& _v) const
         {
             readValue(_v);
         }
         void operator>>(wstring& _v) const
+        {
+            readValue(_v);
+        }
+        void operator>>(bytes& _v) const
+        {
+            readValue(_v);
+        }
+        void operator>>(datetime& _v) const
         {
             readValue(_v);
         }

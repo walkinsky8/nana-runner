@@ -7,14 +7,17 @@
 
 namespace nana::runner::detail {
 
+    //TODO: comment
+    //TODO: escape
+
     // @type { name=value }
     enum class token
     {
-        type,
-        begin,
-        end,
+        type, // @
+        begin, // {
+        end, // }
         name,
-        assign,
+        assign, // =
         value,
         eof
     };
@@ -41,7 +44,7 @@ namespace nana::runner::detail {
 
     bool is_string_tag(const char c)
     {
-        return c == tag::string || c == tag::string2;
+        return is_quote_char(c);
     }
 
     bool is_name_or_value_end0(const char c)
@@ -82,14 +85,16 @@ namespace nana::runner::detail {
             //c == tag::type || c == tag::begin || c == tag::assign || c == tag::end || is_string_tag(c) || is_blank(c)
             istr word = p_.read_until(is_word_end);
 
+            // =后面跟着空格表示值为空.
+
             if (*p_ == tag::assign)
             {
-                //=前面的name为空没有意义
+                //=前面的name为空没有意义.
                 if (!word)
                     throw_error("empty name");
                 _node.name(word);
                 ++p_;
-                //name已经读取，后面就是value
+                //name已经读取，后面就是value.
                 word = p_.read_until(is_word_end);
                 // empty value
                 if (!word && is_blank(*p_))
@@ -115,7 +120,12 @@ namespace nana::runner::detail {
                 {
                     if (word)
                         throw_error("extra word before quote: " + word);
-                    _node.value(read_string(p_));
+                    bool simple = true;
+                    istr strval = read_string(p_, &simple);
+                    if (simple) 
+                        _node.value(remove_quote(strval)); // no escape, not multiple
+                    else
+                        _node.value(unescape_string(strval));
                     return true;
                 }
 
@@ -153,17 +163,94 @@ namespace nana::runner::detail {
         }
 
     private:
-        static istr read_string(istr& p)
+        static istr read_string(istr& p, bool* _simple)
         {
-            assert(*p == tag::string || *p == tag::string2);
-            const char ch = *p;
-            ++p;
             istr beg = p;
-            while (p && *p != ch)
-                ++p;
-            istr s{ beg, p };
+            int num = 0;
+            while (pick_string(p, _simple))
+            {
+                ++num;
+            }
+            if (num > 1)
+                if (_simple)
+                    *_simple = false;
+            return istr{ beg, p };
+        }
+
+        static istr pick_string(istr& p, bool* _simple)
+        {
+            if (!is_string_tag(*p))
+                return {};
+            const char quote = *p;
+            istr beg = p;
             ++p;
+            while (p && *p != quote)
+            {
+                if (*p == tag::escape)
+                {
+                    ++p;
+                    if (_simple)
+                        *_simple = false;
+                }
+                ++p;
+            }
+            if (*p == quote)
+                ++p;
+            return istr{ beg, p };
+        }
+
+        static istr remove_quote(istr s)
+        {
+            char c = s.first_char();
+            if (is_string_tag(c))
+            {
+                s.remove_left(1);
+                if (s.last_char() == c)
+                    s.remove_right(1);
+            }
             return s;
+        }
+
+        static string unescape_string(istr _s)
+        {
+            if (!is_string_tag(_s.first_char()))
+                return _s;
+            string result;
+            while (istr slice = pick_string(_s, nullptr))
+            {
+                unescape(result, slice);
+            }
+            return result;
+        }
+
+        static void unescape(string& _result, istr _s)
+        {
+            istr p = remove_quote(_s);
+            while (p)
+            {
+                if (*p != tag::escape)
+                {
+                    _result += *p;
+                }
+                else
+                {
+                    ++p;
+                    const char c = *p;
+                    if (c == tag::escape || c == tag::string || c == tag::string2)
+                        _result << c;
+                    else if (c == 'r')
+                        _result << '\r';
+                    else if (c == 'n')
+                        _result << '\n';
+                    else if (c == 't')
+                        _result << '\t';
+                    else
+                    {
+                        _result << tag::escape << c;
+                    }
+                }
+                ++p;
+            }
         }
 
     };

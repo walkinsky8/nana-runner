@@ -90,7 +90,7 @@ namespace nana::runner {
         const char end = '}';
         const char assign = '=';
         const char space = ' ';
-        const char escape = '\\';
+        const char escape = '^';
         const char comment = '*';
 
         const std::string newline{ "\n" };
@@ -152,7 +152,7 @@ namespace nana::runner {
 
     inline bool is_base64_char(const char c) { return is_letter(c) || is_digit(c) || c=='+' || c=='/' || c=='='; }
 
-    inline bool is_quote_char(const char c) { return c == '\'' || c == '"'; }
+    inline bool is_quote_char(const char c) { return c == tag::string || c == tag::string2; }
 
     inline char to_upper(const char c) { return is_lower(c) ? (c - 'a' + 'A') : c; }
     inline char to_lower(const char c) { return is_upper(c) ? (c - 'A' + 'a') : c; }

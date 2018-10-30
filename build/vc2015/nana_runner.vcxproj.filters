@@ -38,6 +38,12 @@
     <Filter Include="base\util">
       <UniqueIdentifier>{d55f3023-d39a-4382-9b87-d082f4256b8c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="base\timer">
+      <UniqueIdentifier>{72c169cd-9018-4d52-a6db-d218836bd65a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="base\mt">
+      <UniqueIdentifier>{6beeebc9-74c2-4a1c-bedf-3a8e22100d1d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Image Include="small.ico">
@@ -117,9 +123,6 @@
     <ClCompile Include="..\..\nana\runner\widget_cfg.cpp">
       <Filter>foundation</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\nana\runner\cmdargs.cpp">
-      <Filter>base\types</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\nana\runner\base_config.cpp">
       <Filter>base</Filter>
     </ClCompile>
@@ -179,6 +182,9 @@
     </ClCompile>
     <ClCompile Include="..\..\nana\runner\treebox_cfg.cpp">
       <Filter>widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nana\runner\cmdargs.cpp">
+      <Filter>base\util</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -299,9 +305,6 @@
     <ClInclude Include="..\..\nana\runner\sample\editor_app.h">
       <Filter>__sample\editor</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\nana\runner\cmdargs.h">
-      <Filter>base\types</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\nana\runner\base_config.h">
       <Filter>base</Filter>
     </ClInclude>
@@ -379,6 +382,9 @@
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\tabpage_cfg.h">
       <Filter>widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nana\runner\cmdargs.h">
+      <Filter>base\util</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

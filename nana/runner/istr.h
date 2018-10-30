@@ -161,6 +161,16 @@ namespace nana::runner {
             return substr(size() - _len, _len);
         }
 
+        char first_char() const
+        {
+            return empty() ? 0 : me()[0];
+        }
+
+        char last_char() const
+        {
+            return empty() ? 0 : me()[size() - 1];
+        }
+
         const istr& me() const
         {
             return *this;
@@ -221,14 +231,30 @@ namespace nana::runner {
             return me().compare(_v) >= 0;
         }
 
-        bool startsWith(istr _s) const
+        bool starts_with(istr _s) const
         {
             return leftstr(_s.size()) == _s;
         }
 
-        bool endsWith(istr _s) const
+        bool ends_with(istr _s) const
         {
             return rightstr(_s.size()) == _s;
+        }
+
+        istr remove_left(size_t _n)
+        {
+            istr s = leftstr(_n);
+            me() += (int)_n;
+            return s;
+        }
+
+        istr remove_right(size_t _n)
+        {
+            istr s = rightstr(_n);
+            if (_n > size_)
+                _n = size_;
+            size_ -= _n;
+            return s;
         }
 
         bool to_bool() const

@@ -3,6 +3,17 @@
 
 #include <nana/runner/dumper.h>
 
+nana::runner::dumper& nana::runner::dumper::writeString(const istr& _v)
+{
+    bool isNull = _v == istr("null");
+    if (!isNull)
+        oss_ << tag::string;
+    oss_ << _v;
+    if (!isNull)
+        oss_ << tag::string;
+    return *this;
+}
+
 nana::runner::dumper& nana::runner::dumper::indent()
 {
     if (compact_)
