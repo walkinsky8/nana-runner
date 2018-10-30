@@ -83,18 +83,25 @@ namespace nana::runner {
 
     namespace tag
     {
-        const char type = '@';
+        const char key = '@';
         const char string = '\'';
         const char string2 = '"';
         const char begin = '{';
         const char end = '}';
         const char assign = '=';
-        const char space = ' ';
+
         const char escape = '^';
         const char comment = '*';
 
-        const std::string newline{ "\n" };
-        const std::string indent{ "    " };
+        const char space = ' ';
+        const char tab = '\t';
+        const char cr = '\r';
+        const char nl = '\n';
+
+        const std::string s_newline{ "\n" };
+        const std::string s_indent{ "    " };
+        const std::string s_raw{ "'''" };
+        const std::string s_raw2{ "\"\"\"" };
     }
 
     using int8 = std::int8_t;

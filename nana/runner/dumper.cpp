@@ -19,9 +19,9 @@ nana::runner::dumper& nana::runner::dumper::indent()
     if (compact_)
         return write(tag::space);
 
-    write(tag::newline);
+    write(tag::s_newline);
     for (int i = 0; i < level_; ++i)
-        write(tag::indent);
+        write(tag::s_indent);
     return *this;
 }
 
@@ -39,7 +39,7 @@ nana::runner::dumper& nana::runner::dumper::writeName(string _name)
 nana::runner::dumper& nana::runner::dumper::enter(string _type)
 {
     if (!_type.empty())
-        write(tag::type).write(_type);
+        write(tag::key).write(_type);
     write(tag::begin);
     ++level_;
     return *this;

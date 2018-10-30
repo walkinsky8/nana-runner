@@ -10,21 +10,12 @@ namespace nana::runner::detail {
     //TODO: comment
     //TODO: escape
 
-    // @type { name=value }
-    enum class token
-    {
-        type, // @
-        begin, // {
-        end, // }
-        name,
-        assign, // =
-        value,
-        eof
-    };
+    // @type{ name=value name="string" @type{} @type{} }
+    // string escape: "^^" "^"" '^'' "\t\r\n"
 
     bool is_type_begin(const char c)
     {
-        return c == tag::type;
+        return c == tag::key;
     }
 
     bool is_type_end(const char c)
@@ -47,14 +38,14 @@ namespace nana::runner::detail {
         return is_quote_char(c);
     }
 
-    bool is_name_or_value_end0(const char c)
+    bool is_name_or_value_end000(const char c)
     {
         return c == tag::assign || c == tag::end || is_string_tag(c) || is_blank(c);
     }
 
     bool is_word_end(const char c)
     {
-        return c == tag::type || c == tag::begin || c == tag::assign || c == tag::end || is_string_tag(c) || is_blank(c);
+        return c == tag::key || c == tag::begin || c == tag::assign || c == tag::end || is_string_tag(c) || is_blank(c);
     }
 
     class tokenizer
@@ -101,7 +92,7 @@ namespace nana::runner::detail {
                     return true;
             }
 
-            if (*p_ == tag::type)
+            if (*p_ == tag::key)
             {
                 if (word) 
                     throw_error("extra word before @: " + word);
@@ -123,7 +114,7 @@ namespace nana::runner::detail {
                     bool simple = true;
                     istr strval = read_string(p_, &simple);
                     if (simple) 
-                        _node.value(remove_quote(strval)); // no escape, not multiple
+                        _node.value(unquote_string(strval, nullptr)); // no escape, not multiple
                     else
                         _node.value(unescape_string(strval));
                     return true;
@@ -182,6 +173,8 @@ namespace nana::runner::detail {
             if (!is_string_tag(*p))
                 return {};
             const char quote = *p;
+            if (quote == *(p + 1) && quote == *(p + 2))
+                return pick_raw_string(p);
             istr beg = p;
             ++p;
             while (p && *p != quote)
@@ -194,19 +187,44 @@ namespace nana::runner::detail {
                 }
                 ++p;
             }
-            if (*p == quote)
-                ++p;
+            ++p;
             return istr{ beg, p };
         }
 
-        static istr remove_quote(istr s)
+        static istr pick_raw_string(istr& p)
         {
-            char c = s.first_char();
+            const char quote = *p;
+            istr beg = p;
+            p += 3;
+            while (p && (*p != quote || *(p + 1) != quote || *(p + 2) != quote))
+                ++p;
+            p += 3;
+            return istr{ beg, p };
+        }
+
+        static istr unquote_string(istr s, bool* _raw)
+        {
+            const char c = s.first_char();
             if (is_string_tag(c))
             {
-                s.remove_left(1);
+                bool raw = false;
+                if (c == s[1] && c == s[2])
+                {
+                    s += 2;
+                    raw = true;
+                }
+                ++s;
                 if (s.last_char() == c)
                     s.remove_right(1);
+                if (raw)
+                {
+                    if (s.last_char() == c)
+                        s.remove_right(1);
+                    if (s.last_char() == c)
+                        s.remove_right(1);
+                }
+                if (_raw)
+                    *_raw = raw;
             }
             return s;
         }
@@ -225,12 +243,18 @@ namespace nana::runner::detail {
 
         static void unescape(string& _result, istr _s)
         {
-            istr p = remove_quote(_s);
+            bool raw = false;
+            istr p = unquote_string(_s, &raw);
+            if (raw)
+            {
+                _result << p;
+                return;
+            }
             while (p)
             {
                 if (*p != tag::escape)
                 {
-                    _result += *p;
+                    _result << *p;
                 }
                 else
                 {
@@ -239,11 +263,11 @@ namespace nana::runner::detail {
                     if (c == tag::escape || c == tag::string || c == tag::string2)
                         _result << c;
                     else if (c == 'r')
-                        _result << '\r';
+                        _result << tag::cr;
                     else if (c == 'n')
-                        _result << '\n';
+                        _result << tag::nl;
                     else if (c == 't')
-                        _result << '\t';
+                        _result << tag::tab;
                     else
                     {
                         _result << tag::escape << c;

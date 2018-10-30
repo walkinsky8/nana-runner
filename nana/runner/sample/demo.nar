@@ -41,7 +41,7 @@
         bgcolor=green
         @label{
             id=value
-            caption="Hello, world!"
+            caption="""Hello, world!^"'"""
             div='weight=60%'
             bgcolor='#c0c0c0'
             fgcolor=black
@@ -90,7 +90,7 @@
     }
     @textbox{
         id=text
-        caption='Hello, world!^n'"'abc'"'"123"^n'"^t^^ ^"^'^r^n"
+        caption='Hello, world!^n'"'abc'"'"123"^n'"^t^^ ^"^'^r^n"'''^'""'''
         div="weight=80"
         align=left
         bgcolor="white"
