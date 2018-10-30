@@ -1,5 +1,6 @@
-﻿@form{
-    id=demo
+﻿@* demo each widget cfg *@
+@form{
+    id=demo  @* id *@
     div="vert"
     pos={-300 -400}
     size={600 800}

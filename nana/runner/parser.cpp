@@ -10,8 +10,10 @@ namespace nana::runner::detail {
     //TODO: comment
     //TODO: escape
 
-    // @type{ name=value name="string" @type{} @type{} }
-    // string escape: "^^" "^"" '^'' "\t\r\n"
+    // @type{ name=value name='string' name="string" @type{} @type{} }
+    // string escape: ^^ ^" ^' ^t ^r ^n
+    // multiple string merge: '..'".."'..'
+    // raw string: '''...'''  """..."""
 
     bool is_type_begin(const char c)
     {
@@ -38,11 +40,6 @@ namespace nana::runner::detail {
         return is_quote_char(c);
     }
 
-    bool is_name_or_value_end000(const char c)
-    {
-        return c == tag::assign || c == tag::end || is_string_tag(c) || is_blank(c);
-    }
-
     bool is_word_end(const char c)
     {
         return c == tag::key || c == tag::begin || c == tag::assign || c == tag::end || is_string_tag(c) || is_blank(c);
@@ -62,7 +59,7 @@ namespace nana::runner::detail {
 
         bool read(node& _node)
         {
-            p_.read(is_blank);
+            skip_blanks(p_);
             if (!p_)
                 return false;
             //p_·Ç¿Õ
@@ -100,7 +97,7 @@ namespace nana::runner::detail {
                 word = p_.read_until(is_type_end); //c == tag::begin || is_blank(c)
                 _node.type(word);
                 word.clear();
-                p_.read(is_blank);
+                skip_blanks(p_);
                 if (*p_ != tag::begin)
                     throw_error("no { after type");
             }
@@ -154,6 +151,19 @@ namespace nana::runner::detail {
         }
 
     private:
+        static void skip_blanks(istr& _p)
+        {
+            _p.read(is_blank);
+            if (*_p == tag::key && *(_p + 1) == tag::comment)
+            {
+                _p += 2;
+                while (_p && (*_p != tag::comment || *(_p + 1) != tag::key))
+                    ++_p;
+                _p += 2;
+                _p.read(is_blank);
+            }
+        }
+
         static istr read_string(istr& p, bool* _simple)
         {
             istr beg = p;
