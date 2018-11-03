@@ -55,7 +55,10 @@ namespace nana::runner::sample::view {
             run_.events().click([this] { run(); });
             quit_.events().click([this] { close(); });
 
-            form_.events().destroy([this] { close_current(); });
+            form_.events().destroy([this] {
+                close_current();
+                app::quit();
+            });
         }
 
         void on_setup(std::function<void()> _f)

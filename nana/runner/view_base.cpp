@@ -35,7 +35,7 @@ void nana::runner::view_obj::close()
 void nana::runner::view_obj::add_widget(wnd_ptr _w, widget_cfg& _cfg)
 {
     id path_in_root_view = _cfg.id_path();
-    NAR_LOG_VAR(path_in_root_view);
+    //NAR_LOG_DEBUG(path_in_root_view);
     m_widgets[path_in_root_view] = _w;
     m_cfgs[path_in_root_view] = &_cfg;
 
@@ -84,6 +84,7 @@ nana::runner::view_obj const * nana::runner::view_obj::child_view(id _id) const
 
 void nana::runner::view_obj::make_child_widgets(widget_cfg& _cfg, view_obj* _root_view, widget_cfg* _parent_cfg, nana::window _parent_wnd, bool _visible)
 {
+    NAR_LOG_DEBUG(_cfg.id_path());
     if (_cfg.id_().empty() || !_cfg.has_ui_widget())
         return;
 
@@ -105,7 +106,7 @@ void nana::runner::view_obj::make_child_widgets(widget_cfg& _cfg, view_obj* _roo
 
 void nana::runner::view_obj::init(bool _visible, window _parent)
 {
-    NAR_LOG_VAR(cfg().get_caption());
+    //NAR_LOG_DEBUG(cfg().get_caption());
 
     m_self_wnd = cfg().create_wnd(_parent, _visible);
     if (!m_self_wnd)

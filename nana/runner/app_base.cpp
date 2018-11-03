@@ -10,6 +10,8 @@ nana::runner::app::app()
     if (instance_ != nullptr)
         throw std::invalid_argument("app instance should not be more than one");
 
+    log_thread::instance().open();
+
     NAR_LOG("initializing...");
     init_enums();
     init_widgets();
@@ -19,6 +21,7 @@ nana::runner::app::app()
 
 nana::runner::app::~app()
 {
+    log_thread::instance().close();
     instance_ = nullptr;
 }
 

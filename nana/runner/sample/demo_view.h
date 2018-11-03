@@ -109,10 +109,10 @@ namespace nana::runner::sample::view {
             , spin_{ wnd<spinbox>("cmd.spin") }
             , quit_{ wnd<button>("cmd.close") }
         {
-            set_log_handler([this](const string& s) {
-                write_console(s);
-                text_.append(s, false);
-            });
+            //set_log_handler([this](const string& s) {
+            //    write_console(s);
+            //    text_.append(s, false);
+            //});
 
             categorize_.caption(fs::current_path());
 

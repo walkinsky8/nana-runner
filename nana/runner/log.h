@@ -25,10 +25,11 @@ namespace nana::runner {
 
     void write_console(const string& _msg);
 
-    struct out
+    class out
     {
         std::ostringstream oss_;
 
+    public:
         ~out();
 
         std::string str() const
@@ -62,30 +63,75 @@ namespace nana::runner {
     };
     using enum_log_level = enum_<log_level, LL_UNKNOWN>;
 
-    struct log
+    struct log_head
     {
-        out oss_;
+        datetime dt_;
+        log_level ll_;
+        pcstr file_;
+        int line_;
+        pcstr func_;
+
+        log_head(log_level _ll, pcstr _file, int _line, pcstr _func);
+
+        void write(std::ostream& _os) const;
+
+    };
+
+    class log
+    {
+        log_head head_;
+        std::ostringstream buf_;
         
+    public:
         log(log_level _ll, pcstr _file, int _line, pcstr _func);
         ~log();
-
-        std::string str() const
-        {
-            return oss_.str();
-        }
 
         template<class T>
         inline log& operator<<(const T& _v)
         {
-            oss_ << _v;
+            buf_ << _v;
             return *this;
         }
 
         inline log& operator<<(std::ostream& (__cdecl *_Pfn)(std::ostream&))
         {
-            oss_ << _Pfn;
+            buf_ << _Pfn;
             return *this;
         }
+
+    };
+
+    class log_record
+    {
+        log_head head_;
+        string buf_;
+
+    public:
+        log_record(log_head const& _head, string const& _buf);
+
+        void write() const;
+
+    };
+
+    class log_thread
+    {
+        std::queue<log_record> records_;
+
+        std::shared_ptr<std::thread> thr_;
+        volatile bool running_{ true };
+
+    public:
+        static log_thread& instance();
+
+        log_thread();
+
+        void put(log_record&& _record);
+
+        void open();
+
+        void close();
+
+        void run();
 
     };
 

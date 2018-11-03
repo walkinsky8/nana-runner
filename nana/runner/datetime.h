@@ -64,20 +64,8 @@ namespace nana {
 
     void operator>>(const std::string& _is, date& _v);
     std::ostream& operator<<(std::ostream& _os, const date& _v);
-    inline std::string& operator<<(std::string& _os, const date& _v)
-    {
-        std::ostringstream oss;
-        oss << _v;
-        return _os << oss.str();
-    }
 
     void operator>>(const std::string& _is, time& _v);
     std::ostream& operator<<(std::ostream& _os, const time& _v);
-    inline std::string& operator<<(std::string& _os, const time& _v)
-    {
-        std::ostringstream oss;
-        oss << _v;
-        return _os << oss.str();
-    }
 
 }
