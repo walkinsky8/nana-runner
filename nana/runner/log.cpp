@@ -33,16 +33,7 @@ nana::runner::log_head::log_head(log_level _ll, pcstr _file, int _line, pcstr _f
 {
 }
 
-void nana::runner::log_head::write(std::ostream& _os) const
-{
-    _os << dt_
-        << "[" << enum_log_level{ ll_ }.str() << "]"
-        << "" << strings_merge(strings_sub(strings_from(func_, "::"), -2), "::")
-        << "(" << fs::path{ file_ }.filename() << ":" << line_ << ")"
-        ;
-}
-
-nana::runner::log_record::log_record(log_head const& _head, string const& _buf)
+nana::runner::log_record::log_record(log_head && _head, string && _buf)
     : head_{ _head }, buf_{ _buf }
 {
 }
@@ -50,8 +41,29 @@ nana::runner::log_record::log_record(log_head const& _head, string const& _buf)
 void nana::runner::log_record::write() const
 {
     std::ostringstream oss;
-    head_.write(oss);
-    oss << " " << buf_;
+
+    pcstr beg = head_.func_;
+    pcstr end = beg + std::strlen(beg);
+    pcstr p = end;
+    int num = 2;
+    while (num-- > 0)
+    {
+        if (p > beg)
+            --p;
+        while (p > beg && (*p != ':' || *(p - 1) != ':'))
+        {
+            --p;
+        }
+    }
+    if (*p == ':')
+        ++p;
+    pcstr classfunc = p;
+
+    oss << head_.dt_
+        << "[" << enum_log_level{ head_.ll_ }.str() << "]"
+        << "" << classfunc
+        << "(" << fs::path{ head_.file_ }.filename() << ":" << head_.line_ << ")"
+        << " " << buf_;
 
     __log_handler(oss.str());
 }
@@ -65,7 +77,7 @@ nana::runner::log::~log()
 {
     buf_ << std::endl;
 
-    log_thread::instance().put(log_record{ head_, buf_.str() });
+    log_thread::instance().put(log_record{ std::move(head_), buf_.str() });
 }
 
 nana::runner::log_thread& nana::runner::log_thread::instance()
@@ -108,13 +120,14 @@ void nana::runner::log_thread::run()
         std::queue<log_record> tmp;
         //TODO should use thread safe queue
         tmp.swap(records_);
-        while (!tmp.empty())
+        while (!tmp.empty() && running_)
         {
             log_record r = tmp.front();
             tmp.pop();
             r.write();
         }
-        nana::system::sleep(100);
+        if (running_)
+            nana::system::sleep(100);
     }
 }
 

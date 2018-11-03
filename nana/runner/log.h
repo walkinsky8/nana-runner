@@ -73,8 +73,6 @@ namespace nana::runner {
 
         log_head(log_level _ll, pcstr _file, int _line, pcstr _func);
 
-        void write(std::ostream& _os) const;
-
     };
 
     class log
@@ -107,7 +105,7 @@ namespace nana::runner {
         string buf_;
 
     public:
-        log_record(log_head const& _head, string const& _buf);
+        log_record(log_head && _head, string && _buf);
 
         void write() const;
 
