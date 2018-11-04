@@ -398,7 +398,24 @@
     <ClInclude Include="..\..\nana\runner\util.h">
       <Filter>base\util</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\nana\runner\mt_queue.h" />
+    <ClInclude Include="..\..\nana\runner\mt_queue.h">
+      <Filter>base\mt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nana\runner\mt_cond.h">
+      <Filter>base\mt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nana\runner\mt_monitor.h">
+      <Filter>base\mt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nana\runner\mt_mutex.h">
+      <Filter>base\mt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nana\runner\mt_recmutex.h">
+      <Filter>base\mt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nana\runner\mt_lock.h">
+      <Filter>base\mt</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\nana\runner\sample\color.nar">

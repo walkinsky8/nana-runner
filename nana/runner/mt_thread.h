@@ -3,9 +3,9 @@
 
 #include <nana/runner/base_config.h>
 
-#include <nana/runner/base_types.h>
-
-#include <nana/threads/pool.hpp>
+#include <thread>
+#include <mutex>
+#include <condition_variable>
 
 namespace nana::runner {
 

@@ -77,21 +77,22 @@ nana::runner::log_thread::log_thread()
 
 void nana::runner::log_thread::put(log_record&& _record)
 {
-    records_.push(_record);
+    records_.put(std::move(_record));
 }
 
 void nana::runner::log_thread::on_loop()
 {
     log_record r;
-    while (running() && records_.try_pop(r))
+    while (running() && records_.get(r))
     {
         r.write();
     }
     if (running())
-        nana::system::sleep(100);
+        nana::system::sleep(1000);
 }
 
 void nana::runner::log_thread::on_close()
 {
+    records_.notify();
 }
 

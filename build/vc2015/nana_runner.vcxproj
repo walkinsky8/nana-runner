@@ -244,7 +244,12 @@
     <ClInclude Include="..\..\nana\runner\menubar_cfg.h" />
     <ClInclude Include="..\..\nana\runner\menu_cfg.h" />
     <ClInclude Include="..\..\nana\runner\model_base.h" />
+    <ClInclude Include="..\..\nana\runner\mt_cond.h" />
+    <ClInclude Include="..\..\nana\runner\mt_lock.h" />
+    <ClInclude Include="..\..\nana\runner\mt_monitor.h" />
+    <ClInclude Include="..\..\nana\runner\mt_mutex.h" />
     <ClInclude Include="..\..\nana\runner\mt_queue.h" />
+    <ClInclude Include="..\..\nana\runner\mt_recmutex.h" />
     <ClInclude Include="..\..\nana\runner\mt_thread.h" />
     <ClInclude Include="..\..\nana\runner\node.h" />
     <ClInclude Include="..\..\nana\runner\optional.h" />
