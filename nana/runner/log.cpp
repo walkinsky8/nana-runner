@@ -82,13 +82,9 @@ void nana::runner::log_thread::put(log_record&& _record)
 
 void nana::runner::log_thread::on_loop()
 {
-    std::queue<log_record> tmp;
-    //TODO should use thread safe queue
-    tmp.swap(records_);
-    while (!tmp.empty() && running())
+    log_record r;
+    while (running() && records_.try_pop(r))
     {
-        log_record r = tmp.front();
-        tmp.pop();
         r.write();
     }
     if (running())

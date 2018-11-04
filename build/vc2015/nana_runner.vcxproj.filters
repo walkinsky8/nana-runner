@@ -398,6 +398,7 @@
     <ClInclude Include="..\..\nana\runner\util.h">
       <Filter>base\util</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\nana\runner\mt_queue.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\nana\runner\sample\color.nar">

@@ -8,6 +8,7 @@
 #include <nana/runner/util.h>
 
 #include <nana/runner/mt_thread.h>
+#include <nana/runner/mt_queue.h>
 
 #define NAR_LOG_VAR(x)     NAR_LOG_NV(#x, x)
 #define NAR_LOG_NV(n, v)   NAR_LOG_DEBUG(n << " = " << v)
@@ -73,6 +74,7 @@ namespace nana::runner {
         int line_;
         pcstr func_;
 
+        log_head() = default;
         log_head(log_level _ll, pcstr _file, int _line, pcstr _func);
 
     };
@@ -107,6 +109,7 @@ namespace nana::runner {
         string buf_;
 
     public:
+        log_record() = default;
         log_record(log_head && _head, string && _buf);
 
         void write() const;
@@ -115,7 +118,7 @@ namespace nana::runner {
 
     class log_thread : public simple_thread
     {
-        std::queue<log_record> records_;
+        mt::queue<log_record> records_;
 
     public:
         static log_thread& instance();
