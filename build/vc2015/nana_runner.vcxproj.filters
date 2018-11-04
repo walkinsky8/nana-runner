@@ -186,6 +186,12 @@
     <ClCompile Include="..\..\nana\runner\cmdargs.cpp">
       <Filter>base\util</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\nana\runner\mt_thread.cpp">
+      <Filter>base\mt</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nana\runner\util.cpp">
+      <Filter>base\util</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\nana\runner\base.h">
@@ -384,6 +390,12 @@
       <Filter>widgets</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\cmdargs.h">
+      <Filter>base\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nana\runner\mt_thread.h">
+      <Filter>base\mt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nana\runner\util.h">
       <Filter>base\util</Filter>
     </ClInclude>
   </ItemGroup>

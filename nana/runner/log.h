@@ -5,6 +5,10 @@
 
 #include <nana/runner/base_types.h>
 
+#include <nana/runner/util.h>
+
+#include <nana/runner/mt_thread.h>
+
 #define NAR_LOG_VAR(x)     NAR_LOG_NV(#x, x)
 #define NAR_LOG_NV(n, v)   NAR_LOG_DEBUG(n << " = " << v)
 #define NAR_LOG(x)         NAR_LOG_INFO(x)
@@ -22,8 +26,6 @@ namespace nana::runner {
     using log_handler = std::function<void(const string&)>;
     log_handler get_log_handler();
     log_handler set_log_handler(log_handler);
-
-    void write_console(const string& _msg);
 
     class out
     {
@@ -111,12 +113,9 @@ namespace nana::runner {
 
     };
 
-    class log_thread
+    class log_thread : public simple_thread
     {
         std::queue<log_record> records_;
-
-        std::shared_ptr<std::thread> thr_;
-        volatile bool running_{ true };
 
     public:
         static log_thread& instance();
@@ -125,11 +124,10 @@ namespace nana::runner {
 
         void put(log_record&& _record);
 
-        void open();
+    protected:
+        void on_loop() override;
 
-        void close();
-
-        void run();
+        void on_close() override;
 
     };
 

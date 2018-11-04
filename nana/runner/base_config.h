@@ -19,10 +19,9 @@
 #include <cassert>
 
 #include <nana/gui.hpp>
+#include <nana/system/platform.hpp>
 #include <nana/filesystem/filesystem.hpp>
 #include <nana/filesystem/filesystem_ext.hpp>
-#include <nana/system/platform.hpp>
-#include <nana/threads/pool.hpp>
 
 #define NAR_V(x) m_##x
 #define NAR_F(x) x##_

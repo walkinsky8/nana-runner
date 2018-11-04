@@ -19,11 +19,6 @@ nana::runner::log_handler nana::runner::set_log_handler(log_handler lh)
     return old;
 }
 
-void nana::runner::write_console(const string& _msg)
-{
-    OutputDebugStringW(nana::to_wstring(_msg).c_str());
-}
-
 nana::runner::out::~out()
 {
 }
@@ -40,25 +35,9 @@ nana::runner::log_record::log_record(log_head && _head, string && _buf)
 
 void nana::runner::log_record::write() const
 {
+    pcstr classfunc = find_classfunc(head_.func_);
+
     std::ostringstream oss;
-
-    pcstr beg = head_.func_;
-    pcstr end = beg + std::strlen(beg);
-    pcstr p = end;
-    int num = 2;
-    while (num-- > 0)
-    {
-        if (p > beg)
-            --p;
-        while (p > beg && (*p != ':' || *(p - 1) != ':'))
-        {
-            --p;
-        }
-    }
-    if (*p == ':')
-        ++p;
-    pcstr classfunc = p;
-
     oss << head_.dt_
         << "[" << enum_log_level{ head_.ll_ }.str() << "]"
         << "" << classfunc
@@ -101,33 +80,22 @@ void nana::runner::log_thread::put(log_record&& _record)
     records_.push(_record);
 }
 
-void nana::runner::log_thread::open()
+void nana::runner::log_thread::on_loop()
 {
-    thr_ = std::make_shared<std::thread>(std::bind(&log_thread::run, this));
-}
-
-void nana::runner::log_thread::close()
-{
-    running_ = false;
-    thr_->join();
-    thr_ = nullptr;
-}
-
-void nana::runner::log_thread::run()
-{
-    while (running_)
+    std::queue<log_record> tmp;
+    //TODO should use thread safe queue
+    tmp.swap(records_);
+    while (!tmp.empty() && running())
     {
-        std::queue<log_record> tmp;
-        //TODO should use thread safe queue
-        tmp.swap(records_);
-        while (!tmp.empty() && running_)
-        {
-            log_record r = tmp.front();
-            tmp.pop();
-            r.write();
-        }
-        if (running_)
-            nana::system::sleep(100);
+        log_record r = tmp.front();
+        tmp.pop();
+        r.write();
     }
+    if (running())
+        nana::system::sleep(100);
+}
+
+void nana::runner::log_thread::on_close()
+{
 }
 

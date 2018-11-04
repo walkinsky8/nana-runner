@@ -11,6 +11,9 @@
 #include <nana/runner/parser.h>
 
 #include <nana/runner/cmdargs.h>
+#include <nana/runner/util.h>
+
+#include <nana/runner/mt_thread.h>
 
 namespace nana::runner {
 

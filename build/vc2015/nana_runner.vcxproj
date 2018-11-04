@@ -184,6 +184,7 @@
     <ClCompile Include="..\..\nana\runner\menubar_cfg.cpp" />
     <ClCompile Include="..\..\nana\runner\menu_cfg.cpp" />
     <ClCompile Include="..\..\nana\runner\model_base.cpp" />
+    <ClCompile Include="..\..\nana\runner\mt_thread.cpp" />
     <ClCompile Include="..\..\nana\runner\node.cpp" />
     <ClCompile Include="..\..\nana\runner\panel_cfg.cpp" />
     <ClCompile Include="..\..\nana\runner\panel_lite_cfg.cpp" />
@@ -199,6 +200,7 @@
     <ClCompile Include="..\..\nana\runner\textbox_cfg.cpp" />
     <ClCompile Include="..\..\nana\runner\toolbar_cfg.cpp" />
     <ClCompile Include="..\..\nana\runner\treebox_cfg.cpp" />
+    <ClCompile Include="..\..\nana\runner\util.cpp" />
     <ClCompile Include="..\..\nana\runner\view_base.cpp" />
     <ClCompile Include="..\..\nana\runner\view_factory.cpp" />
     <ClCompile Include="..\..\nana\runner\widget_all.cpp" />
@@ -242,6 +244,7 @@
     <ClInclude Include="..\..\nana\runner\menubar_cfg.h" />
     <ClInclude Include="..\..\nana\runner\menu_cfg.h" />
     <ClInclude Include="..\..\nana\runner\model_base.h" />
+    <ClInclude Include="..\..\nana\runner\mt_thread.h" />
     <ClInclude Include="..\..\nana\runner\node.h" />
     <ClInclude Include="..\..\nana\runner\optional.h" />
     <ClInclude Include="..\..\nana\runner\option_cfg.h" />
@@ -272,6 +275,7 @@
     <ClInclude Include="..\..\nana\runner\toolbar_cfg.h" />
     <ClInclude Include="..\..\nana\runner\treebox_cfg.h" />
     <ClInclude Include="..\..\nana\runner\unknown_cfg.h" />
+    <ClInclude Include="..\..\nana\runner\util.h" />
     <ClInclude Include="..\..\nana\runner\view_base.h" />
     <ClInclude Include="..\..\nana\runner\view_factory.h" />
     <ClInclude Include="..\..\nana\runner\widget_all.h" />
