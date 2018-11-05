@@ -92,12 +92,13 @@ void nana::runner::log_thread::on_loop()
     }
     else if (running())
     {
-        nana::system::sleep(500);
+        wait(500);
     }
 }
 
 void nana::runner::log_thread::on_close()
 {
     records_.cancel();
+    wakeup();
 }
 

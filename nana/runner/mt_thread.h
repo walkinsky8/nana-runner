@@ -4,8 +4,8 @@
 #include <nana/runner/base_config.h>
 
 #include <thread>
-#include <mutex>
-#include <condition_variable>
+#include <nana/runner/mt_monitor.h>
+#include <nana/runner/mt_mutex.h>
 
 namespace nana::runner {
 
@@ -13,7 +13,10 @@ namespace nana::runner {
     {
         std::shared_ptr<std::thread> thr_;
 
+        mt::monitor<mt::mutex> mon_;
+
         volatile bool running_{ true };
+        volatile bool paused_{ false };
 
     public:
         virtual ~simple_thread() = default;
@@ -23,8 +26,17 @@ namespace nana::runner {
         void close();
 
         void stop_running();
+        bool running() const;
 
-        bool running() const { return running_; }
+        void pause();
+        void resume();
+        bool paused() const;
+
+        void wakeup();
+        void wait();
+        void wait(unsigned _milliseconds);
+
+        static void sleep(unsigned _milliseconds);
 
     protected:
         virtual void run();

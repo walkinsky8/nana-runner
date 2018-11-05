@@ -6,17 +6,19 @@
 #include <sstream>
 #include <fstream>
 #include <string>
+
 #include <cstdlib>
 #include <cstdio>
 #include <cstdint>
+#include <cassert>
 
 #include <vector>
 #include <queue>
 #include <map>
 
 #include <functional>
-
-#include <cassert>
+#include <ratio>
+#include <chrono>
 
 #include <nana/gui.hpp>
 #include <nana/system/platform.hpp>

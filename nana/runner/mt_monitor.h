@@ -45,6 +45,35 @@ namespace nana::runner::mt {
             cond_.wait(mtx_);
         }
         
+        void wait(unsigned _milliseconds)
+        {
+            cond_.wait_for(mtx_, std::chrono::milliseconds(_milliseconds));
+        }
+
+        void notify_one_with_lock() noexcept
+        {
+            _Lock __(mtx_);
+            notify_one();
+        }
+
+        void notify_all_with_lock() noexcept
+        {
+            _Lock __(mtx_);
+            notify_all();
+        }
+
+        void wait_with_lock()
+        {
+            _Lock __(mtx_);
+            wait();
+        }
+
+        void wait_with_lock(unsigned _milliseconds)
+        {
+            _Lock __(mtx_);
+            wait(_milliseconds);
+        }
+
     };
 
 }
