@@ -21,7 +21,10 @@ void nana::runner::simple_thread::run()
     on_birth();
     while (running())
     {
-        on_loop();
+        if (!paused())
+            on_loop();
+        else
+            wait(100);
     }
     on_death();
 }

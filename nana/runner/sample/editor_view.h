@@ -94,6 +94,7 @@ namespace nana::runner::sample::view {
 
         void run()
         {
+            log_thread::instance().pause();
             wstring fname;
             filename_ >> fname;
             string fbuf;
@@ -106,6 +107,7 @@ namespace nana::runner::sample::view {
 			current_ = view_obj::make_view(*curr_cfg_, nullptr);
             if (current_)
                 current_->show();
+            log_thread::instance().resume();
         }
 
         void close_current()

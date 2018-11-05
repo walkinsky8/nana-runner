@@ -82,13 +82,13 @@ void nana::runner::log_thread::on_loop()
     _Q::_Queue q;
     if (records_.get(q))
     {
-        std::ostringstream oss;
         while (running() && !q.empty())
         {
+            std::ostringstream oss;
             oss << q.front();
             q.pop();
+            __log_handler(oss.str());
         }
-        __log_handler(oss.str());
     }
     else if (running())
     {
