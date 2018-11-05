@@ -11,8 +11,13 @@ namespace nana::runner::mt {
     template<class _Mutex>
     class monitor
     {
+    public:
+        typedef _Mutex _Mtx;
+        typedef std::lock_guard<_Mtx> _Lock;
+        typedef std::condition_variable_any _Cond;
+    private:
         _Mutex mtx_;
-        std::condition_variable_any cond_;
+        _Cond cond_;
 
     public:
         void lock()
@@ -25,7 +30,12 @@ namespace nana::runner::mt {
             mtx_.unlock();
         }
 
-        void notify() noexcept
+        void notify_one() noexcept
+        {
+            cond_.notify_one();
+        }
+
+        void notify_all() noexcept
         {
             cond_.notify_all();
         }

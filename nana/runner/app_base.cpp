@@ -78,7 +78,9 @@ nana::runner::cfg_ptr nana::runner::app::load_cfg(const wstring& _filename)
 
     cfg_ptr cfg = create_cfg(cfgdata);
     if (cfg)
-        cfg->fullpath_(fullpath);
+    {
+        //cfg->fullpath_(fullpath);
+    }
     return cfg;
 }
 

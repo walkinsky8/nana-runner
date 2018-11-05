@@ -10,7 +10,7 @@
     typeface={ 10 }
     @textbox{
         id=filename
-        caption=null
+        caption='demo'
         tooltip="file name"
         div="weight=25"
         multi_lines=0

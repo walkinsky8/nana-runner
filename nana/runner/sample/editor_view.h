@@ -47,7 +47,7 @@ namespace nana::runner::sample::view {
             , setup_{ wnd<button>("cmd.setup") }
             , quit_{ wnd<button>("cmd.close") }
         {
-            filename_ << cfg().fullpath_();
+            //filename_ << cfg().fullpath_();
             load();
 
             load_.events().click([this] { load(); });

@@ -4,35 +4,39 @@
 #include <nana/runner/base_config.h>
 
 #include <nana/runner/mt_mutex.h>
-#include <nana/runner/mt_monitor.h>
+#include <nana/runner/mt_cond.h>
 #include <nana/runner/mt_lock.h>
-#include <nana/runner/mt_queue.h>
+#include <queue>
 
 namespace nana::runner::mt {
 
     template<class T>
     class queue
     {
+    public:
         typedef mt::mutex _Mtx;
-        typedef mt::monitor<_Mtx> _Mon;
-        typedef mt::lock_guard<_Mon> _Lock;
+        typedef mt::condition_variable _Cond;
+        typedef mt::unique_lock<_Mtx> _Lock;
         typedef std::queue<T> _Queue;
-        _Mon mon_;
+
+    private:
+        _Mtx mtx_;
+        _Cond cond_;
         _Queue q_;
 
     public:
         void put(T&& _v)
         {
-            _Lock __(mon_);
+            _Lock __(mtx_);
             q_.push(_v);
-            mon_.notify();
+            cond_.notify_one();
         }
 
         bool get(T& _v)
         {
-            _Lock __(mon_);
+            _Lock __(mtx_);
             if (q_.empty())
-                mon_.wait();
+                cond_.wait(__);
             if (q_.empty())
                 return false;
             _v = q_.front();
@@ -40,10 +44,21 @@ namespace nana::runner::mt {
             return true;
         }
 
-        void notify()
+        bool get(_Queue& _v)
         {
-            _Lock __(mon_);
-            mon_.notify();
+            _Lock __(mtx_);
+            if (q_.empty())
+                cond_.wait(__);
+            if (q_.empty())
+                return false;
+            _v.swap(q_);
+            return true;
+        }
+
+        void cancel()
+        {
+            _Lock __(mtx_);
+            cond_.notify_all();
         }
 
     };

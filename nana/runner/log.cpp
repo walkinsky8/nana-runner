@@ -33,18 +33,15 @@ nana::runner::log_record::log_record(log_head && _head, string && _buf)
 {
 }
 
-void nana::runner::log_record::write() const
+std::ostream& nana::runner::log_record::dump(std::ostream& _os) const
 {
     pcstr classfunc = find_classfunc(head_.func_);
-
-    std::ostringstream oss;
-    oss << head_.dt_
+    _os << head_.dt_
         << "[" << enum_log_level{ head_.ll_ }.str() << "]"
         << "" << classfunc
         << "(" << fs::path{ head_.file_ }.filename() << ":" << head_.line_ << ")"
         << " " << buf_;
-
-    __log_handler(oss.str());
+    return _os;
 }
 
 nana::runner::log::log(log_level _ll, pcstr _file, int _line, pcstr _func)
@@ -82,17 +79,25 @@ void nana::runner::log_thread::put(log_record&& _record)
 
 void nana::runner::log_thread::on_loop()
 {
-    log_record r;
-    while (running() && records_.get(r))
+    _Q::_Queue q;
+    if (records_.get(q))
     {
-        r.write();
+        std::ostringstream oss;
+        while (running() && !q.empty())
+        {
+            oss << q.front();
+            q.pop();
+        }
+        __log_handler(oss.str());
     }
-    if (running())
-        nana::system::sleep(1000);
+    else if (running())
+    {
+        nana::system::sleep(500);
+    }
 }
 
 void nana::runner::log_thread::on_close()
 {
-    records_.notify();
+    records_.cancel();
 }
 

@@ -112,13 +112,18 @@ namespace nana::runner {
         log_record() = default;
         log_record(log_head && _head, string && _buf);
 
-        void write() const;
+        std::ostream& dump(std::ostream& _os) const;
 
     };
+    inline std::ostream& operator<<(std::ostream& _os, const log_record& _v)
+    {
+        return _v.dump(_os);
+    }
 
     class log_thread : public simple_thread
     {
-        mt::queue<log_record> records_;
+        typedef mt::queue<log_record> _Q;
+        _Q records_;
 
     public:
         static log_thread& instance();
