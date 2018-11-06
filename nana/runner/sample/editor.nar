@@ -8,12 +8,15 @@
     bgcolor=black
     fgcolor=#00ff00
     typeface={ 10 }
-    @textbox{
-        id=filename
-        caption='demo'
-        tooltip="file name"
-        div="weight=25"
-        multi_lines=0
+    @panel{ id=path div='weight=25'
+        @label { id=lbl caption='Path' div='weight=5%' align=right }
+        @combox{ id=value caption=null div='weight=90%' tooltip="search path" editable=0 fgcolor=#606060 }
+        @button { id=open_dir caption="..." div='weight=5%' }
+    }
+    @panel{ id=filename div='weight=25'
+        @label { id=lbl caption='File' div='weight=5%' align=right }
+        @combox{ id=value caption='demo' div='weight=90%' tooltip="file name" editable=1 }
+        @button { id=choose_file caption="..." div='weight=5%' }
     }
     @textbox{
         id=filebuf

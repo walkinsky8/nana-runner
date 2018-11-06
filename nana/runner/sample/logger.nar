@@ -3,16 +3,16 @@
     caption="Log Viewer"
     div="vert"
     align=right
-    align_v=center
-    pos={-610 -30}
-    size={600 500}
+    align_v=top
+    pos={-610 0}
+    size={600 1000}
     @textbox{
         id=content
         caption=null
         bgcolor="#eeeeee"
         fgcolor="#000000"
         typeface={Courier New 10}
-        line_wrapped=1
+        line_wrapped=0
         multi_lines=1
         editable=0
     }

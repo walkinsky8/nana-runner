@@ -11,7 +11,7 @@ void nana::runner::menu_cfg::init_menu(menu& _m) const
     for (auto& item : children_())
     {
         auto& mi = item->cast<menu_cfg>();
-        if (mi.get_caption() == "___")
+        if (mi.get_caption().empty() || mi.get_caption() == "___")
             _m.append_splitter();
         else
         {
@@ -22,8 +22,8 @@ void nana::runner::menu_cfg::init_menu(menu& _m) const
                 _m.append(mi.get_caption());
             else
             {
-                string s = mi._click_();
-                _m.append(mi.get_caption(), [s](iproxy&) {
+                auto& s = mi._click_();
+                _m.append(mi.get_caption(), [&s](iproxy&) {
                     app::create_view(s);
                 });
             }

@@ -27,7 +27,14 @@ nana::runner::app::~app()
 
 bool nana::runner::app::search_file(const wstring& _file, wstring& _fullpath) const
 {
-    auto paths = args_.options(L"path");
+    fs::path p{ _file };
+    if (fs::exists(p) && p.is_absolute())
+    {
+        _fullpath = _file;
+        return true;
+    }
+
+    auto paths = filepaths();
     for (auto p = paths.first; p != paths.second; ++p)
     {
         fs::path fullpath{ (*p).second };
@@ -47,11 +54,13 @@ bool nana::runner::app::search_file(const wstring& _file, wstring& _fullpath) co
     return false;
 }
 
-nana::runner::string nana::runner::app::load_file(const wstring& _filename) const
+nana::runner::string nana::runner::app::load_file(const wstring& _filename, wstring* _fullpath) const
 {
     wstring fullpath;
     if (!search_file(_filename, fullpath))
         fullpath = _filename;
+    else if (_fullpath)
+        *_fullpath = fullpath;
 
     string filebuf;
     read_file(fullpath, filebuf);
@@ -79,7 +88,6 @@ nana::runner::cfg_ptr nana::runner::app::load_cfg(const wstring& _filename)
     cfg_ptr cfg = create_cfg(cfgdata);
     if (cfg)
     {
-        //cfg->fullpath_(fullpath);
     }
     return cfg;
 }
@@ -119,16 +127,16 @@ nana::runner::cfg_ptr nana::runner::app::find_cfg(const string& _type) const
     return *p;
 }
 
-nana::runner::view_ptr nana::runner::app::create_view(const string& _cfg)
+nana::runner::view_ptr nana::runner::app::create_view_(const string& _cfg)
 {
-    cfg_ptr cfg = instance().create_cfg(_cfg);
+    cfg_ptr cfg = create_cfg(_cfg);
     if (cfg)
     {
         view_ptr p = view_obj::make_view(*cfg, nullptr);
         if (p)
         {
             p->show();
-            instance().initial_views_.push_back(p);
+            initial_views_.push_back(p);
         }
         return p;
     }

@@ -9,10 +9,14 @@ namespace nana::runner {
 
     class cmdargs
     {
+    public:
+        typedef list_multimap<wstring, wstring> _Options;
+        typedef _Options::_Range _Range;
+
+    private:
         wstring cmdline_;
         std::vector<wstring> args_;
 
-        typedef list_multimap<wstring, wstring> _Options;
         _Options options_;
         std::vector<wstring> arguments_;
 
@@ -33,7 +37,7 @@ namespace nana::runner {
             return{};
         }
 
-        _Options::_Range options(const wstring& _key) const
+        _Range options(const wstring& _key) const
         {
             return options_.equal_range(_key);
         }

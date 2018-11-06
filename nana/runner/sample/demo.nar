@@ -1,4 +1,4 @@
-﻿@* demo each widget cfg *@
+﻿@** --- demo each widget cfg --- **@
 @form{
     id=demo  @* id *@
     div="vert"
@@ -14,7 +14,7 @@
                 @menu { caption='File&2' }
                 @menu { caption='File&3' }
             }
-            @menu { caption='___' }
+            @menu { }
             @menu { caption='E&xit' _click=quit }
         }
         @menu { caption='&Help'

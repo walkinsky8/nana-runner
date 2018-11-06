@@ -49,7 +49,6 @@ namespace nana::runner {
         NAR_FIELD(std::vector<cfg_ptr>, children);
 
         widget_cfg* m_parent{ nullptr };
-        //NAR_FIELD(wstring, fullpath);
 
     public:
         template<class _Stream>

@@ -64,4 +64,10 @@ namespace nana::runner {
         }
     }
 
+    inline void operator<<(combox& _w, const std::string& _v) { _w.caption(_v); }
+    inline void operator<<(combox& _w, const std::wstring& _v) { _w.caption(_v); }
+    inline void operator >> (const combox& _w, std::string& _v) { _v = _w.caption(); }
+    inline void operator >> (const combox& _w, std::wstring& _v) { _v = _w.caption_wstring(); }
+
 }
+

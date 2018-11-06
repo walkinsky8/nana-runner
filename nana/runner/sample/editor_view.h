@@ -4,10 +4,9 @@
 #include <nana/runner/view_base.h>
 
 #include <nana/runner/form_cfg.h>
-#include <nana/runner/categorize_cfg.h>
 #include <nana/runner/label_cfg.h>
 #include <nana/runner/textbox_cfg.h>
-#include <nana/runner/checkbox_cfg.h>
+#include <nana/runner/combox_cfg.h>
 #include <nana/runner/button_cfg.h>
 
 namespace nana::runner::sample::view {
@@ -21,7 +20,8 @@ namespace nana::runner::sample::view {
     public:
         form& form_;
 
-        textbox& filename_;
+        combox& path_;
+        combox& filename_;
 
         textbox& filebuf_;
 
@@ -39,7 +39,8 @@ namespace nana::runner::sample::view {
         editor(widget_cfg& _cfg, window _parent)
             : view_obj{ _cfg, _parent }
             , form_{ wnd<form>() }
-            , filename_{ wnd<textbox>("filename") }
+            , path_{ wnd<combox>("path.value") }
+            , filename_{ wnd<combox>("filename.value") }
             , filebuf_{ wnd<textbox>("filebuf") }
             , load_{ wnd<button>("cmd.load") }
             , save_{ wnd<button>("cmd.save") }
@@ -47,7 +48,14 @@ namespace nana::runner::sample::view {
             , setup_{ wnd<button>("cmd.setup") }
             , quit_{ wnd<button>("cmd.close") }
         {
-            //filename_ << cfg().fullpath_();
+            auto paths = app::filepaths();
+            for (auto p = paths.first; p != paths.second; ++p)
+            {
+                fs::path fullpath{ (*p).second };
+                path_.push_back(fullpath.u8string());
+            }
+            path_.option(0);
+
             load();
 
             load_.events().click([this] { load(); });
@@ -73,22 +81,29 @@ namespace nana::runner::sample::view {
             filename_ >> fname;
             if (!fname.empty())
             {
-                string fbuf = app::instance().load_file(fname);
+                wstring full;
+                string fbuf = app::instance().load_file(fname, &full);
                 filebuf_ << fbuf;
-                NAR_LOG("loaded = " << fbuf);
+                fs::path p{ full };
+                path_ << p.parent_path().string();
+                filename_ << p.filename();
+                NAR_LOG("loaded " << full << " = " << fbuf);
             }
         }
 
         void save()
         {
+            wstring dir;
+            path_ >> dir;
             wstring fname;
             filename_ >> fname;
             string fbuf;
             filebuf_ >> fbuf;
             if (!fname.empty() && !fbuf.empty())
             {
-                write_file(fname, fbuf);
-                NAR_LOG("saved = " << fbuf);
+                wstring full = fs::path{ dir } / fname;
+                write_file(full, fbuf);
+                NAR_LOG("saved " << full << " = " << fbuf);
             }
         }
 

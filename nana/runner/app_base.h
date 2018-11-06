@@ -37,7 +37,7 @@ namespace nana::runner
 
         bool search_file(const wstring& _filename, wstring& _fullpath) const;
 
-        string load_file(const wstring& _filename) const;
+        string load_file(const wstring& _filename, wstring* _fullpath=nullptr) const;
 
         cfg_ptr load_cfg(const wstring& _filename);
 
@@ -47,9 +47,14 @@ namespace nana::runner
 
         cfg_ptr find_cfg(const string& _id) const; // return nullptr when not found
 
-        static view_ptr create_view(const string& _cfg);
+        view_ptr create_view_(const string& _cfg);
 
         view_ptr load_view(const wstring& _filename);
+
+        static view_ptr create_view(const string& _cfg)
+        {
+            return instance().create_view_(_cfg);
+        }
 
         static view_ptr get_view(const wstring& _filename)
         {
@@ -62,13 +67,25 @@ namespace nana::runner
             instance().search_file(_filename, fullpath);
             return fullpath;
         }
+
         static wstring find_file(const string& _filename)
         {
             return find_file(to_wstring(_filename));
         }
+
         static nana::paint::image create_image(const string& _filename)
         {
             return image{ find_file(_filename) };
+        }
+
+        static cmdargs const& cmdargs()
+        {
+            return instance().args_;
+        }
+
+        static cmdargs::_Range filepaths()
+        {
+            return cmdargs().options(L"path");
         }
 
     protected:

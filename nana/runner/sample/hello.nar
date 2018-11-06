@@ -1,5 +1,6 @@
 ﻿@form{
     id=hello
+    caption='Hello world'
     div="vert"
     pos={-500 -400}
     size={400 300}
