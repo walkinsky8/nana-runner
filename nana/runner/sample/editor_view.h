@@ -87,7 +87,7 @@ namespace nana::runner::sample::view {
                 fs::path p{ full };
                 path_ << p.parent_path().string();
                 filename_ << p.filename();
-                NAR_LOG("loaded " << full << " = " << fbuf);
+                NAR_LOG("loaded " << full << " = \n" << fbuf);
             }
         }
 
@@ -103,7 +103,7 @@ namespace nana::runner::sample::view {
             {
                 wstring full = fs::path{ dir } / fname;
                 write_file(full, fbuf);
-                NAR_LOG("saved " << full << " = " << fbuf);
+                NAR_LOG("saved " << full << " = \n" << fbuf);
             }
         }
 

@@ -24,6 +24,10 @@
         @treebox{ id=folders div='weight=30%' checkable=1 directory='c:\'
         }
         @listbox{ id=files div='weight=40%'
+			headers={
+				@option { caption=name width=50 }
+				@option { caption=value }
+			}
         }
         @treebox{ id=sam div='weight=30%'
             @option { id=root
