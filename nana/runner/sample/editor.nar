@@ -35,18 +35,23 @@
         typeface={ 11 bold }
         @button{
             id=save
+            caption='&Save'
         }
         @button{
             id=load
+            caption='&Load'
         }
         @button{
             id=run
+            caption='&Run'
         }
         @button{
             id=setup
+            caption='Setu&p'
         }
         @button{
             id=close
+            caption='&Close'
             tooltip="close window"
             bgcolor=yellow
         }

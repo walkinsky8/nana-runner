@@ -4,6 +4,7 @@
 #include <nana/runner/view_base.h>
 
 #include <nana/runner/textbox_cfg.h>
+#include <nana/runner/checkbox_cfg.h>
 #include <nana/runner/button_cfg.h>
 
 #include <nana/runner/app_base.h>
@@ -21,6 +22,7 @@ namespace nana::runner::sample::view {
 
         textbox& content_;
 
+        checkbox& wordwrap_;
         button& close_;
         button& exit_;
 
@@ -29,6 +31,7 @@ namespace nana::runner::sample::view {
             : view_obj{ _cfg, _parent }
             , form_{ wnd<form>() }
             , content_{ wnd<textbox>("content") }
+            , wordwrap_{ wnd<checkbox>("cmd.wordwrap") }
             , close_{ wnd<button>("cmd.close") }
             , exit_{ wnd<button>("cmd.exit") }
         {
@@ -37,8 +40,15 @@ namespace nana::runner::sample::view {
                 content_.append(s, false);
             });
 
-            close_.events().click([this] { close(); });
-            exit_.events().click( app::quit );
+            wordwrap_.events().checked([&] {
+                content_.line_wrapped(wordwrap_.checked());
+            });
+            close_.events().click([&] {
+                close();
+            });
+            exit_.events().click(
+                app::quit
+            );
             form_.events().destroy([] {
                 set_log_handler(write_console);
             });
