@@ -84,7 +84,21 @@ namespace nana::runner::sample::view {
             nana::folderbox fb{ nullptr, folder_.caption() };
             auto dir = fb.show();
             if (dir.has_value())
-                folder_ << dir.value().string();
+            {
+                string d = dir.value().string();
+                folder_ << d;
+                fs::directory_iterator di{ d }, end;
+                file_.clear();
+                for (; di != end; ++di)
+                {
+                    fs::path const& p = *di;
+                    if (p.extension() == ".nar")
+                    {
+                        NAR_LOG_DEBUG(p.filename());
+                        file_.push_back(p.filename().string());
+                    }
+                }
+            }
         }
 
         void open_file()

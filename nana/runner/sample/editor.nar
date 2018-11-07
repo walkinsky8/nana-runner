@@ -11,12 +11,12 @@
     @panel{ id=folder div='weight=25'
         @label { id=lbl caption='Folder' div='weight=10%' align=right }
         @combox{ id=value caption=null div='weight=80%' tooltip="search path" editable=0 fgcolor=#606060 }
-        @button { id=choose_dir caption="..." @*div='weight=5%'*@ }
+        @button { id=choose_dir caption="Choose" @*div='weight=5%'*@ typeface={bold} }
     }
     @panel{ id=file div='weight=25'
         @label { id=lbl caption='File' div='weight=10%' align=right }
         @combox{ id=value caption='demo' div='weight=80%' tooltip="file name" editable=1 }
-        @button { id=open_file caption="..." @*div='weight=5%'*@ }
+        @button { id=open_file caption="Open" @*div='weight=5%'*@ typeface={bold} }
     }
     @textbox{
         id=filebuf
