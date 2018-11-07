@@ -18,6 +18,7 @@ namespace nana::runner
         static app* instance_;
 
         cmdargs args_;
+        strings paths_;
 
         list_map<wstring, string> files_; // file name ==> content
 
@@ -83,9 +84,9 @@ namespace nana::runner
             return instance().args_;
         }
 
-        static cmdargs::_Range filepaths()
+        static strings& filepaths()
         {
-            return cmdargs().options(L"path");
+            return instance().paths_;
         }
 
     protected:

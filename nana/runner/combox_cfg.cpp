@@ -34,3 +34,15 @@ void nana::runner::combox_cfg::init_widget(widget & _w, view_obj* _root_view) co
         w.editable(editable_().value());
 }
 
+void nana::runner::operator<<(combox& _w, const strings& _v)
+{
+    for (auto& i : _v)
+        _w.push_back(i);
+}
+
+void nana::runner::operator>>(const combox& _w, strings& _v)
+{
+    for (size_t i = 0; i < _w.the_number_of_options(); ++i)
+        _v.push_back(_w.text(i));
+}
+

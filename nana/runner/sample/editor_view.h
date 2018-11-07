@@ -9,10 +9,13 @@
 #include <nana/runner/combox_cfg.h>
 #include <nana/runner/button_cfg.h>
 
+#include <nana/gui/filebox.hpp>
+
 namespace nana::runner::sample::view {
 
     class editor : public view_obj
     {
+        typedef editor self;
     public:
         static pcstr type_name_() { return "editor"; }
         static view_ptr new_(widget_cfg& _cfg, window _parent) { return std::make_shared<editor>(_cfg, _parent); }
@@ -20,8 +23,10 @@ namespace nana::runner::sample::view {
     public:
         form& form_;
 
-        combox& path_;
-        combox& filename_;
+        combox& folder_;
+        button& choose_dir_;
+        combox& file_;
+        button& open_file_;
 
         textbox& filebuf_;
 
@@ -39,8 +44,10 @@ namespace nana::runner::sample::view {
         editor(widget_cfg& _cfg, window _parent)
             : view_obj{ _cfg, _parent }
             , form_{ wnd<form>() }
-            , path_{ wnd<combox>("path.value") }
-            , filename_{ wnd<combox>("filename.value") }
+            , folder_{ wnd<combox>("folder.value") }
+            , choose_dir_{ wnd<button>("folder.choose_dir") }
+            , file_{ wnd<combox>("file.value") }
+            , open_file_{ wnd<button>("file.open_file") }
             , filebuf_{ wnd<textbox>("filebuf") }
             , load_{ wnd<button>("cmd.load") }
             , save_{ wnd<button>("cmd.save") }
@@ -48,22 +55,19 @@ namespace nana::runner::sample::view {
             , setup_{ wnd<button>("cmd.setup") }
             , quit_{ wnd<button>("cmd.close") }
         {
-            auto paths = app::filepaths();
-            for (auto p = paths.first; p != paths.second; ++p)
-            {
-                fs::path fullpath{ (*p).second };
-                path_.push_back(fullpath.u8string());
-            }
-            path_.option(0);
-
+            folder_ << app::filepaths();
+            folder_.option(0);
             load();
 
-            load_.events().click([this] { load(); });
-            save_.events().click([this] { save(); });
-            run_.events().click([this] { run(); });
-            quit_.events().click([this] { close(); });
+            choose_dir_.events().click(std::bind(&self::choose_dir, this));
+            open_file_.events().click(std::bind(&self::open_file, this));
 
-            form_.events().destroy([this] {
+            load_.events().click([&] { load(); });
+            save_.events().click([&] { save(); });
+            run_.events().click([&] { run(); });
+            quit_.events().click([&] { close(); });
+
+            form_.events().destroy([&] {
                 close_current();
                 app::quit();
             });
@@ -75,18 +79,49 @@ namespace nana::runner::sample::view {
         }
 
     private:
+        void choose_dir()
+        {
+            nana::folderbox fb{ nullptr, folder_.caption() };
+            auto dir = fb.show();
+            if (dir.has_value())
+                folder_ << dir.value().string();
+        }
+
+        void open_file()
+        {
+            nana::filebox fb{ true };
+            fb.init_path(folder_.caption());
+            fb.init_file(file_.caption());
+            fb.add_filter("Nana Cfg File (*.nar)", "*.nar");
+            fb.add_filter("Any File (*.*)", "*.*");
+            if (fb.show())
+            {
+                folder_ << fb.path();
+                file_ << fs::path{ fb.file() }.filename();
+                load();
+            }
+        }
+
         void load()
         {
+            wstring dir;
             wstring fname;
-            filename_ >> fname;
+            folder_ >> dir;
+            file_ >> fname;
             if (!fname.empty())
             {
-                wstring full;
-                string fbuf = app::instance().load_file(fname, &full);
+                string fbuf;
+                fs::path p{ dir }; p /= fname;
+                wstring full = p.wstring();
+                bool found = false;
+                if (fs::exists(p))
+                    found = read_file(full, fbuf);
+                if (!found)
+                    fbuf = app::instance().load_file(fname, &full);
+                p = full;
+                folder_ << p.parent_path().string();
+                file_ << p.filename();
                 filebuf_ << fbuf;
-                fs::path p{ full };
-                path_ << p.parent_path().string();
-                filename_ << p.filename();
                 NAR_LOG("loaded " << full << " = \n" << fbuf);
             }
         }
@@ -94,10 +129,10 @@ namespace nana::runner::sample::view {
         void save()
         {
             wstring dir;
-            path_ >> dir;
             wstring fname;
-            filename_ >> fname;
             string fbuf;
+            folder_ >> dir;
+            file_ >> fname;
             filebuf_ >> fbuf;
             if (!fname.empty() && !fbuf.empty())
             {
@@ -111,8 +146,8 @@ namespace nana::runner::sample::view {
         {
             log_thread::instance().pause();
             wstring fname;
-            filename_ >> fname;
             string fbuf;
+            file_ >> fname;
             filebuf_ >> fbuf;
             //write_file(fname, fbuf);
             NAR_LOG("run nar cfg = " << fbuf);

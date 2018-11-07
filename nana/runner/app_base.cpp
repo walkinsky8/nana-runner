@@ -34,10 +34,9 @@ bool nana::runner::app::search_file(const wstring& _file, wstring& _fullpath) co
         return true;
     }
 
-    auto paths = filepaths();
-    for (auto p = paths.first; p != paths.second; ++p)
+    for (auto& p : paths_)
     {
-        fs::path fullpath{ (*p).second };
+        fs::path fullpath{ p };
         fullpath /= _file;
         if (fs::exists(fullpath))
         {
@@ -157,6 +156,13 @@ nana::runner::view_ptr nana::runner::app::load_view(const wstring& _filename)
 void nana::runner::app::load_cfgs(const wchar_t* _cmdline)
 {
     args_.init(_cmdline);
+
+    auto range = args_.options(L"path");
+    for (auto p = range.first; p != range.second; ++p)
+    {
+        fs::path fullpath{ (*p).second };
+        paths_.push_back(fullpath.u8string());
+    }
 
     for (auto& filename : args_.arguments())
     {
