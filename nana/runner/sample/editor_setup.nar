@@ -9,18 +9,18 @@
     bgcolor=black
     fgcolor=white
     cursor=hand
-    typeface={Consolas 12}
+    typeface={ Consolas 10 }
     @panel{ id=name div="weight=20"
-        @label{ id=n caption="Name:" div="weight=20%" typeface="10" align=right }
+        @label{ id=n caption="Name:" div="weight=20%" align=right }
         @textbox{ id=value caption=null multi_lines=0 }
     }
     @panel{ id=size div="weight=20"
-        @label{ id=n caption="Size:" div="weight=20%" typeface="10" align=right }
+        @label{ id=n caption="Size:" div="weight=20%" align=right }
         @textbox{ id=value caption=null div="weight=20%" multi_lines=0 }
-        @slider{ id=slider vertical=0 maximum=100 value=15 transparent=0 }
+        @slider{ id=slider vertical=0 maximum=64 }
     }
     @panel{ id=bold div="weight=20"
-        @label{ id=n caption="Style:" div="weight=20%" typeface="10" align=right }
+        @label{ id=n caption="Style:" div="weight=20%" align=right }
         @checkbox{ id=value caption="Bold" }
     }
     @panel{ id=italic div="weight=20"
@@ -35,11 +35,19 @@
         @panel{ id=n div="weight=20%" }
         @checkbox{ id=value caption="Underline" }
     }
-    @panel{ id=sample
-        @label{ id=n caption="Sample:" div="weight=20%" typeface="10" align=right }
-        @textbox{ id=value caption="Hello, world! 世界你好！" bgcolor=green line_wrapped=1 }
+    @panel{ id=bgcolor div="weight=20"
+        @label{ id=n caption="Bgcolor:" div="weight=20%" align=right }
+        @textbox{ id=value caption=null multi_lines=0 }
     }
-    @panel { id=cmd div="weight=30"
+    @panel{ id=fgcolor div="weight=20"
+        @label{ id=n caption="Fgcolor:" div="weight=20%" align=right }
+        @textbox{ id=value caption=null multi_lines=0 }
+    }
+    @panel{ id=sample
+        @label{ id=n caption="Sample:" div="weight=20%" align=right }
+        @textbox{ id=value caption="Hello, world!^n世界你好！" bgcolor=green line_wrapped=1 typeface={Courier New 12 bold italic} }
+    }
+    @panel { id=cmd div="weight=30" typeface={bold}
         @button{
             id=apply
         }
@@ -48,7 +56,7 @@
         }
         @button{
             id=cancel
-            tooltip="exit program"
+            tooltip="close window"
             bgcolor=#ffff00
             fgcolor=black
         }

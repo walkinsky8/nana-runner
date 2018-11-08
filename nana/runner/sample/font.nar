@@ -38,7 +38,7 @@
     @button{
         id=close
         div="weight=30"
-        tooltip="exit program"
+        tooltip="close window"
         bgcolor=#ffff00
         fgcolor=black
         cursor=arrow

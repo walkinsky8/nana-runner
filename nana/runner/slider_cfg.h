@@ -35,4 +35,24 @@ namespace nana::runner {
 
     };
 
+    inline void operator<<(slider& _s, uint _v)
+    {
+        _s.value(_v);
+    }
+    inline void operator<<(slider& _s, double _v)
+    {
+        _s << static_cast<uint>(_v);
+    }
+    inline void operator>>(const slider& _s, uint& _v)
+    {
+        _v = _s.value();
+    }
+    inline void operator>>(const slider& _s, double& _v)
+    {
+        uint ui = 0;
+        _s >> ui;
+        _v = ui;
+    }
+
 }
+

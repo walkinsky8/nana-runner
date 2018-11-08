@@ -32,4 +32,21 @@ namespace nana::runner {
 	string& operator<<(string& _w, const color& _v);
 	void operator >> (const string& _w, color& _v);
 
+    struct font_model
+    {
+        string name_;
+        double size_{};
+        bool bold_{};
+        bool italic_{};
+        bool underline_{};
+        bool strikeout_{};
+
+        font_model() = default;
+        font_model(const font& _f);
+        
+        operator font() const;
+
+    };
+
 }
+
