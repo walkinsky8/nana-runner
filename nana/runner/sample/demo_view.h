@@ -7,10 +7,13 @@
 
 #include <nana/runner/app_base.h>
 
-namespace nana::runner::sample::view {
+namespace nana::runner::sample {
 
-    class Demo : public view_obj
+    class demo_view : public view_obj
     {
+        NAR_DEFINE_VIEW(demo, view_obj);
+
+    public:
         form& form_;
 
         menubar& menubar_;
@@ -65,11 +68,7 @@ namespace nana::runner::sample::view {
         button& quit_;
 
     public:
-        static pcstr type_name_() { return "demo"; }
-        static view_ptr new_(widget_cfg& _cfg, window _parent) { return std::make_shared<Demo>(_cfg, _parent); }
-
-    public:
-        Demo(widget_cfg& _cfg, window _parent)
+        demo_view(widget_cfg& _cfg, window _parent)
             : view_obj{ _cfg, _parent }
             , form_{ wnd<form>() }
             , menubar_{ wnd<menubar>("menubar") }

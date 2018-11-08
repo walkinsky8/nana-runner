@@ -5,6 +5,18 @@
 
 #include <nana/runner/widget_cfg.h>
 
+#define NAR_DEFINE_VIEW(_class, _super) \
+        private: \
+            /*using super = _super;*/ \
+            using self = _class##_view; \
+        public: \
+            static pcstr type_name_() { return #_class; } \
+            static view_ptr new_(widget_cfg& _cfg, window _parent) { return std::make_shared<self>(_cfg, _parent); } \
+        public: \
+            string type_name() const override { return type_name_(); } \
+            view_ptr new_obj(widget_cfg& _cfg, window _parent) const override { return new_(_cfg, _parent); } \
+        private:
+
 namespace nana::runner {
 
 	class view_obj;
@@ -29,6 +41,10 @@ namespace nana::runner {
 
 	public:
         view_obj(widget_cfg& _cfg, window _parent);
+
+        virtual string type_name() const = 0;
+
+        virtual view_ptr new_obj(widget_cfg& _cfg, window _parent) const = 0;
 
         widget_cfg& cfg() { return m_cfg; }
         const widget_cfg& cfg() const { return m_cfg; }

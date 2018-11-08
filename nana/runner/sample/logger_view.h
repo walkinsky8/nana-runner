@@ -9,13 +9,11 @@
 
 #include <nana/runner/app_base.h>
 
-namespace nana::runner::sample::view {
+namespace nana::runner::sample {
 
-    class logger : public view_obj
+    class logger_view : public view_obj
     {
-    public:
-        static string type_name_() { return "logger"; }
-        static view_ptr new_(widget_cfg& _cfg, window _parent) { return std::make_shared<logger>(_cfg, _parent); }
+        NAR_DEFINE_VIEW(logger, view_obj);
 
     public:
         form& form_;
@@ -27,7 +25,7 @@ namespace nana::runner::sample::view {
         button& exit_;
 
     public:
-        logger(widget_cfg& _cfg, window _parent)
+        logger_view(widget_cfg& _cfg, window _parent)
             : view_obj{ _cfg, _parent }
             , form_{ wnd<form>() }
             , content_{ wnd<textbox>("content") }

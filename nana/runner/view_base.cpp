@@ -126,6 +126,6 @@ nana::runner::view_ptr nana::runner::view_obj::make_view(widget_cfg& _cfg, windo
     view_ptr p = create_view(_cfg, _parent);
     if (p)
         return p;
-    return std::make_shared<view::Generic>(_cfg, _parent);
+    return std::make_shared<generic_view>(_cfg, _parent);
 }
 

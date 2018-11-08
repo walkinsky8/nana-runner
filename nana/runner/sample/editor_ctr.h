@@ -24,10 +24,10 @@ namespace nana::runner::sample {
     public:
 		static void initialize()
 		{
-			add_view<view::logger>();
-			add_view<view::login>();
-			add_view<view::editor>();
-			add_view<view::editor_setup>();
+			add_view<logger_view>();
+			add_view<login_view>();
+			add_view<editor_view>();
+			add_view<editor_setup_view>();
         }
 
         void on_init() override
@@ -39,8 +39,8 @@ namespace nana::runner::sample {
 
             log_->show();
             login_->show();
-            login_->cast<view::login>().on_login([this] { editor_->show(); });
-            editor_->cast<view::editor>().on_setup([this] { editor_setup_->show(); });
+            login_->cast<login_view>().on_login([this] { editor_->show(); });
+            editor_->cast<editor_view>().on_setup([this] { editor_setup_->show(); });
         }
 
         void on_fini() override

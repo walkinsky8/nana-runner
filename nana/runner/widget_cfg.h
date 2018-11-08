@@ -134,7 +134,10 @@ namespace nana::runner {
         _v.parse(_p);
     }
 
-    template<> struct dumpable<widget_cfg> { static constexpr bool value = true; };
+    template<> struct dumpable<widget_cfg>
+    {
+        static constexpr bool value = true;
+    };
 
     void operator >> (const parser& _is, cfg_ptr& _v);
 

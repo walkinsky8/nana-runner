@@ -40,4 +40,9 @@ namespace nana::runner {
 
     };
 
+    template<> struct dumpable<model_obj>
+    {
+        static constexpr bool value = true;
+    };
+
 }

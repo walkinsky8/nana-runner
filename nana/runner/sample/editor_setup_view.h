@@ -10,13 +10,11 @@
 #include <nana/runner/label_cfg.h>
 #include <nana/runner/button_cfg.h>
 
-namespace nana::runner::sample::view {
+namespace nana::runner::sample {
 
-    class editor_setup : public view_obj
+    class editor_setup_view : public view_obj
     {
-    public:
-        static pcstr type_name_() { return "editor_setup"; }
-        static view_ptr new_(widget_cfg& _cfg, window _parent) { return std::make_shared<editor_setup>(_cfg, _parent); }
+        NAR_DEFINE_VIEW(editor_setup, view_obj);
 
     public:
         form& form_;
@@ -47,7 +45,7 @@ namespace nana::runner::sample::view {
         } model_;
 
     public:
-        editor_setup(widget_cfg& _cfg, window _parent)
+        editor_setup_view(widget_cfg& _cfg, window _parent)
             : view_obj{ _cfg, _parent }
             , form_{ wnd<form>() }
             , name_{ wnd<textbox>("name.value") }

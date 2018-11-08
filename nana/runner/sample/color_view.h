@@ -8,10 +8,13 @@
 #include <nana/runner/slider_cfg.h>
 #include <nana/runner/button_cfg.h>
 
-namespace nana::runner::sample::view {
+namespace nana::runner::sample {
 
-    class Color : public view_obj
+    class color_view : public view_obj
     {
+        NAR_DEFINE_VIEW(color, view_obj);
+
+    public:
         form& form_;
 
         textbox& bg_;
@@ -36,11 +39,7 @@ namespace nana::runner::sample::view {
         button& quit_;
 
     public:
-        static pcstr type_name_() { return "color"; }
-        static view_ptr new_(widget_cfg& _cfg, window _parent) { return std::make_shared<Color>(_cfg, _parent); }
-
-    public:
-        Color(widget_cfg& _cfg, window _parent)
+        color_view(widget_cfg& _cfg, window _parent)
             : view_obj{ _cfg, _parent }
             , form_{ wnd<form>() }
             , bg_{ wnd<textbox>("bg.value") }

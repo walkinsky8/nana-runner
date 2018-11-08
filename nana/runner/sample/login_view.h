@@ -6,13 +6,11 @@
 #include <nana/runner/textbox_cfg.h>
 #include <nana/runner/button_cfg.h>
 
-namespace nana::runner::sample::view {
+namespace nana::runner::sample {
 
-    class login : public view_obj
+    class login_view : public view_obj
     {
-    public:
-        static string type_name_() { return "login"; }
-        static view_ptr new_(widget_cfg& _cfg, window _parent) { return std::make_shared<login>(_cfg, _parent); }
+        NAR_DEFINE_VIEW(login, view_obj);
 
     public:
         textbox& username_;
@@ -22,7 +20,7 @@ namespace nana::runner::sample::view {
         button& close_;
 
     public:
-        login(widget_cfg& _cfg, window _parent)
+        login_view(widget_cfg& _cfg, window _parent)
             : view_obj{ _cfg, _parent }
             , username_{ wnd<textbox>("username.value") }
             , password_{ wnd<textbox>("password.value") }

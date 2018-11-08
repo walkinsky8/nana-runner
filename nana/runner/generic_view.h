@@ -5,16 +5,14 @@
 
 #include <nana/runner/form_cfg.h>
 
-namespace nana::runner::view {
+namespace nana::runner {
 
-    class Generic : public view_obj
+    class generic_view : public view_obj
     {
-    public:
-        static pcstr type_name_() { return "generic"; }
-        static view_ptr new_(widget_cfg& _cfg, window _parent) { return std::make_shared<Generic>(_cfg, _parent); }
+        NAR_DEFINE_VIEW(generic, view_obj);
 
     public:
-        Generic(widget_cfg& _cfg, window _parent)
+        generic_view(widget_cfg& _cfg, window _parent)
             : view_obj{ _cfg, _parent }
         {
         }

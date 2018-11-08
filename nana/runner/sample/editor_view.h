@@ -11,14 +11,11 @@
 
 #include <nana/gui/filebox.hpp>
 
-namespace nana::runner::sample::view {
+namespace nana::runner::sample {
 
-    class editor : public view_obj
+    class editor_view : public view_obj
     {
-        typedef editor self;
-    public:
-        static pcstr type_name_() { return "editor"; }
-        static view_ptr new_(widget_cfg& _cfg, window _parent) { return std::make_shared<editor>(_cfg, _parent); }
+        NAR_DEFINE_VIEW(editor, view_obj);
 
     public:
         form& form_;
@@ -41,7 +38,7 @@ namespace nana::runner::sample::view {
 		cfg_ptr curr_cfg_;
 
     public:
-        editor(widget_cfg& _cfg, window _parent)
+        editor_view(widget_cfg& _cfg, window _parent)
             : view_obj{ _cfg, _parent }
             , form_{ wnd<form>() }
             , folder_{ wnd<combox>("folder.value") }

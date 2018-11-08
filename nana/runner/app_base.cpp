@@ -183,7 +183,7 @@ void nana::runner::app::run(const wchar_t* _cmdline)
     load_cfgs(_cmdline);
 
     load_cfg(L"generic.nar");
-    add_view<view::Generic>();
+    add_view<generic_view>();
 
     if (args_.arguments().empty())
         on_init();

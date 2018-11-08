@@ -7,10 +7,12 @@
 #include <nana/runner/textbox_cfg.h>
 #include <nana/runner/button_cfg.h>
 
-namespace nana::runner::sample::view {
+namespace nana::runner::sample {
 
-    class Hello : public view_obj
+    class hello_view : public view_obj
     {
+        NAR_DEFINE_VIEW(hello, view_obj);
+
         label& world_;
 
         textbox& text_;
@@ -18,11 +20,7 @@ namespace nana::runner::sample::view {
         button& close_;
 
     public:
-        static string type_name_() { return "hello"; }
-        static view_ptr new_(widget_cfg& _cfg, window _parent) { return std::make_shared<Hello>(_cfg, _parent); }
-
-    public:
-        Hello(widget_cfg& _cfg, window _parent)
+        hello_view(widget_cfg& _cfg, window _parent)
             : view_obj{ _cfg, _parent }
             , world_{ wnd<label>("world") }
             , text_{ wnd<textbox>("text") }

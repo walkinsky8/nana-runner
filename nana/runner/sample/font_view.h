@@ -10,10 +10,13 @@
 #include <nana/runner/label_cfg.h>
 #include <nana/runner/button_cfg.h>
 
-namespace nana::runner::sample::view {
+namespace nana::runner::sample {
 
-    class Font : public view_obj
+    class font_view : public view_obj
     {
+        NAR_DEFINE_VIEW(font, view_obj);
+
+    public:
         form& form_;
 
         textbox& name_;
@@ -29,11 +32,7 @@ namespace nana::runner::sample::view {
         button& quit_;
 
     public:
-        static pcstr type_name_() { return "font"; }
-        static view_ptr new_(widget_cfg& _cfg, window _parent) { return std::make_shared<Font>(_cfg, _parent); }
-
-    public:
-        Font(widget_cfg& _cfg, window _parent)
+        font_view(widget_cfg& _cfg, window _parent)
             : view_obj{ _cfg, _parent }
             , form_{ wnd<form>() }
             , name_{ wnd<textbox>("name.value") }

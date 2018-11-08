@@ -23,10 +23,10 @@ namespace nana::runner::sample {
         {
             editor_ctr::initialize();
 
-            add_view<view::Demo>();
-            add_view<view::Hello>();
-            add_view<view::Color>();
-            add_view<view::Font>();
+            add_view<demo_view>();
+            add_view<hello_view>();
+            add_view<color_view>();
+            add_view<font_view>();
         }
 
         void on_init() override
