@@ -191,6 +191,7 @@
     <ClCompile Include="..\..\nana\runner\parser.cpp" />
     <ClCompile Include="..\..\nana\runner\picture_cfg.cpp" />
     <ClCompile Include="..\..\nana\runner\progress_cfg.cpp" />
+    <ClCompile Include="..\..\nana\runner\sample\editor_view.cpp" />
     <ClCompile Include="..\..\nana\runner\sample\nana_runner.cpp" />
     <ClCompile Include="..\..\nana\runner\scroll_cfg.cpp" />
     <ClCompile Include="..\..\nana\runner\slider_cfg.cpp" />

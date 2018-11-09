@@ -192,6 +192,9 @@
     <ClCompile Include="..\..\nana\runner\util.cpp">
       <Filter>base\util</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\nana\runner\sample\editor_view.cpp">
+      <Filter>__sample\editor</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\nana\runner\base.h">
@@ -446,7 +449,7 @@
       <Filter>__sample\demo</Filter>
     </None>
     <None Include="..\..\nana\runner\sample\dummy.nar">
-      <Filter>__sample</Filter>
+      <Filter>__sample\demo</Filter>
     </None>
   </ItemGroup>
 </Project>
