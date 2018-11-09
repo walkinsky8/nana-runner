@@ -1,7 +1,7 @@
 // Created by walkinsky(lyh6188@hotmail.com), 2018/03/02
 #pragma once
 
-#include <nana/runner/base.h>
+#include <nana/runner/object.h>
 
 #include <nana/runner/widget_all.h>
 
@@ -15,6 +15,8 @@ namespace nana::runner
 {
     class app : public object
     {
+        NAR_DEFINE_OBJECT(app, object);
+
         static app* instance_;
 
         cmdargs args_;

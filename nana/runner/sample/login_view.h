@@ -27,27 +27,17 @@ namespace nana::runner::sample {
             , login_{ wnd<button>("cmd.login") }
             , close_{ wnd<button>("cmd.close") }
         {
-            login_.events().click([this] { on_login(); });
-            close_.events().click([this] { on_close(); });
+            init();
         }
 
-        void on_login(std::function<void()> _f)
-        {
-            login_.events().click([this, _f] { close(); _f(); });
-        }
+        void set_on_login(std::function<void()> _f);
 
-        void on_login()
-        {
-            NAR_LOG("login: username=" << username_.caption() << ", password=" << password_.caption());
-        }
+    private:
+        void init();
 
-        void on_close()
-        {
-            NAR_LOG("close login window");
-            close();
-            NAR_LOG("login cancelled, so quit program");
-            app::quit();
-        }
+        void on_login();
+
+        void on_close();
 
     };
 

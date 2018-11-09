@@ -29,7 +29,7 @@ void nana::runner::sample::editor_view::init()
     });
 }
 
-void nana::runner::sample::editor_view::on_setup(std::function<void()> _f)
+void nana::runner::sample::editor_view::set_on_setup(std::function<void()> _f)
 {
     setup_.events().click([this, _f] { _f(); });
 }

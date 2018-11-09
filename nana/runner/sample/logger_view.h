@@ -7,8 +7,6 @@
 #include <nana/runner/checkbox_cfg.h>
 #include <nana/runner/button_cfg.h>
 
-#include <nana/runner/app_base.h>
-
 namespace nana::runner::sample {
 
     class logger_view : public view_obj
@@ -33,24 +31,11 @@ namespace nana::runner::sample {
             , close_{ wnd<button>("cmd.close") }
             , exit_{ wnd<button>("cmd.exit") }
         {
-            set_log_handler([this](const string& s) {
-                write_console(s);
-                content_.append(s, false);
-            });
-
-            wordwrap_.events().checked([&] {
-                content_.line_wrapped(wordwrap_.checked());
-            });
-            close_.events().click([&] {
-                close();
-            });
-            exit_.events().click(
-                app::quit
-            );
-            form_.events().destroy([] {
-                set_log_handler(write_console);
-            });
+            init();
         }
+
+    private:
+        void init();
 
     };
 

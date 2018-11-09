@@ -215,31 +215,5 @@ namespace nana::runner {
         return _s;
     }
 
-	/*
-	 * root object
-	 */
-
-	class object;
-    using obj_ptr = ptr<object>;
-
-    class object
-    {
-    public:
-        virtual ~object() = default;
-
-		template<class T>
-		T& cast()
-		{
-			return dynamic_cast<T&>(*this);
-		}
-
-		template<class T>
-		const T& cast() const
-		{
-			return dynamic_cast<const T&>(*this);
-		}
-
-	};
-
 }
 

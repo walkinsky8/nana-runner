@@ -1,20 +1,21 @@
 // Created by walkinsky(lyh6188@hotmail.com), 2017/11/15
 #pragma once
 
-#include <nana/runner/base.h>
+#include <nana/runner/object.h>
 
 #include <nana/runner/widget_cfg.h>
 
 #define NAR_DEFINE_VIEW(_class, _super) \
         private: \
-            /*using super = _super;*/ \
+            using super = _super; \
             using self = _class##_view; \
         public: \
             static pcstr type_name_() { return #_class; } \
             static view_ptr new_(widget_cfg& _cfg, window _parent) { return std::make_shared<self>(_cfg, _parent); } \
         public: \
             string type_name() const override { return type_name_(); } \
-            view_ptr new_obj(widget_cfg& _cfg, window _parent) const override { return new_(_cfg, _parent); } \
+            dumper& dump(dumper& _d) const override { return codec(_d, const_cast<self&>(*this)); } \
+            void parse(const parser& _p) override { codec(const_cast<parser&>(_p), *this); } \
         private:
 
 namespace nana::runner {
@@ -41,10 +42,6 @@ namespace nana::runner {
 
 	public:
         view_obj(widget_cfg& _cfg, window _parent);
-
-        virtual string type_name() const = 0;
-
-        virtual view_ptr new_obj(widget_cfg& _cfg, window _parent) const = 0;
 
 		void show(bool _visible = true) const;
 

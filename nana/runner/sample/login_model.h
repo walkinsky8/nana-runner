@@ -1,13 +1,11 @@
 // Created by walkinsky(lyh6188@hotmail.com), 2018/02/20
 #pragma once
 
-#include <nana/runner/base.h>
-
 #include <nana/runner/model_base.h>
 
-namespace nana::runner::sample::model {
+namespace nana::runner::sample {
 
-    class login : public model_obj
+    class login_model : public model_obj
     {
         NAR_DEFINE_MODEL(login, model_obj);
 

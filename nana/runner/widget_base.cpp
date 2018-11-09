@@ -146,17 +146,3 @@ void nana::runner::operator >> (const string& _s, color& _v)
 	_v = get_color(_s);
 }
 
-nana::runner::font_model::font_model(const font& _f)
-{
-    name_ = _f.name();
-    size_ = _f.size();
-    bold_ = _f.bold();
-    italic_ = _f.italic();
-    strikeout_ = _f.strikeout();
-    underline_ = _f.underline();
-}
-
-nana::runner::font_model::operator nana::runner::font() const
-{
-    return make_font(name_, size_, bold_, italic_, underline_, strikeout_);
-}

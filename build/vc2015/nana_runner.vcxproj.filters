@@ -195,6 +195,27 @@
     <ClCompile Include="..\..\nana\runner\sample\editor_view.cpp">
       <Filter>__sample\editor</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\nana\runner\sample\editor_cntrl.cpp">
+      <Filter>__sample\editor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nana\runner\sample\editor_setup_view.cpp">
+      <Filter>__sample\editor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nana\runner\sample\editor_app.cpp">
+      <Filter>__sample\editor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nana\runner\sample\logger_view.cpp">
+      <Filter>__sample\editor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nana\runner\sample\login_view.cpp">
+      <Filter>__sample\editor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nana\runner\sample\login_cntrl.cpp">
+      <Filter>__sample\editor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nana\runner\font_model.cpp">
+      <Filter>foundation</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\nana\runner\base.h">
@@ -293,13 +314,7 @@
     <ClInclude Include="..\..\nana\runner\sample\login_view.h">
       <Filter>__sample\editor</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\nana\runner\sample\editor_ctr.h">
-      <Filter>__sample\editor</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\nana\runner\sample\login_model.h">
-      <Filter>__sample\editor</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\nana\runner\sample\login_ctr.h">
       <Filter>__sample\editor</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\sample\logger_view.h">
@@ -418,6 +433,21 @@
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\mt_lock.h">
       <Filter>base\mt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nana\runner\sample\editor_cntrl.h">
+      <Filter>__sample\editor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nana\runner\sample\login_cntrl.h">
+      <Filter>__sample\editor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nana\runner\sample\editor_setup_model.h">
+      <Filter>__sample\editor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nana\runner\object.h">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nana\runner\font_model.h">
+      <Filter>foundation</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

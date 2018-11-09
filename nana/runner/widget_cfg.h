@@ -1,7 +1,7 @@
 // Created by walkinsky(lyh6188@hotmail.com), 2017/01/15
 #pragma once
 
-#include <nana/runner/base.h>
+#include <nana/runner/object.h>
 
 #include <nana/runner/widget_base.h>
 
@@ -15,7 +15,6 @@
             static nana::runner::cfg_ptr new_() { return std::make_shared<self>(); } \
         public: \
             nana::runner::string type_name() const override { return type_name_(); } \
-            nana::runner::cfg_ptr new_obj() const override { return new_(); } \
             nana::runner::dumper& dump(nana::runner::dumper& _d) const override { return nana::runner::codec(_d, const_cast<self&>(*this)); } \
             void parse(const nana::runner::parser& _p) override { nana::runner::codec(const_cast<nana::runner::parser&>(_p), *this); } \
         private: \
@@ -72,14 +71,6 @@ namespace nana::runner {
         }
 
     public:
-        virtual string type_name() const = 0;
-
-        virtual cfg_ptr new_obj() const = 0;
-
-        virtual dumper& dump(dumper& _d) const = 0;
-
-        virtual void parse(const parser& _p) = 0;
-
         virtual wnd_ptr create_wnd(window _parent, bool _visible) const = 0;
 
         virtual void init_widget(widget& _w, view_obj* _root_view) const;
@@ -133,11 +124,6 @@ namespace nana::runner {
     {
         _v.parse(_p);
     }
-
-    template<> struct dumpable<widget_cfg>
-    {
-        static constexpr bool value = true;
-    };
 
     void operator >> (const parser& _is, cfg_ptr& _v);
 
