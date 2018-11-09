@@ -91,10 +91,10 @@ namespace nana::runner::sample {
             , tsize_{ wnd<slider>("p1.tsize") }
             , clevel_{ wnd<slider>("p1.clevel") }
             , picsel_{ wnd<combox>("p1.picsel") }
-            , picsel_cfg_{ cfg_("p1.picsel") }
+            , picsel_cfg_{ cfg("p1.picsel") }
             , talign_{ wnd<group>("p2.align") }
             , tcolor_{ wnd<group>("p2.color") }
-            , tcolor_cfg_{ cfg_("p2.color") }
+            , tcolor_cfg_{ cfg("p2.color") }
             , picture_{ wnd<picture>("p2.picture") }
             , date_{ wnd<date_chooser>("p3.date.value") }
             , hscr_{ wnd<hscroll>("p3.date.hscr") }

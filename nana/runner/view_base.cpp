@@ -8,7 +8,7 @@
 #include <nana/runner/generic_view.h>
 
 nana::runner::view_obj::view_obj(widget_cfg& _cfg, window _parent)
-    : m_cfg{ _cfg }, m_parent_wnd{ _parent }
+    : m_self_cfg{ _cfg }, m_parent_wnd{ _parent }
 {
     init(!_cfg.visible_().empty() && _cfg.visible_().value(), _parent);
 }
@@ -32,12 +32,12 @@ void nana::runner::view_obj::close()
     }
 }
 
-void nana::runner::view_obj::add_widget(wnd_ptr _w, widget_cfg& _cfg)
+void nana::runner::view_obj::add_child_widget(wnd_ptr _w, widget_cfg& _cfg)
 {
     id path_in_root_view = _cfg.id_path();
     //NAR_LOG_DEBUG(path_in_root_view);
-    m_widgets[path_in_root_view] = _w;
-    m_cfgs[path_in_root_view] = &_cfg;
+    m_child_widgets[path_in_root_view] = _w;
+    m_child_cfgs[path_in_root_view] = &_cfg;
 
 }
 
@@ -46,36 +46,41 @@ void nana::runner::view_obj::add_child_view(id _id, view_ptr _vw)
     m_child_views[_id] = _vw;
 }
 
+nana::runner::wnd_ptr nana::runner::view_obj::find_child_widget(id _id) const
+{
+	auto i = m_child_widgets.find(_id);
+    return (i != m_child_widgets.end()) ? (*i).second : nullptr;
+}
+
 nana::runner::wnd_ptr nana::runner::view_obj::get_widget(id _id) const
 {
-	auto i = m_widgets.find(_id);
-	if (i == m_widgets.end())
-		return nullptr;
-	return (*i).second;
+    if (_id.empty())
+        return m_self_wnd;
+
+    _id = m_self_cfg.id_path() / _id;
+    return find_child_widget(_id);
 }
 
-nana::runner::widget_cfg* nana::runner::view_obj::get_cfg(id _id) const
+nana::runner::widget_cfg* nana::runner::view_obj::find_child_cfg(id _id) const
 {
-    auto i = m_cfgs.find(_id);
-    if (i == m_cfgs.end())
-        return nullptr;
-    return (*i).second;
+    auto i = m_child_cfgs.find(_id);
+    return (i != m_child_cfgs.end()) ? (*i).second : nullptr;
 }
 
-nana::runner::widget_cfg* nana::runner::view_obj::cfg_(id _id) const
+nana::runner::widget_cfg* nana::runner::view_obj::cfg(id _id) const
 {
     if (_id.empty())
-        return &m_cfg;
+        return &m_self_cfg;
 
-    _id = cfg().id_path() / _id;
-    return get_cfg(_id);
+    _id = m_self_cfg.id_path() / _id;
+    return find_child_cfg(_id);
 }
 
 nana::runner::view_obj const * nana::runner::view_obj::child_view(id _id) const
 {
     if (_id.empty())
         return this;
-    _id = cfg().id_path() / _id;
+    _id = m_self_cfg.id_path() / _id;
     auto i = m_child_views.find(_id);
     if (i == m_child_views.end())
         return nullptr;
@@ -101,24 +106,24 @@ void nana::runner::view_obj::make_child_widgets(widget_cfg& _cfg, view_obj* _roo
 
 	_cfg.init_widget(*w, _root_view);
 
-    _root_view->add_widget(w, _cfg);
+    _root_view->add_child_widget(w, _cfg);
 }
 
 void nana::runner::view_obj::init(bool _visible, window _parent)
 {
     //NAR_LOG_DEBUG(cfg().get_caption());
 
-    m_self_wnd = cfg().create_wnd(_parent, _visible);
+    m_self_wnd = m_self_cfg.create_wnd(_parent, _visible);
     if (!m_self_wnd)
-        throw std::invalid_argument(string("invalid root widget ") + cfg().id_path().str());
+        throw std::invalid_argument(string("invalid root widget ") + m_self_cfg.id_path().str());
 
-    for (auto& i : cfg().children_())
+    for (auto& i : m_self_cfg.children_())
     {
         if (i)
-            make_child_widgets(*i, this, &cfg(), *m_self_wnd/*not _parent!!!*/, true);
+            make_child_widgets(*i, this, &m_self_cfg, *m_self_wnd/*not _parent!!!*/, true);
     }
 
-    cfg().init_widget(*m_self_wnd, this);
+    m_self_cfg.init_widget(*m_self_wnd, this);
 }
 
 nana::runner::view_ptr nana::runner::view_obj::make_view(widget_cfg& _cfg, window _parent)

@@ -53,7 +53,7 @@ void nana::runner::tab_cfg::init_widget(widget & _w, view_obj* _root_view) const
 
     w.div(div.data());
 
-    for (auto& i : _root_view->widgets_())
+    for (auto& i : _root_view->child_widgets_())
     {
         if (i.second)
         {

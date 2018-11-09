@@ -31,7 +31,7 @@ void nana::runner::form_base_cfg::init_widget(widget& _w, view_obj* _root_view) 
     auto& w = dynamic_cast<ui_type&>(_w);
     w.div(div.data());
 
-    for (auto& i : _root_view->widgets_())
+    for (auto& i : _root_view->child_widgets_())
     {
         if (i.second)
         {
