@@ -37,7 +37,7 @@ namespace nana::runner::sample {
 
     public:
         editor_view(widget_cfg& _cfg, window _parent)
-            : view_obj{ _cfg, _parent }
+            : super{ _cfg, _parent }
             , form_{ wnd<form>() }
             , folder_{ wnd<combox>("folder.value") }
             , choose_dir_{ wnd<button>("folder.choose_dir") }

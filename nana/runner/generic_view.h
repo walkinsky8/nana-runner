@@ -13,7 +13,7 @@ namespace nana::runner {
 
     public:
         generic_view(widget_cfg& _cfg, window _parent)
-            : view_obj{ _cfg, _parent }
+            : super{ _cfg, _parent }
         {
         }
 

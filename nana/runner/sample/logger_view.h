@@ -24,7 +24,7 @@ namespace nana::runner::sample {
 
     public:
         logger_view(widget_cfg& _cfg, window _parent)
-            : view_obj{ _cfg, _parent }
+            : super{ _cfg, _parent }
             , form_{ wnd<form>() }
             , content_{ wnd<textbox>("content") }
             , wordwrap_{ wnd<checkbox>("cmd.wordwrap") }

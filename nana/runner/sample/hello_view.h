@@ -21,7 +21,7 @@ namespace nana::runner::sample {
 
     public:
         hello_view(widget_cfg& _cfg, window _parent)
-            : view_obj{ _cfg, _parent }
+            : super{ _cfg, _parent }
             , world_{ wnd<label>("world") }
             , text_{ wnd<textbox>("text") }
             , close_{ wnd<button>("close") }

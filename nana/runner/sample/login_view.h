@@ -21,7 +21,7 @@ namespace nana::runner::sample {
 
     public:
         login_view(widget_cfg& _cfg, window _parent)
-            : view_obj{ _cfg, _parent }
+            : super{ _cfg, _parent }
             , username_{ wnd<textbox>("username.value") }
             , password_{ wnd<textbox>("password.value") }
             , login_{ wnd<button>("cmd.login") }

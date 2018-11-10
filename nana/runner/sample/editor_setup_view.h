@@ -42,7 +42,7 @@ namespace nana::runner::sample {
 
     public:
         editor_setup_view(widget_cfg& _cfg, window _parent)
-            : view_obj{ _cfg, _parent }
+            : super{ _cfg, _parent }
             , form_{ wnd<form>() }
             , name_{ wnd<textbox>("name.value") }
             , size_{ wnd<textbox>("size.value") }

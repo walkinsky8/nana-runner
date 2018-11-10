@@ -69,7 +69,7 @@ namespace nana::runner::sample {
 
     public:
         demo_view(widget_cfg& _cfg, window _parent)
-            : view_obj{ _cfg, _parent }
+            : super{ _cfg, _parent }
             , form_{ wnd<form>() }
             , menubar_{ wnd<menubar>("menubar") }
             , categorize_{ wnd<categorize>("categorize") }

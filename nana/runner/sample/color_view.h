@@ -40,7 +40,7 @@ namespace nana::runner::sample {
 
     public:
         color_view(widget_cfg& _cfg, window _parent)
-            : view_obj{ _cfg, _parent }
+            : super{ _cfg, _parent }
             , form_{ wnd<form>() }
             , bg_{ wnd<textbox>("bg.value") }
             , fg_{ wnd<textbox>("fg.value") }
