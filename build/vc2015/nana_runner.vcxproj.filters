@@ -123,9 +123,6 @@
     <ClCompile Include="..\..\nana\runner\widget_cfg.cpp">
       <Filter>foundation</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\nana\runner\base_config.cpp">
-      <Filter>base</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\nana\runner\widget_base.cpp">
       <Filter>foundation</Filter>
     </ClCompile>
@@ -215,6 +212,9 @@
     </ClCompile>
     <ClCompile Include="..\..\nana\runner\font_model.cpp">
       <Filter>foundation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nana\runner\_config.cpp">
+      <Filter>base</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -328,9 +328,6 @@
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\sample\editor_app.h">
       <Filter>__sample\editor</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\nana\runner\base_config.h">
-      <Filter>base</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\widget_base.h">
       <Filter>foundation</Filter>
@@ -448,6 +445,9 @@
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\font_model.h">
       <Filter>foundation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nana\runner\_config.h">
+      <Filter>base</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

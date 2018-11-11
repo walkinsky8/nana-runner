@@ -90,7 +90,8 @@ void nana::runner::log_thread::on_loop()
         }
         __log_handler(oss.str());
     }
-    else if (running())
+    //else
+    if (running())
     {
         wait(500);
     }

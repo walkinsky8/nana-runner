@@ -1,14 +1,14 @@
 // Created by walkinsky(lyh6188@hotmail.com), 2017/01/16
 #pragma once
 
-#include <nana/runner/base_config.h>
+#include <nana/runner/_config.h>
 
 #include <nana/runner/base_types.h>
 
-#include <nana/runner/dumper.h>
-
 namespace nana::runner
 {
+    class dumper;
+
     class node
     {
         string name_;
@@ -108,9 +108,7 @@ namespace nana::runner
         void traverse(dumper& _s);
 
     };
-    inline dumper& operator<<(dumper& _d, const node& _v)
-    {
-        return codec(_d, const_cast<node&>(_v));
-    }
+
+    template<> struct dumpable<node> { static constexpr bool value = true; };
 
 }

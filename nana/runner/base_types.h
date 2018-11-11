@@ -1,7 +1,7 @@
 // Created by walkinsky(lyh6188@hotmail.com), 2017/11/07
 #pragma once
 
-#include <nana/runner/base_config.h>
+#include <nana/runner/_config.h>
 
 #include <nana/runner/bytes.h>
 #include <nana/runner/datetime.h>

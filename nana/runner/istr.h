@@ -1,7 +1,7 @@
 // Created by walkinsky(lyh6188@hotmail.com), 2017/01/15
 #pragma once
 
-#include <nana/runner/base_config.h>
+#include <nana/runner/_config.h>
 
 namespace nana::runner {
 

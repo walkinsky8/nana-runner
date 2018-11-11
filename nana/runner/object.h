@@ -51,6 +51,16 @@ namespace nana::runner {
 
     };
 
+    inline dumper& operator<<(dumper& _d, const object& _v)
+    {
+        return _v.dump(_d);
+    }
+
+    inline void operator>>(const parser& _p, object& _v)
+    {
+        _v.parse(_p);
+    }
+
     template<> struct dumpable<object> { static constexpr bool value = true; };
 
 }
