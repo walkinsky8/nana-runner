@@ -41,5 +41,15 @@ namespace nana::runner {
 
     template<> struct dumpable<font_model> { static constexpr bool value = true; };
 
+    inline void operator<<(font_model& _o, const font& _v)
+    {
+        _o = _v;
+    }
+
+    inline void operator>>(const font_model& _i, font& _v)
+    {
+        _v = _i;
+    }
+
 }
 

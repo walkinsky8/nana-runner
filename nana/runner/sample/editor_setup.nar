@@ -52,9 +52,6 @@
             id=apply
         }
         @button{
-            id=ok
-        }
-        @button{
             id=cancel
             tooltip="close window"
             bgcolor=#ffff00

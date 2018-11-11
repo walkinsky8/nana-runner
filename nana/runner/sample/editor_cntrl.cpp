@@ -28,7 +28,8 @@ void editor_cntrl::on_init()
         log_ = app::show_view<logger_view>();
         editor_ = app::show_view<editor_view>();
         editor_->cast<editor_view>().setup_.events().click([&] {
-            editor_setup_ = app::show_view<editor_setup_view>();
+            editor_setup_ = app::show_view<editor_setup_view_impl>();
+            editor_setup_->cast<editor_setup_view_impl>().set_target(&editor_->cast<editor_view>().filebuf_);
         });
     });
 }

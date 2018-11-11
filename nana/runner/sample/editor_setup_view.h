@@ -33,7 +33,6 @@ namespace nana::runner::sample {
         textbox& sample_;
 
         button& apply_;
-        button& ok_;
         button& cancel_;
 
     public:
@@ -51,7 +50,6 @@ namespace nana::runner::sample {
             , fgcolor_{ wnd<textbox>("fgcolor.value") }
             , sample_{ wnd<textbox>("sample.value") }
             , apply_{ wnd<button>("cmd.apply") }
-            , ok_{ wnd<button>("cmd.ok") }
             , cancel_{ wnd<button>("cmd.cancel") }
         {
         }

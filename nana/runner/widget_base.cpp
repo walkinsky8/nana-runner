@@ -123,8 +123,9 @@ void nana::runner::operator >> (const parser& _p, font& _v)
 	}
 }
 
-nana::runner::string& nana::runner::operator << (string& _w, const color& _v)
+void nana::runner::operator << (string& _w, const color& _v)
 {
+    _w.clear();
 	unsigned r = (unsigned)(_v.r() + 0.5);
 	unsigned g = (unsigned)(_v.g() + 0.5);
 	unsigned b = (unsigned)(_v.b() + 0.5);
@@ -140,7 +141,6 @@ nana::runner::string& nana::runner::operator << (string& _w, const color& _v)
 		_w << "," << b;
 		_w << ")";
 	}
-	return _w;
 }
 
 void nana::runner::operator >> (const string& _s, color& _v)

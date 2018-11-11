@@ -13,6 +13,8 @@ namespace nana::runner::sample {
 
         NAR_FIELD(editor_setup_model, model);
 
+        widget* target_{};
+
     public:
         self(widget_cfg& _cfg, window _parent)
             : super{ _cfg, _parent }
@@ -20,14 +22,27 @@ namespace nana::runner::sample {
             init();
         }
 
+        void set_target(widget* _target);
+
     private:
         void init();
 
         void init_model();
 
+        void update_model();
+
         void load_model();
 
         void save_model();
+
+        void load_widget(const widget& _w);
+
+        void save_widget(widget& _w) const;
+
+        widget& target()
+        {
+            return target_ ? *target_ : sample_;
+        }
 
     };
 

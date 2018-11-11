@@ -14,6 +14,7 @@ namespace nana::runner {
 	using align = enum_<nana::align, nana::align::left>;
 	using align_v = enum_<nana::align_v, nana::align_v::top>;
 
+    using widget = nana::widget;
 	using wnd_ptr = ptr<widget>;
 
 	color get_color(const string& _s);
@@ -29,7 +30,7 @@ namespace nana::runner {
 	dumper& operator<<(dumper& _d, const font& _v);
 	void operator >> (const parser& _p, font& _v);
 
-	string& operator<<(string& _w, const color& _v);
+	void operator<<(string& _w, const color& _v);
 	void operator >> (const string& _w, color& _v);
 
 }
