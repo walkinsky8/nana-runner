@@ -3,7 +3,8 @@
 
 #include <nana/runner/model_base.h>
 
-#include <nana/runner/font_model.h>
+#include <nana/runner/model_font.h>
+#include <nana/runner/model_color.h>
 
 namespace nana::runner {
 
@@ -17,8 +18,8 @@ namespace nana::runner {
             {
                 NAR_DEFINE_MODEL(colors, model_obj);
 
-                NAR_FIELD(string, bg);
-                NAR_FIELD(string, fg);
+                NAR_FIELD(color_model, bg);
+                NAR_FIELD(color_model, fg);
 
             public:
                 template<class _Stream>

@@ -5,6 +5,8 @@
 
 #include <nana/gui/widgets/combox.hpp>
 
+#include <nana/runner/model_color.h>
+
 namespace nana::runner {
 
     using combox = nana::combox;
@@ -32,7 +34,7 @@ namespace nana::runner {
     };
 
     template<class E, E _V>
-    combox& operator<<(combox& _w, const enum_<E,_V>& _v)
+    void operator<<(combox& _w, const enum_<E,_V>& _v)
     {
         size_t selected = (size_t)-1;
         size_t pos = 0;
@@ -46,7 +48,6 @@ namespace nana::runner {
             ++pos;
         }
         _w.option(selected);
-        return _w;
     }
 
     template<class E, E _V>
@@ -71,6 +72,9 @@ namespace nana::runner {
 
     void operator<<(combox& _w, const strings& _v);
     void operator>>(const combox& _w, strings& _v);
+
+    void operator<<(combox& _w, const color_model& _v);
+    void operator>>(const combox& _w, color_model& _v);
 
 }
 

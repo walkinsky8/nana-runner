@@ -41,4 +41,18 @@ namespace nana::runner {
 
     };
 
+    template<class T>
+    inline void operator<<(spinbox& _w, const T& _v)
+    {
+        string s;
+        s << _v;
+        _w.caption(s);
+    }
+
+    template<class T>
+    inline void operator >> (const spinbox& _w, T& _v)
+    {
+        _w.caption() >> _v;
+    }
+
 }

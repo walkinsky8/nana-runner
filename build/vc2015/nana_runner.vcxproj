@@ -163,6 +163,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\nana\runner\app_base.cpp" />
+    <ClCompile Include="..\..\nana\runner\model_color.cpp" />
     <ClCompile Include="..\..\nana\runner\object.cpp" />
     <ClCompile Include="..\..\nana\runner\_config.cpp" />
     <ClCompile Include="..\..\nana\runner\combox_cfg.cpp" />
@@ -175,7 +176,7 @@
     <ClCompile Include="..\..\nana\runner\cmdargs.cpp" />
     <ClCompile Include="..\..\nana\runner\datetime.cpp" />
     <ClCompile Include="..\..\nana\runner\dumper.cpp" />
-    <ClCompile Include="..\..\nana\runner\font_model.cpp" />
+    <ClCompile Include="..\..\nana\runner\model_font.cpp" />
     <ClCompile Include="..\..\nana\runner\form_cfg.cpp" />
     <ClCompile Include="..\..\nana\runner\group_cfg.cpp" />
     <ClCompile Include="..\..\nana\runner\id.cpp" />
@@ -226,6 +227,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\nana\runner\app_base.h" />
+    <ClInclude Include="..\..\nana\runner\model_color.h" />
     <ClInclude Include="..\..\nana\runner\sample\editor_setup_view_impl.h" />
     <ClInclude Include="..\..\nana\runner\_config.h" />
     <ClInclude Include="..\..\nana\runner\combox_cfg.h" />
@@ -242,7 +244,7 @@
     <ClInclude Include="..\..\nana\runner\dumper.h" />
     <ClInclude Include="..\..\nana\runner\enum.h" />
     <ClInclude Include="..\..\nana\runner\float_listbox_cfg.h" />
-    <ClInclude Include="..\..\nana\runner\font_model.h" />
+    <ClInclude Include="..\..\nana\runner\model_font.h" />
     <ClInclude Include="..\..\nana\runner\form_cfg.h" />
     <ClInclude Include="..\..\nana\runner\generic_view.h" />
     <ClInclude Include="..\..\nana\runner\group_cfg.h" />

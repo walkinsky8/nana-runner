@@ -16,7 +16,7 @@
     }
     @panel{ id=size div="weight=20"
         @label{ id=n caption="Size:" div="weight=20%" align=right }
-        @textbox{ id=value caption=null div="weight=20%" multi_lines=0 }
+        @spinbox{ id=value caption=null div="weight=20%" multi_lines=0 }
         @slider{ id=slider vertical=0 maximum=64 }
     }
     @panel{ id=bold div="weight=20"
@@ -37,11 +37,11 @@
     }
     @panel{ id=bgcolor div="weight=20"
         @label{ id=n caption="Bgcolor:" div="weight=20%" align=right }
-        @textbox{ id=value caption=null multi_lines=0 }
+        @combox{ id=value caption=null editable=1 }
     }
     @panel{ id=fgcolor div="weight=20"
         @label{ id=n caption="Fgcolor:" div="weight=20%" align=right }
-        @textbox{ id=value caption=null multi_lines=0 }
+        @combox{ id=value caption=null editable=1 }
     }
     @panel{ id=sample
         @label{ id=n caption="Sample:" div="weight=20%" align=right }

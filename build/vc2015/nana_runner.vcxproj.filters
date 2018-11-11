@@ -207,9 +207,6 @@
     <ClCompile Include="..\..\nana\runner\sample\login_cntrl.cpp">
       <Filter>_sample\editor</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\nana\runner\font_model.cpp">
-      <Filter>foundation</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\nana\runner\_config.cpp">
       <Filter>base</Filter>
     </ClCompile>
@@ -220,6 +217,10 @@
     <ClCompile Include="..\..\nana\runner\sample\editor_setup_view_impl.cpp">
       <Filter>_sample\editor</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\nana\runner\model_font.cpp">
+      <Filter>foundation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nana\runner\model_color.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\nana\runner\base.h">
@@ -447,14 +448,17 @@
     <ClInclude Include="..\..\nana\runner\object.h">
       <Filter>base</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\nana\runner\font_model.h">
-      <Filter>foundation</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\nana\runner\_config.h">
       <Filter>base</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\sample\editor_setup_view_impl.h">
       <Filter>_sample\editor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nana\runner\model_color.h">
+      <Filter>foundation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nana\runner\model_font.h">
+      <Filter>foundation</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

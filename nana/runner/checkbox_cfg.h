@@ -33,10 +33,9 @@ namespace nana::runner {
 
     };
 
-    inline checkbox& operator<<(checkbox& _w, bool _v)
+    inline void operator<<(checkbox& _w, bool _v)
     {
         _w.check(_v);
-        return _w;
     }
 
     inline void operator >> (const checkbox& _w, bool& _v)

@@ -38,12 +38,11 @@ namespace nana::runner {
     };
 
     template<class T>
-    inline textbox& operator<<(textbox& _w, const T& _v)
+    inline void operator<<(textbox& _w, const T& _v)
     {
         string s;
         s << _v;
         _w.caption(s);
-        return _w;
     }
 
     template<class T>

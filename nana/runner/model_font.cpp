@@ -3,7 +3,7 @@
 
 #ifndef __NANA_RUNNER_LIB_ALL_IN_ONE
 
-#include <nana/runner/font_model.h>
+#include <nana/runner/model_font.h>
 
 nana::runner::font_model::font_model(const font& _f)
 {

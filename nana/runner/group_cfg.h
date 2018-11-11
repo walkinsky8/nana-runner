@@ -56,12 +56,11 @@ namespace nana::runner {
     }
 
     template<class E, E _V>
-    group& operator<<(group& _w, const enum_<E, _V>& _v)
+    void operator<<(group& _w, const enum_<E, _V>& _v)
     {
         strings names;
         names << _v;
         init_group(_w, names, nullptr);
-        return _w;
     }
 
     template<class E, E _V>
