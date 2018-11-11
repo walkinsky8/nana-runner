@@ -18,6 +18,17 @@
             void parse(const parser& _p) override { codec(const_cast<parser&>(_p), *this); } \
         private:
 
+#define NAR_DEFINE_VIEW_IMPL(_class) \
+        private: \
+            using super = _class##_view; \
+            using self = _class##_view_impl; \
+        public: \
+            static pcstr type_name_() { return #_class; } \
+            static view_ptr new_(widget_cfg& _cfg, window _parent) { return std::make_shared<self>(_cfg, _parent); } \
+        public: \
+            string type_name() const override { return type_name_(); } \
+        private:
+
 namespace nana::runner {
 
 	class view_obj;

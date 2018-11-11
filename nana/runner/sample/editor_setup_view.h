@@ -10,8 +10,6 @@
 #include <nana/runner/label_cfg.h>
 #include <nana/runner/button_cfg.h>
 
-#include <nana/runner/sample/editor_setup_model.h>
-
 namespace nana::runner::sample {
 
     class editor_setup_view : public view_obj
@@ -38,8 +36,6 @@ namespace nana::runner::sample {
         button& ok_;
         button& cancel_;
 
-        editor_setup_model model_;
-
     public:
         editor_setup_view(widget_cfg& _cfg, window _parent)
             : super{ _cfg, _parent }
@@ -58,17 +54,7 @@ namespace nana::runner::sample {
             , ok_{ wnd<button>("cmd.ok") }
             , cancel_{ wnd<button>("cmd.cancel") }
         {
-            init();
         }
-
-    private:
-        void init();
-
-        void init_model();
-
-        void load_model();
-
-        void save_model();
 
     };
 

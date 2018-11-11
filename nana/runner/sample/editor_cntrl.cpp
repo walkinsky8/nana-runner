@@ -6,7 +6,7 @@
 #include <nana/runner/sample/logger_view.h>
 #include <nana/runner/sample/login_view.h>
 #include <nana/runner/sample/editor_view.h>
-#include <nana/runner/sample/editor_setup_view.h>
+#include <nana/runner/sample/editor_setup_view_impl.h>
 
 #include <nana/runner/app_base.h>
 
@@ -17,7 +17,7 @@ void editor_cntrl::initialize()
     add_view<logger_view>();
     add_view<login_view>();
     add_view<editor_view>();
-    add_view<editor_setup_view>();
+    add_view<editor_setup_view_impl>();
 }
 
 void editor_cntrl::on_init()
