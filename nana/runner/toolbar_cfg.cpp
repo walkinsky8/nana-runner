@@ -1,6 +1,8 @@
 // Created by walkinsky(lyh6188@hotmail.com), 2018/10/20
 #include "stdafx.h"
 
+#ifndef __NANA_RUNNER_LIB_ALL_IN_ONE
+
 #include "toolbar_cfg.h"
 
 #include <nana/runner/view_base.h>
@@ -28,4 +30,6 @@ void nana::runner::toolbar_cfg::init_widget(widget & _w, view_obj* _root_view) c
             w.enable(i, child.enabled_().value());
     }
 }
+
+#endif
 

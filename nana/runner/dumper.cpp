@@ -1,6 +1,8 @@
 // Created by walkinsky(lyh6188@hotmail.com), 2017/01/15
 #include "stdafx.h"
 
+#ifndef __NANA_RUNNER_LIB_ALL_IN_ONE
+
 #include <nana/runner/dumper.h>
 
 nana::runner::dumper& nana::runner::dumper::writeString(const istr& _v)
@@ -50,4 +52,6 @@ nana::runner::dumper& nana::runner::dumper::leave()
     --level_;
     return indent().write(tag::end);
 }
+
+#endif
 

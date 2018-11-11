@@ -1,6 +1,8 @@
 // Created by walkinsky(lyh6188@hotmail.com), 2017/11/15
 #include "stdafx.h"
 
+#ifndef __NANA_RUNNER_LIB_ALL_IN_ONE
+
 #include "form_cfg.h"
 
 #include <nana/runner/view_base.h>
@@ -83,4 +85,6 @@ nana::runner::wnd_ptr nana::runner::nested_form_cfg::create_wnd(window p, bool v
 {
     return std::make_shared<ui_type>(p, API::make_center(300, 200), get_appearance());
 }
+
+#endif
 

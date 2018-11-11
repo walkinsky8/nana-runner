@@ -1,6 +1,8 @@
 // Created by walkinsky(lyh6188@hotmail.com), 2017/01/15
 #include "stdafx.h"
 
+#ifndef __NANA_RUNNER_LIB_ALL_IN_ONE
+
 #include <nana/runner/log.h>
 
 #include <nana/runner/enum.h>
@@ -102,4 +104,6 @@ void nana::runner::log_thread::on_close()
     records_.cancel();
     wakeup();
 }
+
+#endif
 

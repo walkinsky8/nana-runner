@@ -1,6 +1,8 @@
 // Created by walkinsky(lyh6188@hotmail.com), 2018/10/15
 #include "stdafx.h"
 
+#ifndef __NANA_RUNNER_LIB_ALL_IN_ONE
+
 #include <nana/runner/datetime.h>
 
 #include <nana/runner/istr.h>
@@ -112,3 +114,6 @@ void nana::operator>>(const std::string& _is, time& _v)
     istr second = p.read(is_digit, 2);
     _v = time{ hour.to_uint(), minute.to_uint(), second.to_uint() };
 }
+
+#endif
+

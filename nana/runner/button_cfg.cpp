@@ -1,6 +1,8 @@
 // Created by walkinsky(lyh6188@hotmail.com), 2017/11/15
 #include "stdafx.h"
 
+#ifndef __NANA_RUNNER_LIB_ALL_IN_ONE
+
 #include "button_cfg.h"
 
 #include <nana/runner/app_base.h>
@@ -49,3 +51,6 @@ void nana::runner::button_cfg::init_widget(widget & _w, view_obj* _root_view) co
         }
     }
 }
+
+#endif
+

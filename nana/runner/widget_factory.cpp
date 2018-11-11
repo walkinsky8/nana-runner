@@ -1,6 +1,8 @@
 // Created by walkinsky(lyh6188@hotmail.com), 2017/01/15
 #include "stdafx.h"
 
+#ifndef __NANA_RUNNER_LIB_ALL_IN_ONE
+
 #include <nana/runner/widget_factory.h>
 
 nana::runner::widget_factory::widget_factory()
@@ -35,3 +37,6 @@ nana::runner::widget_factory::create_func nana::runner::widget_factory::get(cons
         return nullptr;
     return (*i).second;
 }
+
+#endif
+

@@ -1,6 +1,8 @@
 // Created by walkinsky(lyh6188@hotmail.com), 2018/01/12
 #include "stdafx.h"
 
+#ifndef __NANA_RUNNER_LIB_ALL_IN_ONE
+
 #include "label_cfg.h"
 
 void nana::runner::label_cfg::init_widget(widget & _w, view_obj* _root_view) const
@@ -26,3 +28,6 @@ void nana::runner::label_cfg::init_widget(widget & _w, view_obj* _root_view) con
         w.text_align(nana::align::left, align_v_().value().value());
 
 }
+
+#endif
+

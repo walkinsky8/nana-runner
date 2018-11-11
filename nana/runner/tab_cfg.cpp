@@ -1,6 +1,8 @@
 // Created by walkinsky(lyh6188@hotmail.com), 2018/10/19
 #include "stdafx.h"
 
+#ifndef __NANA_RUNNER_LIB_ALL_IN_ONE
+
 #include "tab_cfg.h"
 
 #include <nana/runner/view_base.h>
@@ -64,4 +66,6 @@ void nana::runner::tab_cfg::init_widget(widget & _w, view_obj* _root_view) const
 
     w.collocate();
 }
+
+#endif
 

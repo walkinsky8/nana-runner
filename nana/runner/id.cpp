@@ -1,6 +1,8 @@
 // Created by walkinsky(lyh6188@hotmail.com), 2017/11/15
 #include "stdafx.h"
 
+#ifndef __NANA_RUNNER_LIB_ALL_IN_ONE
+
 #include <nana/runner/id.h>
 
 nana::runner::id& nana::runner::id::format()
@@ -37,3 +39,6 @@ nana::runner::id& nana::runner::id::operator/(const id& _child)
     path_ << _child;
     return *this;
 }
+
+#endif
+

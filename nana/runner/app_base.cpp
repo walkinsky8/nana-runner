@@ -1,6 +1,8 @@
 // Created by walkinsky(lyh6188@hotmail.com), 2018/03/02
 #include "stdafx.h"
 
+#ifndef __NANA_RUNNER_LIB_ALL_IN_ONE
+
 #include <nana/runner/app_base.h>
 
 nana::runner::app* nana::runner::app::instance_{ nullptr };
@@ -205,3 +207,6 @@ void nana::runner::app::run(const wchar_t* _cmdline)
     // called in quit()
     //on_fini();
 }
+
+#endif
+

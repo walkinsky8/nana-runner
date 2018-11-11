@@ -1,6 +1,8 @@
 // Created by walkinsky(lyh6188@hotmail.com), 2017/01/15
 #include "stdafx.h"
 
+#ifndef __NANA_RUNNER_LIB_ALL_IN_ONE
+
 #include <nana/runner/widget_all.h>
 
 void nana::runner::init_widgets()
@@ -36,4 +38,6 @@ void nana::runner::init_widgets()
     add_widget<option_cfg>();
     add_widget<unknown_cfg>();
 }
+
+#endif
 

@@ -107,7 +107,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>__NANA_RUNNER_LIB_ALL_IN_ONE;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <AdditionalOptions>/std:c++latest %(AdditionalOptions)</AdditionalOptions>
@@ -163,6 +163,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\nana\runner\app_base.cpp" />
+    <ClCompile Include="..\..\nana\runner\object.cpp" />
     <ClCompile Include="..\..\nana\runner\_config.cpp" />
     <ClCompile Include="..\..\nana\runner\combox_cfg.cpp" />
     <ClCompile Include="..\..\nana\runner\controller_base.cpp" />
@@ -215,6 +216,7 @@
     <ClCompile Include="..\..\nana\runner\widget_base.cpp" />
     <ClCompile Include="..\..\nana\runner\widget_cfg.cpp" />
     <ClCompile Include="..\..\nana\runner\widget_factory.cpp" />
+    <ClCompile Include="..\..\nana_runner_lib_all_in_one.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

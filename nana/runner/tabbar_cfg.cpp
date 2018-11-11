@@ -1,6 +1,8 @@
 // Created by walkinsky(lyh6188@hotmail.com), 2018/10/17
 #include "stdafx.h"
 
+#ifndef __NANA_RUNNER_LIB_ALL_IN_ONE
+
 #include "tabbar_cfg.h"
 #include "tab_cfg.h"
 
@@ -70,4 +72,6 @@ void nana::runner::tabbar_lite_cfg::init_widget(widget & _w, view_obj* _root_vie
         page_fld.fasten(*vp->self_wnd_());
     }
 }
+
+#endif
 

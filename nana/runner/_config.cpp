@@ -1,6 +1,8 @@
 // Created by walkinsky(lyh6188@hotmail.com), 2017/01/15
 #include "stdafx.h"
 
+#ifndef __NANA_RUNNER_LIB_ALL_IN_ONE
+
 #include <nana/runner/_config.h>
 
 #include <nana/runner/base.h>
@@ -149,4 +151,6 @@ bool nana::runner::write_file(const wstring& _filename, const string& _content)
     }
     return true;
 }
+
+#endif
 

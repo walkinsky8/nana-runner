@@ -1,6 +1,8 @@
 // Created by walkinsky(lyh6188@hotmail.com), 2018/10/14
 #include "stdafx.h"
 
+#ifndef __NANA_RUNNER_LIB_ALL_IN_ONE
+
 #include "group_cfg.h"
 
 #include "option_cfg.h"
@@ -30,4 +32,6 @@ void nana::runner::group_cfg::init_widget(widget & _w, view_obj* _root_view) con
         }
     }
 }
+
+#endif
 

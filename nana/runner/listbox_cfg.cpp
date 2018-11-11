@@ -1,6 +1,8 @@
 // Created by walkinsky(lyh6188@hotmail.com), 2018/10/16
 #include "stdafx.h"
 
+#ifndef __NANA_RUNNER_LIB_ALL_IN_ONE
+
 #include "listbox_cfg.h"
 
 #include <nana/runner/app_base.h>
@@ -36,4 +38,6 @@ void nana::runner::listbox_cfg::init_widget(widget & _w, view_obj* _root_view) c
         }
     }
 }
+
+#endif
 

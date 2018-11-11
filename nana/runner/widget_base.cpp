@@ -1,6 +1,8 @@
 // Created by walkinsky(lyh6188@hotmail.com), 2018/10/02
 #include "stdafx.h"
 
+#ifndef __NANA_RUNNER_LIB_ALL_IN_ONE
+
 #include <nana/runner/widget_base.h>
 
 nana::color nana::runner::get_color(const string& _s)
@@ -145,4 +147,6 @@ void nana::runner::operator >> (const string& _s, color& _v)
 {
 	_v = get_color(_s);
 }
+
+#endif
 

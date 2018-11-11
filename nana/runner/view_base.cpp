@@ -1,6 +1,8 @@
 // Created by walkinsky(lyh6188@hotmail.com), 2017/01/15
 #include "stdafx.h"
 
+#ifndef __NANA_RUNNER_LIB_ALL_IN_ONE
+
 #include <nana/runner/view_base.h>
 
 #include <nana/runner/view_factory.h>
@@ -133,4 +135,6 @@ nana::runner::view_ptr nana::runner::view_obj::make_view(widget_cfg& _cfg, windo
         return p;
     return std::make_shared<generic_view>(_cfg, _parent);
 }
+
+#endif
 

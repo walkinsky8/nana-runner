@@ -1,6 +1,8 @@
 // Created by walkinsky(lyh6188@hotmail.com), 2018/10/17
 #include "stdafx.h"
 
+#ifndef __NANA_RUNNER_LIB_ALL_IN_ONE
+
 #include "spinbox_cfg.h"
 
 void nana::runner::spinbox_cfg::init_widget(widget & _w, view_obj* _root_view) const
@@ -27,4 +29,6 @@ void nana::runner::spinbox_cfg::init_widget(widget & _w, view_obj* _root_view) c
     if (!prefix_().empty() || !suffix_().empty())
         w.modifier(prefix_(), suffix_());
 }
+
+#endif
 

@@ -1,6 +1,8 @@
 // Created by walkinsky(lyh6188@hotmail.com), 2018/10/20
 #include "stdafx.h"
 
+#ifndef __NANA_RUNNER_LIB_ALL_IN_ONE
+
 #include "treebox_cfg.h"
 
 #include "option_cfg.h"
@@ -84,3 +86,6 @@ void nana::runner::treebox_cfg::init_nodes(treebox& _w, item_proxy _p, option_cf
         }
     }
 }
+
+#endif
+

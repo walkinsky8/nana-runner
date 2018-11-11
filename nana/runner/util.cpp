@@ -1,6 +1,8 @@
 // Created by walkinsky(lyh6188@hotmail.com), 2018/11/04
 #include "stdafx.h"
 
+#ifndef __NANA_RUNNER_LIB_ALL_IN_ONE
+
 #include <nana/runner/util.h>
 
 void nana::runner::write_console(const string& _msg)
@@ -27,4 +29,6 @@ nana::runner::pcstr nana::runner::find_classfunc(pcstr _func)
         ++p;
     return p;
 }
+
+#endif
 

@@ -1,6 +1,8 @@
 // Created by walkinsky(lyh6188@hotmail.com), 2018/10/12
 #include "stdafx.h"
 
+#ifndef __NANA_RUNNER_LIB_ALL_IN_ONE
+
 #include "picture_cfg.h"
 
 #include <nana/runner/app_base.h>
@@ -37,3 +39,6 @@ void nana::runner::picture_cfg::init_widget(widget & _w, view_obj* _root_view) c
         w.load(app::create_image(image_()));
     }
 }
+
+#endif
+

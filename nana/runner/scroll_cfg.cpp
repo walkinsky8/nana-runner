@@ -1,6 +1,8 @@
 // Created by walkinsky(lyh6188@hotmail.com), 2018/10/16
 #include "stdafx.h"
 
+#ifndef __NANA_RUNNER_LIB_ALL_IN_ONE
+
 #include "scroll_cfg.h"
 
 void nana::runner::hscroll_cfg::init_widget(widget & _w, view_obj* _root_view) const
@@ -24,4 +26,6 @@ void nana::runner::vscroll_cfg::init_widget(widget & _w, view_obj* _root_view) c
     w.value(value_());
     w.step(step_());
 }
+
+#endif
 

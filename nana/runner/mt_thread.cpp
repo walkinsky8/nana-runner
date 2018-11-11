@@ -1,6 +1,8 @@
 // Created by walkinsky(lyh6188@hotmail.com), 2018/11/04
 #include "stdafx.h"
 
+#ifndef __NANA_RUNNER_LIB_ALL_IN_ONE
+
 #include <nana/runner/mt_thread.h>
 
 void nana::runner::simple_thread::open()
@@ -76,4 +78,6 @@ void nana::runner::simple_thread::sleep(unsigned _milliseconds)
 {
     nana::system::sleep(_milliseconds);
 }
+
+#endif
 

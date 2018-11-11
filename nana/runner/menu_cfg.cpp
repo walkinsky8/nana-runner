@@ -1,6 +1,8 @@
 // Created by walkinsky(lyh6188@hotmail.com), 2018/10/16
 #include "stdafx.h"
 
+#ifndef __NANA_RUNNER_LIB_ALL_IN_ONE
+
 #include "menu_cfg.h"
 
 #include <nana/runner/app_base.h>
@@ -40,3 +42,6 @@ void nana::runner::menu_cfg::init_menu(menu& _m) const
         ++idx;
     }
 }
+
+#endif
+

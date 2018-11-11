@@ -1,6 +1,8 @@
 // Created by walkinsky(lyh6188@hotmail.com), 2018/10/02
 #include "stdafx.h"
 
+#ifndef __NANA_RUNNER_LIB_ALL_IN_ONE
+
 #include <nana/runner/base.h>
 
 void nana::runner::init_enums()
@@ -184,4 +186,6 @@ void nana::runner::init_enums()
 	NAR_ENUM_ADD(nana::cursor, arrow, size_bottom_left);
 	NAR_ENUM_ADD(nana::cursor, arrow, size_bottom_right);
 }
+
+#endif
 

@@ -1,6 +1,8 @@
 // Created by walkinsky(lyh6188@hotmail.com), 2018/01/22
 #include "stdafx.h"
 
+#ifndef __NANA_RUNNER_LIB_ALL_IN_ONE
+
 #include "slider_cfg.h"
 
 void nana::runner::slider_cfg::init_widget(widget & _w, view_obj* _root_view) const
@@ -24,3 +26,6 @@ void nana::runner::slider_cfg::init_widget(widget & _w, view_obj* _root_view) co
     if (!transparent_().empty())
         w.transparent(transparent_().value());
 }
+
+#endif
+

@@ -1,6 +1,8 @@
 // Created by walkinsky(lyh6188@hotmail.com), 2017/01/15
 #include "stdafx.h"
 
+#ifndef __NANA_RUNNER_LIB_ALL_IN_ONE
+
 #include <nana/runner/widget_cfg.h>
 
 #include <nana/runner/widget_factory.h>
@@ -158,4 +160,6 @@ void nana::runner::widget_cfg::init_widget(widget& _w, view_obj* _root_view) con
     if (!visible_().empty())
         visible_().value() ? _w.show() : _w.hide();
 }
+
+#endif
 

@@ -1,6 +1,8 @@
 // Created by walkinsky(lyh6188@hotmail.com), 2017/01/16
 #include "stdafx.h"
 
+#ifndef __NANA_RUNNER_LIB_ALL_IN_ONE
+
 #include <nana/runner/parser.h>
 
 #include <nana/runner/dumper.h>
@@ -321,4 +323,6 @@ std::ostream& nana::runner::parser::dump(std::ostream& _os) const
     d << unit();
     return _os << d;
 }
+
+#endif
 

@@ -1,6 +1,8 @@
 // Created by walkinsky(lyh6188@hotmail.com), 2018/10/15
 #include "stdafx.h"
 
+#ifndef __NANA_RUNNER_LIB_ALL_IN_ONE
+
 #include "combox_cfg.h"
 
 #include "option_cfg.h"
@@ -45,4 +47,6 @@ void nana::runner::operator>>(const combox& _w, strings& _v)
     for (size_t i = 0; i < _w.the_number_of_options(); ++i)
         _v.push_back(_w.text(i));
 }
+
+#endif
 

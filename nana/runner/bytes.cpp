@@ -1,6 +1,8 @@
 // Created by walkinsky(lyh6188@hotmail.com), 2017/11/11
 #include "stdafx.h"
 
+#ifndef __NANA_RUNNER_LIB_ALL_IN_ONE
+
 #include <nana/runner/bytes.h>
 
 bool nana::runner::bytes::is_base64_char(const char _c)
@@ -94,3 +96,6 @@ std::string nana::runner::bytes::to_base64() const
     }
     return s;
 }
+
+#endif
+

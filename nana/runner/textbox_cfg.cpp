@@ -1,6 +1,8 @@
 // Created by walkinsky(lyh6188@hotmail.com), 2018/01/12
 #include "stdafx.h"
 
+#ifndef __NANA_RUNNER_LIB_ALL_IN_ONE
+
 #include "textbox_cfg.h"
 
 void nana::runner::textbox_cfg::init_widget(widget & _w, view_obj* _root_view) const
@@ -27,3 +29,6 @@ void nana::runner::textbox_cfg::init_widget(widget & _w, view_obj* _root_view) c
     if (!align_().empty())
         w.text_align(align_().value().value());
 }
+
+#endif
+

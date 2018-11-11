@@ -1,6 +1,8 @@
 // Created by walkinsky(lyh6188@hotmail.com), 2018/11/09
 #include "stdafx.h"
 
+#ifndef __NANA_RUNNER_LIB_ALL_IN_ONE
+
 #include <nana/runner/font_model.h>
 
 nana::runner::font_model::font_model(const font& _f)
@@ -17,4 +19,6 @@ nana::runner::font_model::operator nana::runner::font() const
 {
     return make_font(name_(), size_(), bold_(), italic_(), underline_(), strikeout_());
 }
+
+#endif
 
