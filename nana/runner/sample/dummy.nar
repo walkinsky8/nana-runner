@@ -1,54 +1,11 @@
-﻿@form{ id=dummy div='vert'
-    @toolbar { id=toolbar scale=32 div='vert weight=40'
-        @option { caption=open image='image.jpg' }
-        @option { }
-        @option { caption=close image='small.png' _click=close }
-        @option { }
-        @option { caption=quit image='zhuang.jpg' _click=quit }
-        @option { }
-    }
-    @tabbar { id=tabbar page_id=tabpage div='weight=20'
-        @tab { id=red div='vert' bgcolor=red tab_bgcolor=red fgcolor=white tab_image='image.jpg'
-            @label { id=label }
-            @textbox{ id=textbox1 }
-            @button { id=button1 icon='small.png' }
-        }
-        @tab { id=grey div='vert' bgcolor=grey tab_bgcolor=grey fgcolor=white tab_image='zhuang.jpg'
-            @label { id=label }
-            @textbox { id=textbox1 }
-            @button { id=button1 }
-        }
-    }
-    @tabpage { id=tabpage }
-    @panel { id=trees
-        @treebox{ id=folders div='weight=30%' checkable=1 directory='c:\'
-        }
-        @listbox{ id=files div='weight=40%'
-			headers={
-				@option { caption=name width=50 }
-				@option { caption=value }
-			}
-        }
-        @treebox{ id=sam div='weight=30%'
-            @option { id=root
-                @option { id='a'
-                    @option { id='1' }
-                    @option { id='2' }
-                    @option { id='3' }
-                }
-                @option { id='b'
-                    @option { id='1' }
-                    @option { id='2' }
-                    @option { id='3' }
-                }
-                @option { id='c'
-                    @option { id='1' }
-                    @option { id='2' }
-                    @option { id='3' }
-                }
-                @option { id='d' }
-                @option { id='e' }
-            }
-        }
-    }
+﻿@form{
+    id=hallo
+    div='vert'
+	@label{ id=hello div='weight=20' }
+	@textbox{ id=hillo }
+	@panel { id=cmd div='weight=25'
+		@button{ id=hollo }
+		@button{ id=hullo }
+		@button{ id=goodbye _click=close }
+	}
 }

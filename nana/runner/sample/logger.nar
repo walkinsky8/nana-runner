@@ -9,8 +9,8 @@
     @textbox{
         id=content
         caption=null
-        bgcolor="#eeeeee"
-        fgcolor="#000000"
+        bgcolor="black"
+        fgcolor="lime"
         typeface={Courier New 10}
         line_wrapped=0
         multi_lines=1
