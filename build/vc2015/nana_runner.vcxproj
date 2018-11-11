@@ -107,7 +107,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>__NANA_RUNNER_LIB_ALL_IN_ONE;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>x__NANA_RUNNER_LIB_ALL_IN_ONE;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <AdditionalOptions>/std:c++latest %(AdditionalOptions)</AdditionalOptions>
@@ -195,7 +195,7 @@
     <ClCompile Include="..\..\nana\runner\progress_cfg.cpp" />
     <ClCompile Include="..\..\nana\runner\sample\editor_app.cpp" />
     <ClCompile Include="..\..\nana\runner\sample\editor_cntrl.cpp" />
-    <ClCompile Include="..\..\nana\runner\sample\editor_setup_view.cpp" />
+    <ClCompile Include="..\..\nana\runner\sample\editor_setup_view_impl.cpp" />
     <ClCompile Include="..\..\nana\runner\sample\editor_view.cpp" />
     <ClCompile Include="..\..\nana\runner\sample\logger_view.cpp" />
     <ClCompile Include="..\..\nana\runner\sample\login_cntrl.cpp" />

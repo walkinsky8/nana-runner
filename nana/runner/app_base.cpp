@@ -145,7 +145,7 @@ nana::runner::view_ptr nana::runner::app::create_view_(const string& _cfg)
 
 }
 
-nana::runner::view_ptr nana::runner::app::load_view(const wstring& _filename)
+nana::runner::view_ptr nana::runner::app::load_view_(const wstring& _filename)
 {
 	cfg_ptr cfg = load_cfg(_filename);
 	if (cfg)
@@ -192,7 +192,7 @@ void nana::runner::app::run(const wchar_t* _cmdline)
     else
     for (auto& filename : args_.arguments())
     {
-        auto& v = load_view(filename);
+        auto& v = load_view_(filename);
         if (v)
         {
             initial_views_.push_back(v);
@@ -204,7 +204,7 @@ void nana::runner::app::run(const wchar_t* _cmdline)
     exec();
     NAR_LOG("leave exec.");
 
-    // called in quit()
+    // called in quit().
     //on_fini();
 }
 

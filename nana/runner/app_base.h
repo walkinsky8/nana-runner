@@ -52,16 +52,32 @@ namespace nana::runner
 
         view_ptr create_view_(const string& _cfg);
 
-        view_ptr load_view(const wstring& _filename);
+        view_ptr load_view_(const wstring& _filename);
 
         static view_ptr create_view(const string& _cfg)
         {
             return instance().create_view_(_cfg);
         }
 
-        static view_ptr get_view(const wstring& _filename)
+        static view_ptr load_view(const wstring& _filename)
         {
-            return instance().load_view(_filename);
+            return instance().load_view_(_filename);
+        }
+
+        template<class _View>
+        static view_ptr get_view()
+        {
+            string id = _View::type_name_();
+            wstring wid = to_wstring(id);
+            return load_view(wid);
+        }
+
+        template<class _View>
+        static view_ptr show_view()
+        {
+            view_ptr p = get_view<_View>();
+            p->show();
+            return p;
         }
 
         static wstring find_file(const wstring& _filename)

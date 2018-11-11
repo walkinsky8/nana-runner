@@ -7,11 +7,6 @@
 
 using namespace nana::runner::sample;
 
-void login_view::set_on_login(std::function<void()> _f)
-{
-    login_.events().click([this, _f] { close(); _f(); });
-}
-
 void login_view::init()
 {
     login_.events().click([this] { on_login(); });

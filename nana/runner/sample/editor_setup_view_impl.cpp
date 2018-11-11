@@ -79,3 +79,4 @@ void editor_setup_view_impl::save_model()
     sample_.bgcolor(get_color(model_().colors_().bg_()));
     sample_.fgcolor(get_color(model_().colors_().fg_()));
 }
+

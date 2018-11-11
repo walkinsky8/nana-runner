@@ -14,11 +14,11 @@ void login_cntrl::initialize()
 
 void login_cntrl::on_init()
 {
-    view_ = app::get_view(L"login.nar");
-    view_->show();
+    view_ = app::show_view<login_view>();
 }
 
 void login_cntrl::on_fini()
 {
+    close_view(view_);
 }
 

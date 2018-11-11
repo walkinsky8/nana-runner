@@ -53,8 +53,6 @@ namespace nana::runner::sample {
             init();
         }
 
-        void set_on_setup(std::function<void()> _f);
-
     private:
         void init();
 

@@ -33,9 +33,23 @@ namespace nana::runner {
             s.assign(data(), size());
         }
 
+        void operator >> (wstring& s) const
+        {
+            string u8s;
+            *this >> u8s;
+            s = to_wstring(u8s);
+        }
+
         operator string() const
         {
             string s;
+            *this >> s;
+            return s;
+        }
+
+        operator wstring() const
+        {
+            wstring s;
             *this >> s;
             return s;
         }

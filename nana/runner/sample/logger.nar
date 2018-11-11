@@ -20,11 +20,11 @@
         @checkbox{
             id=wordwrap
             caption='Line Wrap'
-            @**div="weight=30%"**@
+            div="weight=40%"
         }
         @button{
             id=close
-            @**div="weight=30%"**@
+            div="weight=30%"
             tooltip="close window"
             bgcolor=yellow
         }

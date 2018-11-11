@@ -30,8 +30,6 @@ namespace nana::runner::sample {
             init();
         }
 
-        void set_on_login(std::function<void()> _f);
-
     private:
         void init();
 

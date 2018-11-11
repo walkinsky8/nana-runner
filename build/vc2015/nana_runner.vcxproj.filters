@@ -195,9 +195,6 @@
     <ClCompile Include="..\..\nana\runner\sample\editor_cntrl.cpp">
       <Filter>_sample\editor</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\nana\runner\sample\editor_setup_view.cpp">
-      <Filter>_sample\editor</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\nana\runner\sample\editor_app.cpp">
       <Filter>_sample\editor</Filter>
     </ClCompile>
@@ -219,6 +216,9 @@
     <ClCompile Include="..\..\nana_runner_lib_all_in_one.cpp" />
     <ClCompile Include="..\..\nana\runner\object.cpp">
       <Filter>base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nana\runner\sample\editor_setup_view_impl.cpp">
+      <Filter>_sample\editor</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -453,7 +453,9 @@
     <ClInclude Include="..\..\nana\runner\_config.h">
       <Filter>base</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\nana\runner\sample\editor_setup_view_impl.h" />
+    <ClInclude Include="..\..\nana\runner\sample\editor_setup_view_impl.h">
+      <Filter>_sample\editor</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\nana\runner\sample\color.nar">
