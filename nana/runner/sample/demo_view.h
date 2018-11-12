@@ -26,8 +26,8 @@ namespace nana::runner::sample {
         align m_label_align{ nana::align::left };
         align_v m_label_align_v{ nana::align_v::top };
         //color
-        textbox& bg_;
-        textbox& fg_;
+        combox& bg_;
+        combox& fg_;
         //font
         textbox& name_;
         textbox& size_;
@@ -76,8 +76,8 @@ namespace nana::runner::sample {
             , label_{ wnd<label>("label.value") }
             , align_{ wnd<combox>("label.align") }
             , align_v_{ wnd<combox>("label.align_v") }
-            , bg_{ wnd<textbox>("color.bg.value") }
-            , fg_{ wnd<textbox>("color.fg.value") }
+            , bg_{ wnd<combox>("color.bg.value") }
+            , fg_{ wnd<combox>("color.fg.value") }
             , name_{ wnd<textbox>("f.name.value") }
             , size_{ wnd<textbox>("f.size.value") }
             , bold_{ wnd<checkbox>("font.bold") }

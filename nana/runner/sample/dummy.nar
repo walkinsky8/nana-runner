@@ -6,6 +6,6 @@
 	@panel { id=cmd div='weight=25'
 		@button{ id=hollo }
 		@button{ id=hullo }
-		@button{ id=goodbye _click=close }
 	}
+	@button{ id=goodbye div='weight=25' _click=close }
 }

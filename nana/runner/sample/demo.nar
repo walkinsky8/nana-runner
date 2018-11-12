@@ -69,11 +69,11 @@
         @label{ id=sep caption="Color:" div="weight=10%" }
         @panel{ id=bg div="weight=45%"
             @label{ id=l caption=Bg div="weight=30%" align=right }
-            @textbox{ id=value caption=null multi_lines=0 }
+            @combox{ id=value caption=null editable=1 }
         }
         @panel{ id=fg 
             @label{ id=l caption=Fg div="weight=30%" align=right }
-            @textbox{ id=value caption=null multi_lines=0 }
+            @combox{ id=value caption=null editable=1 }
         }
     }
     @panel{ id=f div="weight=20"

@@ -50,11 +50,10 @@ void nana::runner::operator>>(const combox& _w, strings& _v)
 
 void nana::runner::operator<<(combox& _w, const color_model& _v)
 {
-    _w << _v.value_();
-
     nana::colors* p = colors::find_value(_v.value_());
     if (p)
         _w << colors{ *p };
+    _w << _v.value_();
 }
 
 void nana::runner::operator>>(const combox& _w, color_model& _v)

@@ -8,16 +8,7 @@
     align_v=center
     @panel{ id=bg div="weight=25"
         @label{ id=n caption="Bgcolor:" div="weight=20%" align=right }
-        @textbox{ id=value caption=null multi_lines=0 }
-    }
-    @panel{ id=fg div="weight=25"
-        @label{ id=n caption="Fgcolor:" div="weight=20%" align=right }
-        @textbox{ id=value caption=null multi_lines=0 }
-    }
-    @panel{ id=sample div="weight=60"
-        @label{ id=n caption="Sample:" div="weight=20%" align=right }
-        @textbox{ id=normal caption="Hello, world!" typeface={ 15 } bgcolor=black fgcolor=grey multi_lines=1 line_wrapped=1 div="weight=40%" }
-        @textbox{ id=revert caption="大家還好嗎？"   typeface={ 15 } bgcolor=grey fgcolor=black multi_lines=1 line_wrapped=1 }
+        @combox{ id=value caption=null editable=1 }
     }
     @panel{ id=r div="weight=25"
         @label{ id=n caption="R:" div="weight=20%" align=right }
@@ -37,6 +28,10 @@
         @label{ id=max caption="/255" div="weight=36" }
         @slider{ id=value vertical=0 maximum=255 }
     }
+    @panel{ id=fg div="weight=25"
+        @label{ id=n caption="Fgcolor:" div="weight=20%" align=right }
+        @combox{ id=value caption=null editable=1 }
+    }
     @panel{ id=h div="weight=25"
         @label{ id=n caption="H:" div="weight=20%" align=right }
         @textbox{ id=v caption=180 div="weight=36" multi_lines=0 }
@@ -54,6 +49,11 @@
         @textbox{ id=v caption=128 div="weight=36" multi_lines=0 }
         @label{ id=max caption="/256" div="weight=36" }
         @slider{ id=value vertical=0 maximum=256 value=128 }
+    }
+    @panel{ id=sample div="weight=60"
+        @label{ id=n caption="Sample:" div="weight=20%" align=right }
+        @textbox{ id=normal caption="Hello, world!" typeface={ 15 } bgcolor=black fgcolor=grey multi_lines=1 line_wrapped=1 div="weight=40%" }
+        @textbox{ id=revert caption="大家還好嗎？"   typeface={ 15 } bgcolor=grey fgcolor=black multi_lines=1 line_wrapped=1 }
     }
     @panel{ id=sep }
     @button{

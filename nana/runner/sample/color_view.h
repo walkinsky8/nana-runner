@@ -17,8 +17,8 @@ namespace nana::runner::sample {
     public:
         form& form_;
 
-        textbox& bg_;
-        textbox& fg_;
+        combox& bg_;
+        combox& fg_;
 
         textbox& sample_;
         textbox& revert_;
@@ -42,8 +42,8 @@ namespace nana::runner::sample {
         color_view(widget_cfg& _cfg, window _parent)
             : super{ _cfg, _parent }
             , form_{ wnd<form>() }
-            , bg_{ wnd<textbox>("bg.value") }
-            , fg_{ wnd<textbox>("fg.value") }
+            , bg_{ wnd<combox>("bg.value") }
+            , fg_{ wnd<combox>("fg.value") }
             , sample_{ wnd<textbox>("sample.normal") }
             , revert_{ wnd<textbox>("sample.revert") }
             , r_{ wnd<slider>("r.value") }
