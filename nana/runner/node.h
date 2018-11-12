@@ -109,6 +109,4 @@ namespace nana::runner
 
     };
 
-    template<> struct dumpable<node> { static constexpr bool value = true; };
-
 }

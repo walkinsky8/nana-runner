@@ -31,8 +31,6 @@ namespace nana::runner {
 
     };
 
-    template<> struct dumpable<color_model> { static constexpr bool value = false; };
-
     inline void operator<<(color_model& _o, const color& _v)
     {
         _o = _v;

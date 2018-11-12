@@ -47,7 +47,4 @@ namespace nana::runner {
 
     }
 
-    template<> struct dumpable<sample::editor_setup_model> { static constexpr bool value = true; };
-    template<> struct dumpable<sample::editor_setup_model::colors_model> { static constexpr bool value = true; };
-
 }

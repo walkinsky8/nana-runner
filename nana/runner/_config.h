@@ -135,8 +135,6 @@ namespace nana::runner {
 
 	template<class T> using ptr = std::shared_ptr<T>;
 
-    template<class T> struct dumpable { static constexpr bool value = false; };
-
     template<class T> using is_simple_type = std::is_arithmetic<T>;
 
 	/*

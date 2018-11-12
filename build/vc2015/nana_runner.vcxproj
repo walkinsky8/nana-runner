@@ -228,6 +228,7 @@
   <ItemGroup>
     <ClInclude Include="..\..\nana\runner\app_base.h" />
     <ClInclude Include="..\..\nana\runner\model_color.h" />
+    <ClInclude Include="..\..\nana\runner\number.h" />
     <ClInclude Include="..\..\nana\runner\sample\editor_setup_view_impl.h" />
     <ClInclude Include="..\..\nana\runner\_config.h" />
     <ClInclude Include="..\..\nana\runner\combox_cfg.h" />

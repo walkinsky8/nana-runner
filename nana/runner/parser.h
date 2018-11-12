@@ -122,6 +122,11 @@ namespace nana::runner
             readValue(_v);
         }
         template<class T>
+        void operator >> (number<T>& _v) const
+        {
+            readValue(_v);
+        }
+        template<class T>
         void operator >> (optional<T>& _v) const
         {
             if (!valueIsEmpty())

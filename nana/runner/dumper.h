@@ -7,24 +7,6 @@
 
 namespace nana::runner
 {
-    template <class _Dumper, class _Type, bool _Dumpable = false>
-    struct dump_out
-    {
-        _Dumper& operator()(_Dumper& _d, const _Type& _v)
-        {
-            return _d.write(_v);
-        }
-    };
-
-    template <class _Dumper, class _Type>
-    struct dump_out<_Dumper, _Type, true>
-    {
-        _Dumper& operator()(_Dumper& _d, const _Type& _v)
-        {
-            return codec(_d, const_cast<_Type&>(_v));
-        }
-    };
-
     class dumper
     {
         string oss_;
@@ -61,8 +43,67 @@ namespace nana::runner
             return *this;
         }
 
+        dumper& operator<<(bool _v)
+        {
+            return write(_v);
+        }
+        dumper& operator<<(char _v)
+        {
+            return write(_v);
+        }
+        dumper& operator<<(uchar _v)
+        {
+            return write(_v);
+        }
+        dumper& operator<<(short _v)
+        {
+            return write(_v);
+        }
+        dumper& operator<<(ushort _v)
+        {
+            return write(_v);
+        }
+        dumper& operator<<(int _v)
+        {
+            return write(_v);
+        }
+        dumper& operator<<(uint _v)
+        {
+            return write(_v);
+        }
+        dumper& operator<<(long _v)
+        {
+            return write(_v);
+        }
+        dumper& operator<<(ulong _v)
+        {
+            return write(_v);
+        }
+        dumper& operator<<(int64 _v)
+        {
+            return write(_v);
+        }
+        dumper& operator<<(uint64 _v)
+        {
+            return write(_v);
+        }
+        //dumper& operator<<(size_t _v)
+        //{
+        //    return writeValue(_v);
+        //}
+        dumper& operator<<(float _v)
+        {
+            return write(_v);
+        }
+        dumper& operator<<(double _v)
+        {
+            return write(_v);
+        }
+        dumper& operator<<(long double _v)
+        {
+            return write(_v);
+        }
         dumper& writeString(const istr& _v);
-
         dumper& operator<<(const string& _v)
         {
             return writeString(_v);
@@ -79,11 +120,29 @@ namespace nana::runner
         {
             return writeString(to_string(_v));
         }
+        dumper& operator<<(const bytes& _v)
+        {
+            return write(_v);
+        }
+        dumper& operator<<(const datetime& _v)
+        {
+            return write(_v);
+        }
+        dumper& operator<<(const id& _v)
+        {
+            return write(_v);
+        }
 
         template<class T>
         dumper& operator<<(const T& _v)
         {
-            return dump_out<dumper, T, dumpable<T>::value>()(*this, _v);
+            return codec(*this, const_cast<T&>(_v));
+        }
+
+        template<class T>
+        dumper& operator<<(const number<T>& _v)
+        {
+            return write(_v);
         }
 
         template<class T>

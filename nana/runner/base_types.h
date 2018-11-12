@@ -6,6 +6,7 @@
 #include <nana/runner/bytes.h>
 #include <nana/runner/datetime.h>
 #include <nana/runner/enum.h>
+#include <nana/runner/number.h>
 #include <nana/runner/optional.h>
 #include <nana/runner/list_map.h>
 #include <nana/runner/list_multimap.h>

@@ -61,7 +61,5 @@ namespace nana::runner {
         _v.parse(_p);
     }
 
-    template<> struct dumpable<object> { static constexpr bool value = true; };
-
 }
 
