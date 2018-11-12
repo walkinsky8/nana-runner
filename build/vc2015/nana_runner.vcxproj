@@ -197,10 +197,10 @@
     <ClCompile Include="..\..\nana\runner\sample\editor_app.cpp" />
     <ClCompile Include="..\..\nana\runner\sample\editor_cntrl.cpp" />
     <ClCompile Include="..\..\nana\runner\sample\editor_setup_view_impl.cpp" />
-    <ClCompile Include="..\..\nana\runner\sample\editor_view.cpp" />
-    <ClCompile Include="..\..\nana\runner\sample\logger_view.cpp" />
+    <ClCompile Include="..\..\nana\runner\sample\editor_view_impl.cpp" />
+    <ClCompile Include="..\..\nana\runner\sample\logger_view_impl.cpp" />
     <ClCompile Include="..\..\nana\runner\sample\login_cntrl.cpp" />
-    <ClCompile Include="..\..\nana\runner\sample\login_view.cpp" />
+    <ClCompile Include="..\..\nana\runner\sample\login_view_impl.cpp" />
     <ClCompile Include="..\..\nana\runner\sample\nana_runner.cpp" />
     <ClCompile Include="..\..\nana\runner\scroll_cfg.cpp" />
     <ClCompile Include="..\..\nana\runner\slider_cfg.cpp" />
@@ -230,6 +230,9 @@
     <ClInclude Include="..\..\nana\runner\model_color.h" />
     <ClInclude Include="..\..\nana\runner\number.h" />
     <ClInclude Include="..\..\nana\runner\sample\editor_setup_view_impl.h" />
+    <ClInclude Include="..\..\nana\runner\sample\editor_view_impl.h" />
+    <ClInclude Include="..\..\nana\runner\sample\logger_view_impl.h" />
+    <ClInclude Include="..\..\nana\runner\sample\login_view_impl.h" />
     <ClInclude Include="..\..\nana\runner\_config.h" />
     <ClInclude Include="..\..\nana\runner\combox_cfg.h" />
     <ClInclude Include="..\..\nana\runner\controller_base.h" />

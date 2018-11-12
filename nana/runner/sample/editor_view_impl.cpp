@@ -1,13 +1,13 @@
 // Created by walkinsky(lyh6188@hotmail.com), 2018/11/09
 #include "stdafx.h"
 
-#include <nana/runner/sample/editor_view.h>
+#include <nana/runner/sample/editor_view_impl.h>
 
 #include <nana/runner/app_base.h>
 
 #include <nana/gui/filebox.hpp>
 
-void nana::runner::sample::editor_view::init()
+void nana::runner::sample::editor_view_impl::init()
 {
     folder_ << app::filepaths();
     folder_.option(0);
@@ -29,7 +29,7 @@ void nana::runner::sample::editor_view::init()
     });
 }
 
-void nana::runner::sample::editor_view::choose_dir()
+void nana::runner::sample::editor_view_impl::choose_dir()
 {
     nana::folderbox fb{ nullptr, folder_.caption() };
     auto dir = fb.show();
@@ -51,7 +51,7 @@ void nana::runner::sample::editor_view::choose_dir()
     }
 }
 
-void nana::runner::sample::editor_view::open_file()
+void nana::runner::sample::editor_view_impl::open_file()
 {
     nana::filebox fb{ true };
     fb.init_path(folder_.caption());
@@ -66,7 +66,7 @@ void nana::runner::sample::editor_view::open_file()
     }
 }
 
-void nana::runner::sample::editor_view::load()
+void nana::runner::sample::editor_view_impl::load()
 {
     wstring dir;
     wstring fname;
@@ -86,11 +86,11 @@ void nana::runner::sample::editor_view::load()
         folder_ << p.parent_path().string();
         file_ << p.filename();
         filebuf_ << fbuf;
-        NAR_LOG("loaded " << full << " = \n" << fbuf);
+        //NAR_LOG_VERBOSE("loaded " << full << " = \n" << fbuf);
     }
 }
 
-void nana::runner::sample::editor_view::save()
+void nana::runner::sample::editor_view_impl::save()
 {
     wstring dir;
     wstring fname;
@@ -106,7 +106,7 @@ void nana::runner::sample::editor_view::save()
     }
 }
 
-void nana::runner::sample::editor_view::run()
+void nana::runner::sample::editor_view_impl::run()
 {
     log_thread::instance().pause();
     wstring fname;
@@ -124,7 +124,7 @@ void nana::runner::sample::editor_view::run()
     log_thread::instance().resume();
 }
 
-void nana::runner::sample::editor_view::close_current()
+void nana::runner::sample::editor_view_impl::close_current()
 {
     if (current_)
     {

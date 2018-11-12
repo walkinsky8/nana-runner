@@ -23,7 +23,7 @@ namespace nana::runner::sample {
         button& exit_;
 
     public:
-        logger_view(widget_cfg& _cfg, window _parent)
+        self(widget_cfg& _cfg, window _parent)
             : super{ _cfg, _parent }
             , form_{ wnd<form>() }
             , content_{ wnd<textbox>("content") }
@@ -31,12 +31,9 @@ namespace nana::runner::sample {
             , close_{ wnd<button>("cmd.close") }
             , exit_{ wnd<button>("cmd.exit") }
         {
-            init();
         }
-
-    private:
-        void init();
 
     };
 
 }
+

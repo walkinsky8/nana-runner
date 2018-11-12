@@ -9,7 +9,6 @@
 #include <nana/runner/slider_cfg.h>
 #include <nana/runner/checkbox_cfg.h>
 #include <nana/runner/combox_cfg.h>
-#include <nana/runner/label_cfg.h>
 #include <nana/runner/button_cfg.h>
 
 namespace nana::runner::sample {
@@ -38,7 +37,7 @@ namespace nana::runner::sample {
         button& cancel_;
 
     public:
-        editor_setup_view(widget_cfg& _cfg, window _parent)
+        self(widget_cfg& _cfg, window _parent)
             : super{ _cfg, _parent }
             , form_{ wnd<form>() }
             , name_{ wnd<textbox>("name.value") }
@@ -59,3 +58,4 @@ namespace nana::runner::sample {
     };
 
 }
+

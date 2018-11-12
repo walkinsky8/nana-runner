@@ -4,10 +4,9 @@
 #include <nana/runner/view_base.h>
 
 #include <nana/runner/form_cfg.h>
-#include <nana/runner/label_cfg.h>
-#include <nana/runner/textbox_cfg.h>
 #include <nana/runner/combox_cfg.h>
 #include <nana/runner/button_cfg.h>
+#include <nana/runner/textbox_cfg.h>
 
 namespace nana::runner::sample {
 
@@ -31,12 +30,8 @@ namespace nana::runner::sample {
         button& setup_;
         button& quit_;
 
-    private:
-        view_ptr current_;
-		cfg_ptr curr_cfg_;
-
     public:
-        editor_view(widget_cfg& _cfg, window _parent)
+        self(widget_cfg& _cfg, window _parent)
             : super{ _cfg, _parent }
             , form_{ wnd<form>() }
             , folder_{ wnd<combox>("folder.value") }
@@ -50,24 +45,9 @@ namespace nana::runner::sample {
             , setup_{ wnd<button>("cmd.setup") }
             , quit_{ wnd<button>("cmd.close") }
         {
-            init();
         }
-
-    private:
-        void init();
-
-        void choose_dir();
-
-        void open_file();
-
-        void load();
-
-        void save();
-
-        void run();
-
-        void close_current();
 
     };
 
 }
+

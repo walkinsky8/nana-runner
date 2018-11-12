@@ -20,23 +20,16 @@ namespace nana::runner::sample {
         button& close_;
 
     public:
-        login_view(widget_cfg& _cfg, window _parent)
+        self(widget_cfg& _cfg, window _parent)
             : super{ _cfg, _parent }
             , username_{ wnd<textbox>("username.value") }
             , password_{ wnd<textbox>("password.value") }
             , login_{ wnd<button>("cmd.login") }
             , close_{ wnd<button>("cmd.close") }
         {
-            init();
         }
-
-    private:
-        void init();
-
-        void on_login();
-
-        void on_close();
 
     };
 
 }
+

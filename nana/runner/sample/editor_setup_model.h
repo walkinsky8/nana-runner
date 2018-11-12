@@ -6,9 +6,7 @@
 #include <nana/runner/model_font.h>
 #include <nana/runner/model_color.h>
 
-namespace nana::runner {
-
-    namespace sample {
+namespace nana::runner::sample {
 
         class editor_setup_model : public model_obj
         {
@@ -45,6 +43,5 @@ namespace nana::runner {
 
         };
 
-    }
-
 }
+
