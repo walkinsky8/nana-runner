@@ -5,21 +5,31 @@
 
 #include <nana/runner/mt_thread.h>
 
-void nana::runner::simple_thread::open()
+void nana::runner::simple_thread::start()
 {
     thr_ = std::make_shared<std::thread>(std::bind(&simple_thread::run, this));
 }
 
-void nana::runner::simple_thread::close()
+void nana::runner::simple_thread::stop()
 {
-    stop_running();
-    on_close();
-    thr_->join();
-    thr_ = nullptr;
+    running(false);
+
+    on_stop();
+
+    wakeup();
+
+    thread_ptr thr = thr_;
+    if (thr)
+    {
+        thr_->join();
+        thr_ = nullptr;
+    }
 }
 
 void nana::runner::simple_thread::run()
 {
+    running_ = true;
+
     on_birth();
     while (running())
     {
@@ -31,9 +41,9 @@ void nana::runner::simple_thread::run()
     on_death();
 }
 
-void nana::runner::simple_thread::stop_running()
+void nana::runner::simple_thread::running(bool _running)
 {
-    running_ = false;
+    running_ = _running;
     wakeup();
 }
 

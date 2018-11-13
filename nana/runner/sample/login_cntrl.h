@@ -3,7 +3,7 @@
 
 #include <nana/runner/controller_base.h>
 
-#include <nana/runner/sample/login_view.h>
+#include <nana/runner/sample/login_view_impl.h>
 
 #include <nana/runner/sample/login_model.h>
 
@@ -11,16 +11,28 @@ namespace nana::runner::sample {
 
     class login_cntrl : public controller_obj
     {
+        NAR_DEFINE_OBJECT(login_cntrl, controller_obj);
+
         view_ptr view_;
 
-        login_model data_;
+        login_model model_;
+
+        callback on_login_success_;
 
     public:
-        static void initialize();
+        login_cntrl();
+        ~login_cntrl();
 
-        void on_init() override;
+        void open(callback _on_login_success);
 
-        void on_fini() override;
+        void close();
+
+    private:
+        void init();
+
+        void on_login(const login_model& _model);
+
+        bool check_model() const;
 
     };
 

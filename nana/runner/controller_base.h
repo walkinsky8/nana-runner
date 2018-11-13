@@ -11,6 +11,8 @@
 
 namespace nana::runner
 {
+    using callback = std::function<void()>;
+
     class controller_obj;
     using cntrl_ptr = ptr<controller_obj>;
 
@@ -18,13 +20,6 @@ namespace nana::runner
     {
     public:
         controller_obj();
-
-        // child class may implement it to add_view<>.
-        // static void initialize()
-
-        virtual void on_init() = 0;
-
-        virtual void on_fini() = 0;
 
     };
 

@@ -9,23 +9,25 @@
 
 namespace nana::runner {
 
+    using thread_ptr = std::shared_ptr<std::thread>;
+
     class simple_thread
     {
-        std::shared_ptr<std::thread> thr_;
+        thread_ptr thr_;
 
         mt::monitor<mt::mutex> mon_;
 
-        volatile bool running_{ true };
+        volatile bool running_{ false };
         volatile bool paused_{ false };
 
     public:
         virtual ~simple_thread() = default;
 
-        void open();
+        void start();
 
-        void close();
+        void stop();
 
-        void stop_running();
+        void running(bool _running);
         bool running() const;
 
         void pause();
@@ -43,11 +45,11 @@ namespace nana::runner {
 
         // called by run()
         virtual void on_birth() { }
-        virtual void on_loop() { }
         virtual void on_death() { }
+        virtual void on_loop() { }
 
-        // called by close()
-        virtual void on_close() { }
+        // called by stop()
+        virtual void on_stop() { }
 
     };
 

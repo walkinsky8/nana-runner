@@ -25,4 +25,26 @@ namespace nana::runner {
     {
     };
 
+    template<class _Model>
+    struct model_proxy
+    {
+        _Model data_;
+
+        using _Event = std::function<void(const _Model&)>;
+        _Event event_;
+
+    public:
+        model_proxy() = default;
+        model_proxy(const _Model& _data, _Event _event)
+            : data_{ _data }, event_{ _event }
+        {
+        }
+
+        void operator()() const
+        {
+            event_(data_);
+        }
+
+    };
+
 }

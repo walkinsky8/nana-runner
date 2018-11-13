@@ -73,11 +73,11 @@ namespace nana::runner
         }
 
         template<class _View>
-        static view_ptr show_view()
+        static _View& show_view(view_ptr& _p)
         {
-            view_ptr p = get_view<_View>();
-            p->show();
-            return p;
+            _p = get_view<_View>();
+            _p->show();
+            return _p->cast<_View>();
         }
 
         static wstring find_file(const wstring& _filename)

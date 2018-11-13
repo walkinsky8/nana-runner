@@ -112,6 +112,8 @@ namespace nana::runner {
         log_record() = default;
         log_record(log_head && _head, string && _buf);
 
+        string str() const;
+
         std::ostream& dump(std::ostream& _os) const;
 
     };
@@ -128,15 +130,18 @@ namespace nana::runner {
     public:
         static log_thread& instance();
 
+    public:
         log_thread();
 
         void put(log_record&& _record);
 
     protected:
+        void on_birth() override;
+        void on_death() override;
         void on_loop() override;
-
-        void on_close() override;
+        void on_stop() override;
 
     };
 
 }
+

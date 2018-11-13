@@ -11,17 +11,23 @@ namespace nana::runner::sample {
     {
         NAR_DEFINE_OBJECT(editor_cntrl, controller_obj);
 
-        view_ptr log_;
-		view_ptr login_;
-		view_ptr editor_;
+		view_ptr logger_;
+		
+        view_ptr editor_;
 		view_ptr editor_setup_;
 
+        view_ptr curr_view_;
+        cfg_ptr curr_cfg_;
+
     public:
-        static void initialize();
+        editor_cntrl();
 
-        void on_init() override;
+        void open();
 
-        void on_fini() override;
+        void close();
+
+    private:
+        void init();
 
     };
 

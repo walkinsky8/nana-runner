@@ -12,33 +12,34 @@
 
 using namespace nana::runner::sample;
 
-void editor_cntrl::initialize()
+editor_cntrl::editor_cntrl()
 {
-    add_view<login_view_impl>();
     add_view<logger_view_impl>();
     add_view<editor_view_impl>();
     add_view<editor_setup_view_impl>();
+
+    init();
 }
 
-void editor_cntrl::on_init()
+void editor_cntrl::init()
 {
-    login_ = app::show_view<login_view_impl>();
-    login_->cast<login_view_impl>().login_.events().click([&] {
-        login_->close();
-        log_ = app::show_view<logger_view_impl>();
-        editor_ = app::show_view<editor_view_impl>();
-        editor_->cast<editor_view_impl>().setup_.events().click([&] {
-            editor_setup_ = app::show_view<editor_setup_view_impl>();
-            editor_setup_->cast<editor_setup_view_impl>().set_target(&editor_->cast<editor_view_impl>().filebuf_);
-        });
+}
+
+void editor_cntrl::open()
+{
+    app::show_view<logger_view_impl>(logger_);
+    auto& v_editor = app::show_view<editor_view_impl>(editor_);
+    v_editor.setup_.events().click([&] {
+        auto& v_editor_setup = app::show_view<editor_setup_view_impl>(editor_setup_);
+        v_editor_setup.set_target(&v_editor.filebuf_);
     });
 }
 
-void editor_cntrl::on_fini()
+void editor_cntrl::close()
 {
-    close_view(log_);
-    close_view(login_);
+    close_view(logger_);
     close_view(editor_);
     close_view(editor_setup_);
+    close_view(curr_view_);
 }
 

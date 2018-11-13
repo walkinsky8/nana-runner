@@ -9,7 +9,7 @@ using namespace nana::runner::sample;
 
 void logger_view_impl::init()
 {
-    set_log_handler([this](const string& s) {
+    old_handler_ = set_log_handler([this](const string& s) {
         write_console(s);
         content_.append(s, false);
     });
@@ -17,14 +17,17 @@ void logger_view_impl::init()
     wordwrap_.events().checked([&] {
         content_.line_wrapped(wordwrap_.checked());
     });
+
     close_.events().click([&] {
         close();
     });
+    
     exit_.events().click(
         app::quit
     );
-    form_.events().destroy([] {
-        set_log_handler(write_console);
+    
+    form_.events().destroy([&] {
+        set_log_handler(old_handler_);
     });
 }
 

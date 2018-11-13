@@ -61,5 +61,12 @@ namespace nana::runner {
         _v.parse(_p);
     }
 
+    inline std::ostream& operator<<(std::ostream& _os, const object& _v)
+    {
+        dumper d{ true };
+        d << _v;
+        return _os << d;
+    }
+
 }
 

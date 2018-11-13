@@ -12,8 +12,6 @@ using namespace nana::runner::sample;
 
 editor_app::editor_app()
 {
-    editor_cntrl::initialize();
-
     add_view<demo_view>();
     add_view<hello_view>();
     add_view<color_view>();
@@ -22,11 +20,14 @@ editor_app::editor_app()
 
 void editor_app::on_init()
 {
-    editor_.on_init();
+    login_.open([&] {
+        editor_.open();
+    });
 }
 
 void editor_app::on_fini()
 {
-    editor_.on_fini();
+    login_.close();
+    editor_.close();
 }
 

@@ -6,19 +6,58 @@
 #include <nana/runner/app_base.h>
 
 using namespace nana::runner::sample;
+using namespace nana::runner;
 
-void login_cntrl::initialize()
+login_cntrl::login_cntrl()
 {
-    add_view<login_view>();
+    add_view<login_view_impl>();
+
+    init();
 }
 
-void login_cntrl::on_init()
+login_cntrl::~login_cntrl()
 {
-    view_ = app::show_view<login_view>();
+    close();
 }
 
-void login_cntrl::on_fini()
+void login_cntrl::init()
+{
+    model_.username_() = "guest";
+    model_.password_() = "123456";
+}
+
+void login_cntrl::open(callback _on_login_success)
+{
+    on_login_success_ = _on_login_success;
+
+    auto& vi = app::show_view<login_view_impl>(view_);
+    vi.set_model_proxy({ model_, [&](const login_model& _m) { on_login(_m); } });
+}
+
+void login_cntrl::close()
 {
     close_view(view_);
+}
+
+void login_cntrl::on_login(const login_model& _model)
+{
+    model_ = _model;
+    if (!check_model())
+    {
+        nana::msgbox mb("ERROR");
+        mb << "Mismatched username or password!";
+        mb.show();
+        //close();
+    }
+    else
+    {
+        close();
+        on_login_success_();
+    }
+}
+
+bool login_cntrl::check_model() const
+{
+    return model_.username_() == "guest" && model_.password_() == "123456";
 }
 

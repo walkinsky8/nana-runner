@@ -3,13 +3,15 @@
 
 #include <nana/runner/app_base.h>
 
+#include <nana/runner/sample/login_cntrl.h>
 #include <nana/runner/sample/editor_cntrl.h>
 
 namespace nana::runner::sample {
 
     class editor_app : public app
     {
-		editor_cntrl editor_;
+        login_cntrl login_;
+        editor_cntrl editor_;
 
     public:
         editor_app();

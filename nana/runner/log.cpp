@@ -35,6 +35,13 @@ nana::runner::log_record::log_record(log_head && _head, string && _buf)
 {
 }
 
+nana::runner::string nana::runner::log_record::str() const
+{
+    std::ostringstream oss;
+    oss << *this;
+    return oss.str();
+}
+
 std::ostream& nana::runner::log_record::dump(std::ostream& _os) const
 {
     pcstr classfunc = find_classfunc(head_.func_);
@@ -76,7 +83,32 @@ nana::runner::log_thread::log_thread()
 
 void nana::runner::log_thread::put(log_record&& _record)
 {
-    records_.put(std::move(_record));
+    if (running())
+    {
+        records_.put(std::move(_record));
+    }
+    else
+    {
+        __log_handler(_record.str());
+    }
+}
+
+void nana::runner::log_thread::on_birth()
+{
+}
+
+void nana::runner::log_thread::on_death()
+{
+    _Q::_Queue q;
+    records_.swap(q);
+
+    std::ostringstream oss;
+    while (!q.empty())
+    {
+        oss << q.front();
+        q.pop();
+    }
+    __log_handler(oss.str());
 }
 
 void nana::runner::log_thread::on_loop()
@@ -92,14 +124,13 @@ void nana::runner::log_thread::on_loop()
         }
         __log_handler(oss.str());
     }
-    //else
     if (running())
     {
         wait(500);
     }
 }
 
-void nana::runner::log_thread::on_close()
+void nana::runner::log_thread::on_stop()
 {
     records_.cancel();
     wakeup();

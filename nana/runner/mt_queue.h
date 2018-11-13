@@ -61,6 +61,12 @@ namespace nana::runner::mt {
             cond_.notify_all();
         }
 
+        void swap(_Queue& _v)
+        {
+            _Lock __(mtx_);
+            _v.swap(q_);
+        }
+
     };
 
 }

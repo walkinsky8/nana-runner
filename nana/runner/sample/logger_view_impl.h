@@ -9,6 +9,8 @@ namespace nana::runner::sample {
     {
         NAR_DEFINE_VIEW_IMPL(logger);
 
+        log_handler old_handler_{};
+
     public:
         self(widget_cfg& _cfg, window _parent)
             : super{ _cfg, _parent }
