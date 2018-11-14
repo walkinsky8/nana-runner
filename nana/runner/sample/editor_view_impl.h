@@ -10,7 +10,7 @@ namespace nana::runner::sample {
         NAR_DEFINE_VIEW_IMPL(editor);
 
     private:
-        view_ptr current_;
+        view_ptr curr_run_;
         cfg_ptr curr_cfg_;
 
     public:

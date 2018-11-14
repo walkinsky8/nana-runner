@@ -3,7 +3,6 @@
 
 #include <nana/runner/sample/editor_cntrl.h>
 
-#include <nana/runner/sample/login_view_impl.h>
 #include <nana/runner/sample/logger_view_impl.h>
 #include <nana/runner/sample/editor_view_impl.h>
 #include <nana/runner/sample/editor_setup_view_impl.h>
@@ -40,6 +39,5 @@ void editor_cntrl::close()
     close_view(logger_);
     close_view(editor_);
     close_view(editor_setup_);
-    close_view(curr_view_);
 }
 

@@ -22,16 +22,16 @@ namespace nana::runner::sample {
 
         void set_model_proxy(model_proxy<login_model> const& _proxy);
 
-        void load_model(const login_model& _model);
-
-        void save_model(login_model& _model) const;
-
     private:
         void init();
 
         void on_login();
 
         void on_close();
+
+        void load_model();
+
+        void save_model();
 
     };
 

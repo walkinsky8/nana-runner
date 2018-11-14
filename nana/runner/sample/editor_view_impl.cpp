@@ -86,7 +86,7 @@ void nana::runner::sample::editor_view_impl::load()
         folder_ << p.parent_path().string();
         file_ << p.filename();
         filebuf_ << fbuf;
-        //NAR_LOG_VERBOSE("loaded " << full << " = \n" << fbuf);
+        NAR_LOG_VERBOSE("loaded " << full << " = \n" << fbuf);
     }
 }
 
@@ -102,7 +102,7 @@ void nana::runner::sample::editor_view_impl::save()
     {
         wstring full = fs::path{ dir } / fname;
         write_file(full, fbuf);
-        NAR_LOG("saved " << full << " = \n" << fbuf);
+        NAR_LOG_VERBOSE("saved " << full << " = \n" << fbuf);
     }
 }
 
@@ -118,18 +118,18 @@ void nana::runner::sample::editor_view_impl::run()
     NAR_LOG("run nar file = " << fname);
     close_current();
     curr_cfg_ = widget_cfg::from(fbuf);
-    current_ = view_obj::make_view(*curr_cfg_, nullptr);
-    if (current_)
-        current_->show();
+    curr_run_ = view_obj::make_view(*curr_cfg_, nullptr);
+    if (curr_run_)
+        curr_run_->show();
     log_thread::instance().resume();
 }
 
 void nana::runner::sample::editor_view_impl::close_current()
 {
-    if (current_)
+    if (curr_run_)
     {
-        current_->close();
-        current_ = nullptr;
+        curr_run_->close();
+        curr_run_ = nullptr;
         curr_cfg_ = nullptr;
     }
 }
