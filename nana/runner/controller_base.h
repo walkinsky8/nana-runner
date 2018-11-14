@@ -11,8 +11,6 @@
 
 namespace nana::runner
 {
-    using callback = std::function<void()>;
-
     class controller_obj;
     using cntrl_ptr = ptr<controller_obj>;
 

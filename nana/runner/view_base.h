@@ -31,7 +31,9 @@
 
 namespace nana::runner {
 
-	class view_obj;
+    using callback = std::function<void()>;
+
+    class view_obj;
 	using view_ptr = ptr<view_obj>;
 
 	class view_obj : public object
@@ -89,5 +91,32 @@ namespace nana::runner {
 		void init(bool _visible, window _parent);
 
     };
+
+    template<class _Widget, class _Data>
+    void on_text_changed(_Widget const* _widget, _Data* _data, callback _fn)
+    {
+        _widget->events().text_changed([_widget, _data, _fn] {
+            *_widget >> *_data;
+            _fn();
+        });
+    }
+
+    template<class _Widget, class _Data>
+    void on_value_changed(_Widget const* _widget, _Data* _data, callback _fn)
+    {
+        _widget->events().value_changed([_widget, _data, _fn] {
+            *_widget >> *_data;
+            _fn();
+        });
+    }
+
+    template<class _Widget, class _Data>
+    void on_checked(_Widget const* _widget, _Data* _data, callback _fn)
+    {
+        _widget->events().checked([_widget, _data, _fn] {
+            *_widget >> *_data;
+            _fn();
+        });
+    }
 
 }

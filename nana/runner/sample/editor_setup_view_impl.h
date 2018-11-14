@@ -15,6 +15,8 @@ namespace nana::runner::sample {
 
         widget* target_{};
 
+        callback fn_update_{};
+
     public:
         self(widget_cfg& _cfg, window _parent)
             : super{ _cfg, _parent }

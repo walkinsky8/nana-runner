@@ -10,43 +10,19 @@ void editor_setup_view_impl::init()
 {
     init_model();
 
-    name_.events().text_changed([&] {
-        name_ >> model_().font_().name_();
-        update_model();
-    });
-    size_.events().text_changed([&] {
-        size_ >> model_().font_().size_();
-        slider_ << model_().font_().size_();
-        update_model();
-    });
-    slider_.events().value_changed([&] {
-        size_ << slider_.value(); // will trigger event text_changed
-    });
-    bold_.events().checked([&] {
-        bold_ >> model_().font_().bold_();
-        update_model();
-    });
-    italic_.events().checked([&] {
-        italic_ >> model_().font_().italic_();
-        update_model();
-    });
-    strikeout_.events().checked([&] {
-        strikeout_ >> model_().font_().strikeout_();
-        update_model();
-    });
-    underline_.events().checked([&] {
-        underline_ >> model_().font_().underline_();
-        update_model();
-    });
+    fn_update_ = std::bind(&self::update_model, this);
 
-    bgcolor_.events().text_changed([&] {
-        bgcolor_ >> model_().colors_().bg_();
-        update_model();
-    });
-    fgcolor_.events().text_changed([&] {
-        fgcolor_ >> model_().colors_().fg_();
-        update_model();
-    });
+    on_text_changed(&name_, &model_().font_().name_(), fn_update_);
+    on_text_changed(&size_, &model_().font_().size_(), fn_update_);
+    on_text_changed(&size_, &model_().font_().size_(), [&] {slider_ << model_().font_().size_(); });
+    on_value_changed(&slider_, &model_().font_().size_(), [&] {size_ << model_().font_().size_(); });
+    //on_value_changed(&slider_, &model_().font_().size_(), fn_update_);
+    on_checked(&bold_, &model_().font_().bold_(), fn_update_);
+    on_checked(&italic_, &model_().font_().italic_(), fn_update_);
+    on_checked(&strikeout_, &model_().font_().strikeout_(), fn_update_);
+    on_checked(&underline_, &model_().font_().underline_(), fn_update_);
+    on_text_changed(&bgcolor_, &model_().colors_().bg_(), fn_update_);
+    on_text_changed(&fgcolor_, &model_().colors_().fg_(), fn_update_);
 
     apply_.events().click([&] {
         save_widget(target());
