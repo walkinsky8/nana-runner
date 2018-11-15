@@ -4,13 +4,15 @@
 #include "stdafx.h"
 
 #include <nana/runner/sample/editor_app.h>
+#include <nana/runner/sample/demo_app.h>
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     _In_opt_ HINSTANCE hPrevInstance,
     _In_ LPWSTR    lpCmdLine,
     _In_ int       nCmdShow)
 {
-    nana::runner::sample::editor_app a;
+    //nana::runner::sample::editor_app a;
+    nana::runner::sample::demo_app a;
     try {
         a.run(lpCmdLine);
     }

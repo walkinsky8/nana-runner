@@ -3,19 +3,10 @@
 
 #include <nana/runner/sample/editor_app.h>
 
-#include <nana/runner/sample/hello_view.h>
-#include <nana/runner/sample/demo_view.h>
-#include <nana/runner/sample/color_view.h>
-#include <nana/runner/sample/font_view.h>
-
 using namespace nana::runner::sample;
 
 editor_app::editor_app()
 {
-    add_view<demo_view>();
-    add_view<hello_view>();
-    add_view<color_view>();
-    add_view<font_view>();
 }
 
 void editor_app::on_init()

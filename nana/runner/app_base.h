@@ -56,6 +56,8 @@ namespace nana::runner
 
         view_ptr load_view_(const wstring& _filename);
 
+        view_ptr show_view_(const wstring& _filename);
+
         static view_ptr create_view(const string& _cfg)
         {
             return instance().create_view_(_cfg);

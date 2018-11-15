@@ -223,6 +223,9 @@
     <ClCompile Include="..\..\nana\runner\sample\login_view_impl.cpp">
       <Filter>_sample\editor</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\nana\runner\sample\demo_app.cpp">
+      <Filter>_sample\demo</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\nana\runner\base.h">
@@ -473,6 +476,9 @@
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\sample\login_view_impl.h">
       <Filter>_sample\editor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nana\runner\sample\demo_app.h">
+      <Filter>_sample\demo</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

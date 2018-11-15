@@ -155,6 +155,17 @@ nana::runner::view_ptr nana::runner::app::load_view_(const wstring& _filename)
 	return nullptr;
 }
 
+nana::runner::view_ptr nana::runner::app::show_view_(const wstring& _filename)
+{
+    auto v = load_view_(_filename);
+    if (v)
+    {
+        initial_views_.push_back(v);
+        v->show();
+    }
+    return v;
+}
+
 void nana::runner::app::load_cfgs(const wchar_t* _cmdline)
 {
     args_.init(_cmdline);
@@ -197,12 +208,7 @@ void nana::runner::app::run(const wchar_t* _cmdline)
     else
     for (auto& filename : args_.arguments())
     {
-        auto& v = load_view_(filename);
-        if (v)
-        {
-            initial_views_.push_back(v);
-            v->show();
-        }
+        show_view_(filename);
     }
 
     NAR_LOG("enter exec...");
