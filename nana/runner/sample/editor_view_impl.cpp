@@ -37,14 +37,15 @@ void nana::runner::sample::editor_view_impl::choose_dir()
     {
         string d = dir.value().string();
         folder_ << d;
-        fs::directory_iterator di{ d }, end;
+        NAR_LOG_VAR(folder_);
         file_.clear();
+        fs::directory_iterator di{ d }, end;
         for (; di != end; ++di)
         {
             fs::path const& p = *di;
             if (p.extension() == ".nar")
             {
-                NAR_LOG_DEBUG(p.filename());
+                NAR_LOG_VAR(p.filename());
                 file_.push_back(p.filename().string());
             }
         }
@@ -60,6 +61,7 @@ void nana::runner::sample::editor_view_impl::open_file()
     fb.add_filter("Any File (*.*)", "*.*");
     if (fb.show())
     {
+        NAR_LOG_VAR(fb.file());
         folder_ << fb.path();
         file_ << fs::path{ fb.file() }.filename();
         load();
@@ -86,7 +88,7 @@ void nana::runner::sample::editor_view_impl::load()
         folder_ << p.parent_path().string();
         file_ << p.filename();
         filebuf_ << fbuf;
-        NAR_LOG_VERBOSE("loaded " << full << " = \n" << fbuf);
+        NAR_LOG_VAR(full);
     }
 }
 
@@ -102,20 +104,18 @@ void nana::runner::sample::editor_view_impl::save()
     {
         wstring full = fs::path{ dir } / fname;
         write_file(full, fbuf);
-        NAR_LOG_VERBOSE("saved " << full << " = \n" << fbuf);
+        NAR_LOG_VAR(full);
     }
 }
 
 void nana::runner::sample::editor_view_impl::run()
 {
     log_thread::instance().pause();
-    wstring fname;
+    //save();
+    NAR_LOG_VAR(file_);
     string fbuf;
-    file_ >> fname;
     filebuf_ >> fbuf;
-    //write_file(fname, fbuf);
-    NAR_LOG("run nar cfg = " << fbuf);
-    NAR_LOG("run nar file = " << fname);
+    //NAR_LOG_VAR(fbuf);
     close_current();
     curr_cfg_ = widget_cfg::from(fbuf);
     curr_run_ = view_obj::make_view(*curr_cfg_, nullptr);

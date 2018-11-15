@@ -35,3 +35,11 @@ namespace nana::runner {
 
 }
 
+namespace nana {
+
+    inline std::ostream& operator<<(std::ostream& _os, const widget& _v)
+    {
+        return _os << _v.caption();
+    }
+
+}

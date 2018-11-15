@@ -10,9 +10,10 @@
 #include <nana/runner/mt_thread.h>
 #include <nana/runner/mt_queue.h>
 
+#define NAR_LOG(x)         NAR_LOG_INFO(x)
+
 #define NAR_LOG_VAR(x)     NAR_LOG_NV(#x, x)
 #define NAR_LOG_NV(n, v)   NAR_LOG_DEBUG(n << " = " << v)
-#define NAR_LOG(x)         NAR_LOG_INFO(x)
 
 #define NAR_LOG_ERROR(x)   NAR_LOG_(nana::runner::LL_ERROR, x)
 #define NAR_LOG_WARN(x)    NAR_LOG_(nana::runner::LL_WARN, x)

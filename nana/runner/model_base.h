@@ -42,7 +42,8 @@ namespace nana::runner {
 
         void operator()() const
         {
-            event_(data_);
+            if (event_)
+                event_(data_);
         }
 
     };

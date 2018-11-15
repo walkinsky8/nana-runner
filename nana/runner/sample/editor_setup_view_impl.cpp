@@ -15,8 +15,8 @@ void editor_setup_view_impl::init()
     on_text_changed(&name_, &model_().font_().name_(), fn_update_);
     on_text_changed(&size_, &model_().font_().size_(), fn_update_);
     on_text_changed(&size_, &model_().font_().size_(), [&] {slider_ << model_().font_().size_(); });
-    on_value_changed(&slider_, &model_().font_().size_(), [&] {size_ << model_().font_().size_(); });
     //on_value_changed(&slider_, &model_().font_().size_(), fn_update_);
+    on_value_changed(&slider_, &model_().font_().size_(), [&] {size_ << model_().font_().size_(); });
     on_checked(&bold_, &model_().font_().bold_(), fn_update_);
     on_checked(&italic_, &model_().font_().italic_(), fn_update_);
     on_checked(&strikeout_, &model_().font_().strikeout_(), fn_update_);

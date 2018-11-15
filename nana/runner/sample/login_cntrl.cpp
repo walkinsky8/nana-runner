@@ -52,7 +52,8 @@ void login_cntrl::on_login(const login_model& _model)
     else
     {
         close();
-        on_login_success_();
+        if (on_login_success_)
+            on_login_success_();
     }
 }
 
