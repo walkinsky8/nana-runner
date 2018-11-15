@@ -24,8 +24,8 @@ void nana::runner::menu_cfg::init_menu(menu& _m) const
                 _m.append(mi.get_caption());
             else
             {
-                auto& s = mi._click_();
-                _m.append(mi.get_caption(), [&s](iproxy&) {
+                auto s = mi._click_();
+                _m.append(mi.get_caption(), [s](iproxy&) {
                     app::create_view(s);
                 });
             }

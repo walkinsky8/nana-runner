@@ -15,6 +15,7 @@
                 @menu { caption='File&3' }
             }
             @menu { }
+            @menu { caption='&Close' _click=close }
             @menu { caption='E&xit' _click=quit }
         }
         @menu { caption='&Help'
@@ -29,7 +30,7 @@
         }
     }
     @toolbar { id=tb scale=16 div='vert weight=20'
-        @option { caption=open image='image.jpg' }
+        @option { caption=open image='image.jpg' _click='''@form{}'''}
         @option { }
         @option { caption=close image='yoyo.jpg' _click=close }
         @option { }

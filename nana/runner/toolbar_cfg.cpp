@@ -21,13 +21,24 @@ void nana::runner::toolbar_cfg::init_widget(widget & _w, view_obj* _root_view) c
         auto& child = children_()[i]->cast<option_cfg>();
         if (child.empty())
             w.separate();
-        else if (!child.image_().empty())
-            w.append(child.get_caption(), app::create_image(child.image_()));
-        else
+        else if (child.image_().empty())
             w.append(child.get_caption());
+        else
+            w.append(child.get_caption(), app::create_image(child.image_()));
 
         if (!child.enabled_().empty())
             w.enable(i, child.enabled_().value());
+
+        if (!child._click_().empty())
+        {
+            string cmd = child._click_();
+            if (cmd == "close")
+                w.events().selected([i, _root_view](nana::arg_toolbar const& _a) { if (_a.button == i) _root_view->close(); });
+            else if (cmd == "quit")
+                w.events().selected([i](nana::arg_toolbar const& _a) { if (_a.button==i) app::quit(); });
+            else
+                w.events().selected([i, cmd](nana::arg_toolbar const& _a) { if (_a.button == i) app::create_view(cmd); });
+        }
     }
 }
 

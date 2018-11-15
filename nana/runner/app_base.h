@@ -38,6 +38,8 @@ namespace nana::runner
 
         void run(const wchar_t* _cmdline);
 
+        void close();
+
         bool search_file(const wstring& _filename, wstring& _fullpath) const;
 
         string load_file(const wstring& _filename, wstring* _fullpath=nullptr) const;

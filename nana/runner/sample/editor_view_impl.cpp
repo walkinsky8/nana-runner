@@ -23,10 +23,7 @@ void nana::runner::sample::editor_view_impl::init()
     run_.events().click([&] { run(); });
     quit_.events().click([&] { close(); });
 
-    form_.events().destroy([&] {
-        close_current();
-        app::quit();
-    });
+    form_.events().destroy( app::quit );
 }
 
 void nana::runner::sample::editor_view_impl::choose_dir()
@@ -124,13 +121,13 @@ void nana::runner::sample::editor_view_impl::run()
     log_thread::instance().resume();
 }
 
+void nana::runner::sample::editor_view_impl::on_fini()
+{
+    close_current();
+}
+
 void nana::runner::sample::editor_view_impl::close_current()
 {
-    if (curr_run_)
-    {
-        curr_run_->close();
-        curr_run_ = nullptr;
-        curr_cfg_ = nullptr;
-    }
+    close_view(curr_run_);
 }
 

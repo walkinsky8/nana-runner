@@ -17,20 +17,24 @@ nana::runner::view_obj::view_obj(widget_cfg& _cfg, window _parent)
 
 void nana::runner::view_obj::show(bool _visible) const
 {
-	if (m_self_wnd)
+    wnd_ptr p = m_self_wnd;
+	if (p)
 	{
 		if (_visible)
-			m_self_wnd->show();
+			p->show();
 		else
-			m_self_wnd->hide();
+			p->hide();
 	}
 }
 
 void nana::runner::view_obj::close()
 {
-    if (m_self_wnd)
+    on_fini();
+
+    wnd_ptr p = m_self_wnd;
+    if (p)
     {
-        m_self_wnd->close();
+        p->close();
     }
 }
 

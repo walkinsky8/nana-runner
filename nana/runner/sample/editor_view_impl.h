@@ -20,6 +20,9 @@ namespace nana::runner::sample {
             init();
         }
 
+    protected:
+        void on_fini() override;
+
     private:
         void init();
 

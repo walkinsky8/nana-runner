@@ -174,10 +174,15 @@ void nana::runner::app::load_cfgs(const wchar_t* _cmdline)
 
 void nana::runner::app::quit()
 {
-    for (auto& v : instance().initial_views_)
+    instance().close();
+}
+
+void nana::runner::app::close()
+{
+    for (auto& v : initial_views_)
         v->close();
 
-    instance().on_fini();
+    on_fini();
 }
 
 void nana::runner::app::run(const wchar_t* _cmdline)

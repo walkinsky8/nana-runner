@@ -46,10 +46,12 @@ namespace nana::runner {
         return view_factory::instance().create(_cfg.id_path(), _cfg, _parent);
     }
 
-    inline void close_view(view_ptr& _p)
+    inline void close_view(view_ptr _p)
     {
         if (_p)
+        {
             _p->close();
+        }
     }
 
 }
