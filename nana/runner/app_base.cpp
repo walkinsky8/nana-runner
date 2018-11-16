@@ -10,7 +10,7 @@ nana::runner::app* nana::runner::app::instance_{ nullptr };
 nana::runner::app::app()
 {
     if (instance_ != nullptr)
-        throw std::invalid_argument("app instance should not be more than one");
+        NAR_THROW_ERROR(std::invalid_argument, "app instance should not be more than one");
 
     log_thread::instance().start();
 
@@ -81,7 +81,7 @@ nana::runner::cfg_ptr nana::runner::app::load_cfg(const wstring& _filename)
             return nullptr;
 
         if (!read_file(fullpath, cfgdata))
-            throw std::invalid_argument("read cfg error: " + to_utf8(fullpath));
+            NAR_THROW_ERROR(std::invalid_argument, "read cfg error: " << fullpath);
 
         files_.add(_filename, cfgdata);
     }
@@ -116,7 +116,7 @@ nana::runner::cfg_ptr nana::runner::app::get_cfg(const string& _type) const
 {
     const cfg_ptr* p = cfgs_.find(_type);
     if (!p)
-        throw std::invalid_argument(string{ "invalid view " } +_type);
+        NAR_THROW_ERROR(std::invalid_argument, "invalid view " << _type);
     return *p;
 }
 

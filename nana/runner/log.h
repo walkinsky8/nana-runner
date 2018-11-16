@@ -10,24 +10,54 @@
 #include <nana/runner/mt_thread.h>
 #include <nana/runner/mt_queue.h>
 
-#define NAR_LOG(x)         NAR_LOG_INFO(x)
+#define NAR_LOG(x)          NAR_LOG_INFO(x)
 
-#define NAR_LOG_VAR(x)     NAR_LOG_NV(#x, x)
-#define NAR_LOG_NV(n, v)   NAR_LOG_DEBUG(n << " = " << v)
+#define NAR_LOG_VAR(x)      NAR_LOG_NV(#x, x)
+#define NAR_LOG_NV(n, v)    NAR_LOG_DEBUG(n << " = " << v)
 
-#define NAR_LOG_ERROR(x)   NAR_LOG_(nana::runner::LL_ERROR, x)
-#define NAR_LOG_WARN(x)    NAR_LOG_(nana::runner::LL_WARN, x)
-#define NAR_LOG_INFO(x)    NAR_LOG_(nana::runner::LL_INFO, x)
-#define NAR_LOG_DEBUG(x)   NAR_LOG_(nana::runner::LL_DEBUG, x)
-#define NAR_LOG_VERBOSE(x) NAR_LOG_(nana::runner::LL_VERBOSE, x)
+#define NAR_LOG_EXCPT(x)    NAR_LOG_(nana::runner::LL_EXCEPTION, x)
+#define NAR_LOG_ERROR(x)    NAR_LOG_(nana::runner::LL_ERROR, x)
+#define NAR_LOG_WARN(x)     NAR_LOG_(nana::runner::LL_WARN, x)
+#define NAR_LOG_INFO(x)     NAR_LOG_(nana::runner::LL_INFO, x)
+#define NAR_LOG_DEBUG(x)    NAR_LOG_(nana::runner::LL_DEBUG, x)
+#define NAR_LOG_VERBOSE(x)  NAR_LOG_(nana::runner::LL_VERBOSE, x)
 
-#define NAR_LOG_(ll, x)    nana::runner::log(ll, __FILE__, __LINE__, __FUNCTION__) << x
+#define NAR_LOG_(ll, x)     nana::runner::log(ll, NAR_CURRENT()) << x
+
+#define NAR_CURRENT()       nana::runner::current_info{__FILE__, __LINE__, __FUNCTION__}
+
+#define NAR_THROW_ERROR(e, x)  do { std::ostringstream _s_; _s_<<NAR_CURRENT()<<" "<<#e<<": "<<x; throw e{_s_.str().c_str()}; } while(0)
 
 namespace nana::runner {
 
     using log_handler = std::function<void(const string&)>;
     log_handler get_log_handler();
     log_handler set_log_handler(log_handler);
+
+    struct current_info
+    {
+        pcstr file_{};
+        int line_{};
+        pcstr func_{};
+
+        current_info()
+        {}
+        current_info(pcstr _file, int _line, pcstr _func)
+            :file_{_file}, line_{_line}, func_{_func}
+        {}
+
+        string str() const
+        {
+            return to_str(*this);
+        }
+
+        std::ostream& dump(std::ostream& _os) const;
+
+    };
+    inline std::ostream& operator<<(std::ostream& _os, const current_info& _v)
+    {
+        return _v.dump(_os);
+    }
 
     class out
     {
@@ -58,6 +88,7 @@ namespace nana::runner {
 
     enum log_level
     {
+        LL_EXCEPTION,
         LL_ERROR,
         LL_WARN,
         LL_INFO,
@@ -71,14 +102,23 @@ namespace nana::runner {
     {
         datetime dt_;
         log_level ll_;
-        pcstr file_;
-        int line_;
-        pcstr func_;
+        current_info current_;
 
         log_head() = default;
-        log_head(log_level _ll, pcstr _file, int _line, pcstr _func);
+        log_head(log_level _ll, current_info const& _current);
+
+        string str() const
+        {
+            return to_str(*this);
+        }
+
+        std::ostream& dump(std::ostream& _os) const;
 
     };
+    inline std::ostream& operator<<(std::ostream& _os, const log_head& _v)
+    {
+        return _v.dump(_os);
+    }
 
     class log
     {
@@ -86,7 +126,7 @@ namespace nana::runner {
         std::ostringstream buf_;
         
     public:
-        log(log_level _ll, pcstr _file, int _line, pcstr _func);
+        log(log_level _ll, current_info const& _current);
         ~log();
 
         template<class T>
@@ -113,7 +153,10 @@ namespace nana::runner {
         log_record() = default;
         log_record(log_head && _head, string && _buf);
 
-        string str() const;
+        string str() const
+        {
+            return to_str(*this);
+        }
 
         std::ostream& dump(std::ostream& _os) const;
 

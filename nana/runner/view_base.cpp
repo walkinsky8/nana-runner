@@ -101,7 +101,7 @@ void nana::runner::view_obj::make_child_widgets(widget_cfg& _cfg, view_obj* _roo
 
 	auto& w = _cfg.create_wnd(_parent_wnd, _visible);
 	if (!w)
-		throw std::invalid_argument(string("invalid widget ") + _cfg.id_path().str());
+        NAR_THROW_ERROR(std::invalid_argument, "invalid widget " << _cfg.id_path());
 
     if (_cfg.has_child_div())
 	    for (auto& i : _cfg.children_())
@@ -121,7 +121,7 @@ void nana::runner::view_obj::init(bool _visible, window _parent)
 
     m_self_wnd = m_self_cfg.create_wnd(_parent, _visible);
     if (!m_self_wnd)
-        throw std::invalid_argument(string("invalid root widget ") + m_self_cfg.id_path().str());
+        NAR_THROW_ERROR(std::invalid_argument, "invalid root widget " << m_self_cfg.id_path());
 
     for (auto& i : m_self_cfg.children_())
     {

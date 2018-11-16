@@ -16,5 +16,6 @@
         div="weight=30"
         bgcolor=yellow
         typeface={ bold }
+        _click=close
     }
 }

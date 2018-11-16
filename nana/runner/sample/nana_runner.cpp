@@ -11,13 +11,14 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     _In_ LPWSTR    lpCmdLine,
     _In_ int       nCmdShow)
 {
-    //nana::runner::sample::editor_app a;
-    nana::runner::sample::demo_app a;
+    using namespace nana::runner;
     try {
+        sample::editor_app a;
+        //sample::demo_app a2;
         a.run(lpCmdLine);
     }
     catch (std::exception& e) {
-        nana::runner::write_console(std::string{ "exception: " } + e.what());
+        NAR_LOG_EXCPT(e);
         return -1;
     }
     return 0;

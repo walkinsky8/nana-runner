@@ -21,13 +21,29 @@ nana::runner::log_handler nana::runner::set_log_handler(log_handler lh)
     return old;
 }
 
+std::ostream& nana::runner::current_info::dump(std::ostream& _os) const
+{
+    pcstr classfunc = find_classfunc(func_);
+    _os << classfunc
+        << "(" << fs::path{ file_ }.filename() << ":" << line_ << ")";
+    return _os;
+}
+
 nana::runner::out::~out()
 {
 }
 
-nana::runner::log_head::log_head(log_level _ll, pcstr _file, int _line, pcstr _func)
-    : ll_{ _ll }, file_{ _file }, line_{ _line }, func_{ _func }
+nana::runner::log_head::log_head(log_level _ll, current_info const& _current)
+    : ll_{ _ll }, current_{ _current }
 {
+}
+
+std::ostream& nana::runner::log_head::dump(std::ostream& _os) const
+{
+    _os << dt_
+        << "[" << enum_log_level{ ll_ }.str() << "]"
+        << current_;
+    return _os;
 }
 
 nana::runner::log_record::log_record(log_head && _head, string && _buf)
@@ -35,26 +51,15 @@ nana::runner::log_record::log_record(log_head && _head, string && _buf)
 {
 }
 
-nana::runner::string nana::runner::log_record::str() const
-{
-    std::ostringstream oss;
-    oss << *this;
-    return oss.str();
-}
-
 std::ostream& nana::runner::log_record::dump(std::ostream& _os) const
 {
-    pcstr classfunc = find_classfunc(head_.func_);
-    _os << head_.dt_
-        << "[" << enum_log_level{ head_.ll_ }.str() << "]"
-        << "" << classfunc
-        << "(" << fs::path{ head_.file_ }.filename() << ":" << head_.line_ << ")"
+    _os << head_
         << " " << buf_;
     return _os;
 }
 
-nana::runner::log::log(log_level _ll, pcstr _file, int _line, pcstr _func)
-    : head_{_ll, _file, _line, _func}
+nana::runner::log::log(log_level _ll, current_info const& _current)
+    : head_{_ll, _current}
 {
 }
 
@@ -73,6 +78,7 @@ nana::runner::log_thread& nana::runner::log_thread::instance()
 
 nana::runner::log_thread::log_thread()
 {
+    NAR_ENUM_ADD_(nana::runner::log_level, LL_, UNKNOWN, EXCEPTION);
     NAR_ENUM_ADD_(nana::runner::log_level, LL_, UNKNOWN, ERROR);
     NAR_ENUM_ADD_(nana::runner::log_level, LL_, UNKNOWN, WARN);
     NAR_ENUM_ADD_(nana::runner::log_level, LL_, UNKNOWN, INFO);

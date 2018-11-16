@@ -15,8 +15,8 @@ void nana::runner::sample::editor_view_impl::init()
 
     file_.events().selected([&] { load(); });
 
-    choose_dir_.events().click(std::bind(&self::choose_dir, this));
-    open_file_.events().click(std::bind(&self::open_file, this));
+    choose_dir_.events().click([&] { choose_dir(); });
+    open_file_.events().click([&] { open_file(); });
 
     load_.events().click([&] { load(); });
     save_.events().click([&] { save(); });

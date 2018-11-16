@@ -7,7 +7,8 @@
 
 void nana::runner::simple_thread::start()
 {
-    thr_ = std::make_shared<std::thread>(std::bind(&simple_thread::run, this));
+    if (!thr_)
+        thr_ = std::make_shared<std::thread>(std::bind(&simple_thread::run, this));
 }
 
 void nana::runner::simple_thread::stop()

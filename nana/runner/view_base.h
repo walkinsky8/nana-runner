@@ -65,7 +65,7 @@ namespace nana::runner {
         {
             wnd_ptr w = get_widget(_id);
             if (!w)
-                throw std::invalid_argument("no widget for " + (m_self_cfg.id_path() / _id).str());
+                NAR_THROW_ERROR(std::invalid_argument, "no widget for " << (m_self_cfg.id_path() / _id));
             return dynamic_cast<T&>(*w);
         }
 

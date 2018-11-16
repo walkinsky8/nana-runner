@@ -7,6 +7,8 @@
 
 #include <nana/runner/dumper.h>
 
+#include <nana/runner/log.h>
+
 namespace nana::runner::detail {
 
     //TODO: comment
@@ -81,7 +83,7 @@ namespace nana::runner::detail {
             {
                 //=前面的name为空没有意义.
                 if (!word)
-                    throw_error("empty name");
+                    NAR_THROW_ERROR(std::invalid_argument, "empty name");
                 _node.name(word);
                 ++p_;
                 //name已经读取，后面就是value.
@@ -94,14 +96,14 @@ namespace nana::runner::detail {
             if (*p_ == tag::key)
             {
                 if (word) 
-                    throw_error("extra word before @: " + word);
+                    NAR_THROW_ERROR(std::invalid_argument, "extra word before @: " << word);
                 ++p_;
                 word = p_.read_until(is_type_end); //c == tag::begin || is_blank(c)
                 _node.type(word);
                 word.clear();
                 skip_blanks(p_);
                 if (*p_ != tag::begin)
-                    throw_error("no { after type");
+                    NAR_THROW_ERROR(std::invalid_argument, "no { after type");
             }
 
             if (*p_ != tag::begin)
@@ -109,7 +111,7 @@ namespace nana::runner::detail {
                 if (is_string_tag(*p_))
                 {
                     if (word)
-                        throw_error("extra word before quote: " + word);
+                        NAR_THROW_ERROR(std::invalid_argument, "extra word before quote: " << word);
                     bool simple = true;
                     istr strval = read_string(p_, &simple);
                     if (simple) 
@@ -145,11 +147,6 @@ namespace nana::runner::detail {
                     break;
                 _node.add_child(child.name(), child);
             }
-        }
-
-        void throw_error(string msg)
-        {
-            throw std::invalid_argument(msg.c_str());
         }
 
     private:

@@ -78,6 +78,11 @@ namespace std {
 
     ostream& operator<<(ostream& _os, const wstring& _v);
 
+    inline ostream& operator<<(ostream& _os, const exception& _v)
+    {
+        return _os << _v.what();
+    }
+
 }
 
 namespace nana::runner {
@@ -193,6 +198,13 @@ namespace nana::runner {
     strings strings_sub(const strings& _ss, int _start, size_t _len = npos);
     string strings_merge(const strings& _ss, const string& _sep);
 
+    template<class T>
+    inline std::string to_str(const T& _v)
+    {
+        std::ostringstream oss;
+        oss << _v;
+        return oss.str();
+    }
 	/*
 	 * file functions
 	 */

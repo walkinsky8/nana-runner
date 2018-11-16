@@ -14,7 +14,7 @@ nana::runner::tab::tab(window owner, bool visible)
 nana::place & nana::runner::tab::get_place()
 {
     if (this->empty())
-        throw std::runtime_error("tab::get_place(): the tab has destroyed.");
+        NAR_THROW_ERROR(std::runtime_error, "the tab has destroyed.");
 
     if (!place_)
         place_.reset(new place{ *this });

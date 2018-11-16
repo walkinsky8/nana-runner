@@ -14,7 +14,7 @@ nana::color nana::runner::get_color(const string& _s)
 		return nana::color{ _s };
 	}
 	catch (std::exception& e) {
-		NAR_LOG("exception: " << e.what() << ": " << _s);
+        NAR_LOG_EXCPT(e << ": " << _s);
 	}
 	return nana::colors::black;
 }
