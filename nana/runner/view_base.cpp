@@ -101,7 +101,7 @@ void nana::runner::view_obj::make_child_widgets(widget_cfg& _cfg, view_obj* _roo
 
 	auto& w = _cfg.create_wnd(_parent_wnd, _visible);
 	if (!w)
-        NAR_THROW_ERROR(std::invalid_argument, "invalid widget " << _cfg.id_path());
+        NAR_THROW_ERROR(std::invalid_argument, "no wnd created for @" << _cfg.type_name());
 
     if (_cfg.has_child_div())
 	    for (auto& i : _cfg.children_())
@@ -121,7 +121,7 @@ void nana::runner::view_obj::init(bool _visible, window _parent)
 
     m_self_wnd = m_self_cfg.create_wnd(_parent, _visible);
     if (!m_self_wnd)
-        NAR_THROW_ERROR(std::invalid_argument, "invalid root widget " << m_self_cfg.id_path());
+        NAR_THROW_ERROR(std::invalid_argument, "no wnd created for @" << m_self_cfg.type_name());
 
     for (auto& i : m_self_cfg.children_())
     {
@@ -137,6 +137,7 @@ nana::runner::view_ptr nana::runner::view_obj::make_view(widget_cfg& _cfg, windo
     view_ptr p = create_view(_cfg, _parent);
     if (p)
         return p;
+    NAR_LOG_INFO("no view found, use default generic view: "<<_cfg.id_path());
     return std::make_shared<generic_view>(_cfg, _parent);
 }
 

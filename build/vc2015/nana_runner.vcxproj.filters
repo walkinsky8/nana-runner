@@ -503,13 +503,13 @@
     <None Include="..\..\nana\runner\sample\logger.nar">
       <Filter>_sample\editor</Filter>
     </None>
-    <None Include="..\..\nana\runner\sample\generic.nar">
-      <Filter>foundation</Filter>
-    </None>
     <None Include="..\..\nana\runner\sample\demo.nar">
       <Filter>_sample\demo</Filter>
     </None>
     <None Include="..\..\nana\runner\sample\dummy.nar">
+      <Filter>_sample\demo</Filter>
+    </None>
+    <None Include="..\..\nana\runner\sample\generic.nar">
       <Filter>_sample\demo</Filter>
     </None>
   </ItemGroup>

@@ -114,10 +114,18 @@ void nana::runner::sample::editor_view_impl::run()
     filebuf_ >> fbuf;
     //NAR_LOG_VAR(fbuf);
     close_current();
-    curr_cfg_ = widget_cfg::from(fbuf);
-    curr_run_ = view_obj::make_view(*curr_cfg_, nullptr);
-    if (curr_run_)
-        curr_run_->show();
+    try {
+        curr_cfg_ = widget_cfg::from(fbuf);
+        if (curr_cfg_)
+        {
+            curr_run_ = view_obj::make_view(*curr_cfg_, nullptr);
+            if (curr_run_)
+                curr_run_->show();
+        }
+    }
+    catch (std::exception& e) {
+        NAR_LOG_EXCPT(e);
+    }
     log_thread::instance().resume();
 }
 

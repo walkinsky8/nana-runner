@@ -1,8 +1,10 @@
-﻿@unknown{
+﻿@form{
     id=generic
     bgcolor=#e0e0e0
     fgcolor=black
     typeface={ Consolas 10 bold }
     cursor=hand
-    label=@label { align=center align_v=center }
+    div='vert'
+    @label { id=label align=center align_v=center }
+    @button { id=button }
 }

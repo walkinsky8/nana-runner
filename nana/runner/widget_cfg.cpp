@@ -112,6 +112,10 @@ nana::runner::cfg_ptr nana::runner::widget_cfg::from(string const& _cfg)
     cfg_ptr p;
     parsed >> p;
 
+    if (!p)
+    {
+        NAR_LOG_ERROR("no widget type @" << parsed.type());
+    }
     return p;
 }
 
