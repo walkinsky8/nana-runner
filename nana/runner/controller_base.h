@@ -19,6 +19,10 @@ namespace nana::runner
     public:
         controller_obj();
 
+        virtual void open(callback _on_complete) = 0;
+
+        virtual void close() = 0;
+
     };
 
 }

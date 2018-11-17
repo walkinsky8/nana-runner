@@ -10,21 +10,16 @@
 #include <nana/runner/app_base.h>
 
 using namespace nana::runner::sample;
+using namespace nana::runner;
 
 editor_cntrl::editor_cntrl()
 {
     add_view<logger_view_impl>();
     add_view<editor_view_impl>();
     add_view<editor_setup_view_impl>();
-
-    init();
 }
 
-void editor_cntrl::init()
-{
-}
-
-void editor_cntrl::open()
+void editor_cntrl::open(callback _on_complete)
 {
     app::show_view<logger_view_impl>(logger_);
     auto& v_editor = app::show_view<editor_view_impl>(editor_);

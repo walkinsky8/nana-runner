@@ -23,13 +23,11 @@ namespace nana::runner::sample {
         login_cntrl();
         ~login_cntrl();
 
-        void open(callback _on_login_success);
+        void open(callback _on_login_success) override;
 
-        void close();
+        void close() override;
 
     private:
-        void init();
-
         void on_login(const login_model& _model);
 
         bool check_model() const;

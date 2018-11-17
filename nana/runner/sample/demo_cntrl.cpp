@@ -11,6 +11,7 @@
 #include <nana/runner/app_base.h>
 
 using namespace nana::runner::sample;
+using namespace nana::runner;
 
 demo_cntrl::demo_cntrl()
 {
@@ -18,15 +19,9 @@ demo_cntrl::demo_cntrl()
     add_view<hello_view>();
     add_view<color_view>();
     add_view<font_view>();
-
-    init();
 }
 
-void demo_cntrl::init()
-{
-}
-
-void demo_cntrl::open()
+void demo_cntrl::open(callback _on_complete)
 {
     app::show_view<demo_view>(demo_);
     app::show_view<hello_view>(hello_);

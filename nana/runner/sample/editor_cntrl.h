@@ -16,12 +16,9 @@ namespace nana::runner::sample {
     public:
         editor_cntrl();
 
-        void open();
+        void open(callback _on_complete) override;
 
-        void close();
-
-    private:
-        void init();
+        void close() override;
 
     };
 

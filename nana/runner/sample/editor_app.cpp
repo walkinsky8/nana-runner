@@ -12,7 +12,7 @@ editor_app::editor_app()
 void editor_app::on_init()
 {
     login_.open([&] {
-        editor_.open();
+        editor_.open(nullptr);
     });
 }
 

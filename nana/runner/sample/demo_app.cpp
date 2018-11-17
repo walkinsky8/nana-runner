@@ -11,7 +11,7 @@ demo_app::demo_app()
 
 void demo_app::on_init()
 {
-    demo_.open();
+    demo_.open(nullptr);
 }
 
 void demo_app::on_fini()
