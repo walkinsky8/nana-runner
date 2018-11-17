@@ -153,6 +153,16 @@ namespace nana::runner {
         log_record() = default;
         log_record(log_head && _head, string && _buf);
 
+        const log_head& head() const
+        {
+            return head_;
+        }
+
+        const string& buf() const
+        {
+            return buf_;
+        }
+
         string str() const
         {
             return to_str(*this);
