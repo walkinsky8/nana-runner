@@ -5,6 +5,7 @@
 
 #include <nana/runner/sample/login_cntrl.h>
 #include <nana/runner/sample/editor_cntrl.h>
+#include <nana/runner/sample/demo_cntrl.h>
 
 namespace nana::runner::sample {
 
@@ -12,6 +13,7 @@ namespace nana::runner::sample {
     {
         login_cntrl login_;
         editor_cntrl editor_;
+        demo_cntrl demo_;
 
     public:
         editor_app();

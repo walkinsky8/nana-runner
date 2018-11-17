@@ -3,10 +3,14 @@
 
 #include <nana/runner/app_base.h>
 
+#include <nana/runner/sample/demo_cntrl.h>
+
 namespace nana::runner::sample {
 
     class demo_app : public app
     {
+        demo_cntrl demo_;
+
     public:
         demo_app();
 

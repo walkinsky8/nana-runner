@@ -1,0 +1,30 @@
+// Created by walkinsky(lyh6188@hotmail.com), 2018/11/17
+#pragma once
+
+#include <nana/runner/controller_base.h>
+
+namespace nana::runner::sample {
+
+    class demo_cntrl : public controller_obj
+    {
+        NAR_DEFINE_OBJECT(demo_cntrl, controller_obj);
+
+		view_ptr demo_;
+        view_ptr hello_;
+        view_ptr color_;
+        view_ptr font_;
+
+    public:
+        demo_cntrl();
+
+        void open();
+
+        void close();
+
+    private:
+        void init();
+
+    };
+
+}
+
