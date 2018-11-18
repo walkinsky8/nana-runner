@@ -30,7 +30,7 @@
         }
     }
     @toolbar { id=tb scale=16 div='vert weight=20'
-        @option { caption=open image='image.jpg' _click='''@form{}'''}
+        @option { caption=open image='image.jpg' _click='''@form{id=open}'''}
         @option { }
         @option { caption=close image='yoyo.jpg' _click=close }
         @option { }

@@ -26,7 +26,7 @@
 
 #define NAR_CURRENT()       nana::runner::current_info{__FILE__, __LINE__, __FUNCTION__}
 
-#define NAR_THROW_ERROR(e, x)  do { std::ostringstream _s_; _s_<<NAR_CURRENT()<<" "<<#e<<": "<<x; throw e{_s_.str().c_str()}; } while(0)
+#define NAR_THROW_ERROR(e, x)  throw e{(nana::runner::out()<<NAR_CURRENT()<<" "<<#e<<": "<<x).str().c_str()}
 
 namespace nana::runner {
 
