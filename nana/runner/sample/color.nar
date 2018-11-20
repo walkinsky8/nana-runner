@@ -1,6 +1,6 @@
 ﻿@form{
     id=color
-    caption="Color Sample"
+    caption="Color"
     div="vert"
     pos={100 100}
     size={400 300}

@@ -84,6 +84,14 @@ namespace nana::runner
             return _p->cast<_View>();
         }
 
+        static view_ptr show_view(const wstring& _id)
+        {
+            view_ptr p = load_view(_id);
+            if (p)
+                p->show();
+            return p;
+        }
+
         static wstring find_file(const wstring& _filename)
         {
             wstring fullpath;

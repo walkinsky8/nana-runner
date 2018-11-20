@@ -91,7 +91,7 @@ void nana::runner::log_thread::put(log_record&& _record)
 {
     if (_record.head().ll_ <= log_level::LL_ERROR)
     {
-        nana::msgbox  mb{ enum_log_level{_record.head().ll_}.str() };
+        nana::msgbox mb{ enum_log_level{_record.head().ll_}.str() };
         mb << _record.buf();
         mb.show();
     }

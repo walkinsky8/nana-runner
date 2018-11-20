@@ -2,7 +2,7 @@
     id=editor.setup
     caption="Editor Setup"
     div="vert"
-    pos={0 -300}
+    pos={300 -300}
     size={400 300}
     align=center
     align_v=center

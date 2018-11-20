@@ -6,5 +6,6 @@
     cursor=hand
     div='vert'
     @label { id=label align=center align_v=center }
-    @button { id=button }
+    @textbox { id=textbox }
+    @button { id=button _click=close }
 }

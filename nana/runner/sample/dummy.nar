@@ -1,9 +1,10 @@
 ﻿@form{
-    id=hallo
+    id=dummy
     div='vert'
 	@label{ id=hello div='weight=20' }
 	@textbox{ id=hillo }
 	@panel { id=cmd div='weight=25'
+		@button{ id=hallo }
 		@button{ id=hollo }
 		@button{ id=hullo }
 	}

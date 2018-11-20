@@ -1,6 +1,6 @@
 ﻿@form{
     id=font
-    caption="Font Sample"
+    caption="Font"
     div="vert"
     pos={100 -400}
     size={400 300}

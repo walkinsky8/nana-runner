@@ -13,6 +13,8 @@ namespace nana::runner::sample {
         view_ptr hello_;
         view_ptr color_;
         view_ptr font_;
+        view_ptr dummy_;
+        view_ptr generic_;
 
     public:
         demo_cntrl();

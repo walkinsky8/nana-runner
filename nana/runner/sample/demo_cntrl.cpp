@@ -27,6 +27,8 @@ void demo_cntrl::open(callback _on_complete)
     app::show_view<hello_view>(hello_);
     app::show_view<color_view>(color_);
     app::show_view<font_view>(font_);
+    dummy_ = app::show_view(L"dummy");
+    generic_ = app::show_view(L"generic");
 }
 
 void demo_cntrl::close()
@@ -35,5 +37,7 @@ void demo_cntrl::close()
     close_view(hello_);
     close_view(color_);
     close_view(font_);
+    close_view(dummy_);
+    close_view(generic_);
 }
 
