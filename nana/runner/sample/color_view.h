@@ -36,7 +36,8 @@ namespace nana::runner::sample {
         textbox& s_v_;
         textbox& l_v_;
 
-        button& quit_;
+        button& ok_;
+        button& cancel_;
 
     public:
         color_view(widget_cfg& _cfg, window _parent)
@@ -58,7 +59,8 @@ namespace nana::runner::sample {
             , h_v_{ wnd<textbox>("h.v") }
             , s_v_{ wnd<textbox>("s.v") }
             , l_v_{ wnd<textbox>("l.v") }
-            , quit_{ wnd<button>("close") }
+            , ok_{ wnd<button>("cmd.OK") }
+            , cancel_{ wnd<button>("cmd.cancel") }
         {
             bg_ << sample_.bgcolor();
             fg_ << sample_.fgcolor();
@@ -136,7 +138,7 @@ namespace nana::runner::sample {
                 on_hsl_changed();
             });
 
-            quit_.events().click([this] {
+            cancel_.events().click([this] {
                 close();
             });
         }

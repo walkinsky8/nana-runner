@@ -6,8 +6,8 @@
     size={400 300}
     align=center
     align_v=center
-    bgcolor=black
-    fgcolor=white
+    @**bgcolor=black
+    fgcolor=white**@
     cursor=hand
     typeface={ Consolas 10 }
     @panel{ id=name div="weight=20"

@@ -56,13 +56,18 @@
         @textbox{ id=revert caption="大家還好嗎？"   typeface={ 15 } bgcolor=grey fgcolor=black multi_lines=1 line_wrapped=1 }
     }
     @panel{ id=sep }
-    @button{
-        id=close
-        div="weight=30"
-        tooltip="close window"
-        bgcolor=#ffff00
-        fgcolor=black
-        cursor=arrow
-        typeface={Lucida Console 12 bold}
+    @panel { id=cmd div="weight=30"
+        @button{
+            id=OK
+            div='weight=50%'
+            bgcolor=green
+            typeface={bold}
+        }
+        @button{
+            id=cancel
+            bgcolor=#ffff00
+            fgcolor=black
+            typeface={Lucida Console 12 bold}
+        }
     }
 }

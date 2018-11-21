@@ -13,8 +13,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 {
     using namespace nana::runner;
     try {
-        //sample::editor_app a;
-        sample::demo_app a;
+        sample::editor_app a;
+        //sample::demo_app a;
         a.run(lpCmdLine);
     }
     catch (std::exception& e) {

@@ -4,13 +4,13 @@
     div="vert"
     align=center
     align_v=center
-    pos={0 0}
-    size={950 500}
+    pos={200 0}
+    size={750 500}
     @textbox{
         id=content
         caption=null
-        bgcolor="black"
-        fgcolor="lime"
+        @**bgcolor="black"
+        fgcolor="lime"**@
         typeface={Courier New 10}
         line_wrapped=0
         multi_lines=1
