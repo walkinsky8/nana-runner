@@ -13,6 +13,8 @@ namespace nana::runner::sample {
     {
         NAR_DEFINE_VIEW(demo, view_obj);
 
+        log_handler::func_ptr log_handler_;
+
     public:
         form& form_;
 
@@ -108,10 +110,9 @@ namespace nana::runner::sample {
             , spin_{ wnd<spinbox>("cmd.spin") }
             , quit_{ wnd<button>("cmd.close") }
         {
-            //set_log_handler([this](const string& s) {
-            //    write_console(s);
-            //    text_.append(s, false);
-            //});
+            log_handler_ = log_handler::instance().add([&](const string& s) {
+                text_.append(s, false);
+            });
 
             categorize_.caption(fs::current_path());
 
@@ -225,11 +226,21 @@ namespace nana::runner::sample {
                 prog_.value((unsigned)spin_.to_int());
             });
 
-            folder_.events().selected([&](const nana::arg_treebox& _a) { on_selected_tree_item(_a); });
+            folder_.events().selected([&](const nana::arg_treebox& _a) {
+                on_selected_tree_item(_a); 
+            });
 
             //quit_.events().click([this] { close(); });
+
+            text_.events().destroy([&] {
+                on_fini();
+            });
+            form_.events().destroy([&] {
+                on_fini();
+            });
         }
 
+    private:
         void on_selected_tree_item(const nana::arg_treebox& _a)
         {
             if (!_a.operated)
@@ -267,6 +278,13 @@ namespace nana::runner::sample {
             unsigned b = tcolor_.option_checked(2) ? clevel_.value() : 0;
             text_.bgcolor({ r, g, b });
             text_.fgcolor({ ~r, ~g, ~b });
+        }
+
+    protected:
+        void on_fini() override
+        {
+            log_handler_->set_empty(true);
+            log_handler::instance().remove(log_handler_);
         }
 
     };

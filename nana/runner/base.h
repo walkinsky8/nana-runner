@@ -26,6 +26,7 @@
 #include <nana/runner/mt_cond.h>
 #include <nana/runner/mt_monitor.h>
 #include <nana/runner/mt_queue.h>
+#include <nana/runner/mt_vector.h>
 
 namespace nana::runner {
 

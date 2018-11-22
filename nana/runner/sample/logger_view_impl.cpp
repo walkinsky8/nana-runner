@@ -9,8 +9,7 @@ using namespace nana::runner::sample;
 
 void logger_view_impl::init()
 {
-    old_handler_ = set_log_handler([this](const string& s) {
-        write_console(s);
+    log_handler_ = log_handler::instance().add([&](const string& s) {
         content_.append(s, false);
     });
 
@@ -26,8 +25,18 @@ void logger_view_impl::init()
         app::quit
     );
     
-    form_.events().destroy([&] {
-        set_log_handler(old_handler_);
+    content_.events().destroy([&] {
+        on_fini();
     });
+
+    form_.events().destroy([&] {
+        on_fini();
+    });
+}
+
+void logger_view_impl::on_fini()
+{
+    log_handler_->set_empty(true);
+    log_handler::instance().remove(log_handler_);
 }
 

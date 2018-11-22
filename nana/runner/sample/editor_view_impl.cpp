@@ -11,22 +11,23 @@ void nana::runner::sample::editor_view_impl::init()
 {
     folder_ << app::filepaths();
     folder_.option(0);
-    load();
+    on_load();
+    init_files();
 
-    file_.events().selected([&] { load(); });
+    file_.events().selected([&] { on_load(); });
 
-    choose_dir_.events().click([&] { choose_dir(); });
-    open_file_.events().click([&] { open_file(); });
+    choose_dir_.events().click([&] { on_choose_dir(); });
+    open_file_.events().click([&] { on_open_file(); });
 
-    load_.events().click([&] { load(); });
-    save_.events().click([&] { save(); });
-    run_.events().click([&] { run(); });
+    load_.events().click([&] { on_load(); });
+    save_.events().click([&] { on_save(); });
+    run_.events().click([&] { on_run(); });
     quit_.events().click([&] { close(); });
 
     form_.events().destroy( app::quit );
 }
 
-void nana::runner::sample::editor_view_impl::choose_dir()
+void nana::runner::sample::editor_view_impl::on_choose_dir()
 {
     nana::folderbox fb{ nullptr, folder_.caption() };
     auto dir = fb.show();
@@ -35,21 +36,26 @@ void nana::runner::sample::editor_view_impl::choose_dir()
         string d = dir.value().string();
         folder_ << d;
         NAR_LOG_VAR(folder_);
-        file_.clear();
-        fs::directory_iterator di{ d }, end;
-        for (; di != end; ++di)
+        init_files();
+    }
+}
+
+void nana::runner::sample::editor_view_impl::init_files()
+{
+    file_.clear();
+    fs::directory_iterator di{ folder_.caption() }, end;
+    for (; di != end; ++di)
+    {
+        fs::path const& p = *di;
+        if (p.extension() == ".nar")
         {
-            fs::path const& p = *di;
-            if (p.extension() == ".nar")
-            {
-                NAR_LOG_VAR(p.filename());
-                file_.push_back(p.filename().string());
-            }
+            NAR_LOG_VAR(p.filename());
+            file_.push_back(p.filename().string());
         }
     }
 }
 
-void nana::runner::sample::editor_view_impl::open_file()
+void nana::runner::sample::editor_view_impl::on_open_file()
 {
     nana::filebox fb{ true };
     fb.init_path(folder_.caption());
@@ -61,11 +67,11 @@ void nana::runner::sample::editor_view_impl::open_file()
         NAR_LOG_VAR(fb.file());
         folder_ << fb.path();
         file_ << fs::path{ fb.file() }.filename();
-        load();
+        on_load();
     }
 }
 
-void nana::runner::sample::editor_view_impl::load()
+void nana::runner::sample::editor_view_impl::on_load()
 {
     wstring dir;
     wstring fname;
@@ -89,7 +95,7 @@ void nana::runner::sample::editor_view_impl::load()
     }
 }
 
-void nana::runner::sample::editor_view_impl::save()
+void nana::runner::sample::editor_view_impl::on_save()
 {
     wstring dir;
     wstring fname;
@@ -105,7 +111,7 @@ void nana::runner::sample::editor_view_impl::save()
     }
 }
 
-void nana::runner::sample::editor_view_impl::run()
+void nana::runner::sample::editor_view_impl::on_run()
 {
     log_thread::instance().pause();
     //save();

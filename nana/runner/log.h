@@ -9,6 +9,7 @@
 
 #include <nana/runner/mt_thread.h>
 #include <nana/runner/mt_queue.h>
+#include <nana/runner/mt_vector.h>
 
 #define NAR_LOG(x)          NAR_LOG_INFO(x)
 
@@ -30,10 +31,6 @@
 
 namespace nana::runner {
 
-    using log_handler = std::function<void(const string&)>;
-    log_handler get_log_handler();
-    log_handler set_log_handler(log_handler);
-
     struct current_info
     {
         pcstr file_{};
@@ -43,7 +40,7 @@ namespace nana::runner {
         current_info()
         {}
         current_info(pcstr _file, int _line, pcstr _func)
-            :file_{_file}, line_{_line}, func_{_func}
+            :file_{ _file }, line_{ _line }, func_{ _func }
         {}
 
         string str() const
@@ -124,7 +121,7 @@ namespace nana::runner {
     {
         log_head head_;
         std::ostringstream buf_;
-        
+
     public:
         log(log_level _ll, current_info const& _current);
         ~log();
@@ -194,6 +191,28 @@ namespace nana::runner {
         void on_death() override;
         void on_loop() override;
         void on_stop() override;
+
+    };
+
+    class log_handler
+    {
+    public:
+        using func = std::function<void(const string&)>;
+        using func_ptr = std::shared_ptr<optional<func>>;
+
+    private:
+        mt::vector<func_ptr> funcs_;
+
+    public:
+        static log_handler& instance();
+
+    public:
+        log_handler();
+
+        func_ptr add(func _f);
+        void remove(func_ptr _f);
+
+        void operator()(const string& _msg);
 
     };
 

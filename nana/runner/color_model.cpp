@@ -3,7 +3,7 @@
 
 #ifndef __NANA_RUNNER_LIB_ALL_IN_ONE
 
-#include <nana/runner/model_color.h>
+#include <nana/runner/color_model.h>
 
 nana::runner::color_model::color_model(const string& _v)
 {

@@ -22,9 +22,9 @@ namespace nana::runner {
         }
 
     public:
-        color_model() = default;
-        color_model(const color& _v);
-        color_model(const string& _v);
+        self() = default;
+        self(const color& _v);
+        self(const string& _v);
 
         operator color() const;
         operator string() const;

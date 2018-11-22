@@ -210,12 +210,6 @@
     <ClCompile Include="..\..\nana\runner\sample\editor_setup_view_impl.cpp">
       <Filter>sample\editor</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\nana\runner\model_font.cpp">
-      <Filter>lib\foundation</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\nana\runner\model_color.cpp">
-      <Filter>lib\foundation</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\nana\runner\sample\editor_view_impl.cpp">
       <Filter>sample\editor</Filter>
     </ClCompile>
@@ -233,6 +227,12 @@
     </ClCompile>
     <ClCompile Include="..\..\nana_runner_lib_all_in_one.cpp">
       <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nana\runner\color_model.cpp">
+      <Filter>lib\foundation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nana\runner\font_model.cpp">
+      <Filter>lib\foundation</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -467,12 +467,6 @@
     <ClInclude Include="..\..\nana\runner\sample\editor_setup_view_impl.h">
       <Filter>sample\editor</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\nana\runner\model_color.h">
-      <Filter>lib\foundation</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\nana\runner\model_font.h">
-      <Filter>lib\foundation</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\nana\runner\number.h">
       <Filter>lib\base\types</Filter>
     </ClInclude>
@@ -490,6 +484,15 @@
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\sample\demo_cntrl.h">
       <Filter>sample\demo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nana\runner\color_model.h">
+      <Filter>lib\foundation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nana\runner\font_model.h">
+      <Filter>lib\foundation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nana\runner\mt_vector.h">
+      <Filter>lib\base\mt</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

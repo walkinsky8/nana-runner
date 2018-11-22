@@ -3,8 +3,8 @@
 
 #include <nana/runner/model_base.h>
 
-#include <nana/runner/model_font.h>
-#include <nana/runner/model_color.h>
+#include <nana/runner/font_model.h>
+#include <nana/runner/color_model.h>
 
 namespace nana::runner::sample {
 

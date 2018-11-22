@@ -7,19 +7,7 @@
 
 #include <nana/runner/enum.h>
 
-nana::runner::log_handler __log_handler = nana::runner::write_console;
-
-nana::runner::log_handler nana::runner::get_log_handler()
-{
-    return __log_handler;
-}
-
-nana::runner::log_handler nana::runner::set_log_handler(log_handler lh)
-{
-    log_handler old = get_log_handler();
-    __log_handler = lh;
-    return old;
-}
+using namespace nana::runner;
 
 std::ostream& nana::runner::current_info::dump(std::ostream& _os) const
 {
@@ -102,7 +90,7 @@ void nana::runner::log_thread::put(log_record&& _record)
     }
     else
     {
-        __log_handler(_record.str());
+        log_handler::instance()(_record.str());
     }
 }
 
@@ -121,7 +109,7 @@ void nana::runner::log_thread::on_death()
         oss << q.front();
         q.pop();
     }
-    __log_handler(oss.str());
+    log_handler::instance()(oss.str());
 }
 
 void nana::runner::log_thread::on_loop()
@@ -135,7 +123,7 @@ void nana::runner::log_thread::on_loop()
             oss << q.front();
             q.pop();
         }
-        __log_handler(oss.str());
+        log_handler::instance()(oss.str());
     }
     if (running())
     {
@@ -147,6 +135,39 @@ void nana::runner::log_thread::on_stop()
 {
     records_.cancel();
     wakeup();
+}
+
+log_handler& log_handler::instance()
+{
+    static log_handler __;
+    return __;
+}
+
+log_handler::log_handler()
+{
+    add(write_console);
+}
+
+log_handler::func_ptr log_handler::add(func _f)
+{
+    auto p = std::make_shared<optional<func>>(_f);
+    funcs_.push_back(p);
+    return p;
+}
+
+void log_handler::remove(func_ptr _p)
+{
+    funcs_.erase(_p);
+}
+
+void log_handler::operator()(const string& _msg)
+{
+    for (auto& i : funcs_.container())
+    {
+        auto& p = *i;
+        if (!p.empty())
+            p.value()(_msg);
+    }
 }
 
 #endif

@@ -26,17 +26,19 @@ namespace nana::runner::sample {
     private:
         void init();
 
-        void choose_dir();
+        void on_choose_dir();
 
-        void open_file();
+        void on_open_file();
 
-        void load();
+        void on_load();
 
-        void save();
+        void on_save();
 
-        void run();
+        void on_run();
 
         void close_current();
+
+        void init_files();
 
     };
 

@@ -50,6 +50,7 @@
     @panel { id=cmd div="weight=30" typeface={bold}
         @button{
             id=apply
+            div='weight=50%'
         }
         @button{
             id=cancel

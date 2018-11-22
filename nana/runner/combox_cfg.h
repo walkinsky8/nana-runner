@@ -5,7 +5,7 @@
 
 #include <nana/gui/widgets/combox.hpp>
 
-#include <nana/runner/model_color.h>
+#include <nana/runner/color_model.h>
 
 namespace nana::runner {
 
