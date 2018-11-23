@@ -3,7 +3,7 @@
 
 #include <nana/runner/sample/logger_view.h>
 
-namespace nana::runner::sample {
+namespace runa::sample {
 
     class logger_view_impl : public logger_view
     {

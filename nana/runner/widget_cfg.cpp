@@ -9,7 +9,7 @@
 
 #include <nana/runner/app_base.h>
 
-void nana::runner::widget_cfg::make_div(string& _div) const
+void runa::widget_cfg::make_div(string& _div) const
 {
     _div << "<" << id_path() << " " << div_();
     if (has_child_div())
@@ -24,7 +24,7 @@ void nana::runner::widget_cfg::make_div(string& _div) const
     _div << ">";
 }
 
-void nana::runner::widget_cfg::reset_all_parent(widget_cfg* _parent)
+void runa::widget_cfg::reset_all_parent(widget_cfg* _parent)
 {
     set_parent(_parent);
 
@@ -32,12 +32,12 @@ void nana::runner::widget_cfg::reset_all_parent(widget_cfg* _parent)
         i->reset_all_parent(this);
 }
 
-nana::runner::point nana::runner::widget_cfg::get_pos() const
+runa::point runa::widget_cfg::get_pos() const
 {
     return pos_().value();
 }
 
-std::string nana::runner::widget_cfg::get_caption() const
+std::string runa::widget_cfg::get_caption() const
 {
     if (!caption_().empty())
     {
@@ -50,7 +50,7 @@ std::string nana::runner::widget_cfg::get_caption() const
     return to_upper(id_().str()[0]) + id_().str().substr(1);
 }
 
-nana::runner::widget_cfg* nana::runner::widget_cfg::get_parent_or_global() const
+runa::widget_cfg* runa::widget_cfg::get_parent_or_global() const
 {
     if (m_parent)
         return m_parent;
@@ -60,7 +60,7 @@ nana::runner::widget_cfg* nana::runner::widget_cfg::get_parent_or_global() const
     return nullptr;
 }
 
-const nana::runner::string& nana::runner::widget_cfg::get_fgcolor() const
+const runa::string& runa::widget_cfg::get_fgcolor() const
 {
     if (!fgcolor_().empty())
         return fgcolor_();
@@ -70,7 +70,7 @@ const nana::runner::string& nana::runner::widget_cfg::get_fgcolor() const
     return fgcolor_();
 }
 
-const nana::runner::string& nana::runner::widget_cfg::get_bgcolor() const
+const runa::string& runa::widget_cfg::get_bgcolor() const
 {
     if (!bgcolor_().empty())
         return bgcolor_();
@@ -80,7 +80,7 @@ const nana::runner::string& nana::runner::widget_cfg::get_bgcolor() const
     return bgcolor_();
 }
 
-const nana::runner::optional<nana::runner::cursor>& nana::runner::widget_cfg::get_cursor() const
+const runa::optional<runa::cursor>& runa::widget_cfg::get_cursor() const
 {
     if (!cursor_().empty())
         return cursor_();
@@ -90,7 +90,7 @@ const nana::runner::optional<nana::runner::cursor>& nana::runner::widget_cfg::ge
     return cursor_();
 }
 
-const nana::runner::optional<nana::runner::font>& nana::runner::widget_cfg::get_typeface() const
+const runa::optional<runa::font>& runa::widget_cfg::get_typeface() const
 {
     if (!typeface_().empty())
         return typeface_();
@@ -100,12 +100,12 @@ const nana::runner::optional<nana::runner::font>& nana::runner::widget_cfg::get_
     return typeface_();
 }
 
-nana::runner::cfg_ptr nana::runner::widget_cfg::get_generic()
+runa::cfg_ptr runa::widget_cfg::get_generic()
 {
     return app::instance().find_cfg("generic");
 }
 
-nana::runner::cfg_ptr nana::runner::widget_cfg::from(string const& _cfg)
+runa::cfg_ptr runa::widget_cfg::from(string const& _cfg)
 {
     parser parsed(_cfg);
 
@@ -119,7 +119,7 @@ nana::runner::cfg_ptr nana::runner::widget_cfg::from(string const& _cfg)
     return p;
 }
 
-void nana::runner::operator >> (const parser& _is, cfg_ptr& _v)
+void runa::operator >> (const parser& _is, cfg_ptr& _v)
 {
     _v = widget_factory::instance().create(_is.type());
     if (_v)
@@ -129,7 +129,7 @@ void nana::runner::operator >> (const parser& _is, cfg_ptr& _v)
     }
 }
 
-void nana::runner::widget_cfg::init_widget(widget& _w, view_obj* _root_view) const
+void runa::widget_cfg::init_widget(widget& _w, view_obj* _root_view) const
 {
     _w.caption(get_caption());
 

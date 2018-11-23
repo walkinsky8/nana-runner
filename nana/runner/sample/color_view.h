@@ -8,7 +8,7 @@
 #include <nana/runner/slider_cfg.h>
 #include <nana/runner/button_cfg.h>
 
-namespace nana::runner::sample {
+namespace runa::sample {
 
     class color_view : public view_obj
     {

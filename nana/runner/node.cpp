@@ -7,7 +7,7 @@
 
 #include <nana/runner/dumper.h>
 
-void nana::runner::node::clear()
+void runa::node::clear()
 {
     name_.clear();
     type_.clear();
@@ -15,7 +15,7 @@ void nana::runner::node::clear()
     children_.clear();
 }
 
-void nana::runner::node::traverse(dumper& _d)
+void runa::node::traverse(dumper& _d)
 {
     for (auto& i : children_.list())
     {

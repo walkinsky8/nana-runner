@@ -7,7 +7,7 @@
 
 #include <nana/runner/color_model.h>
 
-namespace nana::runner {
+namespace runa {
 
     using combox = nana::combox;
 

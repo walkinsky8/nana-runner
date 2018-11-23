@@ -7,7 +7,7 @@
 
 #include <nana/runner/view_base.h>
 
-namespace nana::runner {
+namespace runa {
 
     class view_factory
     {

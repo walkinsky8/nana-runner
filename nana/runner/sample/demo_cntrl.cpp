@@ -10,8 +10,8 @@
 
 #include <nana/runner/app_base.h>
 
-using namespace nana::runner::sample;
-using namespace nana::runner;
+using namespace runa::sample;
+using namespace runa;
 
 demo_cntrl::demo_cntrl()
 {

@@ -5,7 +5,7 @@
 
 #include <nana/runner/istr.h>
 
-namespace nana::runner {
+namespace runa {
 
     class bytes
     {

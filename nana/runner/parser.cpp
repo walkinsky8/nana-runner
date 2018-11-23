@@ -9,7 +9,7 @@
 
 #include <nana/runner/log.h>
 
-namespace nana::runner::detail {
+namespace runa::detail {
 
     //TODO: comment
     //TODO: escape
@@ -299,22 +299,22 @@ namespace nana::runner::detail {
 
 }
 
-nana::runner::parser::parser(istr _s, bool _is_list)
+runa::parser::parser(istr _s, bool _is_list)
 {
     detail::parse(inner_, _s, _is_list);
 }
 
-nana::runner::parser::parser(const node* _outer)
+runa::parser::parser(const node* _outer)
     : outer_{_outer}
 {
 }
 
-const nana::runner::node& nana::runner::parser::unit() const
+const runa::node& runa::parser::unit() const
 {
     return outer_ ? *outer_ : inner_;
 }
 
-std::ostream& nana::runner::parser::dump(std::ostream& _os) const
+std::ostream& runa::parser::dump(std::ostream& _os) const
 {
     dumper d;
     d << unit();

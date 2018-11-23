@@ -5,7 +5,7 @@
 
 #include <nana/gui/widgets/form.hpp>
 
-namespace nana::runner {
+namespace runa {
 
     using form_base = nana::drawerbase::form::form_base;
     using form = nana::form;

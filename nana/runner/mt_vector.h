@@ -7,7 +7,7 @@
 #include <nana/runner/mt_lock.h>
 #include <vector>
 
-namespace nana::runner::mt {
+namespace runa::mt {
 
     template<class T>
     class vector

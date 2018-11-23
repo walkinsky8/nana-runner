@@ -5,7 +5,7 @@
 
 #include <nana/gui/widgets/date_chooser.hpp>
 
-namespace nana::runner {
+namespace runa {
 
     using date_chooser = nana::date_chooser;
 

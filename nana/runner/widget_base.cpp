@@ -5,7 +5,7 @@
 
 #include <nana/runner/widget_base.h>
 
-nana::color nana::runner::get_color(const string& _s)
+nana::color runa::get_color(const string& _s)
 {
 	try {
 		nana::colors* clr = colors::find_value(_s);
@@ -19,12 +19,12 @@ nana::color nana::runner::get_color(const string& _s)
 	return nana::colors::black;
 }
 
-nana::runner::font nana::runner::make_font(const string& _name, double _size, bool _bold, bool _italic, bool _underline, bool _strikeout)
+runa::font runa::make_font(const string& _name, double _size, bool _bold, bool _italic, bool _underline, bool _strikeout)
 {
 	return font{ _name, _size, font::font_style{ _bold ? 700u : 400u, _italic, _underline, _strikeout } };
 }
 
-nana::runner::dumper& nana::runner::operator<<(dumper& _d, const point& _v)
+runa::dumper& runa::operator<<(dumper& _d, const point& _v)
 {
 	bool old = _d.compact(true);
 	std::vector<int> values;
@@ -35,7 +35,7 @@ nana::runner::dumper& nana::runner::operator<<(dumper& _d, const point& _v)
 	return _d;
 }
 
-void nana::runner::operator >> (const parser& _p, point& _v)
+void runa::operator >> (const parser& _p, point& _v)
 {
 	std::vector<int> values;
 	_p >> values;
@@ -45,7 +45,7 @@ void nana::runner::operator >> (const parser& _p, point& _v)
 		_v.y = values[1];
 }
 
-nana::runner::dumper& nana::runner::operator<<(dumper& _d, const size& _v)
+runa::dumper& runa::operator<<(dumper& _d, const size& _v)
 {
 	bool old = _d.compact(true);
 	std::vector<unsigned> values;
@@ -56,7 +56,7 @@ nana::runner::dumper& nana::runner::operator<<(dumper& _d, const size& _v)
 	return _d;
 }
 
-void nana::runner::operator >> (const parser& _p, size& _v)
+void runa::operator >> (const parser& _p, size& _v)
 {
 	std::vector<nana::size::value_type> values;
 	_p >> values;
@@ -66,7 +66,7 @@ void nana::runner::operator >> (const parser& _p, size& _v)
 		_v.height = values[1];
 }
 
-nana::runner::dumper& nana::runner::operator<<(dumper& _d, const font& _v)
+runa::dumper& runa::operator<<(dumper& _d, const font& _v)
 {
 	bool old = _d.compact(true);
 	_d.enter({});
@@ -85,7 +85,7 @@ nana::runner::dumper& nana::runner::operator<<(dumper& _d, const font& _v)
 	return _d;
 }
 
-void nana::runner::operator >> (const parser& _p, font& _v)
+void runa::operator >> (const parser& _p, font& _v)
 {
 	if (!_p.valueIsEmpty())
 	{
@@ -123,7 +123,7 @@ void nana::runner::operator >> (const parser& _p, font& _v)
 	}
 }
 
-void nana::runner::operator << (string& _w, const color& _v)
+void runa::operator << (string& _w, const color& _v)
 {
     _w.clear();
 	unsigned r = (unsigned)(_v.r() + 0.5);
@@ -143,7 +143,7 @@ void nana::runner::operator << (string& _w, const color& _v)
 	}
 }
 
-void nana::runner::operator >> (const string& _s, color& _v)
+void runa::operator >> (const string& _s, color& _v)
 {
 	_v = get_color(_s);
 }

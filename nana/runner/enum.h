@@ -3,10 +3,10 @@
 
 #include <nana/runner/_config.h>
 
-#define NAR_ENUM_ADD(e, d, i)     nana::runner::enum_<e, e::d>::add(e::i, #i)
-#define NAR_ENUM_ADD_(e, p, d, i) nana::runner::enum_<e, e::p##d>::add(e::p##i, #i)
+#define NAR_ENUM_ADD(e, d, i)     runa::enum_<e, e::d>::add(e::i, #i)
+#define NAR_ENUM_ADD_(e, p, d, i) runa::enum_<e, e::p##d>::add(e::p##i, #i)
 
-namespace nana::runner {
+namespace runa {
 
     template<typename E, E _Default>
     class enum_

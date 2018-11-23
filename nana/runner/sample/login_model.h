@@ -3,7 +3,7 @@
 
 #include <nana/runner/model_base.h>
 
-namespace nana::runner::sample {
+namespace runa::sample {
 
     class login_model : public model_obj
     {

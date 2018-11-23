@@ -5,9 +5,11 @@
 
 #include <nana/gui/widgets/group.hpp>
 
-namespace nana::runner {
+namespace runa {
 
     using group = nana::group;
+
+    using nana::checkbox;
 
     class group_cfg : public widget_cfg
     {

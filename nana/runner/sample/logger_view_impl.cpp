@@ -5,7 +5,7 @@
 
 #include <nana/runner/app_base.h>
 
-using namespace nana::runner::sample;
+using namespace runa::sample;
 
 void logger_view_impl::init()
 {

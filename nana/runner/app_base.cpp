@@ -5,9 +5,9 @@
 
 #include <nana/runner/app_base.h>
 
-nana::runner::app* nana::runner::app::instance_{ nullptr };
+runa::app* runa::app::instance_{ nullptr };
 
-nana::runner::app::app()
+runa::app::app()
 {
     if (instance_ != nullptr)
         NAR_THROW_ERROR(std::invalid_argument, "app instance should not be more than one");
@@ -21,13 +21,13 @@ nana::runner::app::app()
     instance_ = this;
 }
 
-nana::runner::app::~app()
+runa::app::~app()
 {
     log_thread::instance().stop();
     instance_ = nullptr;
 }
 
-bool nana::runner::app::search_file(const wstring& _file, wstring& _fullpath) const
+bool runa::app::search_file(const wstring& _file, wstring& _fullpath) const
 {
     fs::path p{ _file };
     if (fs::exists(p) && p.is_absolute())
@@ -55,7 +55,7 @@ bool nana::runner::app::search_file(const wstring& _file, wstring& _fullpath) co
     return false;
 }
 
-nana::runner::string nana::runner::app::load_file(const wstring& _filename, wstring* _fullpath) const
+runa::string runa::app::load_file(const wstring& _filename, wstring* _fullpath) const
 {
     wstring fullpath;
     if (!search_file(_filename, fullpath))
@@ -68,7 +68,7 @@ nana::runner::string nana::runner::app::load_file(const wstring& _filename, wstr
     return filebuf;
 }
 
-nana::runner::cfg_ptr nana::runner::app::load_cfg(const wstring& _filename)
+runa::cfg_ptr runa::app::load_cfg(const wstring& _filename)
 {
     wstring fullpath;
     string cfgdata;
@@ -93,7 +93,7 @@ nana::runner::cfg_ptr nana::runner::app::load_cfg(const wstring& _filename)
     return cfg;
 }
 
-nana::runner::cfg_ptr nana::runner::app::create_cfg(const string& cfgdata)
+runa::cfg_ptr runa::app::create_cfg(const string& cfgdata)
 {
     cfg_ptr cfg = widget_cfg::from(cfgdata);
     if (!cfg)
@@ -112,7 +112,7 @@ nana::runner::cfg_ptr nana::runner::app::create_cfg(const string& cfgdata)
     return cfg;
 }
 
-nana::runner::cfg_ptr nana::runner::app::get_cfg(const string& _type) const
+runa::cfg_ptr runa::app::get_cfg(const string& _type) const
 {
     const cfg_ptr* p = cfgs_.find(_type);
     if (!p)
@@ -120,7 +120,7 @@ nana::runner::cfg_ptr nana::runner::app::get_cfg(const string& _type) const
     return *p;
 }
 
-nana::runner::cfg_ptr nana::runner::app::find_cfg(const string& _type) const
+runa::cfg_ptr runa::app::find_cfg(const string& _type) const
 {
     const cfg_ptr* p = cfgs_.find(_type);
     if (!p)
@@ -128,7 +128,7 @@ nana::runner::cfg_ptr nana::runner::app::find_cfg(const string& _type) const
     return *p;
 }
 
-nana::runner::view_ptr nana::runner::app::create_view_(const string& _cfg)
+runa::view_ptr runa::app::create_view_(const string& _cfg)
 {
     cfg_ptr cfg = create_cfg(_cfg);
     if (cfg)
@@ -145,7 +145,7 @@ nana::runner::view_ptr nana::runner::app::create_view_(const string& _cfg)
 
 }
 
-nana::runner::view_ptr nana::runner::app::load_view_(const wstring& _filename)
+runa::view_ptr runa::app::load_view_(const wstring& _filename)
 {
 	cfg_ptr cfg = load_cfg(_filename);
 	if (cfg)
@@ -155,7 +155,7 @@ nana::runner::view_ptr nana::runner::app::load_view_(const wstring& _filename)
 	return nullptr;
 }
 
-nana::runner::view_ptr nana::runner::app::show_view_(const wstring& _filename)
+runa::view_ptr runa::app::show_view_(const wstring& _filename)
 {
     auto v = load_view_(_filename);
     if (v)
@@ -166,7 +166,7 @@ nana::runner::view_ptr nana::runner::app::show_view_(const wstring& _filename)
     return v;
 }
 
-void nana::runner::app::load_cfgs(const wchar_t* _cmdline)
+void runa::app::load_cfgs(const wchar_t* _cmdline)
 {
     args_.init(_cmdline);
 
@@ -183,12 +183,12 @@ void nana::runner::app::load_cfgs(const wchar_t* _cmdline)
     }
 }
 
-void nana::runner::app::quit()
+void runa::app::quit()
 {
     instance().close();
 }
 
-void nana::runner::app::close()
+void runa::app::close()
 {
     for (auto& v : initial_views_)
         v->close();
@@ -196,7 +196,7 @@ void nana::runner::app::close()
     on_fini();
 }
 
-void nana::runner::app::run(const wchar_t* _cmdline)
+void runa::app::run(const wchar_t* _cmdline)
 {
     load_cfgs(_cmdline);
 
@@ -212,7 +212,7 @@ void nana::runner::app::run(const wchar_t* _cmdline)
     }
 
     NAR_LOG("enter exec...");
-    exec();
+    nana::exec();
     NAR_LOG("leave exec.");
 
     // called in quit().

@@ -5,7 +5,7 @@
 
 #include <nana/runner/base_types.h>
 
-namespace nana::runner {
+namespace runa {
 
     void write_console(const string& _msg);
 

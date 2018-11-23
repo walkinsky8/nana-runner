@@ -5,7 +5,7 @@
 
 #include <nana/gui/widgets/label.hpp>
 
-namespace nana::runner {
+namespace runa {
 
     using label = nana::label;
 

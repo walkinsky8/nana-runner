@@ -3,8 +3,8 @@
 
 #include <nana/runner/sample/editor_setup_view_impl.h>
 
-using namespace nana::runner::sample;
-using namespace nana::runner;
+using namespace runa::sample;
+using namespace runa;
 
 void editor_setup_view_impl::init()
 {

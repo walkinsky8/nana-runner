@@ -5,7 +5,7 @@
 
 #include <mutex>
 
-namespace nana::runner::mt {
+namespace runa::mt {
 
     using std::mutex;
 

@@ -3,7 +3,7 @@
 
 #include <nana/runner/sample/demo_app.h>
 
-using namespace nana::runner::sample;
+using namespace runa::sample;
 
 demo_app::demo_app()
 {

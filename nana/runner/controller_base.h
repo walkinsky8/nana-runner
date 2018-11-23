@@ -9,7 +9,7 @@
 
 #include <nana/runner/model_base.h>
 
-namespace nana::runner
+namespace runa
 {
     class controller_obj;
     using cntrl_ptr = ptr<controller_obj>;

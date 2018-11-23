@@ -5,7 +5,7 @@
 
 #include <nana/runner/widget_all.h>
 
-void nana::runner::init_widgets()
+void runa::init_widgets()
 {
     add_widget<form_cfg>();
     add_widget<panel_cfg>();

@@ -5,7 +5,7 @@
 
 #include <nana/gui/widgets/listbox.hpp>
 
-namespace nana::runner {
+namespace runa {
 
     using listbox = nana::listbox;
 

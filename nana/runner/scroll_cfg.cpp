@@ -5,7 +5,7 @@
 
 #include "scroll_cfg.h"
 
-void nana::runner::hscroll_cfg::init_widget(widget & _w, view_obj* _root_view) const
+void runa::hscroll_cfg::init_widget(widget & _w, view_obj* _root_view) const
 {
     super::init_widget(_w, _root_view);
 
@@ -16,7 +16,7 @@ void nana::runner::hscroll_cfg::init_widget(widget & _w, view_obj* _root_view) c
     w.step(step_());
 }
 
-void nana::runner::vscroll_cfg::init_widget(widget & _w, view_obj* _root_view) const
+void runa::vscroll_cfg::init_widget(widget & _w, view_obj* _root_view) const
 {
     super::init_widget(_w, _root_view);
 

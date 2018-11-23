@@ -7,7 +7,7 @@
 
 #include <nana/runner/app_base.h>
 
-void nana::runner::menu_cfg::init_menu(menu& _m) const
+void runa::menu_cfg::init_menu(menu& _m) const
 {
     size_t idx = 0;
     for (auto& item : children_())

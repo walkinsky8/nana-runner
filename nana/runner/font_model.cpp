@@ -5,7 +5,7 @@
 
 #include <nana/runner/font_model.h>
 
-nana::runner::font_model::font_model(const font& _f)
+runa::font_model::font_model(const font& _f)
 {
     name_() = _f.name();
     size_() = _f.size();
@@ -15,7 +15,7 @@ nana::runner::font_model::font_model(const font& _f)
     underline_() = _f.underline();
 }
 
-nana::runner::font_model::operator nana::runner::font() const
+runa::font_model::operator runa::font() const
 {
     return make_font(name_(), size_(), bold_(), italic_(), underline_(), strikeout_());
 }

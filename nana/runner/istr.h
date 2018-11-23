@@ -3,7 +3,7 @@
 
 #include <nana/runner/_config.h>
 
-namespace nana::runner {
+namespace runa {
 
     class istr
     {

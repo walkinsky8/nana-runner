@@ -5,7 +5,7 @@
 
 #include <nana/gui/widgets/spinbox.hpp>
 
-namespace nana::runner {
+namespace runa {
 
     using spinbox = nana::spinbox;
 

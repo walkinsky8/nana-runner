@@ -3,7 +3,7 @@
 
 #include <nana/runner/sample/editor_app.h>
 
-using namespace nana::runner::sample;
+using namespace runa::sample;
 
 editor_app::editor_app()
 {

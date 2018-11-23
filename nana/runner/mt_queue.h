@@ -8,7 +8,7 @@
 #include <nana/runner/mt_lock.h>
 #include <queue>
 
-namespace nana::runner::mt {
+namespace runa::mt {
 
     template<class T>
     class queue

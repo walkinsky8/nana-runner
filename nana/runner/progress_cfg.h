@@ -5,7 +5,7 @@
 
 #include <nana/gui/widgets/progress.hpp>
 
-namespace nana::runner {
+namespace runa {
 
     using progress = nana::progress;
 

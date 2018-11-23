@@ -5,7 +5,7 @@
 
 #include <nana/runner/controller_base.h>
 
-nana::runner::controller_obj::controller_obj()
+runa::controller_obj::controller_obj()
 {
 }
 

@@ -5,7 +5,7 @@
 
 #include <nana/runner/cmdargs.h>
 
-void nana::runner::cmdargs::init(const wchar_t* _cmdline)
+void runa::cmdargs::init(const wchar_t* _cmdline)
 {
     cmdline_ = _cmdline;
     string_split(cmdline_, args_);

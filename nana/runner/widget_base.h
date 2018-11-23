@@ -3,7 +3,7 @@
 
 #include <nana/runner/base.h>
 
-namespace nana::runner {
+namespace runa {
 
 	using point = nana::point;
 	using size = nana::size;

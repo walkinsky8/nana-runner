@@ -5,7 +5,7 @@
 
 #include <nana/datetime.hpp>
 
-namespace nana::runner {
+namespace runa {
 
     using nana::date;
     using nana::time;

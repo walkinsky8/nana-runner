@@ -5,7 +5,7 @@
 
 #include <nana/gui/widgets/button.hpp>
 
-namespace nana::runner {
+namespace runa {
 
     using button = nana::button;
 

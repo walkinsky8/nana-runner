@@ -5,7 +5,7 @@
 
 #include <nana/runner/sample/demo_cntrl.h>
 
-namespace nana::runner::sample {
+namespace runa::sample {
 
     class demo_app : public app
     {

@@ -28,7 +28,7 @@
 #include <nana/runner/mt_queue.h>
 #include <nana/runner/mt_vector.h>
 
-namespace nana::runner {
+namespace runa {
 
 	void init_enums();
 

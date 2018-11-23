@@ -7,7 +7,7 @@
 #include <nana/runner/sample/editor_cntrl.h>
 #include <nana/runner/sample/demo_cntrl.h>
 
-namespace nana::runner::sample {
+namespace runa::sample {
 
     class editor_app : public app
     {

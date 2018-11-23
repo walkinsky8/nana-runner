@@ -7,7 +7,7 @@
 
 #include "option_cfg.h"
 
-void nana::runner::treebox_cfg::init_widget(widget & _w, view_obj* _root_view) const
+void runa::treebox_cfg::init_widget(widget & _w, view_obj* _root_view) const
 {
     super::init_widget(_w, _root_view);
 
@@ -22,12 +22,12 @@ void nana::runner::treebox_cfg::init_widget(widget & _w, view_obj* _root_view) c
         fs::directory_iterator i(directory_()), end;
         for (; i != end; ++i)
         {
-            auto name = to_utf8(i->path().filename().native());
+            auto name = nana::to_utf8(i->path().filename().native());
             tree.insert(node, name, name);
             break;
         }
 
-        tree.events().expanded([&tree](const arg_treebox& arg)
+        tree.events().expanded([&tree](const nana::arg_treebox& arg)
         {
             if (!arg.operated) return; //If this is contracted.
 
@@ -42,7 +42,7 @@ void nana::runner::treebox_cfg::init_widget(widget & _w, view_obj* _root_view) c
             {
                 if (!is_directory(*i)) continue; //If it is not a directory.
 
-                auto name = to_utf8(i->path().filename().native());
+                auto name = nana::to_utf8(i->path().filename().native());
                 auto child = tree.insert(arg.item, name, name);
                 if (child.empty()) continue;
 
@@ -53,7 +53,7 @@ void nana::runner::treebox_cfg::init_widget(widget & _w, view_obj* _root_view) c
                 for (fs::directory_iterator u{ path + name }; u != end; ++u)
                 {
                     if (!is_directory(*u)) continue; //If it is not a directory.
-                    auto name = to_utf8(u->path().filename().native());
+                    auto name = nana::to_utf8(u->path().filename().native());
                     tree.insert(child, name, name);
                     break;
                 }
@@ -74,7 +74,7 @@ void nana::runner::treebox_cfg::init_widget(widget & _w, view_obj* _root_view) c
     }
 }
 
-void nana::runner::treebox_cfg::init_nodes(treebox& _w, item_proxy _p, option_cfg& _c)
+void runa::treebox_cfg::init_nodes(treebox& _w, item_proxy _p, option_cfg& _c)
 {
     for (auto& i : _c.children_())
     {

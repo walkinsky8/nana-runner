@@ -5,7 +5,7 @@
 
 #include <nana/runner/istr.h>
 
-nana::runner::istr& nana::runner::istr::advance(int _offset)
+runa::istr& runa::istr::advance(int _offset)
 {
     if (_offset > (int)size_)
         _offset = (int)size_;
@@ -14,7 +14,7 @@ nana::runner::istr& nana::runner::istr::advance(int _offset)
     return *this;
 }
 
-nana::runner::istr nana::runner::istr::substr(size_t _start, size_t _len) const
+runa::istr runa::istr::substr(size_t _start, size_t _len) const
 {
     if (_start > size_)
         _start = size_;
@@ -23,7 +23,7 @@ nana::runner::istr nana::runner::istr::substr(size_t _start, size_t _len) const
     return istr{ data_ + _start, _len };
 }
 
-nana::runner::istr nana::runner::istr::read(std::function<bool(char)> _fn, size_t _maxLen)
+runa::istr runa::istr::read(std::function<bool(char)> _fn, size_t _maxLen)
 {
     istr& p = me();
     istr beg = p;
@@ -32,7 +32,7 @@ nana::runner::istr nana::runner::istr::read(std::function<bool(char)> _fn, size_
     return istr{ beg, p };
 }
 
-nana::runner::istr nana::runner::istr::read_until(std::function<bool(char)> _fn, size_t _maxLen)
+runa::istr runa::istr::read_until(std::function<bool(char)> _fn, size_t _maxLen)
 {
     istr& _p = me();
     istr beg = _p;
@@ -41,7 +41,7 @@ nana::runner::istr nana::runner::istr::read_until(std::function<bool(char)> _fn,
     return istr{ beg, _p };
 }
 
-int nana::runner::istr::compare(istr _v) const
+int runa::istr::compare(istr _v) const
 {
     size_t n = size();
     if (n > _v.size())

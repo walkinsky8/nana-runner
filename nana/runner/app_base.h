@@ -11,7 +11,7 @@
 
 #include <nana/runner/generic_view.h>
 
-namespace nana::runner
+namespace runa
 {
     class app : public object
     {

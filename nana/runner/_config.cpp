@@ -9,7 +9,7 @@
 
 std::ostream& std::operator<<(ostream& _os, const wstring& _v)
 {
-    _os << nana::runner::to_string(_v);
+    _os << runa::to_string(_v);
     return _os;
 }
 
@@ -28,23 +28,23 @@ void std::operator >> (const std::string& _s, std::wstring& _v)
     _v = nana::to_wstring(_s);
 }
 
-std::string nana::runner::to_string(const wstring& _wstr)
+std::string runa::to_string(const wstring& _wstr)
 {
     return nana::to_utf8(_wstr);
 }
 
-std::wstring nana::runner::to_wstring(const string& _utf8str)
+std::wstring runa::to_wstring(const string& _utf8str)
 {
     return nana::to_wstring(_utf8str);
 }
 
-void nana::runner::string_split(const string& _s, std::vector<string>& _ss)
+void runa::string_split(const string& _s, std::vector<string>& _ss)
 {
     parser ps{ _s, true };
     ps >> _ss;
 }
 
-void nana::runner::string_split(const wstring& _s, std::vector<wstring>& _ss)
+void runa::string_split(const wstring& _s, std::vector<wstring>& _ss)
 {
     string u8s;
     u8s << _s;
@@ -52,7 +52,7 @@ void nana::runner::string_split(const wstring& _s, std::vector<wstring>& _ss)
     ps >> _ss;
 }
 
-nana::runner::strings nana::runner::strings_from(const string& _s, const string& _sep)
+runa::strings runa::strings_from(const string& _s, const string& _sep)
 {
     strings ss;
     istr sep(_sep);
@@ -74,7 +74,7 @@ nana::runner::strings nana::runner::strings_from(const string& _s, const string&
     return ss;
 }
 
-nana::runner::strings nana::runner::strings_sub(const strings& _ss, int _start, size_t _len)
+runa::strings runa::strings_sub(const strings& _ss, int _start, size_t _len)
 {
     strings result;
     if (_start < 0)
@@ -88,7 +88,7 @@ nana::runner::strings nana::runner::strings_sub(const strings& _ss, int _start, 
     return result;
 }
 
-nana::runner::string nana::runner::strings_merge(const strings& _ss, const string& _sep)
+runa::string runa::strings_merge(const strings& _ss, const string& _sep)
 {
     string s;
     for (size_t i = 0; i < _ss.size(); ++i)
@@ -100,7 +100,7 @@ nana::runner::string nana::runner::strings_merge(const strings& _ss, const strin
     return s;
 }
 
-bool nana::runner::read_file(const wstring& _filename, string& _content)
+bool runa::read_file(const wstring& _filename, string& _content)
 {
     std::ifstream ifs{ _filename };
     if (!ifs)
@@ -132,7 +132,7 @@ bool nana::runner::read_file(const wstring& _filename, string& _content)
     return true;
 }
 
-bool nana::runner::write_file(const wstring& _filename, const string& _content)
+bool runa::write_file(const wstring& _filename, const string& _content)
 {
     std::ofstream ofs{ _filename };
     if (!ofs)

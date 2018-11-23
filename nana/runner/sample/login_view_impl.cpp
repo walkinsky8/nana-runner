@@ -5,8 +5,8 @@
 
 #include <nana/runner/app_base.h>
 
-using namespace nana::runner::sample;
-using namespace nana::runner;
+using namespace runa::sample;
+using namespace runa;
 
 void login_view_impl::init()
 {

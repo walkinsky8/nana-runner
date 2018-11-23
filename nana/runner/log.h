@@ -16,20 +16,20 @@
 #define NAR_LOG_VAR(x)      NAR_LOG_NV(#x, x)
 #define NAR_LOG_NV(n, v)    NAR_LOG_DEBUG(n << " = " << v)
 
-#define NAR_LOG_EXCPT(x)    NAR_LOG_(nana::runner::LL_EXCEPTION, x)
-#define NAR_LOG_ERROR(x)    NAR_LOG_(nana::runner::LL_ERROR, x)
-#define NAR_LOG_WARN(x)     NAR_LOG_(nana::runner::LL_WARN, x)
-#define NAR_LOG_INFO(x)     NAR_LOG_(nana::runner::LL_INFO, x)
-#define NAR_LOG_DEBUG(x)    NAR_LOG_(nana::runner::LL_DEBUG, x)
-#define NAR_LOG_VERBOSE(x)  NAR_LOG_(nana::runner::LL_VERBOSE, x)
+#define NAR_LOG_EXCPT(x)    NAR_LOG_(runa::LL_EXCEPTION, x)
+#define NAR_LOG_ERROR(x)    NAR_LOG_(runa::LL_ERROR, x)
+#define NAR_LOG_WARN(x)     NAR_LOG_(runa::LL_WARN, x)
+#define NAR_LOG_INFO(x)     NAR_LOG_(runa::LL_INFO, x)
+#define NAR_LOG_DEBUG(x)    NAR_LOG_(runa::LL_DEBUG, x)
+#define NAR_LOG_VERBOSE(x)  NAR_LOG_(runa::LL_VERBOSE, x)
 
-#define NAR_LOG_(ll, x)     nana::runner::log(ll, NAR_CURRENT()) << x
+#define NAR_LOG_(ll, x)     runa::log(ll, NAR_CURRENT()) << x
 
-#define NAR_CURRENT()       nana::runner::current_info{__FILE__, __LINE__, __FUNCTION__}
+#define NAR_CURRENT()       runa::current_info{__FILE__, __LINE__, __FUNCTION__}
 
-#define NAR_THROW_ERROR(e, x)  throw e{(nana::runner::out()<<NAR_CURRENT()<<" "<<#e<<": "<<x).str().c_str()}
+#define NAR_THROW_ERROR(e, x)  throw e{(runa::out()<<NAR_CURRENT()<<" "<<#e<<": "<<x).str().c_str()}
 
-namespace nana::runner {
+namespace runa {
 
     struct current_info
     {

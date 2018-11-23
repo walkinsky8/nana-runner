@@ -5,7 +5,7 @@
 
 #include <nana/gui/widgets/scroll.hpp>
 
-namespace nana::runner {
+namespace runa {
 
     using hscroll = nana::scroll<0>;
     using vscroll = nana::scroll<1>;

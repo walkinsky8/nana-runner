@@ -7,7 +7,7 @@
 #include <nana/runner/textbox_cfg.h>
 #include <nana/runner/button_cfg.h>
 
-namespace nana::runner::sample {
+namespace runa::sample {
 
     class hello_view : public view_obj
     {

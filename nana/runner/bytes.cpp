@@ -5,19 +5,19 @@
 
 #include <nana/runner/bytes.h>
 
-bool nana::runner::bytes::is_base64_char(const char _c)
+bool runa::bytes::is_base64_char(const char _c)
 {
     return between(_c, 'A', 'Z') || between(_c, 'a', 'z') || between(_c, '0', '9') || _c == '+' || _c == '/' || _c == '=';
 }
 
-char nana::runner::bytes::peek_base64_char(istr & _s)
+char runa::bytes::peek_base64_char(istr & _s)
 {
     while (_s && !is_base64_char(*_s))
         ++_s;
     return *_s++;
 }
 
-nana::runner::byte nana::runner::bytes::from_base64_char(const char _c)
+runa::byte runa::bytes::from_base64_char(const char _c)
 {
     if (between(_c, 'A', 'Z'))
         return _c - 'A';
@@ -32,7 +32,7 @@ nana::runner::byte nana::runner::bytes::from_base64_char(const char _c)
     return 0;
 }
 
-char nana::runner::bytes::to_base64_char(const byte _b)
+char runa::bytes::to_base64_char(const byte _b)
 {
     if (_b < 26)
         return _b + 'A';
@@ -47,7 +47,7 @@ char nana::runner::bytes::to_base64_char(const byte _b)
     return 0;
 }
 
-void nana::runner::bytes::from_base64(istr _s)
+void runa::bytes::from_base64(istr _s)
 {
     buf_.clear();
     while (_s)
@@ -70,7 +70,7 @@ void nana::runner::bytes::from_base64(istr _s)
     }
 }
 
-std::string nana::runner::bytes::to_base64() const
+std::string runa::bytes::to_base64() const
 {
     string s;
     const size_t sz = size();

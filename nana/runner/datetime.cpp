@@ -7,42 +7,42 @@
 
 #include <nana/runner/istr.h>
 
-nana::runner::datetime::datetime()
+runa::datetime::datetime()
 {
 }
 
-nana::runner::datetime::datetime(date const& _d)
+runa::datetime::datetime(date const& _d)
     : date_{ _d }, time_{ 0,0,0 }
 {
 }
 
-nana::runner::datetime::datetime(time const& _t)
+runa::datetime::datetime(time const& _t)
     : date_{ 0,0,0 }, time_{ _t }
 {
 }
 
-nana::runner::datetime::datetime(date const& _d, time const& _t)
+runa::datetime::datetime(date const& _d, time const& _t)
     : date_{_d}, time_{_t}
 {
 }
 
-nana::runner::datetime::datetime(std::tm const& _t)
+runa::datetime::datetime(std::tm const& _t)
     : date_{_t}, time_{_t}
 {
 }
 
-nana::runner::datetime::datetime(int year, int month, int day, unsigned hour, unsigned minute, unsigned second)
+runa::datetime::datetime(int year, int month, int day, unsigned hour, unsigned minute, unsigned second)
     : date_{ year, month, day }, time_{ hour, minute, second }
 {
 }
 
-void nana::runner::datetime::set(const std::tm& _tm)
+void runa::datetime::set(const std::tm& _tm)
 {
     date_.set(_tm);
     time_.set(_tm);
 }
 
-std::ostream& nana::runner::datetime::write(std::ostream& _os) const
+std::ostream& runa::datetime::write(std::ostream& _os) const
 {
     _os << date_ << "_" << time_;
     return _os;
@@ -70,9 +70,9 @@ std::ostream& nana::operator<<(std::ostream& _os, const time& _v)
     return _os;
 }
 
-void nana::runner::datetime::read(const std::string& _is)
+void runa::datetime::read(const std::string& _is)
 {
-    using namespace nana::runner;
+    using namespace runa;
     istr p{ _is };
     p.read_until(is_digit);
     istr year = p.read(is_digit, 4);
@@ -91,7 +91,7 @@ void nana::runner::datetime::read(const std::string& _is)
 
 void nana::operator>>(const std::string& _is, date& _v)
 {
-    using namespace nana::runner;
+    using namespace runa;
     istr p{ _is };
     p.read_until(is_digit);
     istr year = p.read(is_digit, 4);
@@ -104,7 +104,7 @@ void nana::operator>>(const std::string& _is, date& _v)
 
 void nana::operator>>(const std::string& _is, time& _v)
 {
-    using namespace nana::runner;
+    using namespace runa;
     istr p{ _is };
     p.read_until(is_digit);
     istr hour = p.read(is_digit, 2);

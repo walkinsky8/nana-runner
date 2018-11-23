@@ -5,7 +5,9 @@
 
 #include <nana/gui/widgets/panel.hpp>
 
-namespace nana::runner {
+namespace runa {
+
+    using nana::place;
 
     using tab_ui = nana::panel<true>;
 

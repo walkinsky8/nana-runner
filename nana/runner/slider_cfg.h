@@ -5,7 +5,7 @@
 
 #include <nana/gui/widgets/slider.hpp>
 
-namespace nana::runner {
+namespace runa {
 
     using slider = nana::slider;
 

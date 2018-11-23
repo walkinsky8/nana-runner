@@ -7,7 +7,7 @@
 
 #include <nana/gui/widgets/treebox.hpp>
 
-namespace nana::runner {
+namespace runa {
 
     using treebox = nana::treebox;
     using nana::drawerbase::treebox::item_proxy;

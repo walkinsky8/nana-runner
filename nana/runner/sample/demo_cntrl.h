@@ -3,7 +3,7 @@
 
 #include <nana/runner/controller_base.h>
 
-namespace nana::runner::sample {
+namespace runa::sample {
 
     class demo_cntrl : public controller_obj
     {

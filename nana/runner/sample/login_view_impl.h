@@ -5,7 +5,7 @@
 
 #include <nana/runner/sample/login_model.h>
 
-namespace nana::runner::sample {
+namespace runa::sample {
 
     class login_view_impl : public login_view
     {

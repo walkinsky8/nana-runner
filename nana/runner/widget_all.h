@@ -33,7 +33,7 @@
 #include <nana/runner/option_cfg.h>
 #include <nana/runner/unknown_cfg.h>
 
-namespace nana::runner {
+namespace runa {
 
     void init_widgets();
 

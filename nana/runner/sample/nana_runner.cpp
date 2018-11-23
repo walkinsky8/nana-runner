@@ -11,7 +11,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     _In_ LPWSTR    lpCmdLine,
     _In_ int       nCmdShow)
 {
-    using namespace nana::runner;
+    using namespace runa;
     try {
         sample::editor_app a;
         //sample::demo_app a;

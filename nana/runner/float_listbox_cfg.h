@@ -5,7 +5,7 @@
 
 #include <nana/gui/widgets/float_listbox.hpp>
 
-namespace nana::runner {
+namespace runa {
 
     using float_listbox = nana::float_listbox;
 

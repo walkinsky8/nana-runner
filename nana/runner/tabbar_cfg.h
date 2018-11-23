@@ -7,7 +7,7 @@
 
 #include <nana/runner/view_base.h>
 
-namespace nana::runner {
+namespace runa {
 
     using tabbar = nana::tabbar<string>;
     using tabbar_lite = nana::tabbar_lite;

@@ -7,7 +7,7 @@
 
 #include <nana/runner/app_base.h>
 
-namespace nana::runner::sample {
+namespace runa::sample {
 
     class demo_view : public view_obj
     {
@@ -238,7 +238,7 @@ namespace nana::runner::sample {
             auto cat = files_.at(0);
             for (fs::directory_iterator i{ path }, end; i != end; ++i)
             {
-                auto name = to_utf8(i->path().filename().native());
+                auto name = nana::to_utf8(i->path().filename().native());
                 cat.push_back(name);
 
                 if (is_directory(*i))

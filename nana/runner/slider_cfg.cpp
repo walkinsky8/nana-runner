@@ -5,7 +5,7 @@
 
 #include "slider_cfg.h"
 
-void nana::runner::slider_cfg::init_widget(widget & _w, view_obj* _root_view) const
+void runa::slider_cfg::init_widget(widget & _w, view_obj* _root_view) const
 {
     super::init_widget(_w, _root_view);
 

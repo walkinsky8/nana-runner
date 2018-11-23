@@ -9,7 +9,7 @@
 
 #include <nana/runner/app_base.h>
 
-void nana::runner::menubar_cfg::init_widget(widget & _w, view_obj* _root_view) const
+void runa::menubar_cfg::init_widget(widget & _w, view_obj* _root_view) const
 {
     super::init_widget(_w, _root_view);
 

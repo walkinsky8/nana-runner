@@ -29,7 +29,7 @@
             string type_name() const override { return type_name_(); } \
         private:
 
-namespace nana::runner {
+namespace runa {
 
     using callback = std::function<void()>;
 

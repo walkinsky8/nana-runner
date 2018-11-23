@@ -5,7 +5,7 @@
 
 #include <nana/runner/sample/editor_setup_model.h>
 
-namespace nana::runner::sample {
+namespace runa::sample {
 
     class editor_setup_view_impl: public editor_setup_view
     {

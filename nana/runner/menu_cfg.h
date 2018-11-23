@@ -5,7 +5,7 @@
 
 #include <nana/gui/widgets/menu.hpp>
 
-namespace nana::runner {
+namespace runa {
 
     using menu = nana::menu;
 

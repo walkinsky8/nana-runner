@@ -5,13 +5,13 @@
 
 #include <nana/runner/mt_thread.h>
 
-void nana::runner::simple_thread::start()
+void runa::simple_thread::start()
 {
     if (!thr_)
         thr_ = std::make_shared<std::thread>(std::bind(&simple_thread::run, this));
 }
 
-void nana::runner::simple_thread::stop()
+void runa::simple_thread::stop()
 {
     running(false);
 
@@ -27,7 +27,7 @@ void nana::runner::simple_thread::stop()
     }
 }
 
-void nana::runner::simple_thread::run()
+void runa::simple_thread::run()
 {
     running_ = true;
 
@@ -42,50 +42,50 @@ void nana::runner::simple_thread::run()
     on_death();
 }
 
-void nana::runner::simple_thread::running(bool _running)
+void runa::simple_thread::running(bool _running)
 {
     running_ = _running;
     wakeup();
 }
 
-bool nana::runner::simple_thread::running() const
+bool runa::simple_thread::running() const
 {
     return running_;
 }
 
-void nana::runner::simple_thread::pause()
+void runa::simple_thread::pause()
 {
     paused_ = true;
     wakeup();
 }
 
-void nana::runner::simple_thread::resume()
+void runa::simple_thread::resume()
 {
     paused_ = false;
     wakeup();
 }
 
-bool nana::runner::simple_thread::paused() const
+bool runa::simple_thread::paused() const
 {
     return paused_;
 }
 
-void nana::runner::simple_thread::wakeup()
+void runa::simple_thread::wakeup()
 {
     mon_.notify_all_with_lock();
 }
 
-void nana::runner::simple_thread::wait()
+void runa::simple_thread::wait()
 {
     mon_.wait_with_lock();
 }
 
-void nana::runner::simple_thread::wait(unsigned _milliseconds)
+void runa::simple_thread::wait(unsigned _milliseconds)
 {
     mon_.wait_with_lock(_milliseconds);
 }
 
-void nana::runner::simple_thread::sleep(unsigned _milliseconds)
+void runa::simple_thread::sleep(unsigned _milliseconds)
 {
     nana::system::sleep(_milliseconds);
 }

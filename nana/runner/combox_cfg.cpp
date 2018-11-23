@@ -9,7 +9,7 @@
 
 #include <nana/runner/app_base.h>
 
-void nana::runner::combox_cfg::init_widget(widget & _w, view_obj* _root_view) const
+void runa::combox_cfg::init_widget(widget & _w, view_obj* _root_view) const
 {
     super::init_widget(_w, _root_view);
 
@@ -36,19 +36,19 @@ void nana::runner::combox_cfg::init_widget(widget & _w, view_obj* _root_view) co
         w.editable(editable_().value());
 }
 
-void nana::runner::operator<<(combox& _w, const strings& _v)
+void runa::operator<<(combox& _w, const strings& _v)
 {
     for (auto& i : _v)
         _w.push_back(i);
 }
 
-void nana::runner::operator>>(const combox& _w, strings& _v)
+void runa::operator>>(const combox& _w, strings& _v)
 {
     for (size_t i = 0; i < _w.the_number_of_options(); ++i)
         _v.push_back(_w.text(i));
 }
 
-void nana::runner::operator<<(combox& _w, const color_model& _v)
+void runa::operator<<(combox& _w, const color_model& _v)
 {
     nana::colors* p = colors::find_value(_v.value_());
     if (p)
@@ -56,7 +56,7 @@ void nana::runner::operator<<(combox& _w, const color_model& _v)
     _w << _v.value_();
 }
 
-void nana::runner::operator>>(const combox& _w, color_model& _v)
+void runa::operator>>(const combox& _w, color_model& _v)
 {
     _v = _w.caption();
 }

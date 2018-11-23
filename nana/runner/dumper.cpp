@@ -5,7 +5,7 @@
 
 #include <nana/runner/dumper.h>
 
-nana::runner::dumper& nana::runner::dumper::writeString(const istr& _v)
+runa::dumper& runa::dumper::writeString(const istr& _v)
 {
     bool isNull = _v == istr("null");
     if (!isNull)
@@ -16,7 +16,7 @@ nana::runner::dumper& nana::runner::dumper::writeString(const istr& _v)
     return *this;
 }
 
-nana::runner::dumper& nana::runner::dumper::indent()
+runa::dumper& runa::dumper::indent()
 {
     if (compact_)
         return write(tag::space);
@@ -27,7 +27,7 @@ nana::runner::dumper& nana::runner::dumper::indent()
     return *this;
 }
 
-nana::runner::dumper& nana::runner::dumper::writeName(string _name)
+runa::dumper& runa::dumper::writeName(string _name)
 {
     write(_name);
     //if (!compact_)
@@ -38,7 +38,7 @@ nana::runner::dumper& nana::runner::dumper::writeName(string _name)
     return *this;
 }
 
-nana::runner::dumper& nana::runner::dumper::enter(string _type)
+runa::dumper& runa::dumper::enter(string _type)
 {
     if (!_type.empty())
         write(tag::key).write(_type);
@@ -47,7 +47,7 @@ nana::runner::dumper& nana::runner::dumper::enter(string _type)
     return *this;
 }
 
-nana::runner::dumper& nana::runner::dumper::leave()
+runa::dumper& runa::dumper::leave()
 {
     --level_;
     return indent().write(tag::end);

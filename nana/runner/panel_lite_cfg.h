@@ -5,7 +5,7 @@
 
 #include <nana/gui/widgets/panel.hpp>
 
-namespace nana::runner {
+namespace runa {
 
     using panel_lite = nana::panel<false>;
 

@@ -5,7 +5,7 @@
 
 #include <condition_variable>
 
-namespace nana::runner::mt {
+namespace runa::mt {
 
     using std::condition_variable;
     using std::condition_variable_any;

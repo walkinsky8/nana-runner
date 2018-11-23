@@ -6,7 +6,7 @@
 #include <mutex>
 #include <condition_variable>
 
-namespace nana::runner::mt {
+namespace runa::mt {
 
     template<class _Mutex>
     class monitor

@@ -5,7 +5,7 @@
 
 #include <nana/runner/id.h>
 
-nana::runner::id& nana::runner::id::format()
+runa::id& runa::id::format()
 {
     if (istr{ path_ }.read(is_identifier_body).size() == path_.size())
         return *this;
@@ -32,7 +32,7 @@ nana::runner::id& nana::runner::id::format()
     return *this;
 }
 
-nana::runner::id& nana::runner::id::operator/(const id& _child)
+runa::id& runa::id::operator/(const id& _child)
 {
     if (!path_.empty())
         path_ << separator;

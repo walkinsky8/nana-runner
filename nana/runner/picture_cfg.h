@@ -5,7 +5,7 @@
 
 #include <nana/gui/widgets/picture.hpp>
 
-namespace nana::runner {
+namespace runa {
 
     using picture = nana::picture;
 

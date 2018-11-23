@@ -9,8 +9,8 @@
 
 #include <nana/runner/app_base.h>
 
-using namespace nana::runner::sample;
-using namespace nana::runner;
+using namespace runa::sample;
+using namespace runa;
 
 editor_cntrl::editor_cntrl()
 {

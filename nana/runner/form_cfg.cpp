@@ -9,7 +9,7 @@
 
 #include <nana/gui/screen.hpp>
 
-nana::appearance nana::runner::form_base_cfg::get_appearance() const
+nana::appearance runa::form_base_cfg::get_appearance() const
 {
     nana::appearance a;
     a.taskbar = !taskbar_().empty() ? taskbar_().value() : true;
@@ -22,7 +22,7 @@ nana::appearance nana::runner::form_base_cfg::get_appearance() const
     return a;
 }
 
-void nana::runner::form_base_cfg::init_widget(widget& _w, view_obj* _root_view) const
+void runa::form_base_cfg::init_widget(widget& _w, view_obj* _root_view) const
 {
     super::init_widget(_w, _root_view);
 
@@ -45,7 +45,7 @@ void nana::runner::form_base_cfg::init_widget(widget& _w, view_obj* _root_view) 
     w.collocate();
 }
 
-nana::runner::point nana::runner::form_base_cfg::get_pos() const
+runa::point runa::form_base_cfg::get_pos() const
 {
     auto screen = nana::screen::primary_monitor_size();
     point pt = pos_().value();
@@ -76,14 +76,14 @@ nana::runner::point nana::runner::form_base_cfg::get_pos() const
     return pt;
 }
 
-nana::runner::wnd_ptr nana::runner::form_cfg::create_wnd(window p, bool v) const
+runa::wnd_ptr runa::form_cfg::create_wnd(window p, bool v) const
 {
-    return std::make_shared<ui_type>(p, API::make_center(300, 200), get_appearance());
+    return std::make_shared<ui_type>(p, nana::API::make_center(300, 200), get_appearance());
 }
 
-nana::runner::wnd_ptr nana::runner::nested_form_cfg::create_wnd(window p, bool v) const
+runa::wnd_ptr runa::nested_form_cfg::create_wnd(window p, bool v) const
 {
-    return std::make_shared<ui_type>(p, API::make_center(300, 200), get_appearance());
+    return std::make_shared<ui_type>(p, nana::API::make_center(300, 200), get_appearance());
 }
 
 #endif

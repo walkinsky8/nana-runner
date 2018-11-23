@@ -5,12 +5,12 @@
 
 #include <nana/runner/util.h>
 
-void nana::runner::write_console(const string& _msg)
+void runa::write_console(const string& _msg)
 {
     OutputDebugStringW(to_wstring(_msg).c_str());
 }
 
-nana::runner::pcstr nana::runner::find_classfunc(pcstr _func)
+runa::pcstr runa::find_classfunc(pcstr _func)
 {
     pcstr beg = _func;
     pcstr end = beg + std::strlen(beg);

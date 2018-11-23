@@ -7,9 +7,9 @@
 
 #include <nana/runner/enum.h>
 
-using namespace nana::runner;
+using namespace runa;
 
-std::ostream& nana::runner::current_info::dump(std::ostream& _os) const
+std::ostream& runa::current_info::dump(std::ostream& _os) const
 {
     pcstr classfunc = find_classfunc(func_);
     _os << classfunc
@@ -17,16 +17,16 @@ std::ostream& nana::runner::current_info::dump(std::ostream& _os) const
     return _os;
 }
 
-nana::runner::out::~out()
+runa::out::~out()
 {
 }
 
-nana::runner::log_head::log_head(log_level _ll, current_info const& _current)
+runa::log_head::log_head(log_level _ll, current_info const& _current)
     : ll_{ _ll }, current_{ _current }
 {
 }
 
-std::ostream& nana::runner::log_head::dump(std::ostream& _os) const
+std::ostream& runa::log_head::dump(std::ostream& _os) const
 {
     _os << dt_
         << "[" << enum_log_level{ ll_ }.str() << "]"
@@ -34,48 +34,48 @@ std::ostream& nana::runner::log_head::dump(std::ostream& _os) const
     return _os;
 }
 
-nana::runner::log_record::log_record(log_head && _head, string && _buf)
+runa::log_record::log_record(log_head && _head, string && _buf)
     : head_{ _head }, buf_{ _buf }
 {
 }
 
-std::ostream& nana::runner::log_record::dump(std::ostream& _os) const
+std::ostream& runa::log_record::dump(std::ostream& _os) const
 {
     _os << head_
         << " " << buf_;
     return _os;
 }
 
-nana::runner::log::log(log_level _ll, current_info const& _current)
+runa::log::log(log_level _ll, current_info const& _current)
     : head_{_ll, _current}
 {
 }
 
-nana::runner::log::~log()
+runa::log::~log()
 {
     buf_ << std::endl;
 
     log_thread::instance().put(log_record{ std::move(head_), buf_.str() });
 }
 
-nana::runner::log_thread& nana::runner::log_thread::instance()
+runa::log_thread& runa::log_thread::instance()
 {
     static log_thread __;
     return __;
 }
 
-nana::runner::log_thread::log_thread()
+runa::log_thread::log_thread()
 {
-    NAR_ENUM_ADD_(nana::runner::log_level, LL_, UNKNOWN, EXCEPTION);
-    NAR_ENUM_ADD_(nana::runner::log_level, LL_, UNKNOWN, ERROR);
-    NAR_ENUM_ADD_(nana::runner::log_level, LL_, UNKNOWN, WARN);
-    NAR_ENUM_ADD_(nana::runner::log_level, LL_, UNKNOWN, INFO);
-    NAR_ENUM_ADD_(nana::runner::log_level, LL_, UNKNOWN, DEBUG);
-    NAR_ENUM_ADD_(nana::runner::log_level, LL_, UNKNOWN, VERBOSE);
-    NAR_ENUM_ADD_(nana::runner::log_level, LL_, UNKNOWN, UNKNOWN);
+    NAR_ENUM_ADD_(runa::log_level, LL_, UNKNOWN, EXCEPTION);
+    NAR_ENUM_ADD_(runa::log_level, LL_, UNKNOWN, ERROR);
+    NAR_ENUM_ADD_(runa::log_level, LL_, UNKNOWN, WARN);
+    NAR_ENUM_ADD_(runa::log_level, LL_, UNKNOWN, INFO);
+    NAR_ENUM_ADD_(runa::log_level, LL_, UNKNOWN, DEBUG);
+    NAR_ENUM_ADD_(runa::log_level, LL_, UNKNOWN, VERBOSE);
+    NAR_ENUM_ADD_(runa::log_level, LL_, UNKNOWN, UNKNOWN);
 }
 
-void nana::runner::log_thread::put(log_record&& _record)
+void runa::log_thread::put(log_record&& _record)
 {
     if (_record.head().ll_ <= log_level::LL_ERROR)
     {
@@ -94,11 +94,11 @@ void nana::runner::log_thread::put(log_record&& _record)
     }
 }
 
-void nana::runner::log_thread::on_birth()
+void runa::log_thread::on_birth()
 {
 }
 
-void nana::runner::log_thread::on_death()
+void runa::log_thread::on_death()
 {
     _Q::_Queue q;
     records_.swap(q);
@@ -112,7 +112,7 @@ void nana::runner::log_thread::on_death()
     log_handler::instance()(oss.str());
 }
 
-void nana::runner::log_thread::on_loop()
+void runa::log_thread::on_loop()
 {
     _Q::_Queue q;
     if (records_.get(q))
@@ -131,7 +131,7 @@ void nana::runner::log_thread::on_loop()
     }
 }
 
-void nana::runner::log_thread::on_stop()
+void runa::log_thread::on_stop()
 {
     records_.cancel();
     wakeup();

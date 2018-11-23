@@ -5,17 +5,17 @@
 
 #include <nana/runner/widget_factory.h>
 
-nana::runner::widget_factory::widget_factory()
+runa::widget_factory::widget_factory()
 {
 }
 
-nana::runner::widget_factory & nana::runner::widget_factory::instance()
+runa::widget_factory & runa::widget_factory::instance()
 {
     static widget_factory __;
     return __;
 }
 
-nana::runner::cfg_ptr nana::runner::widget_factory::create(const string& _type)
+runa::cfg_ptr runa::widget_factory::create(const string& _type)
 {
     auto f = instance().get(_type);
     if (f)
@@ -25,12 +25,12 @@ nana::runner::cfg_ptr nana::runner::widget_factory::create(const string& _type)
     return nullptr;
 }
 
-void nana::runner::widget_factory::add(const string & _type, create_func _func)
+void runa::widget_factory::add(const string & _type, create_func _func)
 {
     widgets_[_type] = _func;
 }
 
-nana::runner::widget_factory::create_func nana::runner::widget_factory::get(const string & _type) const
+runa::widget_factory::create_func runa::widget_factory::get(const string & _type) const
 {
     auto i = widgets_.find(_type);
     if (i == widgets_.end())

@@ -5,7 +5,7 @@
 
 #include <nana/runner/list_multimap.h>
 
-namespace nana::runner {
+namespace runa {
 
     class cmdargs
     {

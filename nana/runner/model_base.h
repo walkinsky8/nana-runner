@@ -16,7 +16,7 @@
             void parse(const parser& _p) override { codec(const_cast<parser&>(_p), *this); } \
         private:
 
-namespace nana::runner {
+namespace runa {
 
     class model_obj;
     using model_ptr = ptr<model_obj>;

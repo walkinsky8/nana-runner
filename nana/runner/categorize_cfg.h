@@ -5,7 +5,7 @@
 
 #include <nana/gui/widgets/categorize.hpp>
 
-namespace nana::runner {
+namespace runa {
 
     using categorize = nana::categorize<string>;
 

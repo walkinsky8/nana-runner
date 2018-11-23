@@ -5,7 +5,7 @@
 
 #include <nana/runner/form_cfg.h>
 
-namespace nana::runner {
+namespace runa {
 
     class generic_view : public view_obj
     {

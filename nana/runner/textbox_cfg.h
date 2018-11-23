@@ -5,7 +5,7 @@
 
 #include <nana/gui/widgets/textbox.hpp>
 
-namespace nana::runner {
+namespace runa {
 
     using textbox = nana::textbox;
 

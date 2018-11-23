@@ -10,23 +10,24 @@
             using super = _super; \
             using self = _class##_cfg/*user_defined*/; \
         public: \
-            using ui_type = nana::runner::##_class/*user_defined*/; \
-            static nana::runner::pcstr type_name_() { return #_class; } \
-            static nana::runner::cfg_ptr new_() { return std::make_shared<self>(); } \
+            using ui_type = runa::##_class/*user_defined*/; \
+            static runa::pcstr type_name_() { return #_class; } \
+            static runa::cfg_ptr new_() { return std::make_shared<self>(); } \
         public: \
-            nana::runner::string type_name() const override { return type_name_(); } \
-            nana::runner::dumper& dump(nana::runner::dumper& _d) const override { return nana::runner::codec(_d, const_cast<self&>(*this)); } \
-            void parse(const nana::runner::parser& _p) override { nana::runner::codec(const_cast<nana::runner::parser&>(_p), *this); } \
+            runa::string type_name() const override { return type_name_(); } \
+            runa::dumper& dump(runa::dumper& _d) const override { return runa::codec(_d, const_cast<self&>(*this)); } \
+            void parse(const runa::parser& _p) override { runa::codec(const_cast<runa::parser&>(_p), *this); } \
         private: \
         /**/
 
-namespace nana::runner {
+namespace runa {
 
     class widget_cfg;
     using cfg_ptr = ptr<widget_cfg>;
 
     using nana::paint::image;
     using nana::widget;
+    using nana::window;
 
     class view_obj;
 

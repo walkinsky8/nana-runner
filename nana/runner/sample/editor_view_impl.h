@@ -3,7 +3,7 @@
 
 #include <nana/runner/sample/editor_view.h>
 
-namespace nana::runner::sample {
+namespace runa::sample {
 
     class editor_view_impl: public editor_view
     {

@@ -3,11 +3,12 @@
 
 #include <nana/runner/view_base.h>
 
+#include <nana/runner/form_cfg.h>
 #include <nana/runner/textbox_cfg.h>
 #include <nana/runner/checkbox_cfg.h>
 #include <nana/runner/button_cfg.h>
 
-namespace nana::runner::sample {
+namespace runa::sample {
 
     class logger_view : public view_obj
     {

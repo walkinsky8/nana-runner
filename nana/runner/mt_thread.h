@@ -7,7 +7,7 @@
 #include <nana/runner/mt_monitor.h>
 #include <nana/runner/mt_mutex.h>
 
-namespace nana::runner {
+namespace runa {
 
     using thread_ptr = std::shared_ptr<std::thread>;
 

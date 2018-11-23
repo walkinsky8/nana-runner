@@ -3,7 +3,7 @@
 
 #include <nana/runner/_config.h>
 
-namespace nana::runner
+namespace runa
 {
     template<class K, class V>
     class list_map

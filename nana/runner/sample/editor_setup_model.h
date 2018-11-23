@@ -6,7 +6,7 @@
 #include <nana/runner/font_model.h>
 #include <nana/runner/color_model.h>
 
-namespace nana::runner::sample {
+namespace runa::sample {
 
         class editor_setup_model : public model_obj
         {

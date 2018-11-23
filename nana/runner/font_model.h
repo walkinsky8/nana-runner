@@ -5,7 +5,7 @@
 
 #include <nana/runner/widget_base.h>
 
-namespace nana::runner {
+namespace runa {
 
     class font_model : public model_obj
     {

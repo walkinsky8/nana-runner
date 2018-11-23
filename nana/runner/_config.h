@@ -85,7 +85,7 @@ namespace std {
 
 }
 
-namespace nana::runner {
+namespace runa {
 
     namespace fs = std::experimental::filesystem;
     namespace fs_ext = nana::filesystem_ext;
@@ -183,6 +183,8 @@ namespace nana::runner {
     inline bool is_empty(const std::vector<T>& _v) { return _v.empty(); }
 
     using std::to_string;
+
+    using nana::npos;
 
     /*
 	 * string functions

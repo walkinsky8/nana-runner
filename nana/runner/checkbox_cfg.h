@@ -5,7 +5,7 @@
 
 #include <nana/gui/widgets/checkbox.hpp>
 
-namespace nana::runner {
+namespace runa {
 
     using checkbox = nana::checkbox;
 

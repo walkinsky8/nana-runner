@@ -7,7 +7,7 @@
 
 #include <nana/gui/filebox.hpp>
 
-void nana::runner::sample::editor_view_impl::init()
+void runa::sample::editor_view_impl::init()
 {
     folder_ << app::filepaths();
     folder_.option(0);
@@ -27,7 +27,7 @@ void nana::runner::sample::editor_view_impl::init()
     form_.events().destroy( app::quit );
 }
 
-void nana::runner::sample::editor_view_impl::on_choose_dir()
+void runa::sample::editor_view_impl::on_choose_dir()
 {
     nana::folderbox fb{ nullptr, folder_.caption() };
     auto dir = fb.show();
@@ -40,7 +40,7 @@ void nana::runner::sample::editor_view_impl::on_choose_dir()
     }
 }
 
-void nana::runner::sample::editor_view_impl::init_files()
+void runa::sample::editor_view_impl::init_files()
 {
     file_.clear();
     fs::directory_iterator di{ folder_.caption() }, end;
@@ -55,7 +55,7 @@ void nana::runner::sample::editor_view_impl::init_files()
     }
 }
 
-void nana::runner::sample::editor_view_impl::on_open_file()
+void runa::sample::editor_view_impl::on_open_file()
 {
     nana::filebox fb{ true };
     fb.init_path(folder_.caption());
@@ -71,7 +71,7 @@ void nana::runner::sample::editor_view_impl::on_open_file()
     }
 }
 
-void nana::runner::sample::editor_view_impl::on_load()
+void runa::sample::editor_view_impl::on_load()
 {
     wstring dir;
     wstring fname;
@@ -95,7 +95,7 @@ void nana::runner::sample::editor_view_impl::on_load()
     }
 }
 
-void nana::runner::sample::editor_view_impl::on_save()
+void runa::sample::editor_view_impl::on_save()
 {
     wstring dir;
     wstring fname;
@@ -111,7 +111,7 @@ void nana::runner::sample::editor_view_impl::on_save()
     }
 }
 
-void nana::runner::sample::editor_view_impl::on_run()
+void runa::sample::editor_view_impl::on_run()
 {
     log_thread::instance().pause();
     //save();
@@ -135,12 +135,12 @@ void nana::runner::sample::editor_view_impl::on_run()
     log_thread::instance().resume();
 }
 
-void nana::runner::sample::editor_view_impl::on_fini()
+void runa::sample::editor_view_impl::on_fini()
 {
     close_current();
 }
 
-void nana::runner::sample::editor_view_impl::close_current()
+void runa::sample::editor_view_impl::close_current()
 {
     close_view(curr_run_);
     curr_run_ = nullptr;

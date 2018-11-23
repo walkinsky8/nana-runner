@@ -3,7 +3,7 @@
 
 #include <nana/runner/widget_cfg.h>
 
-namespace nana::runner {
+namespace runa {
 
     class widget_factory
     {

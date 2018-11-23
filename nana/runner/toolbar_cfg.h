@@ -5,7 +5,7 @@
 
 #include <nana/gui/widgets/toolbar.hpp>
 
-namespace nana::runner {
+namespace runa {
 
     using toolbar = nana::toolbar;
 

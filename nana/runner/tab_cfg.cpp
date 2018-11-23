@@ -7,11 +7,11 @@
 
 #include <nana/runner/view_base.h>
 
-nana::runner::tab::tab(window owner, bool visible)
+runa::tab::tab(window owner, bool visible)
     : super{ owner, visible }
 {}
 
-nana::place & nana::runner::tab::get_place()
+nana::place & runa::tab::get_place()
 {
     if (this->empty())
         NAR_THROW_ERROR(std::runtime_error, "the tab has destroyed.");
@@ -22,28 +22,28 @@ nana::place & nana::runner::tab::get_place()
     return *place_;
 }
 
-void nana::runner::tab::div(const char* div_text)
+void runa::tab::div(const char* div_text)
 {
     get_place().div(div_text);
 }
 
-nana::place::field_reference nana::runner::tab::operator[](const char* field_name)
+nana::place::field_reference runa::tab::operator[](const char* field_name)
 {
     return get_place()[field_name];
 }
 
-void nana::runner::tab::collocate() noexcept
+void runa::tab::collocate() noexcept
 {
     if (place_)
         place_->collocate();
 }
 
-nana::runner::wnd_ptr nana::runner::tab_cfg::create_wnd(window _parent, bool _visible) const
+runa::wnd_ptr runa::tab_cfg::create_wnd(window _parent, bool _visible) const
 {
     return std::make_shared<ui_type>(_parent, _visible);
 }
 
-void nana::runner::tab_cfg::init_widget(widget & _w, view_obj* _root_view) const
+void runa::tab_cfg::init_widget(widget & _w, view_obj* _root_view) const
 {
     super::init_widget(_w, _root_view);
 

@@ -5,22 +5,22 @@
 
 #include <nana/runner/color_model.h>
 
-nana::runner::color_model::color_model(const string& _v)
+runa::color_model::color_model(const string& _v)
 {
     value_() << _v;
 }
 
-nana::runner::color_model::color_model(const color& _v)
+runa::color_model::color_model(const color& _v)
 {
     value_() << _v;
 }
 
-nana::runner::color_model::operator nana::runner::string() const
+runa::color_model::operator runa::string() const
 {
     return value_();
 }
 
-nana::runner::color_model::operator nana::runner::color() const
+runa::color_model::operator runa::color() const
 {
     return get_color(value_());
 }
