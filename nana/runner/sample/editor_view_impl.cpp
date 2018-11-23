@@ -143,5 +143,6 @@ void nana::runner::sample::editor_view_impl::on_fini()
 void nana::runner::sample::editor_view_impl::close_current()
 {
     close_view(curr_run_);
+    curr_run_ = nullptr;
 }
 

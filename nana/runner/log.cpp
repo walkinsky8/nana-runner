@@ -150,21 +150,26 @@ log_handler::log_handler()
 
 log_handler::func_ptr log_handler::add(func _f)
 {
-    auto p = std::make_shared<optional<func>>(_f);
+    func_ptr p = std::make_shared<optional<func>>(_f);
     funcs_.push_back(p);
     return p;
 }
 
 void log_handler::remove(func_ptr _p)
 {
-    funcs_.erase(_p);
+    if (_p)
+    {
+        _p->set_empty(true);
+        funcs_.erase(_p);
+    }
 }
 
 void log_handler::operator()(const string& _msg)
 {
-    for (auto& i : funcs_.container())
+    auto funcs = funcs_.container();
+    for (auto i : funcs)
     {
-        auto& p = *i;
+        auto p = *i;
         if (!p.empty())
             p.value()(_msg);
     }

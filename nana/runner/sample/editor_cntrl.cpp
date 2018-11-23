@@ -21,7 +21,9 @@ editor_cntrl::editor_cntrl()
 
 void editor_cntrl::open(callback _on_complete)
 {
-    app::show_view<logger_view_impl>(logger_);
+    auto& v_logger = app::show_view<logger_view_impl>(logger_);
+    v_logger.init_log_handler();
+
     auto& v_editor = app::show_view<editor_view_impl>(editor_);
     v_editor.setup_.events().click([&] {
         auto& v_editor_setup = app::show_view<editor_setup_view_impl>(editor_setup_);

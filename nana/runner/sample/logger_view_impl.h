@@ -18,6 +18,8 @@ namespace nana::runner::sample {
             init();
         }
 
+        void init_log_handler();
+
     private:
         void init();
 

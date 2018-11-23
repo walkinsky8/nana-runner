@@ -13,8 +13,6 @@ namespace nana::runner::sample {
     {
         NAR_DEFINE_VIEW(demo, view_obj);
 
-        log_handler::func_ptr log_handler_;
-
     public:
         form& form_;
 
@@ -110,10 +108,6 @@ namespace nana::runner::sample {
             , spin_{ wnd<spinbox>("cmd.spin") }
             , quit_{ wnd<button>("cmd.close") }
         {
-            log_handler_ = log_handler::instance().add([&](const string& s) {
-                text_.append(s, false);
-            });
-
             categorize_.caption(fs::current_path());
 
             label_.text_align(m_label_align.value(), m_label_align_v.value());
@@ -231,13 +225,6 @@ namespace nana::runner::sample {
             });
 
             //quit_.events().click([this] { close(); });
-
-            text_.events().destroy([&] {
-                on_fini();
-            });
-            form_.events().destroy([&] {
-                on_fini();
-            });
         }
 
     private:
@@ -283,8 +270,6 @@ namespace nana::runner::sample {
     protected:
         void on_fini() override
         {
-            log_handler_->set_empty(true);
-            log_handler::instance().remove(log_handler_);
         }
 
     };

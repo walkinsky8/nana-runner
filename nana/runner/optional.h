@@ -9,7 +9,7 @@ namespace nana::runner {
     class optional
     {
         T value_{};
-        bool empty_{ true };
+        volatile bool empty_{ true };
 
     public:
         optional() = default;
@@ -21,11 +21,6 @@ namespace nana::runner {
 
         optional& operator=(const optional& _other) = default;
         optional& operator=(optional&& _other) = default;
-
-        T& value()
-        {
-            return value_;
-        }
 
         void set_value(const T& _v)
         {

@@ -5,36 +5,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="lib">
-      <UniqueIdentifier>{b6531830-5023-4d7f-9db6-b7e174beda55}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="lib\base">
-      <UniqueIdentifier>{196a582a-631c-4670-b4be-63b036ef0479}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="lib\base\types">
-      <UniqueIdentifier>{7ed2c342-2908-4bac-bfa5-dd02aeff06fc}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="lib\base\log">
-      <UniqueIdentifier>{6310abf8-4586-4ac0-8724-a407099120d3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="lib\base\codec">
-      <UniqueIdentifier>{beda8a37-a588-4c03-b569-c131188a185e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="lib\base\util">
-      <UniqueIdentifier>{d55f3023-d39a-4382-9b87-d082f4256b8c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="lib\base\timer">
-      <UniqueIdentifier>{72c169cd-9018-4d52-a6db-d218836bd65a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="lib\base\mt">
-      <UniqueIdentifier>{6beeebc9-74c2-4a1c-bedf-3a8e22100d1d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="lib\foundation">
-      <UniqueIdentifier>{0fd6d47e-0080-4c3c-878a-fc055fec415d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="lib\widgets">
-      <UniqueIdentifier>{72334a40-d194-4794-bfaf-ae2f5ec74c29}</UniqueIdentifier>
-    </Filter>
     <Filter Include="sample">
       <UniqueIdentifier>{b4f4bcd2-dab7-4367-9c44-eb857a511226}</UniqueIdentifier>
     </Filter>
@@ -47,6 +17,36 @@
     <Filter Include="sample\demo">
       <UniqueIdentifier>{c05ac02c-8a16-4aaf-af1f-4d27e6a2131b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="nar-lib">
+      <UniqueIdentifier>{b6531830-5023-4d7f-9db6-b7e174beda55}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="nar-lib\base">
+      <UniqueIdentifier>{196a582a-631c-4670-b4be-63b036ef0479}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="nar-lib\base\types">
+      <UniqueIdentifier>{7ed2c342-2908-4bac-bfa5-dd02aeff06fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="nar-lib\base\log">
+      <UniqueIdentifier>{6310abf8-4586-4ac0-8724-a407099120d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="nar-lib\base\codec">
+      <UniqueIdentifier>{beda8a37-a588-4c03-b569-c131188a185e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="nar-lib\base\util">
+      <UniqueIdentifier>{d55f3023-d39a-4382-9b87-d082f4256b8c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="nar-lib\base\timer">
+      <UniqueIdentifier>{72c169cd-9018-4d52-a6db-d218836bd65a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="nar-lib\base\mt">
+      <UniqueIdentifier>{6beeebc9-74c2-4a1c-bedf-3a8e22100d1d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="nar-lib\foundation">
+      <UniqueIdentifier>{0fd6d47e-0080-4c3c-878a-fc055fec415d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="nar-lib\widgets">
+      <UniqueIdentifier>{72334a40-d194-4794-bfaf-ae2f5ec74c29}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Image Include="small.ico">
@@ -58,139 +58,139 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\nana\runner\base.cpp">
-      <Filter>lib\base</Filter>
+      <Filter>nar-lib\base</Filter>
     </ClCompile>
     <ClCompile Include="..\..\nana\runner\dumper.cpp">
-      <Filter>lib\base\codec</Filter>
+      <Filter>nar-lib\base\codec</Filter>
     </ClCompile>
     <ClCompile Include="..\..\nana\runner\parser.cpp">
-      <Filter>lib\base\codec</Filter>
+      <Filter>nar-lib\base\codec</Filter>
     </ClCompile>
     <ClCompile Include="..\..\nana\runner\node.cpp">
-      <Filter>lib\base\codec</Filter>
+      <Filter>nar-lib\base\codec</Filter>
     </ClCompile>
     <ClCompile Include="..\..\nana\runner\log.cpp">
-      <Filter>lib\base\log</Filter>
+      <Filter>nar-lib\base\log</Filter>
     </ClCompile>
     <ClCompile Include="..\..\nana\runner\bytes.cpp">
-      <Filter>lib\base\types</Filter>
+      <Filter>nar-lib\base\types</Filter>
     </ClCompile>
     <ClCompile Include="..\..\nana\runner\id.cpp">
-      <Filter>lib\base\types</Filter>
+      <Filter>nar-lib\base\types</Filter>
     </ClCompile>
     <ClCompile Include="..\..\nana\runner\istr.cpp">
-      <Filter>lib\base\types</Filter>
+      <Filter>nar-lib\base\types</Filter>
     </ClCompile>
     <ClCompile Include="..\..\nana\runner\button_cfg.cpp">
-      <Filter>lib\widgets</Filter>
+      <Filter>nar-lib\widgets</Filter>
     </ClCompile>
     <ClCompile Include="..\..\nana\runner\form_cfg.cpp">
-      <Filter>lib\widgets</Filter>
+      <Filter>nar-lib\widgets</Filter>
     </ClCompile>
     <ClCompile Include="..\..\nana\runner\label_cfg.cpp">
-      <Filter>lib\widgets</Filter>
+      <Filter>nar-lib\widgets</Filter>
     </ClCompile>
     <ClCompile Include="..\..\nana\runner\textbox_cfg.cpp">
-      <Filter>lib\widgets</Filter>
+      <Filter>nar-lib\widgets</Filter>
     </ClCompile>
     <ClCompile Include="..\..\nana\runner\panel_cfg.cpp">
-      <Filter>lib\widgets</Filter>
+      <Filter>nar-lib\widgets</Filter>
     </ClCompile>
     <ClCompile Include="..\..\nana\runner\checkbox_cfg.cpp">
-      <Filter>lib\widgets</Filter>
+      <Filter>nar-lib\widgets</Filter>
     </ClCompile>
     <ClCompile Include="..\..\nana\runner\categorize_cfg.cpp">
-      <Filter>lib\widgets</Filter>
+      <Filter>nar-lib\widgets</Filter>
     </ClCompile>
     <ClCompile Include="..\..\nana\runner\slider_cfg.cpp">
-      <Filter>lib\widgets</Filter>
+      <Filter>nar-lib\widgets</Filter>
     </ClCompile>
     <ClCompile Include="..\..\nana\runner\model_base.cpp">
-      <Filter>lib\foundation</Filter>
+      <Filter>nar-lib\foundation</Filter>
     </ClCompile>
     <ClCompile Include="..\..\nana\runner\view_base.cpp">
-      <Filter>lib\foundation</Filter>
+      <Filter>nar-lib\foundation</Filter>
     </ClCompile>
     <ClCompile Include="..\..\nana\runner\view_factory.cpp">
-      <Filter>lib\foundation</Filter>
+      <Filter>nar-lib\foundation</Filter>
     </ClCompile>
     <ClCompile Include="..\..\nana\runner\sample\nana_runner.cpp">
       <Filter>sample\main</Filter>
     </ClCompile>
     <ClCompile Include="..\..\nana\runner\controller_base.cpp">
-      <Filter>lib\foundation</Filter>
+      <Filter>nar-lib\foundation</Filter>
     </ClCompile>
     <ClCompile Include="..\..\nana\runner\app_base.cpp">
-      <Filter>lib\foundation</Filter>
+      <Filter>nar-lib\foundation</Filter>
     </ClCompile>
     <ClCompile Include="..\..\nana\runner\widget_cfg.cpp">
-      <Filter>lib\foundation</Filter>
+      <Filter>nar-lib\foundation</Filter>
     </ClCompile>
     <ClCompile Include="..\..\nana\runner\widget_base.cpp">
-      <Filter>lib\foundation</Filter>
+      <Filter>nar-lib\foundation</Filter>
     </ClCompile>
     <ClCompile Include="..\..\nana\runner\widget_all.cpp">
-      <Filter>lib\widgets</Filter>
+      <Filter>nar-lib\widgets</Filter>
     </ClCompile>
     <ClCompile Include="..\..\nana\runner\widget_factory.cpp">
-      <Filter>lib\foundation</Filter>
+      <Filter>nar-lib\foundation</Filter>
     </ClCompile>
     <ClCompile Include="..\..\nana\runner\picture_cfg.cpp">
-      <Filter>lib\widgets</Filter>
+      <Filter>nar-lib\widgets</Filter>
     </ClCompile>
     <ClCompile Include="..\..\nana\runner\group_cfg.cpp">
-      <Filter>lib\widgets</Filter>
+      <Filter>nar-lib\widgets</Filter>
     </ClCompile>
     <ClCompile Include="..\..\nana\runner\combox_cfg.cpp">
-      <Filter>lib\widgets</Filter>
+      <Filter>nar-lib\widgets</Filter>
     </ClCompile>
     <ClCompile Include="..\..\nana\runner\datetime.cpp">
-      <Filter>lib\base\types</Filter>
+      <Filter>nar-lib\base\types</Filter>
     </ClCompile>
     <ClCompile Include="..\..\nana\runner\listbox_cfg.cpp">
-      <Filter>lib\widgets</Filter>
+      <Filter>nar-lib\widgets</Filter>
     </ClCompile>
     <ClCompile Include="stdafx.cpp">
       <Filter>sample\main</Filter>
     </ClCompile>
     <ClCompile Include="..\..\nana\runner\menubar_cfg.cpp">
-      <Filter>lib\widgets</Filter>
+      <Filter>nar-lib\widgets</Filter>
     </ClCompile>
     <ClCompile Include="..\..\nana\runner\menu_cfg.cpp">
-      <Filter>lib\widgets</Filter>
+      <Filter>nar-lib\widgets</Filter>
     </ClCompile>
     <ClCompile Include="..\..\nana\runner\progress_cfg.cpp">
-      <Filter>lib\widgets</Filter>
+      <Filter>nar-lib\widgets</Filter>
     </ClCompile>
     <ClCompile Include="..\..\nana\runner\scroll_cfg.cpp">
-      <Filter>lib\widgets</Filter>
+      <Filter>nar-lib\widgets</Filter>
     </ClCompile>
     <ClCompile Include="..\..\nana\runner\spinbox_cfg.cpp">
-      <Filter>lib\widgets</Filter>
+      <Filter>nar-lib\widgets</Filter>
     </ClCompile>
     <ClCompile Include="..\..\nana\runner\panel_lite_cfg.cpp">
-      <Filter>lib\widgets</Filter>
+      <Filter>nar-lib\widgets</Filter>
     </ClCompile>
     <ClCompile Include="..\..\nana\runner\tab_cfg.cpp">
-      <Filter>lib\widgets</Filter>
+      <Filter>nar-lib\widgets</Filter>
     </ClCompile>
     <ClCompile Include="..\..\nana\runner\tabbar_cfg.cpp">
-      <Filter>lib\widgets</Filter>
+      <Filter>nar-lib\widgets</Filter>
     </ClCompile>
     <ClCompile Include="..\..\nana\runner\toolbar_cfg.cpp">
-      <Filter>lib\widgets</Filter>
+      <Filter>nar-lib\widgets</Filter>
     </ClCompile>
     <ClCompile Include="..\..\nana\runner\treebox_cfg.cpp">
-      <Filter>lib\widgets</Filter>
+      <Filter>nar-lib\widgets</Filter>
     </ClCompile>
     <ClCompile Include="..\..\nana\runner\cmdargs.cpp">
-      <Filter>lib\base\util</Filter>
+      <Filter>nar-lib\base\util</Filter>
     </ClCompile>
     <ClCompile Include="..\..\nana\runner\mt_thread.cpp">
-      <Filter>lib\base\mt</Filter>
+      <Filter>nar-lib\base\mt</Filter>
     </ClCompile>
     <ClCompile Include="..\..\nana\runner\util.cpp">
-      <Filter>lib\base\util</Filter>
+      <Filter>nar-lib\base\util</Filter>
     </ClCompile>
     <ClCompile Include="..\..\nana\runner\sample\editor_cntrl.cpp">
       <Filter>sample\editor</Filter>
@@ -202,10 +202,10 @@
       <Filter>sample\editor</Filter>
     </ClCompile>
     <ClCompile Include="..\..\nana\runner\_config.cpp">
-      <Filter>lib\base</Filter>
+      <Filter>nar-lib\base</Filter>
     </ClCompile>
     <ClCompile Include="..\..\nana\runner\object.cpp">
-      <Filter>lib\base</Filter>
+      <Filter>nar-lib\base</Filter>
     </ClCompile>
     <ClCompile Include="..\..\nana\runner\sample\editor_setup_view_impl.cpp">
       <Filter>sample\editor</Filter>
@@ -226,90 +226,90 @@
       <Filter>sample\demo</Filter>
     </ClCompile>
     <ClCompile Include="..\..\nana_runner_lib_all_in_one.cpp">
-      <Filter>lib</Filter>
+      <Filter>nar-lib</Filter>
     </ClCompile>
     <ClCompile Include="..\..\nana\runner\color_model.cpp">
-      <Filter>lib\foundation</Filter>
+      <Filter>nar-lib\foundation</Filter>
     </ClCompile>
     <ClCompile Include="..\..\nana\runner\font_model.cpp">
-      <Filter>lib\foundation</Filter>
+      <Filter>nar-lib\foundation</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\nana\runner\base.h">
-      <Filter>lib\base</Filter>
+      <Filter>nar-lib\base</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\dumper.h">
-      <Filter>lib\base\codec</Filter>
+      <Filter>nar-lib\base\codec</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\parser.h">
-      <Filter>lib\base\codec</Filter>
+      <Filter>nar-lib\base\codec</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\node.h">
-      <Filter>lib\base\codec</Filter>
+      <Filter>nar-lib\base\codec</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\base_types.h">
-      <Filter>lib\base\types</Filter>
+      <Filter>nar-lib\base\types</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\bytes.h">
-      <Filter>lib\base\types</Filter>
+      <Filter>nar-lib\base\types</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\enum.h">
-      <Filter>lib\base\types</Filter>
+      <Filter>nar-lib\base\types</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\id.h">
-      <Filter>lib\base\types</Filter>
+      <Filter>nar-lib\base\types</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\istr.h">
-      <Filter>lib\base\types</Filter>
+      <Filter>nar-lib\base\types</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\list_map.h">
-      <Filter>lib\base\types</Filter>
+      <Filter>nar-lib\base\types</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\list_multimap.h">
-      <Filter>lib\base\types</Filter>
+      <Filter>nar-lib\base\types</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\optional.h">
-      <Filter>lib\base\types</Filter>
+      <Filter>nar-lib\base\types</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\log.h">
-      <Filter>lib\base\log</Filter>
+      <Filter>nar-lib\base\log</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\button_cfg.h">
-      <Filter>lib\widgets</Filter>
+      <Filter>nar-lib\widgets</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\form_cfg.h">
-      <Filter>lib\widgets</Filter>
+      <Filter>nar-lib\widgets</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\label_cfg.h">
-      <Filter>lib\widgets</Filter>
+      <Filter>nar-lib\widgets</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\textbox_cfg.h">
-      <Filter>lib\widgets</Filter>
+      <Filter>nar-lib\widgets</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\panel_cfg.h">
-      <Filter>lib\widgets</Filter>
+      <Filter>nar-lib\widgets</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\checkbox_cfg.h">
-      <Filter>lib\widgets</Filter>
+      <Filter>nar-lib\widgets</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\categorize_cfg.h">
-      <Filter>lib\widgets</Filter>
+      <Filter>nar-lib\widgets</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\slider_cfg.h">
-      <Filter>lib\widgets</Filter>
+      <Filter>nar-lib\widgets</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\model_base.h">
-      <Filter>lib\foundation</Filter>
+      <Filter>nar-lib\foundation</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\view_base.h">
-      <Filter>lib\foundation</Filter>
+      <Filter>nar-lib\foundation</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\view_factory.h">
-      <Filter>lib\foundation</Filter>
+      <Filter>nar-lib\foundation</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\controller_base.h">
-      <Filter>lib\foundation</Filter>
+      <Filter>nar-lib\foundation</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\sample\color_view.h">
       <Filter>sample\demo</Filter>
@@ -339,115 +339,115 @@
       <Filter>sample\editor</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\app_base.h">
-      <Filter>lib\foundation</Filter>
+      <Filter>nar-lib\foundation</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\widget_cfg.h">
-      <Filter>lib\foundation</Filter>
+      <Filter>nar-lib\foundation</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\sample\editor_app.h">
       <Filter>sample\editor</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\widget_base.h">
-      <Filter>lib\foundation</Filter>
+      <Filter>nar-lib\foundation</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\widget_all.h">
-      <Filter>lib\widgets</Filter>
+      <Filter>nar-lib\widgets</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\widget_factory.h">
-      <Filter>lib\foundation</Filter>
+      <Filter>nar-lib\foundation</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\generic_view.h">
-      <Filter>lib\foundation</Filter>
+      <Filter>nar-lib\foundation</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\picture_cfg.h">
-      <Filter>lib\widgets</Filter>
+      <Filter>nar-lib\widgets</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\group_cfg.h">
-      <Filter>lib\widgets</Filter>
+      <Filter>nar-lib\widgets</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\option_cfg.h">
-      <Filter>lib\widgets</Filter>
+      <Filter>nar-lib\widgets</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\combox_cfg.h">
-      <Filter>lib\widgets</Filter>
+      <Filter>nar-lib\widgets</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\datetime.h">
-      <Filter>lib\base\types</Filter>
+      <Filter>nar-lib\base\types</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\date_chooser_cfg.h">
-      <Filter>lib\widgets</Filter>
+      <Filter>nar-lib\widgets</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\float_listbox_cfg.h">
-      <Filter>lib\widgets</Filter>
+      <Filter>nar-lib\widgets</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\listbox_cfg.h">
-      <Filter>lib\widgets</Filter>
+      <Filter>nar-lib\widgets</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\unknown_cfg.h">
-      <Filter>lib\widgets</Filter>
+      <Filter>nar-lib\widgets</Filter>
     </ClInclude>
     <ClInclude Include="stdafx.h">
       <Filter>sample\main</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\menubar_cfg.h">
-      <Filter>lib\widgets</Filter>
+      <Filter>nar-lib\widgets</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\menu_cfg.h">
-      <Filter>lib\widgets</Filter>
+      <Filter>nar-lib\widgets</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\progress_cfg.h">
-      <Filter>lib\widgets</Filter>
+      <Filter>nar-lib\widgets</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\scroll_cfg.h">
-      <Filter>lib\widgets</Filter>
+      <Filter>nar-lib\widgets</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\spinbox_cfg.h">
-      <Filter>lib\widgets</Filter>
+      <Filter>nar-lib\widgets</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\panel_lite_cfg.h">
-      <Filter>lib\widgets</Filter>
+      <Filter>nar-lib\widgets</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\tab_cfg.h">
-      <Filter>lib\widgets</Filter>
+      <Filter>nar-lib\widgets</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\tabbar_cfg.h">
-      <Filter>lib\widgets</Filter>
+      <Filter>nar-lib\widgets</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\toolbar_cfg.h">
-      <Filter>lib\widgets</Filter>
+      <Filter>nar-lib\widgets</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\treebox_cfg.h">
-      <Filter>lib\widgets</Filter>
+      <Filter>nar-lib\widgets</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\tabpage_cfg.h">
-      <Filter>lib\widgets</Filter>
+      <Filter>nar-lib\widgets</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\cmdargs.h">
-      <Filter>lib\base\util</Filter>
+      <Filter>nar-lib\base\util</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\mt_thread.h">
-      <Filter>lib\base\mt</Filter>
+      <Filter>nar-lib\base\mt</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\util.h">
-      <Filter>lib\base\util</Filter>
+      <Filter>nar-lib\base\util</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\mt_queue.h">
-      <Filter>lib\base\mt</Filter>
+      <Filter>nar-lib\base\mt</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\mt_cond.h">
-      <Filter>lib\base\mt</Filter>
+      <Filter>nar-lib\base\mt</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\mt_monitor.h">
-      <Filter>lib\base\mt</Filter>
+      <Filter>nar-lib\base\mt</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\mt_mutex.h">
-      <Filter>lib\base\mt</Filter>
+      <Filter>nar-lib\base\mt</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\mt_recmutex.h">
-      <Filter>lib\base\mt</Filter>
+      <Filter>nar-lib\base\mt</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\mt_lock.h">
-      <Filter>lib\base\mt</Filter>
+      <Filter>nar-lib\base\mt</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\sample\editor_cntrl.h">
       <Filter>sample\editor</Filter>
@@ -459,16 +459,16 @@
       <Filter>sample\editor</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\object.h">
-      <Filter>lib\base</Filter>
+      <Filter>nar-lib\base</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\_config.h">
-      <Filter>lib\base</Filter>
+      <Filter>nar-lib\base</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\sample\editor_setup_view_impl.h">
       <Filter>sample\editor</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\number.h">
-      <Filter>lib\base\types</Filter>
+      <Filter>nar-lib\base\types</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\sample\editor_view_impl.h">
       <Filter>sample\editor</Filter>
@@ -486,13 +486,13 @@
       <Filter>sample\demo</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\color_model.h">
-      <Filter>lib\foundation</Filter>
+      <Filter>nar-lib\foundation</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\font_model.h">
-      <Filter>lib\foundation</Filter>
+      <Filter>nar-lib\foundation</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\mt_vector.h">
-      <Filter>lib\base\mt</Filter>
+      <Filter>nar-lib\base\mt</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
