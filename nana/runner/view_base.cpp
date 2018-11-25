@@ -41,10 +41,12 @@ void runa::view_obj::close()
 void runa::view_obj::add_child_widget(wnd_ptr _w, widget_cfg& _cfg)
 {
     id path_in_root_view = _cfg.id_path();
-    //NAR_LOG_DEBUG(path_in_root_view);
-    m_child_widgets[path_in_root_view] = _w;
-    m_child_cfgs[path_in_root_view] = &_cfg;
-
+    if (!path_in_root_view.empty())
+    {
+        //NAR_LOG_DEBUG(path_in_root_view);
+        m_child_widgets[path_in_root_view] = _w;
+        m_child_cfgs[path_in_root_view] = &_cfg;
+    }
 }
 
 void runa::view_obj::add_child_view(id _id, view_ptr _vw)
@@ -96,10 +98,10 @@ runa::view_obj const * runa::view_obj::child_view(id _id) const
 void runa::view_obj::make_child_widgets(widget_cfg& _cfg, view_obj* _root_view, widget_cfg* _parent_cfg, nana::window _parent_wnd, bool _visible)
 {
     NAR_LOG_DEBUG(_cfg.id_path());
-    if (_cfg.id_().empty() || !_cfg.has_ui_widget())
+    if (/*_cfg.id_().empty() ||*/ !_cfg.has_ui_widget())
         return;
 
-	auto& w = _cfg.create_wnd(_parent_wnd, _visible);
+	auto w = _cfg.create_wnd(_parent_wnd, _visible);
 	if (!w)
         NAR_THROW_ERROR(std::invalid_argument, "no wnd created for @" << _cfg.type_name());
 

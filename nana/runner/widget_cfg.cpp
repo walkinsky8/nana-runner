@@ -24,6 +24,24 @@ void runa::widget_cfg::make_div(string& _div) const
     _div << ">";
 }
 
+runa::id runa::widget_cfg::id_path() const
+{
+    return get_id_path(true);
+}
+
+runa::id runa::widget_cfg::get_id_path(bool _self_node) const
+{
+    if (!m_parent)
+        return id_();
+    if (id_().empty())
+    {
+        if (_self_node)
+            return id_();
+        return m_parent->get_id_path(false);
+    }
+    return m_parent->get_id_path(false) / id_();
+}
+
 void runa::widget_cfg::reset_all_parent(widget_cfg* _parent)
 {
     set_parent(_parent);

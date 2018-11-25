@@ -1,12 +1,16 @@
 ﻿@form{
     id=dummy
     div='vert'
-	@label{ id=hello div='weight=20' }
-	@textbox{ id=hillo }
-	@panel { id=cmd div='weight=25'
-		@button{ id=hallo }
-		@button{ id=hollo }
-		@button{ id=hullo }
-	}
+    @panel{
+        @panel{ div='vert weight=50%' 
+	        @label{ id=hello div='weight=20' }
+	        @textbox{ id=hillo }
+        }
+	    @panel { id=cmd div='vert'
+		    @button{ id=hallo }
+		    @button{ id=hollo }
+		    @button{ id=hullo }
+	    }
+    }
 	@button{ id=goodbye div='weight=25' _click=close }
 }

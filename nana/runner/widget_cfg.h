@@ -88,12 +88,8 @@ namespace runa {
 
         static cfg_ptr get_generic();
 
-		id id_path() const
-        {
-            if (!m_parent || id_().empty())
-                return id_();
-            return m_parent->id_path() / id_();
-        }
+        id id_path() const;
+        id get_id_path(bool _self_node) const;
 
 		widget_cfg* get_parent() const { return m_parent; }
 		void set_parent(widget_cfg* _parent) { m_parent = _parent; }

@@ -8,6 +8,8 @@
     maximize=0
     align=center
     align_v=center
+    @panel{ 
+    @panel{ div='vert weight=390'
     @panel{ id=color div="weight=25"
         @label{ id=n caption="Color:" div="weight=80" align=right }
         @combox{ id=value caption=null editable=1 }
@@ -47,23 +49,27 @@
     @panel_lite{ div="weight=5" }
     @panel{ id=s div="weight=25"
         @label{ id=n caption="S:" div="weight=80" align=right }
-        @spinbox{ id=v value=256 last=256 div="weight=50" }
+        @spinbox{ id=v value=100 last=100 div="weight=50" }
         @label{ id=min caption="0" div="weight=10" }
-        @slider{ id=value value=256 maximum=256 vertical=0 div="weight=220" }
-        @label{ id=max caption="256" div="weight=30" }
+        @slider{ id=value value=100 maximum=100 vertical=0 div="weight=220" }
+        @label{ id=max caption="100" div="weight=30" }
     }
     @panel_lite{ div="weight=5" }
     @panel{ id=l div="weight=25"
         @label{ id=n caption="L:" div="weight=80" align=right }
-        @spinbox{ id=v value=128 last=256 div="weight=50" }
+        @spinbox{ id=v value=50 last=100 div="weight=50" }
         @label{ id=min caption="0" div="weight=10" }
-        @slider{ id=value value=128 maximum=256 vertical=0 div="weight=220" }
-        @label{ id=max caption="256" div="weight=30" }
+        @slider{ id=value value=50 maximum=100 vertical=0 div="weight=220" }
+        @label{ id=max caption="100" div="weight=30" }
     }
     @panel_lite{ div="weight=5" }
     @panel{ id=sample div="weight=60"
         @label{ id=n caption="Sample:" div="weight=80" align=right }
         @panel{ id=value div="weight=310" bgcolor=black }
+    }
+    }
+    @panel{
+    }
     }
     @panel_lite{ }
     @panel { id=cmd div="weight=25" fgcolor=black typeface={bold}

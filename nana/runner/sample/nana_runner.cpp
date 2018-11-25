@@ -12,15 +12,15 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     _In_ int       nCmdShow)
 {
     using namespace runa;
-    try {
+    //try {
         sample::editor_app a;
         //sample::demo_app a;
         a.run(lpCmdLine);
-    }
-    catch (std::exception& e) {
-        NAR_LOG_EXCPT(e);
-        return -1;
-    }
+    //}
+    //catch (std::exception& e) {
+    //    NAR_LOG_EXCPT(e);
+    //    return -1;
+    //}
     return 0;
 }
 

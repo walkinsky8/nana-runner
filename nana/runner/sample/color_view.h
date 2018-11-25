@@ -4,8 +4,10 @@
 #include <nana/runner/view_base.h>
 
 #include <nana/runner/form_cfg.h>
-#include <nana/runner/textbox_cfg.h>
+#include <nana/runner/combox_cfg.h>
+#include <nana/runner/panel_cfg.h>
 #include <nana/runner/slider_cfg.h>
+#include <nana/runner/spinbox_cfg.h>
 #include <nana/runner/button_cfg.h>
 
 namespace runa::sample {
@@ -112,7 +114,7 @@ namespace runa::sample {
         void hsl_changed()
         {
             color c{};
-            c.from_hsl(h_.value(), s_.value() / 256.0, l_.value() / 256.0);
+            c.from_hsl(h_.value(), s_.value() / 100.0, l_.value() / 100.0);
             NAR_LOG_VAR(c);
             color_ << c;
             //sample_.bgcolor(c);
