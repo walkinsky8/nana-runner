@@ -210,7 +210,7 @@ namespace runa
     }
 
     template<class T>
-    inline string dump(const T& _v, bool _compact=false, int _level=0, bool _hideEmpty=false)
+    inline string dump(const T& _v, bool _compact=true, int _level=0, bool _hideEmpty=true)
     {
         dumper d{ _compact, _level, _hideEmpty };
         d << _v;

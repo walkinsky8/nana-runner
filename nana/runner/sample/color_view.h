@@ -36,6 +36,8 @@ namespace runa::sample {
         spinbox& s_v_;
         spinbox& l_v_;
 
+        color_widget& color_hsl_;
+
         button& ok_;
         button& cancel_;
 
@@ -57,6 +59,7 @@ namespace runa::sample {
             , h_v_{ wnd<spinbox>("h.v") }
             , s_v_{ wnd<spinbox>("s.v") }
             , l_v_{ wnd<spinbox>("l.v") }
+            , color_hsl_{ wnd<color_widget>("hsl.value") }
             , ok_{ wnd<button>("cmd.OK") }
             , cancel_{ wnd<button>("cmd.cancel") }
         {
@@ -81,11 +84,34 @@ namespace runa::sample {
             s_v_.events().text_changed([&] { on_s_v_text_changed(); });
             l_v_.events().text_changed([&] { on_l_v_text_changed(); });
 
+            color_hsl_.events().click([&](const nana::arg_click& _a) { on_hsl_click(_a); });
+            color_hsl_.events().dbl_click([&](const nana::arg_mouse& _a) { on_hsl_dblclick(_a); });
+            color_hsl_.events().mouse_enter([&](const nana::arg_mouse& _a) { on_hsl_mouse_event(_a); });
+            color_hsl_.events().mouse_move([&](const nana::arg_mouse& _a) { on_hsl_mouse_event(_a); });
+            color_hsl_.events().mouse_leave([&](const nana::arg_mouse& _a) { on_hsl_mouse_event(_a); });
+            color_hsl_.events().mouse_down([&](const nana::arg_mouse& _a) { on_hsl_mouse_event(_a); });
+            color_hsl_.events().mouse_up([&](const nana::arg_mouse& _a) { on_hsl_mouse_event(_a); });
+
             ok_.events().click([&] { on_ok(); });
             cancel_.events().click([&] { close(); });
         }
 
     private:
+        void on_hsl_click(const nana::arg_click& _arg)
+        {
+            NAR_LOG_VAR(_arg);
+        }
+
+        void on_hsl_dblclick(const nana::arg_mouse& _arg)
+        {
+            NAR_LOG_VAR(_arg);
+        }
+
+        void on_hsl_mouse_event(const nana::arg_mouse& _arg)
+        {
+            NAR_LOG_VAR(_arg);
+        }
+
         void on_color_text_changed()
         {
             NAR_LOG_VAR(color_);

@@ -35,6 +35,8 @@ void runa::init_widgets()
     add_widget<toolbar_cfg>();
     add_widget<treebox_cfg>();
 
+    add_widget<color_widget_cfg>();
+
     add_widget<option_cfg>();
     add_widget<unknown_cfg>();
 }

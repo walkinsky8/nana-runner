@@ -234,6 +234,12 @@
     <ClCompile Include="..\..\nana\runner\font_model.cpp">
       <Filter>runa-lib\foundation</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\nana\runner\color_widget_cfg.cpp">
+      <Filter>runa-lib\widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nana\runner\color_widget.cpp">
+      <Filter>runa-lib\foundation</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\nana\runner\base.h">
@@ -493,6 +499,12 @@
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\mt_vector.h">
       <Filter>runa-lib\base\mt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nana\runner\color_widget_cfg.h">
+      <Filter>runa-lib\widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nana\runner\color_widget.h">
+      <Filter>runa-lib\foundation</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

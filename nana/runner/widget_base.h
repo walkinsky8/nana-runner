@@ -13,6 +13,8 @@ namespace runa {
 	using cursor = enum_<nana::cursor, nana::cursor::arrow>;
 	using align = enum_<nana::align, nana::align::left>;
 	using align_v = enum_<nana::align_v, nana::align_v::top>;
+    using event_code = enum_<nana::event_code, nana::event_code::end>;
+    using mouse = enum_<nana::mouse, nana::mouse::any_button>;
 
     using widget = nana::widget;
 	using wnd_ptr = ptr<widget>;
@@ -33,6 +35,9 @@ namespace runa {
 	void operator<<(string& _w, const color& _v);
 	void operator >> (const string& _w, color& _v);
 
+    dumper& operator<<(dumper& _d, const nana::arg_click& _v);
+    dumper& operator<<(dumper& _d, const nana::arg_mouse& _v);
+
 }
 
 namespace nana {
@@ -40,6 +45,16 @@ namespace nana {
     inline std::ostream& operator<<(std::ostream& _os, const widget& _v)
     {
         return _os << _v.caption();
+    }
+
+    inline std::ostream& operator<<(std::ostream& _os, const nana::arg_mouse& _v)
+    {
+        return _os << runa::dump(_v);
+    }
+
+    inline std::ostream& operator<<(std::ostream& _os, const nana::arg_click& _v)
+    {
+        return _os << runa::dump(_v);
     }
 
 }

@@ -148,5 +148,30 @@ void runa::operator >> (const string& _s, color& _v)
 	_v = get_color(_s);
 }
 
+runa::dumper& runa::operator<<(dumper& _d, const nana::arg_click& _v)
+{
+    _d.enter("arg_click");
+    _d("mouse=", *_v.mouse_args);
+    _d.leave();
+    return _d;
+}
+
+runa::dumper& runa::operator<<(dumper& _d, const nana::arg_mouse& _v)
+{
+    _d.enter("arg_mouse");
+    _d("evt_code", runa::event_code{ _v.evt_code });
+    _d("pos", _v.pos);
+    _d("button", runa::mouse{ _v.button });
+    _d("left_button", _v.left_button);
+    _d("mid_button", _v.mid_button);
+    _d("right_button", _v.right_button);
+    _d("alt", _v.alt);
+    _d("shift", _v.shift);
+    _d("ctrl", _v.ctrl);
+    _d("is_left_button", _v.is_left_button());
+    _d.leave();
+    return _d;
+}
+
 #endif
 

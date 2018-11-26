@@ -185,6 +185,33 @@ void runa::init_enums()
 	NAR_ENUM_ADD(nana::cursor, arrow, size_top_right);
 	NAR_ENUM_ADD(nana::cursor, arrow, size_bottom_left);
 	NAR_ENUM_ADD(nana::cursor, arrow, size_bottom_right);
+
+    NAR_ENUM_ADD(nana::event_code, end, click);
+    NAR_ENUM_ADD(nana::event_code, end, dbl_click);
+    NAR_ENUM_ADD(nana::event_code, end, mouse_enter);
+    NAR_ENUM_ADD(nana::event_code, end, mouse_move);
+    NAR_ENUM_ADD(nana::event_code, end, mouse_leave);
+    NAR_ENUM_ADD(nana::event_code, end, mouse_down);
+    NAR_ENUM_ADD(nana::event_code, end, mouse_up);
+    NAR_ENUM_ADD(nana::event_code, end, mouse_wheel);
+    NAR_ENUM_ADD(nana::event_code, end, mouse_drop);
+    NAR_ENUM_ADD(nana::event_code, end, expose);
+    NAR_ENUM_ADD(nana::event_code, end, resizing);
+    NAR_ENUM_ADD(nana::event_code, end, resized);
+    NAR_ENUM_ADD(nana::event_code, end, move);
+    NAR_ENUM_ADD(nana::event_code, end, unload);
+    NAR_ENUM_ADD(nana::event_code, end, destroy);
+    NAR_ENUM_ADD(nana::event_code, end, focus);
+    NAR_ENUM_ADD(nana::event_code, end, key_press);
+    NAR_ENUM_ADD(nana::event_code, end, key_char);
+    NAR_ENUM_ADD(nana::event_code, end, key_release);
+    NAR_ENUM_ADD(nana::event_code, end, shortkey);
+    NAR_ENUM_ADD(nana::event_code, end, elapse);
+
+    NAR_ENUM_ADD(nana::mouse, any_button, any_button);
+    NAR_ENUM_ADD(nana::mouse, any_button, left_button);
+    NAR_ENUM_ADD(nana::mouse, any_button, middle_button);
+    NAR_ENUM_ADD(nana::mouse, any_button, right_button);
 }
 
 #endif
