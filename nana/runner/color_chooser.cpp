@@ -3,19 +3,19 @@
 
 #ifndef __NANA_RUNNER_LIB_ALL_IN_ONE
 
-#include "color_widget.h"
+#include "color_chooser.h"
 
 namespace runa
 {
 	namespace drawerbase
 	{
-		namespace color_widget
+		namespace color_chooser
 		{
             //class drawer
 
             void drawer::attached(widget_reference wdg, graph_reference)
 			{
-				wdg.caption("color widget");
+				wdg.caption("color_chooser");
 				window_ = wdg.handle();
 
 				//nana::API::ignore_mouse_focus(wdg, true);
@@ -44,10 +44,10 @@ namespace runa
 
             //end class drawer
 
-		}//end namespace color_widget
+		}//end namespace color_chooser
 	}//end namespace drawerbase
 
-    void color_widget::set_hsl(double _h, double _s, double _l)
+    void color_chooser::set_hsl(double _h, double _s, double _l)
     {
         h_ = _h;
         s_ = _s;

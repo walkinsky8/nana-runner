@@ -3,13 +3,13 @@
 
 #include <nana/runner/widget_cfg.h>
 
-#include <nana/runner/color_widget.h>
+#include <nana/runner/color_chooser.h>
 
 namespace runa {
 
-    class color_widget_cfg : public widget_cfg
+    class color_chooser_cfg : public widget_cfg
     {
-        NAR_DEFINE_WIDGET(color_widget, widget_cfg);
+        NAR_DEFINE_WIDGET(color_chooser, widget_cfg);
 
     public:
         template<class _Stream>

@@ -36,7 +36,7 @@ namespace runa::sample {
         spinbox& s_v_;
         spinbox& l_v_;
 
-        color_widget& color_hsl_;
+        color_chooser& color_hsl_;
 
         button& ok_;
         button& cancel_;
@@ -59,7 +59,7 @@ namespace runa::sample {
             , h_v_{ wnd<spinbox>("h.v") }
             , s_v_{ wnd<spinbox>("s.v") }
             , l_v_{ wnd<spinbox>("l.v") }
-            , color_hsl_{ wnd<color_widget>("hsl.value") }
+            , color_hsl_{ wnd<color_chooser>("hsl.value") }
             , ok_{ wnd<button>("cmd.OK") }
             , cancel_{ wnd<button>("cmd.cancel") }
         {

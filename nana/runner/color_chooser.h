@@ -8,7 +8,7 @@ namespace runa
 {
 	namespace drawerbase
 	{
-		namespace color_widget
+		namespace color_chooser
 		{
 			class drawer: public nana::drawer_trigger
 			{
@@ -20,23 +20,23 @@ namespace runa
 		}
 	}
 
-	class color_widget
-		: public nana::widget_object<nana::category::widget_tag, drawerbase::color_widget::drawer>
+	class color_chooser
+		: public nana::widget_object<nana::category::widget_tag, drawerbase::color_chooser::drawer>
 	{
         double h_{0}; // 0..360
         double s_{0}; // 0..1
         double l_{0}; // 0..1
 
     public:
-        color_widget(){}
+        color_chooser(){}
 
-        color_widget(nana::window wd, bool visible)
+        color_chooser(nana::window wd, bool visible)
 		{
 			this->create(wd, nana::rectangle(), visible);
 			this->bgcolor(nana::API::bgcolor(wd));
 		}
 
-        color_widget(nana::window wd, const nana::rectangle& r = nana::rectangle(), bool visible = true)
+        color_chooser(nana::window wd, const nana::rectangle& r = nana::rectangle(), bool visible = true)
 		{
 			this->create(wd, r, visible);
 			this->bgcolor(nana::API::bgcolor(wd));

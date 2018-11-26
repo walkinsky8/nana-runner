@@ -3,9 +3,9 @@
 
 #ifndef __NANA_RUNNER_LIB_ALL_IN_ONE
 
-#include "color_widget_cfg.h"
+#include "color_chooser_cfg.h"
 
-void runa::color_widget_cfg::init_widget(widget & _w, view_obj* _root_view) const
+void runa::color_chooser_cfg::init_widget(widget & _w, view_obj* _root_view) const
 {
     super::init_widget(_w, _root_view);
 

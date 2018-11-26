@@ -62,7 +62,7 @@
             }
             @panel{ id=hsl div="weight=240 margin=[5]"
                 @label{ id=n caption="HSL:" div="weight=60" align=right }
-                @color_widget{ id=value div="weight=360" }
+                @color_chooser{ id=value div="weight=360" }
             }
         }
         @panel{
