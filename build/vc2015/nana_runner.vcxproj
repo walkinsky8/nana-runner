@@ -164,6 +164,7 @@
   <ItemGroup>
     <ClCompile Include="..\..\nana\runner\app_base.cpp" />
     <ClCompile Include="..\..\nana\runner\color_chooser_cfg.cpp" />
+    <ClCompile Include="..\..\nana\runner\color_hsl.cpp" />
     <ClCompile Include="..\..\nana\runner\color_model.cpp" />
     <ClCompile Include="..\..\nana\runner\color_chooser.cpp" />
     <ClCompile Include="..\..\nana\runner\object.cpp" />
@@ -221,7 +222,7 @@
     <ClCompile Include="..\..\nana\runner\widget_base.cpp" />
     <ClCompile Include="..\..\nana\runner\widget_cfg.cpp" />
     <ClCompile Include="..\..\nana\runner\widget_factory.cpp" />
-    <ClCompile Include="..\..\nana_runner_lib_all_in_one.cpp" />
+    <ClCompile Include="..\..\runa_lib_all_in_one.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -232,6 +233,7 @@
   <ItemGroup>
     <ClInclude Include="..\..\nana\runner\app_base.h" />
     <ClInclude Include="..\..\nana\runner\color_chooser_cfg.h" />
+    <ClInclude Include="..\..\nana\runner\color_hsl.hpp" />
     <ClInclude Include="..\..\nana\runner\color_model.h" />
     <ClInclude Include="..\..\nana\runner\color_chooser.h" />
     <ClInclude Include="..\..\nana\runner\mt_vector.h" />
