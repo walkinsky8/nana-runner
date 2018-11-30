@@ -5,14 +5,14 @@
 
 namespace runa
 {
-    class color_hsl;
-    using color_hsl_widget = color_hsl;
+    class color_chooser;
+    using color_widget = color_chooser;
 
     struct hsl
     {
         double h{}; // 0..360
-        double s{}; // 0..1
-        double l{}; // 0..1
+        double s{1}; // 0..1
+        double l{0.5}; // 0..1
 
         hsl()
         {}
@@ -27,7 +27,7 @@ namespace runa
 
         bool operator!=(const hsl& _v) const
         {
-            return h != _v.h || s != _v.h || l != _v.l;
+            return h != _v.h || s != _v.s || l != _v.l;
         }
         bool operator==(const hsl& _v) const
         {
@@ -36,29 +36,29 @@ namespace runa
 
     };
 
-	struct arg_color_hsl
+	struct arg_color_chooser
 		: public nana::event_arg
 	{
 		nana::window window_handle;
 
-		arg_color_hsl(nana::window wd)
+		arg_color_chooser(nana::window wd)
 			: window_handle{ wd }
 		{}
 	};
 
 	namespace drawerbase
 	{
-		namespace color_hsl
+		namespace color_chooser
 		{
-			struct color_hsl_events
+			struct color_chooser_events
 				: public nana::general_events
 			{
-				nana::basic_event<arg_color_hsl> value_changed;
+				nana::basic_event<arg_color_chooser> value_changed;
 			};
 
             enum class buttons
             {
-                none, hs_click, l_click, l_scroll, l_first, l_second
+                none, hs_click, l_click, l_scroll
             };
 
             struct metrics_type
@@ -77,21 +77,25 @@ namespace runa
 			public:
 				using graph_reference = nana::paint::graphics&;
                 
-                constexpr static unsigned hs_left = 0;
-                constexpr static unsigned hs_top = 0;
-                constexpr static unsigned hs_width = 360;
-                constexpr static unsigned hs_height = 200;
-                constexpr static unsigned hs_right = hs_left + hs_width;
-                constexpr static unsigned hs_bottom = hs_top + hs_height;
-                constexpr static unsigned sep = 10;
-                constexpr static unsigned fixedsize = 16;
-                constexpr static unsigned l_left = hs_left + fixedsize;
-                constexpr static unsigned l_top = hs_top + hs_height + sep;
-                constexpr static unsigned l_width = 360 - fixedsize * 2;
-                constexpr static unsigned l_height = 20;
-                constexpr static unsigned l_right = l_left + l_width;
-                constexpr static unsigned l_bottom = l_top + l_height;
-                constexpr static unsigned sample_height = 20;
+                constexpr static int hs_left = 0;
+                constexpr static int hs_top = 0;
+                constexpr static uint hs_width = 180;
+                constexpr static uint hs_height = 180;
+                constexpr static int hs_right = hs_left + hs_width;
+                constexpr static int hs_bottom = hs_top + hs_height;
+                constexpr static int sep = 10;
+                constexpr static int sample_left = hs_right + sep;
+                constexpr static int sample_top = hs_top;
+                constexpr static uint sample_width = 30;
+                constexpr static uint sample_height = hs_height;
+                constexpr static int sample_right = sample_left + sample_width;
+                constexpr static int sample_bottom = sample_top + sample_height;
+                constexpr static int l_left = hs_left;
+                constexpr static int l_top = hs_bottom + sep;
+                constexpr static uint l_width = hs_width + sep + sample_width;
+                constexpr static uint l_height = 16;
+                constexpr static int l_right = l_left + l_width;
+                constexpr static int l_bottom = l_top + l_height;
 
 				drawer(metrics_type& m);
                 buttons what(graph_reference, const nana::point&);
@@ -101,7 +105,6 @@ namespace runa
 			private:
                 void _m_background(graph_reference);
                 void _m_draw_color(graph_reference, buttons what);
-                void _m_draw_button(graph_reference, ::nana::rectangle, buttons what);
                 void _m_draw_click(graph_reference, ::nana::rectangle, buttons what);
 
             private:
@@ -150,7 +153,7 @@ namespace runa
                 void _m_emit_value_changed();
 
 			private:
-                color_hsl_widget * widget_;
+                color_widget * widget_;
 				nana::paint::graphics * graph_;
 				metrics_type metrics_;
 				drawer	drawer_;
@@ -161,11 +164,11 @@ namespace runa
 
 	}//end namespace drawerbase
 
-	class color_hsl
-        : public nana::widget_object<nana::category::widget_tag, drawerbase::color_hsl::trigger, drawerbase::color_hsl::color_hsl_events>
+	class color_chooser
+        : public nana::widget_object<nana::category::widget_tag, drawerbase::color_chooser::trigger, drawerbase::color_chooser::color_chooser_events>
 	{
-        using self_type = color_hsl;
-        using base_type = nana::widget_object<nana::category::widget_tag, drawerbase::color_hsl::trigger, drawerbase::color_hsl::color_hsl_events>;
+        using self_type = color_chooser;
+        using base_type = nana::widget_object<nana::category::widget_tag, drawerbase::color_chooser::trigger, drawerbase::color_chooser::color_chooser_events>;
         using value_type = hsl;
 
     public:

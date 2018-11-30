@@ -3,11 +3,9 @@
 
 #include <nana/runner/widget_cfg.h>
 
-#include <nana/runner/color_hsl.hpp>
+#include <nana/runner/color_chooser.hpp>
 
 namespace runa {
-
-    using color_chooser = color_hsl;
 
     class color_chooser_cfg : public widget_cfg
     {
@@ -27,3 +25,4 @@ namespace runa {
     };
 
 }
+

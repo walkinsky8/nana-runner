@@ -1,9 +1,11 @@
-// Created by walkinsky(lyh6188@hotmail.com), 2018/11/25
+// Created by walkinsky(lyh6188@hotmail.com), 2018/11/28
 #include "stdafx.h"
 
 #ifndef __NANA_RUNNER_LIB_ALL_IN_ONE
 
-#include "color_chooser.h"
+#include "color_chooser.hpp"
+
+#include <nana/gui/element.hpp>
 
 namespace runa
 {
@@ -11,49 +13,279 @@ namespace runa
 	{
 		namespace color_chooser
 		{
-            //class drawer
+		//class drawer
+			drawer::drawer(metrics_type& m)
+				: metrics_(m)
+			{}
 
-            void drawer::attached(widget_reference wdg, graph_reference)
+			buttons drawer::what(graph_reference graph, const nana::point& screen_pos)
 			{
-				wdg.caption("color_chooser");
-				window_ = wdg.handle();
+                const nana::size scale = { graph.width(), graph.height() };
+                const nana::point pos = screen_pos;
 
-				//nana::API::ignore_mouse_focus(wdg, true);
+                if (pos.x >= hs_left && pos.y >= hs_top && pos.x < hs_right && pos.y < hs_bottom)
+                {
+                    metrics_.value.h = 360.0*(pos.x - hs_left) / hs_width;
+                    metrics_.value.s = static_cast<double>(pos.y - hs_top) / hs_height;
+                    return buttons::hs_click;
+                }
+
+                if (pos.x >= l_left && pos.y >= l_top && pos.x < l_right && pos.y < l_bottom)
+                {
+                    metrics_.value.l = static_cast<double>(pos.x - l_left) / l_width;
+                    return buttons::l_click;
+                }
+
+                if ((pos.y < l_top || pos.y >= l_bottom) && pos.x >= l_left && pos.x < l_right)
+                    return buttons::l_scroll;
+
+				return buttons::none;
 			}
 
-            void drawer::refresh(graph_reference g)
+			void drawer::scroll_delta_pos(graph_reference graph, int mouse_pos)
+			{
+                int pos = mouse_pos;
+                if (pos < l_left)
+                    pos = l_left;
+                if (pos > l_right)
+                    pos = l_right;
+                metrics_.value.l = static_cast<double>(pos - l_left) / l_width;
+			}
+
+			void drawer::draw(graph_reference graph, buttons what)
+			{
+				_m_background(graph);
+
+                nana::rectangle hs_rect{ hs_left, hs_top, hs_width, hs_height };
+                nana::rectangle l_rect{ l_left, l_top, l_width, l_height };
+
+                _m_draw_color(graph, buttons::hs_click);
+                _m_draw_color(graph, buttons::l_click);
+
+                _m_draw_click(graph, hs_rect, buttons::hs_click);
+                _m_draw_click(graph, l_rect, buttons::l_click);
+
+            }
+		//private:
+			void drawer::_m_background(graph_reference graph)
+			{
+				graph.rectangle(true, {0xd0, 0xd0, 0xd0});
+			}
+
+            void drawer::_m_draw_color(graph_reference graph, buttons what)
             {
-                g.rectangle(true, nana::API::bgcolor(window_));
-                for (int h = 0; h < 360; ++h)
+                if (what == buttons::hs_click)
                 {
-                    for (int s = 0; s < 200; ++s)
+                    for (int h = hs_left; h < hs_right; ++h)
                     {
-                        nana::color c{};
-                        c.from_hsl(h, s / 200.0, 0.5);
-                        g.set_pixel(h, s, c);
+                        for (int s = hs_top; s < hs_bottom; ++s)
+                        {
+                            nana::color c{};
+                            c.from_hsl(360.0*(h - hs_left)/hs_width, static_cast<double>(s - hs_top) / hs_height, metrics_.value.l);
+                            graph.set_pixel(h, s, c);
+                        }
                     }
                 }
-                for (int l = 0; l < 200; ++l)
+
+                if (what == buttons::l_click)
                 {
-                    nana::color c{};
-                    c.from_hsl(120.0, 1.0, l / 200.0);
-                    g.line({ l, 205 }, { l, 225 }, c);
+                    for (int l = (int)l_left; l < (int)l_right; ++l)
+                    {
+                        nana::color c{};
+                        c.from_hsl(metrics_.value.h, metrics_.value.s, static_cast<double>(l-l_left) / l_width);
+                        graph.line({ l, l_top }, { l, l_bottom }, c);
+                    }
+
+                    graph.rectangle({ sample_left, sample_top, sample_width, sample_height }, true, metrics_.value);
                 }
-                g.rectangle({ 210, 205, 150, 20 }, true, nana::color{}.from_hsl(120, 1.0, 0.5));
+            }
+
+            void drawer::_m_draw_click(graph_reference graph, nana::rectangle r, buttons what)
+            {
             }
 
             //end class drawer
 
-		}//end namespace color_chooser
-	}//end namespace drawerbase
+            //class trigger
 
-    void color_chooser::set_hsl(double _h, double _s, double _l)
-    {
-        h_ = _h;
-        s_ = _s;
-        l_ = _l;
-        nana::API::refresh_window(handle());
-    }
+            trigger::trigger()
+                : graph_(nullptr), drawer_(metrics_)
+            {
+            }
+
+            const metrics_type& trigger::metrics() const
+            {
+                return metrics_;
+            }
+
+            void trigger::value(value_type const& _value)
+            {
+                if (graph_ && (metrics_.value != _value))
+                {
+                    metrics_.value = _value;
+                    _m_emit_value_changed();
+
+                    nana::API::refresh_window(*widget_);
+                }
+            }
+
+            bool trigger::make_step(bool forward, int _multiple)
+            {
+                if (!graph_)
+                    return false;
+
+                value_type value = metrics_.value;
+                if (forward)
+                {
+                    value.l += _multiple;
+                    if (value.l > drawer::l_width)
+                        value.l = drawer::l_width;
+                }
+                else
+                {
+                    if (value.l > _multiple)
+                        value.l -= _multiple;
+                    else
+                        value.l = 0;
+                }
+                value_type cmpvalue = metrics_.value;
+                metrics_.value = value;
+                if (value != cmpvalue)
+                {
+                    _m_emit_value_changed();
+                    return true;
+                }
+                return false;
+            }
+
+            void trigger::attached(widget_reference widget, graph_reference graph)
+            {
+                graph_ = &graph;
+                widget_ = dynamic_cast<color_widget*>(&widget);
+                widget.caption("runa_color_hsl");
+            }
+
+            void trigger::detached()
+            {
+                graph_ = nullptr;
+            }
+
+            void trigger::refresh(graph_reference graph)
+            {
+                drawer_.draw(graph, metrics_.what);
+            }
+
+            void trigger::resized(graph_reference graph, const ::nana::arg_resized&)
+            {
+                drawer_.draw(graph, metrics_.what);
+                nana::API::dev::lazy_refresh();
+            }
+
+            void trigger::mouse_enter(graph_reference graph, const ::nana::arg_mouse& arg)
+            {
+                metrics_.what = drawer_.what(graph, arg.pos);
+                drawer_.draw(graph, metrics_.what);
+                nana::API::dev::lazy_refresh();
+            }
+
+            void trigger::mouse_move(graph_reference graph, const ::nana::arg_mouse& arg)
+            {
+                if (!metrics_.pressed)
+                    return;
+
+                bool redraw = false;
+                if (metrics_.what == buttons::l_scroll)
+                {
+                    value_type cmpvalue = metrics_.value;
+                    drawer_.scroll_delta_pos(graph, arg.pos.x);
+                    if (cmpvalue != metrics_.value)
+                        _m_emit_value_changed();
+                    redraw = true;
+                }
+                else
+                {
+                    value_type cmpvalue = metrics_.value;
+                    buttons what = drawer_.what(graph, arg.pos);
+                    if (cmpvalue != metrics_.value)
+                        _m_emit_value_changed();
+                    if (metrics_.what != what)
+                    {
+                        redraw = true;
+                        metrics_.what = what;
+                    }
+                }
+                if (redraw)
+                {
+                    drawer_.draw(graph, metrics_.what);
+                    nana::API::dev::lazy_refresh();
+                }
+            }
+
+            void trigger::dbl_click(graph_reference graph, const nana::arg_mouse& arg)
+            {
+                mouse_down(graph, arg);
+            }
+
+            void trigger::mouse_down(graph_reference graph, const nana::arg_mouse& arg)
+            {
+                if (arg.left_button)
+                {
+                    metrics_.pressed = true;
+                    value_type cmpvalue = metrics_.value;
+                    metrics_.what = drawer_.what(graph, arg.pos);
+                    if (cmpvalue != metrics_.value)
+                        _m_emit_value_changed();
+                    switch (metrics_.what)
+                    {
+                    case buttons::l_scroll:
+                        widget_->set_capture(true);
+                        break;
+                    default:
+                        break;
+                    }
+                    drawer_.draw(graph, metrics_.what);
+                    nana::API::dev::lazy_refresh();
+                }
+            }
+
+            void trigger::mouse_up(graph_reference graph, const nana::arg_mouse& arg)
+            {
+                widget_->release_capture();
+
+                metrics_.pressed = false;
+                metrics_.what = drawer_.what(graph, arg.pos);
+                drawer_.draw(graph, metrics_.what);
+                nana::API::dev::lazy_refresh();
+            }
+
+            void trigger::mouse_leave(graph_reference graph, const nana::arg_mouse&)
+            {
+                if (metrics_.pressed) return;
+
+                metrics_.what = buttons::none;
+                drawer_.draw(graph, buttons::none);
+                nana::API::dev::lazy_refresh();
+            }
+
+            void trigger::mouse_wheel(graph_reference graph, const nana::arg_wheel& arg)
+            {
+                if (make_step(arg.upwards == false, 3))
+                {
+                    drawer_.draw(graph, metrics_.what);
+                    nana::API::dev::lazy_refresh();
+                }
+            }
+
+            void trigger::_m_emit_value_changed()
+            {
+                widget_->events().value_changed.emit({ widget_->handle() }, widget_->handle());
+            }
+                
+            //end class trigger
+	
+        }//end namespace color_chooser
+
+    }//end namespace drawerbase
 
 }//end namespace runa
 
