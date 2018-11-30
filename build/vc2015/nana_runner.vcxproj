@@ -112,6 +112,7 @@
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <AdditionalOptions>/std:c++latest %(AdditionalOptions)</AdditionalOptions>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <MinimalRebuild>false</MinimalRebuild>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -232,7 +233,7 @@
   <ItemGroup>
     <ClInclude Include="..\..\nana\runner\app_base.h" />
     <ClInclude Include="..\..\nana\runner\color_chooser_cfg.h" />
-    <ClInclude Include="..\..\nana\runner\color_chooser.hpp" />
+    <ClInclude Include="..\..\nana\runner\color_chooser.h" />
     <ClInclude Include="..\..\nana\runner\color_model.h" />
     <ClInclude Include="..\..\nana\runner\mt_vector.h" />
     <ClInclude Include="..\..\nana\runner\number.h" />

@@ -3,7 +3,7 @@
 
 #include <nana/runner/widget_cfg.h>
 
-#include <nana/runner/color_chooser.hpp>
+#include <nana/runner/color_chooser.h>
 
 namespace runa {
 

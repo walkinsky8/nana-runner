@@ -3,7 +3,7 @@
 
 #ifndef __NANA_RUNNER_LIB_ALL_IN_ONE
 
-#include "color_chooser.hpp"
+#include "color_chooser.h"
 
 #include <nana/gui/element.hpp>
 
@@ -68,7 +68,7 @@ namespace runa
 			{
 				graph.rectangle(true, {0xd0, 0xd0, 0xd0});
 			}
-
+ 
             void drawer::_m_draw_color(graph_reference graph, buttons what)
             { 
                 if (what == buttons::hs_click)

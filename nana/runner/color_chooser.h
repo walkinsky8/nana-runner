@@ -89,8 +89,8 @@ namespace runa
 			public:
 				using graph_reference = nana::paint::graphics&;
                 
-                constexpr static int hs_left = 0;
-                constexpr static int hs_top = 0;
+                constexpr static int hs_left = 10;
+                constexpr static int hs_top = 10;
                 constexpr static uint hs_width = 240;
                 constexpr static uint hs_height = 240;
                 constexpr static int hs_right = hs_left + hs_width;
@@ -98,7 +98,7 @@ namespace runa
                 constexpr static int sep = 10;
                 constexpr static int sample_left = hs_right + sep;
                 constexpr static int sample_top = hs_top;
-                constexpr static uint sample_width = 30;
+                constexpr static uint sample_width = 40;
                 constexpr static uint sample_height = hs_height;
                 constexpr static int sample_right = sample_left + sample_width;
                 constexpr static int sample_bottom = sample_top + sample_height;

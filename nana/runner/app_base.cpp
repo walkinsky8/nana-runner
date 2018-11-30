@@ -5,6 +5,14 @@
 
 #include <nana/runner/app_base.h>
 
+#include <nana/runner/widget_all.h>
+
+#include <nana/runner/view_factory.h>
+
+#include <nana/runner/controller_base.h>
+
+#include <nana/runner/generic_view.h>
+
 runa::app* runa::app::instance_{ nullptr };
 
 runa::app::app()

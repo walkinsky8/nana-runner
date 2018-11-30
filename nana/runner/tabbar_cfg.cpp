@@ -5,6 +5,7 @@
 
 #include "tabbar_cfg.h"
 #include "tab_cfg.h"
+#include "form_cfg.h"
 
 #include <nana/runner/view_base.h>
 #include <nana/runner/app_base.h>

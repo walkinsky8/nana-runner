@@ -5,7 +5,7 @@
 
 #include "menubar_cfg.h"
 
-#include "option_cfg.h"
+#include "menu_cfg.h"
 
 #include <nana/runner/app_base.h>
 

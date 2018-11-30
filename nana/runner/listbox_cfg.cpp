@@ -5,6 +5,8 @@
 
 #include "listbox_cfg.h"
 
+#include "option_cfg.h"
+
 #include <nana/runner/app_base.h>
 
 void runa::listbox_cfg::init_widget(widget & _w, view_obj* _root_view) const

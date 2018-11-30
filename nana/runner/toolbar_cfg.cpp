@@ -4,6 +4,7 @@
 #ifndef __NANA_RUNNER_LIB_ALL_IN_ONE
 
 #include "toolbar_cfg.h"
+#include "option_cfg.h"
 
 #include <nana/runner/view_base.h>
 #include <nana/runner/app_base.h>

@@ -503,7 +503,7 @@
     <ClInclude Include="..\..\nana\runner\color_chooser_cfg.h">
       <Filter>runa-lib\widgets</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\nana\runner\color_chooser.hpp">
+    <ClInclude Include="..\..\nana\runner\color_chooser.h">
       <Filter>runa-lib\foundation</Filter>
     </ClInclude>
   </ItemGroup>

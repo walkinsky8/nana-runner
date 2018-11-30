@@ -122,4 +122,12 @@ namespace runa {
         });
     }
 
+    inline void close_view(view_ptr _p)
+    {
+        if (_p)
+        {
+            _p->close();
+        }
+    }
+
 }

@@ -3,13 +3,7 @@
 
 #include <nana/runner/object.h>
 
-#include <nana/runner/widget_all.h>
-
-#include <nana/runner/view_factory.h>
-
-#include <nana/runner/controller_base.h>
-
-#include <nana/runner/generic_view.h>
+#include <nana/runner/view_base.h>
 
 namespace runa
 {
