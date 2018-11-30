@@ -54,10 +54,16 @@ runa::point runa::form_base_cfg::get_pos() const
         switch (align_().value().value())
         {
             case nana::align::center:
-                pt.x += screen.width / 2;
+                if (pos_().empty())
+                    pt.x = screen.width / 2 - size_().value().width / 2;
+                else
+                    pt.x += screen.width / 2;
                 break;
             case nana::align::right:
-                pt.x += screen.width;
+                if (pos_().empty())
+                    pt.x = screen.width - size_().value().width;
+                else
+                    pt.x += screen.width;
                 break;
         }
     }
@@ -66,10 +72,16 @@ runa::point runa::form_base_cfg::get_pos() const
         switch (align_v_().value().value())
         {
         case nana::align_v::center:
-            pt.y += screen.height / 2;
+            if (pos_().empty())
+                pt.y = screen.height / 2 - size_().value().height / 2;
+            else
+                pt.y += screen.height / 2;
             break;
         case nana::align_v::bottom:
-            pt.y += screen.height;
+            if (pos_().empty())
+                pt.y = screen.height - size_().value().height;
+            else
+                pt.y += screen.height;
             break;
         }
     }
