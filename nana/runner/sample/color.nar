@@ -3,7 +3,7 @@
     caption="Color"
     div="vert"
     @**pos={100 100}**@
-    size={400 470}
+    size={400 540}
     sizable=1
     maximize=1
     align=center
@@ -60,7 +60,7 @@
                 @label{ id=n caption="Sample:" div="weight=60" align=right }
                 @panel{ id=value div="weight=310" bgcolor=black }
             }
-            @panel{ id=hsl div="weight=240 margin=[5]"
+            @panel{ id=hsl div="weight=300 margin=[5]"
                 @label{ id=n caption="HSL:" div="weight=60" align=right }
                 @color_chooser{ id=value div="weight=310" }
             }

@@ -162,6 +162,7 @@ void runa::widget_cfg::init_widget(widget& _w, view_obj* _root_view) const
     if (!fg.empty())
         _w.fgcolor(get_color(fg));
 
+    //always call get_pos() to support user defined center align.
     //if (!pos_().empty())
         _w.move(get_pos());
 

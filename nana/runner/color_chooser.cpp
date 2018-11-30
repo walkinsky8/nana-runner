@@ -26,7 +26,7 @@ namespace runa
                 if (pos.x >= hs_left && pos.y >= hs_top && pos.x < hs_right && pos.y < hs_bottom)
                 {
                     metrics_.value.h = 360.0*(pos.x - hs_left) / hs_width;
-                    metrics_.value.s = static_cast<double>(pos.y - hs_top) / hs_height;
+                    metrics_.value.s = 1 - static_cast<double>(pos.y - hs_top) / hs_height;
                     return buttons::hs_click;
                 }
 
@@ -56,14 +56,11 @@ namespace runa
 			{
 				_m_background(graph);
 
-                nana::rectangle hs_rect{ hs_left, hs_top, hs_width, hs_height };
-                nana::rectangle l_rect{ l_left, l_top, l_width, l_height };
-
                 _m_draw_color(graph, buttons::hs_click);
                 _m_draw_color(graph, buttons::l_click);
 
-                _m_draw_click(graph, hs_rect, buttons::hs_click);
-                _m_draw_click(graph, l_rect, buttons::l_click);
+                _m_draw_click(graph, buttons::hs_click);
+                _m_draw_click(graph, buttons::l_click);
 
             }
 		//private:
@@ -73,7 +70,7 @@ namespace runa
 			}
 
             void drawer::_m_draw_color(graph_reference graph, buttons what)
-            {
+            { 
                 if (what == buttons::hs_click)
                 {
                     for (int h = hs_left; h < hs_right; ++h)
@@ -81,13 +78,12 @@ namespace runa
                         for (int s = hs_top; s < hs_bottom; ++s)
                         {
                             nana::color c{};
-                            c.from_hsl(360.0*(h - hs_left)/hs_width, static_cast<double>(s - hs_top) / hs_height, metrics_.value.l);
+                            c.from_hsl(360.0*(h - hs_left)/hs_width, 1 - static_cast<double>(s - hs_top) / hs_height, metrics_.value.l);
                             graph.set_pixel(h, s, c);
                         }
                     }
                 }
-
-                if (what == buttons::l_click)
+                else if (what == buttons::l_click)
                 {
                     for (int l = (int)l_left; l < (int)l_right; ++l)
                     {
@@ -100,8 +96,26 @@ namespace runa
                 }
             }
 
-            void drawer::_m_draw_click(graph_reference graph, nana::rectangle r, buttons what)
+            void drawer::_m_draw_click(graph_reference graph, buttons what)
             {
+                if (what == buttons::hs_click)
+                {
+                    nana::rectangle r{
+                        hs_left + static_cast<int>(metrics_.value.h / 360 * hs_width) - 5,
+                        hs_top + static_cast<int>((1 - metrics_.value.s) * hs_height) - 5,
+                        10,
+                        10 };
+                    graph.round_rectangle(r, 5, 5, metrics_.value.to_revert_color(), false, {});
+                }
+                else if (what == buttons::l_click)
+                {
+                    nana::rectangle r{
+                        l_left + static_cast<int>(metrics_.value.l * l_width) - 5,
+                        l_top - 5,
+                        10,
+                        10 + l_height };
+                    graph.round_rectangle(r, 3, 3, metrics_.value.to_revert_color(), false, {});
+                }
             }
 
             //end class drawer
@@ -137,15 +151,14 @@ namespace runa
                 value_type value = metrics_.value;
                 if (forward)
                 {
-                    value.l += _multiple;
-                    if (value.l > drawer::l_width)
-                        value.l = drawer::l_width;
+                    value.l += static_cast<double>(_multiple) / drawer::l_width;
+                    if (value.l > 1.0)
+                        value.l = 1.0;
                 }
                 else
                 {
-                    if (value.l > _multiple)
-                        value.l -= _multiple;
-                    else
+                    value.l -= static_cast<double>(_multiple) / drawer::l_width;
+                    if (value.l < 0)
                         value.l = 0;
                 }
                 value_type cmpvalue = metrics_.value;
@@ -269,7 +282,7 @@ namespace runa
 
             void trigger::mouse_wheel(graph_reference graph, const nana::arg_wheel& arg)
             {
-                if (make_step(arg.upwards == false, 3))
+                if (make_step(arg.upwards, 3))
                 {
                     drawer_.draw(graph, metrics_.what);
                     nana::API::dev::lazy_refresh();

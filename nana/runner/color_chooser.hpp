@@ -22,7 +22,19 @@ namespace runa
 
         operator nana::color() const
         {
+            return to_color();
+        }
+
+        nana::color to_color() const
+        {
             return nana::color{}.from_hsl(h, s, l);
+        }
+
+        nana::color to_revert_color() const
+        {
+            nana::color c{};
+            c.from_hsl(h, s, l);
+            return nana::color{ static_cast<uint>(255 - c.r()), static_cast<uint>(255 - c.g()), static_cast<uint>(255 - c.b()) };
         }
 
         bool operator!=(const hsl& _v) const
@@ -79,8 +91,8 @@ namespace runa
                 
                 constexpr static int hs_left = 0;
                 constexpr static int hs_top = 0;
-                constexpr static uint hs_width = 180;
-                constexpr static uint hs_height = 180;
+                constexpr static uint hs_width = 240;
+                constexpr static uint hs_height = 240;
                 constexpr static int hs_right = hs_left + hs_width;
                 constexpr static int hs_bottom = hs_top + hs_height;
                 constexpr static int sep = 10;
@@ -105,7 +117,7 @@ namespace runa
 			private:
                 void _m_background(graph_reference);
                 void _m_draw_color(graph_reference, buttons what);
-                void _m_draw_click(graph_reference, ::nana::rectangle, buttons what);
+                void _m_draw_click(graph_reference, buttons what);
 
             private:
                 metrics_type &metrics_;
