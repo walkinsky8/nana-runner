@@ -89,13 +89,13 @@ namespace runa
 			public:
 				using graph_reference = nana::paint::graphics&;
                 
-                constexpr static int hs_left = 10;
-                constexpr static int hs_top = 10;
-                constexpr static uint hs_width = 240;
-                constexpr static uint hs_height = 240;
+                constexpr static int hs_left = 0;
+                constexpr static int hs_top = 0;
+                constexpr static uint hs_width = 255;
+                constexpr static uint hs_height = 255;
                 constexpr static int hs_right = hs_left + hs_width;
                 constexpr static int hs_bottom = hs_top + hs_height;
-                constexpr static int sep = 10;
+                constexpr static int sep = 15;
                 constexpr static int sample_left = hs_right + sep;
                 constexpr static int sample_top = hs_top;
                 constexpr static uint sample_width = 40;
@@ -105,7 +105,7 @@ namespace runa
                 constexpr static int l_left = hs_left;
                 constexpr static int l_top = hs_bottom + sep;
                 constexpr static uint l_width = hs_width + sep + sample_width;
-                constexpr static uint l_height = 16;
+                constexpr static uint l_height = 15;
                 constexpr static int l_right = l_left + l_width;
                 constexpr static int l_bottom = l_top + l_height;
 
@@ -136,7 +136,7 @@ namespace runa
 
                 void value(value_type const& _value);
 
-                bool make_step(bool forward, int _multiple);
+                bool make_step(bool forward, int _multiple, const nana::arg_wheel& arg);
 
 			private:
                 void attached(widget_reference widget, graph_reference graph) override;

@@ -15,6 +15,7 @@ namespace runa {
 	using align_v = enum_<nana::align_v, nana::align_v::top>;
     using event_code = enum_<nana::event_code, nana::event_code::end>;
     using mouse = enum_<nana::mouse, nana::mouse::any_button>;
+    using wheel = enum_<nana::arg_wheel::wheel, nana::arg_wheel::wheel::vertical>;
 
     using widget = nana::widget;
 	using wnd_ptr = ptr<widget>;
@@ -37,6 +38,7 @@ namespace runa {
 
     dumper& operator<<(dumper& _d, const nana::arg_click& _v);
     dumper& operator<<(dumper& _d, const nana::arg_mouse& _v);
+    dumper& operator<<(dumper& _d, const nana::arg_wheel& _v);
 
 }
 
@@ -53,6 +55,11 @@ namespace nana {
     }
 
     inline std::ostream& operator<<(std::ostream& _os, const nana::arg_click& _v)
+    {
+        return _os << runa::dump(_v);
+    }
+
+    inline std::ostream& operator<<(std::ostream& _os, const nana::arg_wheel& _v)
     {
         return _os << runa::dump(_v);
     }

@@ -143,7 +143,7 @@ namespace runa
                 }
             }
 
-            bool trigger::make_step(bool forward, int _multiple)
+            bool trigger::make_step(bool forward, int _multiple, const nana::arg_wheel& arg)
             {
                 if (!graph_)
                     return false;
@@ -151,15 +151,45 @@ namespace runa
                 value_type value = metrics_.value;
                 if (forward)
                 {
-                    value.l += static_cast<double>(_multiple) / drawer::l_width;
-                    if (value.l > 1.0)
-                        value.l = 1.0;
+                    if (arg.ctrl)
+                    {
+                        value.h += 360.0 * (_multiple) / drawer::hs_width;
+                        if (value.h > 360.0)
+                            value.h = 360.0;
+                    }
+                    else if (arg.shift)
+                    {
+                        value.s += static_cast<double>(_multiple) / drawer::hs_height;
+                        if (value.s > 1)
+                            value.s = 1;
+                    }
+                    else
+                    {
+                        value.l += static_cast<double>(_multiple) / drawer::l_width;
+                        if (value.l > 1.0)
+                            value.l = 1.0;
+                    }
                 }
                 else
                 {
-                    value.l -= static_cast<double>(_multiple) / drawer::l_width;
-                    if (value.l < 0)
-                        value.l = 0;
+                    if (arg.ctrl)
+                    {
+                        value.h -= 360.0 * (_multiple) / drawer::hs_width;
+                        if (value.h < 0)
+                            value.h = 0;
+                    }
+                    else if (arg.shift)
+                    {
+                        value.s -= static_cast<double>(_multiple) / drawer::hs_height;
+                        if (value.s < 0)
+                            value.s = 0;
+                    }
+                    else
+                    {
+                        value.l -= static_cast<double>(_multiple) / drawer::l_width;
+                        if (value.l < 0)
+                            value.l = 0;
+                    }
                 }
                 value_type cmpvalue = metrics_.value;
                 metrics_.value = value;
@@ -282,7 +312,7 @@ namespace runa
 
             void trigger::mouse_wheel(graph_reference graph, const nana::arg_wheel& arg)
             {
-                if (make_step(arg.upwards, 3))
+                if (make_step(arg.upwards, 3, arg))
                 {
                     drawer_.draw(graph, metrics_.what);
                     nana::API::dev::lazy_refresh();

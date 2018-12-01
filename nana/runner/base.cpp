@@ -212,6 +212,9 @@ void runa::init_enums()
     NAR_ENUM_ADD(nana::mouse, any_button, left_button);
     NAR_ENUM_ADD(nana::mouse, any_button, middle_button);
     NAR_ENUM_ADD(nana::mouse, any_button, right_button);
+
+    NAR_ENUM_ADD(nana::arg_wheel::wheel, vertical, horizontal);
+    NAR_ENUM_ADD(nana::arg_wheel::wheel, vertical, vertical);
 }
 
 #endif

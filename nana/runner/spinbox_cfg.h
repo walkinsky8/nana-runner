@@ -46,13 +46,15 @@ namespace runa {
     {
         string s;
         s << _v;
-        _w.caption(s);
+        //_w.caption(s);
+        _w.value(s);
     }
 
     template<class T>
     inline void operator >> (const spinbox& _w, T& _v)
     {
-        _w.caption() >> _v;
+        //_w.caption() >> _v;
+        _w.value() >> _v;
     }
 
 }

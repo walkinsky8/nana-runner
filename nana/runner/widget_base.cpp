@@ -173,5 +173,16 @@ runa::dumper& runa::operator<<(dumper& _d, const nana::arg_mouse& _v)
     return _d;
 }
 
+runa::dumper& runa::operator<<(dumper& _d, const nana::arg_wheel& _v)
+{
+    _d.enter("arg_wheel");
+    _d("mouse=", (const nana::arg_mouse&)_v);
+    _d("which", runa::wheel{ _v.which });
+    _d("upwards", _v.upwards);
+    _d("distance", _v.distance);
+    _d.leave();
+    return _d;
+}
+
 #endif
 

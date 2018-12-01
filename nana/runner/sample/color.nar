@@ -10,30 +10,9 @@
     align_v=center
     @panel{ 
         @panel{ div='vert weight=380 margin=5'
-            @panel{ id=color div="weight=25"
-                @label{ id=n caption="Color:" div="weight=60" align=right }
-                @combox{ id=value caption=null editable=1 }
-            }
-            @panel{ id=r div="weight=25 margin=[5]"
-                @label{ id=n caption="R:" div="weight=60" align=right }
-                @spinbox{ id=v value=0 last=255 div="weight=50" }
-                @label{ id=min caption="0" div="weight=10" }
-                @slider{ id=value maximum=255 vertical=0 div="weight=220" }
-                @label{ id=max caption="255" div="weight=30" }
-            }
-            @panel{ id=g div="weight=25 margin=[5]"
-                @label{ id=n caption="G:" div="weight=60" align=right }
-                @spinbox{ id=v value=0 last=255 div="weight=50" }
-                @label{ id=min caption="0" div="weight=10" }
-                @slider{ id=value maximum=255 vertical=0 div="weight=220" }
-                @label{ id=max caption="255" div="weight=30" }
-            }
-            @panel{ id=b div="weight=25 margin=[5]"
-                @label{ id=n caption="B:" div="weight=60" align=right }
-                @spinbox{ id=v value=0 last=255 div="weight=50" }
-                @label{ id=min caption="0" div="weight=10" }
-                @slider{ id=value maximum=255 vertical=0 div="weight=220" }
-                @label{ id=max caption="255" div="weight=30" }
+            @panel{ id=hsl div="weight=300 margin=[5]"
+                @label{ id=n caption="HSL:" div="weight=60" align=right }
+                @color_chooser{ id=value div="weight=310" }
             }
             @panel{ id=h div="weight=25 margin=[5]"
                 @label{ id=n caption="H:" div="weight=60" align=right }
@@ -56,13 +35,34 @@
                 @slider{ id=value value=50 maximum=100 vertical=0 div="weight=220" }
                 @label{ id=max caption="100" div="weight=30" }
             }
+            @panel{ id=r div="weight=25 margin=[5]"
+                @label{ id=n caption="R:" div="weight=60" align=right }
+                @spinbox{ id=v value=0 last=255 div="weight=50" }
+                @label{ id=min caption="0" div="weight=10" }
+                @slider{ id=value maximum=255 vertical=0 div="weight=220" }
+                @label{ id=max caption="255" div="weight=30" }
+            }
+            @panel{ id=g div="weight=25 margin=[5]"
+                @label{ id=n caption="G:" div="weight=60" align=right }
+                @spinbox{ id=v value=0 last=255 div="weight=50" }
+                @label{ id=min caption="0" div="weight=10" }
+                @slider{ id=value maximum=255 vertical=0 div="weight=220" }
+                @label{ id=max caption="255" div="weight=30" }
+            }
+            @panel{ id=b div="weight=25 margin=[5]"
+                @label{ id=n caption="B:" div="weight=60" align=right }
+                @spinbox{ id=v value=0 last=255 div="weight=50" }
+                @label{ id=min caption="0" div="weight=10" }
+                @slider{ id=value maximum=255 vertical=0 div="weight=220" }
+                @label{ id=max caption="255" div="weight=30" }
+            }
+            @panel{ id=color div="weight=25"
+                @label{ id=n caption="Color:" div="weight=60" align=right }
+                @combox{ id=value caption=null editable=1 }
+            }
             @panel{ id=sample div="weight=40 margin=[5]"
                 @label{ id=n caption="Sample:" div="weight=60" align=right }
                 @panel{ id=value div="weight=310" bgcolor=black }
-            }
-            @panel{ id=hsl div="weight=290 margin=[5]"
-                @label{ id=n caption="HSL:" div="weight=60" align=right }
-                @color_chooser{ id=value div="weight=310" }
             }
         }
         @panel{

@@ -84,13 +84,16 @@ namespace runa::sample {
             s_v_.events().text_changed([&] { on_s_v_text_changed(); });
             l_v_.events().text_changed([&] { on_l_v_text_changed(); });
 
+            color_hsl_.events().value_changed([&] { on_hsl_value_changed(); });
+
             color_hsl_.events().click([&](const nana::arg_click& _a) { on_hsl_click(_a); });
             color_hsl_.events().dbl_click([&](const nana::arg_mouse& _a) { on_hsl_dblclick(_a); });
-            color_hsl_.events().mouse_enter([&](const nana::arg_mouse& _a) { on_hsl_mouse_event(_a); });
-            color_hsl_.events().mouse_move([&](const nana::arg_mouse& _a) { on_hsl_mouse_event(_a); });
-            color_hsl_.events().mouse_leave([&](const nana::arg_mouse& _a) { on_hsl_mouse_event(_a); });
+            //color_hsl_.events().mouse_enter([&](const nana::arg_mouse& _a) { on_hsl_mouse_event(_a); });
+            //color_hsl_.events().mouse_move([&](const nana::arg_mouse& _a) { on_hsl_mouse_event(_a); });
+            //color_hsl_.events().mouse_leave([&](const nana::arg_mouse& _a) { on_hsl_mouse_event(_a); });
             color_hsl_.events().mouse_down([&](const nana::arg_mouse& _a) { on_hsl_mouse_event(_a); });
             color_hsl_.events().mouse_up([&](const nana::arg_mouse& _a) { on_hsl_mouse_event(_a); });
+            color_hsl_.events().mouse_wheel([&](const nana::arg_wheel& _a) { on_hsl_mouse_wheel(_a); });
 
             ok_.events().click([&] { on_ok(); });
             cancel_.events().click([&] { close(); });
@@ -112,14 +115,30 @@ namespace runa::sample {
             NAR_LOG_VAR(_arg);
         }
 
+        void on_hsl_mouse_wheel(const nana::arg_wheel& _arg)
+        {
+            NAR_LOG_VAR(_arg);
+        }
+
+        void on_hsl_value_changed()
+        {
+            auto hsl = color_hsl_.value();
+            NAR_LOG_VAR(hsl.to_color());
+            h_v_ << (static_cast<uint>(hsl.h));
+            s_v_ << (static_cast<uint>(hsl.s * 100));
+            l_v_ << (static_cast<uint>(hsl.l * 100));
+            //XX color_ << hsl.to_color();
+            //sample_.bgcolor(color_hsl_.value());
+        }
+
         void on_color_text_changed()
         {
             NAR_LOG_VAR(color_);
             color c = get_color(color_.caption());
             sample_.bgcolor(c);
-            r_ << c.r();
-            g_ << c.g();
-            b_ << c.b();
+            r_v_ << (uint)c.r();
+            g_v_ << (uint)c.g();
+            b_v_ << (uint)c.b();
         }
 
         void on_color_selected()
