@@ -49,7 +49,11 @@ namespace runa
 
     std::ostream& operator<<(std::ostream& _os, const color_hsl& _v)
     {
-        return _os << "hsl(" << _v.h() << "," << _v.s() << "," << _v.l() << ")";
+        _os << "hsl(" << int(_v.h() + 0.5);
+        _os << ", " << int((_v.s() + 0.005) * 100) << "%";
+        _os << ", " << int((_v.l() + 0.005) * 100) << "%";
+        _os << ")";
+        return _os;
     }
     
     void operator>>(string& _is, color_hsl& _v)

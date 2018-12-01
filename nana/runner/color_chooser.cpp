@@ -78,7 +78,7 @@ namespace runa
                         for (int s = hs_top; s < hs_bottom; ++s)
                         {
                             nana::color c{};
-                            c.from_hsl(360.0*(h - hs_left)/hs_width, 1 - static_cast<double>(s - hs_top) / hs_height, metrics_.value.l());
+                            c.from_hsl(360.0*(h - hs_left)/hs_width, 1 - static_cast<double>(s - hs_top) / hs_height, 0.5/*metrics_.value.l()*/);
                             graph.set_pixel(h, s, c);
                         }
                     }

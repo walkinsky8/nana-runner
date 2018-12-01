@@ -35,4 +35,18 @@ namespace runa {
 
     };
 
+    template<class T>
+    inline void operator<<(label& _w, const T& _v)
+    {
+        string s;
+        s << _v;
+        _w.caption(s);
+    }
+
+    //template<class T>
+    //inline void operator >> (const label& _w, T& _v)
+    //{
+    //    _w.caption() >> _v;
+    //}
+
 }

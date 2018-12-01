@@ -5,10 +5,8 @@
 
 #include <nana/runner/form_cfg.h>
 #include <nana/runner/combox_cfg.h>
-#include <nana/runner/panel_cfg.h>
-#include <nana/runner/slider_cfg.h>
-#include <nana/runner/spinbox_cfg.h>
 #include <nana/runner/color_chooser_cfg.h>
+#include <nana/runner/label_cfg.h>
 #include <nana/runner/button_cfg.h>
 
 namespace runa::sample {
@@ -20,9 +18,12 @@ namespace runa::sample {
     public:
         form& form_;
 
+        combox& color_;
+
         color_chooser& color_hsl_;
 
-        combox& color_;
+        label& hsl_text_;
+        label& rgb_text_;
 
         button& ok_;
         button& cancel_;
@@ -31,8 +32,10 @@ namespace runa::sample {
         color_view(widget_cfg& _cfg, window _parent)
             : super{ _cfg, _parent }
             , form_{ wnd<form>() }
-            , color_hsl_{ wnd<color_chooser>("hsl.value") }
             , color_{ wnd<combox>("color.value") }
+            , color_hsl_{ wnd<color_chooser>("hsl.value") }
+            , hsl_text_{ wnd<label>("hsl_text") }
+            , rgb_text_{ wnd<label>("rgb_text") }
             , ok_{ wnd<button>("cmd.OK") }
             , cancel_{ wnd<button>("cmd.cancel") }
         {
@@ -45,19 +48,21 @@ namespace runa::sample {
             cancel_.events().click([&] { close(); });
 
             color_ << color_hsl_.value().to_color();
+            update_color(color_hsl_.value());
         }
 
     private:
         void on_hsl_value_changed()
         {
             NAR_LOG_VAR(color_hsl_.value());
-            NAR_LOG_VAR(color_hsl_.value().to_color());
+            update_color(color_hsl_.value());
         }
 
         void on_color_text_changed()
         {
             NAR_LOG_VAR(color_);
             color_hsl_.value(color_hsl(get_color(color_.caption(), color_hsl_.value().to_color())));
+            update_color(color_hsl_.value());
         }
 
         void on_color_selected()
@@ -68,6 +73,21 @@ namespace runa::sample {
         void on_ok()
         {
             NAR_LOG_VAR(color_hsl_.value());
+        }
+
+        void update_color(const color_hsl& _c)
+        {
+            string s;
+            s << "H=" << int(_c.h() + 0.5);
+            s << " S=" << int(100 * (_c.s() + 0.005)) << "%";
+            s << " L=" << int(100 * (_c.l() + 0.005)) << "%";
+            hsl_text_ << s;
+            s.clear();
+            color c = _c.to_color();
+            s << "R=" << int(c.r() + 0.5);
+            s << " G=" << int(c.g() + 0.5);
+            s << " B=" << int(c.b() + 0.5);
+            rgb_text_ << s;
         }
 
     };

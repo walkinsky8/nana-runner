@@ -8,18 +8,19 @@
     maximize=1
     align=center
     align_v=center
-    @panel{ 
-        @panel{ div='vert weight=380 margin=5'
-            @panel{ id=hsl div="weight=300 margin=[5]"
-                @label{ id=n caption="HSL:" div="weight=60" align=right }
-                @color_chooser{ id=value div="weight=310" }
-            }
-            @panel{ id=color div="weight=25"
-                @label{ id=n caption="Color:" div="weight=60" align=right }
-                @combox{ id=value caption=null editable=1 }
-            }
-        }
-        @panel{
+    @panel{ id=color div="weight=25"
+        @label{ id=n caption="Color:" div="weight=60" align=right }
+        @combox{ id=value caption=null editable=1 }
+    }
+    @panel{ id=hsl div="weight=300 margin=[5]"
+        @label{ id=n caption="HSL:" div="weight=60" align=right }
+        @color_chooser{ id=value div="weight=310" }
+    }
+    @panel{
+        @label{ id=n caption=null div="weight=60" align=right }
+        @panel{ div="weight=310"
+            @label{ id=hsl_text caption=null align=left }
+            @label{ id=rgb_text caption=null align=right }
         }
     }
     @panel{ }
