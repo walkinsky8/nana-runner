@@ -127,10 +127,10 @@ namespace runa::sample {
         {
             auto hsl = color_hsl_.value();
             NAR_LOG_VAR(hsl.to_color());
-            h_v_ << (static_cast<uint>(hsl.h));
-            s_v_ << (static_cast<uint>(hsl.s * 100));
-            l_v_ << (static_cast<uint>(hsl.l * 100));
-            //XX color_ << hsl.to_color();
+            h_v_ << (static_cast<uint>(hsl.h()));
+            s_v_ << (static_cast<uint>(hsl.s() * 100));
+            l_v_ << (static_cast<uint>(hsl.l() * 100));
+            //XX color_ << color_hsl.to_color();
             //sample_.bgcolor(color_hsl_.value());
         }
 

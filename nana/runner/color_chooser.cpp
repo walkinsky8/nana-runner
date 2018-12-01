@@ -25,14 +25,14 @@ namespace runa
 
                 if (pos.x >= hs_left && pos.y >= hs_top && pos.x < hs_right && pos.y < hs_bottom)
                 {
-                    metrics_.value.h = 360.0*(pos.x - hs_left) / hs_width;
-                    metrics_.value.s = 1 - static_cast<double>(pos.y - hs_top) / hs_height;
+                    metrics_.value.h(360.0*(pos.x - hs_left) / hs_width);
+                    metrics_.value.s(static_cast<double>(pos.y - hs_top) / hs_height);
                     return buttons::hs_click;
                 }
 
                 if (pos.x >= l_left && pos.y >= l_top && pos.x < l_right && pos.y < l_bottom)
                 {
-                    metrics_.value.l = static_cast<double>(pos.x - l_left) / l_width;
+                    metrics_.value.l(static_cast<double>(pos.x - l_left) / l_width);
                     return buttons::l_click;
                 }
 
@@ -49,7 +49,7 @@ namespace runa
                     pos = l_left;
                 if (pos > l_right)
                     pos = l_right;
-                metrics_.value.l = static_cast<double>(pos - l_left) / l_width;
+                metrics_.value.l(static_cast<double>(pos - l_left) / l_width);
 			}
 
 			void drawer::draw(graph_reference graph, buttons what)
@@ -78,7 +78,7 @@ namespace runa
                         for (int s = hs_top; s < hs_bottom; ++s)
                         {
                             nana::color c{};
-                            c.from_hsl(360.0*(h - hs_left)/hs_width, 1 - static_cast<double>(s - hs_top) / hs_height, metrics_.value.l);
+                            c.from_hsl(360.0*(h - hs_left)/hs_width, 1 - static_cast<double>(s - hs_top) / hs_height, metrics_.value.l());
                             graph.set_pixel(h, s, c);
                         }
                     }
@@ -88,7 +88,7 @@ namespace runa
                     for (int l = (int)l_left; l < (int)l_right; ++l)
                     {
                         nana::color c{};
-                        c.from_hsl(metrics_.value.h, metrics_.value.s, static_cast<double>(l-l_left) / l_width);
+                        c.from_hsl(metrics_.value.h(), metrics_.value.s(), static_cast<double>(l-l_left) / l_width);
                         graph.line({ l, l_top }, { l, l_bottom }, c);
                     }
 
@@ -101,8 +101,8 @@ namespace runa
                 if (what == buttons::hs_click)
                 {
                     nana::rectangle r{
-                        hs_left + static_cast<int>(metrics_.value.h / 360 * hs_width) - 5,
-                        hs_top + static_cast<int>((1 - metrics_.value.s) * hs_height) - 5,
+                        hs_left + static_cast<int>(metrics_.value.h() / 360 * hs_width) - 5,
+                        hs_top + static_cast<int>((1 - metrics_.value.s()) * hs_height) - 5,
                         10,
                         10 };
                     graph.round_rectangle(r, 5, 5, metrics_.value.to_revert_color(), false, {});
@@ -110,7 +110,7 @@ namespace runa
                 else if (what == buttons::l_click)
                 {
                     nana::rectangle r{
-                        l_left + static_cast<int>(metrics_.value.l * l_width) - 5,
+                        l_left + static_cast<int>(metrics_.value.l() * l_width) - 5,
                         l_top - 5,
                         10,
                         10 + l_height };
@@ -153,42 +153,42 @@ namespace runa
                 {
                     if (arg.ctrl)
                     {
-                        value.h += 360.0 * (_multiple) / drawer::hs_width;
-                        if (value.h > 360.0)
-                            value.h = 360.0;
+                        value.h() += 360.0 * (_multiple) / drawer::hs_width;
+                        if (value.h() > 360.0)
+                            value.h() = 360.0;
                     }
                     else if (arg.shift)
                     {
-                        value.s += static_cast<double>(_multiple) / drawer::hs_height;
-                        if (value.s > 1)
-                            value.s = 1;
+                        value.s() += static_cast<double>(_multiple) / drawer::hs_height;
+                        if (value.s() > 1)
+                            value.s() = 1;
                     }
                     else
                     {
-                        value.l += static_cast<double>(_multiple) / drawer::l_width;
-                        if (value.l > 1.0)
-                            value.l = 1.0;
+                        value.l() += static_cast<double>(_multiple) / drawer::l_width;
+                        if (value.l() > 1.0)
+                            value.l() = 1.0;
                     }
                 }
                 else
                 {
                     if (arg.ctrl)
                     {
-                        value.h -= 360.0 * (_multiple) / drawer::hs_width;
-                        if (value.h < 0)
-                            value.h = 0;
+                        value.h() -= 360.0 * (_multiple) / drawer::hs_width;
+                        if (value.h() < 0)
+                            value.h() = 0;
                     }
                     else if (arg.shift)
                     {
-                        value.s -= static_cast<double>(_multiple) / drawer::hs_height;
-                        if (value.s < 0)
-                            value.s = 0;
+                        value.s() -= static_cast<double>(_multiple) / drawer::hs_height;
+                        if (value.s() < 0)
+                            value.s() = 0;
                     }
                     else
                     {
-                        value.l -= static_cast<double>(_multiple) / drawer::l_width;
-                        if (value.l < 0)
-                            value.l = 0;
+                        value.l() -= static_cast<double>(_multiple) / drawer::l_width;
+                        if (value.l() < 0)
+                            value.l() = 0;
                     }
                 }
                 value_type cmpvalue = metrics_.value;

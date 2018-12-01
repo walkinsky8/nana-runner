@@ -3,50 +3,12 @@
 
 #include <nana/gui/widgets/widget.hpp>
 
+#include <nana/runner/color_hsl.h>
+
 namespace runa
 {
     class color_chooser;
     using color_widget = color_chooser;
-
-    struct hsl
-    {
-        double h{}; // 0..360
-        double s{1}; // 0..1
-        double l{0.5}; // 0..1
-
-        hsl()
-        {}
-        hsl(double _h, double _s, double _l)
-            : h{ _h }, s{ _s }, l{ _l }
-        {}
-
-        operator nana::color() const
-        {
-            return to_color();
-        }
-
-        nana::color to_color() const
-        {
-            return nana::color{}.from_hsl(h, s, l);
-        }
-
-        nana::color to_revert_color() const
-        {
-            nana::color c{};
-            c.from_hsl(h, s, l);
-            return nana::color{ static_cast<uint>(255 - c.r()), static_cast<uint>(255 - c.g()), static_cast<uint>(255 - c.b()) };
-        }
-
-        bool operator!=(const hsl& _v) const
-        {
-            return h != _v.h || s != _v.s || l != _v.l;
-        }
-        bool operator==(const hsl& _v) const
-        {
-            return !operator!=(_v);
-        }
-
-    };
 
 	struct arg_color_chooser
 		: public nana::event_arg
@@ -75,7 +37,7 @@ namespace runa
 
             struct metrics_type
             {
-                using value_type = hsl;
+                using value_type = color_hsl;
                 value_type value{};
 
                 buttons what{ buttons::none};
@@ -172,7 +134,7 @@ namespace runa
 
             }; //end class trigger
 
-		}//end namespace color_hsl
+		}//end namespace color_chooser
 
 	}//end namespace drawerbase
 
@@ -181,7 +143,7 @@ namespace runa
 	{
         using self_type = color_chooser;
         using base_type = nana::widget_object<nana::category::widget_tag, drawerbase::color_chooser::trigger, drawerbase::color_chooser::color_chooser_events>;
-        using value_type = hsl;
+        using value_type = color_hsl;
 
     public:
         self_type()
@@ -211,7 +173,7 @@ namespace runa
 			return this->handle();
 		}
 
-    };//end class color_hsl
+    };//end class color_chooser
 
 }//end namespace runa
 
