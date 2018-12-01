@@ -8,6 +8,7 @@
 #include <nana/runner/panel_cfg.h>
 #include <nana/runner/slider_cfg.h>
 #include <nana/runner/spinbox_cfg.h>
+#include <nana/runner/color_chooser_cfg.h>
 #include <nana/runner/button_cfg.h>
 
 namespace runa::sample {
@@ -19,24 +20,25 @@ namespace runa::sample {
     public:
         form& form_;
 
-        combox& color_;
+        color_chooser& color_hsl_;
 
-        panel& sample_;
-
-        slider& r_;
-        slider& g_;
-        slider& b_;
-        slider& h_;
-        slider& s_;
-        slider& l_;
-        spinbox& r_v_;
-        spinbox& g_v_;
-        spinbox& b_v_;
         spinbox& h_v_;
         spinbox& s_v_;
         spinbox& l_v_;
+        spinbox& r_v_;
+        spinbox& g_v_;
+        spinbox& b_v_;
 
-        color_chooser& color_hsl_;
+        slider& h_;
+        slider& s_;
+        slider& l_;
+        slider& r_;
+        slider& g_;
+        slider& b_;
+
+        combox& color_;
+
+        panel& sample_;
 
         button& ok_;
         button& cancel_;
@@ -45,27 +47,28 @@ namespace runa::sample {
         color_view(widget_cfg& _cfg, window _parent)
             : super{ _cfg, _parent }
             , form_{ wnd<form>() }
-            , color_{ wnd<combox>("color.value") }
-            , sample_{ wnd<panel>("sample.value") }
-            , r_{ wnd<slider>("r.value") }
-            , g_{ wnd<slider>("g.value") }
-            , b_{ wnd<slider>("b.value") }
-            , h_{ wnd<slider>("h.value") }
-            , s_{ wnd<slider>("s.value") }
-            , l_{ wnd<slider>("l.value") }
-            , r_v_{ wnd<spinbox>("r.v") }
-            , g_v_{ wnd<spinbox>("g.v") }
-            , b_v_{ wnd<spinbox>("b.v") }
+            , color_hsl_{ wnd<color_chooser>("hsl.value") }
             , h_v_{ wnd<spinbox>("h.v") }
             , s_v_{ wnd<spinbox>("s.v") }
             , l_v_{ wnd<spinbox>("l.v") }
-            , color_hsl_{ wnd<color_chooser>("hsl.value") }
+            , r_v_{ wnd<spinbox>("r.v") }
+            , g_v_{ wnd<spinbox>("g.v") }
+            , b_v_{ wnd<spinbox>("b.v") }
+            , h_{ wnd<slider>("h.value") }
+            , s_{ wnd<slider>("s.value") }
+            , l_{ wnd<slider>("l.value") }
+            , r_{ wnd<slider>("r.value") }
+            , g_{ wnd<slider>("g.value") }
+            , b_{ wnd<slider>("b.value") }
+            , color_{ wnd<combox>("color.value") }
+            , sample_{ wnd<panel>("sample.value") }
             , ok_{ wnd<button>("cmd.OK") }
             , cancel_{ wnd<button>("cmd.cancel") }
         {
-            color_ << sample_.bgcolor();
+            color_hsl_.events().value_changed([&] { on_hsl_value_changed(); });
 
             color_.events().selected([&] { on_color_selected(); });
+            //color_.events().focus([&] { on_color_focus(); });
             color_.events().text_changed([&] { on_color_text_changed(); });
 
             r_.events().value_changed([&] { on_r_value_changed(); });
@@ -84,19 +87,19 @@ namespace runa::sample {
             s_v_.events().text_changed([&] { on_s_v_text_changed(); });
             l_v_.events().text_changed([&] { on_l_v_text_changed(); });
 
-            color_hsl_.events().value_changed([&] { on_hsl_value_changed(); });
-
-            color_hsl_.events().click([&](const nana::arg_click& _a) { on_hsl_click(_a); });
-            color_hsl_.events().dbl_click([&](const nana::arg_mouse& _a) { on_hsl_dblclick(_a); });
+            //color_hsl_.events().click([&](const nana::arg_click& _a) { on_hsl_click(_a); });
+            //color_hsl_.events().dbl_click([&](const nana::arg_mouse& _a) { on_hsl_dblclick(_a); });
             //color_hsl_.events().mouse_enter([&](const nana::arg_mouse& _a) { on_hsl_mouse_event(_a); });
             //color_hsl_.events().mouse_move([&](const nana::arg_mouse& _a) { on_hsl_mouse_event(_a); });
             //color_hsl_.events().mouse_leave([&](const nana::arg_mouse& _a) { on_hsl_mouse_event(_a); });
-            color_hsl_.events().mouse_down([&](const nana::arg_mouse& _a) { on_hsl_mouse_event(_a); });
-            color_hsl_.events().mouse_up([&](const nana::arg_mouse& _a) { on_hsl_mouse_event(_a); });
-            color_hsl_.events().mouse_wheel([&](const nana::arg_wheel& _a) { on_hsl_mouse_wheel(_a); });
+            //color_hsl_.events().mouse_down([&](const nana::arg_mouse& _a) { on_hsl_mouse_event(_a); });
+            //color_hsl_.events().mouse_up([&](const nana::arg_mouse& _a) { on_hsl_mouse_event(_a); });
+            //color_hsl_.events().mouse_wheel([&](const nana::arg_wheel& _a) { on_hsl_mouse_wheel(_a); });
 
             ok_.events().click([&] { on_ok(); });
             cancel_.events().click([&] { close(); });
+
+            update_color(color_hsl_.value());
         }
 
     private:
@@ -134,11 +137,13 @@ namespace runa::sample {
         void on_color_text_changed()
         {
             NAR_LOG_VAR(color_);
-            color c = get_color(color_.caption());
-            sample_.bgcolor(c);
-            r_v_ << (uint)c.r();
-            g_v_ << (uint)c.g();
-            b_v_ << (uint)c.b();
+            update_color(color_model(color_.caption()));
+        }
+
+        void on_color_focus()
+        {
+            NAR_LOG_VAR(color_);
+            //update_color(color_model(color_.caption()));
         }
 
         void on_color_selected()
@@ -146,6 +151,14 @@ namespace runa::sample {
             NAR_LOG_VAR(color_);
             //color c = get_color(color_.caption());
             //sample_.bgcolor(c);
+        }
+
+        void update_color(color c)
+        {
+            r_v_ << (uint)c.r();
+            g_v_ << (uint)c.g();
+            b_v_ << (uint)c.b();
+            sample_.bgcolor(c);
         }
 
         void rgb_changed()
