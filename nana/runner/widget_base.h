@@ -20,6 +20,8 @@ namespace runa {
     using widget = nana::widget;
 	using wnd_ptr = ptr<widget>;
 
+    using color_rgb = nana::color;
+
     color get_color(const string& _s, color _default = {});
 
 	font make_font(const string& _name, double _size, bool _bold, bool _italic, bool _underline, bool _strikeout);
@@ -41,6 +43,11 @@ namespace runa {
     dumper& operator<<(dumper& _d, const nana::arg_click& _v);
     dumper& operator<<(dumper& _d, const nana::arg_mouse& _v);
     dumper& operator<<(dumper& _d, const nana::arg_wheel& _v);
+
+    inline nana::color make_rgb(double _r, double _g, double _b)
+    {
+        return nana::color{ static_cast<uint>(_r * 255), static_cast<uint>(_g * 255), static_cast<uint>(_b * 255) };
+    }
 
 }
 

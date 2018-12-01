@@ -243,6 +243,9 @@
     <ClCompile Include="..\..\nana\runner\color_hsl.cpp">
       <Filter>runa-lib\foundation</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\nana\runner\color_hsv.cpp">
+      <Filter>runa-lib\foundation</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\nana\runner\base.h">
@@ -510,6 +513,9 @@
       <Filter>runa-lib\foundation</Filter>
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\color_hsl.h">
+      <Filter>runa-lib\foundation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nana\runner\color_hsv.h">
       <Filter>runa-lib\foundation</Filter>
     </ClInclude>
   </ItemGroup>

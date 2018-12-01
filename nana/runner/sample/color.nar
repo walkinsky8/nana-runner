@@ -3,7 +3,7 @@
     caption="Color"
     div="vert"
     @**pos={100 100}**@
-    size={400 400}
+    size={420 400}
     sizable=1
     maximize=1
     align=center

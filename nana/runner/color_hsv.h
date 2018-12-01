@@ -5,31 +5,28 @@
 
 namespace runa
 {
-    class color_hsl
+    class color_hsv
     {
-        using self = color_hsl;
+        using self = color_hsv;
 
         double h_{0.0}; // 0..360
         double s_{1.0}; // 0..1
-        double l_{0.5}; // 0..1
+        double v_{1.0}; // 0..1
 
     public:
-        color_hsl()
+        self()
         {}
-        color_hsl(double _h, double _s, double _l)
-            : h_{ _h }, s_{ _s }, l_{ _l }
+        self(double _h, double _s, double _v)
+            : h_{ _h }, s_{ _s }, v_{ _v }
         {}
-        color_hsl(nana::color const& c);
+        self(color const& c);
 
         operator nana::color() const
         {
             return to_color();
         }
 
-        nana::color to_color() const
-        {
-            return nana::color{}.from_hsl(h_, s_, l_);
-        }
+        nana::color to_color() const;
 
         nana::color to_revert_color() const
         {
@@ -69,35 +66,35 @@ namespace runa
             return *this;
         }
 
-        double l() const
+        double v() const
         {
-            return l_;
+            return v_;
         }
 
-        double& l()
+        double& v()
         {
-            return l_;
+            return v_;
         }
 
-        self& l(double _l)
+        self& v(double _v)
         {
-            l_ = _l;
+            v_ = _v;
             return *this;
         }
 
-        bool operator!=(const color_hsl& _v) const
+        bool operator!=(const self& _v) const
         {
-            return h_ != _v.h_ || s_ != _v.s_ || l_ != _v.l_;
+            return h_ != _v.h_ || s_ != _v.s_ || v_ != _v.v_;
         }
-        bool operator==(const color_hsl& _v) const
+        bool operator==(const self& _v) const
         {
             return !operator!=(_v);
         }
 
     };
 
-    std::ostream& operator<<(std::ostream& _os, const color_hsl& _v);
-    void operator>>(string& _is, color_hsl& _v);
+    std::ostream& operator<<(std::ostream& _os, const color_hsv& _v);
+    void operator>>(string& _is, color_hsv& _v);
 
 }//end namespace runa
 

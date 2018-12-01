@@ -113,6 +113,8 @@ namespace runa {
         const std::string s_raw2{ "\"\"\"" };
     }
 
+    using nana::npos;
+
     using int8 = std::int8_t;
     using int16 = std::int16_t;
     using int32 = std::int32_t;
@@ -182,15 +184,37 @@ namespace runa {
     template<class T>
     inline bool is_empty(const std::vector<T>& _v) { return _v.empty(); }
 
-    using std::to_string;
+    template<class T>
+    inline const T& min_(const T& _v1, const T& _v2)
+    {
+        return _v1 < _v2 ? _v1 : _v2;
+    }
 
-    using nana::npos;
+    template<class T>
+    inline const T& min_(const T& _v1, const T& _v2, const T& _v3)
+    {
+        return min_(_v1, min_(_v2, _v3));
+    }
+
+    template<class T>
+    inline const T& max_(const T& _v1, const T& _v2)
+    {
+        return _v1 > _v2 ? _v1 : _v2;
+    }
+
+    template<class T>
+    inline const T& max_(const T& _v1, const T& _v2, const T& _v3)
+    {
+        return max_(_v1, max_(_v2, _v3));
+    }
 
     /*
 	 * string functions
 	 */
 
-	string to_string(const wstring& _wstr);
+    using std::to_string;
+
+    string to_string(const wstring& _wstr);
     wstring to_wstring(const string& _utf8str);
 
     void string_split(const string& _s, std::vector<string>& _ss);
