@@ -20,7 +20,7 @@ namespace runa {
     using widget = nana::widget;
 	using wnd_ptr = ptr<widget>;
 
-	color get_color(const string& _s);
+    color get_color(const string& _s, color _default = {});
 
 	font make_font(const string& _name, double _size, bool _bold, bool _italic, bool _underline, bool _strikeout);
 
@@ -33,8 +33,10 @@ namespace runa {
 	dumper& operator<<(dumper& _d, const font& _v);
 	void operator >> (const parser& _p, font& _v);
 
-	void operator<<(string& _w, const color& _v);
+    void operator<<(string& _w, const color& _v);
 	void operator >> (const string& _w, color& _v);
+
+    dumper& operator<<(dumper& _d, const color& _v);
 
     dumper& operator<<(dumper& _d, const nana::arg_click& _v);
     dumper& operator<<(dumper& _d, const nana::arg_mouse& _v);
@@ -47,6 +49,11 @@ namespace nana {
     inline std::ostream& operator<<(std::ostream& _os, const widget& _v)
     {
         return _os << _v.caption();
+    }
+
+    inline std::ostream& operator<<(std::ostream& _os, const nana::color& _v)
+    {
+        return _os << runa::dump(_v);
     }
 
     inline std::ostream& operator<<(std::ostream& _os, const nana::arg_mouse& _v)

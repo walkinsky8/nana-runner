@@ -121,5 +121,8 @@ namespace runa
 
     };
 
+    std::ostream& operator<<(std::ostream& _os, const color_hsl& _v);
+    void operator>>(string& _is, color_hsl& _v);
+
 }//end namespace runa
 

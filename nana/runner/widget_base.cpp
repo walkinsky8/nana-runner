@@ -5,7 +5,7 @@
 
 #include <nana/runner/widget_base.h>
 
-nana::color runa::get_color(const string& _s)
+nana::color runa::get_color(const string& _s, color _default)
 {
 	try {
 		nana::colors* clr = colors::find_value(_s);
@@ -16,7 +16,7 @@ nana::color runa::get_color(const string& _s)
 	catch (std::exception& e) {
         NAR_LOG_INFO(e << ": " << _s);
 	}
-	return nana::colors::black;
+	return _default;
 }
 
 runa::font runa::make_font(const string& _name, double _size, bool _bold, bool _italic, bool _underline, bool _strikeout)
@@ -145,7 +145,14 @@ void runa::operator << (string& _w, const color& _v)
 
 void runa::operator >> (const string& _s, color& _v)
 {
-	_v = get_color(_s);
+	_v = get_color(_s, _v);
+}
+
+runa::dumper& runa::operator<<(dumper& _d, const nana::color& _v)
+{
+    string s;
+    s << _v;
+    return _d.write(s);
 }
 
 runa::dumper& runa::operator<<(dumper& _d, const nana::arg_click& _v)

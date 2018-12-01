@@ -47,6 +47,15 @@ namespace runa
         }
     }
 
+    std::ostream& operator<<(std::ostream& _os, const color_hsl& _v)
+    {
+        return _os << "hsl(" << _v.h() << "," << _v.s() << "," << _v.l() << ")";
+    }
+    
+    void operator>>(string& _is, color_hsl& _v)
+    {
+    }
+
 }//end namespace runa
 
 #endif

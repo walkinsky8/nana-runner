@@ -156,11 +156,11 @@ void runa::widget_cfg::init_widget(widget& _w, view_obj* _root_view) const
 
     auto& bg = get_bgcolor();
     if (!bg.empty())
-        _w.bgcolor(get_color(bg));
+        _w.bgcolor(get_color(bg, _w.bgcolor()));
 
     auto& fg = get_fgcolor();
     if (!fg.empty())
-        _w.fgcolor(get_color(fg));
+        _w.fgcolor(get_color(fg, _w.fgcolor()));
 
     //always call get_pos() to support user defined center align.
     //if (!pos_().empty())

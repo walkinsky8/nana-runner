@@ -50,14 +50,14 @@ namespace runa::sample {
     private:
         void on_hsl_value_changed()
         {
-            auto hsl = color_hsl_.value();
-            NAR_LOG_VAR(hsl.to_color());
+            NAR_LOG_VAR(color_hsl_.value());
+            NAR_LOG_VAR(color_hsl_.value().to_color());
         }
 
         void on_color_text_changed()
         {
             NAR_LOG_VAR(color_);
-            color_hsl_.value(color_hsl(color_model(color_.caption())));
+            color_hsl_.value(color_hsl(get_color(color_.caption(), color_hsl_.value().to_color())));
         }
 
         void on_color_selected()
@@ -67,6 +67,7 @@ namespace runa::sample {
 
         void on_ok()
         {
+            NAR_LOG_VAR(color_hsl_.value());
         }
 
     };
