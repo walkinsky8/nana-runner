@@ -26,7 +26,7 @@ namespace runa
                 if (pos.x >= hs_left && pos.y >= hs_top && pos.x < hs_right && pos.y < hs_bottom)
                 {
                     metrics_.value.h(360.0*(pos.x - hs_left) / hs_width);
-                    metrics_.value.s(static_cast<double>(pos.y - hs_top) / hs_height);
+                    metrics_.value.s(1 - static_cast<double>(pos.y - hs_top) / hs_height);
                     return buttons::hs_click;
                 }
 
