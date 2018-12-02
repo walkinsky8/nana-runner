@@ -3,7 +3,7 @@
 
 #ifndef __NANA_RUNNER_LIB_ALL_IN_ONE
 
-#include "color_chooser.h"
+#include "color_hsl_chooser.h"
 
 #include <nana/gui/element.hpp>
 

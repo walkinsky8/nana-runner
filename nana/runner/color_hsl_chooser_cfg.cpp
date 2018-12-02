@@ -3,7 +3,7 @@
 
 #ifndef __NANA_RUNNER_LIB_ALL_IN_ONE
 
-#include "color_chooser_cfg.h"
+#include "color_hsl_chooser_cfg.h"
 
 void runa::color_hsl_chooser_cfg::init_widget(widget & _w, view_obj* _root_view) const
 {

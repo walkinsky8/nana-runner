@@ -164,8 +164,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\nana\runner\app_base.cpp" />
-    <ClCompile Include="..\..\nana\runner\color_chooser_cfg.cpp" />
-    <ClCompile Include="..\..\nana\runner\color_chooser.cpp" />
+    <ClCompile Include="..\..\nana\runner\color_hsl_chooser_cfg.cpp" />
+    <ClCompile Include="..\..\nana\runner\color_hsl_chooser.cpp" />
     <ClCompile Include="..\..\nana\runner\color_hsl.cpp" />
     <ClCompile Include="..\..\nana\runner\color_hsv.cpp" />
     <ClCompile Include="..\..\nana\runner\color_model.cpp" />
@@ -234,8 +234,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\nana\runner\app_base.h" />
-    <ClInclude Include="..\..\nana\runner\color_chooser_cfg.h" />
-    <ClInclude Include="..\..\nana\runner\color_chooser.h" />
+    <ClInclude Include="..\..\nana\runner\color_hsl_chooser_cfg.h" />
+    <ClInclude Include="..\..\nana\runner\color_hsl_chooser.h" />
     <ClInclude Include="..\..\nana\runner\color_hsl.h" />
     <ClInclude Include="..\..\nana\runner\color_hsv.h" />
     <ClInclude Include="..\..\nana\runner\color_model.h" />

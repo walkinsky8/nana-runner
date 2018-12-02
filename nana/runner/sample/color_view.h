@@ -5,7 +5,7 @@
 
 #include <nana/runner/form_cfg.h>
 #include <nana/runner/combox_cfg.h>
-#include <nana/runner/color_chooser_cfg.h>
+#include <nana/runner/color_hsl_chooser_cfg.h>
 #include <nana/runner/label_cfg.h>
 #include <nana/runner/button_cfg.h>
 
