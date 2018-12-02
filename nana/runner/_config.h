@@ -208,6 +208,16 @@ namespace runa {
         return max_(_v1, max_(_v2, _v3));
     }
 
+    template<class T>
+    T ensure_between(T val, T low, T high)
+    {
+        if (val < low)
+            val = low;
+        if (val > high)
+            val = high;
+        return val;
+    }
+
     /*
 	 * string functions
 	 */

@@ -31,6 +31,7 @@
 #include <nana/runner/treebox_cfg.h>
 
 #include <nana/runner/color_hsl_chooser_cfg.h>
+#include <nana/runner/color_hsv_chooser_cfg.h>
 
 #include <nana/runner/option_cfg.h>
 #include <nana/runner/unknown_cfg.h>

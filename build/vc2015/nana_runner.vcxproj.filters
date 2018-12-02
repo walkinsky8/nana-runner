@@ -246,6 +246,12 @@
     <ClCompile Include="..\..\nana\runner\color_hsl_chooser_cfg.cpp">
       <Filter>runa-lib\widgets</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\nana\runner\color_hsv_chooser_cfg.cpp">
+      <Filter>runa-lib\widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nana\runner\color_hsv_chooser.cpp">
+      <Filter>runa-lib\foundation</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\nana\runner\base.h">
@@ -517,6 +523,12 @@
     </ClInclude>
     <ClInclude Include="..\..\nana\runner\color_hsl_chooser_cfg.h">
       <Filter>runa-lib\widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nana\runner\color_hsv_chooser_cfg.h">
+      <Filter>runa-lib\widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nana\runner\color_hsv_chooser.h">
+      <Filter>runa-lib\foundation</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

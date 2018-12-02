@@ -5,7 +5,7 @@
 
 #include <nana/runner/form_cfg.h>
 #include <nana/runner/combox_cfg.h>
-#include <nana/runner/color_hsl_chooser_cfg.h>
+#include <nana/runner/color_hsv_chooser_cfg.h>
 #include <nana/runner/label_cfg.h>
 #include <nana/runner/button_cfg.h>
 
@@ -20,9 +20,10 @@ namespace runa::sample {
 
         combox& color_;
 
-        color_hsl_chooser& color_hsl_;
+        color_hsv_chooser& color_hsv_;
 
-        label& hsl_text_;
+        //label& hsl_text_;
+        label& hsv_text_;
         label& rgb_text_;
 
         button& ok_;
@@ -33,13 +34,13 @@ namespace runa::sample {
             : super{ _cfg, _parent }
             , form_{ wnd<form>() }
             , color_{ wnd<combox>("color.value") }
-            , color_hsl_{ wnd<color_hsl_chooser>("hsl.value") }
-            , hsl_text_{ wnd<label>("hsl_text") }
+            , color_hsv_{ wnd<color_hsv_chooser>("hsv.value") }
+            , hsv_text_{ wnd<label>("hsv_text") }
             , rgb_text_{ wnd<label>("rgb_text") }
             , ok_{ wnd<button>("cmd.OK") }
             , cancel_{ wnd<button>("cmd.cancel") }
         {
-            color_hsl_.events().value_changed([&] { on_hsl_value_changed(); });
+            color_hsv_.events().value_changed([&] { on_hsv_value_changed(); });
 
             color_.events().selected([&] { on_color_selected(); });
             color_.events().text_changed([&] { on_color_text_changed(); });
@@ -47,21 +48,21 @@ namespace runa::sample {
             ok_.events().click([&] { on_ok(); });
             cancel_.events().click([&] { close(); });
 
-            color_ << color_hsl_.value().to_color();
-            update_color(color_hsl_.value());
+            color_ << color_hsv_.value().to_color();
+            update_color(color_hsv_.value());
         }
 
     private:
-        void on_hsl_value_changed()
+        void on_hsv_value_changed()
         {
-            NAR_LOG_VAR(color_hsl_.value());
-            update_color(color_hsl_.value());
+            NAR_LOG_VAR(color_hsv_.value());
+            update_color(color_hsv_.value());
         }
 
         void on_color_text_changed()
         {
             NAR_LOG_VAR(color_);
-            color_hsl_.value(color_hsl(get_color(color_.caption(), color_hsl_.value().to_color())));
+            color_hsv_.value(color_hsv(get_color(color_.caption(), color_hsv_.value().to_color())));
             //update_color(color_hsl_.value());
         }
 
@@ -72,16 +73,16 @@ namespace runa::sample {
 
         void on_ok()
         {
-            NAR_LOG_VAR(color_hsl_.value());
+            NAR_LOG_VAR(color_hsv_.value());
         }
 
-        void update_color(const color_hsl& _c)
+        void update_color(const color_hsv& _c)
         {
             string s;
             s << "H=" << int(_c.h() + 0.5);
             s << " S=" << int(100 * (_c.s() + 0.005)) << "%";
-            s << " L=" << int(100 * (_c.l() + 0.005)) << "%";
-            hsl_text_ << s;
+            s << " V=" << int(100 * (_c.v() + 0.005)) << "%";
+            hsv_text_ << s;
             s.clear();
             color c = _c.to_color();
             s << "R=" << int(c.r() + 0.5);

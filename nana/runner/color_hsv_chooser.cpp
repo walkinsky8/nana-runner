@@ -1,15 +1,15 @@
-// Created by walkinsky(lyh6188@hotmail.com), 2018/11/28
+// Created by walkinsky(lyh6188@hotmail.com), 2018/12/02
 #include "stdafx.h"
 
 #ifndef __NANA_RUNNER_LIB_ALL_IN_ONE
 
-#include "color_hsl_chooser.h"
+#include "color_hsv_chooser.h"
 
 namespace runa
 {
 	namespace drawerbase
 	{
-		namespace color_hsl_chooser
+		namespace color_hsv_chooser
 		{
 		//class drawer
             double get_h(int x)
@@ -22,9 +22,9 @@ namespace runa
                 return ensure_between(1.0 - static_cast<double>(y - drawer::hs_top) / drawer::hs_height, 0.0, 1.0);
             }
 
-            double get_l(int x)
+            double get_v(int x)
             {
-                return ensure_between(static_cast<double>(x - drawer::l_left) / drawer::l_width, 0.0, 1.0);
+                return ensure_between(static_cast<double>(x - drawer::v_left) / drawer::v_width, 0.0, 1.0);
             }
 
             int get_x_by_h(double h)
@@ -37,9 +37,9 @@ namespace runa
                 return drawer::hs_top + static_cast<int>((1 - s) * drawer::hs_height);
             }
 
-            int get_x_by_l(double l)
+            int get_x_by_v(double v)
             {
-                return drawer::l_left + static_cast<int>(l * drawer::l_width);
+                return drawer::v_left + static_cast<int>(v * drawer::v_width);
             }
 
             drawer::drawer(metrics_type& m)
@@ -56,9 +56,9 @@ namespace runa
                     return buttons::hs_part;
                 }
 
-                if (pt_in_rect(pos, { l_left, l_top, l_width, l_height }))
+                if (pt_in_rect(pos, { v_left, v_top, v_width, v_height }))
                 {
-                    return buttons::l_part;
+                    return buttons::v_part;
                 }
 
 				return buttons::none;
@@ -72,9 +72,9 @@ namespace runa
                     metrics_.value.h(get_h(_pos.x));
                     metrics_.value.s(get_s(_pos.y));
                 }
-                else if (_what == buttons::l_part)
+                else if (_what == buttons::v_part)
                 {
-                    metrics_.value.l(get_l(_pos.x));
+                    metrics_.value.v(get_v(_pos.x));
                 }
                 return old != metrics_.value;
             }
@@ -84,11 +84,11 @@ namespace runa
 				_m_background(graph);
 
                 _m_draw_color(graph, buttons::hs_part);
-                _m_draw_color(graph, buttons::l_part);
+                _m_draw_color(graph, buttons::v_part);
                 _m_draw_color(graph, buttons::sample_part);
 
                 _m_draw_cursor(graph, buttons::hs_part);
-                _m_draw_cursor(graph, buttons::l_part);
+                _m_draw_cursor(graph, buttons::v_part);
 
             }
 		//private:
@@ -105,19 +105,17 @@ namespace runa
                     {
                         for (int s = hs_top; s < hs_bottom; ++s)
                         {
-                            nana::color c{};
-                            c.from_hsl(get_h(h), get_s(s), 0.5/*metrics_.value.l()*/);
-                            graph.set_pixel(h, s, c);
+                            color_hsv hsv{ get_h(h), get_s(s), metrics_.value.v() };
+                            graph.set_pixel(h, s, hsv.to_color());
                         }
                     }
                 }
-                else if (what == buttons::l_part)
+                else if (what == buttons::v_part)
                 {
-                    for (int l = l_left; l < l_right; ++l)
+                    for (int v = v_left; v < v_right; ++v)
                     {
-                        nana::color c{};
-                        c.from_hsl(metrics_.value.h(), metrics_.value.s(), get_l(l));
-                        graph.line({ l, l_top }, { l, l_bottom }, c);
+                        color_hsv hsv{ metrics_.value.h(), metrics_.value.s(), get_v(v) };
+                        graph.line({ v, v_top }, { v, v_bottom }, hsv.to_color());
                     }
                 }
                 else if (what == buttons::sample_part)
@@ -126,9 +124,9 @@ namespace runa
                 }
             }
 
-            nana::color get_cursor_color(color_hsl value)
+            nana::color get_cursor_color(color_hsv value)
             {
-                return value.l() < 0.5 ? nana::colors::white : nana::colors::black;
+                return value.v() < 0.5 ? nana::colors::white : nana::colors::black;
             }
 
             void drawer::_m_draw_cursor(graph_reference graph, buttons what)
@@ -138,9 +136,9 @@ namespace runa
                     nana::rectangle r{ get_x_by_h(metrics_.value.h()) - 5, get_y_by_s(metrics_.value.s()) - 5, 10, 10 };
                     graph.round_rectangle(r, 5, 5, get_cursor_color(metrics_.value), false, {});
                 }
-                else if (what == buttons::l_part)
+                else if (what == buttons::v_part)
                 {
-                    nana::rectangle r{ get_x_by_l(metrics_.value.l()) - 5, l_top - 5, 10, 10 + l_height };
+                    nana::rectangle r{ get_x_by_v(metrics_.value.v()) - 5, v_top - 5, 10, 10 + v_height };
                     graph.round_rectangle(r, 3, 3, get_cursor_color(metrics_.value), false, {});
                 }
             }
@@ -192,9 +190,9 @@ namespace runa
                     }
                     else
                     {
-                        value.l() += static_cast<double>(_multiple) / drawer::l_width;
-                        if (value.l() > 1.0)
-                            value.l() = 1.0;
+                        value.v() += static_cast<double>(_multiple) / drawer::v_width;
+                        if (value.v() > 1.0)
+                            value.v() = 1.0;
                     }
                 }
                 else
@@ -213,9 +211,9 @@ namespace runa
                     }
                     else
                     {
-                        value.l() -= static_cast<double>(_multiple) / drawer::l_width;
-                        if (value.l() < 0)
-                            value.l() = 0;
+                        value.v() -= static_cast<double>(_multiple) / drawer::v_width;
+                        if (value.v() < 0)
+                            value.v() = 0;
                     }
                 }
                 if (metrics_.value != value)
@@ -230,8 +228,8 @@ namespace runa
             void trigger::attached(widget_reference widget, graph_reference graph)
             {
                 graph_ = &graph;
-                widget_ = dynamic_cast<runa::color_hsl_chooser*>(&widget);
-                widget.caption("runa_color_hsl_chooser");
+                widget_ = dynamic_cast<runa::color_hsv_chooser*>(&widget);
+                widget.caption("runa_color_hsv_chooser");
             }
 
             void trigger::detached()

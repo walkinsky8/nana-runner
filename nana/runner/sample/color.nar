@@ -1,6 +1,6 @@
 ﻿@form{
     id=color
-    caption="Color HSL Chooser"
+    caption="Color HSV Chooser"
     div="vert"
     @**pos={100 100}**@
     size={420 400}
@@ -12,14 +12,14 @@
         @label{ id=n caption="Color:" div="weight=60" align=right }
         @combox{ id=value caption=null editable=1 }
     }
-    @panel{ id=hsl div="weight=300 margin=[5]"
-        @label{ id=n caption="HSL:" div="weight=60" align=right }
-        @color_hsl_chooser{ id=value div="weight=310" }
+    @panel{ id=hsv div="weight=300 margin=[5]"
+        @label{ id=n caption="HSV:" div="weight=60" align=right }
+        @color_hsv_chooser{ id=value div="weight=310" }
     }
     @panel{
         @label{ id=n caption=null div="weight=60" align=right }
         @panel{ div="weight=310"
-            @label{ id=hsl_text caption=null align=left }
+            @label{ id=hsv_text caption=null align=left }
             @label{ id=rgb_text caption=null align=right }
         }
     }

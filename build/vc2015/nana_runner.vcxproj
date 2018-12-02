@@ -168,6 +168,8 @@
     <ClCompile Include="..\..\nana\runner\color_hsl_chooser.cpp" />
     <ClCompile Include="..\..\nana\runner\color_hsl.cpp" />
     <ClCompile Include="..\..\nana\runner\color_hsv.cpp" />
+    <ClCompile Include="..\..\nana\runner\color_hsv_chooser.cpp" />
+    <ClCompile Include="..\..\nana\runner\color_hsv_chooser_cfg.cpp" />
     <ClCompile Include="..\..\nana\runner\color_model.cpp" />
     <ClCompile Include="..\..\nana\runner\object.cpp" />
     <ClCompile Include="..\..\nana\runner\sample\demo_app.cpp" />
@@ -238,6 +240,8 @@
     <ClInclude Include="..\..\nana\runner\color_hsl_chooser.h" />
     <ClInclude Include="..\..\nana\runner\color_hsl.h" />
     <ClInclude Include="..\..\nana\runner\color_hsv.h" />
+    <ClInclude Include="..\..\nana\runner\color_hsv_chooser.h" />
+    <ClInclude Include="..\..\nana\runner\color_hsv_chooser_cfg.h" />
     <ClInclude Include="..\..\nana\runner\color_model.h" />
     <ClInclude Include="..\..\nana\runner\mt_vector.h" />
     <ClInclude Include="..\..\nana\runner\number.h" />

@@ -54,6 +54,11 @@ namespace runa {
         return make_rgb_255(_r * 255, _g * 255, _b * 255);
     }
 
+    inline bool pt_in_rect(const nana::point& _p, const nana::rectangle& _r)
+    {
+        return _p.x >= _r.x && _p.y >= _r.y && _p.x <= _r.right() && _p.y <= _r.bottom();
+    }
+
 }
 
 namespace nana {
