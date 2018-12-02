@@ -11,7 +11,7 @@ namespace runa
 {
 	namespace drawerbase
 	{
-		namespace color_chooser
+		namespace color_hsl_chooser
 		{
 		//class drawer
 			drawer::drawer(metrics_type& m)
@@ -204,8 +204,8 @@ namespace runa
             void trigger::attached(widget_reference widget, graph_reference graph)
             {
                 graph_ = &graph;
-                widget_ = dynamic_cast<color_widget*>(&widget);
-                widget.caption("runa_color_hsl");
+                widget_ = dynamic_cast<runa::color_hsl_chooser*>(&widget);
+                widget.caption("runa_color_hsl_chooser");
             }
 
             void trigger::detached()
@@ -326,7 +326,7 @@ namespace runa
                 
             //end class trigger
 	
-        }//end namespace color_chooser
+        }//end namespace color_hsl_chooser
 
     }//end namespace drawerbase
 

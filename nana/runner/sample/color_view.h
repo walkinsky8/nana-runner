@@ -20,7 +20,7 @@ namespace runa::sample {
 
         combox& color_;
 
-        color_chooser& color_hsl_;
+        color_hsl_chooser& color_hsl_;
 
         label& hsl_text_;
         label& rgb_text_;
@@ -33,7 +33,7 @@ namespace runa::sample {
             : super{ _cfg, _parent }
             , form_{ wnd<form>() }
             , color_{ wnd<combox>("color.value") }
-            , color_hsl_{ wnd<color_chooser>("hsl.value") }
+            , color_hsl_{ wnd<color_hsl_chooser>("hsl.value") }
             , hsl_text_{ wnd<label>("hsl_text") }
             , rgb_text_{ wnd<label>("rgb_text") }
             , ok_{ wnd<button>("cmd.OK") }

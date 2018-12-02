@@ -14,12 +14,12 @@ namespace runa
         double l_{0.5}; // 0..1
 
     public:
-        color_hsl()
+        self()
         {}
-        color_hsl(double _h, double _s, double _l)
+        self(double _h, double _s, double _l)
             : h_{ _h }, s_{ _s }, l_{ _l }
         {}
-        color_hsl(nana::color const& c);
+        self(nana::color const& c);
 
         operator nana::color() const
         {
@@ -85,11 +85,11 @@ namespace runa
             return *this;
         }
 
-        bool operator!=(const color_hsl& _v) const
+        bool operator!=(const self& _v) const
         {
             return h_ != _v.h_ || s_ != _v.s_ || l_ != _v.l_;
         }
-        bool operator==(const color_hsl& _v) const
+        bool operator==(const self& _v) const
         {
             return !operator!=(_v);
         }

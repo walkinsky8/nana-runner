@@ -19,7 +19,7 @@ namespace runa
         self(double _h, double _s, double _v)
             : h_{ _h }, s_{ _s }, v_{ _v }
         {}
-        self(color const& c);
+        self(nana::color const& c);
 
         operator nana::color() const
         {

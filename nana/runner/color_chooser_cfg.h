@@ -7,9 +7,9 @@
 
 namespace runa {
 
-    class color_chooser_cfg : public widget_cfg
+    class color_hsl_chooser_cfg : public widget_cfg
     {
-        NAR_DEFINE_WIDGET(color_chooser, widget_cfg);
+        NAR_DEFINE_WIDGET(color_hsl_chooser, widget_cfg);
 
     public:
         template<class _Stream>

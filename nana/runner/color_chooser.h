@@ -7,27 +7,26 @@
 
 namespace runa
 {
-    class color_chooser;
-    using color_widget = color_chooser;
+    class color_hsl_chooser;
 
-	struct arg_color_chooser
+	struct arg_color_hsl_chooser
 		: public nana::event_arg
 	{
 		nana::window window_handle;
 
-		arg_color_chooser(nana::window wd)
+		arg_color_hsl_chooser(nana::window wd)
 			: window_handle{ wd }
 		{}
 	};
 
 	namespace drawerbase
 	{
-		namespace color_chooser
+		namespace color_hsl_chooser
 		{
-			struct color_chooser_events
+			struct color_hsl_chooser_events
 				: public nana::general_events
 			{
-				nana::basic_event<arg_color_chooser> value_changed;
+				nana::basic_event<arg_color_hsl_chooser> value_changed;
 			};
 
             enum class buttons
@@ -127,22 +126,22 @@ namespace runa
                 void _m_emit_value_changed();
 
 			private:
-                color_widget * widget_;
+                runa::color_hsl_chooser * widget_;
 				nana::paint::graphics * graph_;
 				metrics_type metrics_;
 				drawer	drawer_;
 
             }; //end class trigger
 
-		}//end namespace color_chooser
+		}//end namespace color_hsl_chooser
 
 	}//end namespace drawerbase
 
-	class color_chooser
-        : public nana::widget_object<nana::category::widget_tag, drawerbase::color_chooser::trigger, drawerbase::color_chooser::color_chooser_events>
+	class color_hsl_chooser
+        : public nana::widget_object<nana::category::widget_tag, drawerbase::color_hsl_chooser::trigger, drawerbase::color_hsl_chooser::color_hsl_chooser_events>
 	{
-        using self_type = color_chooser;
-        using base_type = nana::widget_object<nana::category::widget_tag, drawerbase::color_chooser::trigger, drawerbase::color_chooser::color_chooser_events>;
+        using self_type = color_hsl_chooser;
+        using base_type = nana::widget_object<nana::category::widget_tag, drawerbase::color_hsl_chooser::trigger, drawerbase::color_hsl_chooser::color_hsl_chooser_events>;
         using value_type = color_hsl;
 
     public:
@@ -173,7 +172,7 @@ namespace runa
 			return this->handle();
 		}
 
-    };//end class color_chooser
+    };//end class color_hsl_chooser
 
 }//end namespace runa
 

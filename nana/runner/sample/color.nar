@@ -14,7 +14,7 @@
     }
     @panel{ id=hsl div="weight=300 margin=[5]"
         @label{ id=n caption="HSL:" div="weight=60" align=right }
-        @color_chooser{ id=value div="weight=310" }
+        @color_hsl_chooser{ id=value div="weight=310" }
     }
     @panel{
         @label{ id=n caption=null div="weight=60" align=right }
