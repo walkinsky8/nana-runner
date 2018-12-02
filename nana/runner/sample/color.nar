@@ -1,6 +1,6 @@
 ﻿@form{
     id=color
-    caption="Color"
+    caption="Color HSL Chooser"
     div="vert"
     @**pos={100 100}**@
     size={420 400}

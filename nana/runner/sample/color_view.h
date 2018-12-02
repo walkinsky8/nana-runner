@@ -62,7 +62,7 @@ namespace runa::sample {
         {
             NAR_LOG_VAR(color_);
             color_hsl_.value(color_hsl(get_color(color_.caption(), color_hsl_.value().to_color())));
-            update_color(color_hsl_.value());
+            //update_color(color_hsl_.value());
         }
 
         void on_color_selected()

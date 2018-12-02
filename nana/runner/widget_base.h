@@ -44,9 +44,14 @@ namespace runa {
     dumper& operator<<(dumper& _d, const nana::arg_mouse& _v);
     dumper& operator<<(dumper& _d, const nana::arg_wheel& _v);
 
+    inline nana::color make_rgb_255(double _r, double _g, double _b)
+    {
+        return nana::color{ static_cast<uint>(_r), static_cast<uint>(_g), static_cast<uint>(_b) };
+    }
+
     inline nana::color make_rgb(double _r, double _g, double _b)
     {
-        return nana::color{ static_cast<uint>(_r * 255), static_cast<uint>(_g * 255), static_cast<uint>(_b * 255) };
+        return make_rgb_255(_r * 255, _g * 255, _b * 255);
     }
 
 }

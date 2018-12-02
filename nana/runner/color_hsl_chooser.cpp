@@ -9,58 +9,103 @@
 
 namespace runa
 {
+    bool pt_in_rect(const nana::point& _p, const nana::rectangle& _r)
+    {
+        return _p.x >= _r.x && _p.y >= _r.y && _p.x <= _r.right() && _p.y <= _r.bottom();
+    }
+
+    template<class T>
+    T ensure_between(T val, T low, T high)
+    {
+        if (val < low)
+            val = low;
+        if (val > high)
+            val = high;
+        return val;
+    }
+
 	namespace drawerbase
 	{
 		namespace color_hsl_chooser
 		{
 		//class drawer
-			drawer::drawer(metrics_type& m)
+            double get_h(int x)
+            {
+                return ensure_between(360.0*(x - drawer::hs_left) / drawer::hs_width, 0.0, 360.0);
+            }
+
+            double get_s(int y)
+            {
+                return ensure_between(1.0 - static_cast<double>(y - drawer::hs_top) / drawer::hs_height, 0.0, 1.0);
+            }
+
+            double get_l(int x)
+            {
+                return ensure_between(static_cast<double>(x - drawer::l_left) / drawer::l_width, 0.0, 1.0);
+            }
+
+            int get_x_by_h(double h)
+            {
+                return drawer::hs_left + static_cast<int>(h / 360 * drawer::hs_width);
+            }
+
+            int get_y_by_s(double s)
+            {
+                return drawer::hs_top + static_cast<int>((1 - s) * drawer::hs_height);
+            }
+
+            int get_x_by_l(double l)
+            {
+                return drawer::l_left + static_cast<int>(l * drawer::l_width);
+            }
+
+            drawer::drawer(metrics_type& m)
 				: metrics_(m)
 			{}
 
 			buttons drawer::what(graph_reference graph, const nana::point& screen_pos)
 			{
-                const nana::size scale = { graph.width(), graph.height() };
+                //const nana::size scale = { graph.width(), graph.height() };
                 const nana::point pos = screen_pos;
 
-                if (pos.x >= hs_left && pos.y >= hs_top && pos.x < hs_right && pos.y < hs_bottom)
+                if (pt_in_rect(pos, { hs_left, hs_top, hs_width, hs_height }))
                 {
-                    metrics_.value.h(360.0*(pos.x - hs_left) / hs_width);
-                    metrics_.value.s(1 - static_cast<double>(pos.y - hs_top) / hs_height);
-                    return buttons::hs_click;
+                    return buttons::hs_part;
                 }
 
-                if (pos.x >= l_left && pos.y >= l_top && pos.x < l_right && pos.y < l_bottom)
+                if (pt_in_rect(pos, { l_left, l_top, l_width, l_height }))
                 {
-                    metrics_.value.l(static_cast<double>(pos.x - l_left) / l_width);
-                    return buttons::l_click;
+                    return buttons::l_part;
                 }
-
-                if ((pos.y < l_top || pos.y >= l_bottom) && pos.x >= l_left && pos.x < l_right)
-                    return buttons::l_scroll;
 
 				return buttons::none;
 			}
 
-			void drawer::scroll_delta_pos(graph_reference graph, int mouse_pos)
-			{
-                int pos = mouse_pos;
-                if (pos < l_left)
-                    pos = l_left;
-                if (pos > l_right)
-                    pos = l_right;
-                metrics_.value.l(static_cast<double>(pos - l_left) / l_width);
-			}
+            bool drawer::update_value(buttons _what, const nana::point& _pos)
+            {
+                const value_type old = metrics_.value;
+                if (_what == buttons::hs_part)
+                {
+                    metrics_.value.h(get_h(_pos.x));
+                    metrics_.value.s(get_s(_pos.y));
+                }
+                else if (_what == buttons::l_part)
+                {
+                    metrics_.value.l(get_l(_pos.x));
+                }
+                return old != metrics_.value;
+            }
 
 			void drawer::draw(graph_reference graph, buttons what)
 			{
 				_m_background(graph);
 
-                _m_draw_color(graph, buttons::hs_click);
-                _m_draw_color(graph, buttons::l_click);
+                _m_draw_color(graph, buttons::hs_part);
+                _m_draw_color(graph, buttons::l_part);
+                _m_draw_color(graph, buttons::sample_part);
 
-                _m_draw_click(graph, buttons::hs_click);
-                _m_draw_click(graph, buttons::l_click);
+                _m_draw_cursor(graph, buttons::hs_part);
+                _m_draw_cursor(graph, buttons::l_part);
 
             }
 		//private:
@@ -71,49 +116,43 @@ namespace runa
  
             void drawer::_m_draw_color(graph_reference graph, buttons what)
             { 
-                if (what == buttons::hs_click)
+                if (what == buttons::hs_part)
                 {
                     for (int h = hs_left; h < hs_right; ++h)
                     {
                         for (int s = hs_top; s < hs_bottom; ++s)
                         {
                             nana::color c{};
-                            c.from_hsl(360.0*(h - hs_left)/hs_width, 1 - static_cast<double>(s - hs_top) / hs_height, 0.5/*metrics_.value.l()*/);
+                            c.from_hsl(get_h(h), get_s(s), 0.5/*metrics_.value.l()*/);
                             graph.set_pixel(h, s, c);
                         }
                     }
                 }
-                else if (what == buttons::l_click)
+                else if (what == buttons::l_part)
                 {
-                    for (int l = (int)l_left; l < (int)l_right; ++l)
+                    for (int l = l_left; l < l_right; ++l)
                     {
                         nana::color c{};
-                        c.from_hsl(metrics_.value.h(), metrics_.value.s(), static_cast<double>(l-l_left) / l_width);
+                        c.from_hsl(metrics_.value.h(), metrics_.value.s(), get_l(l));
                         graph.line({ l, l_top }, { l, l_bottom }, c);
                     }
-
+                }
+                else if (what == buttons::sample_part)
+                {
                     graph.rectangle({ sample_left, sample_top, sample_width, sample_height }, true, metrics_.value);
                 }
             }
 
-            void drawer::_m_draw_click(graph_reference graph, buttons what)
+            void drawer::_m_draw_cursor(graph_reference graph, buttons what)
             {
-                if (what == buttons::hs_click)
+                if (what == buttons::hs_part)
                 {
-                    nana::rectangle r{
-                        hs_left + static_cast<int>(metrics_.value.h() / 360 * hs_width) - 5,
-                        hs_top + static_cast<int>((1 - metrics_.value.s()) * hs_height) - 5,
-                        10,
-                        10 };
+                    nana::rectangle r{ get_x_by_h(metrics_.value.h()) - 5, get_y_by_s(metrics_.value.s()) - 5, 10, 10 };
                     graph.round_rectangle(r, 5, 5, metrics_.value.to_revert_color(), false, {});
                 }
-                else if (what == buttons::l_click)
+                else if (what == buttons::l_part)
                 {
-                    nana::rectangle r{
-                        l_left + static_cast<int>(metrics_.value.l() * l_width) - 5,
-                        l_top - 5,
-                        10,
-                        10 + l_height };
+                    nana::rectangle r{ get_x_by_l(metrics_.value.l()) - 5, l_top - 5, 10, 10 + l_height };
                     graph.round_rectangle(r, 3, 3, metrics_.value.to_revert_color(), false, {});
                 }
             }
@@ -191,10 +230,9 @@ namespace runa
                             value.l() = 0;
                     }
                 }
-                value_type cmpvalue = metrics_.value;
-                metrics_.value = value;
-                if (value != cmpvalue)
+                if (metrics_.value != value)
                 {
+                    metrics_.value = value;
                     _m_emit_value_changed();
                     return true;
                 }
@@ -233,35 +271,6 @@ namespace runa
 
             void trigger::mouse_move(graph_reference graph, const ::nana::arg_mouse& arg)
             {
-                if (!metrics_.pressed)
-                    return;
-
-                bool redraw = false;
-                if (metrics_.what == buttons::l_scroll)
-                {
-                    value_type cmpvalue = metrics_.value;
-                    drawer_.scroll_delta_pos(graph, arg.pos.x);
-                    if (cmpvalue != metrics_.value)
-                        _m_emit_value_changed();
-                    redraw = true;
-                }
-                else
-                {
-                    value_type cmpvalue = metrics_.value;
-                    buttons what = drawer_.what(graph, arg.pos);
-                    if (cmpvalue != metrics_.value)
-                        _m_emit_value_changed();
-                    if (metrics_.what != what)
-                    {
-                        redraw = true;
-                        metrics_.what = what;
-                    }
-                }
-                if (redraw)
-                {
-                    drawer_.draw(graph, metrics_.what);
-                    nana::API::dev::lazy_refresh();
-                }
             }
 
             void trigger::dbl_click(graph_reference graph, const nana::arg_mouse& arg)
@@ -274,18 +283,9 @@ namespace runa
                 if (arg.left_button)
                 {
                     metrics_.pressed = true;
-                    value_type cmpvalue = metrics_.value;
                     metrics_.what = drawer_.what(graph, arg.pos);
-                    if (cmpvalue != metrics_.value)
+                    if (drawer_.update_value(metrics_.what, arg.pos))
                         _m_emit_value_changed();
-                    switch (metrics_.what)
-                    {
-                    case buttons::l_scroll:
-                        widget_->set_capture(true);
-                        break;
-                    default:
-                        break;
-                    }
                     drawer_.draw(graph, metrics_.what);
                     nana::API::dev::lazy_refresh();
                 }
@@ -297,6 +297,8 @@ namespace runa
 
                 metrics_.pressed = false;
                 metrics_.what = drawer_.what(graph, arg.pos);
+                if (drawer_.update_value(metrics_.what, arg.pos))
+                    _m_emit_value_changed();
                 drawer_.draw(graph, metrics_.what);
                 nana::API::dev::lazy_refresh();
             }

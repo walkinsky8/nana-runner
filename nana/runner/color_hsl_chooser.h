@@ -31,7 +31,7 @@ namespace runa
 
             enum class buttons
             {
-                none, hs_click, l_click, l_scroll
+                none, hs_part, l_part, sample_part
             };
 
             struct metrics_type
@@ -47,13 +47,15 @@ namespace runa
 
             class drawer
 			{
+                using value_type = metrics_type::value_type;
+
 			public:
 				using graph_reference = nana::paint::graphics&;
                 
                 constexpr static int hs_left = 0;
                 constexpr static int hs_top = 0;
-                constexpr static uint hs_width = 255;
-                constexpr static uint hs_height = 255;
+                constexpr static uint hs_width = 256;
+                constexpr static uint hs_height = 256;
                 constexpr static int hs_right = hs_left + hs_width;
                 constexpr static int hs_bottom = hs_top + hs_height;
                 constexpr static int sep = 15;
@@ -72,13 +74,13 @@ namespace runa
 
 				drawer(metrics_type& m);
                 buttons what(graph_reference, const nana::point&);
-                void scroll_delta_pos(graph_reference, int);
+                bool update_value(buttons, const nana::point&);
                 void draw(graph_reference, buttons);
 
 			private:
                 void _m_background(graph_reference);
                 void _m_draw_color(graph_reference, buttons what);
-                void _m_draw_click(graph_reference, buttons what);
+                void _m_draw_cursor(graph_reference, buttons what);
 
             private:
                 metrics_type &metrics_;

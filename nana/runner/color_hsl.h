@@ -34,7 +34,7 @@ namespace runa
         nana::color to_revert_color() const
         {
             nana::color c = to_color();
-            return nana::color{ static_cast<uint>(255 - c.r()), static_cast<uint>(255 - c.g()), static_cast<uint>(255 - c.b()) };
+            return make_rgb_255(255 - c.r(), 255 - c.g(), 255 - c.b());
         }
 
         double h() const
