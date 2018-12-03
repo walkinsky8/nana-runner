@@ -5,6 +5,8 @@
 
 #include <nana/runner/form_cfg.h>
 #include <nana/runner/combox_cfg.h>
+#include <nana/runner/color_hsl_chooser_cfg.h>
+#include <nana/runner/color_hsv_chooser_cfg.h>
 #include <nana/runner/color_rgb_chooser_cfg.h>
 #include <nana/runner/label_cfg.h>
 #include <nana/runner/button_cfg.h>
@@ -15,12 +17,15 @@ namespace runa::sample {
     {
         NAR_DEFINE_VIEW(color, view_obj);
 
+        using chooser_type = color_rgb_chooser;
+        using color_type = chooser_type::value_type;
+
     public:
         form& form_;
 
         combox& input_;
 
-        color_rgb_chooser& chooser_;
+        chooser_type& chooser_;
 
         label& output_;
 
@@ -32,7 +37,7 @@ namespace runa::sample {
             : super{ _cfg, _parent }
             , form_{ wnd<form>() }
             , input_{ wnd<combox>("input.value") }
-            , chooser_{ wnd<color_rgb_chooser>("chooser.value") }
+            , chooser_{ wnd<chooser_type>("chooser.value") }
             , output_{ wnd<label>("output.value") }
             , ok_{ wnd<button>("cmd.OK") }
             , cancel_{ wnd<button>("cmd.cancel") }
@@ -62,7 +67,7 @@ namespace runa::sample {
         void on_color_text_changed()
         {
             NAR_LOG_VAR(input_);
-            chooser_.value(color_rgb(get_color(input_.caption(), chooser_.value().to_color())));
+            chooser_.value(color_type(get_color(input_.caption(), chooser_.value().to_color())));
         }
 
         void on_chooser_value_changed()
@@ -71,7 +76,7 @@ namespace runa::sample {
             update_color(chooser_.value());
         }
 
-        void update_color(const color_rgb& _c)
+        void update_color(const color_type& _c)
         {
             nana::color c = _c.to_color();
             string s;

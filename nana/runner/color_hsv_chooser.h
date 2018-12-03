@@ -144,6 +144,8 @@ namespace runa
 	{
         using self_type = color_hsv_chooser;
         using base_type = nana::widget_object<nana::category::widget_tag, drawerbase::color_hsv_chooser::trigger, drawerbase::color_hsv_chooser::color_hsv_chooser_events>;
+
+    public:
         using value_type = color_hsv;
 
     public:
