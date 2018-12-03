@@ -18,13 +18,11 @@ namespace runa::sample {
     public:
         form& form_;
 
-        combox& color_;
+        combox& input_;
 
         color_rgb_chooser& chooser_;
 
-        //label& hsl_text_;
-        //label& hsv_text_;
-        label& rgb_text_;
+        label& output_;
 
         button& ok_;
         button& cancel_;
@@ -33,56 +31,56 @@ namespace runa::sample {
         color_view(widget_cfg& _cfg, window _parent)
             : super{ _cfg, _parent }
             , form_{ wnd<form>() }
-            , color_{ wnd<combox>("color.value") }
+            , input_{ wnd<combox>("input.value") }
             , chooser_{ wnd<color_rgb_chooser>("chooser.value") }
-            , rgb_text_{ wnd<label>("rgb_text") }
+            , output_{ wnd<label>("output.value") }
             , ok_{ wnd<button>("cmd.OK") }
             , cancel_{ wnd<button>("cmd.cancel") }
         {
-            chooser_.events().value_changed([&] { on_chooser_value_changed(); });
+            input_.events().selected([&] { on_color_selected(); });
+            input_.events().text_changed([&] { on_color_text_changed(); });
 
-            color_.events().selected([&] { on_color_selected(); });
-            color_.events().text_changed([&] { on_color_text_changed(); });
+            chooser_.events().value_changed([&] { on_chooser_value_changed(); });
 
             ok_.events().click([&] { on_ok(); });
             cancel_.events().click([&] { close(); });
 
-            color_ << chooser_.value().to_color();
-            update_color(chooser_.value());
+            input_ << output_.bgcolor();
         }
 
     private:
+        void on_ok()
+        {
+            NAR_LOG_VAR(chooser_.value());
+        }
+
+        void on_color_selected()
+        {
+            NAR_LOG_VAR(input_);
+        }
+
+        void on_color_text_changed()
+        {
+            NAR_LOG_VAR(input_);
+            chooser_.value(color_rgb(get_color(input_.caption(), chooser_.value().to_color())));
+        }
+
         void on_chooser_value_changed()
         {
             NAR_LOG_VAR(chooser_.value());
             update_color(chooser_.value());
         }
 
-        void on_color_text_changed()
-        {
-            NAR_LOG_VAR(color_);
-            chooser_.value(color_rgb(get_color(color_.caption(), chooser_.value().to_color())));
-            //update_color(color_hsl_.value());
-        }
-
-        void on_color_selected()
-        {
-            NAR_LOG_VAR(color_);
-        }
-
-        void on_ok()
-        {
-            NAR_LOG_VAR(chooser_.value());
-        }
-
         void update_color(const color_rgb& _c)
         {
-            string s;
             nana::color c = _c.to_color();
+            string s;
             s << "R=" << int(c.r() + 0.5);
             s << " G=" << int(c.g() + 0.5);
             s << " B=" << int(c.b() + 0.5);
-            rgb_text_ << s;
+            output_ << s;
+            output_.bgcolor(c);
+            output_.fgcolor(color_hsl{ c }.l() < 0.5 ? nana::colors::white : nana::colors::black);
         }
 
     };

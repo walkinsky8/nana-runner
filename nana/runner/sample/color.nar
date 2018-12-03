@@ -1,26 +1,24 @@
 ﻿@form{
     id=color
-    caption="Color HSV Chooser"
+    caption="Color RGB Chooser"
     div="vert"
     @**pos={100 100}**@
     size={420 400}
-    sizable=1
-    maximize=1
+    sizable=0
+    maximize=0
     align=center
     align_v=center
-    @panel{ id=color div="weight=25"
-        @label{ id=n caption="Color:" div="weight=60" align=right }
+    @panel{ id=input div="weight=25"
+        @label{ id=n caption="Input:" div="weight=60" align=right }
         @combox{ id=value caption=null editable=1 }
     }
     @panel{ id=chooser div="weight=300 margin=[5]"
         @label{ id=n caption="RGB:" div="weight=60" align=right }
         @color_rgb_chooser{ id=value div="weight=310" }
     }
-    @panel{
-        @label{ id=n caption=null div="weight=60" align=right }
-        @panel{ div="weight=310"
-            @label{ id=rgb_text caption=null align=left }
-        }
+    @panel{ id=output
+        @label{ id=n caption="Output:" div="weight=60" align=right }
+        @label{ id=value caption=null div="weight=310" bgcolor=green align=left }
     }
     @panel{ }
     @panel { id=cmd div="weight=25" fgcolor=black typeface={bold}
