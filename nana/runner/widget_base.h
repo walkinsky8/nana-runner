@@ -20,8 +20,6 @@ namespace runa {
     using widget = nana::widget;
 	using wnd_ptr = ptr<widget>;
 
-    using color_rgb = nana::color;
-
     color get_color(const string& _s, color _default = {});
 
 	font make_font(const string& _name, double _size, bool _bold, bool _italic, bool _underline, bool _strikeout);

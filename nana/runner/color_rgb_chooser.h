@@ -1,42 +1,42 @@
-// Created by walkinsky(lyh6188@hotmail.com), 2018/12/02
+// Created by walkinsky(lyh6188@hotmail.com), 2018/12/03
 #pragma once
 
 #include <nana/gui/widgets/widget.hpp>
 
-#include <nana/runner/color_hsv.h>
+#include <nana/runner/color_rgb.h>
 
 namespace runa
 {
-    class color_hsv_chooser;
+    class color_rgb_chooser;
 
-	struct arg_color_hsv_chooser
+	struct arg_color_rgb_chooser
 		: public nana::event_arg
 	{
 		nana::window window_handle;
 
-		arg_color_hsv_chooser(nana::window wd)
+		arg_color_rgb_chooser(nana::window wd)
 			: window_handle{ wd }
 		{}
 	};
 
 	namespace drawerbase
 	{
-		namespace color_hsv_chooser
+		namespace color_rgb_chooser
 		{
-			struct color_hsv_chooser_events
+			struct color_rgb_chooser_events
 				: public nana::general_events
 			{
-				nana::basic_event<arg_color_hsv_chooser> value_changed;
+				nana::basic_event<arg_color_rgb_chooser> value_changed;
 			};
 
             enum class buttons
             {
-                none, hs_part, v_part, sample_part
+                none, rg_part, b_part, sample_part
             };
 
             struct metrics_type
             {
-                using value_type = color_hsv;
+                using value_type = color_rgb;
                 value_type value{};
 
                 buttons what{ buttons::none};
@@ -52,25 +52,25 @@ namespace runa
 			public:
 				using graph_reference = nana::paint::graphics&;
                 
-                constexpr static int hs_left = 0;
-                constexpr static int hs_top = 0;
-                constexpr static uint hs_width = 256;
-                constexpr static uint hs_height = 256;
-                constexpr static int hs_right = hs_left + hs_width;
-                constexpr static int hs_bottom = hs_top + hs_height;
+                constexpr static int rg_left = 0;
+                constexpr static int rg_top = 0;
+                constexpr static uint rg_width = 256;
+                constexpr static uint rg_height = 256;
+                constexpr static int rg_right = rg_left + rg_width;
+                constexpr static int rg_bottom = rg_top + rg_height;
                 constexpr static int sep = 15;
-                constexpr static int sample_left = hs_right + sep;
-                constexpr static int sample_top = hs_top;
+                constexpr static int sample_left = rg_right + sep;
+                constexpr static int sample_top = rg_top;
                 constexpr static uint sample_width = 40;
-                constexpr static uint sample_height = hs_height;
+                constexpr static uint sample_height = rg_height;
                 constexpr static int sample_right = sample_left + sample_width;
                 constexpr static int sample_bottom = sample_top + sample_height;
-                constexpr static int v_left = hs_left;
-                constexpr static int v_top = hs_bottom + sep;
-                constexpr static uint v_width = hs_width + sep + sample_width;
-                constexpr static uint v_height = 15;
-                constexpr static int v_right = v_left + v_width;
-                constexpr static int v_bottom = v_top + v_height;
+                constexpr static int b_left = rg_left;
+                constexpr static int b_top = rg_bottom + sep;
+                constexpr static uint b_width = rg_width + sep + sample_width;
+                constexpr static uint b_height = 15;
+                constexpr static int b_right = b_left + b_width;
+                constexpr static int b_bottom = b_top + b_height;
 
 				drawer(metrics_type& m);
                 buttons what(graph_reference, const nana::point&);
@@ -128,23 +128,23 @@ namespace runa
                 void _m_emit_value_changed();
 
 			private:
-                runa::color_hsv_chooser * widget_;
+                runa::color_rgb_chooser * widget_;
 				nana::paint::graphics * graph_;
 				metrics_type metrics_;
 				drawer	drawer_;
 
             }; //end class trigger
 
-		}//end namespace color_hsv_chooser
+		}//end namespace color_rgb_chooser
 
 	}//end namespace drawerbase
 
-	class color_hsv_chooser
-        : public nana::widget_object<nana::category::widget_tag, drawerbase::color_hsv_chooser::trigger, drawerbase::color_hsv_chooser::color_hsv_chooser_events>
+	class color_rgb_chooser
+        : public nana::widget_object<nana::category::widget_tag, drawerbase::color_rgb_chooser::trigger, drawerbase::color_rgb_chooser::color_rgb_chooser_events>
 	{
-        using self_type = color_hsv_chooser;
-        using base_type = nana::widget_object<nana::category::widget_tag, drawerbase::color_hsv_chooser::trigger, drawerbase::color_hsv_chooser::color_hsv_chooser_events>;
-        using value_type = color_hsv;
+        using self_type = color_rgb_chooser;
+        using base_type = nana::widget_object<nana::category::widget_tag, drawerbase::color_rgb_chooser::trigger, drawerbase::color_rgb_chooser::color_rgb_chooser_events>;
+        using value_type = color_rgb;
 
     public:
         self_type()
@@ -174,7 +174,7 @@ namespace runa
 			return this->handle();
 		}
 
-    };//end class color_hsv_chooser
+    };//end class color_rgb_chooser
 
 }//end namespace runa
 

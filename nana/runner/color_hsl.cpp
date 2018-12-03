@@ -58,6 +58,8 @@ namespace runa
     
     void operator>>(string& _is, color_hsl& _v)
     {
+        nana::color c{ _is };
+        _v = c;
     }
 
 }//end namespace runa

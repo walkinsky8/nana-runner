@@ -12,15 +12,14 @@
         @label{ id=n caption="Color:" div="weight=60" align=right }
         @combox{ id=value caption=null editable=1 }
     }
-    @panel{ id=hsv div="weight=300 margin=[5]"
-        @label{ id=n caption="HSV:" div="weight=60" align=right }
-        @color_hsv_chooser{ id=value div="weight=310" }
+    @panel{ id=chooser div="weight=300 margin=[5]"
+        @label{ id=n caption="RGB:" div="weight=60" align=right }
+        @color_rgb_chooser{ id=value div="weight=310" }
     }
     @panel{
         @label{ id=n caption=null div="weight=60" align=right }
         @panel{ div="weight=310"
-            @label{ id=hsv_text caption=null align=left }
-            @label{ id=rgb_text caption=null align=right }
+            @label{ id=rgb_text caption=null align=left }
         }
     }
     @panel{ }
