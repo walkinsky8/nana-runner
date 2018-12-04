@@ -58,7 +58,7 @@ namespace runa
                 constexpr static uint rg_height = 256;
                 constexpr static int rg_right = rg_left + rg_width;
                 constexpr static int rg_bottom = rg_top + rg_height;
-                constexpr static int sep = 15;
+                constexpr static int sep = 10;
                 constexpr static int sample_left = rg_right + sep;
                 constexpr static int sample_top = rg_top;
                 constexpr static uint sample_width = 40;
