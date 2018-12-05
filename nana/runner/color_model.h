@@ -7,7 +7,7 @@
 
 namespace runa {
 
-    class color_model : public model_obj
+    class color_model : public model_obj, public model_proxy_base<color_model>
     {
         NAR_DEFINE_MODEL(color, model_obj);
 
@@ -26,8 +26,17 @@ namespace runa {
         self(const color& _v);
         self(const string& _v);
 
-        operator color() const;
-        operator string() const;
+        color to_color() const;
+        string to_string() const;
+
+        operator color() const
+        {
+            return to_color();
+        }
+        operator string() const
+        {
+            return to_string();
+        }
 
     };
 

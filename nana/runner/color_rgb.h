@@ -31,6 +31,7 @@ namespace runa
         self(nana::color const& _c)
             : r_{ static_cast<value_type>(_c.r()) }, g_{ static_cast<value_type>(_c.g()) }, b_{ static_cast<value_type>(_c.b()) }
         {}
+        self(const string& _s);
 
         operator nana::color() const
         {
@@ -46,6 +47,8 @@ namespace runa
         {
             return self{ 255 - r_, 255 - g_, 255 - b_ }.to_color();
         }
+
+        string str() const;
 
         value_type r() const
         {
@@ -106,8 +109,15 @@ namespace runa
 
     };
 
-    std::ostream& operator<<(std::ostream& _os, const color_rgb& _v);
-    void operator>>(string& _is, color_rgb& _v);
+    inline std::ostream& operator<<(std::ostream& _os, const color_rgb& _v)
+    {
+        return _os << _v.str();
+    }
+
+    inline void operator>>(const string& _is, color_rgb& _v)
+    {
+        _v = { _is };
+    }
 
 }//end namespace runa
 

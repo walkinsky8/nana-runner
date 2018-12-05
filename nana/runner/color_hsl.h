@@ -20,6 +20,7 @@ namespace runa
             : h_{ _h }, s_{ _s }, l_{ _l }
         {}
         self(nana::color const& c);
+        self(string const& s);
 
         operator nana::color() const
         {
@@ -36,6 +37,8 @@ namespace runa
             nana::color c = to_color();
             return make_rgb_255(255 - c.r(), 255 - c.g(), 255 - c.b());
         }
+
+        string str() const;
 
         double h() const
         {
@@ -96,8 +99,15 @@ namespace runa
 
     };
 
-    std::ostream& operator<<(std::ostream& _os, const color_hsl& _v);
-    void operator>>(string& _is, color_hsl& _v);
+    inline std::ostream& operator<<(std::ostream& _os, const color_hsl& _v)
+    {
+        return _os << _v.str();
+    }
+
+    inline void operator>>(const string& _is, color_hsl& _v)
+    {
+        _v = { _is };
+    }
 
 }//end namespace runa
 

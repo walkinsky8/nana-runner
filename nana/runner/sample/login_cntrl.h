@@ -23,9 +23,9 @@ namespace runa::sample {
         login_cntrl();
         ~login_cntrl();
 
-        void open(callback _on_login_success) override;
+        void open(callback _on_login_success);
 
-        void close() override;
+        void close();
 
     private:
         void on_login(const login_model& _model);

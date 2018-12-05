@@ -5,6 +5,8 @@
 
 #include <nana/runner/sample/editor_setup_model.h>
 
+#include <nana/runner/color_cntrl.h>
+
 namespace runa::sample {
 
     class editor_setup_view_impl: public editor_setup_view
@@ -17,6 +19,8 @@ namespace runa::sample {
 
         callback fn_update_{};
 
+        color_cntrl color_setup_;
+
     public:
         self(widget_cfg& _cfg, window _parent)
             : super{ _cfg, _parent }
@@ -28,6 +32,8 @@ namespace runa::sample {
 
     private:
         void init();
+
+        void on_color_setup(combox& _c);
 
         void init_model();
 

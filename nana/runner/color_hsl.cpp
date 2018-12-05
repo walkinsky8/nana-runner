@@ -47,19 +47,19 @@ namespace runa
         }
     }
 
-    std::ostream& operator<<(std::ostream& _os, const color_hsl& _v)
+    color_hsl::color_hsl(const string& s)
     {
-        _os << "hsl(" << int(_v.h() + 0.5);
-        _os << ", " << int((_v.s() + 0.005) * 100) << "%";
-        _os << ", " << int((_v.l() + 0.005) * 100) << "%";
-        _os << ")";
-        return _os;
+        *this = get_color(s);
     }
-    
-    void operator>>(string& _is, color_hsl& _v)
+
+    string color_hsl::str() const
     {
-        nana::color c{ _is };
-        _v = c;
+        std::ostringstream oss;
+        oss << "hsl(" << int(h() + 0.5);
+        oss << ", " << int((s() + 0.005) * 100) << "%";
+        oss << ", " << int((l() + 0.005) * 100) << "%";
+        oss << ")";
+        return oss.str();
     }
 
 }//end namespace runa

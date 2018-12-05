@@ -24,11 +24,21 @@ void editor_setup_view_impl::init()
     on_text_changed(&bgcolor_, &model_().colors_().bg_(), fn_update_);
     on_text_changed(&fgcolor_, &model_().colors_().fg_(), fn_update_);
 
+    bgcolor_setup_.events().click([&] {on_color_setup(bgcolor_); });
+    fgcolor_setup_.events().click([&] {on_color_setup(fgcolor_); });
+
     apply_.events().click([&] {
         save_widget(target());
     });
     cancel_.events().click([&] {
         close();
+    });
+}
+
+void editor_setup_view_impl::on_color_setup(combox& _c)
+{
+    color_setup_.open(_c.caption(), [&_c](const color_model& _model) {
+        _c << _model.to_color();
     });
 }
 

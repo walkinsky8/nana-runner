@@ -70,13 +70,14 @@ namespace runa
         return {};
     }
 
-    std::ostream& operator<<(std::ostream& _os, const color_hsv& _v)
+    string color_hsv::str() const
     {
-        _os << "hsv(" << int(_v.h() + 0.5);
-        _os << ", " << int((_v.s() + 0.005) * 100) << "%";
-        _os << ", " << int((_v.v() + 0.005) * 100) << "%";
-        _os << ")";
-        return _os;
+        std::ostringstream oss;
+        oss << "hsv(" << int(h() + 0.5);
+        oss << ", " << int((s() + 0.005) * 100) << "%";
+        oss << ", " << int((v() + 0.005) * 100) << "%";
+        oss << ")";
+        return oss.str();
     }
 
     std::string read_number(std::string& str, std::size_t& pos)
@@ -112,213 +113,205 @@ namespace runa
         return{};
     }
 
-    namespace hsv {
+    color_hsv::color_hsv(const string& _s)
+    {
+        string css_color = _s;
 
-        void operator>>(string& css_color, nana::color& _c)
+        const char * excpt_what = "color: invalid hsv format";
+
+        auto pos = css_color.find_first_not_of(' ');
+        if (pos == css_color.npos)
+            throw std::invalid_argument(excpt_what);
+
+        if ('#' == css_color[pos])
         {
-            const char * excpt_what = "color: invalid hsv format";
-
-            auto pos = css_color.find_first_not_of(' ');
-            if (pos == css_color.npos)
+            if (css_color.size() < pos + 4)
                 throw std::invalid_argument(excpt_what);
 
-            if ('#' == css_color[pos])
-            {
-                if (css_color.size() < pos + 4)
-                    throw std::invalid_argument(excpt_what);
-
-                auto endpos = css_color.find_first_not_of("0123456789abcdefABCDEF", pos + 1);
-                if (endpos == css_color.npos)
-                    endpos = static_cast<decltype(endpos)>(css_color.size());
-
-                if ((endpos - pos != 4) && (endpos - pos != 7))
-                    throw std::invalid_argument(excpt_what);
-
-                auto n = std::stoi(css_color.substr(pos + 1, endpos - pos - 1), nullptr, 16);
-
-                uint r, g, b;
-                if (endpos - pos == 4)
-                {
-                    r = ((0xF00 & n) >> 4) | ((0xF00 & n) >> 8);
-                    g = (0xF0 & n) | ((0xF0 & n) >> 4);
-                    b = (0xF & n) | ((0xF & n) << 4);
-                }
-                else
-                {
-                    r = (0xFF0000 & n) >> 16;
-                    g = (0xFF00 & n) >> 8;
-                    b = (0xFF & n);
-                }
-
-                _c = { r,g,b };
-                return;
-            }
-
-            //std::tolower is not allowed because of concept requirements
-            std::transform(css_color.begin(), css_color.end(), css_color.begin(), [](char ch) {
-                if ('A' <= ch && ch <= 'Z')
-                    return static_cast<char>(ch - ('A' - 'a'));
-                return ch;
-            });
-            auto endpos = css_color.find(' ', pos + 1);
+            auto endpos = css_color.find_first_not_of("0123456789abcdefABCDEF", pos + 1);
             if (endpos == css_color.npos)
-                endpos = css_color.size();
+                endpos = static_cast<decltype(endpos)>(css_color.size());
 
-            if ((endpos - pos == 11) && (css_color.substr(pos, 11) == "transparent"))
-            {
-                _c = {};
-                return;
-            }
-
-            auto type_end = css_color.find_first_of(" (", pos + 1);
-
-            if (type_end == css_color.npos || ((type_end - pos != 3) && (type_end - pos != 4)))	//rgb/hsl = 3, rgba/hsla = 4
+            if ((endpos - pos != 4) && (endpos - pos != 7))
                 throw std::invalid_argument(excpt_what);
 
-            bool has_alpha = false;
-            if (type_end - pos == 4) //maybe rgba/hsla
+            auto n = std::stoi(css_color.substr(pos + 1, endpos - pos - 1), nullptr, 16);
+
+            uint r, g, b;
+            if (endpos - pos == 4)
             {
-                if (css_color[pos + 3] != 'a')
-                    throw std::invalid_argument(excpt_what);
-                has_alpha = true;
-            }
-
-            auto type_name = css_color.substr(pos, 3);
-            pos = css_color.find_first_not_of(' ', type_end);
-            if (pos == css_color.npos || css_color[pos] != '(')
-                throw std::invalid_argument(excpt_what);
-
-            auto str = read_number(css_color, ++pos);
-            if (str.empty())
-                throw std::invalid_argument(excpt_what);
-
-            if ("rgb" == type_name)
-            {
-                std::vector<std::string> rgb;
-
-                rgb.emplace_back(std::move(str));
-                const bool is_real = (rgb.back().back() == '%');
-
-                for (int i = 0; i < 2; ++i)
-                {
-                    pos = css_color.find_first_not_of(' ', pos);
-                    if (pos == css_color.npos || css_color[pos] != ',')
-                        throw std::invalid_argument(excpt_what);
-
-                    str = read_number(css_color, ++pos);
-                    if (str.empty())
-                        throw std::invalid_argument(excpt_what);
-
-                    rgb.emplace_back(std::move(str));
-                    if (rgb.size() == 3)
-                        break;
-                }
-
-                if (rgb.size() != 3)
-                    throw std::invalid_argument(excpt_what);
-
-                double r, g, b;
-                if (is_real)
-                {
-                    auto pr = std::stod(rgb[0].substr(0, rgb[0].size() - 1));
-                    r = (pr > 100 ? 255.0 : 2.55 * pr);
-
-                    pr = std::stod(rgb[1].substr(0, rgb[1].size() - 1));
-                    g = (pr > 100 ? 255.0 : 2.55 * pr);
-
-                    pr = std::stod(rgb[2].substr(0, rgb[2].size() - 1));
-                    b = (pr > 100 ? 255.0 : 2.55 * pr);
-                }
-                else
-                {
-                    r = std::stod(rgb[0]);
-                    if (r > 255.0)	r = 255;
-
-                    g = std::stod(rgb[1]);
-                    if (g > 255.0)	g = 255;
-
-                    b = std::stod(rgb[2]);
-                    if (b > 255.0)	b = 255;
-                }
-                _c = color_rgb{ r, g, b };
-            }
-            else if ("hsl" == type_name)
-            {
-                if (str.back() == '%')
-                    throw std::invalid_argument(excpt_what);
-
-                auto h = std::stod(str);
-
-                pos = css_color.find_first_not_of(' ', pos);
-                if (pos == css_color.npos || css_color[pos] != ',')
-                    throw std::invalid_argument(excpt_what);
-
-                str = read_number(css_color, ++pos);
-                if (str.empty() || str.back() != '%')
-                    throw std::invalid_argument(excpt_what);
-
-                auto s = std::stod(str.substr(0, str.size() - 1));
-
-                pos = css_color.find_first_not_of(' ', pos);
-                if (pos == css_color.npos || css_color[pos] != ',')
-                    throw std::invalid_argument(excpt_what);
-
-                str = read_number(css_color, ++pos);
-                if (str.empty() || str.back() != '%')
-                    throw std::invalid_argument(excpt_what);
-
-                auto l = std::stod(str.substr(0, str.size() - 1));
-
-                _c = color_hsl{ h, s / 100, l / 100 };
-            }
-            else if ("hsv" == type_name)
-            {
-                if (str.back() == '%')
-                    throw std::invalid_argument(excpt_what);
-
-                auto h = std::stod(str);
-
-                pos = css_color.find_first_not_of(' ', pos);
-                if (pos == css_color.npos || css_color[pos] != ',')
-                    throw std::invalid_argument(excpt_what);
-
-                str = read_number(css_color, ++pos);
-                if (str.empty() || str.back() != '%')
-                    throw std::invalid_argument(excpt_what);
-
-                auto s = std::stod(str.substr(0, str.size() - 1));
-
-                pos = css_color.find_first_not_of(' ', pos);
-                if (pos == css_color.npos || css_color[pos] != ',')
-                    throw std::invalid_argument(excpt_what);
-
-                str = read_number(css_color, ++pos);
-                if (str.empty() || str.back() != '%')
-                    throw std::invalid_argument(excpt_what);
-
-                auto v = std::stod(str.substr(0, str.size() - 1));
-
-                _c = color_hsv{ h, s / 100, v / 100 };
+                r = ((0xF00 & n) >> 4) | ((0xF00 & n) >> 8);
+                g = (0xF0 & n) | ((0xF0 & n) >> 4);
+                b = (0xF & n) | ((0xF & n) << 4);
             }
             else
-                throw std::invalid_argument(excpt_what);	//invalid color type
-
-            if (has_alpha)
             {
-                str = read_number(css_color, ++pos);
-                if (str.empty() || str.back() == '%')
-                    throw std::invalid_argument(excpt_what); //invalid alpha value
-
-                _c.alpha(std::stod(str));
+                r = (0xFF0000 & n) >> 16;
+                g = (0xFF00 & n) >> 8;
+                b = (0xFF & n);
             }
-        }
-    }
 
-    void operator>>(string& css_color, color_hsv& _v)
-    {
-        nana::color c;
-        hsv::operator>>(css_color, c);
-        _v = c;
+            *this = color{ r,g,b };
+            return;
+        }
+
+        //std::tolower is not allowed because of concept requirements
+        std::transform(css_color.begin(), css_color.end(), css_color.begin(), [](char ch) {
+            if ('A' <= ch && ch <= 'Z')
+                return static_cast<char>(ch - ('A' - 'a'));
+            return ch;
+        });
+        auto endpos = css_color.find(' ', pos + 1);
+        if (endpos == css_color.npos)
+            endpos = css_color.size();
+
+        if ((endpos - pos == 11) && (css_color.substr(pos, 11) == "transparent"))
+        {
+            *this = color{};
+            return;
+        }
+
+        auto type_end = css_color.find_first_of(" (", pos + 1);
+
+        if (type_end == css_color.npos || ((type_end - pos != 3) && (type_end - pos != 4)))	//rgb/hsl = 3, rgba/hsla = 4
+            throw std::invalid_argument(excpt_what);
+
+        bool has_alpha = false;
+        if (type_end - pos == 4) //maybe rgba/hsla
+        {
+            if (css_color[pos + 3] != 'a')
+                throw std::invalid_argument(excpt_what);
+            has_alpha = true;
+        }
+
+        auto type_name = css_color.substr(pos, 3);
+        pos = css_color.find_first_not_of(' ', type_end);
+        if (pos == css_color.npos || css_color[pos] != '(')
+            throw std::invalid_argument(excpt_what);
+
+        auto str = read_number(css_color, ++pos);
+        if (str.empty())
+            throw std::invalid_argument(excpt_what);
+
+        if ("rgb" == type_name)
+        {
+            std::vector<std::string> rgb;
+
+            rgb.emplace_back(std::move(str));
+            const bool is_real = (rgb.back().back() == '%');
+
+            for (int i = 0; i < 2; ++i)
+            {
+                pos = css_color.find_first_not_of(' ', pos);
+                if (pos == css_color.npos || css_color[pos] != ',')
+                    throw std::invalid_argument(excpt_what);
+
+                str = read_number(css_color, ++pos);
+                if (str.empty())
+                    throw std::invalid_argument(excpt_what);
+
+                rgb.emplace_back(std::move(str));
+                if (rgb.size() == 3)
+                    break;
+            }
+
+            if (rgb.size() != 3)
+                throw std::invalid_argument(excpt_what);
+
+            double r, g, b;
+            if (is_real)
+            {
+                auto pr = std::stod(rgb[0].substr(0, rgb[0].size() - 1));
+                r = (pr > 100 ? 255.0 : 2.55 * pr);
+
+                pr = std::stod(rgb[1].substr(0, rgb[1].size() - 1));
+                g = (pr > 100 ? 255.0 : 2.55 * pr);
+
+                pr = std::stod(rgb[2].substr(0, rgb[2].size() - 1));
+                b = (pr > 100 ? 255.0 : 2.55 * pr);
+            }
+            else
+            {
+                r = std::stod(rgb[0]);
+                if (r > 255.0)	r = 255;
+
+                g = std::stod(rgb[1]);
+                if (g > 255.0)	g = 255;
+
+                b = std::stod(rgb[2]);
+                if (b > 255.0)	b = 255;
+            }
+            *this = (color)color_rgb{ r, g, b };
+        }
+        else if ("hsl" == type_name)
+        {
+            if (str.back() == '%')
+                throw std::invalid_argument(excpt_what);
+
+            auto h = std::stod(str);
+
+            pos = css_color.find_first_not_of(' ', pos);
+            if (pos == css_color.npos || css_color[pos] != ',')
+                throw std::invalid_argument(excpt_what);
+
+            str = read_number(css_color, ++pos);
+            if (str.empty() || str.back() != '%')
+                throw std::invalid_argument(excpt_what);
+
+            auto s = std::stod(str.substr(0, str.size() - 1));
+
+            pos = css_color.find_first_not_of(' ', pos);
+            if (pos == css_color.npos || css_color[pos] != ',')
+                throw std::invalid_argument(excpt_what);
+
+            str = read_number(css_color, ++pos);
+            if (str.empty() || str.back() != '%')
+                throw std::invalid_argument(excpt_what);
+
+            auto l = std::stod(str.substr(0, str.size() - 1));
+
+            *this = (color)color_hsl{ h, s / 100, l / 100 };
+        }
+        else if ("hsv" == type_name)
+        {
+            if (str.back() == '%')
+                throw std::invalid_argument(excpt_what);
+
+            auto h = std::stod(str);
+
+            pos = css_color.find_first_not_of(' ', pos);
+            if (pos == css_color.npos || css_color[pos] != ',')
+                throw std::invalid_argument(excpt_what);
+
+            str = read_number(css_color, ++pos);
+            if (str.empty() || str.back() != '%')
+                throw std::invalid_argument(excpt_what);
+
+            auto s = std::stod(str.substr(0, str.size() - 1));
+
+            pos = css_color.find_first_not_of(' ', pos);
+            if (pos == css_color.npos || css_color[pos] != ',')
+                throw std::invalid_argument(excpt_what);
+
+            str = read_number(css_color, ++pos);
+            if (str.empty() || str.back() != '%')
+                throw std::invalid_argument(excpt_what);
+
+            auto v = std::stod(str.substr(0, str.size() - 1));
+
+            *this = color_hsv{ h, s / 100, v / 100 };
+        }
+        else
+            throw std::invalid_argument(excpt_what);	//invalid color type
+
+        if (has_alpha)
+        {
+            str = read_number(css_color, ++pos);
+            if (str.empty() || str.back() == '%')
+                throw std::invalid_argument(excpt_what); //invalid alpha value
+
+            *this = ((color)*this).alpha(std::stod(str));
+        }
     }
 
 }//end namespace runa

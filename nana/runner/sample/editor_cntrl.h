@@ -16,9 +16,9 @@ namespace runa::sample {
     public:
         editor_cntrl();
 
-        void open(callback _on_complete) override;
+        void open(callback _on_complete);
 
-        void close() override;
+        void close();
 
     };
 

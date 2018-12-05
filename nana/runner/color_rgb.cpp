@@ -7,19 +7,19 @@
 
 namespace runa
 {
-    std::ostream& operator<<(std::ostream& _os, const color_rgb& _v)
+    color_rgb::color_rgb(const string& _is)
     {
-        _os << "rgb(" << _v.r();
-        _os << ", " << _v.g();
-        _os << ", " << _v.b();
-        _os << ")";
-        return _os;
+        *this = get_color(_is);
     }
-    
-    void operator>>(string& _is, color_rgb& _v)
+
+    string color_rgb::str() const
     {
-        nana::color c{ _is };
-        _v = c;
+        std::ostringstream oss;
+        oss << "rgb(" << r();
+        oss << ", " << g();
+        oss << ", " << b();
+        oss << ")";
+        return oss.str();
     }
 
 }//end namespace runa

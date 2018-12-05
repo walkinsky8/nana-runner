@@ -37,11 +37,13 @@
     }
     @panel{ id=bgcolor div="weight=20"
         @label{ id=n caption="Bgcolor:" div="weight=20%" align=right }
-        @combox{ id=value caption=null editable=1 }
+        @combox{ id=value caption=null div="weight=70%" editable=1 }
+        @button{ id=setup caption='...' div="weight=10%" }
     }
     @panel{ id=fgcolor div="weight=20"
         @label{ id=n caption="Fgcolor:" div="weight=20%" align=right }
-        @combox{ id=value caption=null editable=1 }
+        @combox{ id=value caption=null div="weight=70%" editable=1 }
+        @button{ id=setup caption='...' div="weight=10%" }
     }
     @panel{ id=sample
         @label{ id=n caption="Sample:" div="weight=20%" align=right }

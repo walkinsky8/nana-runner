@@ -164,6 +164,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\nana\runner\app_base.cpp" />
+    <ClCompile Include="..\..\nana\runner\color_cntrl.cpp" />
     <ClCompile Include="..\..\nana\runner\color_hsl_chooser_cfg.cpp" />
     <ClCompile Include="..\..\nana\runner\color_hsl_chooser.cpp" />
     <ClCompile Include="..\..\nana\runner\color_hsl.cpp" />
@@ -174,6 +175,7 @@
     <ClCompile Include="..\..\nana\runner\color_rgb.cpp" />
     <ClCompile Include="..\..\nana\runner\color_rgb_chooser.cpp" />
     <ClCompile Include="..\..\nana\runner\color_rgb_chooser_cfg.cpp" />
+    <ClCompile Include="..\..\nana\runner\color_view_impl.cpp" />
     <ClCompile Include="..\..\nana\runner\object.cpp" />
     <ClCompile Include="..\..\nana\runner\sample\demo_app.cpp" />
     <ClCompile Include="..\..\nana\runner\sample\demo_cntrl.cpp" />
@@ -239,6 +241,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\nana\runner\app_base.h" />
+    <ClInclude Include="..\..\nana\runner\color_cntrl.h" />
     <ClInclude Include="..\..\nana\runner\color_hsl_chooser_cfg.h" />
     <ClInclude Include="..\..\nana\runner\color_hsl_chooser.h" />
     <ClInclude Include="..\..\nana\runner\color_hsl.h" />
@@ -249,6 +252,8 @@
     <ClInclude Include="..\..\nana\runner\color_rgb.h" />
     <ClInclude Include="..\..\nana\runner\color_rgb_chooser.h" />
     <ClInclude Include="..\..\nana\runner\color_rgb_chooser_cfg.h" />
+    <ClInclude Include="..\..\nana\runner\color_view.h" />
+    <ClInclude Include="..\..\nana\runner\color_view_impl.h" />
     <ClInclude Include="..\..\nana\runner\mt_vector.h" />
     <ClInclude Include="..\..\nana\runner\number.h" />
     <ClInclude Include="..\..\nana\runner\sample\demo_app.h" />
@@ -302,7 +307,6 @@
     <ClInclude Include="..\..\nana\runner\parser.h" />
     <ClInclude Include="..\..\nana\runner\picture_cfg.h" />
     <ClInclude Include="..\..\nana\runner\progress_cfg.h" />
-    <ClInclude Include="..\..\nana\runner\sample\color_view.h" />
     <ClInclude Include="..\..\nana\runner\sample\demo_view.h" />
     <ClInclude Include="..\..\nana\runner\sample\editor_app.h" />
     <ClInclude Include="..\..\nana\runner\sample\editor_cntrl.h" />
@@ -335,7 +339,7 @@
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\nana\runner\sample\color.nar" />
+    <None Include="..\..\nana\runner\color.nar" />
     <None Include="..\..\nana\runner\sample\demo.nar" />
     <None Include="..\..\nana\runner\sample\dummy.nar" />
     <None Include="..\..\nana\runner\sample\editor.nar" />

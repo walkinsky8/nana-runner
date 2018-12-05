@@ -26,24 +26,29 @@ namespace runa {
     };
 
     template<class _Model>
-    struct model_proxy
+    struct model_proxy_base
+    {
+        using on_result = std::function<void(const _Model&)>;
+    };
+
+    template<class _Model>
+    struct model_proxy : public model_proxy_base<_Model>
     {
         _Model data_;
 
-        using _Event = std::function<void(const _Model&)>;
-        _Event event_;
+        on_result on_result_;
 
     public:
         model_proxy() = default;
-        model_proxy(const _Model& _data, _Event _event)
-            : data_{ _data }, event_{ _event }
+        model_proxy(const _Model& _data, on_result _on_result)
+            : data_{ _data }, on_result_{ _on_result }
         {
         }
 
         void operator()() const
         {
-            if (event_)
-                event_(data_);
+            if (on_result_)
+                on_result_(data_);
         }
 
     };

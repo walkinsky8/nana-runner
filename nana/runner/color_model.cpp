@@ -15,12 +15,12 @@ runa::color_model::color_model(const color& _v)
     value_() << _v;
 }
 
-runa::color_model::operator runa::string() const
+runa::string runa::color_model::to_string() const
 {
     return value_();
 }
 
-runa::color_model::operator runa::color() const
+runa::color runa::color_model::to_color() const
 {
     return get_color(value_());
 }

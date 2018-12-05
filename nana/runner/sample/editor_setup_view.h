@@ -29,7 +29,9 @@ namespace runa::sample {
         checkbox& underline_;
 
         combox& bgcolor_;
+        button& bgcolor_setup_;
         combox& fgcolor_;
+        button& fgcolor_setup_;
 
         textbox& sample_;
 
@@ -48,7 +50,9 @@ namespace runa::sample {
             , strikeout_{ wnd<checkbox>("strikeout.value") }
             , underline_{ wnd<checkbox>("underline.value") }
             , bgcolor_{wnd<combox>("bgcolor.value")}
+            , bgcolor_setup_{ wnd<button>("bgcolor.setup") }
             , fgcolor_{ wnd<combox>("fgcolor.value") }
+            , fgcolor_setup_{ wnd<button>("fgcolor.setup") }
             , sample_{ wnd<textbox>("sample.value") }
             , apply_{ wnd<button>("cmd.apply") }
             , cancel_{ wnd<button>("cmd.cancel") }

@@ -19,9 +19,9 @@ namespace runa::sample {
     public:
         demo_cntrl();
 
-        void open(callback _on_complete) override;
+        void open(callback _on_complete);
 
-        void close() override;
+        void close();
 
     };
 

@@ -17,11 +17,8 @@ namespace runa
     class controller_obj : public object
     {
     public:
+        ~controller_obj();
         controller_obj();
-
-        virtual void open(callback _on_complete) = 0;
-
-        virtual void close() = 0;
 
     };
 
