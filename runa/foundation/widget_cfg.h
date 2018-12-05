@@ -82,7 +82,7 @@ namespace runa {
 
         virtual void make_extra_div(string& _div) const { }
 
-        virtual point get_pos() const;
+        virtual point get_pos(size) const;
 
         static cfg_ptr from(string const& _cfg);
 

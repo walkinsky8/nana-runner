@@ -10,9 +10,9 @@ namespace runa::sample {
         NAR_DEFINE_OBJECT(demo_cntrl, controller_obj);
 
 		view_ptr demo_;
-        view_ptr hello_;
         view_ptr color_;
         view_ptr font_;
+        view_ptr hello_;
         view_ptr dummy_;
         view_ptr generic_;
 

@@ -50,7 +50,7 @@ void runa::widget_cfg::reset_all_parent(widget_cfg* _parent)
         i->reset_all_parent(this);
 }
 
-runa::point runa::widget_cfg::get_pos() const
+runa::point runa::widget_cfg::get_pos(size) const
 {
     return pos_().value();
 }
@@ -162,12 +162,12 @@ void runa::widget_cfg::init_widget(widget& _w, view_obj* _root_view) const
     if (!fg.empty())
         _w.fgcolor(get_color(fg, _w.fgcolor()));
 
-    //always call get_pos() to support user defined center align.
-    //if (!pos_().empty())
-        _w.move(get_pos());
-
     if (!size_().empty())
         _w.size(size_().value());
+
+    //always call get_pos() to support user defined center align.
+    //if (!pos_().empty())
+        _w.move(get_pos(_w.size()));
 
     auto& c = get_cursor();
     if (!c.empty())

@@ -45,45 +45,43 @@ void runa::form_base_cfg::init_widget(widget& _w, view_obj* _root_view) const
     w.collocate();
 }
 
-runa::point runa::form_base_cfg::get_pos() const
+runa::point runa::form_base_cfg::get_pos(size _sz) const
 {
+    if (_sz == size{})
+        _sz = size{ 300, 200 };
     auto screen = nana::screen::primary_monitor_size();
     point pt = pos_().value();
-    if (!align_().empty())
+    auto alignH = !align_().empty() ? align_().value() : nana::align::center;
+    auto alignV = !align_v_().empty() ? align_v_().value() : nana::align_v::center;
+    switch (alignH.value())
     {
-        switch (align_().value().value())
-        {
-            case nana::align::center:
-                if (pos_().empty())
-                    pt.x = screen.width / 2 - size_().value().width / 2;
-                else
-                    pt.x += screen.width / 2;
-                break;
-            case nana::align::right:
-                if (pos_().empty())
-                    pt.x = screen.width - size_().value().width;
-                else
-                    pt.x += screen.width;
-                break;
-        }
+        case nana::align::center:
+            if (pos_().empty())
+                pt.x = screen.width / 2 - _sz.width / 2;
+            else
+                pt.x += screen.width / 2;
+            break;
+        case nana::align::right:
+            if (pos_().empty())
+                pt.x = screen.width - _sz.width;
+            else
+                pt.x += screen.width;
+            break;
     }
-    if (!align_v_().empty())
+    switch (alignV.value())
     {
-        switch (align_v_().value().value())
-        {
-        case nana::align_v::center:
-            if (pos_().empty())
-                pt.y = screen.height / 2 - size_().value().height / 2;
-            else
-                pt.y += screen.height / 2;
-            break;
-        case nana::align_v::bottom:
-            if (pos_().empty())
-                pt.y = screen.height - size_().value().height;
-            else
-                pt.y += screen.height;
-            break;
-        }
+    case nana::align_v::center:
+        if (pos_().empty())
+            pt.y = screen.height / 2 - _sz.height / 2;
+        else
+            pt.y += screen.height / 2;
+        break;
+    case nana::align_v::bottom:
+        if (pos_().empty())
+            pt.y = screen.height - _sz.height;
+        else
+            pt.y += screen.height;
+        break;
     }
     return pt;
 }

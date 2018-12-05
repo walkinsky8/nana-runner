@@ -46,7 +46,7 @@ namespace runa {
 
         bool has_child_div() const override { return true; }
 
-        point get_pos() const override;
+        point get_pos(size) const override;
 
         virtual nana::appearance get_appearance() const;
 

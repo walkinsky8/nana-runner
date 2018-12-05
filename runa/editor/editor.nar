@@ -1,7 +1,6 @@
 ﻿@form{
     id=editor
     div="vert"
-    pos={ -350 -300 }
     size={ 700 600 }
     align=center
     align_v=center

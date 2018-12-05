@@ -2,10 +2,7 @@
 @form{
     id=demo  @* id *@
     div="vert"
-    pos={-300 -400}
     size={600 800}
-    align=center
-    align_v=center
     @menubar{ id=menubar div='weight=24' typeface={bold 10}
         @menu { caption="&File"
             @menu { caption='&Open' image='image.jpg' }

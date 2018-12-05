@@ -1,4 +1,4 @@
-﻿@form{ id=login caption="登錄" div="vert" pos={ -150 -100 } size={ 300 200 } align=center align_v=center typeface={ 11 bold }
+﻿@form{ id=login caption="登錄" div="vert" size={ 300 200 } align=center align_v=center typeface={ 11 bold }
     @panel { div="weight=5" }
     @panel { id=username div="weight=25"
         @label{ id=l caption="用戶名:" div="weight=60" align="right" }
