@@ -33,6 +33,8 @@ void color_view_impl::on_ok()
     NAR_LOG_VAR(proxy_.data_);
 
     proxy_();
+
+    close();
 }
 
 void color_view_impl::on_cancel()

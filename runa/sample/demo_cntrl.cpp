@@ -24,7 +24,7 @@ demo_cntrl::demo_cntrl()
 void demo_cntrl::open(callback _on_complete)
 {
     app::show_view<demo_view>(demo_);
-    app::show_view<color_view>(color_);
+    app::show_view<color_view_impl>(color_);
     app::show_view<font_view>(font_);
     app::show_view<hello_view>(hello_);
     dummy_ = app::show_view(L"dummy");

@@ -6,10 +6,12 @@
 #include <runa/editor/editor_app.h>
 #include <runa/sample/demo_app.h>
 
+// -path "$(RUNA)\runa\foundation\color" -path "$(RUNA)\runa\sample" -path "$(RUNA)\runa\editor" -path "$(HOME)\Pictures"
+
 int run_main(runa::pcwstr _cmdline)
 {
-    //runa::editor::editor_app a;
-    runa::sample::demo_app a;
+    runa::editor::editor_app a;
+    //runa::sample::demo_app a;
     a.run(_cmdline);
     return 0;
 }
