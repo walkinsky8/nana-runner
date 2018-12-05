@@ -6,6 +6,7 @@
 #include <runa/editor/logger_view_impl.h>
 #include <runa/editor/editor_view_impl.h>
 #include <runa/editor/editor_setup_view_impl.h>
+#include <runa/foundation/color/color_view_impl.h>
 
 #include <runa/foundation/app_base.h>
 
@@ -17,6 +18,7 @@ editor_cntrl::editor_cntrl()
     add_view<logger_view_impl>();
     add_view<editor_view_impl>();
     add_view<editor_setup_view_impl>();
+    add_view<color_view_impl>();
 }
 
 void editor_cntrl::open(callback _on_complete)
