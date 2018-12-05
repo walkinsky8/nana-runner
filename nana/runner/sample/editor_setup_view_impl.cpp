@@ -42,6 +42,11 @@ void editor_setup_view_impl::on_color_setup(combox& _c)
     });
 }
 
+void editor_setup_view_impl::on_fini()
+{
+    color_setup_.close();
+}
+
 void editor_setup_view_impl::init_model()
 {
     load_widget(sample_);

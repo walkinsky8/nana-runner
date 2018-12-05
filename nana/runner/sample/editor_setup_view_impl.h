@@ -33,6 +33,8 @@ namespace runa::sample {
     private:
         void init();
 
+        void on_fini() override;
+
         void on_color_setup(combox& _c);
 
         void init_model();
