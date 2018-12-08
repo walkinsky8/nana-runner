@@ -183,6 +183,11 @@ void runa::app::load_cfgs(const wchar_t* _cmdline)
         paths_.push_back(fullpath.u8string());
     }
 
+    if (paths_.empty())
+    {
+        NAR_LOG_ERROR("Neither .nar nor -path specified in cmdline");
+    }
+
     for (auto& filename : args_.arguments())
     {
         load_cfg(filename);

@@ -6,7 +6,7 @@
 #include <runa/editor/editor_app.h>
 #include <runa/sample/demo_app.h>
 
-// -path "$(RUNA)\runa\foundation\color" -path "$(RUNA)\runa\sample" -path "$(RUNA)\runa\editor" -path "$(HOME)\Pictures"
+// -path "$(RUNA)\runa\foundation\color" -path "$(RUNA)\runa\sample" -path "$(RUNA)\runa\editor" -path "$(USERPROFILE)\Pictures"
 
 int run_main(runa::pcwstr _cmdline)
 {
@@ -32,7 +32,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     _In_ LPWSTR    lpCmdLine,
     _In_ int       nCmdShow)
 {
-#ifdef _DEBUG
+#if 0//def _DEBUG
     return run_main(lpCmdLine);
 #else
     return run_main_no_exception(lpCmdLine);
