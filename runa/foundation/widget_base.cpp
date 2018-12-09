@@ -10,6 +10,8 @@
 nana::color runa::get_color(const string& _s, color _default)
 {
 	try {
+        if (_s.empty())
+            return _default;
 		nana::colors* clr = colors::find_value(_s);
 		if (clr)
 			return nana::color{ *clr };

@@ -141,9 +141,9 @@
         @group{ id=align div='weight=25%' radio_mode=1
         }
         @group{ id=color div='weight=25%' radio_mode=0
-            @option { caption=red check=1 }
-            @option { caption=green check=1 }
-            @option { caption=blue check=1 }
+            @option { caption=Red check=1 }
+            @option { caption=Green check=1 }
+            @option { caption=Blue check=1 }
         }
         @picture{ id=picture image="image.jpg"
             align=center align_v=center stretchable=1 transparent=0
@@ -207,13 +207,14 @@
                         }
                     }
                 }
-                @tab { id=green div='vert'
-                    @label { id=label }
-                    @textbox { id=textbox }
+                @tab { id=RGB
+                    @color_rgb_chooser{ id=rgb }
                 }
-                @tab { id=blue div='vert'
-                    @label { id=label }
-                    @button { id=button }
+                @tab { id=HSL
+                    @color_hsl_chooser{ id=hsl }
+                }
+                @tab { id=HSV
+                    @color_hsv_chooser{ id=hsv }
                 }
             }
             @tabpage { id=page }

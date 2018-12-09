@@ -61,6 +61,9 @@ namespace runa::sample {
         tabbar_lite& tabs_2_bar_;
         treebox& folder_;
         listbox& files_;
+        color_rgb_chooser& rgb_;
+        color_hsl_chooser& hsl_;
+        color_hsv_chooser& hsv_;
 
         progress& prog_;
         spinbox& spin_;
@@ -104,6 +107,9 @@ namespace runa::sample {
             , tabs_2_bar_{ wnd<tabbar_lite>("tabs.2.bar") }
             , folder_{ child_view("tabs.1.bar.folder")->wnd<treebox>("tree") }
             , files_{ child_view("tabs.2.bar.files")->wnd<listbox>("list") }
+            , rgb_{ child_view("tabs.2.bar.RGB")->wnd<color_rgb_chooser>("rgb") }
+            , hsl_{ child_view("tabs.2.bar.HSL")->wnd<color_hsl_chooser>("hsl") }
+            , hsv_{ child_view("tabs.2.bar.HSV")->wnd<color_hsv_chooser>("hsv") }
             , prog_{ wnd<progress>("cmd.prog") }
             , spin_{ wnd<spinbox>("cmd.spin") }
             , quit_{ wnd<button>("cmd.close") }
