@@ -5,13 +5,15 @@
 
 #include <runa/foundation/widget_base.h>
 
+#include <runa/foundation/color/color_hsv.h>
+
 nana::color runa::get_color(const string& _s, color _default)
 {
 	try {
 		nana::colors* clr = colors::find_value(_s);
 		if (clr)
 			return nana::color{ *clr };
-		return nana::color{ _s };
+		return runa::color_hsv{ _s };
 	}
 	catch (std::exception& e) {
         NAR_LOG_INFO(e << ": " << _s);

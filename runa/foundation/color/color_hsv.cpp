@@ -270,6 +270,9 @@ namespace runa
 
             auto l = std::stod(str.substr(0, str.size() - 1));
 
+            h = runa::ensure_between(h, 0.0, 360.0);
+            s = runa::ensure_between(s, 0.0, 100.0);
+            l = runa::ensure_between(l, 0.0, 100.0);
             *this = (color)color_hsl{ h, s / 100, l / 100 };
         }
         else if ("hsv" == type_name)
@@ -299,6 +302,9 @@ namespace runa
 
             auto v = std::stod(str.substr(0, str.size() - 1));
 
+            h = runa::ensure_between(h, 0.0, 360.0);
+            s = runa::ensure_between(s, 0.0, 100.0);
+            v = runa::ensure_between(v, 0.0, 100.0);
             *this = color_hsv{ h, s / 100, v / 100 };
         }
         else

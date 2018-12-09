@@ -16,6 +16,8 @@ void color_view_impl::init()
 
     ok_.events().click([&] { on_ok(); });
     cancel_.events().click([&] { on_cancel(); });
+
+    set_model_proxy({});
 }
 
 void color_view_impl::set_model_proxy(model_proxy<color_model> const& _proxy)
@@ -24,7 +26,9 @@ void color_view_impl::set_model_proxy(model_proxy<color_model> const& _proxy)
 
     load_model();
 
-    input_ << get_color(proxy_.data_.value_());
+    color c = get_color(proxy_.data_.value_());
+    input_ << c;
+    update_color(c);
 }
 
 void color_view_impl::on_ok()
