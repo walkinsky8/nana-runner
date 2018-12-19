@@ -311,7 +311,7 @@ namespace runa
 
             void trigger::_m_emit_value_changed()
             {
-                widget_->events().value_changed.emit({ widget_->handle() }, widget_->handle());
+                widget_->events().value_changed.emit({ widget_->handle(), metrics_.value }, widget_->handle());
             }
                 
             //end class trigger

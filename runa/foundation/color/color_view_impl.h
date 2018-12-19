@@ -26,20 +26,24 @@ namespace runa {
         void init();
 
         void on_ok();
-
         void on_cancel();
 
         void on_color_selected();
-
         void on_color_text_changed();
 
-        void on_chooser_value_changed();
+        void on_chooser_tab_changed();
+        void on_chooser_value_changed(const color& _c);
 
         void load_model();
-
         void save_model();
 
-        void update_color(const color_type& _c);
+        color get_color_value() const;
+
+        void set_color_value(const color& _c);
+
+        color_chooser_type get_chooser_type() const;
+
+        void update_color(const color& _c);
 
     };
 

@@ -4,20 +4,13 @@
 #include <nana/gui/widgets/widget.hpp>
 
 #include <runa/foundation/color/color_hsv.h>
+#include <runa/foundation/color/color_chooser_base.h>
 
 namespace runa
 {
     class color_hsv_chooser;
 
-	struct arg_color_hsv_chooser
-		: public nana::event_arg
-	{
-		nana::window window_handle;
-
-		arg_color_hsv_chooser(nana::window wd)
-			: window_handle{ wd }
-		{}
-	};
+    using arg_color_hsv_chooser = arg_color_chooser;
 
 	namespace drawerbase
 	{
@@ -58,7 +51,7 @@ namespace runa
                 constexpr static uint hs_height = 256;
                 constexpr static int hs_right = hs_left + hs_width;
                 constexpr static int hs_bottom = hs_top + hs_height;
-                constexpr static int sep = 15;
+                constexpr static int sep = 10;
                 constexpr static int sample_left = hs_right + sep;
                 constexpr static int sample_top = hs_top;
                 constexpr static uint sample_width = 40;
@@ -68,7 +61,7 @@ namespace runa
                 constexpr static int v_left = hs_left;
                 constexpr static int v_top = hs_bottom + sep;
                 constexpr static uint v_width = hs_width + sep + sample_width;
-                constexpr static uint v_height = 15;
+                constexpr static uint v_height = 20;
                 constexpr static int v_right = v_left + v_width;
                 constexpr static int v_bottom = v_top + v_height;
 
@@ -177,6 +170,16 @@ namespace runa
 		}
 
     };//end class color_hsv_chooser
+
+    inline void operator<<(color_hsv_chooser& _os, const string& _v)
+    {
+        _os.value(_v);
+    }
+
+    inline void operator>>(const color_hsv_chooser& _is, string& _v)
+    {
+        _v = _is.value().str();
+    }
 
 }//end namespace runa
 

@@ -4,20 +4,13 @@
 #include <nana/gui/widgets/widget.hpp>
 
 #include <runa/foundation/color/color_rgb.h>
+#include <runa/foundation/color/color_chooser_base.h>
 
 namespace runa
 {
     class color_rgb_chooser;
 
-	struct arg_color_rgb_chooser
-		: public nana::event_arg
-	{
-		nana::window window_handle;
-
-		arg_color_rgb_chooser(nana::window wd)
-			: window_handle{ wd }
-		{}
-	};
+    using arg_color_rgb_chooser = arg_color_chooser;
 
 	namespace drawerbase
 	{
@@ -68,7 +61,7 @@ namespace runa
                 constexpr static int b_left = rg_left;
                 constexpr static int b_top = rg_bottom + sep;
                 constexpr static uint b_width = rg_width + sep + sample_width;
-                constexpr static uint b_height = 15;
+                constexpr static uint b_height = 20;
                 constexpr static int b_right = b_left + b_width;
                 constexpr static int b_bottom = b_top + b_height;
 

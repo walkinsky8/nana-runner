@@ -563,6 +563,9 @@
     <ClInclude Include="stdafx.h">
       <Filter>main</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\runa\foundation\color\color_chooser_base.h">
+      <Filter>runa\lib\foundation\color</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\runa\foundation\color\color.nar">

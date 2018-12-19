@@ -2,7 +2,7 @@
     id=color
     caption="Color Chooser"
     div="vert"
-    size={400 390}
+    size={400 410}
     sizable=0
     maximize=0
     align=center
@@ -11,9 +11,22 @@
         @label{ id=n caption="Input:" div="weight=60" align=right }
         @combox{ id=value caption=null editable=1 }
     }
-    @panel{ id=chooser div="weight=290 margin=[5]"
-        @label{ id=n caption="RGB:" div="weight=60" align=right }
-        @color_rgb_chooser{ id=value div="weight=305" }
+    @panel{ id=chooser div="weight=321 margin=[5]"
+        @label{ id=n caption=null div="weight=60" align=right }
+        @panel{ id=value div="vert weight=306"
+            @tabbar_lite { id=bar page_id=page div='weight=20'
+                @tab { id=RGB
+                    @color_rgb_chooser{ id=rgb }
+                }
+                @tab { id=HSL
+                    @color_hsl_chooser{ id=hsl }
+                }
+                @tab { id=HSV
+                    @color_hsv_chooser{ id=hsv }
+                }
+            }
+            @tabpage { id=page }
+        }
     }
     @panel{ id=output div="weight=30 margin=[5]"
         @label{ id=n caption="Output:" div="weight=60" align=right }
