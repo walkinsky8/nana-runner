@@ -105,7 +105,7 @@ namespace runa
                     {
                         for (int s = hs_top; s < hs_bottom; ++s)
                         {
-                            color_hsv hsv{ get_h(h), get_s(s), metrics_.value.v() };
+                            color_hsv hsv{ get_h(h), get_s(s), 1.0/*metrics_.value.v()*/ };
                             graph.set_pixel(h, s, hsv.to_color());
                         }
                     }

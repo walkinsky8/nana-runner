@@ -25,21 +25,21 @@ void color_view_impl::init()
 
 void color_view_impl::set_model_proxy(model_proxy<color_model> const& _proxy)
 {
-    proxy_ = _proxy;
+    model_ = _proxy;
+    NAR_LOG_VAR(model_.data_);
 
-    load_model();
-
-    color c = get_color(proxy_.data_.value_());
+    color c = model_.data_;
     input_ << c;
-    update_color(c);
+    load_model();
+    update_output(c);
 }
 
 void color_view_impl::on_ok()
 {
     save_model();
-    NAR_LOG_VAR(proxy_.data_);
+    NAR_LOG_VAR(model_.data_);
 
-    proxy_();
+    model_();
 
     close();
 }
@@ -53,60 +53,40 @@ void color_view_impl::on_cancel()
 void color_view_impl::on_color_selected()
 {
     NAR_LOG_VAR(input_);
+    //will trigger on_color_text_changed()
 }
 
 void color_view_impl::on_color_text_changed()
 {
     NAR_LOG_VAR(input_);
-    color c = get_color(input_.caption(), get_color_value());
-    set_color_value(c);
+    color c = get_color(input_.caption(), get_value());
+    set_value(c);
 }
 
 void color_view_impl::on_chooser_tab_changed()
 {
-    // see color.nar: 0=rgb, 1=hsl, 2=hsv
-    color_chooser_type type = get_chooser_type();
+    NAR_LOG_VAR(model_.data_);
+    set_value(model_.data_);
 }
 
 void color_view_impl::on_chooser_value_changed(const color& _color)
 {
     NAR_LOG_VAR(_color);
-    update_color(_color);
+    model_.data_ = _color;
+    update_output(_color);
 }
 
 void color_view_impl::load_model()
 {
-    switch (get_chooser_type())
-    {
-    case color_chooser_type::rgb:
-        chooser_rgb_ << proxy_.data_.value_();
-        break;
-    case color_chooser_type::hsl:
-        chooser_hsl_ << proxy_.data_.value_();
-        break;
-    case color_chooser_type::hsv:
-        chooser_hsv_ << proxy_.data_.value_();
-        break;
-    }
+    set_value(model_.data_);
 }
 
 void color_view_impl::save_model()
 {
-    switch (get_chooser_type())
-    {
-    case color_chooser_type::rgb:
-        chooser_rgb_ >> proxy_.data_.value_();
-        break;
-    case color_chooser_type::hsl:
-        chooser_hsl_ >> proxy_.data_.value_();
-        break;
-    case color_chooser_type::hsv:
-        chooser_hsv_ >> proxy_.data_.value_();
-        break;
-    }
+    model_.data_ = get_value();
 }
 
-color color_view_impl::get_color_value() const
+color color_view_impl::get_value() const
 {
     switch (get_chooser_type())
     {
@@ -120,7 +100,7 @@ color color_view_impl::get_color_value() const
     return {};
 }
 
-void color_view_impl::set_color_value(const color& _c)
+void color_view_impl::set_value(const color& _c)
 {
     switch (get_chooser_type())
     {
@@ -141,7 +121,7 @@ color_chooser_type color_view_impl::get_chooser_type() const
     return static_cast<color_chooser_type>(chooser_bar_.selected());
 }
 
-void color_view_impl::update_color(const color& c)
+void color_view_impl::update_output(const color& c)
 {
     string s;
     s << "R=" << int(c.r() + 0.5);

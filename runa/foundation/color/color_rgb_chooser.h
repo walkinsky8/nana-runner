@@ -175,10 +175,18 @@ namespace runa
     {
         _os.value(_v);
     }
-
     inline void operator>>(const color_rgb_chooser& _is, string& _v)
     {
         _v = _is.value().str();
+    }
+
+    inline void operator<<(color_rgb_chooser& _os, const color& _v)
+    {
+        _os.value(_v);
+    }
+    inline void operator>>(const color_rgb_chooser& _is, color& _v)
+    {
+        _v = _is.value();
     }
 
 }//end namespace runa

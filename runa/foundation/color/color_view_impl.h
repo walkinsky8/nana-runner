@@ -11,7 +11,7 @@ namespace runa {
     {
         NAR_DEFINE_VIEW_IMPL(color);
 
-        model_proxy<color_model> proxy_;
+        model_proxy<color_model> model_;
 
     public:
         self(widget_cfg& _cfg, window _parent)
@@ -37,13 +37,13 @@ namespace runa {
         void load_model();
         void save_model();
 
-        color get_color_value() const;
+        color get_value() const;
 
-        void set_color_value(const color& _c);
+        void set_value(const color& _c);
 
         color_chooser_type get_chooser_type() const;
 
-        void update_color(const color& _c);
+        void update_output(const color& _c);
 
     };
 

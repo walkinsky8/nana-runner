@@ -5,6 +5,8 @@
 
 #include <runa/foundation/widget_base.h>
 
+#include <runa/foundation/color/color_rgb.h>
+#include <runa/foundation/color/color_hsl.h>
 #include <runa/foundation/color/color_hsv.h>
 
 nana::color runa::get_color(const string& _s, color _default)
@@ -15,12 +17,254 @@ nana::color runa::get_color(const string& _s, color _default)
 		nana::colors* clr = colors::find_value(_s);
 		if (clr)
 			return nana::color{ *clr };
-		return runa::color_hsv{ _s };
+		return parse_color(_s);
 	}
 	catch (std::exception& e) {
         NAR_LOG_INFO(e << ": " << _s);
 	}
 	return _default;
+}
+
+std::string runa::read_number(std::string& str, std::size_t& pos)
+{
+    pos = str.find_first_of("0123456789", pos);
+    if (pos == str.npos)
+        return{};
+
+    auto end = str.find_first_not_of("0123456789", pos + 1);
+    //integer part
+    if (end == str.npos)
+    {
+        pos = end;
+        return str.substr(pos);
+    }
+
+    if (str[end] == '.')
+    {
+        auto decimal_end = str.find_first_not_of("0123456789", end + 1);
+        if ((decimal_end == str.npos) || (decimal_end == end + 1)) //Because of missing %
+            return{};
+
+        end = decimal_end;
+    }
+
+    auto ch = str[end];
+    if (ch == '%' || ch == ' ' || ch == ',' || ch == ')')
+    {
+        auto start = pos;
+        pos = end + (ch == '%' ? 1 : 0);
+        return str.substr(start, pos - start);
+    }
+    return{};
+}
+
+runa::color runa::parse_color(const string& _s)
+{
+    string css_color = _s;
+
+    const char * excpt_what = "color: invalid hsv format";
+
+    auto pos = css_color.find_first_not_of(' ');
+    if (pos == css_color.npos)
+        throw std::invalid_argument(excpt_what);
+
+    if ('#' == css_color[pos])
+    {
+        if (css_color.size() < pos + 4)
+            throw std::invalid_argument(excpt_what);
+
+        auto endpos = css_color.find_first_not_of("0123456789abcdefABCDEF", pos + 1);
+        if (endpos == css_color.npos)
+            endpos = static_cast<decltype(endpos)>(css_color.size());
+
+        if ((endpos - pos != 4) && (endpos - pos != 7))
+            throw std::invalid_argument(excpt_what);
+
+        auto n = std::stoi(css_color.substr(pos + 1, endpos - pos - 1), nullptr, 16);
+
+        uint r, g, b;
+        if (endpos - pos == 4)
+        {
+            r = ((0xF00 & n) >> 4) | ((0xF00 & n) >> 8);
+            g = (0xF0 & n) | ((0xF0 & n) >> 4);
+            b = (0xF & n) | ((0xF & n) << 4);
+        }
+        else
+        {
+            r = (0xFF0000 & n) >> 16;
+            g = (0xFF00 & n) >> 8;
+            b = (0xFF & n);
+        }
+
+        return color{ r, g, b };
+    }
+
+    //std::tolower is not allowed because of concept requirements
+    std::transform(css_color.begin(), css_color.end(), css_color.begin(), [](char ch) {
+        if ('A' <= ch && ch <= 'Z')
+            return static_cast<char>(ch - ('A' - 'a'));
+        return ch;
+        });
+    auto endpos = css_color.find(' ', pos + 1);
+    if (endpos == css_color.npos)
+        endpos = css_color.size();
+
+    color result{};
+
+    if ((endpos - pos == 11) && (css_color.substr(pos, 11) == "transparent"))
+    {
+        return result;
+    }
+
+    auto type_end = css_color.find_first_of(" (", pos + 1);
+
+    if (type_end == css_color.npos || ((type_end - pos != 3) && (type_end - pos != 4)))	//rgb/hsl = 3, rgba/hsla = 4
+        throw std::invalid_argument(excpt_what);
+
+    bool has_alpha = false;
+    if (type_end - pos == 4) //maybe rgba/hsla
+    {
+        if (css_color[pos + 3] != 'a')
+            throw std::invalid_argument(excpt_what);
+        has_alpha = true;
+    }
+
+    auto type_name = css_color.substr(pos, 3);
+    pos = css_color.find_first_not_of(' ', type_end);
+    if (pos == css_color.npos || css_color[pos] != '(')
+        throw std::invalid_argument(excpt_what);
+
+    auto str = read_number(css_color, ++pos);
+    if (str.empty())
+        throw std::invalid_argument(excpt_what);
+
+    if ("rgb" == type_name)
+    {
+        std::vector<std::string> rgb;
+
+        rgb.emplace_back(std::move(str));
+        const bool is_real = (rgb.back().back() == '%');
+
+        for (int i = 0; i < 2; ++i)
+        {
+            pos = css_color.find_first_not_of(' ', pos);
+            if (pos == css_color.npos || css_color[pos] != ',')
+                throw std::invalid_argument(excpt_what);
+
+            str = read_number(css_color, ++pos);
+            if (str.empty())
+                throw std::invalid_argument(excpt_what);
+
+            rgb.emplace_back(std::move(str));
+            if (rgb.size() == 3)
+                break;
+        }
+
+        if (rgb.size() != 3)
+            throw std::invalid_argument(excpt_what);
+
+        double r, g, b;
+        if (is_real)
+        {
+            auto pr = std::stod(rgb[0].substr(0, rgb[0].size() - 1));
+            r = (pr > 100 ? 255.0 : 2.55 * pr);
+
+            pr = std::stod(rgb[1].substr(0, rgb[1].size() - 1));
+            g = (pr > 100 ? 255.0 : 2.55 * pr);
+
+            pr = std::stod(rgb[2].substr(0, rgb[2].size() - 1));
+            b = (pr > 100 ? 255.0 : 2.55 * pr);
+        }
+        else
+        {
+            r = std::stod(rgb[0]);
+            if (r > 255.0)	r = 255;
+
+            g = std::stod(rgb[1]);
+            if (g > 255.0)	g = 255;
+
+            b = std::stod(rgb[2]);
+            if (b > 255.0)	b = 255;
+        }
+        result = (color)color_rgb { r, g, b };
+    }
+    else if ("hsl" == type_name)
+    {
+        if (str.back() == '%')
+            throw std::invalid_argument(excpt_what);
+
+        auto h = std::stod(str);
+
+        pos = css_color.find_first_not_of(' ', pos);
+        if (pos == css_color.npos || css_color[pos] != ',')
+            throw std::invalid_argument(excpt_what);
+
+        str = read_number(css_color, ++pos);
+        if (str.empty() || str.back() != '%')
+            throw std::invalid_argument(excpt_what);
+
+        auto s = std::stod(str.substr(0, str.size() - 1));
+
+        pos = css_color.find_first_not_of(' ', pos);
+        if (pos == css_color.npos || css_color[pos] != ',')
+            throw std::invalid_argument(excpt_what);
+
+        str = read_number(css_color, ++pos);
+        if (str.empty() || str.back() != '%')
+            throw std::invalid_argument(excpt_what);
+
+        auto l = std::stod(str.substr(0, str.size() - 1));
+
+        h = runa::ensure_between(h, 0.0, 360.0);
+        s = runa::ensure_between(s, 0.0, 100.0);
+        l = runa::ensure_between(l, 0.0, 100.0);
+        result = (color)color_hsl { h, s / 100, l / 100 };
+    }
+    else if ("hsv" == type_name)
+    {
+        if (str.back() == '%')
+            throw std::invalid_argument(excpt_what);
+
+        auto h = std::stod(str);
+
+        pos = css_color.find_first_not_of(' ', pos);
+        if (pos == css_color.npos || css_color[pos] != ',')
+            throw std::invalid_argument(excpt_what);
+
+        str = read_number(css_color, ++pos);
+        if (str.empty() || str.back() != '%')
+            throw std::invalid_argument(excpt_what);
+
+        auto s = std::stod(str.substr(0, str.size() - 1));
+
+        pos = css_color.find_first_not_of(' ', pos);
+        if (pos == css_color.npos || css_color[pos] != ',')
+            throw std::invalid_argument(excpt_what);
+
+        str = read_number(css_color, ++pos);
+        if (str.empty() || str.back() != '%')
+            throw std::invalid_argument(excpt_what);
+
+        auto v = std::stod(str.substr(0, str.size() - 1));
+
+        h = runa::ensure_between(h, 0.0, 360.0);
+        s = runa::ensure_between(s, 0.0, 100.0);
+        v = runa::ensure_between(v, 0.0, 100.0);
+        result = (color)color_hsv { h, s / 100, v / 100 };
+    }
+    else
+        throw std::invalid_argument(excpt_what);	//invalid color type
+
+    if (has_alpha)
+    {
+        str = read_number(css_color, ++pos);
+        if (str.empty() || str.back() == '%')
+            throw std::invalid_argument(excpt_what); //invalid alpha value
+
+        result = result.alpha(std::stod(str));
+    }
+
+    return result;
 }
 
 runa::font runa::make_font(const string& _name, double _size, bool _bold, bool _italic, bool _underline, bool _strikeout)

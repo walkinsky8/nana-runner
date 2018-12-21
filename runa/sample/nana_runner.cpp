@@ -32,7 +32,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     _In_ LPWSTR    lpCmdLine,
     _In_ int       nCmdShow)
 {
-#if 0//def _DEBUG
+#if 1//def _DEBUG
     return run_main(lpCmdLine);
 #else
     return run_main_no_exception(lpCmdLine);

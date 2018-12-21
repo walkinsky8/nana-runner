@@ -10,7 +10,7 @@ namespace runa
         using self = color_hsv;
 
         double h_{0.0}; // 0..360
-        double s_{1.0}; // 0..1
+        double s_{0.0}; // 0..1
         double v_{1.0}; // 0..1
 
     public:
