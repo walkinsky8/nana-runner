@@ -9,7 +9,8 @@
     align_v=center
     @panel{ id=input div="weight=30 margin=[5]"
         @label{ id=n caption="Input:" div="weight=60" align=right }
-        @combox{ id=value caption=null editable=1 }
+        @combox{ id=value caption=null div="weight=306" editable=1 }
+        @button{ id=update caption='...' }
     }
     @panel{ id=chooser div="weight=321 margin=[5]"
         @label{ id=n caption=null div="weight=60" align=right }

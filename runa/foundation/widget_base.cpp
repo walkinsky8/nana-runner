@@ -20,9 +20,15 @@ nana::color runa::get_color(const string& _s, color _default)
 		return parse_color(_s);
 	}
 	catch (std::exception& e) {
-        NAR_LOG_INFO(e << ": " << _s);
+        NAR_LOG_EXCPT(e << ": " << _s);
 	}
 	return _default;
+}
+
+void runa::throw_invalid_color(istr _msg)
+{
+    const static string excpt_what = "color: invalid color format: ";
+    throw std::invalid_argument(istr(excpt_what) + _msg);
 }
 
 std::string runa::read_number(std::string& str, std::size_t& pos)
@@ -62,23 +68,21 @@ runa::color runa::parse_color(const string& _s)
 {
     string css_color = _s;
 
-    const char * excpt_what = "color: invalid hsv format";
-
     auto pos = css_color.find_first_not_of(' ');
     if (pos == css_color.npos)
-        throw std::invalid_argument(excpt_what);
+        throw_invalid_color("empty");
 
     if ('#' == css_color[pos])
     {
         if (css_color.size() < pos + 4)
-            throw std::invalid_argument(excpt_what);
+            throw_invalid_color("#rgb less than 4 characters");
 
         auto endpos = css_color.find_first_not_of("0123456789abcdefABCDEF", pos + 1);
         if (endpos == css_color.npos)
             endpos = static_cast<decltype(endpos)>(css_color.size());
 
         if ((endpos - pos != 4) && (endpos - pos != 7))
-            throw std::invalid_argument(excpt_what);
+            throw_invalid_color("neither #rgb nor #rrggbb");
 
         auto n = std::stoi(css_color.substr(pos + 1, endpos - pos - 1), nullptr, 16);
 
@@ -100,11 +104,7 @@ runa::color runa::parse_color(const string& _s)
     }
 
     //std::tolower is not allowed because of concept requirements
-    std::transform(css_color.begin(), css_color.end(), css_color.begin(), [](char ch) {
-        if ('A' <= ch && ch <= 'Z')
-            return static_cast<char>(ch - ('A' - 'a'));
-        return ch;
-        });
+    string_tolower(css_color);
     auto endpos = css_color.find(' ', pos + 1);
     if (endpos == css_color.npos)
         endpos = css_color.size();
@@ -119,24 +119,24 @@ runa::color runa::parse_color(const string& _s)
     auto type_end = css_color.find_first_of(" (", pos + 1);
 
     if (type_end == css_color.npos || ((type_end - pos != 3) && (type_end - pos != 4)))	//rgb/hsl = 3, rgba/hsla = 4
-        throw std::invalid_argument(excpt_what);
+        throw_invalid_color("neither rgb/hsl/hsv() nor rgba/hsla/hsva()");
 
     bool has_alpha = false;
     if (type_end - pos == 4) //maybe rgba/hsla
     {
         if (css_color[pos + 3] != 'a')
-            throw std::invalid_argument(excpt_what);
+            throw_invalid_color("the 4th char not 'a'");
         has_alpha = true;
     }
 
     auto type_name = css_color.substr(pos, 3);
     pos = css_color.find_first_not_of(' ', type_end);
     if (pos == css_color.npos || css_color[pos] != '(')
-        throw std::invalid_argument(excpt_what);
+        throw_invalid_color("no '(' after rgb/hsl/hsv[a]");
 
     auto str = read_number(css_color, ++pos);
     if (str.empty())
-        throw std::invalid_argument(excpt_what);
+        throw_invalid_color("no digits in ()");
 
     if ("rgb" == type_name)
     {
@@ -149,11 +149,11 @@ runa::color runa::parse_color(const string& _s)
         {
             pos = css_color.find_first_not_of(' ', pos);
             if (pos == css_color.npos || css_color[pos] != ',')
-                throw std::invalid_argument(excpt_what);
+                throw_invalid_color("no ',' in rgb()");
 
             str = read_number(css_color, ++pos);
             if (str.empty())
-                throw std::invalid_argument(excpt_what);
+                throw_invalid_color("empty after ',' in rgb()");
 
             rgb.emplace_back(std::move(str));
             if (rgb.size() == 3)
@@ -161,7 +161,7 @@ runa::color runa::parse_color(const string& _s)
         }
 
         if (rgb.size() != 3)
-            throw std::invalid_argument(excpt_what);
+            throw_invalid_color("no 3 elements in rgb()");
 
         double r, g, b;
         if (is_real)
@@ -191,27 +191,27 @@ runa::color runa::parse_color(const string& _s)
     else if ("hsl" == type_name)
     {
         if (str.back() == '%')
-            throw std::invalid_argument(excpt_what);
+            throw_invalid_color("unexpected h part '%' in hsl()");
 
         auto h = std::stod(str);
 
         pos = css_color.find_first_not_of(' ', pos);
         if (pos == css_color.npos || css_color[pos] != ',')
-            throw std::invalid_argument(excpt_what);
+            throw_invalid_color("no ',' after h part in hsl()");
 
         str = read_number(css_color, ++pos);
         if (str.empty() || str.back() != '%')
-            throw std::invalid_argument(excpt_what);
+            throw_invalid_color("miss s part '%' in hsl()");
 
         auto s = std::stod(str.substr(0, str.size() - 1));
 
         pos = css_color.find_first_not_of(' ', pos);
         if (pos == css_color.npos || css_color[pos] != ',')
-            throw std::invalid_argument(excpt_what);
+            throw_invalid_color("no ',' after s part in hsl()");
 
         str = read_number(css_color, ++pos);
         if (str.empty() || str.back() != '%')
-            throw std::invalid_argument(excpt_what);
+            throw_invalid_color("miss l part '%' in hsl()");
 
         auto l = std::stod(str.substr(0, str.size() - 1));
 
@@ -223,27 +223,27 @@ runa::color runa::parse_color(const string& _s)
     else if ("hsv" == type_name)
     {
         if (str.back() == '%')
-            throw std::invalid_argument(excpt_what);
-
+            throw_invalid_color("unexpected '%' in h part in hsl()");
+        
         auto h = std::stod(str);
 
         pos = css_color.find_first_not_of(' ', pos);
         if (pos == css_color.npos || css_color[pos] != ',')
-            throw std::invalid_argument(excpt_what);
+            throw_invalid_color("no ',' after h part in hsv()");
 
         str = read_number(css_color, ++pos);
         if (str.empty() || str.back() != '%')
-            throw std::invalid_argument(excpt_what);
+            throw_invalid_color("miss s part '%' in hsv()");
 
         auto s = std::stod(str.substr(0, str.size() - 1));
 
         pos = css_color.find_first_not_of(' ', pos);
         if (pos == css_color.npos || css_color[pos] != ',')
-            throw std::invalid_argument(excpt_what);
+            throw_invalid_color("no ',' after s part in hsv()");
 
         str = read_number(css_color, ++pos);
         if (str.empty() || str.back() != '%')
-            throw std::invalid_argument(excpt_what);
+            throw_invalid_color("miss v part '%' in hsv()");
 
         auto v = std::stod(str.substr(0, str.size() - 1));
 
@@ -253,13 +253,13 @@ runa::color runa::parse_color(const string& _s)
         result = (color)color_hsv { h, s / 100, v / 100 };
     }
     else
-        throw std::invalid_argument(excpt_what);	//invalid color type
+        throw_invalid_color("invalid color type");
 
     if (has_alpha)
     {
         str = read_number(css_color, ++pos);
         if (str.empty() || str.back() == '%')
-            throw std::invalid_argument(excpt_what); //invalid alpha value
+            throw_invalid_color("empty or unexpected '%' in alpha part");
 
         result = result.alpha(std::stod(str));
     }

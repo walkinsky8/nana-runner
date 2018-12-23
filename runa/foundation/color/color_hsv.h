@@ -11,7 +11,7 @@ namespace runa
 
         double h_{0.0}; // 0..360
         double s_{0.0}; // 0..1
-        double v_{1.0}; // 0..1
+        double v_{0.0}; // 0..1
 
     public:
         self()

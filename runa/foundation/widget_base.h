@@ -23,6 +23,7 @@ namespace runa {
     color get_color(const string& _s, color _default = {});
     color parse_color(const string& _s);
     std::string read_number(std::string& str, std::size_t& pos);
+    void throw_invalid_color(istr _msg);
 
 	font make_font(const string& _name, double _size, bool _bold, bool _italic, bool _underline, bool _strikeout);
 

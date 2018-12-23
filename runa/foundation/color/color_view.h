@@ -22,6 +22,7 @@ namespace runa {
         form& form_;
 
         combox& input_;
+        button& input_update_;
 
         tabbar_lite& chooser_bar_;
         color_rgb_chooser& chooser_rgb_;
@@ -38,6 +39,7 @@ namespace runa {
             : super{ _cfg, _parent }
             , form_{ wnd<form>() }
             , input_{ wnd<combox>("input.value") }
+            , input_update_{ wnd<button>("input.update") }
             , chooser_bar_{ wnd<tabbar_lite>("chooser.value.bar") }
             , chooser_rgb_{ child_view("chooser.value.bar.RGB")->wnd<color_rgb_chooser>("rgb") }
             , chooser_hsl_{ child_view("chooser.value.bar.HSL")->wnd<color_hsl_chooser>("hsl") }

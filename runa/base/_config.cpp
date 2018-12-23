@@ -100,6 +100,24 @@ runa::string runa::strings_merge(const strings& _ss, const string& _sep)
     return s;
 }
 
+void runa::string_tolower(string& _s)
+{
+    std::transform(_s.begin(), _s.end(), _s.begin(), [](char ch) {
+        if ('A' <= ch && ch <= 'Z')
+            return static_cast<char>(ch - 'A' + 'a');
+        return ch;
+    });
+}
+
+void runa::string_toupper(string& _s)
+{
+    std::transform(_s.begin(), _s.end(), _s.begin(), [](char ch) {
+        if ('a' <= ch && ch <= 'z')
+            return static_cast<char>(ch - 'a' + 'A');
+        return ch;
+    });
+}
+
 bool runa::read_file(const wstring& _filename, string& _content)
 {
     std::ifstream ifs{ _filename };

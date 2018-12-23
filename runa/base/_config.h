@@ -234,6 +234,11 @@ namespace runa {
     strings strings_sub(const strings& _ss, int _start, size_t _len = npos);
     string strings_merge(const strings& _ss, const string& _sep);
 
+    void string_toupper(string& s);
+    void string_tolower(string& s);
+    inline string to_upper(const string& s) { string tmp{ s }; string_toupper(tmp); return tmp; }
+    inline string to_lower(const string& s) { string tmp{ s }; string_tolower(tmp); return tmp; }
+
     template<class T>
     inline std::string to_str(const T& _v)
     {
