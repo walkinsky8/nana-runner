@@ -73,6 +73,7 @@ void color_view_impl::on_input_changed()
 void color_view_impl::on_chooser_tab_changed()
 {
     NAR_LOG_VAR(model_.data_);
+    input_ << get_string_value();
     set_value(model_.data_);
 }
 
