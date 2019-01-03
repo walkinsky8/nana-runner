@@ -30,9 +30,7 @@
 #include <runa/widgets/toolbar_cfg.h>
 #include <runa/widgets/treebox_cfg.h>
 
-#include <runa/widgets/color_hsl_chooser_cfg.h>
-#include <runa/widgets/color_hsv_chooser_cfg.h>
-#include <runa/widgets/color_rgb_chooser_cfg.h>
+#include <runa/widgets/color_chooser_cfg.h>
 
 #include <runa/widgets/option_cfg.h>
 #include <runa/widgets/unknown_cfg.h>

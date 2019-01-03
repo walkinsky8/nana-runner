@@ -37,6 +37,16 @@ namespace runa
 
         string str() const;
 
+        static self from_color(const color& _c)
+        {
+            return self{ _c };
+        }
+
+        static self from_string(const string& _s)
+        {
+            return self{ _s };
+        }
+
         double h() const
         {
             return h_;

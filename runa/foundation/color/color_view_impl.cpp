@@ -9,19 +9,16 @@ using namespace runa;
 
 void color_view_impl::init()
 {
-    NAR_ENUM_ADD(color_mode, unknown, unknown);
-    NAR_ENUM_ADD(color_mode, unknown, rgb);
-    NAR_ENUM_ADD(color_mode, unknown, hsl);
-    NAR_ENUM_ADD(color_mode, unknown, hsv);
+    NAR_ENUM_ADD(color_mode, rgb, rgb);
+    NAR_ENUM_ADD(color_mode, rgb, hsl);
+    NAR_ENUM_ADD(color_mode, rgb, hsv);
 
     input_.events().selected([&] { on_color_selected(); });
     input_.events().text_changed([&] { on_color_text_changed(); });
     input_update_.events().click([&] { on_input_changed(); });
 
-    chooser_bar_.events().selected([&] { on_chooser_tab_changed(); });
-    chooser_rgb_.events().value_changed([&](const arg_color_chooser& _arg) { on_chooser_value_changed(_arg.value); });
-    chooser_hsl_.events().value_changed([&](const arg_color_chooser& _arg) { on_chooser_value_changed(_arg.value); });
-    chooser_hsv_.events().value_changed([&](const arg_color_chooser& _arg) { on_chooser_value_changed(_arg.value); });
+    chooser_type_.events().selected([&] { on_chooser_type_changed(); });
+    chooser_value_.events().value_changed([&](const arg_color_chooser& _arg) { on_chooser_value_changed(_arg.value); });
 
     ok_.events().click([&] { on_ok(); });
     cancel_.events().click([&] { on_cancel(); });
@@ -34,6 +31,7 @@ void color_view_impl::set_model_proxy(model_proxy<color_model> const& _proxy)
     model_ = _proxy;
     NAR_LOG_VAR(model_.data_);
 
+    chooser_type_ << enum_color_mode() ;
     color c = model_.data_;
     input_ << c;
     load_model();
@@ -75,9 +73,12 @@ void color_view_impl::on_input_changed()
     set_value(c);
 }
 
-void color_view_impl::on_chooser_tab_changed()
+void color_view_impl::on_chooser_type_changed()
 {
     NAR_LOG_VAR(model_.data_);
+    enum_color_mode mode;
+    chooser_type_ >> mode;
+    chooser_value_.mode(mode.value());
     input_ << get_string_value();
     set_value(model_.data_);
 }
@@ -104,62 +105,22 @@ void color_view_impl::save_model()
 
 string color_view_impl::get_string_value() const
 {
-    string s;
-    switch (get_chooser_type())
-    {
-    case color_mode::rgb:
-        chooser_rgb_ >> s;
-        break;
-    case color_mode::hsl:
-        chooser_hsl_ >> s;
-        break;
-    case color_mode::hsv:
-        chooser_hsv_ >> s;
-        break;
-    }
-    //NAR_LOG_VAR(old);
-    return s;
+    return chooser_value_.to_string();
 }
 
 color color_view_impl::get_value() const
 {
-    color old{};
-    switch (get_chooser_type())
-    {
-    case color_mode::rgb:
-        old = chooser_rgb_.value();
-        break;
-    case color_mode::hsl:
-        old = chooser_hsl_.value();
-        break;
-    case color_mode::hsv:
-        old = chooser_hsv_.value();
-        break;
-    }
-    //NAR_LOG_VAR(old);
-    return old;
+    return chooser_value_.to_color();
 }
 
 void color_view_impl::set_value(const color& _new)
 {
-    //NAR_LOG_VAR(_new);
-    switch (get_chooser_type())
-    {
-    case color_mode::rgb:
-        chooser_rgb_.value(_new);
-        break;
-    case color_mode::hsl:
-        chooser_hsl_.value(_new);
-        break;
-    case color_mode::hsv:
-        chooser_hsv_.value(_new);
-        break;
-    }
+    chooser_value_.from_color(_new);
 }
 
 color_mode color_view_impl::get_chooser_type() const
 {
-    return static_cast<color_mode>(chooser_bar_.selected());
+    return static_cast<color_mode>(chooser_type_.option());
 }
 
 void color_view_impl::update_output(const color& c)
@@ -170,7 +131,6 @@ void color_view_impl::update_output(const color& c)
     s << std::setw(2) << int(c.g() + 0.5);
     s << std::setw(2) << int(c.b() + 0.5);
     output_ << to_upper(s.str());
-    output_.bgcolor(c);
-    output_.fgcolor(color_hsl{ c }.l() < 0.5 ? nana::colors::white : nana::colors::black);
+    //output_.bgcolor(c);
 }
 

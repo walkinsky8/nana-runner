@@ -15,23 +15,13 @@
     @panel{ id=chooser div="weight=321 margin=[5]"
         @label{ id=n caption=null div="weight=60" align=right }
         @panel{ id=value div="vert weight=306"
-            @tabbar_lite { id=bar page_id=page div='weight=20'
-                @tab { id=RGB
-                    @color_rgb_chooser{ id=rgb }
-                }
-                @tab { id=HSL
-                    @color_hsl_chooser{ id=hsl }
-                }
-                @tab { id=HSV
-                    @color_hsv_chooser{ id=hsv }
-                }
-            }
-            @tabpage { id=page }
+            @combox{ id=mode caption=null div='weight=20' editable=0 }
+            @color_chooser{ id=page }
         }
     }
     @panel{ id=output div="weight=30 margin=[5]"
         @label{ id=n caption="Output:" div="weight=60" align=right }
-        @label{ id=value caption=null div="weight=305" bgcolor=green align=left }
+        @label{ id=value caption=null div="weight=305" bgcolor=#cccccc align=left }
     }
     @panel{ }
     @panel { id=cmd div="weight=25" fgcolor=black typeface={bold}

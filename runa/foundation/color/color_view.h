@@ -5,10 +5,7 @@
 
 #include <runa/widgets/form_cfg.h>
 #include <runa/widgets/combox_cfg.h>
-#include <runa/widgets/tabbar_cfg.h>
-#include <runa/widgets/color_hsl_chooser_cfg.h>
-#include <runa/widgets/color_hsv_chooser_cfg.h>
-#include <runa/widgets/color_rgb_chooser_cfg.h>
+#include <runa/widgets/color_chooser_cfg.h>
 #include <runa/widgets/label_cfg.h>
 #include <runa/widgets/button_cfg.h>
 
@@ -24,10 +21,8 @@ namespace runa {
         combox& input_;
         button& input_update_;
 
-        tabbar_lite& chooser_bar_;
-        color_rgb_chooser& chooser_rgb_;
-        color_hsl_chooser& chooser_hsl_;
-        color_hsv_chooser& chooser_hsv_;
+        combox& chooser_type_;
+        color_chooser& chooser_value_;
 
         label& output_;
 
@@ -40,10 +35,8 @@ namespace runa {
             , form_{ wnd<form>() }
             , input_{ wnd<combox>("input.value") }
             , input_update_{ wnd<button>("input.update") }
-            , chooser_bar_{ wnd<tabbar_lite>("chooser.value.bar") }
-            , chooser_rgb_{ child_view("chooser.value.bar.RGB")->wnd<color_rgb_chooser>("rgb") }
-            , chooser_hsl_{ child_view("chooser.value.bar.HSL")->wnd<color_hsl_chooser>("hsl") }
-            , chooser_hsv_{ child_view("chooser.value.bar.HSV")->wnd<color_hsv_chooser>("hsv") }
+            , chooser_type_{ wnd<combox>("chooser.value.mode") }
+            , chooser_value_{ wnd<color_chooser>("chooser.value.page") }
             , output_{ wnd<label>("output.value") }
             , ok_{ wnd<button>("cmd.OK") }
             , cancel_{ wnd<button>("cmd.cancel") }

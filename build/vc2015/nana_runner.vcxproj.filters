@@ -102,22 +102,13 @@
     <ClCompile Include="..\..\runa\foundation\color\color_hsl.cpp">
       <Filter>runa\lib\foundation\color</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\runa\foundation\color\color_hsl_chooser.cpp">
-      <Filter>runa\lib\foundation\color</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\runa\foundation\color\color_hsv.cpp">
-      <Filter>runa\lib\foundation\color</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\runa\foundation\color\color_hsv_chooser.cpp">
       <Filter>runa\lib\foundation\color</Filter>
     </ClCompile>
     <ClCompile Include="..\..\runa\foundation\color\color_model.cpp">
       <Filter>runa\lib\foundation\color</Filter>
     </ClCompile>
     <ClCompile Include="..\..\runa\foundation\color\color_rgb.cpp">
-      <Filter>runa\lib\foundation\color</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\runa\foundation\color\color_rgb_chooser.cpp">
       <Filter>runa\lib\foundation\color</Filter>
     </ClCompile>
     <ClCompile Include="..\..\runa\foundation\color\color_view_impl.cpp">
@@ -130,15 +121,6 @@
       <Filter>runa\lib\widgets</Filter>
     </ClCompile>
     <ClCompile Include="..\..\runa\widgets\checkbox_cfg.cpp">
-      <Filter>runa\lib\widgets</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\runa\widgets\color_hsl_chooser_cfg.cpp">
-      <Filter>runa\lib\widgets</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\runa\widgets\color_hsv_chooser_cfg.cpp">
-      <Filter>runa\lib\widgets</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\runa\widgets\color_rgb_chooser_cfg.cpp">
       <Filter>runa\lib\widgets</Filter>
     </ClCompile>
     <ClCompile Include="..\..\runa\widgets\combox_cfg.cpp">
@@ -270,6 +252,12 @@
     <ClCompile Include="..\..\runa\sample\nana_runner.cpp">
       <Filter>main</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\runa\foundation\color\color_chooser.cpp">
+      <Filter>runa\lib\foundation\color</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\runa\widgets\color_chooser_cfg.cpp">
+      <Filter>runa\lib\widgets</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\runa\base\_config.h">
@@ -317,22 +305,13 @@
     <ClInclude Include="..\..\runa\foundation\color\color_hsl.h">
       <Filter>runa\lib\foundation\color</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\runa\foundation\color\color_hsl_chooser.h">
-      <Filter>runa\lib\foundation\color</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\runa\foundation\color\color_hsv.h">
-      <Filter>runa\lib\foundation\color</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\runa\foundation\color\color_hsv_chooser.h">
       <Filter>runa\lib\foundation\color</Filter>
     </ClInclude>
     <ClInclude Include="..\..\runa\foundation\color\color_model.h">
       <Filter>runa\lib\foundation\color</Filter>
     </ClInclude>
     <ClInclude Include="..\..\runa\foundation\color\color_rgb.h">
-      <Filter>runa\lib\foundation\color</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\runa\foundation\color\color_rgb_chooser.h">
       <Filter>runa\lib\foundation\color</Filter>
     </ClInclude>
     <ClInclude Include="..\..\runa\foundation\color\color_view.h">
@@ -348,15 +327,6 @@
       <Filter>runa\lib\widgets</Filter>
     </ClInclude>
     <ClInclude Include="..\..\runa\widgets\checkbox_cfg.h">
-      <Filter>runa\lib\widgets</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\runa\widgets\color_hsl_chooser_cfg.h">
-      <Filter>runa\lib\widgets</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\runa\widgets\color_hsv_chooser_cfg.h">
-      <Filter>runa\lib\widgets</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\runa\widgets\color_rgb_chooser_cfg.h">
       <Filter>runa\lib\widgets</Filter>
     </ClInclude>
     <ClInclude Include="..\..\runa\widgets\combox_cfg.h">
@@ -565,6 +535,15 @@
     </ClInclude>
     <ClInclude Include="..\..\runa\foundation\color\color_chooser_base.h">
       <Filter>runa\lib\foundation\color</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\runa\foundation\color\color_chooser.h">
+      <Filter>runa\lib\foundation\color</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\runa\foundation\color\color_abc.h">
+      <Filter>runa\lib\foundation\color</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\runa\widgets\color_chooser_cfg.h">
+      <Filter>runa\lib\widgets</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

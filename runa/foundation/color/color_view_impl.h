@@ -32,7 +32,7 @@ namespace runa {
         void on_color_text_changed();
         void on_input_changed();
 
-        void on_chooser_tab_changed();
+        void on_chooser_type_changed();
         void on_chooser_value_changed(const color& _c);
 
         void load_model();

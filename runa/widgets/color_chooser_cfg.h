@@ -1,15 +1,15 @@
-// Created by walkinsky(lyh6188@hotmail.com), 2018/12/03
+// Created by walkinsky(lyh6188@hotmail.com), 2019/01/03
 #pragma once
 
 #include <runa/foundation/widget_cfg.h>
 
-#include <runa/foundation/color/color_rgb_chooser.h>
+#include <runa/foundation/color/color_chooser.h>
 
 namespace runa {
 
-    class color_rgb_chooser_cfg : public widget_cfg
+    class color_chooser_cfg : public widget_cfg
     {
-        NAR_DEFINE_WIDGET(color_rgb_chooser, widget_cfg);
+        NAR_DEFINE_WIDGET(color_chooser, widget_cfg);
 
     public:
         template<class _Stream>

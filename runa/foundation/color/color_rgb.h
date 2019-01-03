@@ -43,12 +43,23 @@ namespace runa
             return nana::color{ r_, g_, b_ };
         }
 
+
         nana::color to_revert_color() const
         {
             return self{ 255 - r_, 255 - g_, 255 - b_ }.to_color();
         }
 
         string str() const;
+
+        static self from_color(const color& _c)
+        {
+            return self{ _c };
+        }
+
+        static self from_string(const string& _s)
+        {
+            return self{ _s };
+        }
 
         value_type r() const
         {
