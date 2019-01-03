@@ -9,6 +9,11 @@ using namespace runa;
 
 void color_view_impl::init()
 {
+    NAR_ENUM_ADD(color_mode, unknown, unknown);
+    NAR_ENUM_ADD(color_mode, unknown, rgb);
+    NAR_ENUM_ADD(color_mode, unknown, hsl);
+    NAR_ENUM_ADD(color_mode, unknown, hsv);
+
     input_.events().selected([&] { on_color_selected(); });
     input_.events().text_changed([&] { on_color_text_changed(); });
     input_update_.events().click([&] { on_input_changed(); });
@@ -102,13 +107,13 @@ string color_view_impl::get_string_value() const
     string s;
     switch (get_chooser_type())
     {
-    case color_chooser_type::rgb:
+    case color_mode::rgb:
         chooser_rgb_ >> s;
         break;
-    case color_chooser_type::hsl:
+    case color_mode::hsl:
         chooser_hsl_ >> s;
         break;
-    case color_chooser_type::hsv:
+    case color_mode::hsv:
         chooser_hsv_ >> s;
         break;
     }
@@ -121,13 +126,13 @@ color color_view_impl::get_value() const
     color old{};
     switch (get_chooser_type())
     {
-    case color_chooser_type::rgb:
+    case color_mode::rgb:
         old = chooser_rgb_.value();
         break;
-    case color_chooser_type::hsl:
+    case color_mode::hsl:
         old = chooser_hsl_.value();
         break;
-    case color_chooser_type::hsv:
+    case color_mode::hsv:
         old = chooser_hsv_.value();
         break;
     }
@@ -140,21 +145,21 @@ void color_view_impl::set_value(const color& _new)
     //NAR_LOG_VAR(_new);
     switch (get_chooser_type())
     {
-    case color_chooser_type::rgb:
+    case color_mode::rgb:
         chooser_rgb_.value(_new);
         break;
-    case color_chooser_type::hsl:
+    case color_mode::hsl:
         chooser_hsl_.value(_new);
         break;
-    case color_chooser_type::hsv:
+    case color_mode::hsv:
         chooser_hsv_.value(_new);
         break;
     }
 }
 
-color_chooser_type color_view_impl::get_chooser_type() const
+color_mode color_view_impl::get_chooser_type() const
 {
-    return static_cast<color_chooser_type>(chooser_bar_.selected());
+    return static_cast<color_mode>(chooser_bar_.selected());
 }
 
 void color_view_impl::update_output(const color& c)

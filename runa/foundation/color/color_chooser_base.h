@@ -5,11 +5,12 @@
 
 namespace runa
 {
-    enum class color_chooser_type
+    enum class color_mode
     {
         rgb = 0,
         hsl = 1,
-        hsv = 2
+        hsv = 2,
+        unknown = -1
     };
 
 	struct arg_color_chooser : public nana::event_arg

@@ -43,7 +43,7 @@ namespace runa {
         color get_value() const;
         void set_value(const color& _c);
 
-        color_chooser_type get_chooser_type() const;
+        color_mode get_chooser_type() const;
 
         void update_output(const color& _c);
 
