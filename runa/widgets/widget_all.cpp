@@ -36,6 +36,7 @@ void runa::init_widgets()
     add_widget<treebox_cfg>();
 
     add_widget<color_chooser_cfg>();
+    add_widget<radiobox_cfg>();
 
     add_widget<option_cfg>();
     add_widget<unknown_cfg>();

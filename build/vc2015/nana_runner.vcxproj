@@ -221,6 +221,7 @@
     <ClCompile Include="..\..\runa\widgets\panel_lite_cfg.cpp" />
     <ClCompile Include="..\..\runa\widgets\picture_cfg.cpp" />
     <ClCompile Include="..\..\runa\widgets\progress_cfg.cpp" />
+    <ClCompile Include="..\..\runa\widgets\radiobox_cfg.cpp" />
     <ClCompile Include="..\..\runa\widgets\scroll_cfg.cpp" />
     <ClCompile Include="..\..\runa\widgets\slider_cfg.cpp" />
     <ClCompile Include="..\..\runa\widgets\spinbox_cfg.cpp" />
@@ -294,6 +295,7 @@
     <ClInclude Include="..\..\runa\foundation\font_model.h" />
     <ClInclude Include="..\..\runa\foundation\generic_view.h" />
     <ClInclude Include="..\..\runa\foundation\model_base.h" />
+    <ClInclude Include="..\..\runa\foundation\radiobox.h" />
     <ClInclude Include="..\..\runa\foundation\view_base.h" />
     <ClInclude Include="..\..\runa\foundation\view_factory.h" />
     <ClInclude Include="..\..\runa\foundation\widget_base.h" />
@@ -322,6 +324,7 @@
     <ClInclude Include="..\..\runa\widgets\panel_lite_cfg.h" />
     <ClInclude Include="..\..\runa\widgets\picture_cfg.h" />
     <ClInclude Include="..\..\runa\widgets\progress_cfg.h" />
+    <ClInclude Include="..\..\runa\widgets\radiobox_cfg.h" />
     <ClInclude Include="..\..\runa\widgets\scroll_cfg.h" />
     <ClInclude Include="..\..\runa\widgets\slider_cfg.h" />
     <ClInclude Include="..\..\runa\widgets\spinbox_cfg.h" />

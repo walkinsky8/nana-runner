@@ -258,6 +258,9 @@
     <ClCompile Include="..\..\runa\widgets\color_chooser_cfg.cpp">
       <Filter>runa\lib\widgets</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\runa\widgets\radiobox_cfg.cpp">
+      <Filter>runa\lib\widgets</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\runa\base\_config.h">
@@ -544,6 +547,12 @@
     </ClInclude>
     <ClInclude Include="..\..\runa\widgets\color_chooser_cfg.h">
       <Filter>runa\lib\widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\runa\widgets\radiobox_cfg.h">
+      <Filter>runa\lib\widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\runa\foundation\radiobox.h">
+      <Filter>runa\lib\foundation</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

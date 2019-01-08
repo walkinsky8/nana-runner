@@ -1,20 +1,17 @@
-// Created by walkinsky(lyh6188@hotmail.com), 2018/01/18
+// Created by walkinsky(lyh6188@hotmail.com), 2019/01/08
 #pragma once
 
 #include <runa/foundation/widget_cfg.h>
 
-#include <nana/gui/widgets/checkbox.hpp>
+#include <runa/foundation/radiobox.h>
 
 namespace runa {
 
-    using checkbox = nana::checkbox;
-
-    class checkbox_cfg : public widget_cfg
+    class radiobox_cfg : public widget_cfg
     {
-        NAR_DEFINE_WIDGET(checkbox, widget_cfg);
+        NAR_DEFINE_WIDGET(radiobox, widget_cfg);
 
         NAR_FIELD(optional<bool>, check);
-        NAR_FIELD(optional<bool>, radio);
         NAR_FIELD(optional<bool>, transparent);
 
     public:
@@ -23,7 +20,6 @@ namespace runa {
         {
             super::traverse(_s);
             NAR_CODEC(_s, check);
-            NAR_CODEC(_s, radio);
             NAR_CODEC(_s, transparent);
         }
 
@@ -33,14 +29,6 @@ namespace runa {
 
     };
 
-    inline void operator<<(checkbox& _w, bool _v)
-    {
-        _w.check(_v);
-    }
-
-    inline void operator >> (const checkbox& _w, bool& _v)
-    {
-        _v = _w.checked();
-    }
+    void radio_group_init(nana::radio_group& _group, std::vector<nana::checkbox*> _radios);
 
 }

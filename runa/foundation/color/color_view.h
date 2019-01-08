@@ -5,7 +5,7 @@
 
 #include <runa/widgets/form_cfg.h>
 #include <runa/widgets/combox_cfg.h>
-#include <runa/widgets/checkbox_cfg.h>
+#include <runa/widgets/radiobox_cfg.h>
 #include <runa/widgets/color_chooser_cfg.h>
 #include <runa/widgets/label_cfg.h>
 #include <runa/widgets/button_cfg.h>
@@ -22,10 +22,10 @@ namespace runa {
         combox& input_;
         button& input_update_;
 
-        checkbox& chooser_type_rgb_;
-        checkbox& chooser_type_hsl_;
-        checkbox& chooser_type_hsv_;
-        nana::radio_group chooser_type_helper_;
+        radiobox& chooser_type_rgb_;
+        radiobox& chooser_type_hsl_;
+        radiobox& chooser_type_hsv_;
+        nana::radio_group chooser_type_group_;
 
         color_chooser& chooser_value_;
 
@@ -41,16 +41,16 @@ namespace runa {
             , form_{ wnd<form>() }
             , input_{ wnd<combox>("input.value") }
             , input_update_{ wnd<button>("input.update") }
-            , chooser_type_rgb_{ wnd<checkbox>("chooser.value.mode.RGB") }
-            , chooser_type_hsl_{ wnd<checkbox>("chooser.value.mode.HSL") }
-            , chooser_type_hsv_{ wnd<checkbox>("chooser.value.mode.HSV") }
+            , chooser_type_rgb_{ wnd<radiobox>("chooser.value.mode.RGB") }
+            , chooser_type_hsl_{ wnd<radiobox>("chooser.value.mode.HSL") }
+            , chooser_type_hsv_{ wnd<radiobox>("chooser.value.mode.HSV") }
             , chooser_value_{ wnd<color_chooser>("chooser.value.page") }
             , output_value_{ wnd<label>("output.value") }
             , output_rgb_{ wnd<label>("output.rgb") }
             , ok_{ wnd<button>("cmd.OK") }
             , cancel_{ wnd<button>("cmd.cancel") }
         {
-            radio_group_init(chooser_type_helper_, { &chooser_type_rgb_, &chooser_type_hsl_, &chooser_type_hsv_ });
+            radio_group_init(chooser_type_group_, { &chooser_type_rgb_, &chooser_type_hsl_, &chooser_type_hsv_ });
         }
 
     };

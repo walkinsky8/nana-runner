@@ -31,6 +31,7 @@
 #include <runa/widgets/treebox_cfg.h>
 
 #include <runa/widgets/color_chooser_cfg.h>
+#include <runa/widgets/radiobox_cfg.h>
 
 #include <runa/widgets/option_cfg.h>
 #include <runa/widgets/unknown_cfg.h>

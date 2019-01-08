@@ -131,7 +131,7 @@ void color_view_impl::set_color_value(const color& _value)
 
 color_mode color_view_impl::get_chooser_type() const
 {
-    int which = static_cast<int>(chooser_type_helper_.checked());
+    int which = static_cast<int>(chooser_type_group_.checked());
     auto mode = enum_color_mode{ which };
     NAR_LOG_VAR(mode);
     return mode.value();
