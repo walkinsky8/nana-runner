@@ -7,6 +7,10 @@
 
 void runa::init_widgets()
 {
+    NAR_ENUM_ADD(color_mode, rgb, rgb);
+    NAR_ENUM_ADD(color_mode, rgb, hsl);
+    NAR_ENUM_ADD(color_mode, rgb, hsv);
+
     add_widget<form_cfg>();
     add_widget<panel_cfg>();
     add_widget<panel_lite_cfg>();

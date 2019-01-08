@@ -48,7 +48,7 @@ namespace runa {
     //r,g,b is 0..255
     inline nana::color make_rgb_255(double _r, double _g, double _b)
     {
-        return nana::color{ static_cast<uint>(_r), static_cast<uint>(_g), static_cast<uint>(_b) };
+        return nana::color{ static_cast<uint>(_r+0.5), static_cast<uint>(_g+0.5), static_cast<uint>(_b+0.5) };
     }
 
     //r,g,b is 0..1

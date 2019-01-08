@@ -11,11 +11,14 @@ namespace runa {
     {
         NAR_DEFINE_WIDGET(color_chooser, widget_cfg);
 
+        NAR_FIELD(optional<enum_color_mode>, mode);
+
     public:
         template<class _Stream>
         void traverse(_Stream& _s)
         {
             super::traverse(_s);
+            NAR_CODEC(_s, mode);
         }
 
         wnd_ptr create_wnd(window p, bool v) const override { return std::make_shared<ui_type>(p, v); }

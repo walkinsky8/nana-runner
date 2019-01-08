@@ -9,10 +9,6 @@ using namespace runa;
 
 void color_view_impl::init()
 {
-    NAR_ENUM_ADD(color_mode, rgb, rgb);
-    NAR_ENUM_ADD(color_mode, rgb, hsl);
-    NAR_ENUM_ADD(color_mode, rgb, hsv);
-
     input_.events().selected([&] { on_color_selected(); });
     input_.events().text_changed([&] { on_color_text_changed(); });
     input_update_.events().click([&] { on_input_changed(); });
@@ -132,7 +128,7 @@ void color_view_impl::set_color_value(const color& _value)
 color_mode color_view_impl::get_chooser_type() const
 {
     int which = static_cast<int>(chooser_type_group_.checked());
-    auto mode = enum_color_mode{ which };
+    enum_color_mode mode = which < 0 ? chooser_value_.mode() : enum_color_mode{ which };
     NAR_LOG_VAR(mode);
     return mode.value();
 }

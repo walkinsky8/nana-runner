@@ -22,14 +22,15 @@ void runa::radiobox_cfg::init_widget(widget & _w, view_obj* _root_view) const
 
 void runa::radio_group_init(nana::radio_group& _group, std::vector<nana::checkbox*> _radios)
 {
-    int selected = 0;
+    int selected = -1;
     for (int i = 0; i < _radios.size(); ++i)
     {
         if (_radios[i]->checked())
             selected = i;
         _group.add(*_radios[i]);
     }
-    _radios[selected]->check(true);
+    if (selected != -1)
+        _radios[selected]->check(true);
 }
 
 #endif

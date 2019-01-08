@@ -23,10 +23,10 @@ namespace runa
             : r_{ _r }, g_{ _g }, b_{ _b }
         {}
         self(double _r, double _g, double _b)
-            : r_{ static_cast<value_type>(_r) }, g_{ static_cast<value_type>(_g) }, b_{ static_cast<value_type>(_b) }
+            : r_{ static_cast<value_type>(_r + 0.5) }, g_{ static_cast<value_type>(_g + 0.5) }, b_{ static_cast<value_type>(_b + 0.5) }
         {}
         self(double _r, double _g, double _b, color_rgb_double)
-            : r_{ static_cast<value_type>(_r*255) }, g_{ static_cast<value_type>(_g*255) }, b_{ static_cast<value_type>(_b*255) }
+            : r_{ static_cast<value_type>(_r*255 + 0.5) }, g_{ static_cast<value_type>(_g*255 + 0.5) }, b_{ static_cast<value_type>(_b*255 + 0.5) }
         {}
         self(nana::color const& _c)
             : r_{ static_cast<value_type>(_c.r()) }, g_{ static_cast<value_type>(_c.g()) }, b_{ static_cast<value_type>(_c.b()) }

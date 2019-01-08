@@ -17,10 +17,10 @@
         @panel{ id=value div="vert weight=306"
             @panel{ id=mode div='weight=20'
                 @radiobox { id=RGB }
-                @radiobox { id=HSL check=1 }
+                @radiobox { id=HSL }
                 @radiobox { id=HSV }
             }
-            @color_chooser{ id=page fgcolor=green bgcolor=#c0c0c0}
+            @color_chooser{ id=page mode=hsv fgcolor=grey bgcolor=#c0c0c0 }
         }
     }
     @panel{ id=output div="weight=30 margin=[5]"
