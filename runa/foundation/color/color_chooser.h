@@ -34,7 +34,8 @@ namespace runa
                 buttons what{ buttons::none};
                 bool pressed{ false };
 
-                metrics_type() {}
+                metrics_type() {
+                }
             };
 
             class drawer

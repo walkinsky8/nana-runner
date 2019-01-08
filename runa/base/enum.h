@@ -21,11 +21,9 @@ namespace runa {
             : value_{ _value }
         {}
         explicit enum_(int _value)
-            : value_{ static_cast<E>(_value) }
-        {}
-        explicit enum_(size_t _value)
-            : value_{ static_cast<E>(_value) }
-        {}
+            : value_{ find_name(_value) ? static_cast<E>(_value) : _Default }
+        {
+        }
         explicit enum_(string const& _s)
             : value_{ str2value(_s) }
         {}
@@ -51,9 +49,9 @@ namespace runa {
             s2v()[s] = v;
         }
 
-        static string* find_name(unsigned _value)
+        static string* find_name(int _value)
         {
-            const auto i = v2s().find((E)(int)_value);
+            const auto i = v2s().find((E)_value);
             if (i != v2s().end())
                 return &(*i).second;
             return nullptr;

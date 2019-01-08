@@ -574,7 +574,8 @@ namespace runa
 
             void trigger::_m_emit_value_changed()
             {
-                widget_->events().value_changed.emit({ widget_->handle(), to_color() }, widget_->handle());
+                color c = to_color();
+                widget_->events().value_changed.emit({ widget_->handle(), c }, widget_->handle());
             }
                 
             //end class trigger
