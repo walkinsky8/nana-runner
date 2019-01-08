@@ -442,7 +442,7 @@ namespace runa
                 {
                     if (arg.ctrl)
                     {
-                        value.a() += (_multiple) / drawer::ab_width;
+                        value.a() += static_cast<double>(_multiple) / drawer::ab_width;
                         if (value.a() > 1.0)
                             value.a() = 1.0;
                     }
@@ -463,7 +463,7 @@ namespace runa
                 {
                     if (arg.ctrl)
                     {
-                        value.a() -= (_multiple) / drawer::ab_width;
+                        value.a() -= static_cast<double>(_multiple) / drawer::ab_width;
                         if (value.a() < 0)
                             value.a() = 0;
                     }
