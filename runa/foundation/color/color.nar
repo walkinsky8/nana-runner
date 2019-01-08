@@ -15,13 +15,18 @@
     @panel{ id=chooser div="weight=321 margin=[5]"
         @label{ id=n caption=null div="weight=60" align=right }
         @panel{ id=value div="vert weight=306"
-            @combox{ id=mode caption=null div='weight=20' editable=0 }
-            @color_chooser{ id=page }
+            @panel{ id=mode div='weight=20'
+                @checkbox { id=RGB radio=1 check=1 }
+                @checkbox { id=HSL radio=1 }
+                @checkbox { id=HSV radio=1 }
+            }
+            @color_chooser{ id=page bgcolor=#c0c0c0}
         }
     }
     @panel{ id=output div="weight=30 margin=[5]"
         @label{ id=n caption="Output:" div="weight=60" align=right }
-        @label{ id=value caption=null div="weight=305" bgcolor=#cccccc align=left }
+        @label{ id=value caption=null div="weight=200" bgcolor=#c0c0c0 align=left }
+        @label{ id=rgb caption=null div="weight=105" bgcolor=#c0c0c0 align=right }
     }
     @panel{ }
     @panel { id=cmd div="weight=25" fgcolor=black typeface={bold}

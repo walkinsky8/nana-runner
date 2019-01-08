@@ -20,7 +20,13 @@ namespace runa {
         enum_(E _value)
             : value_{ _value }
         {}
-        enum_(string const& _s)
+        explicit enum_(int _value)
+            : value_{ static_cast<E>(_value) }
+        {}
+        explicit enum_(size_t _value)
+            : value_{ static_cast<E>(_value) }
+        {}
+        explicit enum_(string const& _s)
             : value_{ str2value(_s) }
         {}
 

@@ -5,6 +5,7 @@
 
 #include <runa/widgets/form_cfg.h>
 #include <runa/widgets/combox_cfg.h>
+#include <runa/widgets/checkbox_cfg.h>
 #include <runa/widgets/color_chooser_cfg.h>
 #include <runa/widgets/label_cfg.h>
 #include <runa/widgets/button_cfg.h>
@@ -21,10 +22,15 @@ namespace runa {
         combox& input_;
         button& input_update_;
 
-        combox& chooser_type_;
+        checkbox& chooser_type_rgb_;
+        checkbox& chooser_type_hsl_;
+        checkbox& chooser_type_hsv_;
+        nana::radio_group chooser_type_helper_;
+
         color_chooser& chooser_value_;
 
-        label& output_;
+        label& output_value_;
+        label& output_rgb_;
 
         button& ok_;
         button& cancel_;
@@ -35,12 +41,19 @@ namespace runa {
             , form_{ wnd<form>() }
             , input_{ wnd<combox>("input.value") }
             , input_update_{ wnd<button>("input.update") }
-            , chooser_type_{ wnd<combox>("chooser.value.mode") }
+            , chooser_type_rgb_{ wnd<checkbox>("chooser.value.mode.RGB") }
+            , chooser_type_hsl_{ wnd<checkbox>("chooser.value.mode.HSL") }
+            , chooser_type_hsv_{ wnd<checkbox>("chooser.value.mode.HSV") }
             , chooser_value_{ wnd<color_chooser>("chooser.value.page") }
-            , output_{ wnd<label>("output.value") }
+            , output_value_{ wnd<label>("output.value") }
+            , output_rgb_{ wnd<label>("output.rgb") }
             , ok_{ wnd<button>("cmd.OK") }
             , cancel_{ wnd<button>("cmd.cancel") }
         {
+            chooser_type_helper_.add(chooser_type_rgb_);
+            chooser_type_helper_.add(chooser_type_hsl_);
+            chooser_type_helper_.add(chooser_type_hsv_);
+            chooser_type_rgb_.check(true);
         }
 
     };

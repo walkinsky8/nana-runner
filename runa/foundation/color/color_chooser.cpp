@@ -236,11 +236,6 @@ namespace runa
                 return value / factor;
             }
 
-            color get_default_bgcolor()
-            {
-                return { 0xc0, 0xc0, 0xc0 };
-            }
-
             double get_a(int x)
             {
                 return ensure_between(static_cast<double>(x - drawer::ab_left) / drawer::ab_width, 0.0, 1.0);
@@ -277,6 +272,11 @@ namespace runa
 				: metrics_(m)
 			{}
 
+            void drawer::attach(nana::window _wnd)
+            {
+                wnd_ = _wnd;
+            }
+
 			buttons drawer::what(graph_reference graph, const nana::point& screen_pos)
 			{
                 //const nana::size scale = { graph.width(), graph.height() };
@@ -310,9 +310,9 @@ namespace runa
                 return old != metrics_.value;
             }
 
-			void drawer::draw(graph_reference graph, buttons what)
+			void drawer::draw(graph_reference graph)
 			{
-				_m_background(graph);
+                graph.rectangle(true, nana::API::bgcolor(wnd_));
 
                 _m_draw_color(graph, buttons::ab_part);
                 _m_draw_color(graph, buttons::c_part);
@@ -320,16 +320,10 @@ namespace runa
 
                 _m_draw_cursor(graph, buttons::ab_part);
                 _m_draw_cursor(graph, buttons::c_part);
-
             }
 
 		//private:
             
-            void drawer::_m_background(graph_reference graph)
-			{
-				graph.rectangle(true, get_default_bgcolor());
-			}
-
             void drawer::_m_draw_color(graph_reference graph, buttons what)
             { 
                 if (what == buttons::ab_part)
@@ -433,8 +427,8 @@ namespace runa
                 if (graph_ && (metrics_.mode != _mode))
                 {
                     metrics_.mode = _mode;
-                    _m_emit_value_changed();
-                    nana::API::refresh_window(*widget_);
+                    //_m_emit_value_changed();
+                    //nana::API::refresh_window(*widget_);
                 }
             }
 
@@ -499,6 +493,7 @@ namespace runa
             {
                 graph_ = &graph;
                 widget_ = dynamic_cast<runa::color_chooser*>(&widget);
+                drawer_.attach(widget);
                 widget.caption("runa_color_chooser");
             }
 
@@ -509,19 +504,19 @@ namespace runa
 
             void trigger::refresh(graph_reference graph)
             {
-                drawer_.draw(graph, metrics_.what);
+                drawer_.draw(graph);
             }
 
             void trigger::resized(graph_reference graph, const ::nana::arg_resized&)
             {
-                drawer_.draw(graph, metrics_.what);
+                drawer_.draw(graph);
                 nana::API::dev::lazy_refresh();
             }
 
             void trigger::mouse_enter(graph_reference graph, const ::nana::arg_mouse& arg)
             {
                 metrics_.what = drawer_.what(graph, arg.pos);
-                drawer_.draw(graph, metrics_.what);
+                drawer_.draw(graph);
                 nana::API::dev::lazy_refresh();
             }
 
@@ -542,7 +537,7 @@ namespace runa
                     metrics_.what = drawer_.what(graph, arg.pos);
                     if (drawer_.update_value(metrics_.what, arg.pos))
                         _m_emit_value_changed();
-                    drawer_.draw(graph, metrics_.what);
+                    drawer_.draw(graph);
                     nana::API::dev::lazy_refresh();
                 }
             }
@@ -555,7 +550,7 @@ namespace runa
                 metrics_.what = drawer_.what(graph, arg.pos);
                 if (drawer_.update_value(metrics_.what, arg.pos))
                     _m_emit_value_changed();
-                drawer_.draw(graph, metrics_.what);
+                drawer_.draw(graph);
                 nana::API::dev::lazy_refresh();
             }
 
@@ -564,7 +559,7 @@ namespace runa
                 if (metrics_.pressed) return;
 
                 metrics_.what = buttons::none;
-                drawer_.draw(graph, buttons::none);
+                drawer_.draw(graph);
                 nana::API::dev::lazy_refresh();
             }
 
@@ -572,7 +567,7 @@ namespace runa
             {
                 if (make_step(arg.upwards, 3, arg))
                 {
-                    drawer_.draw(graph, metrics_.what);
+                    drawer_.draw(graph);
                     nana::API::dev::lazy_refresh();
                 }
             }

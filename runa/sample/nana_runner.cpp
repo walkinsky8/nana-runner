@@ -10,8 +10,8 @@
 
 int run_main(runa::pcwstr _cmdline)
 {
-    //runa::editor::editor_app a;
-    runa::sample::demo_app a;
+    runa::editor::editor_app a;
+    //runa::sample::demo_app a;
     a.run(_cmdline);
     return 0;
 }

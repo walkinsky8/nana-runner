@@ -208,13 +208,13 @@
                     }
                 }
                 @tab { id=RGB
-                    @color_rgb_chooser{ id=rgb }
+                    @color_chooser{ id=rgb }
                 }
                 @tab { id=HSL
-                    @color_hsl_chooser{ id=hsl }
+                    @color_chooser{ id=hsl }
                 }
                 @tab { id=HSV
-                    @color_hsv_chooser{ id=hsv }
+                    @color_chooser{ id=hsv }
                 }
             }
             @tabpage { id=page }

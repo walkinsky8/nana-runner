@@ -65,18 +65,18 @@ namespace runa
                 constexpr static int c_bottom = c_top + c_height;
 
 				drawer(metrics_type& m);
+                void attach(nana::window _wnd);
                 buttons what(graph_reference, const nana::point&);
                 bool update_value(buttons, const nana::point&);
-                void draw(graph_reference, buttons);
+                void draw(graph_reference);
 
 			private:
-                void _m_background(graph_reference);
                 void _m_draw_color(graph_reference, buttons what);
                 void _m_draw_cursor(graph_reference, buttons what);
 
             private:
                 metrics_type &metrics_;
-
+                nana::window wnd_{};
             };
 
 			class trigger

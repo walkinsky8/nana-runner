@@ -116,10 +116,6 @@ namespace runa::sample {
         {
             categorize_.caption(fs::current_path());
 
-            rgb_.mode(color_mode::rgb);
-            hsl_.mode(color_mode::hsl);
-            hsv_.mode(color_mode::hsv);
-
             label_.text_align(m_label_align.value(), m_label_align_v.value());
             align_ << m_label_align;
             align_v_ << m_label_align_v;
