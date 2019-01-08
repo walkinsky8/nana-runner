@@ -50,10 +50,7 @@ namespace runa {
             , ok_{ wnd<button>("cmd.OK") }
             , cancel_{ wnd<button>("cmd.cancel") }
         {
-            chooser_type_helper_.add(chooser_type_rgb_);
-            chooser_type_helper_.add(chooser_type_hsl_);
-            chooser_type_helper_.add(chooser_type_hsv_);
-            chooser_type_rgb_.check(true);
+            radio_group_init(chooser_type_helper_, { &chooser_type_rgb_, &chooser_type_hsl_, &chooser_type_hsv_ });
         }
 
     };

@@ -33,9 +33,16 @@ void color_view_impl::set_model_proxy(model_proxy<color_model> const& _proxy)
     model_ = _proxy;
     NAR_LOG_VAR(model_.data_);
 
+    if (_proxy.data_.empty())
+        model_.data_ = get_string_value();
+
     color c = model_.data_;
     input_ << c;
+
+    chooser_value_.mode(get_chooser_type());
+
     load_model();
+    
     update_output();
 }
 

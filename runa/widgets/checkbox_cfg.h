@@ -42,4 +42,7 @@ namespace runa {
     {
         _v = _w.checked();
     }
+
+    void radio_group_init(nana::radio_group& _group, std::vector<nana::checkbox*> _radios);
+
 }

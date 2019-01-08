@@ -16,11 +16,11 @@
         @label{ id=n caption=null div="weight=60" align=right }
         @panel{ id=value div="vert weight=306"
             @panel{ id=mode div='weight=20'
-                @checkbox { id=RGB radio=1 check=1 }
-                @checkbox { id=HSL radio=1 }
+                @checkbox { id=RGB radio=1 }
+                @checkbox { id=HSL radio=1 check=1 }
                 @checkbox { id=HSV radio=1 }
             }
-            @color_chooser{ id=page bgcolor=#c0c0c0}
+            @color_chooser{ id=page fgcolor=green bgcolor=#c0c0c0}
         }
     }
     @panel{ id=output div="weight=30 margin=[5]"

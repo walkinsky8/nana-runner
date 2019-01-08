@@ -38,6 +38,11 @@ namespace runa {
             return to_string();
         }
 
+        bool empty() const
+        {
+            return value_().empty();
+        }
+
     };
 
     inline void operator<<(color_model& _o, const color& _v)
