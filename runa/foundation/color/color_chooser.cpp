@@ -428,7 +428,7 @@ namespace runa
                 {
                     metrics_.mode = _mode;
                     //_m_emit_value_changed();
-                    //nana::API::refresh_window(*widget_);
+                    nana::API::refresh_window(*widget_);
                 }
             }
 

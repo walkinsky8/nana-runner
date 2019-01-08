@@ -82,7 +82,7 @@ void color_view_impl::on_chooser_type_changed()
     NAR_LOG_VAR(model_.data_);
     chooser_value_.mode(get_chooser_type());
     load_model();
-    //update_output();
+    update_output();
 }
 
 void color_view_impl::on_chooser_color_value_changed()
