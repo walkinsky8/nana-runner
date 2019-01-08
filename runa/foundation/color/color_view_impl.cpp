@@ -20,7 +20,7 @@ void color_view_impl::init()
     chooser_type_rgb_.events().checked([&] { if (chooser_type_rgb_.checked()) on_chooser_type_changed(); });
     chooser_type_hsl_.events().checked([&] { if (chooser_type_hsl_.checked()) on_chooser_type_changed(); });
     chooser_type_hsv_.events().checked([&] { if (chooser_type_hsv_.checked()) on_chooser_type_changed(); });
-    chooser_value_.events().value_changed([&](const arg_color_chooser& _arg) { on_chooser_value_changed(_arg.value); });
+    chooser_value_.events().color_changed([&](const arg_color_chooser& _arg) { on_chooser_color_value_changed(); });
 
     ok_.events().click([&] { on_ok(); });
     cancel_.events().click([&] { on_cancel(); });
@@ -35,8 +35,8 @@ void color_view_impl::set_model_proxy(model_proxy<color_model> const& _proxy)
 
     color c = model_.data_;
     input_ << c;
-    update_output();
     load_model();
+    update_output();
 }
 
 void color_view_impl::on_ok()
@@ -82,10 +82,11 @@ void color_view_impl::on_chooser_type_changed()
     //update_output();
 }
 
-void color_view_impl::on_chooser_value_changed(const color& _color)
+void color_view_impl::on_chooser_color_value_changed()
 {
-    NAR_LOG_VAR(_color);
-    model_.data_ = _color;
+    color color_value = get_color_value();
+    NAR_LOG_VAR(color_value);
+    model_.data_ = color_value;
     update_output();
 }
 

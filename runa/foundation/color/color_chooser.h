@@ -17,7 +17,7 @@ namespace runa
 			struct color_chooser_events
 				: public nana::general_events
 			{
-				nana::basic_event<arg_color_chooser> value_changed;
+				nana::basic_event<arg_color_chooser> color_changed;
 			};
 
             enum class buttons

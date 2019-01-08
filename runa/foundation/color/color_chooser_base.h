@@ -19,10 +19,9 @@ namespace runa
 	struct arg_color_chooser : public nana::event_arg
 	{
 		nana::window window_handle;
-        nana::color value;
 
-		arg_color_chooser(nana::window wd, nana::color _value)
-            : window_handle{ wd }, value{ _value }
+		arg_color_chooser(nana::window wd)
+            : window_handle{ wd }
 		{}
 	};
 
