@@ -177,6 +177,7 @@ namespace runa {
     {
         typedef mt::queue<log_record> _Q;
         _Q records_;
+        volatile bool output_derectly_{ false };
 
     public:
         static log_thread& instance();
@@ -185,6 +186,8 @@ namespace runa {
         log_thread();
 
         void put(log_record&& _record);
+
+        void output_derectly(bool _v);
 
     protected:
         void on_birth() override;

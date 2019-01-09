@@ -11,12 +11,10 @@ void runa::color_chooser_cfg::init_widget(widget & _w, view_obj* _root_view) con
 
     auto& w = dynamic_cast<ui_type&>(_w);
 
-    if (!mode_().empty())
-        w.mode(mode_().value().value());
-
-    if (!fgcolor_().empty())
-        w.from_string(fgcolor_());
-
+    if (!mode_().empty() || !fgcolor_().empty())
+    {
+        w.set_value(mode_().value().value(), fgcolor_());
+    }
 }
 
 #endif

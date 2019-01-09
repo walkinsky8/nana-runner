@@ -297,7 +297,7 @@ namespace runa
 
             bool drawer::update_value(buttons _what, const nana::point& _pos)
             {
-                const value_type old = metrics_.value;
+                const auto old = metrics_;
                 if (_what == buttons::ab_part)
                 {
                     metrics_.value.a(get_a(_pos.x));
@@ -307,7 +307,7 @@ namespace runa
                 {
                     metrics_.value.c(get_c(_pos.x));
                 }
-                return old != metrics_.value;
+                return old != metrics_;
             }
 
 			void drawer::draw(graph_reference graph)
@@ -377,6 +377,31 @@ namespace runa
             {
             }
 
+            void trigger::set_value(color_mode _mode, color_abc const& _value)
+            {
+                if (graph_)
+                {
+                    const auto old = metrics_;
+                    metrics_.mode = _mode;
+                    metrics_.value = _value;
+                    if (old != metrics_)
+                    {
+                        _m_emit_value_changed();
+                        nana::API::refresh_window(*widget_);
+                    }
+                }
+            }
+
+            void trigger::set_value(color_mode _mode, color const& _value)
+            {
+                set_value(_mode, color_chooser::from_color(_value, _mode));
+            }
+
+            void trigger::set_value(color_mode _mode, string const& _value)
+            {
+                set_value(_mode, color_chooser::from_string(_value, _mode));
+            }
+
             const metrics_type& trigger::metrics() const
             {
                 return metrics_;
@@ -387,49 +412,19 @@ namespace runa
                 return metrics_.value;
             }
 
-            void trigger::value(value_type const& _value)
-            {
-                if (graph_ && (metrics_.value != _value))
-                {
-                    metrics_.value = _value;
-                    _m_emit_value_changed();
-                    nana::API::refresh_window(*widget_);
-                }
-            }
-
             string trigger::to_string() const
             {
                 return color_chooser::to_string(metrics_.value, metrics_.mode);
             }
             
-            void trigger::from_string(string const& _value)
-            {
-                value(color_chooser::from_string(_value, metrics_.mode));
-            }
-
             color trigger::to_color() const
             {
                 return color_chooser::to_color(metrics_.value, metrics_.mode);
             }
 
-            void trigger::from_color(color const& _value)
-            {
-                value(color_chooser::from_color(_value, metrics_.mode));
-            }
-
             color_mode trigger::mode() const
             {
                 return metrics_.mode;
-            }
-
-            void trigger::mode(color_mode _mode)
-            {
-                if (graph_ && (metrics_.mode != _mode))
-                {
-                    metrics_.mode = _mode;
-                    //_m_emit_value_changed();
-                    nana::API::refresh_window(*widget_);
-                }
             }
 
             bool trigger::make_step(bool forward, int _multiple, const nana::arg_wheel& arg)

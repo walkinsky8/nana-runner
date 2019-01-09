@@ -75,6 +75,11 @@ runa::log_thread::log_thread()
     NAR_ENUM_ADD_(runa::log_level, LL_, UNKNOWN, UNKNOWN);
 }
 
+void runa::log_thread::output_derectly(bool _v)
+{
+    output_derectly_ = _v;
+}
+
 void runa::log_thread::put(log_record&& _record)
 {
     if (_record.head().ll_ <= log_level::LL_ERROR)
@@ -84,7 +89,7 @@ void runa::log_thread::put(log_record&& _record)
         mb.show();
     }
 
-    if (running())
+    if (running() && !output_derectly_)
     {
         records_.put(std::move(_record));
     }

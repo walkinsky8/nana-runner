@@ -36,6 +36,15 @@ namespace runa
 
                 metrics_type() {
                 }
+
+                bool operator!=(const metrics_type& _other) const
+                {
+                    return value != _other.value || mode != _other.mode;
+                }
+                bool operator==(const metrics_type& _other) const
+                {
+                    return !(*this != _other);
+                }
             };
 
             class drawer
@@ -88,19 +97,19 @@ namespace runa
 			public:
                 trigger();
 
+                void set_value(color_mode _mode, color_abc const& _value);
+                void set_value(color_mode _mode, color const& _value);
+                void set_value(color_mode _mode, string const& _value);
+
                 const metrics_type& metrics() const;
 
                 value_type value() const;
-                void value(value_type const& _value);
 
                 string to_string() const;
-                void from_string(string const& _value);
 
                 color to_color() const;
-                void from_color(color const& _value);
 
                 color_mode mode() const;
-                void mode(color_mode _mode);
 
                 bool make_step(bool forward, int _multiple, const nana::arg_wheel& arg);
 
@@ -162,24 +171,29 @@ namespace runa
 			this->create(wd, r, visible);
 		}
 
-		const value_type& value() const
+        void set_value(color_mode _mode, color_abc const& _value)
+        {
+            this->get_drawer_trigger().set_value(_mode, _value);
+        }
+
+        void set_value(color_mode _mode, color const& _value)
+        {
+            this->get_drawer_trigger().set_value(_mode, _value);
+        }
+
+        void set_value(color_mode _mode, string const& _value)
+        {
+            this->get_drawer_trigger().set_value(_mode, _value);
+        }
+
+        const value_type& value() const
 		{
 			return this->get_drawer_trigger().value();
 		}
 
-        void value(const value_type& v)
-        {
-            this->get_drawer_trigger().value(v);
-        }
-
         string to_string() const
         {
             return this->get_drawer_trigger().to_string();
-        }
-
-        void from_string(const string& v)
-        {
-            this->get_drawer_trigger().from_string(v);
         }
 
         color to_color() const
@@ -187,19 +201,9 @@ namespace runa
             return this->get_drawer_trigger().to_color();
         }
 
-        void from_color(const color& v)
-        {
-            this->get_drawer_trigger().from_color(v);
-        }
-
         color_mode mode() const
         {
             return this->get_drawer_trigger().mode();
-        }
-
-        void mode(color_mode v)
-        {
-            return this->get_drawer_trigger().mode(v);
         }
 
         nana::window window_handle() const
@@ -209,19 +213,11 @@ namespace runa
 
     };//end class color_chooser
 
-    inline void operator<<(color_chooser& _os, const string& _v)
-    {
-        _os.from_string(_v);
-    }
     inline void operator>>(const color_chooser& _is, string& _v)
     {
         _v = _is.to_string();
     }
 
-    inline void operator<<(color_chooser& _os, const color& _v)
-    {
-        _os.from_color(_v);
-    }
     inline void operator>>(const color_chooser& _is, color& _v)
     {
         _v = _is.to_color();
