@@ -3,6 +3,8 @@
 
 #include <runa/foundation/color/color_view_impl.h>
 
+#include <runa/foundation/color/color_rgb.h>
+
 #include <runa/foundation/app_base.h>
 
 using namespace runa;
@@ -79,7 +81,7 @@ void color_view_impl::on_color_input_changed()
 
 void color_view_impl::on_chooser_type_changed()
 {
-    NAR_LOG_VAR(model_.data_);
+    NAR_LOG_DEBUG("mode = " << get_chooser_type().str());
     load_model();
     //update_output();
 }
@@ -87,7 +89,7 @@ void color_view_impl::on_chooser_type_changed()
 void color_view_impl::on_chooser_color_value_changed()
 {
     color color_value = get_color_value();
-    NAR_LOG_VAR(color_value);
+    NAR_LOG_DEBUG(get_chooser_type().str() << " " << color_value);
     model_.data_ = color_value;
     update_output();
 }
@@ -130,7 +132,7 @@ enum_color_mode color_view_impl::get_chooser_type() const
 
 void color_view_impl::set_chooser_type(enum_color_mode _mode)
 {
-    NAR_LOG_VAR(_mode.str());
+    NAR_LOG_DEBUG("mode = "<<_mode.str());
     switch (_mode.value())
     {
     case color_mode::rgb:
@@ -157,6 +159,11 @@ void color_view_impl::update_output()
     s << std::setw(2) << int(c.b() + 0.5);
     output_rgb_ << to_upper(s.str());
 
-    NAR_LOG_DEBUG(output_value_<<" "<<c);
+    NAR_LOG_DEBUG(*this);
+}
+
+std::ostream& color_view_impl::dump(std::ostream& _os) const
+{
+    return _os << get_string_value() << " " << runa::color_rgb{ get_color_value() } << " " << get_color_value();
 }
 

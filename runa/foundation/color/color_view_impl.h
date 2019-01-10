@@ -22,6 +22,8 @@ namespace runa {
 
         void set_model_proxy(model_proxy<color_model> const& _proxy);
 
+        std::ostream& dump(std::ostream& _os) const;
+
     private:
         void init();
 
@@ -49,6 +51,11 @@ namespace runa {
         void update_output();
 
     };
+
+    inline std::ostream& operator<<(std::ostream& _os, const color_view_impl& _v)
+    {
+        return _v.dump(_os);
+    }
 
 }
 
