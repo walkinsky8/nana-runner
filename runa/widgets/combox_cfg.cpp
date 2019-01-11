@@ -61,8 +61,6 @@ void runa::operator<<(combox& _w, const color_model& _v)
     nana::colors* p = runa::colors::find_value(_v.value_());
     if (p)
         _w << runa::colors{ *p };
-    else
-        _w << runa::colors{ nana::colors::black };
     _w << _v.value_();
 }
 
