@@ -1,4 +1,12 @@
-﻿@form{ id=login caption="登錄" div="vert" size={ 300 200 } align=center align_v=center typeface={ 11 bold }
+﻿@*
+*	Runa C++ Library
+*	Copyright (c) 2017-2019 walkinsky:lyh6188(at)hotmail(dot)com
+*
+*	Distributed under the Boost Software License, Version 1.0.
+*	(See accompanying file LICENSE_1_0.txt or copy at
+*	http://www.boost.org/LICENSE_1_0.txt)
+*@
+@form{ id=login caption="登錄" div="vert" size={ 300 200 } align=center align_v=center typeface={ 11 bold }
     @panel { div="weight=5" }
     @panel { id=username div="weight=25"
         @label{ id=l caption="用戶名:" div="weight=60" align="right" }
