@@ -83,8 +83,8 @@ namespace runa
     {
         std::ostringstream oss;
         oss << "hsv(" << int(h() + 0.5);
-        oss << ", " << int((s() + 0.005) * 100) << "%";
-        oss << ", " << int((v() + 0.005) * 100) << "%";
+        oss << "," << int((s() + 0.005) * 100) << "%";
+        oss << "," << int((v() + 0.005) * 100) << "%";
         oss << ")";
         return oss.str();
     }

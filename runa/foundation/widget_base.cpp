@@ -393,8 +393,8 @@ void runa::operator << (string& _w, const color& _v)
 	{
 		_w << "rgb(";
 		_w << r;
-		_w << ", " << g;
-		_w << ", " << b;
+		_w << "," << g;
+		_w << "," << b;
 		_w << ")";
 	}
 }

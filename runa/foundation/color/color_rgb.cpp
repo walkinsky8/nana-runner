@@ -24,8 +24,8 @@ namespace runa
     {
         std::ostringstream oss;
         oss << "rgb(" << r();
-        oss << ", " << g();
-        oss << ", " << b();
+        oss << "," << g();
+        oss << "," << b();
         oss << ")";
         return oss.str();
     }
