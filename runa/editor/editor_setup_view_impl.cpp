@@ -29,8 +29,10 @@ void editor_setup_view_impl::init()
     on_checked(&italic_, &model_().font_().italic_(), fn_update_);
     on_checked(&strikeout_, &model_().font_().strikeout_(), fn_update_);
     on_checked(&underline_, &model_().font_().underline_(), fn_update_);
-    on_text_changed(&bgcolor_, &model_().colors_().bg_(), fn_update_);
-    on_text_changed(&fgcolor_, &model_().colors_().fg_(), fn_update_);
+    on_selected(&bgcolor_, &model_().colors_().bg_(), fn_update_);
+    on_selected(&fgcolor_, &model_().colors_().fg_(), fn_update_);
+    //on_text_changed(&bgcolor_, &model_().colors_().bg_(), fn_update_);
+    //on_text_changed(&fgcolor_, &model_().colors_().fg_(), fn_update_);
 
     bgcolor_setup_.events().click([&] {on_color_setup(bgcolor_); });
     fgcolor_setup_.events().click([&] {on_color_setup(fgcolor_); });

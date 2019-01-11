@@ -113,6 +113,15 @@ namespace runa {
     }
 
     template<class _Widget, class _Data>
+    void on_selected(_Widget const* _widget, _Data* _data, callback _fn)
+    {
+        _widget->events().selected([_widget, _data, _fn] {
+            *_widget >> *_data;
+            _fn();
+            });
+    }
+
+    template<class _Widget, class _Data>
     void on_value_changed(_Widget const* _widget, _Data* _data, callback _fn)
     {
         _widget->events().value_changed([_widget, _data, _fn] {

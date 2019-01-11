@@ -19,7 +19,12 @@ using namespace runa;
 
 void color_view_impl::init()
 {
-    set_model_proxy({});
+    model_.data_ = get_color_value();
+    NAR_LOG_VAR(model_.data_);
+    color c = model_.data_;
+    input_ << c;
+    set_chooser_type(get_chooser_type());
+    update_output();
 
     input_.events().selected([&] { on_color_selected(); });
     input_.events().text_changed([&] { on_color_text_changed(); });
@@ -38,18 +43,13 @@ void color_view_impl::set_model_proxy(model_proxy<color_model> const& _proxy)
 {
     NAR_LOG_VAR(_proxy.data_);
     model_ = _proxy;
-    if (_proxy.data_.empty())
-        model_.data_ = get_color_value();
-    NAR_LOG_VAR(model_.data_);
 
     color c = model_.data_;
     input_ << c;
 
-    set_chooser_type(get_chooser_type());
-
+    //set_chooser_type(get_chooser_type());
     load_model();
-    
-    update_output();
+    //update_output();
 }
 
 void color_view_impl::on_ok()
@@ -104,7 +104,7 @@ void color_view_impl::on_chooser_color_value_changed()
 
 void color_view_impl::load_model()
 {
-    NAR_LOG_VAR(model_.data_);
+    NAR_LOG_DEBUG("value = " << model_.data_);
     set_color_value(model_.data_);
 }
 

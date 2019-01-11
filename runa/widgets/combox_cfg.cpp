@@ -46,6 +46,7 @@ void runa::combox_cfg::init_widget(widget & _w, view_obj* _root_view) const
 
 void runa::operator<<(combox& _w, const strings& _v)
 {
+    _w.clear();
     for (auto& i : _v)
         _w.push_back(i);
 }
@@ -61,7 +62,8 @@ void runa::operator<<(combox& _w, const color_model& _v)
     nana::colors* p = runa::colors::find_value(_v.value_());
     if (p)
         _w << runa::colors{ *p };
-    _w << _v.value_();
+    else
+        _w << _v.value_();
 }
 
 void runa::operator>>(const combox& _w, color_model& _v)

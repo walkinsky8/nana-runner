@@ -46,6 +46,7 @@ namespace runa {
     {
         size_t selected = (size_t)-1;
         size_t pos = 0;
+        _w.clear();
         for (auto& i : _v.v2s())
         {
             _w.push_back(i.second);
@@ -55,7 +56,8 @@ namespace runa {
             }
             ++pos;
         }
-        _w.option(selected);
+        if (selected!= (size_t)-1)
+            _w.option(selected);
     }
 
     template<class E, E _V>
