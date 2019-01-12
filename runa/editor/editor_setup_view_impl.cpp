@@ -39,12 +39,8 @@ void editor_setup_view_impl::init()
     bgcolor_setup_.events().click([&] { on_color_setup(bgcolor_, model_().colors_().bg_()); });
     fgcolor_setup_.events().click([&] { on_color_setup(fgcolor_, model_().colors_().fg_()); });
 
-    apply_.events().click([&] {
-        save_widget(target());
-    });
-    cancel_.events().click([&] {
-        close();
-    });
+    apply_.events().click([&] { save_widget(target()); });
+    cancel_.events().click([&] { close(); });
 }
 
 void editor_setup_view_impl::on_color_setup(combox& _w, color_model& _c)

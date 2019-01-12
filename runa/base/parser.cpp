@@ -111,7 +111,7 @@ namespace runa::detail {
                 word.clear();
                 skip_blanks(p_);
                 if (*p_ != tag::begin)
-                    NAR_THROW_ERROR(std::invalid_argument, "no { after type");
+                    NAR_THROW_ERROR(std::invalid_argument, "no { after type "<<word);
             }
 
             if (*p_ != tag::begin)
@@ -160,14 +160,18 @@ namespace runa::detail {
     private:
         static void skip_blanks(istr& _p)
         {
-            _p.read(is_blank);
-            if (*_p == tag::key && *(_p + 1) == tag::comment)
+            while (true)
             {
-                _p += 2;
-                while (_p && (*_p != tag::comment || *(_p + 1) != tag::key))
-                    ++_p;
-                _p += 2;
                 _p.read(is_blank);
+                if (_p && *_p == tag::key && *(_p + 1) == tag::comment)
+                {
+                    _p += 2;
+                    while (_p && (*_p != tag::comment || *(_p + 1) != tag::key))
+                        ++_p;
+                    _p += 2;
+                    continue;
+                }
+                break;
             }
         }
 
