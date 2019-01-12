@@ -43,7 +43,7 @@ namespace runa::editor {
 
         void on_fini() override;
 
-        void on_color_setup(combox& _c);
+        void on_color_setup(combox& _w, color_model& _c);
 
         void init_model();
 

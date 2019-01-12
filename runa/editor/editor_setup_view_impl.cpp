@@ -29,13 +29,15 @@ void editor_setup_view_impl::init()
     on_checked(&italic_, &model_().font_().italic_(), fn_update_);
     on_checked(&strikeout_, &model_().font_().strikeout_(), fn_update_);
     on_checked(&underline_, &model_().font_().underline_(), fn_update_);
-    on_selected(&bgcolor_, &model_().colors_().bg_(), fn_update_);
-    on_selected(&fgcolor_, &model_().colors_().fg_(), fn_update_);
     //on_text_changed(&bgcolor_, &model_().colors_().bg_(), fn_update_);
     //on_text_changed(&fgcolor_, &model_().colors_().fg_(), fn_update_);
+    on_selected(&bgcolor_, &model_().colors_().bg_(), fn_update_);
+    on_selected(&fgcolor_, &model_().colors_().fg_(), fn_update_);
+    on_focus(&bgcolor_, &model_().colors_().bg_(), fn_update_);
+    on_focus(&fgcolor_, &model_().colors_().fg_(), fn_update_);
 
-    bgcolor_setup_.events().click([&] {on_color_setup(bgcolor_); });
-    fgcolor_setup_.events().click([&] {on_color_setup(fgcolor_); });
+    bgcolor_setup_.events().click([&] { on_color_setup(bgcolor_, model_().colors_().bg_()); });
+    fgcolor_setup_.events().click([&] { on_color_setup(fgcolor_, model_().colors_().fg_()); });
 
     apply_.events().click([&] {
         save_widget(target());
@@ -45,10 +47,12 @@ void editor_setup_view_impl::init()
     });
 }
 
-void editor_setup_view_impl::on_color_setup(combox& _c)
+void editor_setup_view_impl::on_color_setup(combox& _w, color_model& _c)
 {
-    color_setup_.open(_c.caption(), [&_c](const color_model& _model) {
-        _c << _model.to_color();
+    color_setup_.open(_w.caption(), [&](const color_model& _model) {
+        _w << _model;
+        _c = _model;
+        update_model();
     });
 }
 
@@ -73,7 +77,6 @@ void editor_setup_view_impl::set_target(widget* _target)
     target_ = _target;
     load_widget(target());
     load_model();
-    //save_widget(sample_);
 }
 
 void editor_setup_view_impl::load_widget(const widget& _w)
@@ -89,6 +92,7 @@ void editor_setup_view_impl::save_widget(widget& _w) const
     model_().font_() >> f; _w.typeface(f);
     color c;
     model_().colors_().bg_() >> c; _w.bgcolor(c);
+    c = {};
     model_().colors_().fg_() >> c; _w.fgcolor(c);
 }
 
