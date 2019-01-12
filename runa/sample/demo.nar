@@ -216,13 +216,13 @@
                     }
                 }
                 @tab { id=RGB
-                    @color_chooser{ id=rgb }
+                    @color_chooser{ id=rgb mode=rgb fgcolor=red }
                 }
                 @tab { id=HSL
-                    @color_chooser{ id=hsl }
+                    @color_chooser{ id=hsl mode=hsl fgcolor=green }
                 }
                 @tab { id=HSV
-                    @color_chooser{ id=hsv }
+                    @color_chooser{ id=hsv mode=hsv fgcolor=yellow }
                 }
             }
             @tabpage { id=page }
