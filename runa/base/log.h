@@ -106,10 +106,10 @@ namespace runa {
     struct log_head
     {
         datetime dt_;
-        log_level ll_;
+        enum_log_level ll_;
         current_info current_;
 
-        log_head() = default;
+        log_head();
         log_head(log_level _ll, current_info const& _current);
 
         string str() const

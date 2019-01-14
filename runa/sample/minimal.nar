@@ -7,13 +7,4 @@
 *	http://www.boost.org/LICENSE_1_0.txt)
 *@
 @form{
-    id=generic
-    bgcolor=#e0e0e0
-    fgcolor=black
-    typeface={ Consolas 10 bold }
-    cursor=hand
-    div='vert'
-    @label { id=label align=center align_v=center }
-    @textbox { id=textbox }
-    @button { id=button }
 }

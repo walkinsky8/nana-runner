@@ -29,8 +29,13 @@ runa::out::~out()
 {
 }
 
+runa::log_head::log_head()
+    : dt_{ datetime::now() }
+{
+}
+
 runa::log_head::log_head(log_level _ll, current_info const& _current)
-    : ll_{ _ll }, current_{ _current }
+    : dt_{ datetime::now() }, ll_{ _ll }, current_{ _current }
 {
 }
 
@@ -90,7 +95,7 @@ void runa::log_thread::output_derectly(bool _v)
 
 void runa::log_thread::put(log_record&& _record)
 {
-    if (_record.head().ll_ <= log_level::LL_ERROR)
+    if (_record.head().ll_.value() <= log_level::LL_ERROR)
     {
         nana::msgbox mb{ enum_log_level{_record.head().ll_}.str() };
         mb << _record.buf();

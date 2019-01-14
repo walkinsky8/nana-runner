@@ -130,6 +130,7 @@ void editor_view_impl::on_run()
     filebuf_ >> fbuf;
     //NAR_LOG_VAR(fbuf);
     close_current();
+    int64 start_ms = datetime::milliseconds_since_epoch();
     try {
         curr_cfg_ = widget_cfg::from(fbuf);
         if (curr_cfg_)
@@ -142,6 +143,8 @@ void editor_view_impl::on_run()
     catch (std::exception& e) {
         NAR_LOG_EXCPT(e);
     }
+    int64 cost_ms = datetime::milliseconds_since_epoch() - start_ms;
+    NAR_LOG_VAR(cost_ms);
     log_thread::instance().resume();
 }
 

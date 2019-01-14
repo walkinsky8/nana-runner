@@ -23,11 +23,10 @@ runa::app* runa::app::instance_{ nullptr };
 
 runa::app::app()
 {
-    log_thread::instance().output_derectly(true);
-
     if (instance_ != nullptr)
         NAR_THROW_ERROR(std::invalid_argument, "app instance should not be more than one");
 
+    //log_thread::instance().output_derectly(true);
     log_thread::instance().start();
 
     NAR_LOG("initializing...");

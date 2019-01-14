@@ -22,19 +22,24 @@ namespace runa {
     {
         date date_;
         time time_;
+        unsigned millis_{};
 
     public:
         datetime();
         datetime(date const& _d);
         datetime(time const& _t);
         datetime(date const& _d, time const& _t);
-        datetime(std::tm const& _t);
-        datetime(int year, int month, int day, unsigned hour, unsigned minute, unsigned second);
+        datetime(std::tm const& _t, unsigned millis = 0);
+        datetime(int year, int month, int day, unsigned hour, unsigned minute, unsigned second, unsigned millis=0);
+
+        static datetime now();
+        static int64 milliseconds_since_epoch();
 
         void set(const std::tm&);
 
         const date& get_date() const { return date_; }
         const time& get_time() const { return time_; }
+        unsigned get_millis() const { return millis_; }
 
         std::ostream& write(std::ostream& _os) const;
         void read(const std::string& _is);

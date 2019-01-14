@@ -51,5 +51,6 @@
         fgcolor=black
         cursor=arrow
         typeface={Lucida Console 12 bold}
+        _click=close
     }
 }
