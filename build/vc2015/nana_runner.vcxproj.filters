@@ -586,5 +586,11 @@
     <None Include="..\..\runa\sample\hello.nar">
       <Filter>runa\sample</Filter>
     </None>
+    <None Include="..\..\runa\sample\minimal.nar">
+      <Filter>runa\sample</Filter>
+    </None>
+    <None Include="..\..\runa\sample\simple.nar">
+      <Filter>runa\sample</Filter>
+    </None>
   </ItemGroup>
 </Project>

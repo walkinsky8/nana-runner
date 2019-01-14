@@ -141,8 +141,8 @@
         @slider{ id=clevel div='weight=25%' maximum=255 value=255 }
         @combox{ id=picsel div='weight=50%' editable=0 selected=0
             @option { caption='Vinny' image='image.jpg' }
-            @option { caption='Jeff' image='IMG_3865.JPG' }
-            @option { caption='Charlotte' image='luyao_20170917144943_看图王.jpg' }
+            @option { caption='Jeff' image='zhuang.JPG' }
+            @option { caption='Charlotte' image='yoyo.jpg' }
         }
     }
     @panel{ id=p2 div='weight=120'

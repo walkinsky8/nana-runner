@@ -350,6 +350,8 @@
     <None Include="..\..\runa\sample\font.nar" />
     <None Include="..\..\runa\sample\generic.nar" />
     <None Include="..\..\runa\sample\hello.nar" />
+    <None Include="..\..\runa\sample\minimal.nar" />
+    <None Include="..\..\runa\sample\simple.nar" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
