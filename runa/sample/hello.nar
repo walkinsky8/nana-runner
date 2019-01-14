@@ -8,22 +8,5 @@
 *@
 @form{
     id=hello
-    div="vert"
-    @label{
-        id=world
-        caption="Hello, label!"
-        div="weight=20"
-    }
-    @textbox{
-        id=text
-        caption="Hello, textbox!"
-        typeface={ Courier New 12 }
-    }
-    @button{
-        id=close
-        div="weight=30"
-        bgcolor=yellow
-        typeface={ bold }
-        _click=close
-    }
+    caption='Hello, world!'
 }
