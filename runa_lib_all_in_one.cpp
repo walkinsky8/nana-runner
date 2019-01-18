@@ -39,9 +39,18 @@
 #include <runa/foundation/widget_cfg.cpp>
 #include <runa/foundation/widget_factory.cpp>
 
+#include <runa/foundation/color/color_chooser.cpp>
+#include <runa/foundation/color/color_cntrl.cpp>
+#include <runa/foundation/color/color_hsl.cpp>
+#include <runa/foundation/color/color_hsv.cpp>
+#include <runa/foundation/color/color_model.cpp>
+#include <runa/foundation/color/color_rgb.cpp>
+#include <runa/foundation/color/color_view_impl.cpp>
+
 #include <runa/widgets/button_cfg.cpp>
 #include <runa/widgets/categorize_cfg.cpp>
 #include <runa/widgets/checkbox_cfg.cpp>
+#include <runa/widgets/color_chooser_cfg.cpp>
 #include <runa/widgets/combox_cfg.cpp>
 #include <runa/widgets/form_cfg.cpp>
 #include <runa/widgets/group_cfg.cpp>
@@ -53,6 +62,7 @@
 #include <runa/widgets/panel_lite_cfg.cpp>
 #include <runa/widgets/picture_cfg.cpp>
 #include <runa/widgets/progress_cfg.cpp>
+#include <runa/widgets/radiobox_cfg.cpp>
 #include <runa/widgets/scroll_cfg.cpp>
 #include <runa/widgets/slider_cfg.cpp>
 #include <runa/widgets/spinbox_cfg.cpp>

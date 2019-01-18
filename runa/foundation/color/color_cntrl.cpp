@@ -9,6 +9,8 @@
 // Created at 2018/12/04
 #include "stdafx.h"
 
+#ifndef __NANA_RUNNER_LIB_ALL_IN_ONE
+
 #include <runa/foundation/color/color_cntrl.h>
 
 #include <runa/foundation/app_base.h>
@@ -37,4 +39,6 @@ void color_cntrl::close()
 {
     close_view(view_);
 }
+
+#endif
 

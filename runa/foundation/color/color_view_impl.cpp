@@ -9,6 +9,8 @@
 // Created at 2018/12/04
 #include "stdafx.h"
 
+#ifndef __NANA_RUNNER_LIB_ALL_IN_ONE
+
 #include <runa/foundation/color/color_view_impl.h>
 
 #include <runa/foundation/color/color_rgb.h>
@@ -174,4 +176,6 @@ std::ostream& color_view_impl::dump(std::ostream& _os) const
 {
     return _os << get_string_value() << " " << runa::color_rgb{ get_color_value() } << " " << get_color_value();
 }
+
+#endif
 
