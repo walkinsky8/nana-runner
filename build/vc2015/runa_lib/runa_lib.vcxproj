@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>15.0</VCProjectVersion>
+    <ProjectGuid>{3E4525A9-EACF-45F6-9D5E-85BC058E98A8}</ProjectGuid>
+    <RootNamespace>runalib</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>./;../../../;../../../../nana/include;../../../../nana/extrlib/vc2015;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+    <OutDir>..\..\bin\</OutDir>
+    <IntDir>..\..\obj\$(ProjectName)\$(PlatformToolset)_$(Configuration)_$(PlatformShortName)\</IntDir>
+    <TargetName>$(ProjectName)_$(PlatformToolset)_$(Configuration)_$(PlatformShortName)</TargetName>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalOptions>/std:c++latest %(AdditionalOptions)</AdditionalOptions>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PreprocessorDefinitions>x__NANA_RUNNER_LIB_ALL_IN_ONE;_UNICODE;UNICODE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\runa\base\base.cpp" />
+    <ClCompile Include="..\..\..\runa\base\bytes.cpp" />
+    <ClCompile Include="..\..\..\runa\base\cmdargs.cpp" />
+    <ClCompile Include="..\..\..\runa\base\datetime.cpp" />
+    <ClCompile Include="..\..\..\runa\base\dumper.cpp" />
+    <ClCompile Include="..\..\..\runa\base\id.cpp" />
+    <ClCompile Include="..\..\..\runa\base\istr.cpp" />
+    <ClCompile Include="..\..\..\runa\base\log.cpp" />
+    <ClCompile Include="..\..\..\runa\base\mt_thread.cpp" />
+    <ClCompile Include="..\..\..\runa\base\node.cpp" />
+    <ClCompile Include="..\..\..\runa\base\object.cpp" />
+    <ClCompile Include="..\..\..\runa\base\parser.cpp" />
+    <ClCompile Include="..\..\..\runa\base\util.cpp" />
+    <ClCompile Include="..\..\..\runa\base\_config.cpp" />
+    <ClCompile Include="..\..\..\runa\foundation\app_base.cpp" />
+    <ClCompile Include="..\..\..\runa\foundation\color\color_chooser.cpp" />
+    <ClCompile Include="..\..\..\runa\foundation\color\color_cntrl.cpp" />
+    <ClCompile Include="..\..\..\runa\foundation\color\color_hsl.cpp" />
+    <ClCompile Include="..\..\..\runa\foundation\color\color_hsv.cpp" />
+    <ClCompile Include="..\..\..\runa\foundation\color\color_model.cpp" />
+    <ClCompile Include="..\..\..\runa\foundation\color\color_rgb.cpp" />
+    <ClCompile Include="..\..\..\runa\foundation\color\color_view_impl.cpp" />
+    <ClCompile Include="..\..\..\runa\foundation\controller_base.cpp" />
+    <ClCompile Include="..\..\..\runa\foundation\font_model.cpp" />
+    <ClCompile Include="..\..\..\runa\foundation\model_base.cpp" />
+    <ClCompile Include="..\..\..\runa\foundation\view_base.cpp" />
+    <ClCompile Include="..\..\..\runa\foundation\view_factory.cpp" />
+    <ClCompile Include="..\..\..\runa\foundation\widget_base.cpp" />
+    <ClCompile Include="..\..\..\runa\foundation\widget_cfg.cpp" />
+    <ClCompile Include="..\..\..\runa\foundation\widget_factory.cpp" />
+    <ClCompile Include="..\..\..\runa\widgets\button_cfg.cpp" />
+    <ClCompile Include="..\..\..\runa\widgets\categorize_cfg.cpp" />
+    <ClCompile Include="..\..\..\runa\widgets\checkbox_cfg.cpp" />
+    <ClCompile Include="..\..\..\runa\widgets\color_chooser_cfg.cpp" />
+    <ClCompile Include="..\..\..\runa\widgets\combox_cfg.cpp" />
+    <ClCompile Include="..\..\..\runa\widgets\form_cfg.cpp" />
+    <ClCompile Include="..\..\..\runa\widgets\group_cfg.cpp" />
+    <ClCompile Include="..\..\..\runa\widgets\label_cfg.cpp" />
+    <ClCompile Include="..\..\..\runa\widgets\listbox_cfg.cpp" />
+    <ClCompile Include="..\..\..\runa\widgets\menubar_cfg.cpp" />
+    <ClCompile Include="..\..\..\runa\widgets\menu_cfg.cpp" />
+    <ClCompile Include="..\..\..\runa\widgets\panel_cfg.cpp" />
+    <ClCompile Include="..\..\..\runa\widgets\panel_lite_cfg.cpp" />
+    <ClCompile Include="..\..\..\runa\widgets\picture_cfg.cpp" />
+    <ClCompile Include="..\..\..\runa\widgets\progress_cfg.cpp" />
+    <ClCompile Include="..\..\..\runa\widgets\radiobox_cfg.cpp" />
+    <ClCompile Include="..\..\..\runa\widgets\scroll_cfg.cpp" />
+    <ClCompile Include="..\..\..\runa\widgets\slider_cfg.cpp" />
+    <ClCompile Include="..\..\..\runa\widgets\spinbox_cfg.cpp" />
+    <ClCompile Include="..\..\..\runa\widgets\tabbar_cfg.cpp" />
+    <ClCompile Include="..\..\..\runa\widgets\tab_cfg.cpp" />
+    <ClCompile Include="..\..\..\runa\widgets\textbox_cfg.cpp" />
+    <ClCompile Include="..\..\..\runa\widgets\toolbar_cfg.cpp" />
+    <ClCompile Include="..\..\..\runa\widgets\treebox_cfg.cpp" />
+    <ClCompile Include="..\..\..\runa\widgets\widget_all.cpp" />
+    <ClCompile Include="..\..\..\runa_lib_all_in_one.cpp">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/bigobj %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="..\..\..\stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\runa\base\base.h" />
+    <ClInclude Include="..\..\..\runa\base\base_types.h" />
+    <ClInclude Include="..\..\..\runa\base\bytes.h" />
+    <ClInclude Include="..\..\..\runa\base\cmdargs.h" />
+    <ClInclude Include="..\..\..\runa\base\datetime.h" />
+    <ClInclude Include="..\..\..\runa\base\dumper.h" />
+    <ClInclude Include="..\..\..\runa\base\enum.h" />
+    <ClInclude Include="..\..\..\runa\base\id.h" />
+    <ClInclude Include="..\..\..\runa\base\istr.h" />
+    <ClInclude Include="..\..\..\runa\base\list_map.h" />
+    <ClInclude Include="..\..\..\runa\base\list_multimap.h" />
+    <ClInclude Include="..\..\..\runa\base\log.h" />
+    <ClInclude Include="..\..\..\runa\base\mt_cond.h" />
+    <ClInclude Include="..\..\..\runa\base\mt_lock.h" />
+    <ClInclude Include="..\..\..\runa\base\mt_monitor.h" />
+    <ClInclude Include="..\..\..\runa\base\mt_mutex.h" />
+    <ClInclude Include="..\..\..\runa\base\mt_queue.h" />
+    <ClInclude Include="..\..\..\runa\base\mt_recmutex.h" />
+    <ClInclude Include="..\..\..\runa\base\mt_thread.h" />
+    <ClInclude Include="..\..\..\runa\base\mt_vector.h" />
+    <ClInclude Include="..\..\..\runa\base\node.h" />
+    <ClInclude Include="..\..\..\runa\base\number.h" />
+    <ClInclude Include="..\..\..\runa\base\object.h" />
+    <ClInclude Include="..\..\..\runa\base\optional.h" />
+    <ClInclude Include="..\..\..\runa\base\parser.h" />
+    <ClInclude Include="..\..\..\runa\base\util.h" />
+    <ClInclude Include="..\..\..\runa\base\_config.h" />
+    <ClInclude Include="..\..\..\runa\foundation\app_base.h" />
+    <ClInclude Include="..\..\..\runa\foundation\color\color_abc.h" />
+    <ClInclude Include="..\..\..\runa\foundation\color\color_chooser.h" />
+    <ClInclude Include="..\..\..\runa\foundation\color\color_chooser_base.h" />
+    <ClInclude Include="..\..\..\runa\foundation\color\color_cntrl.h" />
+    <ClInclude Include="..\..\..\runa\foundation\color\color_hsl.h" />
+    <ClInclude Include="..\..\..\runa\foundation\color\color_hsv.h" />
+    <ClInclude Include="..\..\..\runa\foundation\color\color_model.h" />
+    <ClInclude Include="..\..\..\runa\foundation\color\color_rgb.h" />
+    <ClInclude Include="..\..\..\runa\foundation\color\color_view.h" />
+    <ClInclude Include="..\..\..\runa\foundation\color\color_view_impl.h" />
+    <ClInclude Include="..\..\..\runa\foundation\controller_base.h" />
+    <ClInclude Include="..\..\..\runa\foundation\font_model.h" />
+    <ClInclude Include="..\..\..\runa\foundation\generic_view.h" />
+    <ClInclude Include="..\..\..\runa\foundation\model_base.h" />
+    <ClInclude Include="..\..\..\runa\foundation\radiobox.h" />
+    <ClInclude Include="..\..\..\runa\foundation\view_base.h" />
+    <ClInclude Include="..\..\..\runa\foundation\view_factory.h" />
+    <ClInclude Include="..\..\..\runa\foundation\widget_base.h" />
+    <ClInclude Include="..\..\..\runa\foundation\widget_cfg.h" />
+    <ClInclude Include="..\..\..\runa\foundation\widget_factory.h" />
+    <ClInclude Include="..\..\..\runa\widgets\button_cfg.h" />
+    <ClInclude Include="..\..\..\runa\widgets\categorize_cfg.h" />
+    <ClInclude Include="..\..\..\runa\widgets\checkbox_cfg.h" />
+    <ClInclude Include="..\..\..\runa\widgets\color_chooser_cfg.h" />
+    <ClInclude Include="..\..\..\runa\widgets\combox_cfg.h" />
+    <ClInclude Include="..\..\..\runa\widgets\date_chooser_cfg.h" />
+    <ClInclude Include="..\..\..\runa\widgets\float_listbox_cfg.h" />
+    <ClInclude Include="..\..\..\runa\widgets\form_cfg.h" />
+    <ClInclude Include="..\..\..\runa\widgets\group_cfg.h" />
+    <ClInclude Include="..\..\..\runa\widgets\label_cfg.h" />
+    <ClInclude Include="..\..\..\runa\widgets\listbox_cfg.h" />
+    <ClInclude Include="..\..\..\runa\widgets\menubar_cfg.h" />
+    <ClInclude Include="..\..\..\runa\widgets\menu_cfg.h" />
+    <ClInclude Include="..\..\..\runa\widgets\option_cfg.h" />
+    <ClInclude Include="..\..\..\runa\widgets\panel_cfg.h" />
+    <ClInclude Include="..\..\..\runa\widgets\panel_lite_cfg.h" />
+    <ClInclude Include="..\..\..\runa\widgets\picture_cfg.h" />
+    <ClInclude Include="..\..\..\runa\widgets\progress_cfg.h" />
+    <ClInclude Include="..\..\..\runa\widgets\radiobox_cfg.h" />
+    <ClInclude Include="..\..\..\runa\widgets\scroll_cfg.h" />
+    <ClInclude Include="..\..\..\runa\widgets\slider_cfg.h" />
+    <ClInclude Include="..\..\..\runa\widgets\spinbox_cfg.h" />
+    <ClInclude Include="..\..\..\runa\widgets\tabbar_cfg.h" />
+    <ClInclude Include="..\..\..\runa\widgets\tabpage_cfg.h" />
+    <ClInclude Include="..\..\..\runa\widgets\tab_cfg.h" />
+    <ClInclude Include="..\..\..\runa\widgets\textbox_cfg.h" />
+    <ClInclude Include="..\..\..\runa\widgets\toolbar_cfg.h" />
+    <ClInclude Include="..\..\..\runa\widgets\treebox_cfg.h" />
+    <ClInclude Include="..\..\..\runa\widgets\unknown_cfg.h" />
+    <ClInclude Include="..\..\..\runa\widgets\widget_all.h" />
+    <ClInclude Include="..\..\..\stdafx.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\runa\foundation\color\color.nar" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

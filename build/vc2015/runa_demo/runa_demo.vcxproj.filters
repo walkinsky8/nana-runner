@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="sample">
+      <UniqueIdentifier>{23ff42af-3fde-49f5-a475-29c1ff190cb8}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\runa\sample\demo_app.cpp">
+      <Filter>sample</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\runa\sample\demo_cntrl.cpp">
+      <Filter>sample</Filter>
+    </ClCompile>
+    <ClCompile Include="nana_demo.cpp" />
+    <ClCompile Include="..\..\..\stdafx.cpp" />
+    <ClCompile Include="..\..\..\runa_lib_all_in_one.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\runa\sample\demo_app.h">
+      <Filter>sample</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\sample\demo_cntrl.h">
+      <Filter>sample</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\sample\demo_view.h">
+      <Filter>sample</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\sample\font_view.h">
+      <Filter>sample</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\sample\hello_view.h">
+      <Filter>sample</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\stdafx.h" />
+    <ClInclude Include="..\..\..\runa\sample\simple_view.h">
+      <Filter>sample</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\runa\sample\demo.nar">
+      <Filter>sample</Filter>
+    </None>
+    <None Include="..\..\..\runa\sample\dummy.nar">
+      <Filter>sample</Filter>
+    </None>
+    <None Include="..\..\..\runa\sample\font.nar">
+      <Filter>sample</Filter>
+    </None>
+    <None Include="..\..\..\runa\sample\generic.nar">
+      <Filter>sample</Filter>
+    </None>
+    <None Include="..\..\..\runa\sample\hello.nar">
+      <Filter>sample</Filter>
+    </None>
+    <None Include="..\..\..\runa\sample\minimal.nar">
+      <Filter>sample</Filter>
+    </None>
+    <None Include="..\..\..\runa\sample\simple.nar">
+      <Filter>sample</Filter>
+    </None>
+  </ItemGroup>
+</Project>

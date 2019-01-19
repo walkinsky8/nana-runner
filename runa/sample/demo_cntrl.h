@@ -21,7 +21,9 @@ namespace runa::sample {
         view_ptr color_;
         view_ptr font_;
         view_ptr hello_;
+        view_ptr simple_;
         view_ptr dummy_;
+        view_ptr minimal_;
         view_ptr generic_;
 
     public:

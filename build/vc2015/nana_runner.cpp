@@ -6,19 +6,28 @@
 *	(See accompanying file LICENSE_1_0.txt or copy at
 *	http://www.boost.org/LICENSE_1_0.txt)
 */
-// nana_runner.cpp : 定义应用程序的入口点。
-//
 #include "stdafx.h"
 
-#include <runa/editor/editor_app.h>
-#include <runa/sample/demo_app.h>
+#include <runa/foundation/app_base.h>
 
-// -path "$(RUNA)\runa\foundation\color" -path "$(RUNA)\runa\sample" -path "$(RUNA)\runa\editor" -path "$(USERPROFILE)\Pictures"
+class nana_runner_app : public runa::app
+{
+public:
+    void on_init() override
+    {
+        if (!cmdargs().arguments().size())
+        {
+            NAR_LOG_ERROR("No .nar file specified");
+        }
+    }
+
+};
+
+// x.nar ... -path "$(RUNA)\runa\foundation\color" -path "$(RUNA)\runa\sample" -path "$(RUNA)\runa\editor" -path "$(USERPROFILE)\Pictures"
 
 int run_main(runa::pcwstr _cmdline)
 {
-    runa::editor::editor_app a;
-    //runa::sample::demo_app a;
+    nana_runner_app a;
     a.run(_cmdline);
     return 0;
 }
