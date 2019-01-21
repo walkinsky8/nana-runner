@@ -34,8 +34,8 @@ runa::log_head::log_head()
 {
 }
 
-runa::log_head::log_head(log_level _ll, current_info const& _current)
-    : dt_{ datetime::now() }, ll_{ _ll }, current_{ _current }
+runa::log_head::log_head(log_level _ll, bool _out_only, current_info const& _current)
+    : dt_{ datetime::now() }, out_only_{ _out_only }, ll_{ _ll }, current_{ _current }
 {
 }
 
@@ -59,8 +59,8 @@ std::ostream& runa::log_record::dump(std::ostream& _os) const
     return _os;
 }
 
-runa::log::log(log_level _ll, current_info const& _current)
-    : head_{_ll, _current}
+runa::log::log(log_level _ll, bool _out_only, current_info const& _current)
+    : head_{_ll, _out_only, _current}
 {
 }
 
@@ -85,6 +85,7 @@ runa::log_thread::log_thread()
     NAR_ENUM_ADD_(runa::log_level, LL_, UNKNOWN, INFO);
     NAR_ENUM_ADD_(runa::log_level, LL_, UNKNOWN, DEBUG);
     NAR_ENUM_ADD_(runa::log_level, LL_, UNKNOWN, VERBOSE);
+    NAR_ENUM_ADD_(runa::log_level, LL_, UNKNOWN, OUTPUT);
     NAR_ENUM_ADD_(runa::log_level, LL_, UNKNOWN, UNKNOWN);
 }
 
@@ -102,7 +103,7 @@ void runa::log_thread::put(log_record&& _record)
         mb.show();
     }
 
-    if (running() && !output_derectly_)
+    if (running() && !output_derectly_ && !_record.head().out_only_)
     {
         records_.put(std::move(_record));
     }
@@ -114,13 +115,13 @@ void runa::log_thread::put(log_record&& _record)
 
 void runa::log_thread::on_birth()
 {
+    NAR_OUT("log thread started.");
 }
 
 void runa::log_thread::on_death()
 {
     _Q::_Queue q;
     records_.swap(q);
-
     std::ostringstream oss;
     while (!q.empty())
     {
@@ -128,6 +129,7 @@ void runa::log_thread::on_death()
         q.pop();
     }
     log_handler::instance()(oss.str());
+    NAR_OUT("log thread stopped.");
 }
 
 void runa::log_thread::on_loop()
@@ -136,7 +138,7 @@ void runa::log_thread::on_loop()
     if (records_.get(q))
     {
         std::ostringstream oss;
-        while (running() && !q.empty())
+        while (/*running() &&*/ !q.empty())
         {
             oss << q.front();
             q.pop();
@@ -151,6 +153,8 @@ void runa::log_thread::on_loop()
 
 void runa::log_thread::on_stop()
 {
+    NAR_OUT("log thread stopping...");
+    output_derectly(true);
     records_.cancel();
     wakeup();
 }

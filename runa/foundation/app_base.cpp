@@ -38,7 +38,8 @@ runa::app::app()
 
 runa::app::~app()
 {
-    log_thread::instance().stop();
+    //called in run()
+    //log_thread::instance().stop();
     instance_ = nullptr;
 }
 
@@ -237,6 +238,8 @@ void runa::app::run(const wchar_t* _cmdline)
 
     // called in quit().
     //on_fini();
+
+    log_thread::instance().stop();
 }
 
 #endif

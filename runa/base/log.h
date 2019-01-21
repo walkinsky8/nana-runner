@@ -24,14 +24,15 @@
 #define NAR_LOG_VAR(x)      NAR_LOG_NV(#x, x)
 #define NAR_LOG_NV(n, v)    NAR_LOG_DEBUG(n << " = " << v)
 
-#define NAR_LOG_EXCPT(x)    NAR_LOG_(runa::LL_EXCEPTION, x)
-#define NAR_LOG_ERROR(x)    NAR_LOG_(runa::LL_ERROR, x)
-#define NAR_LOG_WARN(x)     NAR_LOG_(runa::LL_WARN, x)
-#define NAR_LOG_INFO(x)     NAR_LOG_(runa::LL_INFO, x)
-#define NAR_LOG_DEBUG(x)    NAR_LOG_(runa::LL_DEBUG, x)
-#define NAR_LOG_VERBOSE(x)  NAR_LOG_(runa::LL_VERBOSE, x)
+#define NAR_LOG_EXCPT(x)    NAR_LOG_(runa::LL_EXCEPTION, false, x)
+#define NAR_LOG_ERROR(x)    NAR_LOG_(runa::LL_ERROR, false, x)
+#define NAR_LOG_WARN(x)     NAR_LOG_(runa::LL_WARN, false, x)
+#define NAR_LOG_INFO(x)     NAR_LOG_(runa::LL_INFO, false, x)
+#define NAR_LOG_DEBUG(x)    NAR_LOG_(runa::LL_DEBUG, false, x)
+#define NAR_LOG_VERBOSE(x)  NAR_LOG_(runa::LL_VERBOSE, false, x)
+#define NAR_OUT(x)          NAR_LOG_(runa::LL_OUTPUT, true, x)
 
-#define NAR_LOG_(ll, x)     runa::log(ll, NAR_CURRENT()) << x
+#define NAR_LOG_(ll, oo, x) runa::log(ll, oo, NAR_CURRENT()) << x
 
 #define NAR_CURRENT()       runa::current_info{__FILE__, __LINE__, __FUNCTION__}
 
@@ -99,6 +100,7 @@ namespace runa {
         LL_INFO,
         LL_DEBUG,
         LL_VERBOSE,
+        LL_OUTPUT,
         LL_UNKNOWN = -1
     };
     using enum_log_level = enum_<log_level, LL_UNKNOWN>;
@@ -107,10 +109,11 @@ namespace runa {
     {
         datetime dt_;
         enum_log_level ll_;
+        bool out_only_{ false };
         current_info current_;
 
         log_head();
-        log_head(log_level _ll, current_info const& _current);
+        log_head(log_level _ll, bool _out_only, current_info const& _current);
 
         string str() const
         {
@@ -131,7 +134,7 @@ namespace runa {
         std::ostringstream buf_;
 
     public:
-        log(log_level _ll, current_info const& _current);
+        log(log_level _ll, bool _out_only, current_info const& _current);
         ~log();
 
         template<class T>
