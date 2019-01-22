@@ -23,7 +23,7 @@ public:
 
 };
 
-// x.nar ... -path "$(RUNA)\runa\foundation\color" -path "$(RUNA)\runa\sample" -path "$(RUNA)\runa\editor" -path "$(USERPROFILE)\Pictures"
+// x.nar ... -path "$(RUNA)\runa\foundation" -path "$(RUNA)\runa\sample" -path "$(RUNA)\runa\editor" -path "$(USERPROFILE)\Pictures"
 
 int run_main(runa::pcwstr _cmdline)
 {

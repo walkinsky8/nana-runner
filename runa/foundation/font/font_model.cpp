@@ -11,7 +11,7 @@
 
 #ifndef __NANA_RUNNER_LIB_ALL_IN_ONE
 
-#include <runa/foundation/font_model.h>
+#include <runa/foundation/font/font_model.h>
 
 runa::font_model::font_model(const font& _f)
 {

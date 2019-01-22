@@ -84,6 +84,7 @@
       <AdditionalOptions>/std:c++latest %(AdditionalOptions)</AdditionalOptions>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PreprocessorDefinitions>x__NANA_RUNNER_LIB_ALL_IN_ONE;_UNICODE;UNICODE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -146,7 +147,7 @@
     <ClCompile Include="..\..\..\runa\foundation\color\color_rgb.cpp" />
     <ClCompile Include="..\..\..\runa\foundation\color\color_view_impl.cpp" />
     <ClCompile Include="..\..\..\runa\foundation\controller_base.cpp" />
-    <ClCompile Include="..\..\..\runa\foundation\font_model.cpp" />
+    <ClCompile Include="..\..\..\runa\foundation\font\font_model.cpp" />
     <ClCompile Include="..\..\..\runa\foundation\model_base.cpp" />
     <ClCompile Include="..\..\..\runa\foundation\view_base.cpp" />
     <ClCompile Include="..\..\..\runa\foundation\view_factory.cpp" />
@@ -225,7 +226,8 @@
     <ClInclude Include="..\..\..\runa\foundation\color\color_view.h" />
     <ClInclude Include="..\..\..\runa\foundation\color\color_view_impl.h" />
     <ClInclude Include="..\..\..\runa\foundation\controller_base.h" />
-    <ClInclude Include="..\..\..\runa\foundation\font_model.h" />
+    <ClInclude Include="..\..\..\runa\foundation\font\font_model.h" />
+    <ClInclude Include="..\..\..\runa\foundation\font\font_view.h" />
     <ClInclude Include="..\..\..\runa\foundation\generic_view.h" />
     <ClInclude Include="..\..\..\runa\foundation\model_base.h" />
     <ClInclude Include="..\..\..\runa\foundation\radiobox.h" />
@@ -267,7 +269,10 @@
     <ClInclude Include="..\..\..\stdafx.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\..\runa\foundation\color.nar" />
     <None Include="..\..\..\runa\foundation\color\color.nar" />
+    <None Include="..\..\..\runa\foundation\font.nar" />
+    <None Include="..\..\..\runa\foundation\generic.nar" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

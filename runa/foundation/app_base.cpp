@@ -46,7 +46,7 @@ runa::app::~app()
 bool runa::app::search_file(const wstring& _file, wstring& _fullpath) const
 {
     fs::path p{ _file };
-    if (fs::exists(p) && p.is_absolute())
+    if (fs::exists(p) && p.is_absolute() && !fs::is_directory(p))
     {
         _fullpath = _file;
         return true;
@@ -56,13 +56,13 @@ bool runa::app::search_file(const wstring& _file, wstring& _fullpath) const
     {
         fs::path fullpath{ p };
         fullpath /= _file;
-        if (fs::exists(fullpath))
+        if (fs::exists(fullpath) && !fs::is_directory(fullpath))
         {
             _fullpath = fullpath;
             return true;
         }
         fullpath += ".nar";
-        if (fs::exists(fullpath))
+        if (fs::exists(fullpath) && !fs::is_directory(fullpath))
         {
             _fullpath = fullpath;
             return true;

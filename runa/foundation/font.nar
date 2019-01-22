@@ -8,7 +8,7 @@
 *@
 @form{
     id=font
-    caption="Font"
+    caption="Font Setup"
     div="vert"
     pos={100 -400}
     size={400 300}

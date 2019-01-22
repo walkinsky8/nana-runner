@@ -11,7 +11,7 @@
 
 #include <runa/foundation/model_base.h>
 
-#include <runa/foundation/font_model.h>
+#include <runa/foundation/font/font_model.h>
 #include <runa/foundation/color/color_model.h>
 
 namespace runa::editor {

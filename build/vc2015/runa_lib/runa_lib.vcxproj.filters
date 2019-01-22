@@ -34,6 +34,9 @@
     <Filter Include="runa\widgets">
       <UniqueIdentifier>{621a9267-9f48-46cc-ba03-76049f027113}</UniqueIdentifier>
     </Filter>
+    <Filter Include="runa\foundation\font">
+      <UniqueIdentifier>{fd869483-6f54-4737-b1cf-32ae9e51e92d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\runa\base\base.cpp">
@@ -82,9 +85,6 @@
       <Filter>runa\foundation</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\runa\foundation\controller_base.cpp">
-      <Filter>runa\foundation</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\runa\foundation\font_model.cpp">
       <Filter>runa\foundation</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\runa\foundation\model_base.cpp">
@@ -203,6 +203,9 @@
     </ClCompile>
     <ClCompile Include="..\..\..\stdafx.cpp" />
     <ClCompile Include="..\..\..\runa_lib_all_in_one.cpp" />
+    <ClCompile Include="..\..\..\runa\foundation\font\font_model.cpp">
+      <Filter>runa\foundation\font</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\runa\base\base.h">
@@ -290,9 +293,6 @@
       <Filter>runa\foundation</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\runa\foundation\controller_base.h">
-      <Filter>runa\foundation</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\runa\foundation\font_model.h">
       <Filter>runa\foundation</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\runa\foundation\generic_view.h">
@@ -440,10 +440,25 @@
       <Filter>runa\widgets</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\stdafx.h" />
+    <ClInclude Include="..\..\..\runa\foundation\font\font_model.h">
+      <Filter>runa\foundation\font</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\foundation\font\font_view.h">
+      <Filter>runa\foundation\font</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\runa\foundation\color\color.nar">
       <Filter>runa\foundation\color</Filter>
+    </None>
+    <None Include="..\..\..\runa\foundation\color.nar">
+      <Filter>runa\foundation</Filter>
+    </None>
+    <None Include="..\..\..\runa\foundation\font.nar">
+      <Filter>runa\foundation</Filter>
+    </None>
+    <None Include="..\..\..\runa\foundation\generic.nar">
+      <Filter>runa\foundation</Filter>
     </None>
   </ItemGroup>
 </Project>

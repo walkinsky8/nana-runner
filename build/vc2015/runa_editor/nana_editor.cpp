@@ -10,7 +10,7 @@
 
 #include <runa/editor/editor_app.h>
 
-// -path "$(RUNA)\runa\foundation\color" -path "$(RUNA)\runa\sample" -path "$(RUNA)\runa\editor" -path "$(USERPROFILE)\Pictures"
+// -path "$(RUNA)\runa\foundation" -path "$(RUNA)\runa\sample" -path "$(RUNA)\runa\editor" -path "$(USERPROFILE)\Pictures"
 
 int run_main(runa::pcwstr _cmdline)
 {

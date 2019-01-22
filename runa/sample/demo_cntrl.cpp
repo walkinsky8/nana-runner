@@ -12,10 +12,10 @@
 #include <runa/sample/demo_cntrl.h>
 
 #include <runa/sample/demo_view.h>
-#include <runa/foundation/color/color_view_impl.h>
-#include <runa/sample/font_view.h>
 #include <runa/sample/hello_view.h>
 #include <runa/sample/simple_view.h>
+#include <runa/foundation/color/color_view_impl.h>
+#include <runa/foundation/font/font_view.h>
 
 #include <runa/foundation/app_base.h>
 

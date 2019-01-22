@@ -35,13 +35,14 @@
 
 #include <runa/foundation/app_base.cpp>
 #include <runa/foundation/controller_base.cpp>
-#include <runa/foundation/font_model.cpp>
 #include <runa/foundation/model_base.cpp>
 #include <runa/foundation/view_base.cpp>
 #include <runa/foundation/view_factory.cpp>
 #include <runa/foundation/widget_base.cpp>
 #include <runa/foundation/widget_cfg.cpp>
 #include <runa/foundation/widget_factory.cpp>
+
+#include <runa/foundation/font/font_model.cpp>
 
 #include <runa/foundation/color/color_chooser.cpp>
 #include <runa/foundation/color/color_cntrl.cpp>

@@ -26,9 +26,6 @@
     <ClInclude Include="..\..\..\runa\sample\demo_view.h">
       <Filter>sample</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\runa\sample\font_view.h">
-      <Filter>sample</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\runa\sample\hello_view.h">
       <Filter>sample</Filter>
     </ClInclude>
@@ -42,12 +39,6 @@
       <Filter>sample</Filter>
     </None>
     <None Include="..\..\..\runa\sample\dummy.nar">
-      <Filter>sample</Filter>
-    </None>
-    <None Include="..\..\..\runa\sample\font.nar">
-      <Filter>sample</Filter>
-    </None>
-    <None Include="..\..\..\runa\sample\generic.nar">
       <Filter>sample</Filter>
     </None>
     <None Include="..\..\..\runa\sample\hello.nar">
