@@ -43,6 +43,7 @@
 #include <runa/foundation/widget_factory.cpp>
 
 #include <runa/foundation/font/font_model.cpp>
+#include <runa/foundation/font/font_view_impl.cpp>
 
 #include <runa/foundation/color/color_chooser.cpp>
 #include <runa/foundation/color/color_cntrl.cpp>

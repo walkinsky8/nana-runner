@@ -15,7 +15,21 @@
 
 void runa::cmdargs::init(const wchar_t* _cmdline)
 {
-    cmdline_ = _cmdline;
+    const wchar_t* p = _cmdline;
+    while (*p)
+    {
+        if (*p == L'/' && *(p + 1) == L'*')
+        {
+            p += 2;
+            while (*p && (*p != L'*' || *(p + 1) != L'/'))
+                ++p;
+            if (*p)
+                ++++p;
+            continue;
+        }
+        cmdline_ += *p;
+        ++p;
+    }
     string_split(cmdline_, args_);
 
     for (size_t i = 0; i < args_.size(); ++i)

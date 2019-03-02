@@ -18,7 +18,7 @@
 #include <runa/widgets/label_cfg.h>
 #include <runa/widgets/button_cfg.h>
 
-namespace runa::sample {
+namespace runa {
 
     class font_view : public view_obj
     {
@@ -37,7 +37,10 @@ namespace runa::sample {
 
         textbox& sample_;
 
-        button& quit_;
+        label& output_value_;
+
+        button& ok_;
+        button& cancel_;
 
     public:
         font_view(widget_cfg& _cfg, window _parent)
@@ -46,49 +49,15 @@ namespace runa::sample {
             , name_{ wnd<textbox>("name.value") }
             , size_{ wnd<textbox>("size.value") }
             , slider_{ wnd<slider>("size.slider") }
-            , bold_{ wnd<checkbox>("bold.value") }
-            , italic_{ wnd<checkbox>("italic.value") }
-            , strikeout_{ wnd<checkbox>("strikeout.value") }
-            , underline_{ wnd<checkbox>("underline.value") }
-            , sample_{ wnd<textbox>("sample.value") }
-            , quit_{ wnd<button>("close") }
+            , bold_{ wnd<checkbox>("style.bold") }
+            , italic_{ wnd<checkbox>("style.italic") }
+            , strikeout_{ wnd<checkbox>("style.strikeout") }
+            , underline_{ wnd<checkbox>("style.underline") }
+            , sample_{ wnd<textbox>("sample") }
+            , output_value_{ wnd<label>("output.value") }
+            , ok_{ wnd<button>("cmd.OK") }
+            , cancel_{ wnd<button>("cmd.cancel") }
         {
-            name_ << sample_.typeface().name();
-            size_ << sample_.typeface().size();
-
-            name_.events().text_changed([this] {
-                font f = sample_.typeface();
-                sample_.typeface(make_font(name_.caption(), f.size(), f.bold(), f.italic(), f.underline(), f.strikeout()));
-            });
-            size_.events().text_changed([this] {
-                font f = sample_.typeface();
-                double sz = 0;
-                size_ >> sz;
-                sample_.typeface(make_font(f.name(), sz, f.bold(), f.italic(), f.underline(), f.strikeout()));
-            });
-            slider_.events().value_changed([this] {
-                size_ << slider_.value();
-            });
-            bold_.events().checked([this] {
-                font f = sample_.typeface();
-                sample_.typeface(make_font(f.name(), f.size(), bold_.checked(), f.italic(), f.underline(), f.strikeout()));
-            });
-            italic_.events().checked([this] {
-                font f = sample_.typeface();
-                sample_.typeface(make_font(f.name(), f.size(), f.bold(), italic_.checked(), f.underline(), f.strikeout()));
-            });
-            strikeout_.events().checked([this] {
-                font f = sample_.typeface();
-                sample_.typeface(make_font(f.name(), f.size(), f.bold(), f.italic(), f.underline(), strikeout_.checked()));
-            });
-            underline_.events().checked([this] {
-                font f = sample_.typeface();
-                sample_.typeface(make_font(f.name(), f.size(), f.bold(), f.italic(), underline_.checked(), f.strikeout()));
-            });
-
-            quit_.events().click([this] {
-                close();
-            });
         }
 
     };

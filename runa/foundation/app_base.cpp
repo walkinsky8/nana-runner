@@ -16,6 +16,8 @@
 #include <runa/foundation/view_factory.h>
 #include <runa/foundation/controller_base.h>
 #include <runa/foundation/generic_view.h>
+#include <runa/foundation/color/color_view_impl.h>
+#include <runa/foundation/font/font_view_impl.h>
 
 #include <runa/widgets/widget_all.h>
 
@@ -25,9 +27,6 @@ runa::app::app()
 {
     if (instance_ != nullptr)
         NAR_THROW_ERROR(std::invalid_argument, "app instance should not be more than one");
-
-    //log_thread::instance().output_derectly(true);
-    log_thread::instance().start();
 
     NAR_LOG("initializing...");
     init_enums();
@@ -219,10 +218,19 @@ void runa::app::close()
 
 void runa::app::run(const wchar_t* _cmdline)
 {
+    //log_thread::instance().output_directly(true);
+    log_thread::instance().start();
+
     load_cfgs(_cmdline);
 
     load_cfg(L"generic.nar");
     add_view<generic_view>();
+
+    load_cfg(L"color.nar");
+    add_view<color_view_impl>();
+
+    load_cfg(L"font.nar");
+    add_view<font_view_impl>();
 
     if (args_.arguments().empty())
         on_init();

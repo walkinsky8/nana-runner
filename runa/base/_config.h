@@ -36,17 +36,19 @@
 #define NAR_V(x) m_##x
 #define NAR_F(x) x##_
 
-#define NAR_FIELD(t, x) \
+#define NAR_FIELD_(t, x, v) \
         public: \
-            t const & NAR_F(x)() const { return NAR_V(x); } \
-            t & NAR_F(x)() { return NAR_V(x); } \
-            void NAR_F(x)(t const & _v) { NAR_V(x) = _v; } \
+            t& NAR_F(x)() { return NAR_V(x); } \
+            t const& NAR_F(x)() const { return NAR_V(x); } \
+            void NAR_F(x)(t const& _v) { NAR_V(x) = _v; } \
         private: \
-            t NAR_V(x)
+            t NAR_V(x){ v }
 
-#define NAR_CODEC_SUPER(s) super::traverse(s)
+#define NAR_FIELD(t, x) NAR_FIELD_(t, x, )
+
 #define NAR_CODEC(s, x) s(#x, NAR_V(x))
 #define NAR_CODEC_UNNAMED(s, x) s.unnamed(NAR_V(x))
+#define NAR_CODEC_SUPER(s) super::traverse(s)
 
 namespace std {
 

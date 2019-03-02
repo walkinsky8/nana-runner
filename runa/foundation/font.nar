@@ -10,47 +10,48 @@
     id=font
     caption="Font Setup"
     div="vert"
-    pos={100 -400}
-    size={400 300}
+    size={360 195}
+    sizable=0
+    maximize=0
     align=center
     align_v=center
+    @panel{ div='weight=5' }
     @panel{ id=name div="weight=20"
-        @label{ id=n caption="Name:" div="weight=20%" typeface="10" align=right }
-        @textbox{ id=value caption=null multi_lines=0 }
+        @label{ id=n caption="Name:" div="weight=20%" align=right }
+        @panel{ div='weight=5' }
+        @textbox{ id=value caption='Courier New' multi_lines=0 }
     }
+    @panel{ div='weight=5' }
     @panel{ id=size div="weight=20"
-        @label{ id=n caption="Size:" div="weight=20%" typeface="10" align=right }
-        @textbox{ id=value caption=null div="weight=20%" multi_lines=0 }
-        @slider{ id=slider vertical=0 maximum=100 value=15 transparent=0 }
+        @label{ id=n caption="Size:" div="weight=20%" align=right }
+        @panel{ div='weight=5' }
+        @textbox{ id=value caption='12' div="weight=10%" multi_lines=0 }
+        @slider{ id=slider vertical=0 maximum=100 value=12 transparent=0 }
     }
-    @panel{ id=bold div="weight=20"
-        @label{ id=n caption="Style:" div="weight=20%" typeface="10" align=right }
-        @checkbox{ id=value caption="Bold" }
+    @panel{ div='weight=5' }
+    @panel{ div="weight=80"
+        @panel{ div="weight=50%"
+            @label{ id=n caption="Style:" div="weight=40%" align=right }
+            @panel{ div='weight=5' }
+            @panel{ id=style div="vert"
+                @checkbox{ id=bold caption="Bold" div="weight=20" }
+                @checkbox{ id=italic caption="Italic" div="weight=20" }
+                @checkbox{ id=strikeout caption="Strike out" div="weight=20" }
+                @checkbox{ id=underline caption="Underline" div="weight=20" }
+            }
+        }
+        @panel{
+            @textbox{ id=sample caption="Hello^n你好" line_wrapped=1 }
+        }
     }
-    @panel{ id=italic div="weight=20"
-        @panel{ id=n div="weight=20%" }
-        @checkbox{ id=value caption="Italic" }
+    @panel{ id=output div="weight=25 margin=[5]"
+        @label{ id=n caption="Output:" div="weight=20%" align=right }
+        @panel{ div='weight=5' }
+        @label{ id=value caption=null bgcolor=#ccc align=left }
     }
-    @panel{ id=strikeout div="weight=20"
-        @panel{ id=n div="weight=20%" }
-        @checkbox{ id=value caption="Strike out" }
-    }
-    @panel{ id=underline div="weight=20"
-        @panel{ id=n div="weight=20%" }
-        @checkbox{ id=value caption="Underline" }
-    }
-    @panel{ id=sample
-        @label{ id=n caption="Sample:" div="weight=20%" typeface="10" align=right }
-        @textbox{ id=value caption="Hello, world! 世界你好！" bgcolor=green fgcolor=white line_wrapped=1 }
-    }
-    @button{
-        id=close
-        div="weight=30"
-        tooltip="close window"
-        bgcolor=#ffff00
-        fgcolor=black
-        cursor=arrow
-        typeface={Lucida Console 12 bold}
-        _click=close
+    @panel{}
+    @panel { id=cmd div="weight=25" fgcolor=black typeface={bold}
+        @button{ id=OK div='weight=50%' bgcolor=rgb(0,128,0) }
+        @button{ id=cancel bgcolor=#ff0 }
     }
 }

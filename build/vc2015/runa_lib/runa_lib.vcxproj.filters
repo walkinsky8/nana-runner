@@ -206,6 +206,9 @@
     <ClCompile Include="..\..\..\runa\foundation\font\font_model.cpp">
       <Filter>runa\foundation\font</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\runa\foundation\font\font_view_impl.cpp">
+      <Filter>runa\foundation\font</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\runa\base\base.h">
@@ -446,11 +449,11 @@
     <ClInclude Include="..\..\..\runa\foundation\font\font_view.h">
       <Filter>runa\foundation\font</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\runa\foundation\font\font_view_impl.h">
+      <Filter>runa\foundation\font</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\..\runa\foundation\color\color.nar">
-      <Filter>runa\foundation\color</Filter>
-    </None>
     <None Include="..\..\..\runa\foundation\color.nar">
       <Filter>runa\foundation</Filter>
     </None>

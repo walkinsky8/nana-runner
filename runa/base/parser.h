@@ -225,4 +225,11 @@ namespace runa
         return _v.dump(_os);
     }
 
+    template<class T>
+    inline void parse(istr _s, T& _v)
+    {
+        parser p{ _s };
+        p >> _v;
+    }
+
 }

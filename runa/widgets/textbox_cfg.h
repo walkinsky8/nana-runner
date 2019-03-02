@@ -56,7 +56,8 @@ namespace runa {
     template<class T>
     inline void operator >> (const textbox& _w, T& _v)
     {
-        _w.caption() >> _v;
+        if (!_w.caption().empty())
+            _w.caption() >> _v;
     }
 
 }

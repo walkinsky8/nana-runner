@@ -10,8 +10,8 @@
     id=generic
     bgcolor=#e0e0e0
     fgcolor=black
-    typeface={ Consolas 10 bold }
-    cursor=hand
+    typeface={ Consolas 10 }
+    cursor=arrow
     div='vert'
     @label { id=label align=center align_v=center }
     @textbox { id=textbox }

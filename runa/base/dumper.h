@@ -189,6 +189,10 @@ namespace runa
 
         dumper& writeName(string _name);
 
+        dumper& writeBegin();
+
+        dumper& writeEnd();
+
         dumper& enter(string _type);
 
         dumper& leave();

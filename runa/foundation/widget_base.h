@@ -39,15 +39,19 @@ namespace runa {
 	void operator >> (const parser& _p, point& _v);
 
 	dumper& operator<<(dumper& _d, const size& _v);
-	void operator >> (const parser& _p, size& _v);
+	void operator>>(const parser& _p, size& _v);
 
 	dumper& operator<<(dumper& _d, const font& _v);
-	void operator >> (const parser& _p, font& _v);
-
-    void operator<<(string& _w, const color& _v);
-	void operator >> (const string& _w, color& _v);
+	void operator>>(const parser& _p, font& _v);
 
     dumper& operator<<(dumper& _d, const color& _v);
+    void operator>>(const parser& _p, color& _v);
+
+    void operator<<(string& _w, const font& _v);
+    void operator>>(const string& _w, font& _v);
+
+    void operator<<(string& _w, const color& _v);
+    void operator>>(const string& _w, color& _v);
 
     dumper& operator<<(dumper& _d, const nana::arg_click& _v);
     dumper& operator<<(dumper& _d, const nana::arg_mouse& _v);
@@ -79,22 +83,27 @@ namespace nana {
         return _os << _v.caption();
     }
 
-    inline std::ostream& operator<<(std::ostream& _os, const nana::color& _v)
+    inline std::ostream& operator<<(std::ostream& _os, const color& _v)
     {
         return _os << runa::dump(_v);
     }
 
-    inline std::ostream& operator<<(std::ostream& _os, const nana::arg_mouse& _v)
+    inline std::ostream& operator<<(std::ostream& _os, const paint::font& _v)
     {
         return _os << runa::dump(_v);
     }
 
-    inline std::ostream& operator<<(std::ostream& _os, const nana::arg_click& _v)
+    inline std::ostream& operator<<(std::ostream& _os, const arg_mouse& _v)
     {
         return _os << runa::dump(_v);
     }
 
-    inline std::ostream& operator<<(std::ostream& _os, const nana::arg_wheel& _v)
+    inline std::ostream& operator<<(std::ostream& _os, const arg_click& _v)
+    {
+        return _os << runa::dump(_v);
+    }
+
+    inline std::ostream& operator<<(std::ostream& _os, const arg_wheel& _v)
     {
         return _os << runa::dump(_v);
     }

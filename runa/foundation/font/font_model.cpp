@@ -13,6 +13,10 @@
 
 #include <runa/foundation/font/font_model.h>
 
+runa::font_model::font_model()
+{
+}
+
 runa::font_model::font_model(const font& _f)
 {
     name_() = _f.name();

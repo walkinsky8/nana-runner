@@ -89,9 +89,9 @@ runa::log_thread::log_thread()
     NAR_ENUM_ADD_(runa::log_level, LL_, UNKNOWN, UNKNOWN);
 }
 
-void runa::log_thread::output_derectly(bool _v)
+void runa::log_thread::output_directly(bool _v)
 {
-    output_derectly_ = _v;
+    output_directly_ = _v;
 }
 
 void runa::log_thread::put(log_record&& _record)
@@ -103,7 +103,7 @@ void runa::log_thread::put(log_record&& _record)
         mb.show();
     }
 
-    if (running() && !output_derectly_ && !_record.head().out_only_)
+    if (running() && !output_directly_ && !_record.head().out_only_)
     {
         records_.put(std::move(_record));
     }
@@ -154,7 +154,7 @@ void runa::log_thread::on_loop()
 void runa::log_thread::on_stop()
 {
     NAR_OUT("log thread stopping...");
-    output_derectly(true);
+    output_directly(true);
     records_.cancel();
     wakeup();
 }

@@ -19,7 +19,13 @@
 
 void runa::widget_cfg::make_div(string& _div) const
 {
-    _div << "<" << id_path() << " " << div_();
+    const auto my_id = id_path();
+    _div << "<" << my_id;
+    if (!my_id.empty())
+        _div << " ";
+    _div << div_();
+    if (!div_().empty())
+        _div << " ";
     if (has_child_div())
     {
         for (auto& i : m_children)

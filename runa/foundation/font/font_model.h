@@ -20,7 +20,7 @@ namespace runa {
         NAR_DEFINE_MODEL(font, model_obj);
 
         NAR_FIELD(string, name);
-        NAR_FIELD(double, size);
+        NAR_FIELD_(double, size, 10);
         NAR_FIELD(bool, bold);
         NAR_FIELD(bool, italic);
         NAR_FIELD(bool, underline);
@@ -30,7 +30,7 @@ namespace runa {
         template<class _Stream>
         void traverse(_Stream& _s)
         {
-            super::traverse(_s);
+            NAR_CODEC_SUPER(_s);
             NAR_CODEC(_s, name);
             NAR_CODEC(_s, size);
             NAR_CODEC(_s, bold);
@@ -40,7 +40,7 @@ namespace runa {
         }
 
     public:
-        font_model() = default;
+        font_model();
         font_model(const font& _f);
         
         operator font() const;

@@ -324,21 +324,9 @@ void runa::operator >> (const parser& _p, size& _v)
 
 runa::dumper& runa::operator<<(dumper& _d, const font& _v)
 {
-	bool old = _d.compact(true);
-	_d.enter({});
-	_d.indent().write(_v.name());
-	_d.indent().write(_v.size());
-	if (_v.bold())
-		_d.indent().write("bold");
-	if (_v.italic())
-		_d.indent().write("italic");
-	if (_v.strikeout())
-		_d.indent().write("strikeout");
-	if (_v.underline())
-		_d.indent().write("underline");
-	_d.leave();
-	_d.compact(old);
-	return _d;
+    string s;
+    s << _v;
+    return _d.writeBegin().write(' ').write(s).write(' ').writeEnd();
 }
 
 void runa::operator >> (const parser& _p, font& _v)
@@ -379,36 +367,63 @@ void runa::operator >> (const parser& _p, font& _v)
 	}
 }
 
-void runa::operator << (string& _w, const color& _v)
+runa::dumper& runa::operator<<(dumper& _d, const color& _v)
 {
-    _w.clear();
+    string s;
+    s << _v;
+    return _d.write(s);
+}
+
+void runa::operator >> (const parser& _p, color& _v)
+{
+    string s;
+    _p >> s;
+    s >> _v;
+}
+
+void runa::operator<<(string& _s, const font& _v)
+{
+    _s << _v.name();
+    _s << " " << _v.size();
+    if (_v.bold())
+        _s << " bold";
+    if (_v.italic())
+        _s << " italic";
+    if (_v.strikeout())
+        _s << " strikeout";
+    if (_v.underline())
+        _s << " underline";
+}
+
+void runa::operator>>(const string& _s, font& _v)
+{
+    parser p{ _s, true };
+    p >> _v;
+}
+
+void runa::operator << (string& _os, const color& _v)
+{
+    _os.clear();
 	unsigned r = (unsigned)(_v.r() + 0.5);
 	unsigned g = (unsigned)(_v.g() + 0.5);
 	unsigned b = (unsigned)(_v.b() + 0.5);
 	unsigned c = (r << 16) + (g << 8) + b;
 	string* s = colors::find_name(c);
 	if (s)
-		_w << *s;
+        _os << *s;
 	else
 	{
-		_w << "rgb(";
-		_w << r;
-		_w << "," << g;
-		_w << "," << b;
-		_w << ")";
+        _os << "rgb(";
+        _os << r;
+        _os << "," << g;
+        _os << "," << b;
+        _os << ")";
 	}
 }
 
 void runa::operator >> (const string& _s, color& _v)
 {
 	_v = get_color(_s, _v);
-}
-
-runa::dumper& runa::operator<<(dumper& _d, const nana::color& _v)
-{
-    string s;
-    s << _v;
-    return _d.write(s);
 }
 
 runa::dumper& runa::operator<<(dumper& _d, const nana::arg_click& _v)

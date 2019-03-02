@@ -9,6 +9,8 @@
 // Created at 2018/11/11
 #pragma once
 
+#include <runa/foundation/view_base.h>
+
 #include <runa/editor/editor_setup_view.h>
 
 #include <runa/editor/editor_setup_model.h>
@@ -30,7 +32,7 @@ namespace runa::editor {
         color_cntrl color_setup_;
 
     public:
-        self(widget_cfg& _cfg, window _parent)
+        self(runa::widget_cfg& _cfg, nana::window _parent)
             : super{ _cfg, _parent }
         {
             init();

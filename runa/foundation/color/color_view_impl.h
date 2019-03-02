@@ -10,7 +10,6 @@
 #pragma once
 
 #include <runa/foundation/color/color_view.h>
-
 #include <runa/foundation/color/color_model.h>
 
 namespace runa {
@@ -22,7 +21,7 @@ namespace runa {
         model_proxy<color_model> model_;
 
     public:
-        self(widget_cfg& _cfg, window _parent)
+        color_view_impl(widget_cfg& _cfg, window _parent)
             : super{ _cfg, _parent }
         {
             init();

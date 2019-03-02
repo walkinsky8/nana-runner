@@ -46,11 +46,21 @@ runa::dumper& runa::dumper::writeName(string _name)
     return *this;
 }
 
+runa::dumper& runa::dumper::writeBegin()
+{
+    return write(tag::begin);
+}
+
+runa::dumper& runa::dumper::writeEnd()
+{
+    return write(tag::end);
+}
+
 runa::dumper& runa::dumper::enter(string _type)
 {
     if (!_type.empty())
         write(tag::key).write(_type);
-    write(tag::begin);
+    writeBegin();
     ++level_;
     return *this;
 }
@@ -58,7 +68,7 @@ runa::dumper& runa::dumper::enter(string _type)
 runa::dumper& runa::dumper::leave()
 {
     --level_;
-    return indent().write(tag::end);
+    return indent().writeEnd();
 }
 
 #endif
