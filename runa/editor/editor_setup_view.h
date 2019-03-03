@@ -37,6 +37,7 @@ namespace runa::editor {
         textbox& caption_;
 
         button& apply_;
+        button& ok_;
         button& cancel_;
 
     public:
@@ -51,6 +52,7 @@ namespace runa::editor {
             , fgcolor_setup_{ wnd<button>("fgcolor.setup") }
             , caption_{ wnd<textbox>("caption.value") }
             , apply_{ wnd<button>("cmd.apply") }
+            , ok_{ wnd<button>("cmd.OK") }
             , cancel_{ wnd<button>("cmd.cancel") }
         {
         }

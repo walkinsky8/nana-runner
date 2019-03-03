@@ -34,7 +34,7 @@ void editor_view_impl::init()
     run_.events().click([&] { on_run(); });
     quit_.events().click([&] { close(); });
 
-    form_.events().destroy( app::quit );
+    //form_.events().destroy( app::quit );
 }
 
 void editor_view_impl::on_choose_dir()

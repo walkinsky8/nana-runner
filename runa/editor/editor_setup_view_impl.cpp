@@ -37,6 +37,10 @@ void editor_setup_view_impl::init()
         //save_model();
         save_widget(target());
         });
+    ok_.events().click([&] {
+        save_widget(target());
+        close();
+        });
     cancel_.events().click([&] { close(); });
 }
 

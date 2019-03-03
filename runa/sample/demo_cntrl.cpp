@@ -15,7 +15,7 @@
 #include <runa/sample/hello_view.h>
 #include <runa/sample/simple_view.h>
 #include <runa/foundation/color/color_view_impl.h>
-#include <runa/foundation/font/font_view.h>
+#include <runa/foundation/font/font_view_impl.h>
 
 #include <runa/foundation/app_base.h>
 
@@ -26,7 +26,7 @@ demo_cntrl::demo_cntrl()
 {
     add_view<demo_view>();
     add_view<color_view_impl>();
-    add_view<font_view>();
+    add_view<font_view_impl>();
     add_view<hello_view>();
     add_view<simple_view>();
 }
@@ -35,7 +35,7 @@ void demo_cntrl::open(callback _on_complete)
 {
     app::show_view<demo_view>(demo_);
     app::show_view<color_view_impl>(color_);
-    app::show_view<font_view>(font_);
+    app::show_view<font_view_impl>(font_);
     app::show_view<hello_view>(hello_);
     app::show_view<simple_view>(simple_);
     dummy_ = app::show_view(L"dummy");

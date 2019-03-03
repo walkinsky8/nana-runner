@@ -23,8 +23,6 @@ public:
 
 };
 
-// x.nar ... -path "$(RUNA)\runa\foundation" -path "$(RUNA)\runa\sample" -path "$(RUNA)\runa\editor" -path "$(USERPROFILE)\Pictures"
-
 int run_main(runa::pcwstr _cmdline)
 {
     nana_runner_app a;
@@ -54,4 +52,6 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     return run_main_no_exception(lpCmdLine);
 #endif
 }
+
+// x.nar ... -path "$(RUNA)\runa\foundation" -path "$(RUNA)\runa\sample" -path "$(RUNA)\runa\editor" -path "$(USERPROFILE)\Pictures"
 
