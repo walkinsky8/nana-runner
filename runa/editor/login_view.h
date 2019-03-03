@@ -28,7 +28,7 @@ namespace runa::editor {
         button& close_;
 
     public:
-        self(widget_cfg& _cfg, window _parent)
+        login_view(widget_cfg& _cfg, window _parent)
             : super{ _cfg, _parent }
             , username_{ wnd<textbox>("username.value") }
             , password_{ wnd<textbox>("password.value") }

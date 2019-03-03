@@ -23,6 +23,7 @@ void editor_setup_view_impl::init()
     on_focus(&font_, &model_().font_(), fn_update_);
     on_focus(&bgcolor_, &model_().colors_().bg_(), fn_update_);
     on_focus(&fgcolor_, &model_().colors_().fg_(), fn_update_);
+    on_focus(&caption_, &model_().caption_(), fn_update_);
 
     on_selected(&bgcolor_, &model_().colors_().bg_(), fn_update_);
     on_selected(&fgcolor_, &model_().colors_().fg_(), fn_update_);
@@ -31,7 +32,11 @@ void editor_setup_view_impl::init()
     bgcolor_setup_.events().click([&] { on_color_setup(bgcolor_, model_().colors_().bg_()); });
     fgcolor_setup_.events().click([&] { on_color_setup(fgcolor_, model_().colors_().fg_()); });
 
-    apply_.events().click([&] { save_widget(target()); });
+    apply_.events().click([&] {
+        //on_focus has updated model field
+        //save_model();
+        save_widget(target());
+        });
     cancel_.events().click([&] { close(); });
 }
 
@@ -61,13 +66,13 @@ void editor_setup_view_impl::on_fini()
 
 void editor_setup_view_impl::init_model()
 {
-    load_widget(sample_);
+    load_widget(caption_);
     load_model();
 }
 
 void editor_setup_view_impl::update_model()
 {
-    save_widget(sample_);
+    save_widget(caption_);
 }
 
 void editor_setup_view_impl::set_target(widget* _target)
@@ -75,23 +80,23 @@ void editor_setup_view_impl::set_target(widget* _target)
     target_ = _target;
     load_widget(target());
     load_model();
+    update_model();
 }
 
 void editor_setup_view_impl::load_widget(const widget& _w)
 {
-    model_().font_() << _w.typeface();
-    model_().colors_().bg_() << _w.bgcolor();
-    model_().colors_().fg_() << _w.fgcolor();
+    model_().font_() = _w.typeface();
+    model_().colors_().bg_() = _w.bgcolor();
+    model_().colors_().fg_() = _w.fgcolor();
+    model_().caption_() = _w.caption();
 }
 
 void editor_setup_view_impl::save_widget(widget& _w) const
 {
-    font f;
-    model_().font_() >> f; _w.typeface(f);
-    color c;
-    model_().colors_().bg_() >> c; _w.bgcolor(c);
-    c = {};
-    model_().colors_().fg_() >> c; _w.fgcolor(c);
+    _w.typeface(model_().font_());
+    _w.bgcolor(model_().colors_().bg_());
+    _w.fgcolor(model_().colors_().fg_());
+    _w.caption(model_().caption_());
 }
 
 void editor_setup_view_impl::load_model()
@@ -99,6 +104,7 @@ void editor_setup_view_impl::load_model()
     font_ << model_().font_();
     bgcolor_ << model_().colors_().bg_();
     fgcolor_ << model_().colors_().fg_();
+    caption_ << model_().caption_();
 }
 
 void editor_setup_view_impl::save_model()
@@ -106,5 +112,6 @@ void editor_setup_view_impl::save_model()
     font_ >> model_().font_();
     bgcolor_ >> model_().colors_().bg_();
     fgcolor_ >> model_().colors_().fg_();
+    caption_ >> model_().caption_();
 }
 

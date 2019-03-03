@@ -22,7 +22,7 @@ namespace runa::editor {
         cfg_ptr curr_cfg_;
 
     public:
-        self(widget_cfg& _cfg, window _parent)
+        editor_view_impl(widget_cfg& _cfg, window _parent)
             : super{ _cfg, _parent }
         {
             init();

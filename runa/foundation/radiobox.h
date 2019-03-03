@@ -19,16 +19,16 @@ namespace runa
         using super = nana::checkbox;
 
     public:
-        self()
+        radiobox()
         {
             radio(true);
         }
-		self(nana::window wd, bool visible = true)
+        radiobox(nana::window wd, bool visible = true)
             : super(wd, visible)
 		{
             radio(true);
         }
-		self(nana::window wd, const nana::rectangle& r, bool visible = true)
+        radiobox(nana::window wd, const nana::rectangle& r, bool visible = true)
             : super(wd, r, visible)
         {
             radio(true);

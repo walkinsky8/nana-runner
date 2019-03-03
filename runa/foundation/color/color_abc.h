@@ -22,9 +22,9 @@ namespace runa
         double c_{0.0}; // 0..1
 
     public:
-        self()
+        color_abc()
         {}
-        self(double _a, double _b, double _c)
+        color_abc(double _a, double _b, double _c)
             : a_{ _a }, b_{ _b }, c_{ _c }
         {}
 

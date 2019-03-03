@@ -39,6 +39,7 @@ namespace runa::editor {
 
             NAR_FIELD(font_model, font);
             NAR_FIELD(colors_model, colors);
+            NAR_FIELD(string, caption);
 
         public:
             template<class _Stream>
@@ -47,6 +48,7 @@ namespace runa::editor {
                 super::traverse(_s);
                 NAR_CODEC(_s, font);
                 NAR_CODEC(_s, colors);
+                NAR_CODEC(_s, caption);
             }
 
         };

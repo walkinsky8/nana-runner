@@ -32,7 +32,7 @@ namespace runa::editor {
         button& exit_;
 
     public:
-        self(widget_cfg& _cfg, window _parent)
+        logger_view(widget_cfg& _cfg, window _parent)
             : super{ _cfg, _parent }
             , form_{ wnd<form>() }
             , content_{ wnd<textbox>("content") }

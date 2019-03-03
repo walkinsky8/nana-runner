@@ -22,13 +22,13 @@ namespace runa
         double l_{0.0}; // 0..1
 
     public:
-        self()
+        color_hsl()
         {}
-        self(double _h, double _s, double _l)
+        color_hsl(double _h, double _s, double _l)
             : h_{ _h }, s_{ _s }, l_{ _l }
         {}
-        self(nana::color const& c);
-        self(string const& s);
+        color_hsl(nana::color const& c);
+        color_hsl(string const& s);
 
         operator nana::color() const
         {

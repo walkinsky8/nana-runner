@@ -31,9 +31,9 @@ namespace runa
                 double c_{};
 
             public:
-                self()
+                color_value_factor()
                 {}
-                self(double _a, double _b, double _c)
+                color_value_factor(double _a, double _b, double _c)
                     : a_{ _a }, b_{ _b }, c_{ _c }
                 {}
 
@@ -117,21 +117,21 @@ namespace runa
                 using super = color_value_factor;
 
             public:
-                self()
+                color_value()
                 {}
-                self(super const& _value)
+                color_value(super const& _value)
                     : super{ _value }
                 {}
-                self(double _a, double _b, double _c)
+                color_value(double _a, double _b, double _c)
                     : super{ _a,_b,_c }
                 {}
-                self(const color_rgb& _v)
+                color_value(const color_rgb& _v)
                     : super{_v.r(), _v.g(), _v.b()}
                 {}
-                self(const color_hsl& _v)
+                color_value(const color_hsl& _v)
                     : super{ _v.h(), _v.s(), _v.l() }
                 {}
-                self(const color_hsv& _v)
+                color_value(const color_hsv& _v)
                     : super{ _v.h(), _v.s(), _v.v() }
                 {}
 

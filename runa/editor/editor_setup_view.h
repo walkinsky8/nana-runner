@@ -34,7 +34,7 @@ namespace runa::editor {
         combox& fgcolor_;
         button& fgcolor_setup_;
 
-        textbox& sample_;
+        textbox& caption_;
 
         button& apply_;
         button& cancel_;
@@ -49,7 +49,7 @@ namespace runa::editor {
             , bgcolor_setup_{ wnd<button>("bgcolor.setup") }
             , fgcolor_{ wnd<combox>("fgcolor.value") }
             , fgcolor_setup_{ wnd<button>("fgcolor.setup") }
-            , sample_{ wnd<textbox>("sample.value") }
+            , caption_{ wnd<textbox>("caption.value") }
             , apply_{ wnd<button>("cmd.apply") }
             , cancel_{ wnd<button>("cmd.cancel") }
         {

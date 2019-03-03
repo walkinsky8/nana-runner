@@ -65,7 +65,7 @@ namespace runa::editor {
 
         widget& target()
         {
-            return target_ ? *target_ : sample_;
+            return target_ ? *target_ : caption_;
         }
 
     };

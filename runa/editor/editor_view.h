@@ -39,7 +39,7 @@ namespace runa::editor {
         button& quit_;
 
     public:
-        self(widget_cfg& _cfg, window _parent)
+        editor_view(widget_cfg& _cfg, window _parent)
             : super{ _cfg, _parent }
             , form_{ wnd<form>() }
             , folder_{ wnd<combox>("folder.value") }

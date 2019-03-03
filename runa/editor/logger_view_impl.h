@@ -20,7 +20,7 @@ namespace runa::editor {
         log_handler::func_ptr log_handler_;
 
     public:
-        self(widget_cfg& _cfg, window _parent)
+        logger_view_impl(widget_cfg& _cfg, window _parent)
             : super{ _cfg, _parent }
         {
             init();

@@ -22,7 +22,7 @@ namespace runa::editor {
         model_proxy<login_model> proxy_;
 
     public:
-        self(widget_cfg& _cfg, window _parent)
+        login_view_impl(widget_cfg& _cfg, window _parent)
             : super{ _cfg, _parent }
         {
             init();
