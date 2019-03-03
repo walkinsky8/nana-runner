@@ -20,22 +20,14 @@ void editor_setup_view_impl::init()
 
     fn_update_ = std::bind(&self::update_model, this);
 
-    on_text_changed(&name_, &model_().font_().name_(), fn_update_);
-    on_text_changed(&size_, &model_().font_().size_(), fn_update_);
-    on_text_changed(&size_, &model_().font_().size_(), [&] {slider_ << model_().font_().size_(); });
-    //on_value_changed(&slider_, &model_().font_().size_(), fn_update_);
-    on_value_changed(&slider_, &model_().font_().size_(), [&] {size_ << model_().font_().size_(); });
-    on_checked(&bold_, &model_().font_().bold_(), fn_update_);
-    on_checked(&italic_, &model_().font_().italic_(), fn_update_);
-    on_checked(&strikeout_, &model_().font_().strikeout_(), fn_update_);
-    on_checked(&underline_, &model_().font_().underline_(), fn_update_);
-    //on_text_changed(&bgcolor_, &model_().colors_().bg_(), fn_update_);
-    //on_text_changed(&fgcolor_, &model_().colors_().fg_(), fn_update_);
-    on_selected(&bgcolor_, &model_().colors_().bg_(), fn_update_);
-    on_selected(&fgcolor_, &model_().colors_().fg_(), fn_update_);
+    on_focus(&font_, &model_().font_(), fn_update_);
     on_focus(&bgcolor_, &model_().colors_().bg_(), fn_update_);
     on_focus(&fgcolor_, &model_().colors_().fg_(), fn_update_);
 
+    on_selected(&bgcolor_, &model_().colors_().bg_(), fn_update_);
+    on_selected(&fgcolor_, &model_().colors_().fg_(), fn_update_);
+
+    font_setup_.events().click([&] { on_font_setup(font_, model_().font_()); });
     bgcolor_setup_.events().click([&] { on_color_setup(bgcolor_, model_().colors_().bg_()); });
     fgcolor_setup_.events().click([&] { on_color_setup(fgcolor_, model_().colors_().fg_()); });
 
@@ -43,18 +35,28 @@ void editor_setup_view_impl::init()
     cancel_.events().click([&] { close(); });
 }
 
-void editor_setup_view_impl::on_color_setup(combox& _w, color_model& _c)
+void editor_setup_view_impl::on_font_setup(textbox& _w, font_model& _m)
 {
-    color_setup_.open(_w.caption(), [&](const color_model& _model) {
+    font_cntrl_.open(_w.caption(), [&](const font_model & _model) {
         _w << _model;
-        _c = _model;
+        _m = _model;
+        update_model();
+        });
+}
+
+void editor_setup_view_impl::on_color_setup(combox& _w, color_model& _m)
+{
+    color_cntrl_.open(_w.caption(), [&](const color_model& _model) {
+        _w << _model;
+        _m = _model;
         update_model();
     });
 }
 
 void editor_setup_view_impl::on_fini()
 {
-    color_setup_.close();
+    font_cntrl_.close();
+    color_cntrl_.close();
 }
 
 void editor_setup_view_impl::init_model()
@@ -94,26 +96,14 @@ void editor_setup_view_impl::save_widget(widget& _w) const
 
 void editor_setup_view_impl::load_model()
 {
-    name_ << model_().font_().name_();
-    size_ << model_().font_().size_();
-    slider_ << model_().font_().size_();
-    bold_ << model_().font_().bold_();
-    italic_ << model_().font_().italic_();
-    strikeout_ << model_().font_().strikeout_();
-    underline_ << model_().font_().underline_();
+    font_ << model_().font_();
     bgcolor_ << model_().colors_().bg_();
     fgcolor_ << model_().colors_().fg_();
 }
 
 void editor_setup_view_impl::save_model()
 {
-    name_ >> model_().font_().name_();
-    size_ >> model_().font_().size_();
-    //slider_ >> model_().font_().size_();
-    bold_ >> model_().font_().bold_();
-    italic_ >> model_().font_().italic_();
-    strikeout_ >> model_().font_().strikeout_();
-    underline_ >> model_().font_().underline_();
+    font_ >> model_().font_();
     bgcolor_ >> model_().colors_().bg_();
     fgcolor_ >> model_().colors_().fg_();
 }

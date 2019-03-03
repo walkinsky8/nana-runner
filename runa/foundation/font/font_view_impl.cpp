@@ -30,8 +30,8 @@ void font_view_impl::init()
     slider_.events().value_changed([this] { size_ << slider_.value(); });
     bold_.events().checked([this] { bold_ >> model_.data_.bold_(); on_model_updated(); });
     italic_.events().checked([this] { italic_ >> model_.data_.italic_(); on_model_updated(); });
-    strikeout_.events().checked([this] { strikeout_ >> model_.data_.strikeout_(); on_model_updated(); });
     underline_.events().checked([this] { underline_ >> model_.data_.underline_(); on_model_updated(); });
+    strikeout_.events().checked([this] { strikeout_ >> model_.data_.strikeout_(); on_model_updated(); });
 
     ok_.events().click([&] { on_ok(); });
     cancel_.events().click([&] { on_cancel(); });
@@ -71,8 +71,8 @@ void font_view_impl::load_model()
     slider_ << model_.data_.size_();
     bold_ << model_.data_.bold_();
     italic_ << model_.data_.italic_();
-    strikeout_ << model_.data_.strikeout_();
     underline_ << model_.data_.underline_();
+    strikeout_ << model_.data_.strikeout_();
 }
 
 void font_view_impl::save_model()
@@ -81,8 +81,8 @@ void font_view_impl::save_model()
     size_ >> model_.data_.size_();
     bold_ >> model_.data_.bold_();
     italic_ >> model_.data_.italic_();
-    strikeout_ >> model_.data_.strikeout_();
     underline_ >> model_.data_.underline_();
+    strikeout_ >> model_.data_.strikeout_();
     NAR_LOG_DEBUG("value = " << model_.data_);
 }
 

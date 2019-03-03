@@ -15,7 +15,7 @@
 
 namespace runa {
 
-    class font_model : public model_obj
+    class font_model : public model_obj, public model_proxy_base<font_model>
     {
         NAR_DEFINE_MODEL(font, model_obj);
 
@@ -41,20 +41,45 @@ namespace runa {
 
     public:
         font_model();
-        font_model(const font& _f);
-        
-        operator font() const;
+        font_model(const font& _v);
+        font_model(const string& _v);
+
+        font to_font() const;
+        string to_string() const;
+
+        operator font() const
+        {
+            return to_font();
+        }
+        operator string() const
+        {
+            return to_string();
+        }
 
     };
 
     inline void operator<<(font_model& _o, const font& _v)
     {
-        _o = _v;
+        _o = font_model{ _v };
     }
-
     inline void operator>>(const font_model& _i, font& _v)
     {
         _v = _i;
+    }
+
+    inline std::ostream& operator<<(std::ostream& _os, const font_model& _v)
+    {
+        return _os << dump(_v);
+    }
+    inline void operator<<(string& _os, const font_model& _v)
+    {
+        _os << (font)_v;
+    }
+    inline void operator>>(const string& _is, font_model& _v)
+    {
+        font f;
+        _is >> f;
+        _v = f;
     }
 
 }

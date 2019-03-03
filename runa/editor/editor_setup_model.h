@@ -16,7 +16,7 @@
 
 namespace runa::editor {
 
-        class editor_setup_model : public model_obj
+        class editor_setup_model : public model_obj, public model_proxy_base<editor_setup_model>
         {
             NAR_DEFINE_MODEL(editor_setup, model_obj);
 

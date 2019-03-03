@@ -337,21 +337,21 @@ void runa::operator >> (const parser& _p, font& _v)
 		double size = _v.size();
 		bool bold = _v.bold();
 		bool italic = _v.italic();
-		bool strikeout = _v.strikeout();
 		bool underline = _v.underline();
-		for (auto& i : _p.unit().children().list())
+        bool strikeout = _v.strikeout();
+        for (auto& i : _p.unit().children().list())
 		{
 			const auto& v = i.value();
 			if (v.empty())
 				continue;
-			if (v == "bold")
-				bold = true;
-			else if (v == "italic")
-				italic = true;
-			else if (v == "strikeout")
-				strikeout = true;
-			else if (v == "underline")
-				underline = true;
+            if (v == "bold")
+                bold = true;
+            else if (v == "italic")
+                italic = true;
+            else if (v == "underline")
+                underline = true;
+            else if (v == "strikeout")
+                strikeout = true;
 			else if (is_digit(v[0]))
 				v >> size;
 			else
@@ -389,10 +389,10 @@ void runa::operator<<(string& _s, const font& _v)
         _s << " bold";
     if (_v.italic())
         _s << " italic";
-    if (_v.strikeout())
-        _s << " strikeout";
     if (_v.underline())
         _s << " underline";
+    if (_v.strikeout())
+        _s << " strikeout";
 }
 
 void runa::operator>>(const string& _s, font& _v)

@@ -30,9 +30,9 @@ namespace runa {
         }
 
     public:
-        self() = default;
-        self(const color& _v);
-        self(const string& _v);
+        color_model() = default;
+        color_model(const color& _v);
+        color_model(const string& _v);
 
         color to_color() const;
         string to_string() const;
@@ -66,9 +66,9 @@ namespace runa {
     {
         return _os << _v.value_();
     }
-    inline string& operator<<(string& _os, const color_model& _v)
+    inline void operator<<(string& _os, const color_model& _v)
     {
-        return _os << _v.value_();
+        _os << _v.value_();
     }
     inline void operator>>(const string& _is, color_model& _v)
     {

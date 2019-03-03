@@ -13,7 +13,7 @@
 
 namespace runa::editor {
 
-    class login_model : public model_obj
+    class login_model : public model_obj, public model_proxy_base<login_model>
     {
         NAR_DEFINE_MODEL(login, model_obj);
 

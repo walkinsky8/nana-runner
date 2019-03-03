@@ -10,7 +10,7 @@
     id=font
     caption="Font Setup"
     div="vert"
-    size={360 195}
+    size={360 200}
     sizable=0
     maximize=0
     align=center
@@ -25,7 +25,7 @@
     @panel{ id=size div="weight=20"
         @label{ id=n caption="Size:" div="weight=20%" align=right }
         @panel{ div='weight=5' }
-        @textbox{ id=value caption='12' div="weight=10%" multi_lines=0 }
+        @spinbox{ id=value value=12 div="weight=12%" }
         @slider{ id=slider vertical=0 maximum=100 value=12 transparent=0 }
     }
     @panel{ div='weight=5' }
@@ -36,16 +36,16 @@
             @panel{ id=style div="vert"
                 @checkbox{ id=bold caption="Bold" div="weight=20" }
                 @checkbox{ id=italic caption="Italic" div="weight=20" }
-                @checkbox{ id=strikeout caption="Strike out" div="weight=20" }
                 @checkbox{ id=underline caption="Underline" div="weight=20" }
+                @checkbox{ id=strikeout caption="Strike out" div="weight=20" }
             }
         }
         @panel{
             @textbox{ id=sample caption="Hello^n你好" line_wrapped=1 }
         }
     }
-    @panel{ id=output div="weight=25 margin=[5]"
-        @label{ id=n caption="Output:" div="weight=20%" align=right }
+    @panel{ id=output div="weight=35 margin=[5]"
+        @label{ id=n caption="Typeface:" div="weight=20%" align=right }
         @panel{ div='weight=5' }
         @label{ id=value caption=null bgcolor=#ccc align=left }
     }

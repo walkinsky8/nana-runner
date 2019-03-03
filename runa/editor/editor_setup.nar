@@ -18,30 +18,10 @@
     fgcolor=white**@
     cursor=hand
     typeface={ Consolas 10 }
-    @panel{ id=name div="weight=20"
-        @label{ id=n caption="Font Name:" div="weight=20%" align=right }
-        @textbox{ id=value caption=null multi_lines=0 }
-    }
-    @panel{ id=size div="weight=20"
-        @label{ id=n caption="Size:" div="weight=20%" align=right }
-        @spinbox{ id=value caption=null div="weight=20%" multi_lines=0 }
-        @slider{ id=slider vertical=0 maximum=64 }
-    }
-    @panel{ id=bold div="weight=20"
-        @label{ id=n caption="Style:" div="weight=20%" align=right }
-        @checkbox{ id=value caption="Bold" }
-    }
-    @panel{ id=italic div="weight=20"
-        @panel{ id=n div="weight=20%" }
-        @checkbox{ id=value caption="Italic" }
-    }
-    @panel{ id=strikeout div="weight=20"
-        @panel{ id=n div="weight=20%" }
-        @checkbox{ id=value caption="Strike out" }
-    }
-    @panel{ id=underline div="weight=20"
-        @panel{ id=n div="weight=20%" }
-        @checkbox{ id=value caption="Underline" }
+    @panel{ id=font div="weight=20"
+        @label{ id=n caption="Font:" div="weight=20%" align=right }
+        @textbox{ id=value caption=null div="weight=70%" multi_lines=0 }
+        @button{ id=setup caption='...' div="weight=10%" }
     }
     @panel{ id=bgcolor div="weight=20"
         @label{ id=n caption="Bgcolor:" div="weight=20%" align=right }
@@ -57,16 +37,8 @@
         @label{ id=n caption="Sample:" div="weight=20%" align=right }
         @textbox{ id=value caption="Hello, world!^n世界你好！" bgcolor=black fgcolor=#00ff00 line_wrapped=1 typeface={Courier New 12 bold italic} }
     }
-    @panel { id=cmd div="weight=30" typeface={bold}
-        @button{
-            id=apply
-            div='weight=50%'
-        }
-        @button{
-            id=cancel
-            tooltip="close window"
-            bgcolor=#ffff00
-            fgcolor=black
-        }
+    @panel { id=cmd div="weight=30" typeface={ bold }
+        @button{ id=apply div='weight=50%' }
+        @button{ id=cancel tooltip="close window" bgcolor=#ffff00 fgcolor=black }
     }
 }

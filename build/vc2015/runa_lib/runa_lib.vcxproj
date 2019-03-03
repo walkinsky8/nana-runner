@@ -147,6 +147,7 @@
     <ClCompile Include="..\..\..\runa\foundation\color\color_rgb.cpp" />
     <ClCompile Include="..\..\..\runa\foundation\color\color_view_impl.cpp" />
     <ClCompile Include="..\..\..\runa\foundation\controller_base.cpp" />
+    <ClCompile Include="..\..\..\runa\foundation\font\font_cntrl.cpp" />
     <ClCompile Include="..\..\..\runa\foundation\font\font_model.cpp" />
     <ClCompile Include="..\..\..\runa\foundation\font\font_view_impl.cpp" />
     <ClCompile Include="..\..\..\runa\foundation\model_base.cpp" />
@@ -227,6 +228,7 @@
     <ClInclude Include="..\..\..\runa\foundation\color\color_view.h" />
     <ClInclude Include="..\..\..\runa\foundation\color\color_view_impl.h" />
     <ClInclude Include="..\..\..\runa\foundation\controller_base.h" />
+    <ClInclude Include="..\..\..\runa\foundation\font\font_cntrl.h" />
     <ClInclude Include="..\..\..\runa\foundation\font\font_model.h" />
     <ClInclude Include="..\..\..\runa\foundation\font\font_view.h" />
     <ClInclude Include="..\..\..\runa\foundation\font\font_view_impl.h" />

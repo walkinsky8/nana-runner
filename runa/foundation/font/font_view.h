@@ -13,6 +13,7 @@
 
 #include <runa/widgets/form_cfg.h>
 #include <runa/widgets/textbox_cfg.h>
+#include <runa/widgets/spinbox_cfg.h>
 #include <runa/widgets/slider_cfg.h>
 #include <runa/widgets/checkbox_cfg.h>
 #include <runa/widgets/label_cfg.h>
@@ -28,12 +29,12 @@ namespace runa {
         form& form_;
 
         textbox& name_;
-        textbox& size_;
+        spinbox& size_;
         slider& slider_;
         checkbox& bold_;
         checkbox& italic_;
-        checkbox& strikeout_;
         checkbox& underline_;
+        checkbox& strikeout_;
 
         textbox& sample_;
 
@@ -47,12 +48,12 @@ namespace runa {
             : super{ _cfg, _parent }
             , form_{ wnd<form>() }
             , name_{ wnd<textbox>("name.value") }
-            , size_{ wnd<textbox>("size.value") }
+            , size_{ wnd<spinbox>("size.value") }
             , slider_{ wnd<slider>("size.slider") }
             , bold_{ wnd<checkbox>("style.bold") }
             , italic_{ wnd<checkbox>("style.italic") }
-            , strikeout_{ wnd<checkbox>("style.strikeout") }
             , underline_{ wnd<checkbox>("style.underline") }
+            , strikeout_{ wnd<checkbox>("style.strikeout") }
             , sample_{ wnd<textbox>("sample") }
             , output_value_{ wnd<label>("output.value") }
             , ok_{ wnd<button>("cmd.OK") }

@@ -15,6 +15,7 @@
 
 #include <runa/editor/editor_setup_model.h>
 
+#include <runa/foundation/font/font_cntrl.h>
 #include <runa/foundation/color/color_cntrl.h>
 
 namespace runa::editor {
@@ -29,10 +30,11 @@ namespace runa::editor {
 
         callback fn_update_{};
 
-        color_cntrl color_setup_;
+        font_cntrl font_cntrl_;
+        color_cntrl color_cntrl_;
 
     public:
-        self(runa::widget_cfg& _cfg, nana::window _parent)
+        editor_setup_view_impl(runa::widget_cfg& _cfg, nana::window _parent)
             : super{ _cfg, _parent }
         {
             init();
@@ -44,6 +46,8 @@ namespace runa::editor {
         void init();
 
         void on_fini() override;
+
+        void on_font_setup(textbox& _w, font_model& _f);
 
         void on_color_setup(combox& _w, color_model& _c);
 

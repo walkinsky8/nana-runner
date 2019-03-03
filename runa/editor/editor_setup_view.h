@@ -13,9 +13,6 @@
 
 #include <runa/widgets/form_cfg.h>
 #include <runa/widgets/textbox_cfg.h>
-#include <runa/widgets/spinbox_cfg.h>
-#include <runa/widgets/slider_cfg.h>
-#include <runa/widgets/checkbox_cfg.h>
 #include <runa/widgets/combox_cfg.h>
 #include <runa/widgets/button_cfg.h>
 
@@ -28,16 +25,12 @@ namespace runa::editor {
     public:
         form& form_;
 
-        textbox& name_;
-        spinbox& size_;
-        slider& slider_;
-        checkbox& bold_;
-        checkbox& italic_;
-        checkbox& strikeout_;
-        checkbox& underline_;
+        textbox& font_;
+        button& font_setup_;
 
         combox& bgcolor_;
         button& bgcolor_setup_;
+
         combox& fgcolor_;
         button& fgcolor_setup_;
 
@@ -47,16 +40,11 @@ namespace runa::editor {
         button& cancel_;
 
     public:
-        self(widget_cfg& _cfg, window _parent)
+        editor_setup_view(runa::widget_cfg& _cfg, nana::window _parent)
             : super{ _cfg, _parent }
             , form_{ wnd<form>() }
-            , name_{ wnd<textbox>("name.value") }
-            , size_{ wnd<spinbox>("size.value") }
-            , slider_{ wnd<slider>("size.slider") }
-            , bold_{ wnd<checkbox>("bold.value") }
-            , italic_{ wnd<checkbox>("italic.value") }
-            , strikeout_{ wnd<checkbox>("strikeout.value") }
-            , underline_{ wnd<checkbox>("underline.value") }
+            , font_{ wnd<textbox>("font.value") }
+            , font_setup_{ wnd<button>("font.setup") }
             , bgcolor_{wnd<combox>("bgcolor.value")}
             , bgcolor_setup_{ wnd<button>("bgcolor.setup") }
             , fgcolor_{ wnd<combox>("fgcolor.value") }
