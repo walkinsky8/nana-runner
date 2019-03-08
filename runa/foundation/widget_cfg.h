@@ -109,8 +109,6 @@ namespace runa {
 
         string get_caption() const;
 
-        widget_cfg* get_parent_or_global() const;
-
         const string& get_bgcolor() const;
         const string& get_fgcolor() const;
         const optional<cursor>& get_cursor() const;

@@ -38,7 +38,7 @@
         @textbox{ id=value caption="Hello, world!^n世界你好！" bgcolor=black fgcolor=#00ff00 line_wrapped=0 typeface={Courier New 12 bold italic} }
     }
     @panel { id=cmd div="weight=30" typeface={ bold }
-        @button{ id=apply div='weight=33%' }
+        @button{ id=apply div='weight=33%' bgcolor=green }
         @button{ id=OK div='weight=33%' bgcolor=green }
         @button{ id=cancel tooltip="close window" bgcolor=#ffff00 fgcolor=black _click=close }
     }

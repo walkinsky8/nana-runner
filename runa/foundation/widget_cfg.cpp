@@ -82,54 +82,59 @@ std::string runa::widget_cfg::get_caption() const
     return to_upper(id_().str()[0]) + id_().str().substr(1);
 }
 
-runa::widget_cfg* runa::widget_cfg::get_parent_or_global() const
-{
-    if (m_parent)
-        return m_parent;
-    cfg_ptr glob = get_generic();
-    if (glob)
-        return glob.get();
-    return nullptr;
+namespace runa {
+
+    struct bgcolor_getter { const string& operator()(const widget_cfg& _cfg) { return _cfg.bgcolor_(); } };
+    struct fgcolor_getter { const string& operator()(const widget_cfg& _cfg) { return _cfg.fgcolor_(); } };
+    struct cursor_getter { const optional<cursor>& operator()(const widget_cfg& _cfg) { return _cfg.cursor_(); } };
+    struct typeface_getter { const optional<font>& operator()(const widget_cfg& _cfg) { return _cfg.typeface_(); } };
+
+    template<typename _FieldType, typename _FieldGetter>
+    const _FieldType& get_field(const widget_cfg& _cfg, istr _type, bool _global)
+    {
+        _FieldGetter getter;
+        if (_global)
+        {
+            for (auto i : _cfg.children_())
+            {
+                if ((istr)i->type_name() == _type)
+                {
+                    if (!getter(*i).empty())
+                        return getter(*i);
+                    break;
+                }
+            }
+            return getter(_cfg);
+        }
+        if (!getter(_cfg).empty())
+            return getter(_cfg);
+        if (_cfg.get_parent())
+            return get_field<_FieldType, _FieldGetter>(*_cfg.get_parent(), _type, false);
+        cfg_ptr glob = widget_cfg::get_generic();
+        if (glob)
+            return get_field<_FieldType, _FieldGetter>(*glob, _type, true);
+        return getter(_cfg);
+    }
 }
 
 const runa::string& runa::widget_cfg::get_fgcolor() const
 {
-    if (!fgcolor_().empty())
-        return fgcolor_();
-    auto p = get_parent_or_global();
-    if (p)
-        return p->get_fgcolor();
-    return fgcolor_();
+    return get_field<string, fgcolor_getter>(*this, type_name(), false);
 }
 
 const runa::string& runa::widget_cfg::get_bgcolor() const
 {
-    if (!bgcolor_().empty())
-        return bgcolor_();
-    auto p = get_parent_or_global();
-    if (p)
-        return p->get_bgcolor();
-    return bgcolor_();
+    return get_field<string, bgcolor_getter>(*this, type_name(), false);
 }
 
 const runa::optional<runa::cursor>& runa::widget_cfg::get_cursor() const
 {
-    if (!cursor_().empty())
-        return cursor_();
-    auto p = get_parent_or_global();
-    if (p)
-        return p->get_cursor();
-    return cursor_();
+    return get_field<optional<runa::cursor>, cursor_getter>(*this, type_name(), false);
 }
 
 const runa::optional<runa::font>& runa::widget_cfg::get_typeface() const
 {
-    if (!typeface_().empty())
-        return typeface_();
-    auto p = get_parent_or_global();
-    if (p)
-        return p->get_typeface();
-    return typeface_();
+    return get_field<optional<runa::font>, typeface_getter>(*this, type_name(), false);
 }
 
 runa::cfg_ptr runa::widget_cfg::get_generic()
