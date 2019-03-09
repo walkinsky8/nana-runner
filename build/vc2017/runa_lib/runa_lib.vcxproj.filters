@@ -1,0 +1,476 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="runa">
+      <UniqueIdentifier>{e12dc8b4-aa4f-449c-bedf-7933badf6398}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="runa\base">
+      <UniqueIdentifier>{10c3cfff-de65-4989-a686-f009aec6d6fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="runa\base\codec">
+      <UniqueIdentifier>{de752409-5d0e-446c-8b03-9be84aa5b96c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="runa\base\log">
+      <UniqueIdentifier>{aa15ea3e-ba73-4b46-a63c-cafd6d001e4f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="runa\base\mt">
+      <UniqueIdentifier>{6455a8b6-deeb-447e-84cd-0873df4fead0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="runa\base\timer">
+      <UniqueIdentifier>{72047b55-9d8b-472f-af6c-eb079b1986b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="runa\base\types">
+      <UniqueIdentifier>{9bae9395-d204-433d-b9a4-213950e15b0e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="runa\base\util">
+      <UniqueIdentifier>{c3494a36-80ab-4ede-a270-ea1a102c4038}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="runa\foundation">
+      <UniqueIdentifier>{e473f62b-a38a-46bf-9cc1-902884640b78}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="runa\foundation\color">
+      <UniqueIdentifier>{f0b05fa1-1bec-4b0f-b69f-f4ce02aa0931}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="runa\widgets">
+      <UniqueIdentifier>{621a9267-9f48-46cc-ba03-76049f027113}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="runa\foundation\font">
+      <UniqueIdentifier>{fd869483-6f54-4737-b1cf-32ae9e51e92d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\runa\base\base.cpp">
+      <Filter>runa\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\runa\base\object.cpp">
+      <Filter>runa\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\runa\base\_config.cpp">
+      <Filter>runa\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\runa\base\dumper.cpp">
+      <Filter>runa\base\codec</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\runa\base\node.cpp">
+      <Filter>runa\base\codec</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\runa\base\parser.cpp">
+      <Filter>runa\base\codec</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\runa\base\log.cpp">
+      <Filter>runa\base\log</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\runa\base\mt_thread.cpp">
+      <Filter>runa\base\mt</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\runa\base\bytes.cpp">
+      <Filter>runa\base\types</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\runa\base\datetime.cpp">
+      <Filter>runa\base\types</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\runa\base\id.cpp">
+      <Filter>runa\base\types</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\runa\base\istr.cpp">
+      <Filter>runa\base\types</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\runa\base\cmdargs.cpp">
+      <Filter>runa\base\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\runa\base\util.cpp">
+      <Filter>runa\base\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\runa\foundation\app_base.cpp">
+      <Filter>runa\foundation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\runa\foundation\controller_base.cpp">
+      <Filter>runa\foundation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\runa\foundation\model_base.cpp">
+      <Filter>runa\foundation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\runa\foundation\view_base.cpp">
+      <Filter>runa\foundation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\runa\foundation\view_factory.cpp">
+      <Filter>runa\foundation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\runa\foundation\widget_base.cpp">
+      <Filter>runa\foundation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\runa\foundation\widget_cfg.cpp">
+      <Filter>runa\foundation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\runa\foundation\widget_factory.cpp">
+      <Filter>runa\foundation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\runa\foundation\color\color_chooser.cpp">
+      <Filter>runa\foundation\color</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\runa\foundation\color\color_cntrl.cpp">
+      <Filter>runa\foundation\color</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\runa\foundation\color\color_hsl.cpp">
+      <Filter>runa\foundation\color</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\runa\foundation\color\color_hsv.cpp">
+      <Filter>runa\foundation\color</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\runa\foundation\color\color_model.cpp">
+      <Filter>runa\foundation\color</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\runa\foundation\color\color_rgb.cpp">
+      <Filter>runa\foundation\color</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\runa\foundation\color\color_view_impl.cpp">
+      <Filter>runa\foundation\color</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\runa\widgets\button_cfg.cpp">
+      <Filter>runa\widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\runa\widgets\categorize_cfg.cpp">
+      <Filter>runa\widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\runa\widgets\checkbox_cfg.cpp">
+      <Filter>runa\widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\runa\widgets\color_chooser_cfg.cpp">
+      <Filter>runa\widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\runa\widgets\combox_cfg.cpp">
+      <Filter>runa\widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\runa\widgets\form_cfg.cpp">
+      <Filter>runa\widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\runa\widgets\group_cfg.cpp">
+      <Filter>runa\widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\runa\widgets\label_cfg.cpp">
+      <Filter>runa\widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\runa\widgets\listbox_cfg.cpp">
+      <Filter>runa\widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\runa\widgets\menubar_cfg.cpp">
+      <Filter>runa\widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\runa\widgets\menu_cfg.cpp">
+      <Filter>runa\widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\runa\widgets\panel_cfg.cpp">
+      <Filter>runa\widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\runa\widgets\panel_lite_cfg.cpp">
+      <Filter>runa\widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\runa\widgets\picture_cfg.cpp">
+      <Filter>runa\widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\runa\widgets\progress_cfg.cpp">
+      <Filter>runa\widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\runa\widgets\radiobox_cfg.cpp">
+      <Filter>runa\widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\runa\widgets\scroll_cfg.cpp">
+      <Filter>runa\widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\runa\widgets\slider_cfg.cpp">
+      <Filter>runa\widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\runa\widgets\spinbox_cfg.cpp">
+      <Filter>runa\widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\runa\widgets\tabbar_cfg.cpp">
+      <Filter>runa\widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\runa\widgets\tab_cfg.cpp">
+      <Filter>runa\widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\runa\widgets\textbox_cfg.cpp">
+      <Filter>runa\widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\runa\widgets\toolbar_cfg.cpp">
+      <Filter>runa\widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\runa\widgets\treebox_cfg.cpp">
+      <Filter>runa\widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\runa\widgets\widget_all.cpp">
+      <Filter>runa\widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\stdafx.cpp" />
+    <ClCompile Include="..\..\..\runa_lib_all_in_one.cpp" />
+    <ClCompile Include="..\..\..\runa\foundation\font\font_model.cpp">
+      <Filter>runa\foundation\font</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\runa\foundation\font\font_view_impl.cpp">
+      <Filter>runa\foundation\font</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\runa\foundation\font\font_cntrl.cpp">
+      <Filter>runa\foundation\font</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\runa\base\base.h">
+      <Filter>runa\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\base\object.h">
+      <Filter>runa\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\base\_config.h">
+      <Filter>runa\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\base\dumper.h">
+      <Filter>runa\base\codec</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\base\node.h">
+      <Filter>runa\base\codec</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\base\parser.h">
+      <Filter>runa\base\codec</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\base\log.h">
+      <Filter>runa\base\log</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\base\mt_cond.h">
+      <Filter>runa\base\mt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\base\mt_lock.h">
+      <Filter>runa\base\mt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\base\mt_monitor.h">
+      <Filter>runa\base\mt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\base\mt_mutex.h">
+      <Filter>runa\base\mt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\base\mt_queue.h">
+      <Filter>runa\base\mt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\base\mt_recmutex.h">
+      <Filter>runa\base\mt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\base\mt_thread.h">
+      <Filter>runa\base\mt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\base\mt_vector.h">
+      <Filter>runa\base\mt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\base\base_types.h">
+      <Filter>runa\base\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\base\bytes.h">
+      <Filter>runa\base\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\base\datetime.h">
+      <Filter>runa\base\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\base\enum.h">
+      <Filter>runa\base\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\base\id.h">
+      <Filter>runa\base\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\base\istr.h">
+      <Filter>runa\base\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\base\list_map.h">
+      <Filter>runa\base\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\base\list_multimap.h">
+      <Filter>runa\base\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\base\number.h">
+      <Filter>runa\base\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\base\optional.h">
+      <Filter>runa\base\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\base\cmdargs.h">
+      <Filter>runa\base\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\base\util.h">
+      <Filter>runa\base\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\foundation\app_base.h">
+      <Filter>runa\foundation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\foundation\controller_base.h">
+      <Filter>runa\foundation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\foundation\generic_view.h">
+      <Filter>runa\foundation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\foundation\model_base.h">
+      <Filter>runa\foundation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\foundation\radiobox.h">
+      <Filter>runa\foundation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\foundation\view_base.h">
+      <Filter>runa\foundation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\foundation\view_factory.h">
+      <Filter>runa\foundation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\foundation\widget_base.h">
+      <Filter>runa\foundation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\foundation\widget_cfg.h">
+      <Filter>runa\foundation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\foundation\widget_factory.h">
+      <Filter>runa\foundation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\foundation\color\color_abc.h">
+      <Filter>runa\foundation\color</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\foundation\color\color_chooser.h">
+      <Filter>runa\foundation\color</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\foundation\color\color_chooser_base.h">
+      <Filter>runa\foundation\color</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\foundation\color\color_cntrl.h">
+      <Filter>runa\foundation\color</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\foundation\color\color_hsl.h">
+      <Filter>runa\foundation\color</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\foundation\color\color_hsv.h">
+      <Filter>runa\foundation\color</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\foundation\color\color_model.h">
+      <Filter>runa\foundation\color</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\foundation\color\color_rgb.h">
+      <Filter>runa\foundation\color</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\foundation\color\color_view.h">
+      <Filter>runa\foundation\color</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\foundation\color\color_view_impl.h">
+      <Filter>runa\foundation\color</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\widgets\button_cfg.h">
+      <Filter>runa\widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\widgets\categorize_cfg.h">
+      <Filter>runa\widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\widgets\checkbox_cfg.h">
+      <Filter>runa\widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\widgets\color_chooser_cfg.h">
+      <Filter>runa\widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\widgets\combox_cfg.h">
+      <Filter>runa\widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\widgets\date_chooser_cfg.h">
+      <Filter>runa\widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\widgets\float_listbox_cfg.h">
+      <Filter>runa\widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\widgets\form_cfg.h">
+      <Filter>runa\widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\widgets\group_cfg.h">
+      <Filter>runa\widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\widgets\label_cfg.h">
+      <Filter>runa\widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\widgets\listbox_cfg.h">
+      <Filter>runa\widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\widgets\menubar_cfg.h">
+      <Filter>runa\widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\widgets\menu_cfg.h">
+      <Filter>runa\widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\widgets\option_cfg.h">
+      <Filter>runa\widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\widgets\panel_cfg.h">
+      <Filter>runa\widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\widgets\panel_lite_cfg.h">
+      <Filter>runa\widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\widgets\picture_cfg.h">
+      <Filter>runa\widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\widgets\progress_cfg.h">
+      <Filter>runa\widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\widgets\radiobox_cfg.h">
+      <Filter>runa\widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\widgets\scroll_cfg.h">
+      <Filter>runa\widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\widgets\slider_cfg.h">
+      <Filter>runa\widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\widgets\spinbox_cfg.h">
+      <Filter>runa\widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\widgets\tabbar_cfg.h">
+      <Filter>runa\widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\widgets\tabpage_cfg.h">
+      <Filter>runa\widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\widgets\tab_cfg.h">
+      <Filter>runa\widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\widgets\textbox_cfg.h">
+      <Filter>runa\widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\widgets\toolbar_cfg.h">
+      <Filter>runa\widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\widgets\treebox_cfg.h">
+      <Filter>runa\widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\widgets\unknown_cfg.h">
+      <Filter>runa\widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\widgets\widget_all.h">
+      <Filter>runa\widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\stdafx.h" />
+    <ClInclude Include="..\..\..\runa\foundation\font\font_model.h">
+      <Filter>runa\foundation\font</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\foundation\font\font_view.h">
+      <Filter>runa\foundation\font</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\foundation\font\font_view_impl.h">
+      <Filter>runa\foundation\font</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\foundation\font\font_cntrl.h">
+      <Filter>runa\foundation\font</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\foundation\view_impl_base.h">
+      <Filter>runa\foundation</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\runa\foundation\color.nar">
+      <Filter>runa\foundation</Filter>
+    </None>
+    <None Include="..\..\..\runa\foundation\font.nar">
+      <Filter>runa\foundation</Filter>
+    </None>
+    <None Include="..\..\..\runa\foundation\generic.nar">
+      <Filter>runa\foundation</Filter>
+    </None>
+  </ItemGroup>
+</Project>

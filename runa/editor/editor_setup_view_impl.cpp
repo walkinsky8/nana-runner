@@ -11,6 +11,8 @@
 
 #include <runa/editor/editor_setup_view_impl.h>
 
+#include <runa/foundation/view_impl_base.h>
+
 using namespace runa::editor;
 using namespace runa;
 

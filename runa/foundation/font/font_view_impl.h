@@ -10,6 +10,7 @@
 #pragma once
 
 #include <runa/foundation/font/font_view.h>
+
 #include <runa/foundation/font/font_model.h>
 
 namespace runa {

@@ -158,7 +158,7 @@ namespace runa
             if (!valueIsEmpty())
             {
                 _v = std::make_shared<T>();
-                *this >> *value;
+                *this >> *_v;
             }
         }
         template<class T>
@@ -185,9 +185,9 @@ namespace runa
             codec(const_cast<parser&>(*this), _v);
         }
 
-        void enter(string& _type) const
+        void enter(const string& _type) const
         {
-            _type = unit().type();
+            //_type = unit().type();
         }
 
         void leave() const

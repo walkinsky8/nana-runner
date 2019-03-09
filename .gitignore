@@ -251,3 +251,4 @@ paket-files/
 .idea/
 *.sln.iml
 /build/temp
+/build/vc2017/runa_lib/~AutoRecover.runa_lib.vcxproj

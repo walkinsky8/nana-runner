@@ -63,7 +63,7 @@ namespace runa
             auto i = map_.find(k);
             if (i == map_.end())
                 return false;
-            _v = i->second;
+            v = i->second;
             return true;
         }
 

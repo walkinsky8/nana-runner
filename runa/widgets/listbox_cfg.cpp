@@ -41,7 +41,7 @@ void runa::listbox_cfg::init_widget(widget & _w, view_obj* _root_view) const
     for (auto& i : categories_())
     {
         auto& cfg = i->cast<option_cfg>();
-        auto& cat = w.append(cfg.get_caption());
+        auto cat = w.append(cfg.get_caption());
         for (auto& item : cfg.children_())
         {
             cat->append(item->get_caption());

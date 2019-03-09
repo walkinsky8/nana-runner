@@ -193,7 +193,7 @@ namespace runa
 
         dumper& writeEnd();
 
-        dumper& enter(string _type);
+        dumper& enter(const string& _type);
 
         dumper& leave();
 

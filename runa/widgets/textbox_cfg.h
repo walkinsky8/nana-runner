@@ -59,5 +59,10 @@ namespace runa {
         if (!_w.caption().empty())
             _w.caption() >> _v;
     }
+    inline void operator >> (const textbox& _w, string& _v)
+    {
+        if (!_w.caption().empty())
+            _v = _w.caption();
+    }
 
 }

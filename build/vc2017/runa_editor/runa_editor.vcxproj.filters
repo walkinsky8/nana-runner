@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="editor">
+      <UniqueIdentifier>{cdb2f528-7e13-4b9f-b6a3-93959ac191f8}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\runa\editor\editor_app.cpp">
+      <Filter>editor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\runa\editor\editor_cntrl.cpp">
+      <Filter>editor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\runa\editor\editor_setup_view_impl.cpp">
+      <Filter>editor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\runa\editor\editor_view_impl.cpp">
+      <Filter>editor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\runa\editor\logger_view_impl.cpp">
+      <Filter>editor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\runa\editor\login_cntrl.cpp">
+      <Filter>editor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\runa\editor\login_view_impl.cpp">
+      <Filter>editor</Filter>
+    </ClCompile>
+    <ClCompile Include="nana_editor.cpp" />
+    <ClCompile Include="..\..\..\stdafx.cpp" />
+    <ClCompile Include="..\..\..\runa_lib_all_in_one.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\runa\editor\editor_app.h">
+      <Filter>editor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\editor\editor_cntrl.h">
+      <Filter>editor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\editor\editor_setup_model.h">
+      <Filter>editor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\editor\editor_setup_view.h">
+      <Filter>editor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\editor\editor_setup_view_impl.h">
+      <Filter>editor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\editor\editor_view.h">
+      <Filter>editor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\editor\editor_view_impl.h">
+      <Filter>editor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\editor\logger_view.h">
+      <Filter>editor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\editor\logger_view_impl.h">
+      <Filter>editor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\editor\login_cntrl.h">
+      <Filter>editor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\editor\login_model.h">
+      <Filter>editor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\editor\login_view.h">
+      <Filter>editor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\runa\editor\login_view_impl.h">
+      <Filter>editor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\stdafx.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\runa\editor\editor.nar">
+      <Filter>editor</Filter>
+    </None>
+    <None Include="..\..\..\runa\editor\editor_setup.nar">
+      <Filter>editor</Filter>
+    </None>
+    <None Include="..\..\..\runa\editor\logger.nar">
+      <Filter>editor</Filter>
+    </None>
+    <None Include="..\..\..\runa\editor\login.nar">
+      <Filter>editor</Filter>
+    </None>
+  </ItemGroup>
+</Project>

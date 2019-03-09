@@ -167,14 +167,14 @@ namespace runa
         using value_type = color_abc;
 
     public:
-        self_type()
+        color_chooser()
         {
         }
-		self_type(nana::window wd, bool visible = true)
+        color_chooser(nana::window wd, bool visible = true)
 		{
 			this->create(wd, nana::rectangle(), visible);
 		}
-		self_type(nana::window wd, const nana::rectangle& r, bool visible = true)
+        color_chooser(nana::window wd, const nana::rectangle& r, bool visible = true)
 		{
 			this->create(wd, r, visible);
 		}

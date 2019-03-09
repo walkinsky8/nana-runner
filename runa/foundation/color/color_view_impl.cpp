@@ -15,7 +15,7 @@
 
 #include <runa/foundation/color/color_rgb.h>
 
-#include <runa/foundation/app_base.h>
+#include <runa/foundation/view_impl_base.h>
 
 using namespace runa;
 

@@ -56,7 +56,7 @@ runa::dumper& runa::dumper::writeEnd()
     return write(tag::end);
 }
 
-runa::dumper& runa::dumper::enter(string _type)
+runa::dumper& runa::dumper::enter(const string& _type)
 {
     if (!_type.empty())
         write(tag::key).write(_type);

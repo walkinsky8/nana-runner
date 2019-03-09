@@ -52,16 +52,15 @@
 
 namespace std {
 
-    template<class T>
-    inline std::string& operator<<(std::string& _s, const T& _v)
-    {
-        std::ostringstream oss;
-        oss << _v;
-        return _s << oss.str();
-    }
     inline std::string& operator<<(std::string& _s, const std::string& _v)
     {
         return _s += _v;
+    }
+    template<class T>
+    inline std::string& operator<<(std::string& _s, const T& _v)
+    {
+        std::ostringstream oss; oss << _v;
+        return _s += oss.str();
     }
     inline std::string& operator<<(std::string& _s, char _v)
     {

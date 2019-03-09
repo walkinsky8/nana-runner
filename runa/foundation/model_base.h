@@ -42,8 +42,11 @@ namespace runa {
     template<class _Model>
     struct model_proxy : public model_proxy_base<_Model>
     {
+        using super = model_proxy_base<_Model>;
+
         _Model data_;
 
+        using super::on_result;
         on_result on_result_;
 
     public:

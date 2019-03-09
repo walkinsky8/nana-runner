@@ -10,6 +10,7 @@
 #pragma once
 
 #include <runa/foundation/color/color_view.h>
+
 #include <runa/foundation/color/color_model.h>
 
 namespace runa {

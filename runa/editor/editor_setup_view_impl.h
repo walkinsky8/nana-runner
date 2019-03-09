@@ -9,8 +9,6 @@
 // Created at 2018/11/11
 #pragma once
 
-#include <runa/foundation/view_base.h>
-
 #include <runa/editor/editor_setup_view.h>
 
 #include <runa/editor/editor_setup_model.h>
