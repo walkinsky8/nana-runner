@@ -33,6 +33,10 @@
 #include <nana/filesystem/filesystem.hpp>
 #include <nana/filesystem/filesystem_ext.hpp>
 
+#if defined(_MSC_VER)	//Microsoft Visual C++
+#pragma warning(disable : 4100)
+#endif
+
 #define NAR_V(x) m_##x
 #define NAR_F(x) x##_
 

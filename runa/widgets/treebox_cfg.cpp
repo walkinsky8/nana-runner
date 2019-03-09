@@ -28,11 +28,10 @@ void runa::treebox_cfg::init_widget(widget & _w, view_obj* _root_view) const
     {
         auto node = tree.insert(directory_(), directory_());
         fs::directory_iterator i(directory_()), end;
-        for (; i != end; ++i)
+        if (i != end)
         {
             auto name = nana::to_utf8(i->path().filename().native());
             tree.insert(node, name, name);
-            break;
         }
 
         tree.events().expanded([&tree](const nana::arg_treebox& arg)
@@ -61,7 +60,7 @@ void runa::treebox_cfg::init_widget(widget & _w, view_obj* _root_view) const
                 for (fs::directory_iterator u{ path + name }; u != end; ++u)
                 {
                     if (!is_directory(*u)) continue; //If it is not a directory.
-                    auto name = nana::to_utf8(u->path().filename().native());
+                    name = nana::to_utf8(u->path().filename().native());
                     tree.insert(child, name, name);
                     break;
                 }

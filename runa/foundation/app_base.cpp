@@ -44,8 +44,8 @@ runa::app::~app()
 
 bool runa::app::search_file(const wstring& _file, wstring& _fullpath) const
 {
-    fs::path p{ _file };
-    if (fs::exists(p) && p.is_absolute() && !fs::is_directory(p))
+    fs::path f{ _file };
+    if (fs::exists(f) && f.is_absolute() && !fs::is_directory(f))
     {
         _fullpath = _file;
         return true;

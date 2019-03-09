@@ -17,7 +17,7 @@ void runa::panel_lite_cfg::init_widget(widget & _w, view_obj* _root_view) const
 {
     super::init_widget(_w, _root_view);
 
-    auto& w = dynamic_cast<ui_type&>(_w);
+    //auto& w = dynamic_cast<ui_type&>(_w);
 }
 
 #endif
