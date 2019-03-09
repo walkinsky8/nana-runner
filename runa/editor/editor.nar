@@ -37,8 +37,6 @@
     @panel{
         id=cmd
         div="weight=25"
-        bgcolor=green
-        fgcolor=black
         typeface={ 11 bold }
         @button{
             id=save

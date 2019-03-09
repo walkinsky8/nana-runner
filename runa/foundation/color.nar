@@ -28,7 +28,7 @@
                 @radiobox { id=HSL }
                 @radiobox { id=HSV }
             }
-            @color_chooser{ id=page mode=hsl fgcolor=green bgcolor=#c0c0c0 }
+            @color_chooser{ id=page mode=hsl bgcolor=#c0c0c0 }
         }
     }
     @panel{ id=output div="weight=30 margin=[5]"

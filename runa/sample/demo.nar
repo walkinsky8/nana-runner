@@ -50,7 +50,6 @@
     @panel{
         id=label
         div='weight=20'
-        bgcolor=green
         @label{
             id=value
             caption="""Hello, world!^"'"""

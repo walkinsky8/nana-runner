@@ -51,7 +51,7 @@
     }
     @panel{}
     @panel { id=cmd div="weight=25" fgcolor=black typeface={bold}
-        @button{ id=OK div='weight=50%' bgcolor=rgb(0,128,0) }
+        @button{ id=OK div='weight=50%' }
         @button{ id=cancel bgcolor=#ff0 }
     }
 }

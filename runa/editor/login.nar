@@ -26,7 +26,7 @@
         }
     @panel { div="weight=5" }
     @panel{ id=cmd div="weight=25" typeface={ }
-        @button{ id=login div="weight=50%" bgcolor=green fgcolor=yellow }
+        @button{ id=login div="weight=50%" fgcolor=yellow }
         @button{ id=close caption="Cancel" bgcolor=yellow }
     }
 }
