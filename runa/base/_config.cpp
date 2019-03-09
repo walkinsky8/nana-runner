@@ -15,27 +15,6 @@
 
 #include <runa/base/base.h>
 
-std::ostream& std::operator<<(ostream& _os, const wstring& _v)
-{
-    _os << runa::to_string(_v);
-    return _os;
-}
-
-std::string& std::operator<<(std::string& _s, const std::wstring& _v)
-{
-    return _s << nana::to_utf8(_v);
-}
-
-std::string& std::operator<<(std::string& _s, const wchar_t* _v)
-{
-    return _s << std::wstring(_v);
-}
-
-void std::operator >> (const std::string& _s, std::wstring& _v)
-{
-    _v = nana::to_wstring(_s);
-}
-
 std::string runa::to_string(const wstring& _wstr)
 {
     return nana::to_utf8(_wstr);

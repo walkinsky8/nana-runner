@@ -19,9 +19,21 @@ editor_app::editor_app()
 
 void editor_app::on_init()
 {
-    login_.open([&] {
-        editor_.open(nullptr);
-    });
+    if (cmdargs().has_option(L"nologin"))
+        nologin_ = true;
+    if (cmdargs().has_option(L"nologwin"))
+        nologwin_ = true;
+
+    if (!nologin_)
+    {
+        login_.open([&] {
+            editor_.open(nullptr, nologwin_);
+            });
+    }
+    else
+    {
+        editor_.open(nullptr, nologwin_);
+    }
 }
 
 void editor_app::on_fini()

@@ -56,40 +56,90 @@
 
 namespace std {
 
-    inline std::string& operator<<(std::string& _s, const std::string& _v)
+    template<class _Ch, class T>
+    inline std::basic_string<_Ch>& operator<<(std::basic_string<_Ch>& _s, const T& _v)
+    {
+        std::basic_ostringstream<_Ch> oss;
+        oss << _v;
+        return _s += oss.str();
+    }
+    template<class _Ch>
+    inline std::basic_string<_Ch>& operator<<(std::basic_string<_Ch>& _s, const std::basic_string<_Ch>& _v)
     {
         return _s += _v;
-    }
-    template<class T>
-    inline std::string& operator<<(std::string& _s, const T& _v)
-    {
-        std::ostringstream oss; oss << _v;
-        return _s += oss.str();
     }
     inline std::string& operator<<(std::string& _s, char _v)
     {
         return _s += _v;
     }
+    inline std::string& operator<<(std::string& _s, wchar_t _v)
+    {
+        wchar_t ws[] = { _v, 0 };
+        return _s += nana::to_utf8(ws);
+    }
     inline std::string& operator<<(std::string& _s, const char* _v)
     {
         return _s += _v;
     }
-    std::string& operator<<(std::string& _s, const std::wstring& _v);
-    std::string& operator<<(std::string& _s, const wchar_t* _v);
-
-    template<class T>
-    inline void operator >>(const std::string& _s, T& _v)
+    inline std::string& operator<<(std::string& _s, const wchar_t* _v)
     {
-        std::istringstream iss{ _s };
-        iss >> _v;
+        return _s += nana::to_utf8(_v);
     }
-    inline void operator >>(const std::string& _s, std::string& _v)
+    inline std::string& operator<<(std::string& _s, const std::wstring& _v)
     {
-        _v = _s;
+        return _s += nana::to_utf8(_v);
     }
-    void operator >>(const std::string& _s, std::wstring& _v);
+    inline std::wstring& operator<<(std::wstring& _s, char _v)
+    {
+        return _s += _v;
+    }
+    inline std::wstring& operator<<(std::wstring& _s, wchar_t _v)
+    {
+        return _s += _v;
+    }
+    inline std::wstring& operator<<(std::wstring& _s, const char* _v)
+    {
+        return _s += nana::to_wstring(_v);
+    }
+    inline std::wstring& operator<<(std::wstring& _s, const wchar_t* _v)
+    {
+        return _s += _v;
+    }
+    inline std::wstring& operator<<(std::wstring& _s, const std::string& _v)
+    {
+        return _s += nana::to_wstring(_v);
+    }
 
-    ostream& operator<<(ostream& _os, const wstring& _v);
+    template<class _Ch, class T>
+    inline void operator>>(const std::basic_string<_Ch>& _s, T& _v)
+    {
+        if (!_s.empty())
+        {
+            std::basic_istringstream<_Ch> iss{ _s };
+            iss >> _v;
+        }
+    }
+    template<class _Ch>
+    inline void operator>>(const std::basic_string<_Ch>& _s, std::basic_string<_Ch>& _v)
+    {
+        if (!_s.empty())
+            _v = _s;
+    }
+    inline void operator>>(const std::string& _s, std::wstring& _v)
+    {
+        if (!_s.empty())
+            _v = nana::to_wstring(_s);
+    }
+    inline void operator>>(const std::wstring& _s, std::string& _v)
+    {
+        if (!_s.empty())
+            _v = nana::to_utf8(_s);
+    }
+
+    inline ostream& operator<<(ostream& _os, const wstring& _v)
+    {
+        return _os << nana::to_utf8(_v);
+    }
 
     inline ostream& operator<<(ostream& _os, const exception& _v)
     {

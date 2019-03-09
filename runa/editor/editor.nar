@@ -22,7 +22,7 @@
     }
     @panel{ id=file div='weight=25'
         @label { id=lbl caption='File' div='weight=10%' align=right }
-        @combox{ id=value caption='color' div='weight=80%' tooltip="file name" editable=1 }
+        @combox{ id=value caption=null div='weight=80%' tooltip="file name" editable=1 }
         @button { id=open_file caption="Open..." @*div='weight=5%'*@ typeface={bold} }
     }
     @textbox{

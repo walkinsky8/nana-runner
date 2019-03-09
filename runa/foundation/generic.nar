@@ -15,5 +15,5 @@
     div='vert'
     @label { id=label align=center align_v=center }
     @textbox { id=textbox }
-    @button { id=button }
+    @button { id=button bgcolor=green }
 }

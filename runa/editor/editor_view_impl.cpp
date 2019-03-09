@@ -21,9 +21,10 @@ void editor_view_impl::init()
 {
     folder_ << app::filepaths();
     folder_.option(0);
-    on_load();
     init_files();
+    on_load();
 
+    folder_.events().selected([&] { init_files(); on_load(); });
     file_.events().selected([&] { on_load(); });
 
     choose_dir_.events().click([&] { on_choose_dir(); });
@@ -63,6 +64,7 @@ void editor_view_impl::init_files()
             file_.push_back(p.filename().string());
         }
     }
+    file_.option(0);
 }
 
 void editor_view_impl::on_open_file()

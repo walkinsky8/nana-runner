@@ -42,7 +42,10 @@ void runa::cmdargs::init(const wchar_t* _cmdline)
             
             wstring value;
             if (i + 1 < args_.size())
-                value = args_[++i];
+            {
+                if (args_[i+1][0] != '-')
+                    value = args_[++i];
+            }
 
             options_.add(name, value);
         }

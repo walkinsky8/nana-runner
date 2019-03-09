@@ -24,7 +24,7 @@ namespace runa::editor {
     public:
         editor_cntrl();
 
-        void open(callback _on_complete);
+        void open(callback _on_complete, bool _nologwin);
 
         void close();
 

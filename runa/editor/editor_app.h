@@ -21,6 +21,9 @@ namespace runa::editor {
         login_cntrl login_;
         editor_cntrl editor_;
 
+        bool nologin_{ false };
+        bool nologwin_{ false };
+
     public:
         editor_app();
 

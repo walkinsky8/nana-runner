@@ -31,10 +31,13 @@ editor_cntrl::editor_cntrl()
     add_view<font_view_impl>();
 }
 
-void editor_cntrl::open(callback _on_complete)
+void editor_cntrl::open(callback _on_complete, bool _nologwin)
 {
-    auto& v_logger = app::show_view<logger_view_impl>(logger_);
-    v_logger.init_log_handler();
+    if (!_nologwin)
+    {
+        auto& v_logger = app::show_view<logger_view_impl>(logger_);
+        v_logger.init_log_handler();
+    }
 
     auto& v_editor = app::show_view<editor_view_impl>(editor_);
     v_editor.setup_.events().click([&] {
