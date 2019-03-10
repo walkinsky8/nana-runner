@@ -21,7 +21,7 @@ void runa::write_console(const string& _msg)
 runa::pcstr runa::find_classfunc(pcstr _func)
 {
     pcstr beg = _func;
-    pcstr end = beg + std::strlen(beg);
+    pcstr end = beg + strlen(beg);
     pcstr p = end;
     int num = 2;
     while (num-- > 0)

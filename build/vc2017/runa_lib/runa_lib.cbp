@@ -10,19 +10,27 @@
 				<Option output="../Debug/runalib" prefix_auto="1" extension_auto="1" />
 				<Option object_output="Debug/" />
 				<Option deps_output="../Debug/" />
+				<Option external_deps="../bin/libnana_$(PlatformToolset)_Debug_$(PlatformShortName).a;" />
 				<Option type="0" />
 				<Option compiler="gcc" />
 				<Compiler>
+					<Add option="-Wall" />
+					<Add option="-std=c++1z" />
 					<Add option="-g" />
 					<Add option="-O0" />
-					<Add option="-Wall" />
+					<Add directory="../../../../nana-runner" />
+					<Add directory="../../../../nana/include" />
 				</Compiler>
+				<Linker>
+					<Add library="../bin/libnana_$(PlatformToolset)_Debug_$(PlatformShortName).a" />
+				</Linker>
 			</Target>
 			<Target title="Debug x64">
 				<Option output="../../bin/runalib_$(PlatformToolset)_Debug_$(PlatformShortName)" prefix_auto="1" extension_auto="1" />
 				<Option working_dir="" />
 				<Option object_output="../../obj/runalib/$(PlatformToolset)_Debug_$(PlatformShortName)/" />
 				<Option deps_output="../../bin/" />
+				<Option external_deps="../bin/libnana_$(PlatformToolset)_Debug_$(PlatformShortName).a;" />
 				<Option type="2" />
 				<Option compiler="gcc" />
 				<Option createDefFile="1" />
@@ -41,11 +49,15 @@
 					<Add directory="$(VC_IncludePath)/" />
 					<Add directory="$(WindowsSDK_IncludePath)/" />
 				</Compiler>
+				<Linker>
+					<Add library="../bin/libnana_$(PlatformToolset)_Debug_$(PlatformShortName).a" />
+				</Linker>
 			</Target>
 			<Target title="Release x64">
 				<Option output="../Release/runalib" prefix_auto="1" extension_auto="1" />
 				<Option object_output="Release/" />
 				<Option deps_output="../Release/" />
+				<Option external_deps="../bin/libnana_$(PlatformToolset)_Release_$(PlatformShortName).a;" />
 				<Option type="0" />
 				<Option compiler="gcc" />
 				<Compiler>
@@ -68,12 +80,14 @@
 					<Add library="uuid.lib" />
 					<Add library="odbc32.lib" />
 					<Add library="odbccp32.lib" />
+					<Add library="../bin/libnana_$(PlatformToolset)_Release_$(PlatformShortName).a" />
 				</Linker>
 			</Target>
 			<Target title="Release Win32">
 				<Option output="../Release/runalib" prefix_auto="1" extension_auto="1" />
 				<Option object_output="Release/" />
 				<Option deps_output="../Release/" />
+				<Option external_deps="../bin/libnana_$(PlatformToolset)_Release_$(PlatformShortName).a;" />
 				<Option type="0" />
 				<Option compiler="gcc" />
 				<Compiler>
@@ -96,6 +110,7 @@
 					<Add library="uuid.lib" />
 					<Add library="odbc32.lib" />
 					<Add library="odbccp32.lib" />
+					<Add library="../bin/libnana_$(PlatformToolset)_Release_$(PlatformShortName).a" />
 				</Linker>
 			</Target>
 		</Build>

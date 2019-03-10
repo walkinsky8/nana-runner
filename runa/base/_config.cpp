@@ -107,7 +107,7 @@ void runa::string_toupper(string& _s)
 
 bool runa::read_file(const wstring& _filename, string& _content)
 {
-    std::ifstream ifs{ _filename };
+    std::ifstream ifs{ to_string(_filename) };
     if (!ifs)
     {
         return false;
@@ -139,7 +139,7 @@ bool runa::read_file(const wstring& _filename, string& _content)
 
 bool runa::write_file(const wstring& _filename, const string& _content)
 {
-    std::ofstream ofs{ _filename };
+    std::ofstream ofs{ to_string(_filename) };
     if (!ofs)
     {
         return false;

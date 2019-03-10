@@ -24,7 +24,7 @@ void editor_view_impl::init()
     init_files();
     on_load();
 
-    folder_.events().selected([&] { init_files(); on_load(); });
+    folder_.events().selected([&] { init_files(); });
     file_.events().selected([&] { on_load(); });
 
     choose_dir_.events().click([&] { on_choose_dir(); });

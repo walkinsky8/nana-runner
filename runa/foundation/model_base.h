@@ -46,7 +46,7 @@ namespace runa {
 
         _Model data_;
 
-        using super::on_result;
+        using typename super::on_result;
         on_result on_result_;
 
     public:

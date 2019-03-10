@@ -18,7 +18,7 @@
             using super = _super; \
             using self = _class##_cfg/*user_defined*/; \
         public: \
-            using ui_type = runa::##_class/*user_defined*/; \
+            using ui_type = runa::_class/*user_defined*/; \
             static runa::pcstr type_name_() { return #_class; } \
             static runa::cfg_ptr new_() { return std::make_shared<self>(); } \
         public: \

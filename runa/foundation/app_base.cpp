@@ -116,7 +116,7 @@ runa::cfg_ptr runa::app::create_cfg(const string& cfgdata)
 
     //NAR_LOG_NV("cfg", dump(cfg, false, 0, true));
     NAR_LOG_VAR(cfg->get_caption());
-    
+
     auto found = cfgs_.find(cfg->id_());
     if (found)
         cfg = *found;
