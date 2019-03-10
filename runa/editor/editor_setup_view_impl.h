@@ -16,7 +16,7 @@
 #include <runa/foundation/font/font_cntrl.h>
 #include <runa/foundation/color/color_cntrl.h>
 
-namespace runa::editor {
+namespace runa { namespace editor {
 
     class editor_setup_view_impl: public editor_setup_view
     {
@@ -68,5 +68,5 @@ namespace runa::editor {
 
     };
 
-}
+}}
 

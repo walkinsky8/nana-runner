@@ -11,7 +11,7 @@
 
 #include <runa/foundation/controller_base.h>
 
-namespace runa::sample {
+namespace runa { namespace sample {
 
     class demo_cntrl : public controller_obj
     {
@@ -35,5 +35,5 @@ namespace runa::sample {
 
     };
 
-}
+}}
 

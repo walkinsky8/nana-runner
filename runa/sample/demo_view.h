@@ -15,7 +15,7 @@
 
 #include <runa/foundation/app_base.h>
 
-namespace runa::sample {
+namespace runa { namespace sample {
 
     class demo_view : public view_obj
     {
@@ -235,7 +235,7 @@ namespace runa::sample {
             });
 
             folder_.events().selected([&](const nana::arg_treebox& _a) {
-                on_selected_tree_item(_a); 
+                on_selected_tree_item(_a);
             });
 
             //quit_.events().click([this] { close(); });
@@ -288,5 +288,5 @@ namespace runa::sample {
 
     };
 
-}
+}}
 

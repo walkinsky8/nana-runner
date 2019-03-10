@@ -13,7 +13,7 @@
 
 #include <runa/editor/login_model.h>
 
-namespace runa::editor {
+namespace runa { namespace editor {
 
     class login_view_impl : public login_view
     {
@@ -43,5 +43,5 @@ namespace runa::editor {
 
     };
 
-}
+}}
 

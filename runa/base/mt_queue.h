@@ -16,7 +16,7 @@
 #include <runa/base/mt_lock.h>
 #include <queue>
 
-namespace runa::mt {
+namespace runa { namespace mt {
 
     template<class T>
     class queue
@@ -77,4 +77,4 @@ namespace runa::mt {
 
     };
 
-}
+}}

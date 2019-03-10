@@ -1,0 +1,338 @@
+# depslib dependency file v1.0
+1547170027 source:c:\users\yunhai\source\repos\nana-runner\runa\base\bytes.cpp
+	"stdafx.h"
+	<runa/base/bytes.h>
+
+1552206978 c:\users\yunhai\source\repos\nana-runner\stdafx.h
+	<SDKDDKVer.h>
+	<windows.h>
+	<stdlib.h>
+	<malloc.h>
+	<memory.h>
+	<tchar.h>
+	<runa/base/_config.h>
+
+1552124322 c:\users\yunhai\source\repos\nana-runner\runa\base\_config.h
+	<iostream>
+	<iomanip>
+	<sstream>
+	<fstream>
+	<string>
+	<cstdlib>
+	<cstdio>
+	<cstdint>
+	<cassert>
+	<vector>
+	<queue>
+	<map>
+	<functional>
+	<ratio>
+	<chrono>
+	<nana/gui.hpp>
+	<nana/system/platform.hpp>
+	<nana/filesystem/filesystem.hpp>
+	<nana/filesystem/filesystem_ext.hpp>
+
+1516344091 c:\users\yunhai\source\repos\nana\include\nana\gui.hpp
+	"gui/wvl.hpp"
+
+1516344091 c:\users\yunhai\source\repos\nana\include\nana\gui\wvl.hpp
+	"programming_interface.hpp"
+	"screen.hpp"
+	"widgets/form.hpp"
+	"drawing.hpp"
+	"msgbox.hpp"
+	"place.hpp"
+
+1539344818 c:\users\yunhai\source\repos\nana\include\nana\gui\programming_interface.hpp
+	<nana/config.hpp>
+	"effects.hpp"
+	"detail/general_events.hpp"
+	"detail/color_schemes.hpp"
+	"detail/widget_content_measurer_interface.hpp"
+	<nana/paint/image.hpp>
+	<memory>
+
+1552102826 c:\users\yunhai\source\repos\nana\include\nana\config.hpp
+	"c++defines.hpp"
+
+1539344818 c:\users\yunhai\source\repos\nana\include\nana\c++defines.hpp
+	<iosfwd>
+	<iosfwd>
+
+1516344091 c:\users\yunhai\source\repos\nana\include\nana\gui\effects.hpp
+	<cstddef>
+	<nana/paint/graphics.hpp>
+
+1539344818 c:\users\yunhai\source\repos\nana\include\nana\paint\graphics.hpp
+	<memory>
+	"../basic_types.hpp"
+	"../gui/basis.hpp"
+	<nana/filesystem/filesystem.hpp>
+	"detail/ptdefs.hpp"
+	<string_view>
+
+1516344091 c:\users\yunhai\source\repos\nana\include\nana\basic_types.hpp
+	<nana/deploy.hpp>
+	<cctype>
+	<nana/push_ignore_diagnostic>
+	<nana/pop_ignore_diagnostic>
+
+1539344818 c:\users\yunhai\source\repos\nana\include\nana\deploy.hpp
+	<nana/push_ignore_diagnostic>
+	<nana/config.hpp>
+	<nana/stdc++.hpp>
+	<nana/charset.hpp>
+	<stdexcept>
+	<string_view>
+	<nana/pop_ignore_diagnostic>
+
+1539344818 c:\users\yunhai\source\repos\nana\include\nana\push_ignore_diagnostic
+
+1539344818 c:\users\yunhai\source\repos\nana\include\nana\stdc++.hpp
+	"c++defines.hpp"
+	<cstddef>
+	<memory>
+	<type_traits>
+	<utility>
+	<ctime>
+	<string>
+
+1516344091 c:\users\yunhai\source\repos\nana\include\nana\charset.hpp
+	<string>
+
+1539344818 c:\users\yunhai\source\repos\nana\include\nana\pop_ignore_diagnostic
+
+1539344818 c:\users\yunhai\source\repos\nana\include\nana\gui\basis.hpp
+	<nana/push_ignore_diagnostic>
+	"../basic_types.hpp"
+	"../traits.hpp"
+	<nana/pop_ignore_diagnostic>
+
+1516344091 c:\users\yunhai\source\repos\nana\include\nana\traits.hpp
+	<type_traits>
+
+1539344818 c:\users\yunhai\source\repos\nana\include\nana\filesystem\filesystem.hpp
+	<nana/push_ignore_diagnostic>
+	<nana/config.hpp>
+	<chrono>
+	<boost/filesystem.hpp>
+	<experimental/filesystem>
+	<string>
+	<system_error>
+	<iterator>
+	<memory>
+	<chrono>
+	<cstddef>
+	<cstdint>
+	<algorithm>
+	<nana/deploy.hpp>
+	<nana/pop_ignore_diagnostic>
+
+1516344091 c:\users\yunhai\source\repos\nana\include\nana\paint\detail\ptdefs.hpp
+
+1539344818 c:\users\yunhai\source\repos\nana\include\nana\gui\detail\general_events.hpp
+	<nana/push_ignore_diagnostic>
+	<nana/gui/basis.hpp>
+	"event_code.hpp"
+	"internal_scope_guard.hpp"
+	<type_traits>
+	<functional>
+	<vector>
+	<nana/pop_ignore_diagnostic>
+
+1516344091 c:\users\yunhai\source\repos\nana\include\nana\gui\detail\event_code.hpp
+
+1516344091 c:\users\yunhai\source\repos\nana\include\nana\gui\detail\internal_scope_guard.hpp
+
+1516344091 c:\users\yunhai\source\repos\nana\include\nana\gui\detail\color_schemes.hpp
+	"widget_geometrics.hpp"
+
+1516344091 c:\users\yunhai\source\repos\nana\include\nana\gui\detail\widget_geometrics.hpp
+	<nana/gui/basis.hpp>
+	<memory>
+
+1539344818 c:\users\yunhai\source\repos\nana\include\nana\gui\detail\widget_content_measurer_interface.hpp
+	<nana/basic_types.hpp>
+	<nana/optional.hpp>
+	<nana/paint/graphics.hpp>
+
+1539344818 c:\users\yunhai\source\repos\nana\include\nana\optional.hpp
+	<nana/c++defines.hpp>
+	<optional>
+	<stdexcept>
+
+1516344091 c:\users\yunhai\source\repos\nana\include\nana\paint\image.hpp
+	"graphics.hpp"
+
+1516344091 c:\users\yunhai\source\repos\nana\include\nana\gui\screen.hpp
+	"basis.hpp"
+	<functional>
+	<memory>
+
+1539344818 c:\users\yunhai\source\repos\nana\include\nana\gui\widgets\form.hpp
+	"widget.hpp"
+	<nana/gui/place.hpp>
+
+1539344818 c:\users\yunhai\source\repos\nana\include\nana\gui\widgets\widget.hpp
+	<nana/push_ignore_diagnostic>
+	"../programming_interface.hpp"
+	<nana/internationalization.hpp>
+	<nana/gui/detail/drawer.hpp>
+	<nana/pop_ignore_diagnostic>
+
+1539344818 c:\users\yunhai\source\repos\nana\include\nana\internationalization.hpp
+	<vector>
+	<sstream>
+	<functional>
+	<memory>
+	<nana/deploy.hpp>
+
+1516344091 c:\users\yunhai\source\repos\nana\include\nana\gui\detail\drawer.hpp
+	<nana/push_ignore_diagnostic>
+	"general_events.hpp"
+	<nana/paint/graphics.hpp>
+	<functional>
+	<vector>
+	<nana/pop_ignore_diagnostic>
+
+1539344818 c:\users\yunhai\source\repos\nana\include\nana\gui\place.hpp
+	<nana/push_ignore_diagnostic>
+	<nana/gui/basis.hpp>
+	<memory>
+	<functional>
+	<nana/pop_ignore_diagnostic>
+
+1516344091 c:\users\yunhai\source\repos\nana\include\nana\gui\drawing.hpp
+	<nana/push_ignore_diagnostic>
+	"widgets/widget.hpp"
+	"../traits.hpp"
+	<nana/pop_ignore_diagnostic>
+
+1539344818 c:\users\yunhai\source\repos\nana\include\nana\gui\msgbox.hpp
+	<nana/push_ignore_diagnostic>
+	<sstream>
+	<nana/pop_ignore_diagnostic>
+
+1539344818 c:\users\yunhai\source\repos\nana\include\nana\system\platform.hpp
+	<nana/deploy.hpp>
+
+1539344818 c:\users\yunhai\source\repos\nana\include\nana\filesystem\filesystem_ext.hpp
+	<nana/filesystem/filesystem.hpp>
+	<nana/deploy.hpp>
+
+1547170027 c:\users\yunhai\source\repos\nana-runner\runa\base\bytes.h
+	<runa/base/_config.h>
+	<runa/base/istr.h>
+
+1547170027 c:\users\yunhai\source\repos\nana-runner\runa\base\istr.h
+	<runa/base/_config.h>
+
+1552125042 source:c:\users\yunhai\source\repos\nana-runner\runa\base\cmdargs.cpp
+	"stdafx.h"
+	<runa/base/cmdargs.h>
+
+1547170027 c:\users\yunhai\source\repos\nana-runner\runa\base\cmdargs.h
+	<runa/base/_config.h>
+	<runa/base/list_multimap.h>
+
+1547170027 c:\users\yunhai\source\repos\nana-runner\runa\base\list_multimap.h
+	<runa/base/_config.h>
+
+1552107202 source:c:\users\yunhai\source\repos\nana-runner\runa\base\dumper.cpp
+	"stdafx.h"
+	<runa/base/dumper.h>
+
+1552107202 c:\users\yunhai\source\repos\nana-runner\runa\base\dumper.h
+	<runa/base/_config.h>
+	<runa/base/base_types.h>
+
+1547170027 c:\users\yunhai\source\repos\nana-runner\runa\base\base_types.h
+	<runa/base/_config.h>
+	<runa/base/bytes.h>
+	<runa/base/datetime.h>
+	<runa/base/enum.h>
+	<runa/base/number.h>
+	<runa/base/optional.h>
+	<runa/base/list_map.h>
+	<runa/base/list_multimap.h>
+	<runa/base/istr.h>
+	<runa/base/id.h>
+
+1547434715 c:\users\yunhai\source\repos\nana-runner\runa\base\datetime.h
+	<runa/base/_config.h>
+	<nana/datetime.hpp>
+
+1516344091 c:\users\yunhai\source\repos\nana\include\nana\datetime.hpp
+	<ctime>
+
+1547170027 c:\users\yunhai\source\repos\nana-runner\runa\base\enum.h
+	<runa/base/_config.h>
+
+1547170027 c:\users\yunhai\source\repos\nana-runner\runa\base\number.h
+	<runa/base/_config.h>
+
+1547170027 c:\users\yunhai\source\repos\nana-runner\runa\base\optional.h
+	<runa/base/_config.h>
+
+1552106616 c:\users\yunhai\source\repos\nana-runner\runa\base\list_map.h
+	<runa/base/_config.h>
+
+1547170027 c:\users\yunhai\source\repos\nana-runner\runa\base\id.h
+	<runa/base/_config.h>
+	<runa/base/istr.h>
+
+1547170027 source:c:\users\yunhai\source\repos\nana-runner\runa\base\id.cpp
+	"stdafx.h"
+	<runa/base/id.h>
+
+1547170027 source:c:\users\yunhai\source\repos\nana-runner\runa\base\istr.cpp
+	"stdafx.h"
+	<runa/base/istr.h>
+
+1552207356 source:c:\users\yunhai\source\repos\nana-runner\runa\base\datetime.cpp
+	"stdafx.h"
+	<runa/base/datetime.h>
+	<runa/base/istr.h>
+
+1547169820 source:c:\users\yunhai\source\repos\nana-runner\runa\base\mt_thread.cpp
+	"stdafx.h"
+	<runa/base/mt_thread.h>
+
+1547169820 c:\users\yunhai\source\repos\nana-runner\runa\base\mt_thread.h
+	<runa/base/_config.h>
+	<thread>
+	<runa/base/mt_monitor.h>
+	<runa/base/mt_mutex.h>
+
+1552207222 c:\users\yunhai\source\repos\nana-runner\runa\base\mt_monitor.h
+	<runa/base/_config.h>
+	<mutex>
+	<condition_variable>
+
+1552207257 c:\users\yunhai\source\repos\nana-runner\runa\base\mt_mutex.h
+	<runa/base/_config.h>
+	<mutex>
+
+1547169709 source:c:\users\yunhai\source\repos\nana-runner\runa\base\node.cpp
+	"stdafx.h"
+	<runa/base/node.h>
+	<runa/base/dumper.h>
+
+1547169709 c:\users\yunhai\source\repos\nana-runner\runa\base\node.h
+	<runa/base/_config.h>
+	<runa/base/base_types.h>
+
+1547170027 source:c:\users\yunhai\source\repos\nana-runner\runa\base\base.cpp
+	"stdafx.h"
+	<runa/base/base.h>
+
+1548156340 source:c:\users\yunhai\source\repos\nana-runner\runa\base\log.cpp
+	"stdafx.h"
+	<runa/base/log.h>
+	<runa/base/enum.h>
+
+1547170026 source:c:\users\yunhai\source\repos\nana-runner\runa\base\object.cpp
+	"stdafx.h"
+	<runa/base/object.h>
+

@@ -13,7 +13,7 @@
 
 #include <runa/sample/demo_cntrl.h>
 
-namespace runa::sample {
+namespace runa { namespace sample {
 
     class demo_app : public app
     {
@@ -29,5 +29,5 @@ namespace runa::sample {
 
     };
 
-}
+}}
 

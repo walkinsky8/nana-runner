@@ -9,9 +9,9 @@
 #pragma once
 
 #ifdef _WIN32
-
+#ifndef __MINGW32__
 #include <SDKDDKVer.h>
-
+#endif
 #define WIN32_LEAN_AND_MEAN
 #include <windows.h>
 

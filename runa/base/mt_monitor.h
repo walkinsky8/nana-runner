@@ -14,7 +14,7 @@
 #include <mutex>
 #include <condition_variable>
 
-namespace runa::mt {
+namespace runa{ namespace mt {
 
     template<class _Mutex>
     class monitor
@@ -52,7 +52,7 @@ namespace runa::mt {
         {
             cond_.wait(mtx_);
         }
-        
+
         void wait(unsigned _milliseconds)
         {
             cond_.wait_for(mtx_, std::chrono::milliseconds(_milliseconds));
@@ -84,4 +84,4 @@ namespace runa::mt {
 
     };
 
-}
+}}

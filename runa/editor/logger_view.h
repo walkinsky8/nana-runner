@@ -16,7 +16,7 @@
 #include <runa/widgets/checkbox_cfg.h>
 #include <runa/widgets/button_cfg.h>
 
-namespace runa::editor {
+namespace runa { namespace editor {
 
     class logger_view : public view_obj
     {
@@ -44,5 +44,5 @@ namespace runa::editor {
 
     };
 
-}
+}}
 

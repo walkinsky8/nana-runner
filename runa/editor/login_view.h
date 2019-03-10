@@ -14,7 +14,7 @@
 #include <runa/widgets/textbox_cfg.h>
 #include <runa/widgets/button_cfg.h>
 
-namespace runa::editor {
+namespace runa { namespace editor {
 
     class login_view : public view_obj
     {
@@ -23,7 +23,7 @@ namespace runa::editor {
     public:
         textbox& username_;
         textbox& password_;
-        
+
         button& login_;
         button& close_;
 
@@ -39,5 +39,5 @@ namespace runa::editor {
 
     };
 
-}
+}}
 

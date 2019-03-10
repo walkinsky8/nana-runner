@@ -13,9 +13,9 @@
 
 #include <mutex>
 
-namespace runa::mt {
+namespace runa { namespace mt {
 
     using std::lock_guard;
     using std::unique_lock;
 
-}
+}}

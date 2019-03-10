@@ -14,7 +14,7 @@
 #include <runa/editor/login_cntrl.h>
 #include <runa/editor/editor_cntrl.h>
 
-namespace runa::editor {
+namespace runa { namespace editor {
 
     class editor_app : public app
     {
@@ -34,5 +34,5 @@ namespace runa::editor {
 
     };
 
-}
+}}
 

@@ -14,7 +14,7 @@
 #include <runa/foundation/font/font_model.h>
 #include <runa/foundation/color/color_model.h>
 
-namespace runa::editor {
+namespace runa { namespace editor {
 
         class editor_setup_model : public model_obj, public model_proxy_base<editor_setup_model>
         {
@@ -53,5 +53,5 @@ namespace runa::editor {
 
         };
 
-}
+}}
 

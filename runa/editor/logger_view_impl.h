@@ -11,7 +11,7 @@
 
 #include <runa/editor/logger_view.h>
 
-namespace runa::editor {
+namespace runa { namespace editor {
 
     class logger_view_impl : public logger_view
     {
@@ -35,5 +35,5 @@ namespace runa::editor {
 
     };
 
-}
+}}
 

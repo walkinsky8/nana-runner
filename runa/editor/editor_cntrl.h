@@ -11,7 +11,7 @@
 
 #include <runa/foundation/controller_base.h>
 
-namespace runa::editor {
+namespace runa { namespace editor {
 
     class editor_cntrl : public controller_obj
     {
@@ -30,5 +30,5 @@ namespace runa::editor {
 
     };
 
-}
+}}
 

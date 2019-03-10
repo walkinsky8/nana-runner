@@ -15,7 +15,7 @@
 
 #include <runa/editor/login_model.h>
 
-namespace runa::editor {
+namespace runa { namespace editor {
 
     class login_cntrl : public controller_obj
     {
@@ -42,5 +42,5 @@ namespace runa::editor {
 
     };
 
-}
+}}
 

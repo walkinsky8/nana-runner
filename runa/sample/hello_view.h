@@ -11,7 +11,7 @@
 
 #include <runa/foundation/view_base.h>
 
-namespace runa::sample {
+namespace runa { namespace sample {
 
     class hello_view : public view_obj
     {
@@ -25,4 +25,4 @@ namespace runa::sample {
 
     };
 
-}
+}}

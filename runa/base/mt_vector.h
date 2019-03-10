@@ -15,7 +15,7 @@
 #include <runa/base/mt_lock.h>
 #include <vector>
 
-namespace runa::mt {
+namespace runa { namespace mt {
 
     template<class T>
     class vector
@@ -57,4 +57,4 @@ namespace runa::mt {
 
     };
 
-}
+}}

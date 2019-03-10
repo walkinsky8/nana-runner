@@ -13,8 +13,8 @@
 
 #include <mutex>
 
-namespace runa::mt {
+namespace runa { namespace mt {
 
     using std::recursive_mutex;
 
-}
+}}

@@ -50,7 +50,11 @@ runa::datetime runa::datetime::now()
     auto curr = system_clock::now();
     auto ttt = system_clock::to_time_t(curr);
     tm tmval;
+    #ifdef _MSC_VER
     localtime_s(&tmval, &ttt);
+    #else
+    tmval = *localtime(&ttt);
+    #endif
     auto ms = time_point_cast<milliseconds>(curr);
     datetime retval{ tmval, static_cast<uint>(ms.time_since_epoch().count()%1000) };
     return retval;

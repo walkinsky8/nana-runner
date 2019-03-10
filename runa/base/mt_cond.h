@@ -13,9 +13,9 @@
 
 #include <condition_variable>
 
-namespace runa::mt {
+namespace runa { namespace mt {
 
     using std::condition_variable;
     using std::condition_variable_any;
 
-}
+}}

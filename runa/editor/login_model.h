@@ -11,7 +11,7 @@
 
 #include <runa/foundation/model_base.h>
 
-namespace runa::editor {
+namespace runa { namespace editor {
 
     class login_model : public model_obj, public model_proxy_base<login_model>
     {
@@ -20,7 +20,7 @@ namespace runa::editor {
     public:
         NAR_FIELD(string, username);
         NAR_FIELD(string, password);
-        
+
     public:
         template<class _Stream>
         void traverse(_Stream& _s)
@@ -32,5 +32,5 @@ namespace runa::editor {
 
     };
 
-}
+}}
 

@@ -16,7 +16,7 @@
 #include <runa/widgets/combox_cfg.h>
 #include <runa/widgets/button_cfg.h>
 
-namespace runa::editor {
+namespace runa { namespace editor {
 
     class editor_setup_view : public view_obj
     {
@@ -59,5 +59,5 @@ namespace runa::editor {
 
     };
 
-}
+}}
 

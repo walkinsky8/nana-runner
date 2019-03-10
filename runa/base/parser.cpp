@@ -17,7 +17,7 @@
 
 #include <runa/base/log.h>
 
-namespace runa::detail {
+namespace runa { namespace detail {
 
     //TODO: comment
     //TODO: escape
@@ -103,7 +103,7 @@ namespace runa::detail {
 
             if (*p_ == tag::key)
             {
-                if (word) 
+                if (word)
                     NAR_THROW_ERROR(std::invalid_argument, "extra word before @: " << word);
                 ++p_;
                 word = p_.read_until(is_type_end); //c == tag::begin || is_blank(c)
@@ -122,7 +122,7 @@ namespace runa::detail {
                         NAR_THROW_ERROR(std::invalid_argument, "extra word before quote: " << word);
                     bool simple = true;
                     istr strval = read_string(p_, &simple);
-                    if (simple) 
+                    if (simple)
                         _node.value(unquote_string(strval, nullptr)); // no escape, not multiple
                     else
                         _node.value(unescape_string(strval));
@@ -309,7 +309,7 @@ namespace runa::detail {
             p.read(_node);
     }
 
-}
+}}
 
 runa::parser::parser(istr _s, bool _is_list)
 {

@@ -11,7 +11,7 @@
 
 #include <runa/editor/editor_view.h>
 
-namespace runa::editor {
+namespace runa { namespace editor {
 
     class editor_view_impl: public editor_view
     {
@@ -50,5 +50,5 @@ namespace runa::editor {
 
     };
 
-}
+}}
 

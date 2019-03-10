@@ -15,7 +15,7 @@
 #include <runa/widgets/textbox_cfg.h>
 #include <runa/widgets/button_cfg.h>
 
-namespace runa::sample {
+namespace runa { namespace sample {
 
     class simple_view : public view_obj
     {
@@ -39,4 +39,4 @@ namespace runa::sample {
 
     };
 
-}
+}}
