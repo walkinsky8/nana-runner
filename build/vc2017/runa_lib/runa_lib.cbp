@@ -15,7 +15,6 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-Wall" />
-					<Add option="-std=c++1z" />
 					<Add option="-g" />
 					<Add option="-O0" />
 					<Add directory="../../../../nana-runner" />
