@@ -458,15 +458,15 @@
     <ClInclude Include="..\..\..\runa\foundation\font\font_cntrl.h">
       <Filter>runa\foundation\font</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\runa\foundation\view_impl_base.h">
+      <Filter>runa\foundation</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\runa\foundation\color.nar">
       <Filter>runa\foundation</Filter>
     </None>
     <None Include="..\..\..\runa\foundation\font.nar">
-      <Filter>runa\foundation</Filter>
-    </None>
-    <None Include="..\..\..\runa\foundation\generic.nar">
       <Filter>runa\foundation</Filter>
     </None>
   </ItemGroup>

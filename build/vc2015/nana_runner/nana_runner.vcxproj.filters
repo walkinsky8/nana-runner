@@ -15,7 +15,7 @@
     </Image>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\runa_lib_all_in_one.cpp" />
-    <ClCompile Include="nana_runner.cpp" />
+    <ClCompile Include="..\..\..\runa_lib_all_in_one.cpp" />
+    <ClCompile Include="..\..\..\app\nana_runner.cpp" />
   </ItemGroup>
 </Project>

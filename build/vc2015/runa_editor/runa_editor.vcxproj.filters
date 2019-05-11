@@ -6,84 +6,84 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\runa\editor\editor_app.cpp">
-      <Filter>editor</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\runa\editor\editor_cntrl.cpp">
-      <Filter>editor</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\runa\editor\editor_setup_view_impl.cpp">
-      <Filter>editor</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\runa\editor\editor_view_impl.cpp">
-      <Filter>editor</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\runa\editor\logger_view_impl.cpp">
-      <Filter>editor</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\runa\editor\login_cntrl.cpp">
-      <Filter>editor</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\runa\editor\login_view_impl.cpp">
-      <Filter>editor</Filter>
-    </ClCompile>
-    <ClCompile Include="nana_editor.cpp" />
     <ClCompile Include="..\..\..\stdafx.cpp" />
     <ClCompile Include="..\..\..\runa_lib_all_in_one.cpp" />
+    <ClCompile Include="..\..\..\app\nana_editor.cpp" />
+    <ClCompile Include="..\..\..\app\editor\editor_app.cpp">
+      <Filter>editor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\app\editor\editor_cntrl.cpp">
+      <Filter>editor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\app\editor\editor_setup_view_impl.cpp">
+      <Filter>editor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\app\editor\editor_view_impl.cpp">
+      <Filter>editor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\app\editor\logger_view_impl.cpp">
+      <Filter>editor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\app\editor\login_cntrl.cpp">
+      <Filter>editor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\app\editor\login_view_impl.cpp">
+      <Filter>editor</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\runa\editor\editor_app.h">
-      <Filter>editor</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\runa\editor\editor_cntrl.h">
-      <Filter>editor</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\runa\editor\editor_setup_model.h">
-      <Filter>editor</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\runa\editor\editor_setup_view.h">
-      <Filter>editor</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\runa\editor\editor_setup_view_impl.h">
-      <Filter>editor</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\runa\editor\editor_view.h">
-      <Filter>editor</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\runa\editor\editor_view_impl.h">
-      <Filter>editor</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\runa\editor\logger_view.h">
-      <Filter>editor</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\runa\editor\logger_view_impl.h">
-      <Filter>editor</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\runa\editor\login_cntrl.h">
-      <Filter>editor</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\runa\editor\login_model.h">
-      <Filter>editor</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\runa\editor\login_view.h">
-      <Filter>editor</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\runa\editor\login_view_impl.h">
-      <Filter>editor</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\stdafx.h" />
+    <ClInclude Include="..\..\..\app\editor\editor_app.h">
+      <Filter>editor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\app\editor\editor_cntrl.h">
+      <Filter>editor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\app\editor\editor_setup_model.h">
+      <Filter>editor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\app\editor\editor_setup_view.h">
+      <Filter>editor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\app\editor\editor_setup_view_impl.h">
+      <Filter>editor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\app\editor\editor_view.h">
+      <Filter>editor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\app\editor\editor_view_impl.h">
+      <Filter>editor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\app\editor\logger_view.h">
+      <Filter>editor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\app\editor\logger_view_impl.h">
+      <Filter>editor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\app\editor\login_cntrl.h">
+      <Filter>editor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\app\editor\login_model.h">
+      <Filter>editor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\app\editor\login_view.h">
+      <Filter>editor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\app\editor\login_view_impl.h">
+      <Filter>editor</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\..\runa\editor\editor.nar">
+    <None Include="..\..\..\app\editor\editor.nar">
       <Filter>editor</Filter>
     </None>
-    <None Include="..\..\..\runa\editor\editor_setup.nar">
+    <None Include="..\..\..\app\editor\editor_setup.nar">
       <Filter>editor</Filter>
     </None>
-    <None Include="..\..\..\runa\editor\logger.nar">
+    <None Include="..\..\..\app\editor\logger.nar">
       <Filter>editor</Filter>
     </None>
-    <None Include="..\..\..\runa\editor\login.nar">
+    <None Include="..\..\..\app\editor\login.nar">
       <Filter>editor</Filter>
     </None>
   </ItemGroup>

@@ -22,21 +22,21 @@
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{E1956674-F05D-423F-9F0E-65245B87AA13}</ProjectGuid>
     <RootNamespace>runaeditor</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
-    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <CharacterSet>MultiByte</CharacterSet>
+    <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -47,9 +47,9 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <CharacterSet>MultiByte</CharacterSet>
+    <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -77,19 +77,39 @@
     <TargetName>$(ProjectName)_$(PlatformToolset)_$(Configuration)_$(PlatformShortName)</TargetName>
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>..\..\bin\</OutDir>
+    <IntDir>..\..\obj\$(ProjectName)\$(PlatformToolset)_$(Configuration)_$(PlatformShortName)\</IntDir>
+    <TargetName>$(ProjectName)_$(PlatformToolset)_$(Configuration)_$(PlatformShortName)</TargetName>
+    <IncludePath>./;../../../;../../../../nana/include;../../../../nana/extrlib/vc2015;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+    <LibraryPath>../../bin;../../../../nana/build/bin;../../../../nana/extrlib/vc2015;$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);$(NETFXKitsDir)Lib\um\x64</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>..\..\bin\</OutDir>
+    <IntDir>..\..\obj\$(ProjectName)\$(PlatformToolset)_$(Configuration)_$(PlatformShortName)\</IntDir>
+    <TargetName>$(ProjectName)_$(PlatformToolset)_$(Configuration)_$(PlatformShortName)</TargetName>
+    <IncludePath>./;../../../;../../../../nana/include;../../../../nana/extrlib/vc2015;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+    <LibraryPath>../../bin;../../../../nana/build/bin;../../../../nana/extrlib/vc2015;$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86);$(NETFXKitsDir)Lib\um\x86</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>..\..\bin\</OutDir>
+    <IntDir>..\..\obj\$(ProjectName)\$(PlatformToolset)_$(Configuration)_$(PlatformShortName)\</IntDir>
+    <TargetName>$(ProjectName)_$(PlatformToolset)_$(Configuration)_$(PlatformShortName)</TargetName>
+    <IncludePath>./;../../../;../../../../nana/include;../../../../nana/extrlib/vc2015;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+    <LibraryPath>../../bin;../../../../nana/build/bin;../../../../nana/extrlib/vc2015;$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86);$(NETFXKitsDir)Lib\um\x86</LibraryPath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <ConformanceMode>true</ConformanceMode>
-      <AdditionalOptions>/std:c++latest %(AdditionalOptions)</AdditionalOptions>
       <PreprocessorDefinitions>x__NANA_RUNNER_LIB_ALL_IN_ONE;_UNICODE;UNICODE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <PrecompiledHeader>Use</PrecompiledHeader>
       <MinimalRebuild>false</MinimalRebuild>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>runa_lib_$(PlatformToolset)_$(Configuration)_$(PlatformShortName).lib;nana_$(PlatformToolset)_$(Configuration)_$(PlatformShortName).lib;libjpeg.MDd.x64.lib;libpng.MDd.x64.lib;libzlib.MDd.x64.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>runa_lib_$(PlatformToolset)_$(Configuration)_$(PlatformShortName).lib;nana_$(PlatformToolset)_$(Configuration)_$(PlatformShortName).lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -97,8 +117,12 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <ConformanceMode>true</ConformanceMode>
+      <PreprocessorDefinitions>x__NANA_RUNNER_LIB_ALL_IN_ONE;_UNICODE;UNICODE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
+    <Link>
+      <AdditionalDependencies>runa_lib_$(PlatformToolset)_$(Configuration)_$(PlatformShortName).lib;nana_$(PlatformToolset)_$(Configuration)_$(PlatformShortName).lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -107,11 +131,13 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <ConformanceMode>true</ConformanceMode>
+      <PreprocessorDefinitions>x__NANA_RUNNER_LIB_ALL_IN_ONE;_UNICODE;UNICODE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>runa_lib_$(PlatformToolset)_$(Configuration)_$(PlatformShortName).lib;nana_$(PlatformToolset)_$(Configuration)_$(PlatformShortName).lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -121,50 +147,52 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <ConformanceMode>true</ConformanceMode>
+      <PreprocessorDefinitions>x__NANA_RUNNER_LIB_ALL_IN_ONE;_UNICODE;UNICODE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>runa_lib_$(PlatformToolset)_$(Configuration)_$(PlatformShortName).lib;nana_$(PlatformToolset)_$(Configuration)_$(PlatformShortName).lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\runa\editor\editor_app.cpp" />
-    <ClCompile Include="..\..\..\runa\editor\editor_cntrl.cpp" />
-    <ClCompile Include="..\..\..\runa\editor\editor_setup_view_impl.cpp" />
-    <ClCompile Include="..\..\..\runa\editor\editor_view_impl.cpp" />
-    <ClCompile Include="..\..\..\runa\editor\logger_view_impl.cpp" />
-    <ClCompile Include="..\..\..\runa\editor\login_cntrl.cpp" />
-    <ClCompile Include="..\..\..\runa\editor\login_view_impl.cpp" />
+    <ClCompile Include="..\..\..\app\editor\editor_app.cpp" />
+    <ClCompile Include="..\..\..\app\editor\editor_cntrl.cpp" />
+    <ClCompile Include="..\..\..\app\editor\editor_setup_view_impl.cpp" />
+    <ClCompile Include="..\..\..\app\editor\editor_view_impl.cpp" />
+    <ClCompile Include="..\..\..\app\editor\logger_view_impl.cpp" />
+    <ClCompile Include="..\..\..\app\editor\login_cntrl.cpp" />
+    <ClCompile Include="..\..\..\app\editor\login_view_impl.cpp" />
+    <ClCompile Include="..\..\..\app\nana_editor.cpp" />
     <ClCompile Include="..\..\..\runa_lib_all_in_one.cpp">
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/bigobj %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <ClCompile Include="..\..\..\stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="nana_editor.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\runa\editor\editor_app.h" />
-    <ClInclude Include="..\..\..\runa\editor\editor_cntrl.h" />
-    <ClInclude Include="..\..\..\runa\editor\editor_setup_model.h" />
-    <ClInclude Include="..\..\..\runa\editor\editor_setup_view.h" />
-    <ClInclude Include="..\..\..\runa\editor\editor_setup_view_impl.h" />
-    <ClInclude Include="..\..\..\runa\editor\editor_view.h" />
-    <ClInclude Include="..\..\..\runa\editor\editor_view_impl.h" />
-    <ClInclude Include="..\..\..\runa\editor\logger_view.h" />
-    <ClInclude Include="..\..\..\runa\editor\logger_view_impl.h" />
-    <ClInclude Include="..\..\..\runa\editor\login_cntrl.h" />
-    <ClInclude Include="..\..\..\runa\editor\login_model.h" />
-    <ClInclude Include="..\..\..\runa\editor\login_view.h" />
-    <ClInclude Include="..\..\..\runa\editor\login_view_impl.h" />
+    <ClInclude Include="..\..\..\app\editor\editor_app.h" />
+    <ClInclude Include="..\..\..\app\editor\editor_cntrl.h" />
+    <ClInclude Include="..\..\..\app\editor\editor_setup_model.h" />
+    <ClInclude Include="..\..\..\app\editor\editor_setup_view.h" />
+    <ClInclude Include="..\..\..\app\editor\editor_setup_view_impl.h" />
+    <ClInclude Include="..\..\..\app\editor\editor_view.h" />
+    <ClInclude Include="..\..\..\app\editor\editor_view_impl.h" />
+    <ClInclude Include="..\..\..\app\editor\logger_view.h" />
+    <ClInclude Include="..\..\..\app\editor\logger_view_impl.h" />
+    <ClInclude Include="..\..\..\app\editor\login_cntrl.h" />
+    <ClInclude Include="..\..\..\app\editor\login_model.h" />
+    <ClInclude Include="..\..\..\app\editor\login_view.h" />
+    <ClInclude Include="..\..\..\app\editor\login_view_impl.h" />
     <ClInclude Include="..\..\..\stdafx.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\..\runa\editor\editor.nar" />
-    <None Include="..\..\..\runa\editor\editor_setup.nar" />
-    <None Include="..\..\..\runa\editor\logger.nar" />
-    <None Include="..\..\..\runa\editor\login.nar" />
+    <None Include="..\..\..\app\editor\editor.nar" />
+    <None Include="..\..\..\app\editor\editor_setup.nar" />
+    <None Include="..\..\..\app\editor\logger.nar" />
+    <None Include="..\..\..\app\editor\login.nar" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
