@@ -8,7 +8,7 @@
 */
 #include "stdafx.h"
 
-#include <runa/sample/demo_app.h>
+#include "sample/demo_app.h"
 
 // -path "$(RUNA)\runa\foundation" -path "$(RUNA)\runa\sample" -path "$(RUNA)\runa\editor" -path "$(USERPROFILE)\Pictures"
 

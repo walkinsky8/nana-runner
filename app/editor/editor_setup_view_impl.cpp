@@ -9,7 +9,7 @@
 // Created at 2018/11/09
 #include "stdafx.h"
 
-#include <runa/editor/editor_setup_view_impl.h>
+#include "editor_setup_view_impl.h"
 
 #include <runa/foundation/view_impl_base.h>
 

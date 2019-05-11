@@ -9,7 +9,7 @@
 // Created at 2018/11/09
 #include "stdafx.h"
 
-#include <runa/editor/editor_app.h>
+#include "editor_app.h"
 
 using namespace runa::editor;
 

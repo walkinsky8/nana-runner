@@ -6,48 +6,51 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\runa\sample\demo_app.cpp">
-      <Filter>sample</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\runa\sample\demo_cntrl.cpp">
-      <Filter>sample</Filter>
-    </ClCompile>
-    <ClCompile Include="nana_demo.cpp" />
     <ClCompile Include="..\..\..\stdafx.cpp" />
     <ClCompile Include="..\..\..\runa_lib_all_in_one.cpp" />
+    <ClCompile Include="..\..\..\app\nana_demo.cpp" />
+    <ClCompile Include="..\..\..\app\sample\demo_app.cpp">
+      <Filter>sample</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\app\sample\demo_cntrl.cpp">
+      <Filter>sample</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\runa\sample\demo_app.h">
-      <Filter>sample</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\runa\sample\demo_cntrl.h">
-      <Filter>sample</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\runa\sample\demo_view.h">
-      <Filter>sample</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\runa\sample\hello_view.h">
-      <Filter>sample</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\stdafx.h" />
-    <ClInclude Include="..\..\..\runa\sample\simple_view.h">
+    <ClInclude Include="..\..\..\app\sample\demo_app.h">
+      <Filter>sample</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\app\sample\demo_cntrl.h">
+      <Filter>sample</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\app\sample\demo_view.h">
+      <Filter>sample</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\app\sample\hello_view.h">
+      <Filter>sample</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\app\sample\simple_view.h">
       <Filter>sample</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\..\runa\sample\demo.nar">
+    <None Include="..\..\..\app\sample\demo.nar">
       <Filter>sample</Filter>
     </None>
-    <None Include="..\..\..\runa\sample\dummy.nar">
+    <None Include="..\..\..\app\sample\dummy.nar">
       <Filter>sample</Filter>
     </None>
-    <None Include="..\..\..\runa\sample\hello.nar">
+    <None Include="..\..\..\app\sample\generic.nar">
       <Filter>sample</Filter>
     </None>
-    <None Include="..\..\..\runa\sample\minimal.nar">
+    <None Include="..\..\..\app\sample\hello.nar">
       <Filter>sample</Filter>
     </None>
-    <None Include="..\..\..\runa\sample\simple.nar">
+    <None Include="..\..\..\app\sample\minimal.nar">
+      <Filter>sample</Filter>
+    </None>
+    <None Include="..\..\..\app\sample\simple.nar">
       <Filter>sample</Filter>
     </None>
   </ItemGroup>

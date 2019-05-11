@@ -9,7 +9,7 @@
 // Created at 2018/11/12
 #pragma once
 
-#include <runa/editor/editor_view.h>
+#include "editor_view.h"
 
 namespace runa { namespace editor {
 

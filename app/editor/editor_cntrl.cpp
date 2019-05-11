@@ -9,13 +9,11 @@
 // Created at 2018/11/09
 #include "stdafx.h"
 
-#include <runa/editor/editor_cntrl.h>
+#include "editor_cntrl.h"
 
-#include <runa/editor/logger_view_impl.h>
-#include <runa/editor/editor_view_impl.h>
-#include <runa/editor/editor_setup_view_impl.h>
-#include <runa/foundation/color/color_view_impl.h>
-#include <runa/foundation/font/font_view_impl.h>
+#include "logger_view_impl.h"
+#include "editor_view_impl.h"
+#include "editor_setup_view_impl.h"
 
 #include <runa/foundation/app_base.h>
 

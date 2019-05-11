@@ -66,7 +66,7 @@ runa::strings runa::strings_sub(const strings& _ss, int _start, size_t _len)
     strings result;
     if (_start < 0)
         _start += (int)_ss.size();
-    if (_start >= _ss.size())
+    if (_start >= (int)_ss.size())
         _start = (int)_ss.size();
     if (_len > _ss.size() - _start)
         _len = _ss.size() - _start;

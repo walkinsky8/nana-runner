@@ -469,8 +469,5 @@
     <None Include="..\..\..\runa\foundation\font.nar">
       <Filter>runa\foundation</Filter>
     </None>
-    <None Include="..\..\..\runa\foundation\generic.nar">
-      <Filter>runa\foundation</Filter>
-    </None>
   </ItemGroup>
 </Project>

@@ -11,9 +11,9 @@
 
 #include <runa/foundation/controller_base.h>
 
-#include <runa/editor/login_view_impl.h>
+#include "login_view_impl.h"
 
-#include <runa/editor/login_model.h>
+#include "login_model.h"
 
 namespace runa { namespace editor {
 

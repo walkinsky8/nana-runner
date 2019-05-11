@@ -9,9 +9,9 @@
 // Created at 2018/11/11
 #pragma once
 
-#include <runa/editor/editor_setup_view.h>
+#include "editor_setup_view.h"
 
-#include <runa/editor/editor_setup_model.h>
+#include "editor_setup_model.h"
 
 #include <runa/foundation/font/font_cntrl.h>
 #include <runa/foundation/color/color_cntrl.h>

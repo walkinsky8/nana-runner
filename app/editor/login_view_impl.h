@@ -9,9 +9,9 @@
 // Created at 2018/01/25
 #pragma once
 
-#include <runa/editor/login_view.h>
+#include "login_view.h"
 
-#include <runa/editor/login_model.h>
+#include "login_model.h"
 
 namespace runa { namespace editor {
 

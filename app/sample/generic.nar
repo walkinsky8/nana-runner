@@ -13,7 +13,7 @@
     typeface={ Consolas 10 }
     cursor=arrow
     div='vert'
-    @label { id=label align=center align_v=center }
+    @label { id=label align=right align_v=center }
     @textbox { id=textbox }
     @button { id=button bgcolor=green }
 }

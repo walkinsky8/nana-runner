@@ -9,7 +9,7 @@
 // Created at 2018/11/09
 #include "stdafx.h"
 
-#include <runa/editor/login_cntrl.h>
+#include "login_cntrl.h"
 
 #include <runa/foundation/app_base.h>
 

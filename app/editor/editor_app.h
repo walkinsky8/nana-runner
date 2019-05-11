@@ -6,21 +6,26 @@
 *	(See accompanying file LICENSE_1_0.txt or copy at
 *	http://www.boost.org/LICENSE_1_0.txt)
 */
-// Created at 2018/11/15
+// Created at 2018/02/12
 #pragma once
 
 #include <runa/foundation/app_base.h>
 
-#include <runa/sample/demo_cntrl.h>
+#include "login_cntrl.h"
+#include "editor_cntrl.h"
 
-namespace runa { namespace sample {
+namespace runa { namespace editor {
 
-    class demo_app : public app
+    class editor_app : public app
     {
-        demo_cntrl demo_;
+        login_cntrl login_;
+        editor_cntrl editor_;
+
+        bool nologin_{ false };
+        bool nologwin_{ false };
 
     public:
-        demo_app();
+        editor_app();
 
     protected:
         void on_init() override;

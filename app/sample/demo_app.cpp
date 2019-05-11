@@ -9,7 +9,7 @@
 // Created at 2018/11/15
 #include "stdafx.h"
 
-#include <runa/sample/demo_app.h>
+#include "demo_app.h"
 
 using namespace runa::sample;
 

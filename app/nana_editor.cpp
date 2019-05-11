@@ -8,13 +8,13 @@
 */
 #include "stdafx.h"
 
-#include <runa/sample/demo_app.h>
+#include "editor/editor_app.h"
 
 // -path "$(RUNA)\runa\foundation" -path "$(RUNA)\runa\sample" -path "$(RUNA)\runa\editor" -path "$(USERPROFILE)\Pictures"
 
 int run_main(runa::pcwstr _cmdline)
 {
-    runa::sample::demo_app a;
+    runa::editor::editor_app a;
     a.run(_cmdline);
     return 0;
 }

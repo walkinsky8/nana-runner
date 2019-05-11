@@ -9,7 +9,7 @@
 // Created at 2018/11/12
 #pragma once
 
-#include <runa/editor/logger_view.h>
+#include "logger_view.h"
 
 namespace runa { namespace editor {
 

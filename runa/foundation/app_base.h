@@ -13,6 +13,9 @@
 
 #include <runa/foundation/view_base.h>
 
+#include <runa/foundation/color/color_view_impl.h>
+#include <runa/foundation/font/font_view_impl.h>
+
 namespace runa
 {
     class app : public object
