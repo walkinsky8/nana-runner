@@ -10,8 +10,6 @@
 
 #include "editor/editor_app.h"
 
-// -path "$(RUNA)\runa\foundation" -path "$(RUNA)\runa\sample" -path "$(RUNA)\runa\editor" -path "$(USERPROFILE)\Pictures"
-
 int run_main(runa::pcwstr _cmdline)
 {
     runa::editor::editor_app a;
@@ -41,4 +39,6 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     return run_main_no_exception(lpCmdLine);
 #endif
 }
+
+// -path "$(RUNA)\runa\foundation" -path "$(RUNA)\app\sample" -path "$(RUNA)\app\editor" -path "$(USERPROFILE)\Pictures"
 

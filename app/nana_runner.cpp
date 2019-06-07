@@ -53,5 +53,5 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 #endif
 }
 
-// x.nar ... -path "$(RUNA)\runa\foundation" -path "$(RUNA)\runa\sample" -path "$(RUNA)\runa\editor" -path "$(USERPROFILE)\Pictures"
+// someone.nar ... -path "$(RUNA)\runa\foundation" -path "$(RUNA)\app\sample" -path "$(RUNA)\app\editor" -path "$(USERPROFILE)\Pictures"
 
