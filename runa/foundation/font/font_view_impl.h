@@ -6,7 +6,7 @@
 *	(See accompanying file LICENSE_1_0.txt or copy at
 *	http://www.boost.org/LICENSE_1_0.txt)
 */
-// Created at 2019/01/22
+// Created on 2019/01/22
 #pragma once
 
 #include <runa/foundation/font/font_view.h>

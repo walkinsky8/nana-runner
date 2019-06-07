@@ -6,7 +6,7 @@
 *	(See accompanying file LICENSE_1_0.txt or copy at
 *	http://www.boost.org/LICENSE_1_0.txt)
 */
-// Created at 2018/11/15
+// Created on 2018/11/15
 #pragma once
 
 #include <runa/foundation/app_base.h>

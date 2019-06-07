@@ -6,7 +6,7 @@
 *	(See accompanying file LICENSE_1_0.txt or copy at
 *	http://www.boost.org/LICENSE_1_0.txt)
 */
-// Created at 2017/11/11
+// Created on 2017/11/11
 #include "stdafx.h"
 
 #ifndef __NANA_RUNNER_LIB_ALL_IN_ONE
