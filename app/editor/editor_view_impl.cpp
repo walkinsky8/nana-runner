@@ -41,10 +41,10 @@ void editor_view_impl::init()
 void editor_view_impl::on_choose_dir()
 {
     nana::folderbox fb{ nullptr, folder_.caption() };
-    auto dir = fb.show();
-    if (dir.has_value())
+    auto dirs = fb.show();
+    if (!dirs.empty())
     {
-        string d = dir.value().string();
+        string d = dirs[0].string();
         folder_ << d;
         NAR_LOG_VAR(folder_);
         init_files();
@@ -69,16 +69,17 @@ void editor_view_impl::init_files()
 
 void editor_view_impl::on_open_file()
 {
-    nana::filebox fb{ true };
+    nana::filebox fb{ nullptr, true };
     fb.init_path(folder_.caption());
     fb.init_file(file_.caption());
     fb.add_filter("Nana Cfg File (*.nar)", "*.nar");
     fb.add_filter("Any File (*.*)", "*.*");
-    if (fb.show())
+    auto files = fb.show();
+    if (!files.empty())
     {
-        NAR_LOG_VAR(fb.file());
+        NAR_LOG_VAR(files[0]);
         folder_ << fb.path();
-        file_ << fs::path{ fb.file() }.filename();
+        file_ << files[0].filename();
         on_load();
     }
 }

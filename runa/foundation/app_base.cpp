@@ -232,12 +232,17 @@ void runa::app::run(const wchar_t* _cmdline)
     load_cfg(L"font.nar");
     add_view<font_view_impl>();
 
-    if (args_.arguments().empty())
-        on_init();
-    else
-    for (auto& filename : args_.arguments())
-    {
-        show_view_(filename);
+    try {
+        if (args_.arguments().empty())
+            on_init();
+        else
+            for (auto& filename : args_.arguments())
+            {
+                show_view_(filename);
+            }
+    }
+    catch (std::exception& e) {
+        NAR_LOG_EXCPT(e);
     }
 
     NAR_LOG("enter exec...");
@@ -245,7 +250,7 @@ void runa::app::run(const wchar_t* _cmdline)
     NAR_LOG("leave exec.");
 
     // called in quit().
-    //on_fini();
+    on_fini();
 
     log_thread::instance().stop();
 }

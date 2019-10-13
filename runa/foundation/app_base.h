@@ -85,6 +85,8 @@ namespace runa
         static _View& show_view(view_ptr& _p)
         {
             _p = get_view<_View>();
+            if (!_p)
+                NAR_THROW_ERROR(std::invalid_argument, "view not load: "<<typeid(_View).name()<<", check path");
             _p->show();
             return _p->cast<_View>();
         }
