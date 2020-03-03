@@ -263,7 +263,7 @@ namespace runa { namespace sample {
                     cat.back().text(1, to_string(sz));
                 }
                 auto lasttime = fs::last_write_time(i->path());
-                auto secs = std::chrono::system_clock::to_time_t(lasttime);
+                auto secs = lasttime.time_since_epoch() / std::chrono::seconds();// std::chrono::system_clock::to_time_t(lasttime);
                 tm t;
                 localtime_s(&t, &secs);
                 datetime dt(t);

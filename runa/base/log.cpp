@@ -20,8 +20,9 @@ using namespace runa;
 std::ostream& runa::current_info::dump(std::ostream& _os) const
 {
     pcstr classfunc = find_classfunc(func_);
-    _os << classfunc
-        << "(" << fs::path{ file_ }.filename() << ":" << line_ << ")";
+    _os << classfunc;
+    _os << "(" << fs::path{ file_ }.filename().string();
+    _os << ":" << line_ << ")";
     return _os;
 }
 

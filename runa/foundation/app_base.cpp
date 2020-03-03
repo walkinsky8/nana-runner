@@ -189,7 +189,7 @@ void runa::app::load_cfgs(const wchar_t* _cmdline)
     for (auto p = range.first; p != range.second; ++p)
     {
         fs::path fullpath{ (*p).second };
-        paths_.push_back(fullpath.u8string());
+        paths_.push_back(fullpath.string());
     }
 
     if (paths_.empty())

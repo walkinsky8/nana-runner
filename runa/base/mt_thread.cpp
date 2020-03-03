@@ -28,7 +28,7 @@ void runa::simple_thread::stop()
     wakeup();
 
     thread_ptr thr = thr_;
-    if (thr)
+    if (thr && thr->joinable())
     {
         thr_->join();
         thr_ = nullptr;
