@@ -54,15 +54,20 @@ void editor_view_impl::on_choose_dir()
 void editor_view_impl::init_files()
 {
     file_.clear();
-    fs::directory_iterator di{ folder_.caption() }, end;
-    for (; di != end; ++di)
-    {
-        fs::path const& p = *di;
-        if (p.extension() == ".nar")
+    try {
+        fs::directory_iterator di{ folder_.caption() }, end;
+        for (; di != end; ++di)
         {
-            NAR_LOG_VAR(p.filename());
-            file_.push_back(p.filename().string());
+            fs::path const& p = *di;
+            if (p.extension() == ".nar")
+            {
+                NAR_LOG_VAR(p.filename());
+                file_.push_back(p.filename().string());
+            }
         }
+    }
+    catch (...) {
+        NAR_LOG_ERROR("could not list dir " << folder_.caption());
     }
     file_.option(0);
 }
