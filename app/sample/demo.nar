@@ -13,7 +13,7 @@
     size={600 800}
     @menubar{ id=menubar div='weight=24' typeface={bold 10}
         @menu { caption="&File"
-            @menu { caption='&Open' image='image.jpg' }
+            @menu { caption='&Open' image='img1.jpg' }
             @menu { caption='&Recent Files...'
                 @menu { caption='File&1' }
                 @menu { caption='File&2' }
@@ -35,11 +35,11 @@
         }
     }
     @toolbar { id=tb scale=16 div='vert weight=20'
-        @option { caption=open image='image.jpg' _click='''@form{id=open}'''}
+        @option { caption=open image='img1.jpg' _click='''@form{id=open}'''}
         @option { }
-        @option { caption=close image='yoyo.jpg' _click=close }
+        @option { caption=close image='img2.jpg' _click=close }
         @option { }
-        @option { caption=quit image='zhuang.jpg' _click=quit }
+        @option { caption=quit image='img3.jpg' _click=quit }
         @option { }
     }
     @categorize{
@@ -139,9 +139,9 @@
         @slider{ id=tsize div='weight=25%' maximum=36 value=10 }
         @slider{ id=clevel div='weight=25%' maximum=255 value=255 }
         @combox{ id=picsel div='weight=50%' editable=0 selected=0
-            @option { caption='Vinny' image='image.jpg' }
-            @option { caption='Jeff' image='zhuang.JPG' }
-            @option { caption='Charlotte' image='yoyo.jpg' }
+            @option { caption='Vinny' image='img1.jpg' }
+            @option { caption='Jeff' image='img2.JPG' }
+            @option { caption='Charlotte' image='img3.jpg' }
         }
     }
     @panel{ id=p2 div='weight=120'
@@ -152,7 +152,7 @@
             @option { caption=Green check=1 }
             @option { caption=Blue check=1 }
         }
-        @picture{ id=picture image="image.jpg"
+        @picture{ id=picture image="img1.jpg"
             align=center align_v=center stretchable=1 transparent=0
             gradual_from=white gradual_to=black gradual_horizontal=0
         }
@@ -188,15 +188,15 @@
     @panel{ id=tabs div=''
         @panel{ id=1 div='vert weight=50%'
             @tabbar { id=bar page_id=frame div='weight=20' close_fly=0 tb_add=0 tb_scroll=1 tb_list=1 tb_close=0
-                @tab { id=green div='vert' tab_bgcolor=green tab_image='image.jpg'
+                @tab { id=green div='vert' tab_bgcolor=green tab_image='img1.jpg'
                     @label { id=label }
                     @button { id=button icon='small.png' }
                 }
-                @tab { id=red div='vert' tab_bgcolor=red tab_image='zhuang.jpg'
+                @tab { id=red div='vert' tab_bgcolor=red tab_image='img2.jpg'
                     @label { id=label }
                     @textbox { id=textbox }
                 }
-                @tab { id=folder div='' tab_bgcolor=orange tab_image='yoyo.jpg'
+                @tab { id=folder div='' tab_bgcolor=orange tab_image='img3.jpg'
                     @treebox{ id=tree div='' checkable=0 directory='c:\'
                     }
                 }
